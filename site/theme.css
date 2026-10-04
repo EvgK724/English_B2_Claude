@@ -52,7 +52,11 @@
   --ipa:"Gentium Book Plus","Charis SIL","Doulos SIL","Times New Roman",serif;
   --panel-grad:linear-gradient(165deg,rgba(38,43,59,.95),rgba(19,22,30,.96));
   --shadow:0 1px 0 rgba(255,255,255,.05) inset,0 28px 56px -28px rgba(0,0,0,.85);
-  --cream:linear-gradient(180deg,#f6f0e6,#dcd3c3);
+  /* главная кнопка — тёмная, с янтарным оттенком: заметная, но не слепит */
+  --primary-bg:linear-gradient(180deg,rgba(var(--v-rgb),.22),rgba(var(--v-rgb),.1));
+  --primary-line:rgba(var(--v-rgb),.55);
+  --primary-fg:#f8dfb4;
+  --primary-glow:0 10px 26px -16px rgba(var(--v-rgb),.6),inset 0 1px 0 rgba(255,255,255,.07);
   --glow:
     radial-gradient(900px 520px at -12% -8%,rgba(var(--v-rgb),.11),transparent 62%),
     radial-gradient(760px 520px at 112% 4%,rgba(var(--i-rgb),.09),transparent 60%),
@@ -82,7 +86,8 @@
 :root .app .zero{border-color:rgba(var(--o-rgb),.55)}
 
 :root .app .big{border-radius:calc(18px*var(--k));border-color:var(--line-2);background:var(--raise);font-weight:600}
-:root .app .primary{border-color:transparent;background:var(--cream);color:#14161c;font-weight:650;box-shadow:0 12px 30px -14px rgba(var(--v-rgb),.55)}
+:root .app .primary{border-color:var(--primary-line);background:var(--primary-bg);color:var(--primary-fg);font-weight:650;box-shadow:var(--primary-glow)}
+:root .app .primary:active{background:rgba(var(--v-rgb),.28)}
 :root .app .say,:root .app .ex-play{border-radius:50%;border-color:var(--line-2);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.1),rgba(255,255,255,.02));color:var(--text)}
 :root .app .say:active,:root .app .ex-play:active{color:var(--o);border-color:rgba(var(--o-rgb),.6)}
 :root .app .t-train{border-radius:calc(16px*var(--k));border-color:rgba(var(--v-rgb),.45);background:rgba(var(--v-rgb),.07);color:var(--v);font-weight:600}

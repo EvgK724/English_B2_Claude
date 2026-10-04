@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="theme.css?v=ebb078f8">
+<link rel="stylesheet" href="theme.css?v=b9ffe602">
 <style>:root{color-scheme:dark;box-sizing:border-box;background:#0b0d12;-webkit-text-size-adjust:100%}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0b0d12;color:#ece8e1}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Английский B2</title>
 <style>
@@ -102,7 +102,7 @@
   .sync-txt{margin:0;font-size:calc(16px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
   .sync-row{display:flex;flex-wrap:wrap;gap:calc(8px*var(--k))}
   .sbtn{flex:1 1 calc(200px*var(--k));min-height:calc(56px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(18px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--raise);color:var(--text);font-size:calc(17px*var(--k));font-weight:620;cursor:pointer;transition:transform .12s}
-  .sbtn.main{border-color:transparent;background:var(--cream);color:#14161c;font-weight:650;box-shadow:0 12px 30px -14px rgba(var(--v-rgb),.55)}
+  .sbtn.main{border-color:var(--primary-line);background:var(--primary-bg);color:var(--primary-fg);font-weight:650;box-shadow:var(--primary-glow)}
   .sbtn:active{transform:scale(.98)}
   .sbtn:focus-visible{outline:calc(2px*var(--k)) solid var(--o);outline-offset:calc(2px*var(--k))}
   .sync-msg{margin:0;font-size:calc(15px*var(--k));line-height:1.4;color:var(--o)}
@@ -135,7 +135,7 @@
   .cbody iframe.ready{opacity:1}
   .cmsg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(12px*var(--k));padding:calc(24px*var(--k));text-align:center;color:var(--muted);font-size:calc(17px*var(--k))}
   .cmsg p{margin:0;max-width:28em}
-  .retry{min-height:calc(56px*var(--k));padding:0 calc(24px*var(--k));border-radius:calc(18px*var(--k));border:0;background:var(--cream);color:#14161c;font-weight:650;cursor:pointer}
+  .retry{min-height:calc(56px*var(--k));padding:0 calc(24px*var(--k));border-radius:calc(18px*var(--k));border:calc(1px*var(--k)) solid var(--primary-line);background:var(--primary-bg);color:var(--primary-fg);font-weight:650;box-shadow:var(--primary-glow);cursor:pointer}
 
   @media (prefers-reduced-motion:reduce){ .course,.course.open{transition:none} .cbody iframe{transition:none} .tile:active{transform:none} }
 </style>
@@ -228,7 +228,7 @@ const PACKS = {"top10":{"a1-best":[0,10800,0.048],"a1-day":[10800,14112,0.048],"
 // Самые большие пакеты лежат в хранилище файлов приложения (в одну версию страницы все записи не помещаются)
 const ASSET_PACKS = {};
 // Версии файлов по содержимому (a — тренажёры, p — пакеты звука): обновлённый файл не застрянет в офлайн-кэше
-const VER = {"a":{"top10":"1aa8de0d","artikli":"deb0583e","bez-a-an":"13d936d4","countable":"948fe5a8","tenses":"06bb60b9","irreg":"7b9b4602","passive":"1356d7fe","gonebeen":"e13ef7a3","stative":"d392e2cf","usedto":"153a52e9","would":"272d520b","cond":"e59d8fc2","hsd":"2ef0b1b9","modal":"2941b7dd","can":"46b82668","manage":"bd51b222","toing":"894b64b2","vm":"dd306dec","prepi":"92f9013e","kogo":"c06491da","preps":"32099f1f","into":"ca3498e4","tofor":"894b5654","adjprep":"ebb7c64f","makedo":"c54afc59","htp":"3adf6222","go":"89e8ae09","life":"c302d33d","twotoo":"04bd63e5","thereit":"af0c44c8","pron":"289753ee","adjadv":"b2f8fd51","cmp":"7294d0ad","similar":"c892f079","pairs":"fe918641","syn":"8881450d","q":"ab982380","rel":"1fd616be","link":"fd959e34","rep":"7e2d348f","num":"88346ab5","phrasal":"aaba675a","bbapp":"bf7e026d","idm":"8885f190","wthr":"ae67e6b4","abbr":"b61e5fb8"},"p":{"top10":"37bd3ad7","artikli":"6d5c84a8","bez-a-an":"d1b7a8ab","countable":"0c41bc9e","tenses":"01470cf9","irreg":"f6d88794","passive":"6c57c85c","gonebeen":"d5753a94","stative":"0961543d","usedto":"72bfe14d","would":"22fa5dc5","cond":"cbcbe743","hsd":"52137de3","modal":"dca8d93e","can":"0ee78c02","manage":"91162c85","toing":"d005ef5a","vm":"c5e00f1e","prepi":"4c9b8e5a","kogo":"0bc78ff2","preps":"8d5c22c6","into":"d08d3bee","tofor":"f69bedae","adjprep":"dbba09f4","makedo":"c51dcaad","htp":"7ccab2e0","go":"47700cbe","life":"ed2bcbf2","twotoo":"6ba1c7d5","thereit":"08cf3ebb","pron":"23449855","adjadv":"dd2521d8","cmp":"230b945c","similar":"ab611289","pairs":"3e10c0f6","syn":"ed26320d","q":"2068819c","rel":"acbc11d3","link":"3ba193bc","rep":"50516c51","num":"0d92b06f","phrasal":"2dc2332e","bbapp":"9af72559","idm":"a9eb99d5","wthr":"6f9ef9eb","abbr":"94af3a9d"},"t":"ebb078f8"};
+const VER = {"a":{"top10":"1aa8de0d","artikli":"deb0583e","bez-a-an":"13d936d4","countable":"948fe5a8","tenses":"06bb60b9","irreg":"7b9b4602","passive":"1356d7fe","gonebeen":"e13ef7a3","stative":"d392e2cf","usedto":"153a52e9","would":"272d520b","cond":"e59d8fc2","hsd":"2ef0b1b9","modal":"2941b7dd","can":"46b82668","manage":"bd51b222","toing":"894b64b2","vm":"dd306dec","prepi":"92f9013e","kogo":"c06491da","preps":"32099f1f","into":"ca3498e4","tofor":"894b5654","adjprep":"ebb7c64f","makedo":"c54afc59","htp":"3adf6222","go":"89e8ae09","life":"c302d33d","twotoo":"04bd63e5","thereit":"af0c44c8","pron":"289753ee","adjadv":"b2f8fd51","cmp":"7294d0ad","similar":"c892f079","pairs":"fe918641","syn":"8881450d","q":"ab982380","rel":"1fd616be","link":"fd959e34","rep":"7e2d348f","num":"88346ab5","phrasal":"aaba675a","bbapp":"bf7e026d","idm":"8885f190","wthr":"ae67e6b4","abbr":"b61e5fb8"},"p":{"top10":"37bd3ad7","artikli":"6d5c84a8","bez-a-an":"d1b7a8ab","countable":"0c41bc9e","tenses":"01470cf9","irreg":"f6d88794","passive":"6c57c85c","gonebeen":"d5753a94","stative":"0961543d","usedto":"72bfe14d","would":"22fa5dc5","cond":"cbcbe743","hsd":"52137de3","modal":"dca8d93e","can":"0ee78c02","manage":"91162c85","toing":"d005ef5a","vm":"c5e00f1e","prepi":"4c9b8e5a","kogo":"0bc78ff2","preps":"8d5c22c6","into":"d08d3bee","tofor":"f69bedae","adjprep":"dbba09f4","makedo":"c51dcaad","htp":"7ccab2e0","go":"47700cbe","life":"ed2bcbf2","twotoo":"6ba1c7d5","thereit":"08cf3ebb","pron":"23449855","adjadv":"dd2521d8","cmp":"230b945c","similar":"ab611289","pairs":"3e10c0f6","syn":"ed26320d","q":"2068819c","rel":"acbc11d3","link":"3ba193bc","rep":"50516c51","num":"0d92b06f","phrasal":"2dc2332e","bbapp":"9af72559","idm":"a9eb99d5","wthr":"6f9ef9eb","abbr":"94af3a9d"},"t":"b9ffe602"};
 const appUrl = key => "apps/" + key + ".html" + (VER.a[key] ? "?v=" + VER.a[key] : "");
 const packUrl = key => ASSET_PACKS[key] ? ASSET_PACKS[key].u : "packs/" + key + ".mp3" + (VER.p[key] ? "?v=" + VER.p[key] : "");
 const themeUrl = () => "theme.css" + (VER.t ? "?v=" + VER.t : "");
