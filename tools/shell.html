@@ -23,11 +23,12 @@
   html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow:hidden}
   body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5}
   button{font:inherit;color:inherit}
-  .shell{position:relative;height:100%;overflow:hidden}
+  /* Окно — во весь экран до самого низа; отступы под вырез и полоску «Домой» — только у содержимого */
+  .shell{position:fixed;top:0;right:0;bottom:0;left:0;overflow:hidden}
 
   /* ——— Каталог тем */
   .home{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-  .wrap{max-width:calc(1080px*var(--k));margin:0 auto;padding:calc(14px*var(--k)) calc(16px*var(--k)) calc(34px*var(--k));display:flex;flex-direction:column;gap:calc(18px*var(--k))}
+  .wrap{max-width:calc(1080px*var(--k));margin:0 auto;padding:calc(14px*var(--k) + env(safe-area-inset-top,0px)) max(calc(16px*var(--k)),env(safe-area-inset-right,0px)) calc(28px*var(--k) + env(safe-area-inset-bottom,0px)) max(calc(16px*var(--k)),env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:calc(18px*var(--k))}
   .hd{display:flex;flex-direction:column;gap:calc(4px*var(--k));padding-top:calc(6px*var(--k))}
   .eyebrow,.lbl{margin:0;font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
   h1{margin:0;font-family:var(--serif);font-weight:780;font-size:calc(44px*var(--k));line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
@@ -97,13 +98,13 @@
   /* ——— Открытая тема */
   .course{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;background-color:var(--bg);background-image:var(--glow);transform:translateX(100%);visibility:hidden;transition:transform .22s ease,visibility 0s linear .22s}
   .course.open{transform:none;visibility:visible;transition:transform .22s ease,visibility 0s}
-  .cbar{flex:0 0 auto;display:grid;grid-template-columns:minmax(calc(96px*var(--kb)),1fr) auto minmax(calc(96px*var(--kb)),1fr);align-items:center;min-height:calc(50px*var(--kb));padding:0 calc(6px*var(--kb));border-bottom:calc(1px*var(--kb)) solid var(--line)}
+  .cbar{flex:0 0 auto;display:grid;grid-template-columns:minmax(calc(96px*var(--kb)),1fr) auto minmax(calc(96px*var(--kb)),1fr);align-items:center;min-height:calc(50px*var(--kb) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(calc(6px*var(--kb)),env(safe-area-inset-right,0px)) 0 max(calc(6px*var(--kb)),env(safe-area-inset-left,0px));border-bottom:calc(1px*var(--kb)) solid var(--line)}
   .backb{justify-self:start;min-height:44px;min-width:44px;display:inline-flex;align-items:center;gap:calc(2px*var(--kb));padding:0 calc(12px*var(--kb)) 0 calc(4px*var(--kb));border:0;border-radius:calc(14px*var(--kb));background:transparent;color:var(--o);font-size:calc(17px*var(--kb));font-weight:560;cursor:pointer}
   .backb svg{width:calc(26px*var(--kb));height:calc(26px*var(--kb))}
   .backb:active{background:rgba(var(--o-rgb),.1)}
   .ctitle{margin:0;min-width:0;font-family:var(--serif);font-weight:700;letter-spacing:-.01em;font-size:calc(19px*var(--kb));line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
   .cbody{position:relative;flex:1;min-height:0}
-  .cbody iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:transparent;opacity:0;transition:opacity .15s ease}
+  .cbody iframe{position:absolute;top:0;left:env(safe-area-inset-left,0px);width:calc(100% - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));height:100%;border:0;display:block;background:transparent;opacity:0;transition:opacity .15s ease}
   .cbody iframe.ready{opacity:1}
   .cmsg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(12px*var(--k));padding:calc(24px*var(--k));text-align:center;color:var(--muted);font-size:calc(17px*var(--k))}
   .cmsg p{margin:0;max-width:28em}
@@ -535,10 +536,21 @@ function audioFor(app, win){
   };
 }
 
+// ——— Полоска «Домой»: внутри тренажёра (iframe) env(safe-area-inset-bottom) равен нулю,
+//     поэтому отступ меряем здесь и передаём переменной --sab — по ней theme.css ставит нижние кнопки над полоской
+const sabProbe = document.createElement("div");
+sabProbe.style.cssText = "position:fixed;left:0;bottom:0;width:0;height:env(safe-area-inset-bottom,0px);visibility:hidden;pointer-events:none";
+document.body.append(sabProbe);
+function applySab(win){
+  try{ (win || $("frame").contentWindow).document.documentElement.style.setProperty("--sab", (sabProbe.getBoundingClientRect().height || 0) + "px"); }catch(e){}
+}
+window.addEventListener("resize", () => applySab());
+
 // ——— Мост для тренажёров: вызывается из первой строки каждого тренажёра, до его скриптов
 window.__eng = {
   attach(key, win){
     if (!APPS[key]) return;
+    applySab(win);
     try{ win.claude = claudeFor(key); }catch(e){}
     try{ win.Audio = audioFor(key, win); }catch(e){}
     win.__EXTRA_CARDS = (EXTRAS[key] || []).map(c => Object.assign({}, c));

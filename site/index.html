@@ -5,13 +5,13 @@
 <meta name="color-scheme" content="dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Английский">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="theme.css?v=e3aba0a4">
-<style>:root{color-scheme:dark;box-sizing:border-box;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);background:#0b0d12;-webkit-text-size-adjust:100%}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0b0d12;color:#ece8e1}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="stylesheet" href="theme.css?v=ebb078f8">
+<style>:root{color-scheme:dark;box-sizing:border-box;background:#0b0d12;-webkit-text-size-adjust:100%}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0b0d12;color:#ece8e1}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Английский B2</title>
 <style>
   :root{
@@ -37,11 +37,12 @@
   html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow:hidden}
   body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5}
   button{font:inherit;color:inherit}
-  .shell{position:relative;height:100%;overflow:hidden}
+  /* Окно — во весь экран до самого низа; отступы под вырез и полоску «Домой» — только у содержимого */
+  .shell{position:fixed;top:0;right:0;bottom:0;left:0;overflow:hidden}
 
   /* ——— Каталог тем */
   .home{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-  .wrap{max-width:calc(1080px*var(--k));margin:0 auto;padding:calc(14px*var(--k)) calc(16px*var(--k)) calc(34px*var(--k));display:flex;flex-direction:column;gap:calc(18px*var(--k))}
+  .wrap{max-width:calc(1080px*var(--k));margin:0 auto;padding:calc(14px*var(--k) + env(safe-area-inset-top,0px)) max(calc(16px*var(--k)),env(safe-area-inset-right,0px)) calc(28px*var(--k) + env(safe-area-inset-bottom,0px)) max(calc(16px*var(--k)),env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:calc(18px*var(--k))}
   .hd{display:flex;flex-direction:column;gap:calc(4px*var(--k));padding-top:calc(6px*var(--k))}
   .eyebrow,.lbl{margin:0;font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
   h1{margin:0;font-family:var(--serif);font-weight:780;font-size:calc(44px*var(--k));line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
@@ -111,13 +112,13 @@
   /* ——— Открытая тема */
   .course{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;background-color:var(--bg);background-image:var(--glow);transform:translateX(100%);visibility:hidden;transition:transform .22s ease,visibility 0s linear .22s}
   .course.open{transform:none;visibility:visible;transition:transform .22s ease,visibility 0s}
-  .cbar{flex:0 0 auto;display:grid;grid-template-columns:minmax(calc(96px*var(--kb)),1fr) auto minmax(calc(96px*var(--kb)),1fr);align-items:center;min-height:calc(50px*var(--kb));padding:0 calc(6px*var(--kb));border-bottom:calc(1px*var(--kb)) solid var(--line)}
+  .cbar{flex:0 0 auto;display:grid;grid-template-columns:minmax(calc(96px*var(--kb)),1fr) auto minmax(calc(96px*var(--kb)),1fr);align-items:center;min-height:calc(50px*var(--kb) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(calc(6px*var(--kb)),env(safe-area-inset-right,0px)) 0 max(calc(6px*var(--kb)),env(safe-area-inset-left,0px));border-bottom:calc(1px*var(--kb)) solid var(--line)}
   .backb{justify-self:start;min-height:44px;min-width:44px;display:inline-flex;align-items:center;gap:calc(2px*var(--kb));padding:0 calc(12px*var(--kb)) 0 calc(4px*var(--kb));border:0;border-radius:calc(14px*var(--kb));background:transparent;color:var(--o);font-size:calc(17px*var(--kb));font-weight:560;cursor:pointer}
   .backb svg{width:calc(26px*var(--kb));height:calc(26px*var(--kb))}
   .backb:active{background:rgba(var(--o-rgb),.1)}
   .ctitle{margin:0;min-width:0;font-family:var(--serif);font-weight:700;letter-spacing:-.01em;font-size:calc(19px*var(--kb));line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
   .cbody{position:relative;flex:1;min-height:0}
-  .cbody iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:transparent;opacity:0;transition:opacity .15s ease}
+  .cbody iframe{position:absolute;top:0;left:env(safe-area-inset-left,0px);width:calc(100% - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));height:100%;border:0;display:block;background:transparent;opacity:0;transition:opacity .15s ease}
   .cbody iframe.ready{opacity:1}
   .cmsg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(12px*var(--k));padding:calc(24px*var(--k));text-align:center;color:var(--muted);font-size:calc(17px*var(--k))}
   .cmsg p{margin:0;max-width:28em}
@@ -197,7 +198,7 @@ const PACKS = {"top10":{"a1-best":[0,10800,0.048],"a1-day":[10800,14112,0.048],"
 // Самые большие пакеты лежат в хранилище файлов приложения (в одну версию страницы все записи не помещаются)
 const ASSET_PACKS = {};
 // Версии файлов по содержимому (a — тренажёры, p — пакеты звука): обновлённый файл не застрянет в офлайн-кэше
-const VER = {"a":{"top10":"11ab0c51","artikli":"c988ea95","bez-a-an":"13d936d4","countable":"10b69bd7","tenses":"83c94c05","irreg":"5c0920da","passive":"c68bbd97","gonebeen":"008bbb50","stative":"c72dce7b","usedto":"f0281b30","would":"e6f5b9fe","cond":"4d14268f","hsd":"d07f9603","modal":"578ba99c","can":"9456eec2","manage":"4c2b7bf3","toing":"f579978a","vm":"495ffff1","prepi":"00c36c1c","kogo":"a6dcf5ca","preps":"8cedaaa6","into":"d66ec53a","tofor":"da652296","adjprep":"30b0fe20","makedo":"3d62b518","htp":"0baab8d6","go":"c4c50474","life":"fdc24a39","twotoo":"bfb0e6a3","thereit":"428aad9f","pron":"b104b5f7","adjadv":"497620ac","cmp":"c72b803a","similar":"d498b48f","pairs":"ef8ab088","syn":"c87140c1","q":"f50e42cf","rel":"851a89b9","link":"4a5fd737","rep":"6a7adf23","num":"59b55b65","phrasal":"aaba675a","bbapp":"bf7e026d","idm":"81fca3f0","wthr":"b424b8d0","abbr":"96f02a76"},"p":{"top10":"37bd3ad7","artikli":"6d5c84a8","bez-a-an":"d1b7a8ab","countable":"0c41bc9e","tenses":"01470cf9","irreg":"f6d88794","passive":"6c57c85c","gonebeen":"d5753a94","stative":"0961543d","usedto":"72bfe14d","would":"22fa5dc5","cond":"cbcbe743","hsd":"52137de3","modal":"dca8d93e","can":"0ee78c02","manage":"91162c85","toing":"d005ef5a","vm":"c5e00f1e","prepi":"4c9b8e5a","kogo":"0bc78ff2","preps":"8d5c22c6","into":"d08d3bee","tofor":"f69bedae","adjprep":"dbba09f4","makedo":"c51dcaad","htp":"7ccab2e0","go":"47700cbe","life":"ed2bcbf2","twotoo":"6ba1c7d5","thereit":"08cf3ebb","pron":"23449855","adjadv":"dd2521d8","cmp":"230b945c","similar":"ab611289","pairs":"3e10c0f6","syn":"ed26320d","q":"2068819c","rel":"acbc11d3","link":"3ba193bc","rep":"50516c51","num":"0d92b06f","phrasal":"2dc2332e","bbapp":"9af72559","idm":"a9eb99d5","wthr":"6f9ef9eb","abbr":"94af3a9d"},"t":"e3aba0a4"};
+const VER = {"a":{"top10":"11ab0c51","artikli":"c988ea95","bez-a-an":"13d936d4","countable":"10b69bd7","tenses":"83c94c05","irreg":"5c0920da","passive":"c68bbd97","gonebeen":"008bbb50","stative":"c72dce7b","usedto":"f0281b30","would":"e6f5b9fe","cond":"4d14268f","hsd":"d07f9603","modal":"578ba99c","can":"9456eec2","manage":"4c2b7bf3","toing":"f579978a","vm":"495ffff1","prepi":"00c36c1c","kogo":"a6dcf5ca","preps":"8cedaaa6","into":"d66ec53a","tofor":"da652296","adjprep":"30b0fe20","makedo":"3d62b518","htp":"0baab8d6","go":"c4c50474","life":"fdc24a39","twotoo":"bfb0e6a3","thereit":"428aad9f","pron":"b104b5f7","adjadv":"497620ac","cmp":"c72b803a","similar":"d498b48f","pairs":"ef8ab088","syn":"c87140c1","q":"f50e42cf","rel":"851a89b9","link":"4a5fd737","rep":"6a7adf23","num":"59b55b65","phrasal":"aaba675a","bbapp":"bf7e026d","idm":"81fca3f0","wthr":"b424b8d0","abbr":"96f02a76"},"p":{"top10":"37bd3ad7","artikli":"6d5c84a8","bez-a-an":"d1b7a8ab","countable":"0c41bc9e","tenses":"01470cf9","irreg":"f6d88794","passive":"6c57c85c","gonebeen":"d5753a94","stative":"0961543d","usedto":"72bfe14d","would":"22fa5dc5","cond":"cbcbe743","hsd":"52137de3","modal":"dca8d93e","can":"0ee78c02","manage":"91162c85","toing":"d005ef5a","vm":"c5e00f1e","prepi":"4c9b8e5a","kogo":"0bc78ff2","preps":"8d5c22c6","into":"d08d3bee","tofor":"f69bedae","adjprep":"dbba09f4","makedo":"c51dcaad","htp":"7ccab2e0","go":"47700cbe","life":"ed2bcbf2","twotoo":"6ba1c7d5","thereit":"08cf3ebb","pron":"23449855","adjadv":"dd2521d8","cmp":"230b945c","similar":"ab611289","pairs":"3e10c0f6","syn":"ed26320d","q":"2068819c","rel":"acbc11d3","link":"3ba193bc","rep":"50516c51","num":"0d92b06f","phrasal":"2dc2332e","bbapp":"9af72559","idm":"a9eb99d5","wthr":"6f9ef9eb","abbr":"94af3a9d"},"t":"ebb078f8"};
 const appUrl = key => "apps/" + key + ".html" + (VER.a[key] ? "?v=" + VER.a[key] : "");
 const packUrl = key => ASSET_PACKS[key] ? ASSET_PACKS[key].u : "packs/" + key + ".mp3" + (VER.p[key] ? "?v=" + VER.p[key] : "");
 const themeUrl = () => "theme.css" + (VER.t ? "?v=" + VER.t : "");
@@ -549,10 +550,21 @@ function audioFor(app, win){
   };
 }
 
+// ——— Полоска «Домой»: внутри тренажёра (iframe) env(safe-area-inset-bottom) равен нулю,
+//     поэтому отступ меряем здесь и передаём переменной --sab — по ней theme.css ставит нижние кнопки над полоской
+const sabProbe = document.createElement("div");
+sabProbe.style.cssText = "position:fixed;left:0;bottom:0;width:0;height:env(safe-area-inset-bottom,0px);visibility:hidden;pointer-events:none";
+document.body.append(sabProbe);
+function applySab(win){
+  try{ (win || $("frame").contentWindow).document.documentElement.style.setProperty("--sab", (sabProbe.getBoundingClientRect().height || 0) + "px"); }catch(e){}
+}
+window.addEventListener("resize", () => applySab());
+
 // ——— Мост для тренажёров: вызывается из первой строки каждого тренажёра, до его скриптов
 window.__eng = {
   attach(key, win){
     if (!APPS[key]) return;
+    applySab(win);
     try{ win.claude = claudeFor(key); }catch(e){}
     try{ win.Audio = audioFor(key, win); }catch(e){}
     win.__EXTRA_CARDS = (EXTRAS[key] || []).map(c => Object.assign({}, c));

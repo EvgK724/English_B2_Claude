@@ -2,7 +2,7 @@
 // Оболочка (index.html) — сначала сеть, потом кэш: в ней версии всех остальных файлов.
 // Тренажёры и пакеты звука адресуются с ?v=<хэш>: они не меняются, поэтому — сначала кэш.
 // Тренажёры кэшируются заранее при установке, звук — при первом открытии темы (все пакеты — около 70 МБ).
-const VERSION = "e57c8ad6c828";
+const VERSION = "a9344c3154d9";
 const CACHE = "eng-b2";
 const PRECACHE = [
  "manifest.webmanifest",
@@ -18,7 +18,7 @@ const PRECACHE = [
  "fonts/golos-text-cyrillic-wght-normal.woff2",
  "fonts/golos-text-latin-ext-wght-normal.woff2",
  "fonts/golos-text-latin-wght-normal.woff2",
- "theme.css?v=e3aba0a4",
+ "theme.css?v=ebb078f8",
  "apps/top10.html?v=11ab0c51",
  "apps/artikli.html?v=c988ea95",
  "apps/bez-a-an.html?v=13d936d4",

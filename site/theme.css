@@ -61,6 +61,8 @@
 :root body{background-color:var(--bg);background-image:var(--glow);-webkit-font-smoothing:antialiased}
 
 /* ——— Тренажёры */
+/* нижние кнопки — сразу над полоской «Домой» (--sab передаёт оболочка), а не над пустой полосой */
+:root .app{padding-bottom:max(calc(10px*var(--k)),calc(var(--sab,0px) - 8px))}
 :root .app .tabs{padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));background:rgba(24,27,37,.92);box-shadow:var(--shadow)}
 :root .app .tab{border-radius:calc(15px*var(--k));color:var(--faint);font-weight:600}
 :root .app .tab[aria-selected="true"]{background:rgba(var(--o-rgb),.13);color:var(--text)}
