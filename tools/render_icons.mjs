@@ -1,5 +1,5 @@
-// Иконки приложения для экрана «Домой» в духе want-you-to (test01): Eng / lish / B2 янтарным, бирюзовым и сиреневым
-// со свечением и три цветные черты. Шрифт — Bricolage Grotesque из site/fonts. Каждая иконка рисуется сразу
+// Иконки приложения для экрана «Домой» в духе want-you-to (test01): Eng и под ним B2 — янтарным и бирюзовым
+// со свечением, ниже три цветные черты (янтарная, бирюзовая, сиреневая). Шрифт — Bricolage Grotesque из site/fonts. Каждая иконка рисуется сразу
 // в своём размере, плюс maskable с полями для круглой маски Android. Прежняя плитка — tools/reference/render_icon.py.
 //   npm i playwright        (в любой папке; Chromium — из Playwright или CHROMIUM=<путь к chrome>)
 //   node tools/render_icons.mjs [путь к node_modules]
@@ -42,20 +42,21 @@ const draw = async ([b64, size, scale]) => {
   glow(1110, 40, 640, '169,178,255', 0.12);
   glow(1080, 1120, 760, '95,208,191', 0.12);
   x.translate(S / 2, S / 2); x.scale(scale, scale); x.translate(-S / 2, -S / 2);
-  const rows = [['Eng', '242,183,102'], ['lish', '95,208,191'], ['B2', '169,178,255']];
+  const rows = [['Eng', '242,183,102'], ['B2', '95,208,191']];
+  const dashes = ['242,183,102', '95,208,191', '169,178,255'];
   const left = 178;
-  x.font = '800 236px Brico'; x.textBaseline = 'alphabetic';
+  x.font = '800 300px Brico'; x.textBaseline = 'alphabetic';
   rows.forEach(([t, rgb], i) => {
-    const y = 318 + i * 228;
+    const y = 415 + i * 300;
     x.save();
     x.shadowColor = `rgba(${rgb},.5)`; x.shadowBlur = 46 * size / S;
     x.fillStyle = `rgb(${rgb})`; x.fillText(t, left, y);
     x.restore();
   });
-  rows.forEach(([, rgb], i) => {
+  dashes.forEach((rgb, i) => {
     x.save();
     x.shadowColor = `rgba(${rgb},.6)`; x.shadowBlur = 24 * size / S;
-    x.fillStyle = `rgb(${rgb})`; x.beginPath(); x.roundRect(left + 6 + i * 158, 838, 128, 22, 11); x.fill();
+    x.fillStyle = `rgb(${rgb})`; x.beginPath(); x.roundRect(left + 8 + i * 158, 795, 128, 22, 11); x.fill();
     x.restore();
   });
   return c.toDataURL('image/png');
