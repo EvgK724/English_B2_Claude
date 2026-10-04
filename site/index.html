@@ -109,6 +109,19 @@
   .sync-msg:empty{display:none}
   .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);opacity:0;pointer-events:none}
 
+  /* ——— Подсказка внизу темы и «Проверка звука» */
+  .cnote{position:absolute;left:max(calc(16px*var(--k)),env(safe-area-inset-left,0px));right:max(calc(16px*var(--k)),env(safe-area-inset-right,0px));bottom:calc(16px*var(--k) + env(safe-area-inset-bottom,0px));z-index:3;margin:0 auto;max-width:calc(520px*var(--k));padding:calc(14px*var(--k)) calc(16px*var(--k));border-radius:calc(18px*var(--k));border:calc(1px*var(--k)) solid rgba(var(--v-rgb),.45);background:#1c202b;box-shadow:var(--shadow);color:var(--text);font-size:calc(16px*var(--k));line-height:1.4;text-align:left;cursor:pointer}
+  .linkb{align-self:flex-start;min-height:44px;padding:0 calc(2px*var(--k));border:0;background:none;color:var(--o);font-size:calc(16px*var(--k));text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .sheet{position:fixed;inset:0;z-index:5;display:flex;align-items:flex-end;justify-content:center;padding:calc(12px*var(--k)) max(calc(12px*var(--k)),env(safe-area-inset-right,0px)) calc(12px*var(--k) + env(safe-area-inset-bottom,0px)) max(calc(12px*var(--k)),env(safe-area-inset-left,0px));background:rgba(5,6,10,.62)}
+  .sheet-box{width:100%;max-width:calc(560px*var(--k));max-height:100%;overflow-y:auto;display:flex;flex-direction:column;gap:calc(12px*var(--k));padding:calc(18px*var(--k));border-radius:calc(26px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:linear-gradient(165deg,#262b3b,#13161e);box-shadow:var(--shadow)}
+  .sheet-box .sbtn{flex:none}
+  .snd-row{display:grid;grid-template-columns:minmax(0,1fr) calc(118px*var(--k));align-items:center;gap:calc(10px*var(--k))}
+  .snd-r{font-size:calc(15px*var(--k));line-height:1.3;color:var(--muted)}
+  .snd-r.ok{color:var(--yes-text)}
+  .snd-r.bad{color:var(--no-text)}
+  .snd-info{margin:0;font-size:calc(13px*var(--k));line-height:1.45;color:var(--muted);overflow-wrap:anywhere}
+  .sbtn:disabled{opacity:.45;cursor:default}
+
   /* ——— Открытая тема */
   .course{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;background-color:var(--bg);background-image:var(--glow);transform:translateX(100%);visibility:hidden;transition:transform .22s ease,visibility 0s linear .22s}
   .course.open{transform:none;visibility:visible;transition:transform .22s ease,visibility 0s}
@@ -144,6 +157,21 @@
 })();
 </script>
 
+<section class="sheet" id="snd" role="dialog" aria-modal="true" aria-labelledby="sndT" hidden>
+  <div class="sheet-box">
+    <h2 class="lbl" id="sndT">Проверка звука</h2>
+    <p class="sync-txt">Нажмите кнопки по очереди. Справа появится, прозвучало ли. Если запись Ryan не звучит, пришлите снимок этого экрана.</p>
+    <div class="snd-row"><button class="sbtn" type="button" data-snd="blob">Запись Ryan</button><span class="snd-r" id="snd-blob"></span></div>
+    <div class="snd-row"><button class="sbtn" type="button" data-snd="frame">Запись Ryan · как в теме</button><span class="snd-r" id="snd-frame"></span></div>
+    <div class="snd-row"><button class="sbtn" type="button" data-snd="data">Запись Ryan · запасной способ</button><span class="snd-r" id="snd-data"></span></div>
+    <div class="snd-row"><button class="sbtn" type="button" data-snd="file">Запись Ryan · файл с сервера</button><span class="snd-r" id="snd-file"></span></div>
+    <div class="snd-row"><button class="sbtn" type="button" data-snd="wa">Запись Ryan · Web Audio</button><span class="snd-r" id="snd-wa"></span></div>
+    <div class="snd-row"><button class="sbtn" type="button" data-snd="tts">Голос телефона</button><span class="snd-r" id="snd-tts"></span></div>
+    <p class="snd-info" id="sndInfo"></p>
+    <button class="sbtn main" id="sndClose" type="button">Готово</button>
+  </div>
+</section>
+
 <div class="shell">
   <main class="home" id="home">
     <div class="wrap">
@@ -170,6 +198,7 @@
         </div>
         <p class="sync-msg" id="syncMsg" role="status" aria-live="polite"></p>
       </section>
+      <button class="linkb" id="sndOpen" type="button">Проверка звука</button>
       <p class="foot" id="foot">Прогресс общий для iPhone и iPad. Озвучка — голос Microsoft Ryan, в «Фразах из Breaking Bad» — Andrew.</p>
     </div>
   </main>
@@ -183,6 +212,7 @@
       <h2 class="ctitle" id="ctitle"></h2>
       <span aria-hidden="true"></span>
     </div>
+    <p class="cnote" id="cnote" role="status" aria-live="polite" hidden></p>
     <div class="cbody">
       <div class="cmsg" id="cmsg"><p id="cmsgText">Открываю тему…</p><button class="retry" id="retry" type="button" hidden>Попробовать ещё раз</button></div>
       <iframe id="frame" title="Тема"></iframe>
@@ -298,13 +328,52 @@ function b64enc(buf){
   return btoa(s);
 }
 const SILENT_B64 = "//OEwAAAAAAAAAAAAEluZm8AAAAPAAAADQAABaAAMzMzMzMzM0REREREREREVVVVVVVVVVVmZmZmZmZmd3d3d3d3d3eIiIiIiIiIiJmZmZmZmZmqqqqqqqqqqru7u7u7u7u7zMzMzMzMzN3d3d3d3d3d7u7u7u7u7u7/////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQDkAAAAAAAAAWgUwUOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//NExAAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExFMAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKYAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMu//NExKwAAANIAAAAADEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NExKwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NExKwAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";               // 0,25 с тишины: разблокировать звук первым касанием
+
+// ——— Пакет записей: сначала своя копия в кэше браузера, иначе — сеть (и копия на будущее, для работы без интернета).
+//     Офлайн-кэш (sw.js) пакеты не трогает: звук не должен зависеть от его работы.
+const PACK_CACHE = "eng-b2";
+function packErr(msg){ const e = new Error("пакет записей: " + msg); e.name = "PackError"; e.pack = true; return e; }
+function savePack(url, buf){
+  try{
+    if (!window.caches) return;
+    const copy = buf.slice(0), path = new URL(url).pathname;
+    caches.open(PACK_CACHE).then(async c => {
+      for (const r of await c.keys()){ const u = new URL(r.url); if (u.pathname === path && u.href !== url) await c.delete(r); }
+      await c.put(url, new Response(copy, { headers: { "Content-Type": "audio/mpeg" } }));
+    }).catch(() => {});
+  }catch(e){}
+}
+async function loadPack(app){
+  const url = new URL(packUrl(app), location.href).href, own = !ASSET_PACKS[app];
+  if (own && window.caches){
+    try{
+      const hit = await (await caches.open(PACK_CACHE)).match(url);
+      if (hit){ const b = await hit.arrayBuffer(); if (b.byteLength) return b; }
+    }catch(e){}
+  }
+  let r;
+  try{ r = await fetch(url); }catch(e){ throw packErr("нет связи"); }
+  if (!r.ok) throw packErr("ответ " + r.status);
+  const buf = await r.arrayBuffer();
+  if (!buf.byteLength) throw packErr("пустой ответ");
+  if (own) savePack(url, buf);
+  return buf;
+}
+
 const AE = {
-  mode: "blob", packs: new Map(), ready: new Map(), urls: new Map(), current: null, log: [], silentBlob: null,
+  mode: "blob", packs: new Map(), ready: new Map(), urls: new Map(), current: null, log: [], silentBlob: null, warned: false,
   note(app, key, how){ this.log.push([app, key, how]); if (this.log.length > 60) this.log.shift(); },
+  // запись не прозвучала и вместо неё будет голос устройства: отметить и один раз сказать об этом
+  fail(app, key, err){
+    this.note(app, key, "✗ " + ((err && (err.pack ? err.message : err.name)) || "ошибка"));
+    if (this.warned) return;
+    this.warned = true;
+    showNote("Записи Ryan сейчас не звучат, вместо них голос телефона. Проверьте интернет и откройте тему заново. Если не поможет, внизу главного экрана есть «Проверка звука».");
+  },
   pack(app){
     let p = this.packs.get(app);
     if (p){ this.packs.delete(app); this.packs.set(app, p); return p; }
-    p = fetch(packUrl(app)).then(r => { if (!r.ok) throw new Error("pack " + r.status); return r.arrayBuffer(); });
+    p = loadPack(app);
     p.then(b => { if (this.packs.get(app) === p) this.ready.set(app, b); }, () => { if (this.packs.get(app) === p) this.packs.delete(app); });
     this.packs.set(app, p);
     while (this.packs.size > 8){
@@ -398,7 +467,7 @@ const AE = {
         if (!ctx) throw named("NotSupportedError");
         const buf = await this.buffer(app, key);
         if (tok !== owner._tok) return;
-        if (!buf) throw named("NotSupportedError");
+        if (!buf){ const e = named("NotSupportedError"); e.missing = true; throw e; }   // записи нет — голос устройства, как задумано
         if (ctx.state !== "running"){ try{ await Promise.race([ctx.resume(), sleep(400)]); }catch(e){} }
         if (tok !== owner._tok) return;
         if (ctx.state !== "running") throw named("NotAllowedError");
@@ -421,6 +490,7 @@ const AE = {
         if (owner._ls.timeupdate) this.tick = setInterval(() => { if (this.wa === cur) owner._emit("timeupdate"); }, 80);
       }catch(err){
         if (tok === owner._tok) owner.paused = true;
+        if (err && err.name !== "NotAllowedError" && err.name !== "AbortError" && !err.missing) this.fail(app, key, err);
         throw err;
       }
     })();
@@ -530,8 +600,9 @@ function audioFor(app, win){
         const n = err && err.name;
         if (err && err.missing){ this.paused = true; throw named("NotSupportedError"); }
         if (n === "NotAllowedError" || n === "AbortError"){ this.paused = true; throw err; }
+        if (err && err.pack){ this.paused = true; AE.fail(app, key, err); throw err; }    // не загрузилось — способ воспроизведения ни при чём
         if (attempt < 2){ AE.degrade(); return this._play(attempt + 1); }
-        this.paused = true; throw err;
+        this.paused = true; AE.fail(app, key, err); throw err;
       };
       const done = () => { if (tok === this._tok) AE.note(app, key, AE.mode); };
       const u0 = AE.urlSync(app, key);
@@ -873,6 +944,88 @@ async function selfTest(){
   closeCourse();
   return r;
 }
+
+// ——— Подсказка внизу открытой темы (касание или 9 секунд — и она исчезает)
+let noteTimer = 0;
+function showNote(text){
+  const n = $("cnote");
+  n.textContent = text; n.hidden = false;
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(() => { n.hidden = true; }, 9000);
+}
+$("cnote").addEventListener("click", () => { $("cnote").hidden = true; });
+
+// ——— Проверка звука: какими способами записи Ryan звучат на этом устройстве.
+//     Нужна, если вместо Ryan слышен голос телефона: снимок этого листа показывает, что именно не работает.
+const SND_APP = "top10", SND_KEY = "a1-best";
+let sndBytes = null, sndFrame = null;
+function sndRes(id, ok, text){ const e = $("snd-" + id); e.textContent = text; e.className = "snd-r " + (ok ? "ok" : "bad"); }
+function sndWatch(id, a){
+  let done = false;
+  const fin = (ok, t) => { if (!done){ done = true; sndRes(id, ok, t); } };
+  a.addEventListener("playing", () => fin(true, "звучит ✓"), { once: true });
+  a.addEventListener("error", () => fin(false, "ошибка " + (a.error ? a.error.code : "")), { once: true });
+  try{
+    const p = a.play();
+    if (p && p.catch) p.catch(e => fin(false, (e && e.name) || "ошибка"));
+  }catch(e){ fin(false, (e && e.name) || "ошибка"); }
+  setTimeout(() => fin(false, "не зазвучало"), 6000);
+  setTimeout(() => { try{ a.pause(); }catch(e){} }, 3500);
+}
+async function openSnd(){
+  $("snd").hidden = false;
+  document.querySelectorAll("[data-snd]").forEach(b => { b.disabled = b.dataset.snd !== "tts" && b.dataset.snd !== "file"; $("snd-" + b.dataset.snd).textContent = ""; });
+  $("sndInfo").textContent = "Загружаю записи…";
+  if (!sndFrame){
+    sndFrame = document.createElement("iframe");
+    sndFrame.hidden = true; sndFrame.title = "Проверка звука";
+    sndFrame.srcdoc = "<!doctype html><html><body></body></html>";
+    document.body.append(sndFrame);
+  }
+  const t0 = Date.now();
+  let info;
+  try{
+    const buf = await AE.pack(SND_APP), ix = PACKS[SND_APP][SND_KEY], o = AE.base(SND_APP);
+    sndBytes = buf.slice(o + ix[0], o + ix[0] + ix[1]);
+    info = "Записи загружены: " + Math.round(buf.byteLength / 1024) + " КБ за " + (Date.now() - t0) + " мс.";
+    document.querySelectorAll("[data-snd]").forEach(b => { b.disabled = false; });
+  }catch(e){ info = "Записи не загрузились: " + ((e && e.message) || e) + "."; }
+  const sw = navigator.serviceWorker && navigator.serviceWorker.controller ? "работает" : "не работает";
+  const log = AE.log.slice(-6).map(x => x.join(" ")).join("; ");
+  $("sndInfo").textContent = info + " Офлайн-кэш: " + sw + ". Способ: " + AE.mode + "." + (log ? " Последние записи: " + log + "." : "") + " " + navigator.userAgent;
+}
+function sndPlay(id){
+  try{
+    if (id === "tts"){
+      if (!window.speechSynthesis){ sndRes("tts", false, "нет"); return; }
+      const u = new SpeechSynthesisUtterance("A man was admitted last night.");
+      u.lang = "en-GB"; u.rate = 0.9;
+      u.onstart = () => sndRes("tts", true, "звучит ✓");
+      u.onerror = e => sndRes("tts", false, "ошибка: " + ((e && e.error) || "?"));
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
+      return;
+    }
+    if (id === "wa"){
+      const ctx = AE.ctx0();
+      if (!ctx){ sndRes("wa", false, "нет Web Audio"); return; }
+      ctx.decodeAudioData(sndBytes.slice(0), b => {
+        const src = ctx.createBufferSource(); src.buffer = b; src.connect(ctx.destination); src.start();
+        sndRes("wa", ctx.state === "running", ctx.state === "running" ? "звучит ✓" : "не запустился");
+      }, () => sndRes("wa", false, "не читается"));
+      return;
+    }
+    const doc = id === "frame" && sndFrame && sndFrame.contentDocument ? sndFrame.contentDocument : document;
+    const a = doc.createElement("audio");
+    a.setAttribute("playsinline", "");
+    if (id === "data") a.src = "data:audio/mpeg;base64," + b64enc(sndBytes);
+    else if (id === "file") a.src = packUrl(SND_APP);
+    else a.src = URL.createObjectURL(new Blob([sndBytes], { type: "audio/mpeg" }));
+    sndWatch(id, a);
+  }catch(e){ sndRes(id, false, (e && e.name) || "ошибка"); }
+}
+$("sndOpen").addEventListener("click", openSnd);
+$("sndClose").addEventListener("click", () => { $("snd").hidden = true; });
+document.querySelectorAll("[data-snd]").forEach(b => b.addEventListener("click", () => sndPlay(b.dataset.snd)));
 
 // ——— Перенос прогресса файлом: вне claude.ai облачной базы нет, у каждого устройства свой localStorage
 function syncMsg(t){ $("syncMsg").textContent = t || ""; }

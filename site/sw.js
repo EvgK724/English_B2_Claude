@@ -1,8 +1,9 @@
 // Офлайн-кэш «Английского» на GitHub Pages. Шаблон: site/sw.js собирает tools/mk_shell.py.
 // Оболочка (index.html) — сначала сеть, потом кэш: в ней версии всех остальных файлов.
-// Тренажёры и пакеты звука адресуются с ?v=<хэш>: они не меняются, поэтому — сначала кэш.
-// Тренажёры кэшируются заранее при установке, звук — при первом открытии темы (все пакеты — около 70 МБ).
-const VERSION = "a02ac674f3dc";
+// Тренажёры адресуются с ?v=<хэш>: они не меняются, поэтому — сначала кэш; кэшируются заранее при установке.
+// Пакеты звука (packs/) сюда не заходят: их грузит и сохраняет сама оболочка (loadPack в shell.html),
+// чтобы звук не зависел от работы офлайн-кэша.
+const VERSION = "3b26c9d2cef0";
 const CACHE = "eng-b2";
 const PRECACHE = [
  "manifest.webmanifest",
@@ -129,13 +130,15 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
+  if (path.startsWith("packs/")) return;
+
   if (url.searchParams.has("v")) {
     e.respondWith(caches.open(CACHE).then(async (c) => {
       const hit = await c.match(req);
       if (hit) return hit;
       const res = await fetch(req);
-      // в кэш — в фоне и без ошибок наружу: даже если кэш не сохранился, тема откроется и запись прозвучит
-      if (res.ok) e.waitUntil(putVersioned(c, req, res.clone()).catch(() => {}));
+      // в кэш — без ожидания и без ошибок наружу: даже если кэш не сохранился, тема откроется
+      if (res.ok) putVersioned(c, req, res.clone()).catch(() => {});
       return res;
     }));
     return;
@@ -147,7 +150,7 @@ self.addEventListener("fetch", (e) => {
       const hit = await c.match(req);
       if (hit) return hit;
       const res = await fetch(req);
-      if (res.ok) e.waitUntil(c.put(req, res.clone()).catch(() => {}));
+      if (res.ok) c.put(req, res.clone()).catch(() => {});
       return res;
     }));
     return;
