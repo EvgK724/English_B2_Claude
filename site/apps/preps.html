@@ -1,0 +1,2428 @@
+<title>Предлоги at, on, in</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("preps",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .aoi{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .aoi col.rh{width:calc(62px*var(--k))}
+  .aoi th,.aoi td{padding:calc(6px*var(--k)) calc(4px*var(--k));text-align:center;vertical-align:middle}
+  .aoi thead th{font-family:var(--serif);font-weight:400;font-size:calc(30px*var(--k));line-height:1}
+  .aoi .ic td{padding:calc(2px*var(--k)) calc(4px*var(--k)) 0}
+  .aoi .ic svg{width:calc(34px*var(--k));height:calc(34px*var(--k))}
+  .aoi .what td{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));line-height:1.3;color:var(--muted)}
+  .aoi tbody th{padding-left:0;text-align:left;font-size:calc(13px*var(--k));font-weight:600;color:var(--soft)}
+  .aoi tbody td{border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.25}
+  .algo-m .hl{font-family:var(--serif);font-size:calc(20px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .md-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .md-ru{margin:calc(2px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Prepositions</h1>
+      <p class="r-sub">Предлоги at, on, in и&nbsp;другие. В&nbsp;русском «в» и&nbsp;«на» делят мир иначе, поэтому переводить дословно не&nbsp;получится. Опирайся на&nbsp;картинку: <b>точка&nbsp;— поверхность&nbsp;— внутри</b>.</p>
+      <div class="algo">
+        <p class="algo-h">Главная картинка</p>
+        <table class="aoi">
+          <colgroup><col class="rh"><col><col><col></colgroup>
+          <thead>
+            <tr><td></td><th scope="col" class="st" lang="en">at</th><th scope="col" class="pr" lang="en">on</th><th scope="col" class="good" lang="en">in</th></tr>
+            <tr class="ic"><td></td><td class="st"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="5" fill="currentColor"/><circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></td><td class="pr"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="17" r="7" fill="currentColor"/><path d="M6 27h28" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></td><td class="good"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="6" fill="currentColor"/></svg></td></tr>
+            <tr class="what"><td></td><td>точка</td><td>поверхность · день</td><td>внутри · долгий период</td></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Где</th><td lang="en"><span class="st">at</span> the door</td><td lang="en"><span class="pr">on</span> the table</td><td lang="en"><span class="good">in</span> the room</td></tr>
+            <tr><th scope="row">Когда</th><td lang="en"><span class="st">at</span> 5 o&#x27;clock</td><td lang="en"><span class="pr">on</span> Monday</td><td lang="en"><span class="good">in</span> May</td></tr>
+          </tbody>
+        </table>
+        <p class="algo-m"><span class="hl" lang="en">to</span>&nbsp;— движение: быть <i lang="en">at work</i>, идти <i lang="en">to work</i>.</p>
+        <p class="algo-note">С&nbsp;next, last, this, every предлог не&nbsp;нужен: <i lang="en">next Monday</i>, <i lang="en">this morning</i>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">В больнице и в медицине</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="md-en" lang="en"><span class="pr">on</span> the ward · <span class="pr">on</span> the stroke unit</p><p class="md-ru">в отделении</p></div><button class="ex-play mm-play" type="button" data-key="md-1" data-text="on the ward. on the stroke unit." aria-label="Прослушать: on the ward. on the stroke unit."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en"><span class="pr">on</span> call · <span class="pr">on</span> duty</p><p class="md-ru">на дежурстве · на смене</p></div><button class="ex-play mm-play" type="button" data-key="md-2" data-text="on call. on duty." aria-label="Прослушать: on call. on duty."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en"><span class="good">in</span> hospital</p><p class="md-ru">лежать в больнице (пациентом)</p></div><button class="ex-play mm-play" type="button" data-key="md-3" data-text="in hospital." aria-label="Прослушать: in hospital."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en"><span class="st">at</span> the hospital</p><p class="md-ru">быть в больнице по делу, работать</p></div><button class="ex-play mm-play" type="button" data-key="md-4" data-text="at the hospital." aria-label="Прослушать: at the hospital."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en">admitted <span class="hl">to</span> · discharged <span class="hl">from</span></p><p class="md-ru">госпитализирован в · выписан из</p></div><button class="ex-play mm-play" type="button" data-key="md-5" data-text="admitted to. discharged from." aria-label="Прослушать: admitted to. discharged from."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en"><span class="pr">on</span> warfarin</p><p class="md-ru">принимает варфарин</p></div><button class="ex-play mm-play" type="button" data-key="md-6" data-text="on warfarin." aria-label="Прослушать: on warfarin."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en"><span class="hl">by</span> mouth · <span class="hl">by</span> injection</p><p class="md-ru">внутрь · в виде инъекций</p></div><button class="ex-play mm-play" type="button" data-key="md-7" data-text="by mouth. by injection." aria-label="Прослушать: by mouth. by injection."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en"><span class="st">at</span> risk <span class="hl">of</span></p><p class="md-ru">в группе риска по…</p></div><button class="ex-play mm-play" type="button" data-key="md-8" data-text="at risk of." aria-label="Прослушать: at risk of."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en">allergic <span class="hl">to</span></p><p class="md-ru">аллергия на…</p></div><button class="ex-play mm-play" type="button" data-key="md-9" data-text="allergic to." aria-label="Прослушать: allergic to."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="md-en" lang="en">suffer <span class="hl">from</span> · die <span class="hl">of</span></p><p class="md-ru">страдать от · умереть от</p></div><button class="ex-play mm-play" type="button" data-key="md-10" data-text="suffer from. die of." aria-label="Прослушать: suffer from. die of."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">in Monday</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">on Monday</span><span class="err-note">дни — on</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">at the morning</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">in the morning</span><span class="err-note">части дня — in (но at night)</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">on next week</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">next week</span><span class="err-note">с next, last, this — без предлога</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">in 5 o&#x27;clock</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">at 5 o&#x27;clock</span><span class="err-note">точное время — at</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;m in work.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;m at work.</span><span class="err-note">at work, at home</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">on the photo</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">in the photo</span><span class="err-note">на фото — in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">arrive to Moscow</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">arrive in Moscow</span><span class="err-note">arrive in (город) · at (здание)</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">go to home</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">go home</span><span class="err-note">home — без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">with car</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">by car</span><span class="err-note">транспорт — by (но on foot)</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">discuss about</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">discuss</span><span class="err-note">discuss — без about</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">good in maths</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">good at maths</span><span class="err-note">good at</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">sit on the table (за столом)</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">sit at the table</span><span class="err-note">за столом — at</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — предлог (at — синий, on — оранжевый, in — зелёный).
+const MIXED_TOPIC = 16;
+const GROUPS = {"time": "Время: at, on, in", "place": "Место и направление: in, at, on, to", "other": "Другие значения: by, with, about, on, at", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "time",
+  "title": "at — точное время",
+  "sub": "at 5 o'clock · at night",
+  "rule": "at — точный момент: at 5 o'clock, at noon, at midnight, at lunchtime. А ещё: at night, at the weekend (брит.), at Christmas, at the moment, at the age of 60.",
+  "ex": [
+   {
+    "en": "The meeting starts [at] 9.",
+    "ru": "Совещание начинается в 9."
+   },
+   {
+    "en": "I often work [at] night.",
+    "ru": "Я часто работаю ночью."
+   },
+   {
+    "en": "He had his first stroke [at] the age of 60.",
+    "ru": "Первый инсульт у него случился в 60 лет."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "time",
+  "title": "on — дни и даты",
+  "sub": "on Monday · on 3 May",
+  "rule": "on — день или дата: on Monday, on 3 May, on my birthday, on Christmas Day. День + часть дня — тоже on: on Friday evening.",
+  "ex": [
+   {
+    "en": "The clinic is closed [on] Sundays.",
+    "ru": "По воскресеньям поликлиника закрыта."
+   },
+   {
+    "en": "He was admitted [on] 3 May.",
+    "ru": "Его госпитализировали 3 мая."
+   },
+   {
+    "en": "See you [on] Monday morning.",
+    "ru": "Увидимся в понедельник утром."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "time",
+  "title": "in — месяцы, годы, части дня",
+  "sub": "in May · in 2019 · in the morning",
+  "rule": "in — долгий период: in May, in 2019, in winter, in the 1990s. Части дня: in the morning, in the afternoon, in the evening (но at night). И in = «через»: in two weeks — через две недели.",
+  "ex": [
+   {
+    "en": "He was born [in] 1958.",
+    "ru": "Он родился в 1958 году."
+   },
+   {
+    "en": "The pain is worse [in] the morning.",
+    "ru": "Утром боль сильнее."
+   },
+   {
+    "en": "Come back [in] two weeks.",
+    "ru": "Приходите через две недели."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "time",
+  "title": "Без предлога",
+  "sub": "next week · last Monday · this morning",
+  "rule": "Перед this, next, last, every, а также с today, tomorrow, yesterday предлог не нужен: next Monday, last week, this morning, every day, tomorrow afternoon.",
+  "ex": [
+   {
+    "en": "I saw him last Monday.",
+    "ru": "Я видел его в прошлый понедельник."
+   },
+   {
+    "en": "Take it every morning.",
+    "ru": "Принимайте каждое утро."
+   },
+   {
+    "en": "The results will be ready tomorrow afternoon.",
+    "ru": "Результаты будут готовы завтра днём."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "time",
+  "title": "Шаг к B2: on time, in time, by",
+  "sub": "вовремя · успеть · к сроку",
+  "late": 0.25,
+  "rule": "on time — точно по графику; in time — успеть, пока не поздно. at the end of — в конце чего-то; in the end — в итоге. by Friday — к пятнице, не позже; until Friday — до пятницы, всё это время. during — во время чего: during the night.",
+  "ex": [
+   {
+    "en": "The ambulance arrived [on] time.",
+    "ru": "Скорая приехала точно вовремя."
+   },
+   {
+    "en": "We got him to hospital [in] time.",
+    "ru": "Мы успели довезти его до больницы."
+   },
+   {
+    "en": "Send it [by] Friday.",
+    "ru": "Пришлите к пятнице."
+   },
+   {
+    "en": "[In] the end, he agreed.",
+    "ru": "В итоге он согласился."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "place",
+  "title": "in — внутри",
+  "sub": "in the room · in bed · in Moscow",
+  "rule": "in — внутри пространства: in the room, in the car, in the box. Город и страна — in: in Moscow, in Russia. Устойчивые: in bed, in hospital (лежать пациентом), in the photo, in the newspaper, in a queue.",
+  "ex": [
+   {
+    "en": "The patient is [in] bed.",
+    "ru": "Пациент в постели."
+   },
+   {
+    "en": "She lives [in] Moscow.",
+    "ru": "Она живёт в Москве."
+   },
+   {
+    "en": "Who's that [in] the photo?",
+    "ru": "Кто это на фото? — по-русски «на», по-английски in"
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "place",
+  "title": "at — точка, место встречи",
+  "sub": "at the door · at work · at home",
+  "rule": "at — точка или место, где что-то происходит: at the door, at the bus stop, at the top. Места, где мы чем-то заняты: at work, at home, at school, at university, at the doctor's, at a conference.",
+  "ex": [
+   {
+    "en": "There's someone [at] the door.",
+    "ru": "Кто-то стоит у двери."
+   },
+   {
+    "en": "I'm still [at] work.",
+    "ru": "Я ещё на работе."
+   },
+   {
+    "en": "We met [at] a conference.",
+    "ru": "Мы познакомились на конференции."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "place",
+  "title": "on — поверхность, этаж, транспорт",
+  "sub": "on the table · on the bus · on the ward",
+  "rule": "on — на поверхности: on the table, on the wall, on the floor. Этаж — on: on the first floor. Стороны — on the left, on the right. Транспорт, где можно ходить, — on: on the bus, on the train, on the plane (но in a car, in a taxi). В больнице: on the ward, on the stroke unit.",
+  "ex": [
+   {
+    "en": "The results are [on] your desk.",
+    "ru": "Результаты у тебя на столе."
+   },
+   {
+    "en": "Radiology is [on] the first floor.",
+    "ru": "Рентгенология на втором этаже. — в британском first floor = наш второй"
+   },
+   {
+    "en": "He's [on] the stroke unit.",
+    "ru": "Он лежит в инсультном отделении."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "place",
+  "title": "to — направление",
+  "sub": "go to work · send to the lab",
+  "rule": "to — движение куда-то: go to work, come to the hospital, send it to the lab, from … to. Внутрь — into. Без to: go home, go there, go abroad. Arrive — не to, а in (город) или at (здание).",
+  "ex": [
+   {
+    "en": "He was taken [to] hospital.",
+    "ru": "Его отвезли в больницу."
+   },
+   {
+    "en": "I go [to] work by bus.",
+    "ru": "Я езжу на работу на автобусе."
+   },
+   {
+    "en": "We arrived [at] the hospital at six.",
+    "ru": "Мы приехали в больницу в шесть."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "place",
+  "title": "at, in или to?",
+  "sub": "быть — at · идти — to",
+  "rule": "Где? — at или in: I'm at the hospital, he's in the operating theatre. Куда? — to: I'm going to the hospital. Одно и то же место: быть — at, идти — to. За столом — at the table, а on the table — «на столе».",
+  "ex": [
+   {
+    "en": "I'm [at] the hospital.",
+    "ru": "Я в больнице (по делу, на работе)."
+   },
+   {
+    "en": "I'm going [to] the hospital.",
+    "ru": "Я еду в больницу."
+   },
+   {
+    "en": "She was sitting [at] the table.",
+    "ru": "Она сидела за столом."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "group": "other",
+  "title": "by — способ, автор, к сроку",
+  "sub": "by car · by email · by Friday",
+  "rule": "by — способ и транспорт: by car, by bus, by email, by phone (но on foot). Кто сделал: written by, caused by. К сроку: by Friday. Рядом: by the window. Устойчивые: by mistake, by chance, by heart (наизусть).",
+  "ex": [
+   {
+    "en": "I usually come [by] bus.",
+    "ru": "Обычно я приезжаю на автобусе."
+   },
+   {
+    "en": "Send it [by] email.",
+    "ru": "Пришлите по электронной почте."
+   },
+   {
+    "en": "The stroke was caused [by] a clot.",
+    "ru": "Инсульт был вызван тромбом."
+   }
+  ]
+ },
+ {
+  "n": 12,
+  "group": "other",
+  "title": "with — с кем и чем",
+  "sub": "with a friend · with a scalpel",
+  "rule": "with — с кем: with a friend, with the family. Чем, каким инструментом или средством: with a scalpel, with saline. С каким признаком: a patient with diabetes. Транспорт — не with, а by: by car.",
+  "ex": [
+   {
+    "en": "He came [with] his wife.",
+    "ru": "Он пришёл с женой."
+   },
+   {
+    "en": "Clean the wound [with] saline.",
+    "ru": "Промойте рану физраствором."
+   },
+   {
+    "en": "a patient [with] diabetes",
+    "ru": "пациент с диабетом"
+   }
+  ]
+ },
+ {
+  "n": 13,
+  "group": "other",
+  "title": "about — о чём",
+  "sub": "talk about · worried about",
+  "rule": "about — о чём: talk about, think about, a book about, worried about, ask about. How about…? и What about…? — «как насчёт…?». About + число — «примерно»: about fifty. Но discuss — без about.",
+  "ex": [
+   {
+    "en": "We talked [about] his treatment.",
+    "ru": "Мы поговорили о его лечении."
+   },
+   {
+    "en": "She's worried [about] the results.",
+    "ru": "Она волнуется из-за результатов."
+   },
+   {
+    "en": "There were [about] fifty people.",
+    "ru": "Было около пятидесяти человек."
+   }
+  ]
+ },
+ {
+  "n": 14,
+  "group": "other",
+  "title": "on — тема, связь, лекарство",
+  "sub": "a lecture on stroke · on the phone",
+  "rule": "on — научная тема: a lecture on stroke, a book on neurology. Связь и экран: on the phone, on TV, on the radio, on the internet. В медицине: on call, on duty, on warfarin — «принимает варфарин». Ещё: on foot, on holiday, on purpose (нарочно).",
+  "ex": [
+   {
+    "en": "She gave a lecture [on] stroke.",
+    "ru": "Она прочитала лекцию об инсульте."
+   },
+   {
+    "en": "He's [on] the phone.",
+    "ru": "Он говорит по телефону."
+   },
+   {
+    "en": "Is he [on] warfarin?",
+    "ru": "Он принимает варфарин?"
+   }
+  ]
+ },
+ {
+  "n": 15,
+  "group": "other",
+  "title": "at — ещё значения",
+  "sub": "good at · at risk · at least",
+  "rule": "at — после good, bad, better: good at languages. Устойчивые: at risk (в группе риска), at least (по крайней мере), at first (сначала), at last (наконец), at once (сразу), at 80 km/h (скорость).",
+  "ex": [
+   {
+    "en": "She's good [at] languages.",
+    "ru": "Ей хорошо даются языки."
+   },
+   {
+    "en": "Smokers are [at] higher risk.",
+    "ru": "Курильщики — в группе повышенного риска."
+   },
+   {
+    "en": "Drink [at] least two litres a day.",
+    "ru": "Пейте не меньше двух литров в день."
+   }
+  ]
+ },
+ {
+  "n": 16,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты («» — предлог не нужен), a — правильный, ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "ti-at8",
+  "t": 1,
+  "q": "The ward round starts ___ 8 o'clock.",
+  "ru": "Обход начинается в 8 часов.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "Точное время — at."
+ },
+ {
+  "id": "ti-night",
+  "t": 1,
+  "q": "I often work ___ night.",
+  "ru": "Я часто работаю ночью.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at night — «ночью». Но in the morning, in the evening."
+ },
+ {
+  "id": "ti-weekend",
+  "t": 1,
+  "q": "What are you doing ___ the weekend?",
+  "ru": "Что делаешь на выходных?",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at the weekend — британский вариант.",
+  "also": {
+   "on": "так говорят в американском"
+  }
+ },
+ {
+  "id": "ti-christmas",
+  "t": 1,
+  "q": "We usually visit my parents ___ Christmas.",
+  "ru": "На Рождество мы обычно ездим к родителям.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "Праздник в целом — at: at Christmas, at Easter. Но сам день — on Christmas Day.",
+  "also": {
+   "on": "в американском on Christmas — это сам день Рождества"
+  }
+ },
+ {
+  "id": "ti-age",
+  "t": 1,
+  "q": "He retired ___ the age of 65.",
+  "ru": "Он вышел на пенсию в 65 лет.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at the age of … — «в возрасте …»."
+ },
+ {
+  "id": "ti-moment",
+  "t": 1,
+  "q": "She's busy ___ the moment.",
+  "ru": "Она сейчас занята.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at the moment — «сейчас»."
+ },
+ {
+  "id": "on-sundays",
+  "t": 2,
+  "q": "The clinic is closed ___ Sundays.",
+  "ru": "По воскресеньям поликлиника закрыта.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Дни недели — on."
+ },
+ {
+  "id": "on-date",
+  "t": 2,
+  "q": "He was admitted ___ 3 May.",
+  "ru": "Его госпитализировали 3 мая.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Дата — on."
+ },
+ {
+  "id": "on-birthday",
+  "t": 2,
+  "q": "She called me ___ my birthday.",
+  "ru": "Она позвонила мне в день рождения.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Конкретный день — on: on my birthday."
+ },
+ {
+  "id": "on-morning",
+  "t": 2,
+  "q": "I'll see you ___ Monday morning.",
+  "ru": "Увидимся в понедельник утром.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "День + часть дня — on: on Monday morning. Но просто in the morning."
+ },
+ {
+  "id": "on-xmasday",
+  "t": 2,
+  "q": "The unit is open even ___ Christmas Day.",
+  "ru": "Отделение работает даже в сам день Рождества.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Конкретный день праздника — on Christmas Day. Праздник в целом — at Christmas."
+ },
+ {
+  "id": "on-weekdays",
+  "t": 2,
+  "q": "I go to the gym ___ weekdays.",
+  "ru": "Я хожу в спортзал по будням.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "on weekdays — «по будням»."
+ },
+ {
+  "id": "in-year",
+  "t": 3,
+  "q": "He had a heart attack ___ 2019.",
+  "ru": "У него был инфаркт в 2019 году.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Год — in."
+ },
+ {
+  "id": "in-month",
+  "t": 3,
+  "q": "The conference is ___ October.",
+  "ru": "Конференция в октябре.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Месяц — in."
+ },
+ {
+  "id": "in-morning",
+  "t": 3,
+  "q": "The headaches are worse ___ the morning.",
+  "ru": "Головные боли сильнее по утрам.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Части дня — in the morning. Но at night."
+ },
+ {
+  "id": "in-minutes",
+  "t": 3,
+  "q": "I'll be back ___ ten minutes.",
+  "ru": "Я вернусь через десять минут.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "in = «через»: in ten minutes."
+ },
+ {
+  "id": "in-winter",
+  "t": 3,
+  "q": "Flu is more common ___ winter.",
+  "ru": "Зимой грипп встречается чаще.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Времена года — in."
+ },
+ {
+  "id": "in-decade",
+  "t": 3,
+  "q": "This method was developed ___ the 1990s.",
+  "ru": "Этот метод разработали в 1990-х.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Десятилетия и века — in: in the 1990s."
+ },
+ {
+  "id": "np-next",
+  "t": 4,
+  "q": "The operation is ___ next Monday.",
+  "ru": "Операция в следующий понедельник.",
+  "opts": [
+   "",
+   "on",
+   "in"
+  ],
+  "a": "",
+  "why": "С next — без предлога: next Monday."
+ },
+ {
+  "id": "np-last",
+  "t": 4,
+  "q": "I saw him ___ last week.",
+  "ru": "Я видел его на прошлой неделе.",
+  "opts": [
+   "",
+   "in",
+   "at"
+  ],
+  "a": "",
+  "why": "С last — без предлога."
+ },
+ {
+  "id": "np-this",
+  "t": 4,
+  "q": "He was discharged ___ this morning.",
+  "ru": "Его выписали сегодня утром.",
+  "opts": [
+   "",
+   "in",
+   "on"
+  ],
+  "a": "",
+  "why": "this morning — без предлога. Но in the morning."
+ },
+ {
+  "id": "np-every",
+  "t": 4,
+  "q": "Take one tablet ___ every evening.",
+  "ru": "Принимайте по таблетке каждый вечер.",
+  "opts": [
+   "",
+   "in",
+   "at"
+  ],
+  "a": "",
+  "why": "С every — без предлога."
+ },
+ {
+  "id": "np-tomorrow",
+  "t": 4,
+  "q": "The results will be ready ___ tomorrow.",
+  "ru": "Результаты будут готовы завтра.",
+  "opts": [
+   "",
+   "on",
+   "in"
+  ],
+  "a": "",
+  "why": "tomorrow, today, yesterday — без предлога."
+ },
+ {
+  "id": "b2-ontime",
+  "t": 5,
+  "q": "The ambulance arrived exactly ___ time.",
+  "ru": "Скорая приехала точно вовремя.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Точно по графику — on time."
+ },
+ {
+  "id": "b2-intime",
+  "t": 5,
+  "q": "We started the treatment just ___ time.",
+  "ru": "Мы начали лечение как раз вовремя — успели.",
+  "opts": [
+   "in",
+   "on",
+   "at"
+  ],
+  "a": "in",
+  "why": "Успеть, пока не поздно, — in time: just in time."
+ },
+ {
+  "id": "b2-intheend",
+  "t": 5,
+  "q": "___ the end, he agreed to the operation.",
+  "ru": "В итоге он согласился на операцию.",
+  "opts": [
+   "In",
+   "At",
+   "On"
+  ],
+  "a": "In",
+  "why": "«В итоге» — in the end. At the end of — «в конце чего-то»."
+ },
+ {
+  "id": "b2-endof",
+  "t": 5,
+  "q": "Please pay ___ the end of the month.",
+  "ru": "Пожалуйста, оплатите в конце месяца.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "«В конце чего-то» — at the end of."
+ },
+ {
+  "id": "b2-by",
+  "t": 5,
+  "q": "Please send me the report ___ Friday.",
+  "ru": "Пожалуйста, пришлите отчёт к пятнице.",
+  "opts": [
+   "by",
+   "until"
+  ],
+  "a": "by",
+  "why": "«К сроку, не позже» — by. Until — «до, всё это время»."
+ },
+ {
+  "id": "b2-until",
+  "t": 5,
+  "q": "He has to stay in bed ___ Friday.",
+  "ru": "Ему нужно лежать до пятницы.",
+  "opts": [
+   "until",
+   "by"
+  ],
+  "a": "until",
+  "why": "«До, всё это время» — until. By — «к сроку»."
+ },
+ {
+  "id": "b2-during",
+  "t": 5,
+  "q": "He woke up twice ___ the night.",
+  "ru": "Ночью он дважды просыпался.",
+  "opts": [
+   "during",
+   "for",
+   "while"
+  ],
+  "a": "during",
+  "why": "«Во время чего» — during. For — сколько длится: for two hours."
+ },
+ {
+  "id": "pl-room",
+  "t": 6,
+  "q": "The patient is waiting ___ the examination room.",
+  "ru": "Пациент ждёт в смотровой.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Внутри помещения — in."
+ },
+ {
+  "id": "pl-city",
+  "t": 6,
+  "q": "She lives ___ Moscow.",
+  "ru": "Она живёт в Москве.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Город, страна — in."
+ },
+ {
+  "id": "pl-bed",
+  "t": 6,
+  "q": "He's still ___ bed.",
+  "ru": "Он всё ещё в постели.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "in bed — «в постели», без the."
+ },
+ {
+  "id": "pl-hospital",
+  "t": 6,
+  "q": "My father is ___ hospital with pneumonia.",
+  "ru": "Мой отец лежит в больнице с пневмонией.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "in hospital (брит.) — лежать в больнице пациентом. At the hospital — быть там по делу."
+ },
+ {
+  "id": "pl-car",
+  "t": 6,
+  "q": "Get ___ the car, please.",
+  "ru": "Садитесь, пожалуйста, в машину.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "Машина, такси — in: там не встать в полный рост. Автобус, поезд — on."
+ },
+ {
+  "id": "pl-photo",
+  "t": 6,
+  "q": "Who's that ___ the photo?",
+  "ru": "Кто это на фотографии?",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "in",
+  "why": "На фото, на картинке — in: in the photo."
+ },
+ {
+  "id": "at-door",
+  "t": 7,
+  "q": "There's someone ___ the door.",
+  "ru": "Кто-то стоит у двери.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "Точка — at: at the door."
+ },
+ {
+  "id": "at-work",
+  "t": 7,
+  "q": "I'm still ___ work.",
+  "ru": "Я ещё на работе.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at work — «на работе»."
+ },
+ {
+  "id": "at-home",
+  "t": 7,
+  "q": "She's ___ home today.",
+  "ru": "Она сегодня дома.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at home — «дома». А go home — без предлога."
+ },
+ {
+  "id": "at-conference",
+  "t": 7,
+  "q": "We met ___ a conference in Berlin.",
+  "ru": "Мы познакомились на конференции в Берлине.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "Мероприятие — at: at a conference, at a meeting."
+ },
+ {
+  "id": "at-busstop",
+  "t": 7,
+  "q": "I'll wait for you ___ the bus stop.",
+  "ru": "Подожду тебя на остановке.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "Точка — at: at the bus stop. По-русски «на», а по-английски at."
+ },
+ {
+  "id": "at-corridor",
+  "t": 7,
+  "q": "Turn left ___ the end of the corridor.",
+  "ru": "В конце коридора поверните налево.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "at the end of — «в конце чего-то»: at the end of the corridor."
+ },
+ {
+  "id": "on-desk",
+  "t": 8,
+  "q": "Your results are ___ my desk.",
+  "ru": "Ваши результаты у меня на столе.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "На поверхности — on."
+ },
+ {
+  "id": "on-floor",
+  "t": 8,
+  "q": "Radiology is ___ the first floor.",
+  "ru": "Рентгенология на втором этаже.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Этаж — on. В британском first floor — это наш второй этаж, а наш первый — ground floor."
+ },
+ {
+  "id": "on-bus",
+  "t": 8,
+  "q": "I read ___ the bus to work.",
+  "ru": "По дороге на работу я читаю в автобусе.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Автобус, поезд, самолёт — on. Машина, такси — in."
+ },
+ {
+  "id": "on-ward",
+  "t": 8,
+  "q": "He's ___ the stroke unit.",
+  "ru": "Он лежит в инсультном отделении.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Отделение больницы — on: on the ward, on the stroke unit.",
+  "also": {
+   "in": "так говорят, но у врачей обычнее on the ward"
+  }
+ },
+ {
+  "id": "on-left",
+  "t": 8,
+  "q": "The lift is ___ the left.",
+  "ru": "Лифт слева.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "on the left, on the right — «слева», «справа»."
+ },
+ {
+  "id": "on-wall",
+  "t": 8,
+  "q": "There's a clock ___ the wall.",
+  "ru": "На стене висят часы.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "На стене — on: поверхность."
+ },
+ {
+  "id": "to-work",
+  "t": 9,
+  "q": "I go ___ work by bus.",
+  "ru": "Я езжу на работу на автобусе.",
+  "opts": [
+   "to",
+   "in",
+   "at"
+  ],
+  "a": "to",
+  "why": "Движение куда — to: go to work. А быть на работе — at work."
+ },
+ {
+  "id": "to-hospital",
+  "t": 9,
+  "q": "He was taken ___ hospital by ambulance.",
+  "ru": "Его отвезли в больницу на скорой.",
+  "opts": [
+   "to",
+   "in",
+   "at"
+  ],
+  "a": "to",
+  "why": "Куда — to hospital."
+ },
+ {
+  "id": "to-home",
+  "t": 9,
+  "q": "Let's go ___ home.",
+  "ru": "Пойдём домой.",
+  "opts": [
+   "",
+   "to",
+   "at"
+  ],
+  "a": "",
+  "why": "home — без to: go home."
+ },
+ {
+  "id": "to-arrive",
+  "t": 9,
+  "q": "We arrived ___ the hospital at six.",
+  "ru": "Мы приехали в больницу в шесть.",
+  "opts": [
+   "at",
+   "to",
+   "in"
+  ],
+  "a": "at",
+  "why": "arrive at (здание) или in (город). Arrive to — ошибка."
+ },
+ {
+  "id": "to-arrivecity",
+  "t": 9,
+  "q": "They arrived ___ London last night.",
+  "ru": "Они прилетели в Лондон вчера вечером.",
+  "opts": [
+   "in",
+   "to",
+   "at"
+  ],
+  "a": "in",
+  "why": "arrive in + город или страна."
+ },
+ {
+  "id": "to-into",
+  "t": 9,
+  "q": "He walked ___ the room.",
+  "ru": "Он вошёл в палату.",
+  "opts": [
+   "into",
+   "to",
+   "at"
+  ],
+  "a": "into",
+  "why": "Движение внутрь — into."
+ },
+ {
+  "id": "ia-at",
+  "t": 10,
+  "q": "I'm ___ the hospital — I'll call you later.",
+  "ru": "Я в больнице — перезвоню позже.",
+  "opts": [
+   "at",
+   "to",
+   "on"
+  ],
+  "a": "at",
+  "why": "Где? — at the hospital."
+ },
+ {
+  "id": "ia-to",
+  "t": 10,
+  "q": "I'm on my way ___ the hospital.",
+  "ru": "Я еду в больницу.",
+  "opts": [
+   "to",
+   "at",
+   "in"
+  ],
+  "a": "to",
+  "why": "Куда? — to."
+ },
+ {
+  "id": "ia-in",
+  "t": 10,
+  "q": "The surgeon is still ___ the operating theatre.",
+  "ru": "Хирург ещё в операционной.",
+  "opts": [
+   "in",
+   "at",
+   "to"
+  ],
+  "a": "in",
+  "why": "Внутри помещения — in."
+ },
+ {
+  "id": "ia-entrance",
+  "t": 10,
+  "q": "I'll meet you ___ the main entrance.",
+  "ru": "Встречу тебя у главного входа.",
+  "opts": [
+   "at",
+   "in",
+   "to"
+  ],
+  "a": "at",
+  "why": "Точка встречи — at."
+ },
+ {
+  "id": "ia-sent",
+  "t": 10,
+  "q": "The sample was sent ___ the lab.",
+  "ru": "Образец отправили в лабораторию.",
+  "opts": [
+   "to",
+   "in",
+   "at"
+  ],
+  "a": "to",
+  "why": "Куда? — to."
+ },
+ {
+  "id": "ia-table",
+  "t": 10,
+  "q": "She was sitting ___ the table.",
+  "ru": "Она сидела за столом.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "За столом — at the table. On the table — «на столе», сверху."
+ },
+ {
+  "id": "by-bus",
+  "t": 11,
+  "q": "I usually come to work ___ bus.",
+  "ru": "Обычно я езжу на работу на автобусе.",
+  "opts": [
+   "by",
+   "on",
+   "with"
+  ],
+  "a": "by",
+  "why": "Транспорт как способ — by bus, без артикля. On the bus — «в автобусе»."
+ },
+ {
+  "id": "by-foot",
+  "t": 11,
+  "q": "I usually come to work ___ foot.",
+  "ru": "Обычно я хожу на работу пешком.",
+  "opts": [
+   "on",
+   "by",
+   "with"
+  ],
+  "a": "on",
+  "why": "Пешком — on foot. Остальной транспорт — by."
+ },
+ {
+  "id": "by-email",
+  "t": 11,
+  "q": "Please send the results ___ email.",
+  "ru": "Пожалуйста, пришлите результаты по почте.",
+  "opts": [
+   "by",
+   "on",
+   "with"
+  ],
+  "a": "by",
+  "why": "Способ — by: by email, by phone, by post."
+ },
+ {
+  "id": "by-caused",
+  "t": 11,
+  "q": "The stroke was caused ___ a blood clot.",
+  "ru": "Инсульт был вызван тромбом.",
+  "opts": [
+   "by",
+   "with",
+   "from"
+  ],
+  "a": "by",
+  "why": "Кто или что это сделало (в пассиве) — by."
+ },
+ {
+  "id": "by-deadline",
+  "t": 11,
+  "q": "The report must be ready ___ Monday.",
+  "ru": "Отчёт должен быть готов к понедельнику.",
+  "opts": [
+   "by",
+   "until"
+  ],
+  "a": "by",
+  "why": "«К сроку» — by."
+ },
+ {
+  "id": "by-mistake",
+  "t": 11,
+  "q": "I took his notes ___ mistake.",
+  "ru": "Я по ошибке взял его записи.",
+  "opts": [
+   "by",
+   "on",
+   "with"
+  ],
+  "a": "by",
+  "why": "by mistake — «по ошибке». Ещё: by chance, by heart."
+ },
+ {
+  "id": "wi-wife",
+  "t": 12,
+  "q": "He came ___ his wife.",
+  "ru": "Он пришёл с женой.",
+  "opts": [
+   "with",
+   "by",
+   "and"
+  ],
+  "a": "with",
+  "why": "С кем — with."
+ },
+ {
+  "id": "wi-saline",
+  "t": 12,
+  "q": "Clean the wound ___ saline.",
+  "ru": "Промойте рану физраствором.",
+  "opts": [
+   "with",
+   "by",
+   "in"
+  ],
+  "a": "with",
+  "why": "Чем, каким средством — with."
+ },
+ {
+  "id": "wi-diabetes",
+  "t": 12,
+  "q": "We have three patients ___ diabetes on the ward.",
+  "ru": "В отделении три пациента с диабетом.",
+  "opts": [
+   "with",
+   "of",
+   "by"
+  ],
+  "a": "with",
+  "why": "С каким заболеванием, признаком — with: a patient with diabetes."
+ },
+ {
+  "id": "wi-scalpel",
+  "t": 12,
+  "q": "The surgeon made a cut ___ a scalpel.",
+  "ru": "Хирург сделал разрез скальпелем.",
+  "opts": [
+   "with",
+   "by",
+   "from"
+  ],
+  "a": "with",
+  "why": "Инструмент — with."
+ },
+ {
+  "id": "wi-agree",
+  "t": 12,
+  "q": "I agree ___ you.",
+  "ru": "Я с тобой согласен.",
+  "opts": [
+   "with",
+   "to",
+   "by"
+  ],
+  "a": "with",
+  "why": "agree with — «согласен с кем-то». Agree to — «согласиться на что-то»."
+ },
+ {
+  "id": "wi-car",
+  "t": 12,
+  "q": "She came to the clinic ___ car.",
+  "ru": "Она приехала в поликлинику на машине.",
+  "opts": [
+   "by",
+   "with",
+   "on"
+  ],
+  "a": "by",
+  "why": "Транспорт — by car, а не with car."
+ },
+ {
+  "id": "ab-talk",
+  "t": 13,
+  "q": "Can we talk ___ your test results?",
+  "ru": "Можно поговорить о ваших анализах?",
+  "opts": [
+   "about",
+   "on",
+   "of"
+  ],
+  "a": "about",
+  "why": "Говорить о чём — talk about."
+ },
+ {
+  "id": "ab-worried",
+  "t": 13,
+  "q": "She's worried ___ her husband.",
+  "ru": "Она волнуется за мужа.",
+  "opts": [
+   "about",
+   "for",
+   "of"
+  ],
+  "a": "about",
+  "why": "Волноваться о ком-то — worried about.",
+  "also": {
+   "for": "бывает и так — «боится за него»; обычнее worried about"
+  }
+ },
+ {
+  "id": "ab-think",
+  "t": 13,
+  "q": "I'll think ___ it.",
+  "ru": "Я подумаю об этом.",
+  "opts": [
+   "about",
+   "on",
+   "of"
+  ],
+  "a": "about",
+  "why": "«Обдумать» — think about. Think of — «придумать, вспомнить»."
+ },
+ {
+  "id": "ab-approx",
+  "t": 13,
+  "q": "There were ___ fifty people at the lecture.",
+  "ru": "На лекции было около пятидесяти человек.",
+  "opts": [
+   "about",
+   "on",
+   "by"
+  ],
+  "a": "about",
+  "why": "about + число — «примерно»."
+ },
+ {
+  "id": "ab-howabout",
+  "t": 13,
+  "q": "How ___ a coffee break?",
+  "ru": "Как насчёт перерыва на кофе?",
+  "opts": [
+   "about",
+   "on",
+   "for"
+  ],
+  "a": "about",
+  "why": "How about…? — «как насчёт…?»"
+ },
+ {
+  "id": "ab-discuss",
+  "t": 13,
+  "q": "We discussed ___ the plan.",
+  "ru": "Мы обсудили план.",
+  "opts": [
+   "",
+   "about",
+   "on"
+  ],
+  "a": "",
+  "why": "discuss — без about. А talk about — с about."
+ },
+ {
+  "id": "ot-lecture",
+  "t": 14,
+  "q": "She gave a lecture ___ stroke prevention.",
+  "ru": "Она прочитала лекцию о профилактике инсульта.",
+  "opts": [
+   "on",
+   "about",
+   "of"
+  ],
+  "a": "on",
+  "why": "Научная тема — on: a lecture on…",
+  "also": {
+   "about": "так можно; on — научнее и официальнее"
+  }
+ },
+ {
+  "id": "ot-phone",
+  "t": 14,
+  "q": "Dr Smith is ___ the phone.",
+  "ru": "Доктор Смит говорит по телефону.",
+  "opts": [
+   "on",
+   "at",
+   "by"
+  ],
+  "a": "on",
+  "why": "Говорить по телефону — on the phone. Связаться по телефону как способ — by phone."
+ },
+ {
+  "id": "ot-warfarin",
+  "t": 14,
+  "q": "Is he ___ any anticoagulants?",
+  "ru": "Он принимает какие-нибудь антикоагулянты?",
+  "opts": [
+   "on",
+   "with",
+   "at"
+  ],
+  "a": "on",
+  "why": "Принимать лекарство курсом — be on: on warfarin, on anticoagulants."
+ },
+ {
+  "id": "ot-call",
+  "t": 14,
+  "q": "I'm ___ call this weekend.",
+  "ru": "В эти выходные я дежурю.",
+  "opts": [
+   "on",
+   "at",
+   "in"
+  ],
+  "a": "on",
+  "why": "on call — «на дежурстве по вызову»; on duty — «на смене»."
+ },
+ {
+  "id": "ot-purpose",
+  "t": 14,
+  "q": "He didn't do it ___ purpose.",
+  "ru": "Он сделал это не нарочно.",
+  "opts": [
+   "on",
+   "by",
+   "with"
+  ],
+  "a": "on",
+  "why": "on purpose — «нарочно». Случайно — by accident, by mistake."
+ },
+ {
+  "id": "ot-tv",
+  "t": 14,
+  "q": "I saw it ___ TV.",
+  "ru": "Я видел это по телевизору.",
+  "opts": [
+   "on",
+   "in",
+   "by"
+  ],
+  "a": "on",
+  "why": "По телевизору, по радио — on TV, on the radio."
+ },
+ {
+  "id": "at-good",
+  "t": 15,
+  "q": "He's very good ___ explaining things.",
+  "ru": "Он очень хорошо умеет объяснять.",
+  "opts": [
+   "at",
+   "in",
+   "on"
+  ],
+  "a": "at",
+  "why": "good at — «хорошо умеет». Good in — ошибка."
+ },
+ {
+  "id": "at-risk",
+  "t": 15,
+  "q": "Smokers are ___ higher risk of stroke.",
+  "ru": "У курильщиков выше риск инсульта.",
+  "opts": [
+   "at",
+   "in",
+   "on"
+  ],
+  "a": "at",
+  "why": "at risk — «в группе риска»: at high risk of…"
+ },
+ {
+  "id": "at-least",
+  "t": 15,
+  "q": "Drink ___ least two litres of water a day.",
+  "ru": "Пейте не меньше двух литров воды в день.",
+  "opts": [
+   "at",
+   "in",
+   "for"
+  ],
+  "a": "at",
+  "why": "at least — «по крайней мере, не меньше»."
+ },
+ {
+  "id": "at-first",
+  "t": 15,
+  "q": "___ first, he refused the treatment.",
+  "ru": "Сначала он отказался от лечения.",
+  "opts": [
+   "At",
+   "In",
+   "On"
+  ],
+  "a": "At",
+  "why": "at first — «сначала, поначалу»."
+ },
+ {
+  "id": "at-once",
+  "t": 15,
+  "q": "Call the doctor ___ once!",
+  "ru": "Немедленно позовите врача!",
+  "opts": [
+   "at",
+   "in",
+   "on"
+  ],
+  "a": "at",
+  "why": "at once — «сразу, немедленно»."
+ },
+ {
+  "id": "at-speed",
+  "t": 15,
+  "q": "He was driving ___ 120 kilometres an hour.",
+  "ru": "Он ехал со скоростью 120 км/ч.",
+  "opts": [
+   "at",
+   "with",
+   "by"
+  ],
+  "a": "at",
+  "why": "Скорость — at: at 120 km/h."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "preps:state";
+const LS_SPEAK = "preps:autospeak";
+const LS_TAB = "preps:tab";
+const LS_OPEN = "preps:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "at / on / in"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — предлог: at — синий, on — оранжевый, in — зелёный, остальные подчёркнуты
+const PREP_CLS = { at: "st", on: "pr", in: "good" };
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", PREP_CLS[m[1].toLowerCase()] || "hl", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Медицинские сочетания: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: время, место и другие значения чередуются — выбирать приходится по смыслу.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

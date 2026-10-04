@@ -1,0 +1,1402 @@
+<title>Gone или been</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("gonebeen",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw,.g-form i{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .obj,.st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-title .h-plus{color:var(--muted)}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(28px*var(--k)) minmax(0,1fr) auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li span i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));white-space:nowrap}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .fm-row{display:grid;grid-template-columns:calc(52px*var(--k)) minmax(0,1fr);column-gap:calc(12px*var(--k));align-items:start;padding:calc(12px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .fm-row:first-child{border-top:0}
+  .fm-ic{display:block;width:calc(52px*var(--k));height:calc(30px*var(--k));margin-top:calc(3px*var(--k))}
+  .fm-ic svg{display:block;width:calc(52px*var(--k));height:calc(30px*var(--k))}
+  .fm-f{margin:0;font-family:var(--serif);font-size:calc(24px*var(--k));line-height:1.2}
+  .fm-ru{margin:calc(2px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.35;color:var(--soft)}
+  .fm-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--muted)}
+  .bw-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);column-gap:calc(12px*var(--k));padding:calc(10px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .bw-row:first-child{border-top:0}
+  .bw-t{margin:0;grid-row:1 / span 2;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35}
+  .bw-ex{margin:0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .bw-ru{margin:0;font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-foot{margin:calc(6px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .mx-foot a{color:var(--blue)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-w{grid-column:1 / -1;margin:calc(6px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .ex-w b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(4px*var(--k))}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex.has-w .ex-play{grid-row:2 / span 2}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title"><span class="pr" lang="en">gone</span> <span class="h-plus">или</span> <span class="st" lang="en">been</span></h1>
+      <p class="r-sub">Все три формы&nbsp;— Present Perfect. <b>Решает один вопрос: где человек сейчас?</b></p>
+      <div class="algo">
+        <p class="algo-h">Проверка за секунду</p>
+        <ol>
+          <li><span>Ушёл туда, и&nbsp;его здесь нет? <i lang="en">He's gone to the ward</i></span><b class="pr" lang="en">gone to</b></li>
+          <li><span>Сходил и&nbsp;вернулся или бывал когда-то? <i lang="en">Have you ever been to…</i></span><b class="st" lang="en">been to</b></li>
+          <li><span>Находится там, есть <i lang="en">for</i> или <i lang="en">since</i>? <i lang="en">in hospital for a week</i></span><b class="good" lang="en">been in</b></li>
+          <li><span>Сказано, когда&nbsp;— <i lang="en">yesterday, in 2019</i>?</span><b lang="en">went to</b></li>
+        </ol>
+        <p class="algo-m"><span class="pr" lang="en">gone</span>&nbsp;— ушёл, и&nbsp;его нет. <span class="st" lang="en">been</span>&nbsp;— был и&nbsp;вернулся.</p>
+        <p class="algo-note">Про себя почти всегда <span lang="en">been</span>: раз я&nbsp;здесь и&nbsp;говорю, я&nbsp;не&nbsp;ушёл.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Три формы&nbsp;— одна лаборатория</h2>
+      <div class="mx-wrap">
+        <div class="fm-row"><span class="fm-ic pr" aria-hidden="true"><svg viewBox="0 0 52 30"><circle cx="6" cy="15" r="4" fill="currentColor"/><path d="M13 15h30M36 8l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><p class="fm-f pr" lang="en">gone to</p><p class="fm-ru">ушёл, уехал — его здесь нет</p><p class="fm-ex" lang="en">He&#x27;s gone to the lab.</p></div></div>
+        <div class="fm-row"><span class="fm-ic st" aria-hidden="true"><svg viewBox="0 0 52 30"><circle cx="6" cy="21" r="4" fill="currentColor"/><path d="M13 21h24a6.5 6.5 0 0 0 0-13H14M20 2l-7 6 7 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><p class="fm-f st" lang="en">been to</p><p class="fm-ru">сходил и вернулся, бывал</p><p class="fm-ex" lang="en">He&#x27;s been to the lab.</p></div></div>
+        <div class="fm-row"><span class="fm-ic good" aria-hidden="true"><svg viewBox="0 0 52 30"><rect x="12" y="3" width="30" height="24" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="27" cy="15" r="4.5" fill="currentColor"/></svg></span><div><p class="fm-f good" lang="en">been in</p><p class="fm-ru">находится там, for / since</p><p class="fm-ex" lang="en">He&#x27;s been in the lab all morning.</p></div></div>
+      </div>
+      <h2 class="lbl">Ещё полезное</h2>
+      <div class="mx-wrap">
+        <div class="bw-row"><p class="bw-t">home — без to</p><p class="bw-ex" lang="en">She&#x27;s <span class="pr">gone home</span>.</p><p class="bw-ru">ушла домой</p></div>
+        <div class="bw-row"><p class="bw-t">been to see</p><p class="bw-ex" lang="en">I&#x27;ve <span class="st">been to see</span> the GP.</p><p class="bw-ru">сходил к врачу</p></div>
+        <div class="bw-row"><p class="bw-t">been at</p><p class="bw-ex" lang="en">I&#x27;ve <span class="good">been at</span> work since 7.</p><p class="bw-ru">на работе, на событии</p></div>
+        <div class="bw-row"><p class="bw-t">went to + «когда»</p><p class="bw-ex" lang="en">I went to Kazan in 2019.</p><p class="bw-ru">есть «когда» — Past Simple</p></div>
+        <div class="bw-row"><p class="bw-t">Where have you been?</p><p class="bw-ru">где ты был? — он вернулся</p></div>
+        <div class="bw-row"><p class="bw-t">Where has he gone?</p><p class="bw-ru">куда он делся? — его нет</p></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;ve been to London last year</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I went to London last year</span><span class="err-note">есть «когда» — went</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He&#x27;s been to Moscow till Monday</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He&#x27;s gone to Moscow till Monday</span><span class="err-note">его нет — gone</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Have you ever gone to Italy?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Have you ever been to Italy?</span><span class="err-note">опыт — been</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She&#x27;s gone to home</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She&#x27;s gone home</span><span class="err-note">home — без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;m in hospital since Monday</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ve been in hospital since Monday</span><span class="err-note">since — Present Perfect</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. […] — gone (оранжевый), {…} — been to (синий), |…| — been in / been at (зелёный).
+const MIXED_TOPIC = 8;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "gone to — ушёл, его нет",
+  "rule": "has gone to — ушёл или уехал туда и ещё не вернулся: сейчас он там или в пути. Главный признак — человека здесь нет: Dr Petrov has gone to the ward, he'll be back soon. С I и we так почти не говорят: раз я здесь и говорю — я не ушёл.",
+  "ex": [
+   {
+    "en": "Dr Petrov has [gone to] the ward — he'll be back in ten minutes.",
+    "ru": "Доктор Петров ушёл в отделение — вернётся через десять минут."
+   },
+   {
+    "en": "The patient has [gone to] X-ray.",
+    "ru": "Пациента увезли на рентген."
+   },
+   {
+    "en": "She's [gone to] Moscow for a conference.",
+    "ru": "Она уехала в Москву на конференцию."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "been to — сходил и вернулся",
+  "rule": "has been to — побывал там и вернулся: поездка туда и обратно или опыт в жизни. Человек снова здесь. С ever, never, once, twice, three times — почти всегда been to: Have you ever been to Japan? Сверх уровня: в американском английском gone to иногда значит и «бывал», в британском — нет.",
+  "ex": [
+   {
+    "en": "I've {been to} the pharmacy — here are your tablets.",
+    "ru": "Я сходил в аптеку — вот ваши таблетки."
+   },
+   {
+    "en": "Have you ever {been to} London?",
+    "ru": "Вы когда-нибудь бывали в Лондоне?"
+   },
+   {
+    "en": "She's {been to} three conferences this year.",
+    "ru": "В этом году она была уже на трёх конференциях."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "been in — находится там",
+  "rule": "has been in — находится там какое-то время и, скорее всего, ещё там. Почти всегда с for или since: he's been in hospital for a week. Так же — живу где-то: I've been in Yekaterinburg since 2015. И работа в области: she's been in neurology for ten years.",
+  "ex": [
+   {
+    "en": "He's |been in| hospital for a week.",
+    "ru": "Он уже неделю в больнице."
+   },
+   {
+    "en": "We've |been in| this building since 2010.",
+    "ru": "Мы в этом здании с 2010 года."
+   },
+   {
+    "en": "She's |been in| neurology for ten years.",
+    "ru": "Она десять лет работает в неврологии."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "gone или been: где он сейчас?",
+  "rule": "Спроси себя: где человек сейчас? Его нет, он там или в пути — gone. Вернулся, он здесь — been. Одна и та же поездка: Tom has gone to the lab — его нет. Tom has been to the lab — сходил, уже здесь.",
+  "ex": [
+   {
+    "en": "Tom has [gone to] the lab.",
+    "ru": "Том ушёл в лабораторию — его нет."
+   },
+   {
+    "en": "Tom has {been to} the lab.",
+    "ru": "Том сходил в лабораторию — он уже вернулся."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "Where have you been? Where has he gone?",
+  "rule": "Where have you been? — «Где ты был?»: человек вернулся и стоит перед тобой. Where has he gone? — «Куда он делся?»: его нет. Where have you gone? — так почти не говорят: раз ты передо мной, ты никуда не ушёл. Про вещи тоже gone: Where have my glasses gone?",
+  "ex": [
+   {
+    "en": "Where have you {been}? We've been looking for you!",
+    "ru": "Где ты был? Мы тебя искали!"
+   },
+   {
+    "en": "Where has the nurse [gone]? I need her now.",
+    "ru": "Куда делась медсестра? Она мне сейчас нужна."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "been to или went to",
+  "rule": "Если сказано или понятно, когда — yesterday, last year, in 2019, on Monday, — нужен Past Simple: went to. Present Perfect — been to — когда время не названо и важен опыт или результат: I've been to London. I went to London last year.",
+  "ex": [
+   {
+    "en": "I went to London last year.",
+    "ru": "В прошлом году я ездил в Лондон."
+   },
+   {
+    "en": "I've {been to} London three times.",
+    "ru": "Я был в Лондоне три раза."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "home, been to see, been at",
+  "rule": "home — без to: gone home, been home, а не gone to home. been to see — «сходил к кому-то»: I've been to see the doctor. been at — на работе, в точке, на событии: I've been at work all day, she's been at a conference this week.",
+  "ex": [
+   {
+    "en": "She's [gone home] — her shift is over.",
+    "ru": "Она ушла домой — её смена закончилась."
+   },
+   {
+    "en": "I've {been to see} the doctor about my back.",
+    "ru": "Я сходил к врачу со своей спиной."
+   },
+   {
+    "en": "I've |been at| work since seven.",
+    "ru": "Я на работе с семи утра."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "Итог — всё вместе",
+  "rule": "Пятнадцать случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный.
+const CARDS = [
+ {
+  "id": "g-ward",
+  "t": 1,
+  "q": "Dr Petrov isn't here — he's ___ the ward.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Его здесь нет — ушёл и не вернулся: gone to."
+ },
+ {
+  "id": "g-xray",
+  "t": 1,
+  "q": "The patient's bed is empty — he's ___ X-ray.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Пациента нет на месте — gone to."
+ },
+ {
+  "id": "g-conf",
+  "t": 1,
+  "q": "She's ___ Moscow for a conference. She'll be back on Friday.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Вернётся в пятницу — значит, сейчас её нет: gone to."
+ },
+ {
+  "id": "g-lunch",
+  "t": 1,
+  "q": "Sorry, the registrar has ___ lunch. Can I help you?",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Ушёл на обед и ещё не вернулся — gone to."
+ },
+ {
+  "id": "g-country",
+  "t": 1,
+  "q": "Mum isn't answering — she's ___ the country for the weekend.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Уехала на выходные и сейчас там — gone to."
+ },
+ {
+  "id": "b-ever",
+  "t": 2,
+  "q": "Have you ever ___ Japan?",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Опыт с ever — been to."
+ },
+ {
+  "id": "b-pharmacy",
+  "t": 2,
+  "q": "I've ___ the pharmacy — here are your tablets.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Сходил и вернулся с таблетками — been to."
+ },
+ {
+  "id": "b-twice",
+  "t": 2,
+  "q": "I've ___ Kazan twice, but I've never lived there.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Поездки, сколько раз — been to."
+ },
+ {
+  "id": "b-never",
+  "t": 2,
+  "q": "He's never ___ the dentist in his life.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "never — опыт: been to."
+ },
+ {
+  "id": "b-confs",
+  "t": 2,
+  "q": "She's ___ three conferences this year.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Побывала и вернулась — been to."
+ },
+ {
+  "id": "i-week",
+  "t": 3,
+  "q": "Mr Ivanov has ___ hospital for a week.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been in",
+  "why": "for a week — находится там: been in."
+ },
+ {
+  "id": "i-since",
+  "t": 3,
+  "q": "I've ___ Yekaterinburg since 2015.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been in",
+  "why": "since — живу там до сих пор: been in."
+ },
+ {
+  "id": "i-icu",
+  "t": 3,
+  "q": "She's ___ intensive care since Monday.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been in",
+  "why": "since Monday — лежит там: been in."
+ },
+ {
+  "id": "i-neuro",
+  "t": 3,
+  "q": "Dr Orlova has ___ neurology for twenty years.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been in",
+  "why": "Работа в области — been in."
+ },
+ {
+  "id": "i-queue",
+  "t": 3,
+  "q": "We've ___ this queue for an hour!",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been in",
+  "why": "Стоим в очереди уже час — been in."
+ },
+ {
+  "id": "c-back",
+  "t": 4,
+  "q": "Tom has ___ the lab and brought the results.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Принёс результаты — значит, вернулся: been to."
+ },
+ {
+  "id": "c-away",
+  "t": 4,
+  "q": "Tom has ___ the lab. He'll bring the results soon.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Принесёт позже — сейчас его нет: gone to."
+ },
+ {
+  "id": "c-tan",
+  "t": 4,
+  "q": "You look great! Have you ___ the seaside?",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Человек перед тобой, уже вернулся — been to."
+ },
+ {
+  "id": "c-sister",
+  "t": 4,
+  "q": "My sister has ___ Australia to work. I really miss her.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Скучаю — её здесь нет: gone to."
+ },
+ {
+  "id": "c-meeting",
+  "t": 4,
+  "q": "Is Dr Kim here? — No, she's just ___ a meeting.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "gone to",
+  "why": "Её нет, она на совещании — gone to."
+ },
+ {
+  "id": "c-gym",
+  "t": 4,
+  "q": "Why are you so tired? — I've just ___ the gym.",
+  "opts": [
+   "gone to",
+   "been to",
+   "been in"
+  ],
+  "a": "been to",
+  "why": "Сходил и вернулся уставшим — been to."
+ },
+ {
+  "id": "q-you",
+  "t": 5,
+  "q": "Where have you ___? We've been looking for you!",
+  "opts": [
+   "been",
+   "gone"
+  ],
+  "a": "been",
+  "why": "Человек вернулся — Where have you been?"
+ },
+ {
+  "id": "q-nurse",
+  "t": 5,
+  "q": "Where has the nurse ___? I need her right now.",
+  "opts": [
+   "gone",
+   "been"
+  ],
+  "a": "gone",
+  "why": "Её нет — Where has she gone?"
+ },
+ {
+  "id": "q-glasses",
+  "t": 5,
+  "q": "Where have my glasses ___? I had them a minute ago.",
+  "opts": [
+   "gone",
+   "been"
+  ],
+  "a": "gone",
+  "why": "Вещи пропадают — gone."
+ },
+ {
+  "id": "q-morning",
+  "t": 5,
+  "q": "Where have you ___ all morning? — At a conference.",
+  "opts": [
+   "been",
+   "gone"
+  ],
+  "a": "been",
+  "why": "Где ты был всё утро? — been."
+ },
+ {
+  "id": "w-last",
+  "t": 6,
+  "q": "I ___ London last year.",
+  "opts": [
+   "went to",
+   "have been to"
+  ],
+  "a": "went to",
+  "why": "last year — «когда» названо: went to."
+ },
+ {
+  "id": "w-sofar",
+  "t": 6,
+  "q": "I ___ London three times so far.",
+  "opts": [
+   "have been to",
+   "went to"
+  ],
+  "a": "have been to",
+  "why": "so far — до сих пор, время не названо: have been to."
+ },
+ {
+  "id": "w-yesterday",
+  "t": 6,
+  "q": "He ___ the GP yesterday.",
+  "opts": [
+   "went to",
+   "has been to"
+  ],
+  "a": "went to",
+  "why": "yesterday — Past Simple: went to."
+ },
+ {
+  "id": "w-2019",
+  "t": 6,
+  "q": "Have you ever been to Kazan? — Yes, I ___ there in 2019.",
+  "opts": [
+   "went",
+   "have been"
+  ],
+  "a": "went",
+  "why": "in 2019 — «когда» названо: went."
+ },
+ {
+  "id": "w-monday",
+  "t": 6,
+  "q": "He ___ the GP on Monday and got a referral.",
+  "opts": [
+   "went to",
+   "has been to"
+  ],
+  "a": "went to",
+  "why": "on Monday — Past Simple: went to."
+ },
+ {
+  "id": "h-home",
+  "t": 7,
+  "q": "Where's Anna? — She's ___ home.",
+  "opts": [
+   "gone",
+   "gone to",
+   "been to"
+  ],
+  "a": "gone",
+  "why": "home — без to: gone home."
+ },
+ {
+  "id": "h-see",
+  "t": 7,
+  "q": "I've ___ see the GP about my headaches.",
+  "opts": [
+   "been to",
+   "gone to"
+  ],
+  "a": "been to",
+  "why": "been to see — сходил к кому-то и вернулся."
+ },
+ {
+  "id": "h-work",
+  "t": 7,
+  "q": "I've ___ work since seven this morning.",
+  "opts": [
+   "been at",
+   "been to",
+   "gone to"
+  ],
+  "a": "been at",
+  "why": "since seven — на работе до сих пор: been at work."
+ },
+ {
+  "id": "h-conf",
+  "t": 7,
+  "q": "She's ___ a conference all week.",
+  "opts": [
+   "been at",
+   "been in",
+   "gone to"
+  ],
+  "a": "been at",
+  "why": "На событии всю неделю — been at."
+ },
+ {
+  "id": "h-beenhome",
+  "t": 7,
+  "q": "Have you ___ home since the accident?",
+  "opts": [
+   "been",
+   "been to"
+  ],
+  "a": "been",
+  "why": "home — без to: been home."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "gonebeen:state";
+const LS_SPEAK = "gonebeen:autospeak";
+const LS_TAB = "gonebeen:tab";
+const LS_OPEN = "gonebeen:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "gone / been"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]{}|]/g, ""); }
+function label(a){ return a === "" ? "ничего" : a; }
+// «-ing» и «to do» не должны разрываться в конце строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-ing\b|\bto do\b)/).forEach(part => { if (part === "-ing" || part === "to do") f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+// Новые карточки идут вперемешку по ответам (gone to, been to, been in…) —
+// чтобы каждый раз выбирать по смыслу, а не угадывать по теме.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { (pools[c.a] = pools[c.a] || []).push(c); });
+  const list = Object.keys(pools).map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 2;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length;
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+// […] — gone (оранжевый), {…} — been to (синий), |…| — been in / been at (зелёный)
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]|\{([^}]+)\}|\|([^|]+)\|/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(m[1] != null ? el("span", "pr", m[1]) : m[2] != null ? el("span", "st", m[2]) : el("span", "good", m[3]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex" + (ex.w ? " has-w" : ""));
+        if (ex.w){
+          const w = el("p", "ex-w");
+          const b = el("b", null, ex.w);
+          b.lang = "en";
+          w.append(b, ex.wr);
+          row.append(w);
+        }
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= TOPICS.length ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

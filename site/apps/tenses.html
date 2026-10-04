@@ -1,0 +1,2223 @@
+<title>Времена английского</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("tenses",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw,.g-form i{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .obj,.st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-title .h-plus{color:var(--muted)}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(28px*var(--k)) minmax(0,1fr) auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li{grid-template-columns:minmax(0,1fr) auto}
+  .algo li::before{display:none}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li span i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));white-space:nowrap}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .tg{display:flex;flex-direction:column;gap:calc(12px*var(--k));margin-top:calc(4px*var(--k))}
+  .tg-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(6px*var(--k));text-align:center}
+  .tg-cols span{font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.1}
+  .tg-cols small{display:block;font-family:var(--sans);font-size:calc(12px*var(--k));color:var(--muted)}
+  .tg-asp{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .tg-asp b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(6px*var(--k))}
+  .tg-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(6px*var(--k))}
+  .tc{min-height:calc(56px*var(--k));padding:calc(6px*var(--k)) calc(5px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.2;cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center}
+  .tc[aria-pressed="true"]{border-color:var(--accent);background:var(--raise);box-shadow:inset 0 0 0 calc(1px*var(--k)) var(--accent)}
+  .tc.rare{color:var(--muted)}
+  .tg-leg{margin:calc(2px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .td{margin-top:calc(14px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));scroll-margin-top:calc(8px*var(--k))}
+  .td-ph{margin:0;font-size:calc(16px*var(--k));color:var(--muted)}
+  .td-name{margin:0;font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k));line-height:1.15}
+  .td-form{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));color:var(--accent)}
+  .td-fig{margin:calc(10px*var(--k)) 0 0}
+  .td-mean{margin:calc(4px*var(--k)) 0 0;font-size:calc(16px*var(--k));line-height:1.45;color:var(--text)}
+  .td-marks{margin:calc(10px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .td-marks span{font-family:var(--serif);font-size:calc(17px*var(--k));color:var(--blue)}
+  .td-exs{display:flex;flex-direction:column;gap:calc(10px*var(--k));margin-top:calc(12px*var(--k))}
+  .td-nq{margin:calc(12px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .td-nq b{display:inline-block;width:calc(20px*var(--k));font-family:var(--sans);color:var(--muted)}
+  .td-trap{margin:calc(12px*var(--k)) 0 0;padding:calc(10px*var(--k)) calc(12px*var(--k));border-radius:calc(12px*var(--k));background:var(--no-soft);font-size:calc(15px*var(--k));line-height:1.45;color:var(--text)}
+  .td-trap b{color:var(--no-text);font-weight:600}
+  .td .t-train{margin-top:calc(14px*var(--k));width:100%}
+  .tl{display:block;width:100%;max-width:calc(440px*var(--k));height:auto}
+  .tl .ax{stroke:var(--muted)}
+  .tl .axh{fill:var(--muted)}
+  .tl .ref{stroke:var(--blue)}
+  .tl .now2{stroke:var(--muted)}
+  .tl .dot{fill:var(--accent)}
+  .tl .bar{fill:rgba(217,119,87,.25);stroke:var(--accent)}
+  .tl .arc{fill:none;stroke:var(--accent)}
+  .tl .arh{fill:var(--accent)}
+  .tl .br{fill:none;stroke:var(--soft)}
+  .tl .lr{fill:var(--blue)}
+  .tl .lm{fill:var(--muted)}
+  .tl .lb{fill:var(--soft)}
+  .algo-q{margin:calc(6px*var(--k)) 0 calc(2px*var(--k));font-size:calc(16px*var(--k));line-height:1.45}
+  .algo-q b{font-weight:600}
+  .algo li b{font-size:calc(18px*var(--k))}
+  .mk{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:calc(12px*var(--k));padding:calc(9px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .mk:first-child{border-top:0}
+  .mk-w{margin:0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--blue)}
+  .mk-t{margin:0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--soft)}
+  .rb{padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .rb:first-child{border-top:0}
+  .rb-ru{margin:0;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft)}
+  .rb-tag{display:inline-block;margin-left:calc(6px*var(--k));padding:0 calc(8px*var(--k));border:calc(1px*var(--k)) solid currentColor;border-radius:calc(999px*var(--k));font-size:calc(12px*var(--k));line-height:1.6;color:var(--blue);white-space:nowrap}
+  .rb-en{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35}
+  .ot{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);column-gap:calc(12px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .ot:first-child{border-top:0}
+  .ot-c{margin:0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.3}
+  .ot-ru{margin:calc(2px*var(--k)) 0 0;font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .ot-ex{margin:0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .ot-note{margin:calc(3px*var(--k)) 0 0;font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-foot{margin:calc(6px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .mx-foot a{color:var(--blue)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-w{grid-column:1 / -1;margin:calc(6px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .ex-w b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(4px*var(--k))}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex.has-w .ex-play{grid-row:2 / span 2}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Таблица</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Таблица</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title">Времена</h1>
+      <p class="r-sub">Двенадцать времён&nbsp;— это таблица 3&nbsp;×&nbsp;4: <b>когда</b> (прошлое, настоящее, будущее) и&nbsp;<b>как</b> (факт, процесс, результат, процесс до&nbsp;момента). Нажми на клетку&nbsp;— покажу схему, формулу и&nbsp;примеры.</p>
+      <div class="tg" role="group" aria-label="Таблица времён: колонки — прошлое, настоящее, будущее; строки — Simple, Continuous, Perfect, Perfect Continuous">
+        <div class="tg-cols" aria-hidden="true"><span lang="en">Past<small>прошлое</small></span><span lang="en">Present<small>настоящее</small></span><span lang="en">Future<small>будущее</small></span></div>
+        <div class="tg-row"><p class="tg-asp"><b lang="en">Simple</b>факт, регулярно, по порядку</p><div class="tg-cells"><button class="tc" type="button" data-id="past-simple" aria-pressed="false"><span class="sr">Past Simple: </span><span lang="en">worked</span></button><button class="tc" type="button" data-id="pres-simple" aria-pressed="false"><span class="sr">Present Simple: </span><span lang="en">work(s)</span></button><button class="tc" type="button" data-id="fut-simple" aria-pressed="false"><span class="sr">Future Simple: </span><span lang="en">will work</span></button></div></div>
+        <div class="tg-row"><p class="tg-asp"><b lang="en">Continuous</b>процесс в момент · be + <span class="nw">-ing</span></p><div class="tg-cells"><button class="tc" type="button" data-id="past-cont" aria-pressed="false"><span class="sr">Past Continuous: </span><span lang="en">was work<span class="pr">ing</span></span></button><button class="tc" type="button" data-id="pres-cont" aria-pressed="false"><span class="sr">Present Continuous: </span><span lang="en">am work<span class="pr">ing</span></span></button><button class="tc" type="button" data-id="fut-cont" aria-pressed="false"><span class="sr">Future Continuous: </span><span lang="en">will be work<span class="pr">ing</span></span></button></div></div>
+        <div class="tg-row"><p class="tg-asp"><b lang="en">Perfect</b>результат к моменту · have + V3</p><div class="tg-cells"><button class="tc" type="button" data-id="past-perf" aria-pressed="false"><span class="sr">Past Perfect: </span><span lang="en"><span class="st">had</span> worked</span></button><button class="tc" type="button" data-id="pres-perf" aria-pressed="false"><span class="sr">Present Perfect: </span><span lang="en"><span class="st">have</span> worked</span></button><button class="tc" type="button" data-id="fut-perf" aria-pressed="false"><span class="sr">Future Perfect: </span><span lang="en">will <span class="st">have</span> worked</span></button></div></div>
+        <div class="tg-row"><p class="tg-asp"><b lang="en">Perfect Continuous</b>длится до момента · have been + <span class="nw">-ing</span></p><div class="tg-cells"><button class="tc" type="button" data-id="past-pc" aria-pressed="false"><span class="sr">Past Perfect Continuous: </span><span lang="en"><span class="st">had</span> been work<span class="pr">ing</span></span></button><button class="tc" type="button" data-id="pres-pc" aria-pressed="false"><span class="sr">Present Perfect Continuous: </span><span lang="en"><span class="st">have</span> been work<span class="pr">ing</span></span></button><button class="tc rare" type="button" data-id="fut-pc" aria-pressed="false"><span class="sr">Future Perfect Continuous: </span><span lang="en">will <span class="st">have</span> been work<span class="pr">ing</span></span></button></div></div>
+      </div>
+      <p class="tg-leg"><span class="st" lang="en">have</span>&nbsp;— Perfect: результат к&nbsp;моменту. <span class="pr nw" lang="en">-ing</span>&nbsp;— Continuous: процесс. В&nbsp;Perfect Continuous есть оба.</p>
+      <section class="td" id="td" aria-live="polite"><p class="td-ph">Нажми на любую клетку таблицы.</p></section>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <div class="algo">
+        <p class="algo-h">Два вопроса</p>
+        <p class="algo-q"><b>1. Когда?</b> Прошлое, настоящее или будущее&nbsp;— колонка таблицы.</p>
+        <p class="algo-q"><b>2. Как?</b> Это строка:</p>
+        <ol>
+          <li><span>Факт, регулярно, события по&nbsp;порядку</span><b lang="en">Simple</b></li>
+          <li><span>В&nbsp;процессе в&nbsp;этот момент</span><b class="pr" lang="en">Continuous</b></li>
+          <li><span>Результат к&nbsp;моменту, «уже», опыт</span><b class="st" lang="en">Perfect</b></li>
+          <li><span>Длится до&nbsp;момента, «сколько уже»</span><b lang="en"><span class="st">Perf.</span> <span class="pr">Cont.</span></b></li>
+        </ol>
+        <p class="algo-m">Есть «когда» в&nbsp;прошлом&nbsp;— <span lang="en">yesterday, ago, in 2019</span>? Значит, <span lang="en">Past Simple</span>, а&nbsp;не <span lang="en">Present Perfect</span>.</p>
+        <p class="algo-note">«Работаю здесь 10 лет»&nbsp;— по-английски не настоящее, а&nbsp;<span lang="en">I've been working here for 10 years</span>.</p>
+      </div>
+      <h2 class="lbl">Главные ловушки</h2>
+      <div class="mx-wrap">
+        <div class="rb"><p class="rb-ru">Я работаю здесь 10 лет.</p><p class="rb-en" lang="en">I<span class="pr">&#x27;ve been working</span> here <span class="st">for</span> 10 years.</p><p class="ot-note">длится до сих пор — Perfect Continuous, не Present Simple</p></div>
+        <div class="rb"><p class="rb-ru">Я видел его вчера.</p><p class="rb-en" lang="en">I <span class="pr">saw</span> him <span class="st">yesterday</span>.</p><p class="ot-note">есть «когда» — Past Simple, не Present Perfect</p></div>
+        <div class="rb"><p class="rb-ru">Я знаю его давно.</p><p class="rb-en" lang="en">I<span class="pr">&#x27;ve known</span> him <span class="st">for years</span>.</p><p class="ot-note">know — глагол состояния: Perfect без -ing</p></div>
+        <div class="rb"><p class="rb-ru">Когда он придёт, я позвоню.</p><p class="rb-en" lang="en"><span class="st">When</span> he <span class="pr">comes</span>, I<span class="pr">&#x27;ll call</span>.</p><p class="ot-note">после when — Present, не will</p></div>
+        <div class="rb"><p class="rb-ru">Завтра я встречаюсь с семьёй пациента.</p><p class="rb-en" lang="en">I<span class="pr">&#x27;m meeting</span> the family <span class="st">tomorrow</span>.</p><p class="ot-note">договорились — Present Continuous</p></div>
+        <div class="rb"><p class="rb-ru">Когда я пришёл, он уже ушёл.</p><p class="rb-en" lang="en">When I arrived, he <span class="pr">had</span> <span class="st">already</span> <span class="pr">left</span>.</p><p class="ot-note">что было раньше — Past Perfect</p></div>
+      </div>
+      <h2 class="lbl">Слова-подсказки</h2>
+      <div class="mx-wrap">
+        <div class="mk"><p class="mk-w" lang="en">always, usually, every day</p><p class="mk-t" lang="en">Present Simple</p></div>
+        <div class="mk"><p class="mk-w" lang="en">now, at the moment, this week</p><p class="mk-t" lang="en">Present Continuous</p></div>
+        <div class="mk"><p class="mk-w" lang="en">yesterday, ago, last…, in 2019</p><p class="mk-t" lang="en">Past Simple</p></div>
+        <div class="mk"><p class="mk-w" lang="en">while, at 10 pm yesterday</p><p class="mk-t" lang="en">Past Continuous</p></div>
+        <div class="mk"><p class="mk-w" lang="en">already, yet, just, ever, never</p><p class="mk-t" lang="en">Present Perfect</p></div>
+        <div class="mk"><p class="mk-w" lang="en">for, since, how long</p><p class="mk-t" lang="en">Perfect (Continuous)</p></div>
+        <div class="mk"><p class="mk-w" lang="en">by the time, before — в прошлом</p><p class="mk-t" lang="en">Past Perfect</p></div>
+        <div class="mk"><p class="mk-w" lang="en">tomorrow, next…, I think</p><p class="mk-t" lang="en">will</p></div>
+        <div class="mk"><p class="mk-w" lang="en">this time tomorrow</p><p class="mk-t" lang="en">Future Continuous</p></div>
+        <div class="mk"><p class="mk-w" lang="en">by Friday, by then</p><p class="mk-t" lang="en">Future Perfect</p></div>
+      </div>
+      <h2 class="lbl">Будущее: четыре способа</h2>
+      <div class="mx-wrap">
+        <div class="ot"><div><p class="ot-c" lang="en">will</p><p class="ot-ru">решаю прямо сейчас, прогноз, обещание</p></div><div><p class="ot-ex" lang="en">I<span class="pr">&#x27;ll call</span> the family.</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">be going to</p><p class="ot-ru">план, решил заранее; видно по признакам</p></div><div><p class="ot-ex" lang="en">We<span class="pr">&#x27;re going to repeat</span> the scan.</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">Present Continuous</p><p class="ot-ru">договорились, есть в календаре</p></div><div><p class="ot-ex" lang="en">I<span class="pr">&#x27;m meeting</span> the family at 3.</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">Present Simple</p><p class="ot-ru">расписание</p></div><div><p class="ot-ex" lang="en">The clinic <span class="pr">opens</span> at 8.</p></div></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I work here since 2015</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ve worked here since 2015</span><span class="err-note">since — Present Perfect</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I have seen him yesterday</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I saw him yesterday</span><span class="err-note">yesterday — Past Simple</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">How long do you have this pain?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">How long have you had this pain?</span><span class="err-note">«как давно» — Present Perfect</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I am knowing him for years</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ve known him for years</span><span class="err-note">know — без -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">When he will come, I&#x27;ll call</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">When he comes, I&#x27;ll call</span><span class="err-note">после when — без will</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He has died in 2019</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He died in 2019</span><span class="err-note">дата — Past Simple</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. […] — форма времени (оранжевый), {…} — слово-подсказка (синий).
+const MIXED_TOPIC = 12;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "Present Simple или Continuous",
+  "rule": "Present Simple — факт, привычка, регулярно, расписание: He smokes twenty a day. Present Continuous — прямо сейчас или временно, в эти дни: The doctor is examining the patient. Подсказки: always, usually, every day — Simple; now, at the moment, this week, Look! — Continuous.",
+  "ex": [
+   {
+    "en": "He [smokes] twenty cigarettes {a day}.",
+    "ru": "Он выкуривает двадцать сигарет в день."
+   },
+   {
+    "en": "The nurse [is taking] his blood pressure {now}.",
+    "ru": "Медсестра сейчас меряет ему давление."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "Past Simple или Present Perfect",
+  "rule": "По-русски одно прошедшее, по-английски два. Сказано или понятно, когда — yesterday, ago, last week, in 2019 — Past Simple: He had a stroke in 2019. Время не названо, важен результат сейчас или опыт — Present Perfect: He has had two strokes. Вопрос «когда?» — только Past Simple: When did it start?",
+  "ex": [
+   {
+    "en": "He [had] a stroke {in 2019}.",
+    "ru": "У него был инсульт в 2019 году."
+   },
+   {
+    "en": "He['s had] two strokes {so far}.",
+    "ru": "У него уже было два инсульта."
+   },
+   {
+    "en": "{When} [did] the weakness [start]?",
+    "ru": "Когда началась слабость?"
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "for и since: «сколько уже»",
+  "rule": "Русское настоящее «работаю здесь 10 лет», «болеет с понедельника» по-английски — Present Perfect или Perfect Continuous: I've been working here for ten years. for — сколько времени (for ten years), since — с какого момента (since 2015). How long…? — тоже Perfect: How long have you had this pain?",
+  "ex": [
+   {
+    "en": "I['ve been working] here {for} ten years.",
+    "ru": "Я работаю здесь десять лет."
+   },
+   {
+    "en": "He['s been] in hospital {since} Monday.",
+    "ru": "Он в больнице с понедельника."
+   },
+   {
+    "en": "{How long} [have] you [had] this pain?",
+    "ru": "Как давно у вас эта боль?"
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "Perfect или Perfect Continuous",
+  "rule": "Present Perfect — результат, сколько сделано: I've written three discharge summaries. Present Perfect Continuous — сам процесс, как долго, его следы: I've been writing summaries all morning; Why are you out of breath? — I've been running. Глаголы состояния (know, be, have — иметь) — только Perfect: I've known him for years.",
+  "ex": [
+   {
+    "en": "I['ve written] three discharge summaries {today}.",
+    "ru": "Сегодня я написал три выписки."
+   },
+   {
+    "en": "I['ve been writing] summaries {all morning}.",
+    "ru": "Всё утро пишу выписки."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "Past Simple или Past Continuous",
+  "rule": "Past Continuous — фон, процесс в момент прошлого; Past Simple — событие, которое «упало» на этот фон: He was watching TV when his arm went weak. while + Continuous — процесс идёт одновременно с другим. Цепочка событий по порядку — только Past Simple: He fell, hit his head and lost consciousness.",
+  "ex": [
+   {
+    "en": "He [was watching] TV {when} his arm [went] weak.",
+    "ru": "Он смотрел телевизор, когда ослабла рука."
+   },
+   {
+    "en": "{While} I [was examining] him, he [had] a seizure.",
+    "ru": "Пока я его осматривал, у него случился приступ."
+   },
+   {
+    "en": "He [fell], [hit] his head and [lost] consciousness.",
+    "ru": "Он упал, ударился головой и потерял сознание."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "Past Perfect: что было раньше",
+  "rule": "Past Perfect (had + V3) — что случилось раньше другого момента в прошлом: By the time the ambulance arrived, he had regained consciousness. Подсказки: by the time, before, already, when. Past Perfect Continuous (had been + -ing) — процесс длился до того момента: He had been feeling dizzy for two days.",
+  "ex": [
+   {
+    "en": "{By the time} he arrived, the window [had closed].",
+    "ru": "Когда он доехал, терапевтическое окно уже закрылось."
+   },
+   {
+    "en": "He [had been feeling] dizzy {for} two days before he came in.",
+    "ru": "У него два дня кружилась голова, прежде чем он обратился."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "Будущее: will, going to и другие",
+  "rule": "will — решаю прямо сейчас, прогноз, обещание: I'll get it. be going to — план, решил заранее, или видно по признакам: He's going to be sick! Present Continuous — договорились, есть в календаре: I'm meeting the family at 3. Present Simple — расписание: The clinic opens at 8.",
+  "ex": [
+   {
+    "en": "The phone's ringing. — I['ll get] it.",
+    "ru": "Телефон звонит. — Я возьму."
+   },
+   {
+    "en": "We['re going to repeat] the scan tomorrow.",
+    "ru": "Завтра мы повторим КТ — уже решили."
+   },
+   {
+    "en": "I['m meeting] the family {at 3}.",
+    "ru": "В три я встречаюсь с родственниками."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "После when, if — без will",
+  "rule": "В частях с when, if, as soon as, before, after, until будущее выражают Present: When the results come, I'll call you — а не when the results will come. Если важно «уже сделано к тому моменту» — Present Perfect: I'll send it when I've finished.",
+  "ex": [
+   {
+    "en": "I['ll call] you {as soon as} the results [come] back.",
+    "ru": "Позвоню, как только придут результаты."
+   },
+   {
+    "en": "{When} I['ve finished] the round, I['ll ring] you.",
+    "ru": "Когда закончу обход, позвоню."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "title": "Future Continuous и Future Perfect",
+  "late": 0.3,
+  "rule": "Future Continuous (will be + -ing) — будет в процессе в момент будущего: This time tomorrow I'll be flying to Moscow. Future Perfect (will have + V3) — будет сделано к моменту: The results will have come back by Monday. Подсказки: this time tomorrow — Continuous; by Monday, by then — Perfect.",
+  "ex": [
+   {
+    "en": "{This time tomorrow} I['ll be flying] to Moscow.",
+    "ru": "Завтра в это время я буду лететь в Москву."
+   },
+   {
+    "en": "The results [will have come] back {by Monday}.",
+    "ru": "К понедельнику результаты уже придут."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "title": "Глаголы состояния — без -ing",
+  "rule": "know, want, believe, understand, need, own, seem и have в значении «иметь» не ставят в Continuous, даже «прямо сейчас» и даже с for: I know, I want, I've known him for years. Подробно — в приложении «Глаголы состояния».",
+  "ex": [
+   {
+    "en": "I [know] what you mean.",
+    "ru": "Я понимаю, что вы имеете в виду."
+   },
+   {
+    "en": "I['ve known] him {for} twenty years.",
+    "ru": "Я знаю его двадцать лет."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "title": "Узнай время",
+  "rule": "Смотри на форму — называй время. have + V3 — Perfect, be + -ing — Continuous, have been + -ing — Perfect Continuous; had — прошлое, will — будущее. Узнавание закрепляет таблицу.",
+  "ex": []
+ },
+ {
+  "n": 12,
+  "title": "Итог — всё вместе",
+  "rule": "Пятнадцать случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Таблица: двенадцать времён со схемой (svg), формулой и примерами.
+const TENSES = [
+ {
+  "id": "pres-simple",
+  "time": "present",
+  "aspect": "simple",
+  "name": "Present Simple",
+  "cell": "work(s)",
+  "form": "V · he works · do / does",
+  "mean": "факт, привычка, регулярно, расписание",
+  "marks": "always, usually, often, every day, never",
+  "ex": [
+   {
+    "en": "I [work] in the stroke unit.",
+    "ru": "Я работаю в инсультном отделении."
+   },
+   {
+    "en": "The ward round [starts] at 8 {every morning}.",
+    "ru": "Обход начинается каждое утро в 8."
+   }
+  ],
+  "neg": "He doesn't smoke.",
+  "q": "Do you take any tablets?",
+  "trap": "«Я работаю здесь 10 лет» — не Present Simple, а Perfect: I've been working here for 10 years.",
+  "topic": 1,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Present Simple: факт, привычка, регулярно, расписание\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><circle class=\"dot\" cx=\"40\" cy=\"42\" r=\"5\"/><circle class=\"dot\" cx=\"95\" cy=\"42\" r=\"5\"/><circle class=\"dot\" cx=\"148\" cy=\"42\" r=\"5\"/><circle class=\"dot\" cx=\"205\" cy=\"42\" r=\"5\"/><circle class=\"dot\" cx=\"262\" cy=\"42\" r=\"5\"/><line class=\"ref\" x1=\"175\" y1=\"12\" x2=\"175\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"175\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text></svg>"
+ },
+ {
+  "id": "pres-cont",
+  "time": "present",
+  "aspect": "cont",
+  "name": "Present Continuous",
+  "cell": "am work[ing]",
+  "form": "am / is / are + -ing",
+  "mean": "прямо сейчас; временно, в эти дни; договорился на будущее",
+  "marks": "now, at the moment, this week, currently, Look!",
+  "ex": [
+   {
+    "en": "The nurse [is taking] his blood pressure {now}.",
+    "ru": "Медсестра сейчас меряет ему давление."
+   },
+   {
+    "en": "I['m covering] nights {this week}.",
+    "ru": "На этой неделе я дежурю по ночам."
+   }
+  ],
+  "neg": "He isn't responding.",
+  "q": "Are you feeling any pain?",
+  "trap": "know, want, need, have (иметь) — без -ing: I know, а не I am knowing.",
+  "topic": 1,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Present Continuous: прямо сейчас; временно, в эти дни; договорился на будущее\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><rect class=\"bar\" x=\"120\" y=\"35\" width=\"110\" height=\"14\" rx=\"7\" stroke-width=\"2\"/><line class=\"ref\" x1=\"175\" y1=\"12\" x2=\"175\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"175\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text></svg>"
+ },
+ {
+  "id": "pres-perf",
+  "time": "present",
+  "aspect": "perf",
+  "name": "Present Perfect",
+  "cell": "{have} worked",
+  "form": "have / has + V3",
+  "mean": "результат сейчас; опыт в жизни; «уже», «ещё не»; период не закончился",
+  "marks": "already, yet, just, ever, never, so far, this week",
+  "ex": [
+   {
+    "en": "The results [have] {just} [come] back.",
+    "ru": "Результаты только что пришли."
+   },
+   {
+    "en": "[Have] you {ever} [had] a stroke?",
+    "ru": "У вас когда-нибудь был инсульт?"
+   }
+  ],
+  "neg": "He hasn't eaten since yesterday.",
+  "q": "Have you taken your tablets?",
+  "trap": "С yesterday, ago, in 2019 нельзя — если сказано «когда», нужен Past Simple.",
+  "topic": 2,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Present Perfect: результат сейчас; опыт в жизни; «уже», «ещё не»; период не закончился\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><circle class=\"dot\" cx=\"90\" cy=\"42\" r=\"6\"/><path class=\"arc\" d=\"M90,34 Q132.5,4 170,30\" stroke-width=\"2\"/><polygon class=\"arh\" points=\"175.8,34.0 164.7,32.4 170.4,24.2\"/><line class=\"ref\" x1=\"175\" y1=\"12\" x2=\"175\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"175\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text></svg>"
+ },
+ {
+  "id": "pres-pc",
+  "time": "present",
+  "aspect": "pc",
+  "name": "Present Perfect Continuous",
+  "cell": "{have} been work[ing]",
+  "form": "have / has been + -ing",
+  "mean": "началось в прошлом и длится до сих пор; «сколько уже»; следы процесса",
+  "marks": "for, since, how long, all day, lately",
+  "ex": [
+   {
+    "en": "I['ve been working] here {for} ten years.",
+    "ru": "Я работаю здесь десять лет."
+   },
+   {
+    "en": "{How long} [have] you [been having] these headaches?",
+    "ru": "Как давно у вас эти головные боли?"
+   }
+  ],
+  "neg": "I haven't been sleeping well.",
+  "q": "How long have you been waiting?",
+  "trap": "Русское «работаю уже 10 лет», «болит с понедельника» — это оно, а не Present Simple.",
+  "topic": 3,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Present Perfect Continuous: началось в прошлом и длится до сих пор; «сколько уже»; следы процесса\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><rect class=\"bar\" x=\"62\" y=\"35\" width=\"113\" height=\"14\" rx=\"7\" stroke-width=\"2\"/><path class=\"br\" d=\"M62,28 V22 H175 V28\" stroke-width=\"1.5\"/><text class=\"lb\" x=\"118.5\" y=\"17\" font-size=\"12\" text-anchor=\"middle\">сколько</text><line class=\"ref\" x1=\"175\" y1=\"30\" x2=\"175\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"175\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text></svg>"
+ },
+ {
+  "id": "past-simple",
+  "time": "past",
+  "aspect": "simple",
+  "name": "Past Simple",
+  "cell": "worked",
+  "form": "V2 · worked, went · did",
+  "mean": "закончилось в прошлом; сказано «когда»; события по порядку",
+  "marks": "yesterday, ago, last week, in 2019, when…?",
+  "ex": [
+   {
+    "en": "He [had] a stroke {two years ago}.",
+    "ru": "У него был инсульт два года назад."
+   },
+   {
+    "en": "We [gave] thrombolysis {at 10:40}.",
+    "ru": "Тромболизис провели в 10:40."
+   }
+  ],
+  "neg": "She didn't lose consciousness.",
+  "q": "When did the symptoms start?",
+  "trap": "Вопрос «когда?» — всегда Past Simple: When did it start?",
+  "topic": 2,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Past Simple: закончилось в прошлом; сказано «когда»; события по порядку\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"268\" y1=\"24\" x2=\"268\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"268\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><circle class=\"dot\" cx=\"130\" cy=\"42\" r=\"6\"/><text class=\"lr\" x=\"130\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">когда</text></svg>"
+ },
+ {
+  "id": "past-cont",
+  "time": "past",
+  "aspect": "cont",
+  "name": "Past Continuous",
+  "cell": "was work[ing]",
+  "form": "was / were + -ing",
+  "mean": "процесс в момент прошлого; фон, на который «упало» событие",
+  "marks": "while, when, at 10 pm yesterday, all evening",
+  "ex": [
+   {
+    "en": "He [was watching] TV {when} his arm went weak.",
+    "ru": "Он смотрел телевизор, когда ослабла рука."
+   },
+   {
+    "en": "{At midnight} I [was] still [writing] notes.",
+    "ru": "В полночь я ещё писал записи."
+   }
+  ],
+  "neg": "She wasn't wearing a seatbelt.",
+  "q": "What were you doing when it started?",
+  "trap": "Цепочка событий — не Continuous: He fell, hit his head and lost consciousness.",
+  "topic": 5,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Past Continuous: процесс в момент прошлого; фон, на который «упало» событие\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"268\" y1=\"24\" x2=\"268\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"268\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><rect class=\"bar\" x=\"75\" y=\"35\" width=\"110\" height=\"14\" rx=\"7\" stroke-width=\"2\"/><line class=\"ref\" x1=\"130\" y1=\"12\" x2=\"130\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"130\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">тогда</text></svg>"
+ },
+ {
+  "id": "past-perf",
+  "time": "past",
+  "aspect": "perf",
+  "name": "Past Perfect",
+  "cell": "{had} worked",
+  "form": "had + V3",
+  "mean": "случилось раньше другого момента в прошлом",
+  "marks": "by the time, before, already, after, when",
+  "ex": [
+   {
+    "en": "{By the time} he arrived, the window [had closed].",
+    "ru": "Когда он доехал, терапевтическое окно уже закрылось."
+   },
+   {
+    "en": "She [had stopped] her warfarin a week {before} the stroke.",
+    "ru": "За неделю до инсульта она бросила варфарин."
+   }
+  ],
+  "neg": "He hadn't taken his tablets.",
+  "q": "Had she had a seizure before?",
+  "trap": "Это не «давно прошедшее», а «раньше другого прошлого»: нужны два момента.",
+  "topic": 6,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Past Perfect: случилось раньше другого момента в прошлом\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"268\" y1=\"24\" x2=\"268\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"268\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><circle class=\"dot\" cx=\"45\" cy=\"42\" r=\"6\"/><path class=\"arc\" d=\"M45,34 Q87.5,4 125,30\" stroke-width=\"2\"/><polygon class=\"arh\" points=\"130.8,34.0 119.7,32.4 125.4,24.2\"/><line class=\"ref\" x1=\"130\" y1=\"12\" x2=\"130\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"130\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">тогда</text></svg>"
+ },
+ {
+  "id": "past-pc",
+  "time": "past",
+  "aspect": "pc",
+  "name": "Past Perfect Continuous",
+  "cell": "{had} been work[ing]",
+  "form": "had been + -ing",
+  "mean": "процесс длился до момента в прошлом; «сколько уже тогда»",
+  "marks": "for, since, how long — до момента в прошлом",
+  "ex": [
+   {
+    "en": "He [had been feeling] dizzy {for} two days before he came in.",
+    "ru": "У него два дня кружилась голова, прежде чем он обратился."
+   },
+   {
+    "en": "We [had been waiting] {for} an hour when the scanner broke down.",
+    "ru": "Мы ждали уже час, когда сломался томограф."
+   }
+  ],
+  "neg": "She hadn't been sleeping.",
+  "q": "How long had he been drinking?",
+  "trap": "Как Present Perfect Continuous, только точка отсчёта — в прошлом.",
+  "topic": 6,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Past Perfect Continuous: процесс длился до момента в прошлом; «сколько уже тогда»\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"268\" y1=\"24\" x2=\"268\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"268\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><rect class=\"bar\" x=\"24\" y=\"35\" width=\"106\" height=\"14\" rx=\"7\" stroke-width=\"2\"/><path class=\"br\" d=\"M24,28 V22 H130 V28\" stroke-width=\"1.5\"/><text class=\"lb\" x=\"77.0\" y=\"17\" font-size=\"12\" text-anchor=\"middle\">сколько</text><line class=\"ref\" x1=\"130\" y1=\"30\" x2=\"130\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"130\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">тогда</text></svg>"
+ },
+ {
+  "id": "fut-simple",
+  "time": "future",
+  "aspect": "simple",
+  "name": "Future Simple",
+  "cell": "will work",
+  "form": "will + V",
+  "mean": "решаю прямо сейчас; прогноз; обещание",
+  "marks": "tomorrow, next week, I think, probably, soon",
+  "ex": [
+   {
+    "en": "I['ll call] the family {now}.",
+    "ru": "Сейчас позвоню родственникам."
+   },
+   {
+    "en": "You['ll feel] a sharp scratch.",
+    "ru": "Сейчас будет укол."
+   }
+  ],
+  "neg": "It won't hurt.",
+  "q": "Will I be able to drive?",
+  "trap": "После when, if, as soon as — не will: When he comes, I'll call.",
+  "topic": 7,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Future Simple: решаю прямо сейчас; прогноз; обещание\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"64\" y1=\"24\" x2=\"64\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"64\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><circle class=\"dot\" cx=\"215\" cy=\"42\" r=\"6\"/><text class=\"lr\" x=\"215\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">когда</text></svg>"
+ },
+ {
+  "id": "fut-cont",
+  "time": "future",
+  "aspect": "cont",
+  "name": "Future Continuous",
+  "cell": "will be work[ing]",
+  "form": "will be + -ing",
+  "mean": "будет в процессе в момент будущего",
+  "marks": "this time tomorrow, at 9 tomorrow, all day tomorrow",
+  "ex": [
+   {
+    "en": "{This time tomorrow} I['ll be flying] to Moscow.",
+    "ru": "Завтра в это время я буду лететь в Москву."
+   },
+   {
+    "en": "Don't call {at 9} — I['ll be doing] the ward round.",
+    "ru": "Не звони в 9 — у меня будет обход."
+   }
+  ],
+  "neg": "I won't be working on Sunday.",
+  "q": "Will you be using the room this afternoon?",
+  "trap": "Вежливый вопрос о планах: Will you be using the scanner? — мягче, чем Will you use…?",
+  "topic": 9,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Future Continuous: будет в процессе в момент будущего\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"64\" y1=\"24\" x2=\"64\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"64\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><rect class=\"bar\" x=\"160\" y=\"35\" width=\"110\" height=\"14\" rx=\"7\" stroke-width=\"2\"/><line class=\"ref\" x1=\"215\" y1=\"12\" x2=\"215\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"215\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">тогда</text></svg>"
+ },
+ {
+  "id": "fut-perf",
+  "time": "future",
+  "aspect": "perf",
+  "name": "Future Perfect",
+  "cell": "will {have} worked",
+  "form": "will have + V3",
+  "mean": "будет сделано к моменту в будущем",
+  "marks": "by Friday, by then, by the end of…",
+  "ex": [
+   {
+    "en": "The results [will have come] back {by Monday}.",
+    "ru": "К понедельнику результаты уже придут."
+   },
+   {
+    "en": "{By 2030} I [will have worked] here for twenty years.",
+    "ru": "К 2030 году я проработаю здесь двадцать лет."
+   }
+  ],
+  "neg": "He won't have finished by then.",
+  "q": "Will you have finished the audit by May?",
+  "trap": "Главный признак — by + срок.",
+  "topic": 9,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Future Perfect: будет сделано к моменту в будущем\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"64\" y1=\"24\" x2=\"64\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"64\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><circle class=\"dot\" cx=\"130\" cy=\"42\" r=\"6\"/><path class=\"arc\" d=\"M130,34 Q172.5,4 210,30\" stroke-width=\"2\"/><polygon class=\"arh\" points=\"215.8,34.0 204.7,32.4 210.4,24.2\"/><line class=\"ref\" x1=\"215\" y1=\"12\" x2=\"215\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"215\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">к сроку</text></svg>"
+ },
+ {
+  "id": "fut-pc",
+  "time": "future",
+  "aspect": "pc",
+  "name": "Future Perfect Continuous",
+  "cell": "will {have} been work[ing]",
+  "form": "will have been + -ing",
+  "mean": "сколько процесс будет длиться к моменту в будущем",
+  "marks": "for … by, in May, by then",
+  "ex": [
+   {
+    "en": "{In May} I['ll have been working] here for ten years.",
+    "ru": "В мае будет десять лет, как я здесь работаю."
+   },
+   {
+    "en": "{By 6 pm} she['ll have been operating] for eight hours.",
+    "ru": "К шести вечера она будет оперировать уже восемь часов."
+   }
+  ],
+  "neg": "",
+  "q": "",
+  "trap": "Редкое время, сверх уровня: достаточно узнавать.",
+  "topic": 9,
+  "rare": true,
+  "svg": "<svg class=\"tl\" viewBox=\"0 0 320 80\" role=\"img\" aria-label=\"Future Perfect Continuous: сколько процесс будет длиться к моменту в будущем\"><line class=\"ax\" x1=\"12\" y1=\"42\" x2=\"300\" y2=\"42\" stroke-width=\"2\"/><polygon class=\"axh\" points=\"300,36 310,42 300,48\"/><line class=\"now2\" x1=\"64\" y1=\"24\" x2=\"64\" y2=\"54\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text class=\"lm\" x=\"64\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">сейчас</text><rect class=\"bar\" x=\"36\" y=\"35\" width=\"179\" height=\"14\" rx=\"7\" stroke-width=\"2\"/><path class=\"br\" d=\"M36,28 V22 H215 V28\" stroke-width=\"1.5\"/><text class=\"lb\" x=\"125.5\" y=\"17\" font-size=\"12\" text-anchor=\"middle\">сколько</text><line class=\"ref\" x1=\"215\" y1=\"30\" x2=\"215\" y2=\"56\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><text class=\"lr\" x=\"215\" y=\"70\" font-size=\"12\" text-anchor=\"middle\">тогда</text></svg>"
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, ru — подсказка, say — текст для озвучки.
+const CARDS = [
+ {
+  "id": "a-smoke",
+  "t": 1,
+  "q": "He ___ about twenty cigarettes a day.",
+  "opts": [
+   "smokes",
+   "is smoking"
+  ],
+  "a": "smokes",
+  "why": "Привычка, a day — Present Simple."
+ },
+ {
+  "id": "a-now",
+  "t": 1,
+  "q": "Please wait outside — the doctor ___ the patient right now.",
+  "opts": [
+   "is examining",
+   "examines"
+  ],
+  "a": "is examining",
+  "why": "right now — Present Continuous."
+ },
+ {
+  "id": "a-round",
+  "t": 1,
+  "q": "The ward round ___ at 8 every morning.",
+  "opts": [
+   "starts",
+   "is starting"
+  ],
+  "a": "starts",
+  "why": "Расписание, every morning — Present Simple."
+ },
+ {
+  "id": "a-week",
+  "t": 1,
+  "q": "___ nights this week, so I can't come to the meeting.",
+  "opts": [
+   "I'm working",
+   "I work"
+  ],
+  "a": "I'm working",
+  "why": "this week — временно: Present Continuous."
+ },
+ {
+  "id": "a-look",
+  "t": 1,
+  "q": "Look! The patient ___ to get out of bed.",
+  "opts": [
+   "is trying",
+   "tries"
+  ],
+  "a": "is trying",
+  "why": "Look! — прямо сейчас: Present Continuous."
+ },
+ {
+  "id": "a-always",
+  "t": 1,
+  "q": "She always ___ her tablets with breakfast.",
+  "opts": [
+   "takes",
+   "is taking"
+  ],
+  "a": "takes",
+  "why": "always — привычка: Present Simple."
+ },
+ {
+  "id": "b-2019",
+  "t": 2,
+  "q": "He ___ in 2019.",
+  "opts": [
+   "died",
+   "has died"
+  ],
+  "a": "died",
+  "why": "in 2019 — «когда» названо: Past Simple."
+ },
+ {
+  "id": "b-sofar",
+  "t": 2,
+  "q": "He ___ two strokes so far.",
+  "opts": [
+   "has had",
+   "had"
+  ],
+  "a": "has had",
+  "why": "so far — до сих пор: Present Perfect."
+ },
+ {
+  "id": "b-when",
+  "t": 2,
+  "q": "When ___ the symptoms start?",
+  "opts": [
+   "did",
+   "have"
+  ],
+  "a": "did",
+  "why": "Вопрос «когда?» — Past Simple."
+ },
+ {
+  "id": "b-first",
+  "t": 2,
+  "q": "It's the first time I ___ a case like this.",
+  "opts": [
+   "have seen",
+   "saw"
+  ],
+  "a": "have seen",
+  "why": "It's the first time — Present Perfect."
+ },
+ {
+  "id": "b-yet",
+  "t": 2,
+  "q": "I ___ the discharge summary yet.",
+  "opts": [
+   "haven't written",
+   "didn't write"
+  ],
+  "a": "haven't written",
+  "why": "yet — Present Perfect."
+ },
+ {
+  "id": "b-ago",
+  "t": 2,
+  "q": "He ___ his arm ten minutes ago, but now it's weak again.",
+  "opts": [
+   "moved",
+   "has moved"
+  ],
+  "a": "moved",
+  "why": "ago — Past Simple."
+ },
+ {
+  "id": "b-night",
+  "t": 2,
+  "q": "___ the news last night?",
+  "opts": [
+   "Did you see",
+   "Have you seen"
+  ],
+  "a": "Did you see",
+  "why": "last night — Past Simple."
+ },
+ {
+  "id": "b-yesterday",
+  "t": 2,
+  "q": "I ___ to the family yesterday.",
+  "opts": [
+   "spoke",
+   "have spoken"
+  ],
+  "a": "spoke",
+  "why": "yesterday — Past Simple."
+ },
+ {
+  "id": "c-work",
+  "t": 3,
+  "q": "I ___ here for ten years.",
+  "opts": [
+   "have been working",
+   "work",
+   "am working"
+  ],
+  "a": "have been working",
+  "why": "Длится до сих пор + for — Perfect Continuous. I work here for 10 years — ошибка."
+ },
+ {
+  "id": "c-icu",
+  "t": 3,
+  "q": "She ___ in intensive care since Monday.",
+  "opts": [
+   "has been",
+   "is",
+   "was"
+  ],
+  "a": "has been",
+  "why": "since + до сих пор — Present Perfect."
+ },
+ {
+  "id": "c-howlong",
+  "t": 3,
+  "q": "How long ___ this pain?",
+  "opts": [
+   "have you had",
+   "do you have",
+   "are you having"
+  ],
+  "a": "have you had",
+  "why": "«Как давно» — Present Perfect."
+ },
+ {
+  "id": "c-for",
+  "t": 3,
+  "q": "He's been in hospital ___ two weeks.",
+  "opts": [
+   "for",
+   "since"
+  ],
+  "a": "for",
+  "why": "Сколько времени — for."
+ },
+ {
+  "id": "c-since",
+  "t": 3,
+  "q": "I've known him ___ 2010.",
+  "opts": [
+   "since",
+   "for"
+  ],
+  "a": "since",
+  "why": "С какого момента — since."
+ },
+ {
+  "id": "c-known",
+  "t": 3,
+  "q": "I ___ Dr Petrova for years.",
+  "opts": [
+   "have known",
+   "have been knowing",
+   "know"
+  ],
+  "a": "have known",
+  "why": "know — глагол состояния: Perfect без -ing."
+ },
+ {
+  "id": "d-three",
+  "t": 4,
+  "q": "I ___ three discharge summaries today.",
+  "opts": [
+   "have written",
+   "have been writing"
+  ],
+  "a": "have written",
+  "why": "Сколько сделано — Present Perfect."
+ },
+ {
+  "id": "d-morning",
+  "t": 4,
+  "q": "I'm exhausted — I ___ discharge summaries all morning.",
+  "opts": [
+   "have been writing",
+   "have written"
+  ],
+  "a": "have been writing",
+  "why": "Процесс, как долго, устал от него — Perfect Continuous."
+ },
+ {
+  "id": "d-running",
+  "t": 4,
+  "q": "Why are you out of breath? — ___.",
+  "opts": [
+   "I've been running",
+   "I've run"
+  ],
+  "a": "I've been running",
+  "why": "Видны следы процесса — Perfect Continuous."
+ },
+ {
+  "id": "d-howmany",
+  "t": 4,
+  "q": "How many patients ___ this morning?",
+  "opts": [
+   "have you seen",
+   "have you been seeing"
+  ],
+  "a": "have you seen",
+  "why": "How many — результат: Present Perfect."
+ },
+ {
+  "id": "d-waiting",
+  "t": 4,
+  "q": "How long ___ for the ambulance?",
+  "opts": [
+   "have you been waiting",
+   "have you waited"
+  ],
+  "a": "have you been waiting",
+  "why": "Как долго длится — Perfect Continuous."
+ },
+ {
+  "id": "e-tv",
+  "t": 5,
+  "q": "He ___ TV when his arm suddenly went weak.",
+  "opts": [
+   "was watching",
+   "watched"
+  ],
+  "a": "was watching",
+  "why": "Фон, процесс — Past Continuous."
+ },
+ {
+  "id": "e-went",
+  "t": 5,
+  "q": "He was watching TV when his arm suddenly ___ weak.",
+  "opts": [
+   "went",
+   "was going"
+  ],
+  "a": "went",
+  "why": "Событие на фоне — Past Simple."
+ },
+ {
+  "id": "e-while",
+  "t": 5,
+  "q": "While I ___ him, he had a seizure.",
+  "opts": [
+   "was examining",
+   "examined"
+  ],
+  "a": "was examining",
+  "why": "while + процесс — Past Continuous."
+ },
+ {
+  "id": "e-chain",
+  "t": 5,
+  "q": "He fell, ___ his head and lost consciousness.",
+  "opts": [
+   "hit",
+   "was hitting"
+  ],
+  "a": "hit",
+  "why": "Цепочка событий — Past Simple."
+ },
+ {
+  "id": "e-doing",
+  "t": 5,
+  "q": "What ___ when the symptoms started?",
+  "opts": [
+   "were you doing",
+   "did you do"
+  ],
+  "a": "were you doing",
+  "why": "Что было в процессе в тот момент — Past Continuous."
+ },
+ {
+  "id": "e-driving",
+  "t": 5,
+  "q": "She ___ home from work when the headache started.",
+  "opts": [
+   "was driving",
+   "drove"
+  ],
+  "a": "was driving",
+  "why": "Фон для события — Past Continuous."
+ },
+ {
+  "id": "f-regained",
+  "t": 6,
+  "q": "By the time the ambulance arrived, he ___ consciousness.",
+  "opts": [
+   "had regained",
+   "has regained",
+   "regains"
+  ],
+  "a": "had regained",
+  "why": "by the time — раньше другого прошлого: Past Perfect."
+ },
+ {
+  "id": "f-stopped",
+  "t": 6,
+  "q": "She ___ her warfarin a week before the stroke.",
+  "opts": [
+   "had stopped",
+   "has stopped",
+   "stops"
+  ],
+  "a": "had stopped",
+  "why": "Раньше инсульта — Past Perfect."
+ },
+ {
+  "id": "f-never",
+  "t": 6,
+  "q": "He told us he ___ a seizure before.",
+  "opts": [
+   "had never had",
+   "has never had",
+   "never has"
+  ],
+  "a": "had never had",
+  "why": "До того момента в прошлом — Past Perfect."
+ },
+ {
+  "id": "f-dizzy",
+  "t": 6,
+  "q": "He ___ dizzy for two days before he came in.",
+  "opts": [
+   "had been feeling",
+   "has been feeling",
+   "is feeling"
+  ],
+  "a": "had been feeling",
+  "why": "Длилось до момента в прошлом — Past Perfect Continuous."
+ },
+ {
+  "id": "f-left",
+  "t": 6,
+  "q": "When I got to the ward, the consultant ___.",
+  "opts": [
+   "had already left",
+   "has already left",
+   "already leaves"
+  ],
+  "a": "had already left",
+  "why": "Ушёл раньше, чем я пришёл, — Past Perfect."
+ },
+ {
+  "id": "g-get",
+  "t": 7,
+  "q": "The phone's ringing. — OK, ___ it.",
+  "opts": [
+   "I'll get",
+   "I'm going to get",
+   "I get"
+  ],
+  "a": "I'll get",
+  "why": "Решаю прямо сейчас — will."
+ },
+ {
+  "id": "g-contrast",
+  "t": 7,
+  "q": "Why have you ordered more contrast? — Because ___ another CT this afternoon.",
+  "opts": [
+   "we're going to do",
+   "we'll do"
+  ],
+  "a": "we're going to do",
+  "why": "План, решили заранее — going to."
+ },
+ {
+  "id": "g-meeting",
+  "t": 7,
+  "q": "I can't come at 3 — ___ the patient's family.",
+  "opts": [
+   "I'm meeting",
+   "I meet",
+   "I'll meet"
+  ],
+  "a": "I'm meeting",
+  "why": "Договорились, есть в календаре — Present Continuous."
+ },
+ {
+  "id": "g-opens",
+  "t": 7,
+  "q": "The outpatient clinic ___ at 8 tomorrow.",
+  "opts": [
+   "opens",
+   "is going to open"
+  ],
+  "a": "opens",
+  "why": "Расписание — Present Simple."
+ },
+ {
+  "id": "g-sick",
+  "t": 7,
+  "q": "Look at him — ___ sick!",
+  "opts": [
+   "he's going to be",
+   "he'll be"
+  ],
+  "a": "he's going to be",
+  "why": "Видно по признакам — going to."
+ },
+ {
+  "id": "g-promise",
+  "t": 7,
+  "q": "Don't worry, ___ you as soon as the results come.",
+  "opts": [
+   "I'll call",
+   "I'm calling",
+   "I call"
+  ],
+  "a": "I'll call",
+  "why": "Обещание — will."
+ },
+ {
+  "id": "h-arrives",
+  "t": 8,
+  "q": "I'll call you as soon as the consultant ___.",
+  "opts": [
+   "arrives",
+   "will arrive",
+   "arrived"
+  ],
+  "a": "arrives",
+  "why": "После as soon as — Present, не will."
+ },
+ {
+  "id": "h-until",
+  "t": 8,
+  "q": "Stay in bed until the nurse ___ back.",
+  "opts": [
+   "comes",
+   "will come",
+   "came"
+  ],
+  "a": "comes",
+  "why": "После until — Present."
+ },
+ {
+  "id": "h-finished",
+  "t": 8,
+  "q": "I'll send you the report when I ___ it.",
+  "opts": [
+   "have finished",
+   "will finish",
+   "finished"
+  ],
+  "a": "have finished",
+  "why": "Уже сделано к тому моменту — Present Perfect; will нельзя."
+ },
+ {
+  "id": "h-before",
+  "t": 8,
+  "q": "Take the tablet before you ___ to bed.",
+  "opts": [
+   "go",
+   "will go",
+   "went"
+  ],
+  "a": "go",
+  "why": "После before — Present."
+ },
+ {
+  "id": "i-round",
+  "t": 9,
+  "q": "Don't call at 9 — I ___ the ward round.",
+  "opts": [
+   "will be doing",
+   "will have done",
+   "do"
+  ],
+  "a": "will be doing",
+  "why": "В процессе в момент будущего — Future Continuous."
+ },
+ {
+  "id": "i-friday",
+  "t": 9,
+  "q": "By Friday we ___ all the tests.",
+  "opts": [
+   "will have done",
+   "will be doing",
+   "do"
+  ],
+  "a": "will have done",
+  "why": "by Friday — будет сделано: Future Perfect."
+ },
+ {
+  "id": "i-flying",
+  "t": 9,
+  "q": "This time tomorrow I ___ to Moscow.",
+  "opts": [
+   "will be flying",
+   "will have flown",
+   "fly"
+  ],
+  "a": "will be flying",
+  "why": "this time tomorrow — Future Continuous."
+ },
+ {
+  "id": "i-2030",
+  "t": 9,
+  "q": "By 2030 I ___ here for twenty years.",
+  "opts": [
+   "will have worked",
+   "will work",
+   "will be working"
+  ],
+  "a": "will have worked",
+  "why": "by 2030 — Future Perfect."
+ },
+ {
+  "id": "j-know",
+  "t": 10,
+  "q": "I ___ what you mean.",
+  "opts": [
+   "know",
+   "am knowing"
+  ],
+  "a": "know",
+  "why": "know — без -ing."
+ },
+ {
+  "id": "j-want",
+  "t": 10,
+  "q": "The patient ___ to go home today.",
+  "opts": [
+   "wants",
+   "is wanting"
+  ],
+  "a": "wants",
+  "why": "want — без -ing."
+ },
+ {
+  "id": "j-known",
+  "t": 10,
+  "q": "I ___ him for twenty years.",
+  "opts": [
+   "have known",
+   "have been knowing",
+   "know"
+  ],
+  "a": "have known",
+  "why": "for + до сих пор, но know — Perfect без -ing."
+ },
+ {
+  "id": "j-have",
+  "t": 10,
+  "q": "He ___ two children.",
+  "opts": [
+   "has",
+   "is having"
+  ],
+  "a": "has",
+  "why": "have = иметь — без -ing."
+ },
+ {
+  "id": "k-1",
+  "t": 11,
+  "q": "She has been working here since 2015. → ___",
+  "ru": "Какое это время?",
+  "say": "She has been working here since 2015.",
+  "opts": [
+   "Present Perfect Continuous",
+   "Present Perfect",
+   "Past Continuous"
+  ],
+  "a": "Present Perfect Continuous",
+  "why": "has been + -ing — Present Perfect Continuous."
+ },
+ {
+  "id": "k-2",
+  "t": 11,
+  "q": "The results had come back before the round. → ___",
+  "ru": "Какое это время?",
+  "say": "The results had come back before the round.",
+  "opts": [
+   "Past Perfect",
+   "Present Perfect",
+   "Past Simple"
+  ],
+  "a": "Past Perfect",
+  "why": "had + V3 — Past Perfect."
+ },
+ {
+  "id": "k-3",
+  "t": 11,
+  "q": "I'll be working late tonight. → ___",
+  "ru": "Какое это время?",
+  "say": "I'll be working late tonight.",
+  "opts": [
+   "Future Continuous",
+   "Present Continuous",
+   "Future Simple"
+  ],
+  "a": "Future Continuous",
+  "why": "will be + -ing — Future Continuous."
+ },
+ {
+  "id": "k-4",
+  "t": 11,
+  "q": "He was sleeping when I came in. → ___",
+  "ru": "Какое время у was sleeping?",
+  "say": "He was sleeping when I came in.",
+  "opts": [
+   "Past Continuous",
+   "Past Simple",
+   "Present Continuous"
+  ],
+  "a": "Past Continuous",
+  "why": "was + -ing — Past Continuous."
+ },
+ {
+  "id": "k-5",
+  "t": 11,
+  "q": "We've already given the dose. → ___",
+  "ru": "Какое это время?",
+  "say": "We've already given the dose.",
+  "opts": [
+   "Present Perfect",
+   "Past Simple",
+   "Past Perfect"
+  ],
+  "a": "Present Perfect",
+  "why": "have + V3 — Present Perfect."
+ },
+ {
+  "id": "k-6",
+  "t": 11,
+  "q": "By Monday we'll have finished the audit. → ___",
+  "ru": "Какое это время?",
+  "say": "By Monday we'll have finished the audit.",
+  "opts": [
+   "Future Perfect",
+   "Future Simple",
+   "Present Perfect"
+  ],
+  "a": "Future Perfect",
+  "why": "will have + V3 — Future Perfect."
+ },
+ {
+  "id": "k-7",
+  "t": 11,
+  "q": "The nurse is changing the dressing. → ___",
+  "ru": "Какое это время?",
+  "say": "The nurse is changing the dressing.",
+  "opts": [
+   "Present Continuous",
+   "Present Simple",
+   "Past Continuous"
+  ],
+  "a": "Present Continuous",
+  "why": "is + -ing — Present Continuous."
+ },
+ {
+  "id": "k-8",
+  "t": 11,
+  "q": "He had a stroke last year. → ___",
+  "ru": "Какое это время?",
+  "say": "He had a stroke last year.",
+  "opts": [
+   "Past Simple",
+   "Present Perfect",
+   "Past Perfect"
+  ],
+  "a": "Past Simple",
+  "why": "had здесь — просто прошедшее от have: Past Simple."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "tenses:state";
+const LS_SPEAK = "tenses:autospeak";
+const LS_TAB = "tenses:tab";
+const LS_OPEN = "tenses:open";
+const LS_CELL = "tenses:cell";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Времена"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]{}|]/g, ""); }
+function label(a){ return a === "" ? "ничего" : a; }
+// «-ing» и «to do» не должны разрываться в конце строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-ing\b|\bto do\b)/).forEach(part => { if (part === "-ing" || part === "to do") f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: смысл предлога и форма глагола чередуются,
+// чтобы каждый раз выбирать по смыслу, а не угадывать по теме.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх уровня» (late) вступают позже: сначала основа
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+// […] — форма времени (оранжевый), {…} — слово-подсказка (синий)
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]|\{([^}]+)\}|\|([^|]+)\|/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(m[1] != null ? el("span", "pr", m[1]) : m[2] != null ? el("span", "st", m[2]) : el("span", "good", m[3]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex" + (ex.w ? " has-w" : ""));
+        if (ex.w){
+          const w = el("p", "ex-w");
+          const b = el("b", null, ex.w);
+          b.lang = "en";
+          w.append(b, ex.wr);
+          row.append(w);
+        }
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+
+// ——— Таблица времён: клетка → карточка времени
+const TENSE_BY_ID = {};
+TENSES.forEach(t => { TENSE_BY_ID[t.id] = t; });
+const TOPIC_BY_N = {};
+TOPICS.forEach(t => { TOPIC_BY_N[t.n] = t; });
+let cellId = null;
+function exampleRow(ex, key){
+  const row = el("div", "ex");
+  const play = el("button", "ex-play");
+  play.type = "button";
+  play.setAttribute("aria-label", "Прослушать пример");
+  play.innerHTML = PLAY_SVG;
+  play.addEventListener("click", () => playClip(key, exText(ex.en), 0.9));
+  row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+  return row;
+}
+function showTense(id, scroll){
+  const t = TENSE_BY_ID[id];
+  if (!t) return;
+  cellId = id;
+  lsSet(LS_CELL, id);
+  document.querySelectorAll(".tc").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.id === id)));
+  const box = $("td");
+  box.textContent = "";
+  const name = el("h3", "td-name", t.name); name.lang = "en";
+  const form = el("p", "td-form", t.form); form.lang = "en";
+  const fig = el("figure", "td-fig");
+  fig.innerHTML = t.svg;
+  const cap = el("figcaption", "td-mean"); cap.append(richText(t.mean)); fig.append(cap);
+  const marks = el("p", "td-marks", "Подсказки: ");
+  const mw = el("span", null, t.marks); mw.lang = "en"; marks.append(mw);
+  const exs = el("div", "td-exs");
+  t.ex.forEach((ex, i) => exs.append(exampleRow(ex, "g-" + t.id + "-" + (i + 1))));
+  box.append(name, form, fig, marks, exs);
+  if (t.neg || t.q){
+    const nq = el("p", "td-nq"); nq.lang = "en";
+    if (t.neg){ nq.append(el("b", null, "−"), t.neg); }
+    if (t.neg && t.q) nq.append(el("br"));
+    if (t.q){ nq.append(el("b", null, "?"), t.q); }
+    box.append(nq);
+  }
+  if (t.trap){
+    const trap = el("p", "td-trap");
+    trap.append(el("b", null, "Ловушка. "), richText(t.trap));
+    box.append(trap);
+  }
+  const tp = TOPIC_BY_N[t.topic];
+  if (tp){
+    const train = el("button", "t-train", "Потренировать: " + tp.title);
+    train.type = "button";
+    train.addEventListener("click", () => { buildTopic(tp.n); setTab("drill"); render(); });
+    box.append(train);
+  }
+  if (scroll){
+    // прокручиваем только саму вкладку, а не всю страницу — верхняя панель остаётся на месте
+    const rule = $("rule");
+    const top = box.getBoundingClientRect().top - rule.getBoundingClientRect().top;
+    if (top > rule.clientHeight - 140 || top < 0){
+      let reduce = false;
+      try{ reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
+      const y = rule.scrollTop + top - 8;
+      try{ rule.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" }); }catch(e){ rule.scrollTop = y; }
+    }
+  }
+}
+document.querySelectorAll(".tc").forEach(b => b.addEventListener("click", () => { stopAudio(); showTense(b.dataset.id, true); }));
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= TOPICS.length ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  const c = lsGet(LS_CELL);
+  if (c && TENSE_BY_ID[c]) showTense(c, false);
+  connectCloud();
+}
+boot();
+</script>

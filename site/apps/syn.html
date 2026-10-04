@@ -1,0 +1,2044 @@
+<title>Синонимы</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("syn",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:40%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .w.st{color:var(--blue)}
+  .vt tr.pb th,.vt tr.pb td{border-top:0;padding-top:0}
+  .vt .w.good{color:var(--yes-text)}
+  .wd-w{margin:0;line-height:1.3}
+  .wd-w .ph{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k))}
+  .wd-ru{font-size:calc(15px*var(--k));color:var(--muted)}
+  .wd-p{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Synonyms</h1>
+      <p class="r-sub">Синонимы часто взаимозаменяемы, но в&nbsp;устойчивых сочетаниях годится только один: <i lang="en">start the car</i>, но <i lang="en">the universe began</i>. <b>Учи слово вместе с&nbsp;соседом</b>.</p>
+      <div class="algo">
+        <p class="algo-h">Пары: что с&nbsp;чем</p>
+        <table class="vt">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">close</span><span class="p">официально, вежливо</span></th><td><span class="e" lang="en">close&nbsp;the&nbsp;meeting · close&nbsp;your&nbsp;mouth</span><span class="r">закрыть совещание · закройте рот</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">shut</span><span class="p">разговорно; Shut up!&nbsp;— грубо</span></th><td><span class="e" lang="en">shut&nbsp;the&nbsp;door · Shut&nbsp;up!</span><span class="r">закрой дверь · заткнись</span></td></tr>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">start</span><span class="p">машины, моторы; открыть дело</span></th><td><span class="e" lang="en">start&nbsp;the&nbsp;car · start&nbsp;a&nbsp;business</span><span class="r">завести машину · открыть дело</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">begin</span><span class="p">формально, абстрактно</span></th><td><span class="e" lang="en">The&nbsp;universe&nbsp;began…</span><span class="r">Вселенная возникла…</span></td></tr>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">big</span><span class="p">важный, серьёзный</span></th><td><span class="e" lang="en">a&nbsp;big&nbsp;decision · a&nbsp;big&nbsp;problem</span><span class="r">важное решение · серьёзная проблема</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">large</span><span class="p">размер, число, количество</span></th><td><span class="e" lang="en">a&nbsp;large&nbsp;size · a&nbsp;large&nbsp;number</span><span class="r">большой размер · большое число</span></td></tr>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">end</span><span class="p">прекратить, закончиться</span></th><td><span class="e" lang="en">end&nbsp;a&nbsp;relationship · the&nbsp;film&nbsp;ended</span><span class="r">расстаться · фильм закончился</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">finish</span><span class="p">довести до конца</span></th><td><span class="e" lang="en">finish&nbsp;your&nbsp;homework · finish&nbsp;the&nbsp;course</span><span class="r">доделать домашку · пропить курс</span></td></tr>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">charge</span><span class="p">аккумулятор, батарея</span></th><td><span class="e" lang="en">charge&nbsp;your&nbsp;phone · charge&nbsp;the&nbsp;defibrillator</span><span class="r">зарядить телефон, дефибриллятор</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">load</span><span class="p">груз, машина; доза</span></th><td><span class="e" lang="en">load&nbsp;the&nbsp;van · a&nbsp;loading&nbsp;dose</span><span class="r">загрузить фургон · нагрузочная доза</span></td></tr>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">injure</span><span class="p">людей, части тела</span></th><td><span class="e" lang="en">three&nbsp;people&nbsp;were&nbsp;injured</span><span class="r">пострадали три человека</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">damage</span><span class="p">вещи; органы и ткани</span></th><td><span class="e" lang="en">a&nbsp;damaged&nbsp;car · brain&nbsp;damage</span><span class="r">разбитая машина · повреждение мозга</span></td></tr>
+            <tr class="pa"><th scope="row"><span class="w" lang="en">grow</span><span class="p">растения; бактерии в посеве</span></th><td><span class="e" lang="en">grow&nbsp;crops · cultures&nbsp;grew&nbsp;E.&nbsp;coli</span><span class="r">выращивать урожай · в посеве выросла кишечная палочка</span></td></tr>
+            <tr class="pb"><th scope="row"><span class="w st" lang="en">raise</span><span class="p">животных, детей</span></th><td><span class="e" lang="en">raise&nbsp;cattle · raise&nbsp;children</span><span class="r">разводить скот · растить детей</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Выиграть, получить, заработать</p>
+        <table class="vt">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr><th scope="row"><span class="w" lang="en">win</span><span class="p">что: матч, приз, выборы</span></th><td><span class="e" lang="en">win&nbsp;a&nbsp;match · win&nbsp;a&nbsp;prize</span><span class="r">выиграть матч · получить приз</span></td></tr>
+            <tr><th scope="row"><span class="w st" lang="en">beat</span><span class="p">кого: соперника</span></th><td><span class="e" lang="en">beat&nbsp;them&nbsp;3–1</span><span class="r">обыграть их 3:1</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">gain</span><span class="p">абстрактное; вес</span></th><td><span class="e" lang="en">gain&nbsp;access · gain&nbsp;weight</span><span class="r">получить доступ · набрать вес</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">earn</span><span class="p">трудом</span></th><td><span class="e" lang="en">earn&nbsp;a&nbsp;salary</span><span class="r">получать зарплату</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">make</span><span class="p">прибыль, деньги</span></th><td><span class="e" lang="en">make&nbsp;a&nbsp;profit</span><span class="r">получить прибыль</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">achieve</span><span class="p">цель, результат</span></th><td><span class="e" lang="en">achieve&nbsp;your&nbsp;goals</span><span class="r">достичь целей</span></td></tr>
+          </tbody>
+        </table>
+        <p class="algo-m"><b class="pr" lang="en">win</b> что-то, <b class="st" lang="en">beat</b> кого-то: <i lang="en">win the match, beat the team</i>.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Взять, нести, носить</p>
+        <table class="vt">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr><th scope="row"><span class="w good" lang="en">take</span><span class="p">взять с собой</span></th><td><span class="e" lang="en">take&nbsp;an&nbsp;umbrella</span><span class="r">взять зонт</span></td></tr>
+            <tr><th scope="row"><span class="w st" lang="en">carry</span><span class="p">нести; иметь при себе</span></th><td><span class="e" lang="en">carry&nbsp;a&nbsp;bag · carry&nbsp;a&nbsp;phone</span><span class="r">нести сумку · носить с собой телефон</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">wear</span><span class="p">носить на себе</span></th><td><span class="e" lang="en">wear&nbsp;glasses · wear&nbsp;a&nbsp;mask</span><span class="r">носить очки, маску</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">use</span><span class="p">пользоваться</span></th><td><span class="e" lang="en">use&nbsp;a&nbsp;laptop</span><span class="r">пользоваться ноутбуком</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">spend</span><span class="p">время и деньги</span></th><td><span class="e" lang="en">spend&nbsp;a&nbsp;week · spend&nbsp;money&nbsp;on</span><span class="r">провести неделю · тратить на</span></td></tr>
+          </tbody>
+        </table>
+        <p class="algo-m">На&nbsp;тебе&nbsp;— <b class="pr" lang="en">wear</b>, в&nbsp;руках или в&nbsp;кармане&nbsp;— <b class="st" lang="en">carry</b>, берёшь с&nbsp;собой&nbsp;— <b class="good" lang="en">take</b>.</p>
+        <p class="algo-note">Проводить время и&nbsp;тратить деньги&nbsp;— <i lang="en">spend</i>, не&nbsp;pass и&nbsp;не&nbsp;use.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">«Старый»</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">old</span> <span class="ipa">/əʊld/</span> <span class="wd-ru">старый, давний&nbsp;— самое общее</span></p><p class="wd-p" lang="en">an&nbsp;old&nbsp;friend · an&nbsp;old&nbsp;building</p></div><button class="ex-play mm-play" type="button" data-key="mo-1" data-text="Old. An old friend. An old building." aria-label="Прослушать: old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">ancient</span> <span class="ipa">/ˈeɪnʃənt/</span> <span class="wd-ru">древний&nbsp;— тысячи лет</span></p><p class="wd-p" lang="en">ancient&nbsp;history · ancient&nbsp;Rome</p></div><button class="ex-play mm-play" type="button" data-key="mo-2" data-text="Ancient. Ancient history. Ancient Rome." aria-label="Прослушать: ancient"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">antique</span> <span class="ipa">/ænˈtiːk/</span> <span class="wd-ru">старинный и ценный&nbsp;— о вещах</span></p><p class="wd-p" lang="en">antique&nbsp;furniture · an&nbsp;antique&nbsp;clock</p></div><button class="ex-play mm-play" type="button" data-key="mo-3" data-text="Antique. Antique furniture. An antique clock." aria-label="Прослушать: antique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">elderly</span> <span class="ipa">/ˈeldəli/</span> <span class="wd-ru">пожилой&nbsp;— вежливо о людях</span></p><p class="wd-p" lang="en">an&nbsp;elderly&nbsp;patient · elderly&nbsp;people</p></div><button class="ex-play mm-play" type="button" data-key="mo-4" data-text="Elderly. An elderly patient. Elderly people." aria-label="Прослушать: elderly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">«Один, единственный»</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">alone</span> <span class="ipa">/əˈləʊn/</span> <span class="wd-ru">один, без других&nbsp;— факт</span></p><p class="wd-p" lang="en">live&nbsp;alone · travel&nbsp;alone</p></div><button class="ex-play mm-play" type="button" data-key="ma-1" data-text="Alone. Live alone. Travel alone." aria-label="Прослушать: alone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">lonely</span> <span class="ipa">/ˈləʊnli/</span> <span class="wd-ru">одинокий (грустно); безлюдный</span></p><p class="wd-p" lang="en">feel&nbsp;lonely · a&nbsp;lonely&nbsp;place</p></div><button class="ex-play mm-play" type="button" data-key="ma-2" data-text="Lonely. Feel lonely. A lonely place." aria-label="Прослушать: lonely"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">single</span> <span class="ipa">/ˈsɪŋɡl/</span> <span class="wd-ru">одиночный, один</span></p><p class="wd-p" lang="en">a&nbsp;single&nbsp;parent · a&nbsp;single&nbsp;room</p></div><button class="ex-play mm-play" type="button" data-key="ma-3" data-text="Single. A single parent. A single room." aria-label="Прослушать: single"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">only</span> <span class="ipa">/ˈəʊnli/</span> <span class="wd-ru">единственный</span></p><p class="wd-p" lang="en">an&nbsp;only&nbsp;child · the&nbsp;only&nbsp;way</p></div><button class="ex-play mm-play" type="button" data-key="ma-4" data-text="Only. An only child. The only way." aria-label="Прослушать: only"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">sole</span> <span class="ipa">/səʊl/</span> <span class="wd-ru">единственный из всех&nbsp;— книжн.</span></p><p class="wd-p" lang="en">the&nbsp;sole&nbsp;survivor · the&nbsp;sole&nbsp;reason</p></div><button class="ex-play mm-play" type="button" data-key="ma-5" data-text="Sole. The sole survivor. The sole reason." aria-label="Прослушать: sole"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">solitary</span> <span class="ipa">/ˈsɒlɪtri/</span> <span class="wd-ru">одиночный, стоящий особняком</span></p><p class="wd-p" lang="en">a&nbsp;solitary&nbsp;figure · a&nbsp;solitary&nbsp;nodule</p></div><button class="ex-play mm-play" type="button" data-key="ma-6" data-text="Solitary. A solitary figure. A solitary nodule." aria-label="Прослушать: solitary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph pr" lang="en">unique</span> <span class="ipa">/juːˈniːk/</span> <span class="wd-ru">единственный в своём роде</span></p><p class="wd-p" lang="en">a&nbsp;unique&nbsp;occasion · a&nbsp;unique&nbsp;case</p></div><button class="ex-play mm-play" type="button" data-key="ma-7" data-text="Unique. A unique occasion. A unique case." aria-label="Прослушать: unique"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">He <span class="pr">lives alone</span>.</p><p class="cp-ru">живёт один&nbsp;— факт</p><p class="cp-en" lang="en">He <span class="pr">feels lonely</span>.</p><p class="cp-ru">ему одиноко&nbsp;— чувство</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="He lives alone. He feels lonely." aria-label="Прослушать: He lives alone. / He feels lonely."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">We <span class="pr">won the match</span>.</p><p class="cp-ru">выиграли матч&nbsp;— что</p><p class="cp-en" lang="en">We <span class="pr">beat them</span> 3–1.</p><p class="cp-ru">обыграли их&nbsp;— кого</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="We won the match. We beat them 3–1." aria-label="Прослушать: We won the match. / We beat them 3–1."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="pr">Take</span> an umbrella.</p><p class="cp-ru">возьми с собой</p><p class="cp-en" lang="en">I always <span class="pr">carry</span> an umbrella.</p><p class="cp-ru">всегда ношу с собой</p><p class="cp-en" lang="en">She <span class="pr">wears</span> glasses.</p><p class="cp-ru">носит очки</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="Take an umbrella. I always carry an umbrella. She wears glasses." aria-label="Прослушать: Take an umbrella. / I always carry an umbrella. / She wears glasses."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="pr">Finish</span> the course of antibiotics.</p><p class="cp-ru">пропейте курс до конца</p><p class="cp-en" lang="en">They <span class="pr">ended</span> the trial early.</p><p class="cp-ru">прекратили исследование досрочно</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="Finish the course of antibiotics. They ended the trial early." aria-label="Прослушать: Finish the course of antibiotics. / They ended the trial early."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He <span class="pr">injured</span> his back.</p><p class="cp-ru">травмировал спину</p><p class="cp-en" lang="en">The stroke <span class="pr">damaged</span> his brain.</p><p class="cp-ru">инсульт повредил мозг</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="He injured his back. The stroke damaged his brain." aria-label="Прослушать: He injured his back. / The stroke damaged his brain."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">My car didn&#x27;t begin.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">My car didn&#x27;t start.</span><span class="err-note">машины и моторы&nbsp;— start</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a big number of patients</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">a large number of patients</span><span class="err-note">число, количество&nbsp;— large</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We won them 3–1.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We beat them 3–1.</span><span class="err-note">выиграть у кого-то&nbsp;— beat</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He wins 3,000 a month.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He earns 3,000 a month.</span><span class="err-note">зарплата&nbsp;— earn</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I passed three days in Paris.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I spent three days in Paris.</span><span class="err-note">проводить время&nbsp;— spend</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I used a lot on petrol.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I spent a lot on petrol.</span><span class="err-note">тратить деньги&nbsp;— spend on</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She carries glasses.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She wears glasses.</span><span class="err-note">носить очки&nbsp;— wear</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Three people were damaged.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Three people were injured.</span><span class="err-note">людей&nbsp;— injure</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She lives lonely.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She lives alone.</span><span class="err-note">жить одному&nbsp;— live alone</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">They grow three children.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">They&#x27;re raising three children.</span><span class="err-note">растить детей&nbsp;— raise</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — слово в фокусе (оранжевый).
+const MIXED_TOPIC = 10;
+const GROUPS = {"u10": "Unit 10 — пары и группы синонимов", "u11": "Unit 11 — выиграть, заработать, носить", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "u10",
+  "title": "close / shut, start / begin",
+  "sub": "закрыть, начать",
+  "rule": "close и shut часто взаимозаменяемы: close или shut the door, close или shut your eyes. Но официально завершить — только close: close the meeting, close the conference. Shut — разговорнее, а Shut your mouth! и Shut up! — грубо. start и begin тоже часто равны, но машины и моторы — только start: start the car, start the engine. Открыть дело — start a business. begin — чуть формальнее: The universe began 13.8 billion years ago.",
+  "ex": [
+   {
+    "en": "The chair [closed] the conference with a short speech.",
+    "ru": "Председатель закрыл конференцию короткой речью."
+   },
+   {
+    "en": "My car wouldn't [start] this morning.",
+    "ru": "Утром машина не завелась."
+   },
+   {
+    "en": "[Close] your eyes and don't let me open them.",
+    "ru": "Закройте глаза и не давайте мне их открыть."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "u10",
+  "title": "big / large, end / finish",
+  "sub": "большой, закончить",
+  "rule": "big — важный, серьёзный: a big decision, a big problem, a big mistake. large — про размер, число и количество: a large size, a large number, a large amount, a large sample. finish — довести начатое до конца: finish your homework, finish the course of antibiotics. end — прекратить, положить конец: end a relationship, end a war; и «закончиться чем-то»: The film ends with a wedding.",
+  "ex": [
+   {
+    "en": "It's a [big] decision — take your time.",
+    "ru": "Это серьёзное решение — не торопитесь."
+   },
+   {
+    "en": "A [large] number of patients were excluded.",
+    "ru": "Большое число пациентов было исключено."
+   },
+   {
+    "en": "[Finish] the whole course of antibiotics.",
+    "ru": "Пропейте весь курс антибиотиков."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "u10",
+  "title": "old, ancient, antique, elderly",
+  "sub": "старый: четыре слова",
+  "rule": "old — самое общее: an old friend (давний), an old building. ancient — древний, тысячи лет: ancient history, ancient Rome. antique — старинный и ценный предмет: antique furniture, an antique clock. elderly — пожилой, вежливо о людях: an elderly patient. В научных статьях сейчас чаще пишут older adults.",
+  "ex": [
+   {
+    "en": "I met an [old] friend from medical school.",
+    "ru": "Я встретил старого друга по мединституту."
+   },
+   {
+    "en": "The shop sells [antique] furniture.",
+    "ru": "В магазине продают старинную мебель."
+   },
+   {
+    "en": "[Elderly] patients are at higher risk of falls.",
+    "ru": "У пожилых пациентов выше риск падений."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "u10",
+  "title": "alone, lonely, single, only, sole…",
+  "sub": "один, одинокий, единственный",
+  "rule": "alone — один, без других, это факт: live alone, travel alone; перед существительным не ставится. lonely — одинокий, когда от этого грустно: feel lonely, a lonely old man; и безлюдный: a lonely place. single — одиночный, один: a single parent, a single room. an only child — единственный ребёнок. sole — единственный из всех: the sole survivor. solitary — одиночный, стоящий особняком: a solitary figure, в медицине — a solitary nodule. unique — единственный в своём роде.",
+  "ex": [
+   {
+    "en": "He lives [alone] but never feels [lonely].",
+    "ru": "Он живёт один, но никогда не чувствует себя одиноким."
+   },
+   {
+    "en": "She's a [single] parent.",
+    "ru": "Она растит ребёнка одна."
+   },
+   {
+    "en": "He was the [sole] survivor of the crash.",
+    "ru": "Он единственный выжил в той катастрофе."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "u10",
+  "title": "charge / load, injure / damage, grow / raise",
+  "sub": "зарядить, повредить, вырастить",
+  "rule": "charge — зарядить аккумулятор, телефон, дефибриллятор. load — загрузить машину, судно, груз; в фармакологии — loading dose, нагрузочная доза. injure — травмировать людей: three people were injured. damage — повредить вещь: a damaged car; и органы, ткани: brain damage, nerve damage. grow — растения: grow crops; в микробиологии — cultures grew E. coli. raise — животных и детей: raise cattle, raise children.",
+  "ex": [
+   {
+    "en": "[Charge] the defibrillator to 200 joules.",
+    "ru": "Зарядите дефибриллятор на 200 джоулей."
+   },
+   {
+    "en": "Three people were [injured] in the crash.",
+    "ru": "В аварии пострадали три человека."
+   },
+   {
+    "en": "It's not easy to [raise] children alone.",
+    "ru": "Непросто растить детей в одиночку."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "u11",
+  "title": "win, beat, gain",
+  "sub": "выиграть, обыграть, получить",
+  "rule": "win — что-то: a match, a prize, a medal, an election, a war. beat — кого-то: beat a team, beat an opponent; defeat — то же, но официальнее. «Выиграть у них» — beat them, не win them. gain — получить что-то абстрактное благодаря усилиям: gain control, gain access, gain experience, gain recognition; и набрать вес — gain weight.",
+  "ex": [
+   {
+    "en": "We [won] the match 3–1.",
+    "ru": "Мы выиграли матч со счётом 3:1."
+   },
+   {
+    "en": "We [beat] them 3–1.",
+    "ru": "Мы обыграли их 3:1."
+   },
+   {
+    "en": "She [gained] weight during pregnancy.",
+    "ru": "За беременность она набрала вес."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "u11",
+  "title": "earn, make, achieve",
+  "sub": "заработать, получить прибыль, достичь",
+  "rule": "earn — заработать трудом: earn a salary, earn money, earn a living. make — получить деньги или прибыль: make a profit, make money, в том числе вложениями, а не только работой. achieve — достичь цели или результата: achieve success, achieve your goals; в медицине — achieve target blood pressure.",
+  "ex": [
+   {
+    "en": "How much does a nurse [earn]?",
+    "ru": "Сколько зарабатывает медсестра?"
+   },
+   {
+    "en": "The clinic [made] a profit last year.",
+    "ru": "В прошлом году клиника получила прибыль."
+   },
+   {
+    "en": "We [achieved] the target blood pressure.",
+    "ru": "Мы достигли целевого давления."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "u11",
+  "title": "take, carry, wear, use",
+  "sub": "взять, нести, носить, пользоваться",
+  "rule": "take — взять с собой: take an umbrella, take warm clothes. carry — нести в руках или иметь при себе: carry a bag, carry a phone. wear — носить на себе одежду, очки, кольцо, маску. use — пользоваться: use a laptop. «Носить очки» — wear, а не carry; «всегда ношу с собой телефон» — carry.",
+  "ex": [
+   {
+    "en": "[Take] an umbrella — it might rain.",
+    "ru": "Возьми зонт — может пойти дождь."
+   },
+   {
+    "en": "I always [carry] my phone.",
+    "ru": "Телефон я всегда ношу с собой."
+   },
+   {
+    "en": "Staff must [wear] a mask on the ward.",
+    "ru": "Персонал обязан носить маску в отделении."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "u11",
+  "title": "spend",
+  "sub": "проводить время, тратить деньги",
+  "rule": "Время и деньги — spend: spend three days in the mountains, spend money on petrol, spend two hours watching TV. Не pass, не use и не stay. После времени — -ing: I spent an hour looking for my keys. Тратить на что-то — spend on.",
+  "ex": [
+   {
+    "en": "We [spent] three days in the mountains.",
+    "ru": "Мы провели три дня в горах."
+   },
+   {
+    "en": "I [spent] an hour looking for my keys.",
+    "ru": "Я час искал ключи."
+   },
+   {
+    "en": "How much do you [spend on] food?",
+    "ru": "Сколько вы тратите на еду?"
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "s1-conference",
+  "t": 1,
+  "q": "The chair ___ the conference with a short speech.",
+  "ru": "Председатель закрыл конференцию короткой речью.",
+  "opts": [
+   "closed",
+   "shut"
+  ],
+  "a": "closed",
+  "why": "Официально завершить совещание, конференцию — close."
+ },
+ {
+  "id": "s1-mouth",
+  "t": 1,
+  "q": "Could you ___ your mouth for a second, please?",
+  "ru": "Закройте, пожалуйста, рот на секунду.",
+  "opts": [
+   "close",
+   "shut"
+  ],
+  "a": "close",
+  "why": "Вежливо — close your mouth. Shut your mouth! — грубо, «заткнись»."
+ },
+ {
+  "id": "s1-eyes",
+  "t": 1,
+  "q": "___ your eyes and don't let me open them.",
+  "ru": "Закройте глаза и не давайте мне их открыть.",
+  "opts": [
+   "close",
+   "shut"
+  ],
+  "a": "close",
+  "why": "Глаза, дверь — close; shut тоже можно, но разговорнее.",
+  "also": {
+   "shut": "но звучит разговорнее"
+  }
+ },
+ {
+  "id": "s1-car",
+  "t": 1,
+  "q": "It was freezing and my car wouldn't ___.",
+  "ru": "Был мороз, и машина не заводилась.",
+  "opts": [
+   "start",
+   "begin"
+  ],
+  "a": "start",
+  "why": "Машины и моторы — только start."
+ },
+ {
+  "id": "s1-machine",
+  "t": 1,
+  "q": "Press the green button to ___ the machine.",
+  "ru": "Нажмите зелёную кнопку, чтобы запустить аппарат.",
+  "opts": [
+   "start",
+   "begin"
+  ],
+  "a": "start",
+  "why": "Запустить аппарат, двигатель — start."
+ },
+ {
+  "id": "s1-clinic",
+  "t": 1,
+  "q": "She ___ her own clinic in 2019.",
+  "ru": "В 2019 году она открыла свою клинику.",
+  "opts": [
+   "started",
+   "began"
+  ],
+  "a": "started",
+  "why": "Открыть дело, основать — start: start a business."
+ },
+ {
+  "id": "s1-universe",
+  "t": 1,
+  "q": "The universe ___ about 13.8 billion years ago.",
+  "ru": "Вселенная возникла около 13,8 млрд лет назад.",
+  "opts": [
+   "began",
+   "started"
+  ],
+  "a": "began",
+  "why": "Формально, абстрактно — begin.",
+  "also": {
+   "started": "но в научном тексте лучше began"
+  }
+ },
+ {
+  "id": "s2-decision",
+  "t": 2,
+  "q": "It's a ___ decision — take your time.",
+  "ru": "Это серьёзное решение — не торопитесь.",
+  "opts": [
+   "big",
+   "large"
+  ],
+  "a": "big",
+  "why": "Важное, серьёзное — big: a big decision."
+ },
+ {
+  "id": "s2-problem",
+  "t": 2,
+  "q": "We have a ___ problem with staffing this winter.",
+  "ru": "Этой зимой у нас серьёзная проблема с кадрами.",
+  "opts": [
+   "big",
+   "large"
+  ],
+  "a": "big",
+  "why": "Серьёзная проблема — a big problem."
+ },
+ {
+  "id": "s2-number",
+  "t": 2,
+  "q": "A ___ number of patients were lost to follow-up.",
+  "ru": "Большое число пациентов выбыло из наблюдения.",
+  "opts": [
+   "large",
+   "big"
+  ],
+  "a": "large",
+  "why": "Число, количество — large: a large number."
+ },
+ {
+  "id": "s2-amount",
+  "t": 2,
+  "q": "The patient lost a ___ amount of blood.",
+  "ru": "Пациент потерял много крови.",
+  "opts": [
+   "large",
+   "big"
+  ],
+  "a": "large",
+  "why": "Количество — a large amount."
+ },
+ {
+  "id": "s2-homework",
+  "t": 2,
+  "q": "Have you ___ your homework yet?",
+  "ru": "Ты уже сделал домашнее задание?",
+  "opts": [
+   "finished",
+   "ended"
+  ],
+  "a": "finished",
+  "why": "Довести до конца — finish."
+ },
+ {
+  "id": "s2-antibiotics",
+  "t": 2,
+  "q": "Make sure you ___ the whole course of antibiotics.",
+  "ru": "Обязательно пропейте весь курс антибиотиков.",
+  "opts": [
+   "finish",
+   "end"
+  ],
+  "a": "finish",
+  "why": "Закончить начатое, пройти до конца — finish."
+ },
+ {
+  "id": "s2-relationship",
+  "t": 2,
+  "q": "They ___ their relationship after ten years.",
+  "ru": "Они расстались после десяти лет вместе.",
+  "opts": [
+   "ended",
+   "finished"
+  ],
+  "a": "ended",
+  "why": "Прекратить, положить конец — end: end a relationship."
+ },
+ {
+  "id": "s2-trial",
+  "t": 2,
+  "q": "The trial was ___ early because of safety concerns.",
+  "ru": "Исследование прекратили досрочно из-за опасений по безопасности.",
+  "opts": [
+   "ended",
+   "finished"
+  ],
+  "a": "ended",
+  "why": "Прекратить досрочно — end. Finished early — «закончили раньше срока, всё сделав»."
+ },
+ {
+  "id": "s3-friend",
+  "t": 3,
+  "q": "I bumped into an ___ friend from medical school.",
+  "ru": "Я случайно встретил старого друга по мединституту.",
+  "opts": [
+   "old",
+   "ancient",
+   "elderly"
+  ],
+  "a": "old",
+  "why": "Давний друг — an old friend. Elderly — пожилой."
+ },
+ {
+  "id": "s3-history",
+  "t": 3,
+  "q": "She's interested in ___ history — Egypt, Greece and Rome.",
+  "ru": "Она увлекается древней историей — Египет, Греция, Рим.",
+  "opts": [
+   "ancient",
+   "antique",
+   "old"
+  ],
+  "a": "ancient",
+  "why": "Древний, тысячи лет — ancient."
+ },
+ {
+  "id": "s3-clock",
+  "t": 3,
+  "q": "They have an ___ clock that belonged to her great-grandmother.",
+  "ru": "У них старинные часы, которые принадлежали её прабабушке.",
+  "opts": [
+   "antique",
+   "ancient",
+   "elderly"
+  ],
+  "a": "antique",
+  "why": "Старинная ценная вещь — antique."
+ },
+ {
+  "id": "s3-patients",
+  "t": 3,
+  "q": "___ patients are at higher risk of falls.",
+  "ru": "У пожилых пациентов выше риск падений.",
+  "opts": [
+   "elderly",
+   "ancient",
+   "antique"
+  ],
+  "a": "elderly",
+  "why": "Пожилой, вежливо — elderly. В статьях сейчас чаще older adults."
+ },
+ {
+  "id": "s3-building",
+  "t": 3,
+  "q": "Our hospital is in a very ___ building — it's over 150 years old.",
+  "ru": "Наша больница в очень старом здании — ему больше 150 лет.",
+  "opts": [
+   "old",
+   "ancient",
+   "elderly"
+  ],
+  "a": "old",
+  "why": "Просто старое — old. Ancient — тысячи лет."
+ },
+ {
+  "id": "s3-lady",
+  "t": 3,
+  "q": "An ___ lady asked me to help her cross the road.",
+  "ru": "Пожилая женщина попросила помочь ей перейти дорогу.",
+  "opts": [
+   "elderly",
+   "antique",
+   "ancient"
+  ],
+  "a": "elderly",
+  "why": "О пожилом человеке вежливо — elderly."
+ },
+ {
+  "id": "s4-alone",
+  "t": 4,
+  "q": "Since his wife died, he has lived ___.",
+  "ru": "С тех пор как умерла жена, он живёт один.",
+  "opts": [
+   "alone",
+   "lonely",
+   "single"
+  ],
+  "a": "alone",
+  "why": "Жить одному — live alone. Lonely — одиноко, грустно."
+ },
+ {
+  "id": "s4-place",
+  "t": 4,
+  "q": "It was a ___ place, miles from the nearest village.",
+  "ru": "Это было безлюдное место, в нескольких милях от ближайшей деревни.",
+  "opts": [
+   "lonely",
+   "alone",
+   "single"
+  ],
+  "a": "lonely",
+  "why": "Безлюдное место — a lonely place. Alone перед существительным не ставят."
+ },
+ {
+  "id": "s4-single",
+  "t": 4,
+  "q": "As a ___ parent, she can't work night shifts.",
+  "ru": "Она растит ребёнка одна и не может работать в ночные смены.",
+  "opts": [
+   "single",
+   "lonely",
+   "alone"
+  ],
+  "a": "single",
+  "why": "Родитель-одиночка — a single parent."
+ },
+ {
+  "id": "s4-only",
+  "t": 4,
+  "q": "I'm an ___ child — I have no brothers or sisters.",
+  "ru": "Я единственный ребёнок: братьев и сестёр у меня нет.",
+  "opts": [
+   "only",
+   "alone",
+   "single"
+  ],
+  "a": "only",
+  "why": "Единственный ребёнок — an only child."
+ },
+ {
+  "id": "s4-sole",
+  "t": 4,
+  "q": "He was the ___ survivor of the crash.",
+  "ru": "Он единственный выжил в той катастрофе.",
+  "opts": [
+   "sole",
+   "lonely",
+   "alone"
+  ],
+  "a": "sole",
+  "why": "Единственный из всех — sole: the sole survivor."
+ },
+ {
+  "id": "s4-solitary",
+  "t": 4,
+  "q": "The CT showed a ___ nodule in the right lung.",
+  "ru": "На КТ — одиночный узел в правом лёгком.",
+  "opts": [
+   "solitary",
+   "lonely",
+   "alone"
+  ],
+  "a": "solitary",
+  "why": "Одиночный — solitary: a solitary nodule."
+ },
+ {
+  "id": "s4-unique",
+  "t": 4,
+  "q": "Every patient is ___, so treatment has to be individual.",
+  "ru": "Каждый пациент уникален, поэтому лечение подбирают индивидуально.",
+  "opts": [
+   "unique",
+   "single",
+   "only"
+  ],
+  "a": "unique",
+  "why": "Единственный в своём роде — unique."
+ },
+ {
+  "id": "s4-travel",
+  "t": 4,
+  "q": "I don't like travelling ___ — it's more fun with someone.",
+  "ru": "Не люблю путешествовать в одиночку — с кем-то веселее.",
+  "opts": [
+   "alone",
+   "lonely",
+   "only"
+  ],
+  "a": "alone",
+  "why": "В одиночку — alone: travel alone."
+ },
+ {
+  "id": "s5-phone",
+  "t": 5,
+  "q": "I forgot to ___ my phone last night.",
+  "ru": "Я забыл вечером зарядить телефон.",
+  "opts": [
+   "charge",
+   "load"
+  ],
+  "a": "charge",
+  "why": "Зарядить телефон, батарею — charge."
+ },
+ {
+  "id": "s5-defib",
+  "t": 5,
+  "q": "___ the defibrillator to 200 joules and stand clear.",
+  "ru": "Зарядите дефибриллятор на 200 джоулей и отойдите.",
+  "opts": [
+   "charge",
+   "load"
+  ],
+  "a": "charge",
+  "why": "Дефибриллятор, аккумулятор — charge."
+ },
+ {
+  "id": "s5-van",
+  "t": 5,
+  "q": "They ___ the van and drove to their new flat.",
+  "ru": "Они загрузили фургон и поехали на новую квартиру.",
+  "opts": [
+   "loaded",
+   "charged"
+  ],
+  "a": "loaded",
+  "why": "Загрузить машину, груз — load."
+ },
+ {
+  "id": "s5-loading",
+  "t": 5,
+  "q": "Give a ___ dose of 300 mg, then 75 mg daily.",
+  "ru": "Дайте нагрузочную дозу 300 мг, затем по 75 мг в сутки.",
+  "opts": [
+   "loading",
+   "charging"
+  ],
+  "a": "loading",
+  "why": "Нагрузочная доза — loading dose."
+ },
+ {
+  "id": "s5-injured",
+  "t": 5,
+  "q": "Three people were ___ in the accident.",
+  "ru": "В аварии пострадали три человека.",
+  "opts": [
+   "injured",
+   "damaged"
+  ],
+  "a": "injured",
+  "why": "Люди — injure. Вещи — damage."
+ },
+ {
+  "id": "s5-brain",
+  "t": 5,
+  "q": "The stroke ___ the part of her brain that controls speech.",
+  "ru": "Инсульт повредил участок мозга, который отвечает за речь.",
+  "opts": [
+   "damaged",
+   "injured"
+  ],
+  "a": "damaged",
+  "why": "Органы и ткани — damage: brain damage, nerve damage."
+ },
+ {
+  "id": "s5-plants",
+  "t": 5,
+  "q": "These plants ___ best in the shade.",
+  "ru": "Эти растения лучше растут в тени.",
+  "opts": [
+   "grow",
+   "raise"
+  ],
+  "a": "grow",
+  "why": "Растения — grow. Raise — животных и детей."
+ },
+ {
+  "id": "s5-cultures",
+  "t": 5,
+  "q": "Blood cultures ___ E. coli.",
+  "ru": "В посевах крови выросла кишечная палочка.",
+  "opts": [
+   "grew",
+   "raised"
+  ],
+  "a": "grew",
+  "why": "Посевы, бактерии — grow."
+ },
+ {
+  "id": "s5-sheep",
+  "t": 5,
+  "q": "My grandparents ___ sheep and goats in the village.",
+  "ru": "Бабушка с дедушкой разводили в деревне овец и коз.",
+  "opts": [
+   "raised",
+   "grew"
+  ],
+  "a": "raised",
+  "why": "Разводить животных — raise."
+ },
+ {
+  "id": "s5-children",
+  "t": 5,
+  "q": "It's hard to ___ three children on one salary.",
+  "ru": "Трудно растить троих детей на одну зарплату.",
+  "opts": [
+   "raise",
+   "grow"
+  ],
+  "a": "raise",
+  "why": "Растить детей — raise или bring up. Grow children — калька."
+ },
+ {
+  "id": "s6-medal",
+  "t": 6,
+  "q": "She ___ a gold medal at the Olympics.",
+  "ru": "Она выиграла золотую медаль на Олимпиаде.",
+  "opts": [
+   "won",
+   "gained",
+   "achieved"
+  ],
+  "a": "won",
+  "why": "Медаль, приз, награду — win."
+ },
+ {
+  "id": "s6-election",
+  "t": 6,
+  "q": "Which party ___ the election?",
+  "ru": "Какая партия победила на выборах?",
+  "opts": [
+   "won",
+   "beat",
+   "gained"
+  ],
+  "a": "won",
+  "why": "Выборы, войну, битву — win."
+ },
+ {
+  "id": "s6-beat",
+  "t": 6,
+  "q": "We ___ them 3–1 in the final.",
+  "ru": "Мы обыграли их 3:1 в финале.",
+  "opts": [
+   "beat",
+   "won",
+   "gained"
+  ],
+  "a": "beat",
+  "why": "Обыграть кого-то — beat. Win — только что-то: win a match."
+ },
+ {
+  "id": "s6-match",
+  "t": 6,
+  "q": "We ___ the match 3–1.",
+  "ru": "Мы выиграли матч 3:1.",
+  "opts": [
+   "won",
+   "beat"
+  ],
+  "a": "won",
+  "why": "Матч — win. Соперника — beat."
+ },
+ {
+  "id": "s6-defeat",
+  "t": 6,
+  "q": "He ___ the defending champion in the final.",
+  "ru": "В финале он победил действующего чемпиона.",
+  "opts": [
+   "defeated",
+   "won"
+  ],
+  "a": "defeated",
+  "why": "Победить соперника — defeat или проще beat."
+ },
+ {
+  "id": "s6-access",
+  "t": 6,
+  "q": "Hackers ___ access to patient records.",
+  "ru": "Хакеры получили доступ к историям болезни.",
+  "opts": [
+   "gained",
+   "won",
+   "earned"
+  ],
+  "a": "gained",
+  "why": "Получить доступ, контроль — gain."
+ },
+ {
+  "id": "s6-weight",
+  "t": 6,
+  "q": "She ___ ten kilos during pregnancy.",
+  "ru": "За беременность она набрала десять килограммов.",
+  "opts": [
+   "gained",
+   "won",
+   "earned"
+  ],
+  "a": "gained",
+  "why": "Набрать вес — gain weight или put on weight."
+ },
+ {
+  "id": "s6-experience",
+  "t": 6,
+  "q": "You'll ___ a lot of experience in the ICU.",
+  "ru": "В реанимации вы наберётесь опыта.",
+  "opts": [
+   "gain",
+   "win",
+   "earn"
+  ],
+  "a": "gain",
+  "why": "Набраться опыта — gain experience."
+ },
+ {
+  "id": "s7-salary",
+  "t": 7,
+  "q": "How much does a junior doctor ___ in the UK?",
+  "ru": "Сколько зарабатывает молодой врач в Великобритании?",
+  "opts": [
+   "earn",
+   "win",
+   "gain"
+  ],
+  "a": "earn",
+  "why": "Зарабатывать трудом — earn."
+ },
+ {
+  "id": "s7-extra",
+  "t": 7,
+  "q": "Many students ___ extra money by working at weekends.",
+  "ru": "Многие студенты подрабатывают по выходным.",
+  "opts": [
+   "earn",
+   "win",
+   "gain"
+  ],
+  "a": "earn",
+  "why": "Заработать — earn money."
+ },
+ {
+  "id": "s7-profit",
+  "t": 7,
+  "q": "The clinic ___ a profit for the first time last year.",
+  "ru": "В прошлом году клиника впервые получила прибыль.",
+  "opts": [
+   "made",
+   "won",
+   "did"
+  ],
+  "a": "made",
+  "why": "Получить прибыль — make a profit."
+ },
+ {
+  "id": "s7-success",
+  "t": 7,
+  "q": "It's hard to ___ success without hard work.",
+  "ru": "Без упорного труда трудно добиться успеха.",
+  "opts": [
+   "achieve",
+   "win",
+   "make"
+  ],
+  "a": "achieve",
+  "why": "Добиться успеха — achieve success."
+ },
+ {
+  "id": "s7-goals",
+  "t": 7,
+  "q": "Set small goals — they're easier to ___.",
+  "ru": "Ставьте небольшие цели — их проще достичь.",
+  "opts": [
+   "achieve",
+   "win",
+   "earn"
+  ],
+  "a": "achieve",
+  "why": "Достичь цели — achieve."
+ },
+ {
+  "id": "s7-target",
+  "t": 7,
+  "q": "We ___ the target blood pressure within a week.",
+  "ru": "За неделю мы достигли целевого давления.",
+  "opts": [
+   "achieved",
+   "won",
+   "gained"
+  ],
+  "a": "achieved",
+  "why": "Достичь целевого показателя — achieve."
+ },
+ {
+  "id": "s8-umbrella",
+  "t": 8,
+  "q": "Don't forget to ___ an umbrella — it might rain later.",
+  "ru": "Не забудь взять зонт — позже может пойти дождь.",
+  "opts": [
+   "take",
+   "carry",
+   "wear"
+  ],
+  "a": "take",
+  "why": "Взять с собой — take. Carry — нести, держать при себе."
+ },
+ {
+  "id": "s8-pocket",
+  "t": 8,
+  "q": "I always ___ my phone in my pocket.",
+  "ru": "Телефон я всегда ношу в кармане.",
+  "opts": [
+   "carry",
+   "wear",
+   "take"
+  ],
+  "a": "carry",
+  "why": "Иметь при себе — carry."
+ },
+ {
+  "id": "s8-tray",
+  "t": 8,
+  "q": "The nurse ___ the tray carefully so as not to spill anything.",
+  "ru": "Сестра осторожно несла поднос, чтобы ничего не пролить.",
+  "opts": [
+   "carried",
+   "wore",
+   "used"
+  ],
+  "a": "carried",
+  "why": "Нести в руках — carry."
+ },
+ {
+  "id": "s8-glasses",
+  "t": 8,
+  "q": "She has ___ glasses since she was a child.",
+  "ru": "Она носит очки с детства.",
+  "opts": [
+   "worn",
+   "carried",
+   "taken"
+  ],
+  "a": "worn",
+  "why": "Носить очки, одежду — wear, worn."
+ },
+ {
+  "id": "s8-mask",
+  "t": 8,
+  "q": "Staff must ___ a mask on the ward.",
+  "ru": "Персонал обязан носить маску в отделении.",
+  "opts": [
+   "wear",
+   "carry",
+   "put"
+  ],
+  "a": "wear",
+  "why": "Носить маску — wear. Надеть — put on."
+ },
+ {
+  "id": "s8-laptop",
+  "t": 8,
+  "q": "Can I ___ your laptop to check my email?",
+  "ru": "Можно воспользоваться твоим ноутбуком, чтобы проверить почту?",
+  "opts": [
+   "use",
+   "wear",
+   "carry"
+  ],
+  "a": "use",
+  "why": "Пользоваться — use."
+ },
+ {
+  "id": "s8-ring",
+  "t": 8,
+  "q": "He doesn't ___ his wedding ring at work.",
+  "ru": "На работе он не носит обручальное кольцо.",
+  "opts": [
+   "wear",
+   "carry",
+   "take"
+  ],
+  "a": "wear",
+  "why": "Кольцо, часы, украшения — wear."
+ },
+ {
+  "id": "s9-days",
+  "t": 9,
+  "q": "We ___ three days in the mountains.",
+  "ru": "Мы провели три дня в горах.",
+  "opts": [
+   "spent",
+   "passed"
+  ],
+  "a": "spent",
+  "why": "Проводить время — spend. Passed — калька."
+ },
+ {
+  "id": "s9-petrol",
+  "t": 9,
+  "q": "If you buy a bigger car, you'll ___ more on petrol.",
+  "ru": "Купишь машину побольше — будешь больше тратить на бензин.",
+  "opts": [
+   "spend",
+   "use",
+   "pay"
+  ],
+  "a": "spend",
+  "why": "Тратить деньги на — spend on."
+ },
+ {
+  "id": "s9-tv",
+  "t": 9,
+  "q": "Last night I ___ two hours watching TV.",
+  "ru": "Вчера вечером я два часа смотрел телевизор.",
+  "opts": [
+   "spent",
+   "stayed",
+   "passed"
+  ],
+  "a": "spent",
+  "why": "Провести время за чем-то — spend + время + -ing."
+ },
+ {
+  "id": "s9-ing",
+  "t": 9,
+  "q": "I spent an hour ___ for my keys.",
+  "ru": "Я час искал ключи.",
+  "opts": [
+   "looking",
+   "to look",
+   "look"
+  ],
+  "a": "looking",
+  "why": "spend + время + -ing: spent an hour looking."
+ },
+ {
+  "id": "s9-on",
+  "t": 9,
+  "q": "How much do you spend ___ food every month?",
+  "ru": "Сколько вы тратите на еду в месяц?",
+  "opts": [
+   "on",
+   "for",
+   "to"
+  ],
+  "a": "on",
+  "why": "Тратить на — spend on."
+ },
+ {
+  "id": "s9-ward",
+  "t": 9,
+  "q": "Patients ___ an average of 12 days on the stroke unit.",
+  "ru": "В среднем пациенты проводят в инсультном отделении 12 дней.",
+  "opts": [
+   "spend",
+   "pass",
+   "use"
+  ],
+  "a": "spend",
+  "why": "Проводить время где-то — spend."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "syn:state";
+const LS_SPEAK = "syn:autospeak";
+const LS_TAB = "syn:tab";
+const LS_OPEN = "syn:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Синонимы"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — слово в фокусе (оранжевый)
+function modalCls(){ return "pr"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Группы слов и ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: пары, группы слов и глаголы чередуются — выбирать приходится по сочетанию.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

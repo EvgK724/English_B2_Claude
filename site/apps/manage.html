@@ -1,0 +1,1587 @@
+<title>Manage to и похожие</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("manage",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:40%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Manage to</h1>
+      <p class="r-sub">«Удалось», «не получилось», «справился», «успел»&nbsp;— у&nbsp;каждого глагола своя конструкция. <b>Запоминай глагол вместе с&nbsp;тем, что после него</b>.</p>
+      <div class="algo">
+        <p class="algo-h">Что с чем</p>
+        <table class="vt">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr><th scope="row"><span class="w" lang="en">manage</span><span class="p">to +&nbsp;глагол</span></th><td><span class="e" lang="en">I managed to finish.</span><span class="r">удалось, с трудом</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">succeed</span><span class="p">in +&nbsp;-ing</span></th><td><span class="e" lang="en">We succeeded in reaching him.</span><span class="r">удалось&nbsp;— официально</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">fail</span><span class="p">to +&nbsp;глагол</span></th><td><span class="e" lang="en">The drug failed to work.</span><span class="r">не удалось, не сделал</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">achieve</span><span class="p">+&nbsp;сущ.</span></th><td><span class="e" lang="en">achieve a goal</span><span class="r">достичь цели</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">cope</span><span class="p">with +&nbsp;сущ.</span></th><td><span class="e" lang="en">cope with stress</span><span class="r">справляться с трудностями</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">deal</span><span class="p">with +&nbsp;сущ.</span></th><td><span class="e" lang="en">deal with a problem</span><span class="r">заниматься, разбираться</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">handle</span><span class="p">без предлога</span></th><td><span class="e" lang="en">handle the situation</span><span class="r">справиться, управиться</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">make it</span><span class="p">устойчиво</span></th><td><span class="e" lang="en">We made it on time.</span><span class="r">успеть, добраться, выжить</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">end up</span><span class="p">+&nbsp;-ing</span></th><td><span class="e" lang="en">We ended up staying.</span><span class="r">в итоге оказаться</span></td></tr>
+            <tr><th scope="row"><span class="w" lang="en">afford</span><span class="p">to +&nbsp;глагол</span></th><td><span class="e" lang="en">We can&#x27;t afford to wait.</span><span class="r">позволить себе</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Удалось, хоть и&nbsp;с&nbsp;трудом?</p><p class="s-f" lang="en"><span class="pr">managed&nbsp;to</span> <span class="sep">·</span> <span class="pr">succeeded&nbsp;in</span> <i>-ing</i></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Не удалось?</p><p class="s-f" lang="en"><span class="pr">didn't&nbsp;manage&nbsp;to</span> <span class="sep">·</span> <span class="pr">failed&nbsp;to</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Справляться с&nbsp;чем-то?</p><p class="s-f" lang="en"><span class="pr">cope&nbsp;with</span> <span class="sep">·</span> <span class="pr">deal&nbsp;with</span> <span class="sep">·</span> <span class="pr">handle</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Успеть, добраться, выжить?</p><p class="s-f" lang="en"><span class="pr">make&nbsp;it</span></p></div></li>
+        </ol>
+        <p class="algo-m">manage <b class="st" lang="en">to</b>, succeed <b class="st" lang="en">in</b>, fail <b class="st" lang="en">to</b>, cope и&nbsp;deal <b class="st" lang="en">with</b>, handle&nbsp;— без всего.</p>
+        <p class="algo-note">Об одной удаче в&nbsp;прошлом could не&nbsp;говорят: <i lang="en">We managed to catch the train</i>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">I <span class="pr">managed to</span> finish it.</p><p class="cp-ru">удалось, с трудом</p><p class="cp-en" lang="en">We <span class="pr">succeeded in</span> finishing it.</p><p class="cp-ru">удалось&nbsp;— официально</p><p class="cp-en" lang="en">We <span class="pr">failed to</span> finish it.</p><p class="cp-ru">не удалось</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="I managed to finish it. We succeeded in finishing it. We failed to finish it." aria-label="Прослушать: I managed to finish it. / We succeeded in finishing it. / We failed to finish it."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Don&#x27;t worry, I&#x27;ll <span class="pr">manage</span>.</p><p class="cp-ru">справлюсь</p><p class="cp-en" lang="en">I can&#x27;t <span class="pr">cope with</span> all this stress.</p><p class="cp-ru">не справляюсь&nbsp;— тяжело</p><p class="cp-en" lang="en">I&#x27;ll <span class="pr">deal with</span> it tomorrow.</p><p class="cp-ru">займусь этим завтра</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="Don&#x27;t worry, I&#x27;ll manage. I can&#x27;t cope with all this stress. I&#x27;ll deal with it tomorrow." aria-label="Прослушать: Don&#x27;t worry, I&#x27;ll manage. / I can&#x27;t cope with all this stress. / I&#x27;ll deal with it tomorrow."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">She <span class="pr">handles</span> difficult patients well.</p><p class="cp-ru">справляется, ладит</p><p class="cp-en" lang="en">She <span class="pr">manages</span> the stroke unit.</p><p class="cp-ru">руководит отделением</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="She handles difficult patients well. She manages the stroke unit." aria-label="Прослушать: She handles difficult patients well. / She manages the stroke unit."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">We <span class="pr">made it</span> to the station on time.</p><p class="cp-ru">успели, добрались</p><p class="cp-en" lang="en">Sadly, he didn&#x27;t <span class="pr">make it</span>.</p><p class="cp-ru">не выжил</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="We made it to the station on time. Sadly, he didn&#x27;t make it." aria-label="Прослушать: We made it to the station on time. / Sadly, he didn&#x27;t make it."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">We <span class="pr">ended up</span> staying at home.</p><p class="cp-ru">в итоге остались</p><p class="cp-en" lang="en">It didn&#x27;t <span class="pr">work out</span>.</p><p class="cp-ru">не сложилось</p><p class="cp-en" lang="en">They <span class="pr">pulled it off</span>.</p><p class="cp-ru">у них получилось&nbsp;— трудное дело</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="We ended up staying at home. It didn&#x27;t work out. They pulled it off." aria-label="Прослушать: We ended up staying at home. / It didn&#x27;t work out. / They pulled it off."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I managed finishing the report.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I managed to finish the report.</span><span class="err-note">manage to + глагол</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We succeeded to reach him.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We succeeded in reaching him.</span><span class="err-note">succeed in + -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She achieved to pass the exam.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She managed to pass the exam.</span><span class="err-note">achieve + существительное: achieve a goal</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We could catch the last train. (один раз)</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We managed to catch the last train.</span><span class="err-note">удалось один раз&nbsp;— managed to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The drug failed working.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The drug failed to work.</span><span class="err-note">fail to + глагол</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I can&#x27;t cope stress.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I can&#x27;t cope with stress.</span><span class="err-note">cope with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Can you handle with it?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Can you handle it?</span><span class="err-note">handle&nbsp;— без with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;ll deal it later.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ll deal with it later.</span><span class="err-note">deal with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We ended up to stay at home.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We ended up staying at home.</span><span class="err-note">end up + -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I can&#x27;t afford buying a car.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I can&#x27;t afford to buy a car.</span><span class="err-note">afford to + глагол</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — конструкция в фокусе (оранжевый).
+const MIXED_TOPIC = 8;
+const GROUPS = {"succeed": "Удалось или нет", "cope": "Справляться", "more": "Успеть, достичь, в итоге", "med": "В больнице и в статьях", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "succeed",
+  "title": "manage to — удалось",
+  "sub": "и manage без to — справлюсь",
+  "rule": "manage to + глагол — «удалось, сумел», обычно с трудом: I managed to finish the report on time. Не удалось — didn't manage to или couldn't. Об одной удаче в прошлом could не говорят: We managed to catch the last train. manage без to — «справиться, обойтись»: Don't worry, I'll manage. How do you manage without a car? И ещё manage — «руководить»: She manages the stroke unit.",
+  "ex": [
+   {
+    "en": "I [managed to] finish the report on time.",
+    "ru": "Мне удалось закончить отчёт вовремя."
+   },
+   {
+    "en": "Don't worry — I'll [manage].",
+    "ru": "Не волнуйся — я справлюсь."
+   },
+   {
+    "en": "We [managed to] catch the last train.",
+    "ru": "Мы успели на последний поезд."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "succeed",
+  "title": "succeed in, fail to",
+  "sub": "официально: статьи, отчёты",
+  "rule": "succeed in + -ing — «удалось», официально: The team succeeded in restoring blood flow. Succeed to — ошибка. fail to + глагол — «не удалось, не сделал», официально и в научных статьях: The drug failed to reduce mortality. The patient failed to attend follow-up. В разговоре — didn't manage to, couldn't.",
+  "ex": [
+   {
+    "en": "The team [succeeded in] restoring blood flow.",
+    "ru": "Команде удалось восстановить кровоток."
+   },
+   {
+    "en": "The drug [failed to] reduce mortality.",
+    "ru": "Препарат не снизил смертность."
+   },
+   {
+    "en": "He [failed to] attend his follow-up.",
+    "ru": "Он не пришёл на контрольный приём."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "cope",
+  "title": "cope with, deal with, handle",
+  "sub": "справляться",
+  "rule": "cope with — справляться с трудностями, стрессом, эмоциями: She's coping well with the diagnosis. How are you coping? deal with — заниматься, разбираться с задачей или проблемой: I'll deal with it tomorrow. handle — справиться с ситуацией, задачей, человеком, без предлога: Can you handle it? She handles difficult patients well.",
+  "ex": [
+   {
+    "en": "She's [coping] well with the diagnosis.",
+    "ru": "Она хорошо справляется с диагнозом."
+   },
+   {
+    "en": "I'll [deal with] it tomorrow.",
+    "ru": "Займусь этим завтра."
+   },
+   {
+    "en": "Can you [handle] it on your own?",
+    "ru": "Справишься с этим сам?"
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "more",
+  "title": "make it — успеть, выжить",
+  "sub": "добраться · прийти · выжить",
+  "rule": "make it — «успеть, добраться, прийти»: We made it to the station just in time. Can you make it to the meeting? В медицине make it — «выжить», часто в отрицании: Sadly, he didn't make it.",
+  "ex": [
+   {
+    "en": "We [made it] to the station just in time.",
+    "ru": "Мы едва успели на вокзал."
+   },
+   {
+    "en": "Can you [make it] to the meeting?",
+    "ru": "Ты успеешь на совещание?"
+   },
+   {
+    "en": "Sadly, he didn't [make it].",
+    "ru": "К сожалению, он не выжил."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "more",
+  "title": "achieve, afford, get by",
+  "sub": "достичь · позволить себе · обходиться",
+  "rule": "achieve — достичь цели или результата, с существительным: achieve a goal, achieve good results. Achieve to do — ошибка; «удалось сделать» — managed to. afford — позволить себе (деньги, время, риск): I can't afford a new car. We can't afford to wait. get by — обходиться, сводить концы с концами: We get by on one salary. I can get by in German.",
+  "ex": [
+   {
+    "en": "She [achieved] her goal.",
+    "ru": "Она достигла своей цели."
+   },
+   {
+    "en": "We can't [afford to] wait.",
+    "ru": "Мы не можем позволить себе ждать."
+   },
+   {
+    "en": "I can [get by] in German.",
+    "ru": "По-немецки я объяснюсь."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "more",
+  "title": "end up, work out, pull off",
+  "sub": "в итоге · сложилось · провернуть",
+  "rule": "end up + -ing или + место — «в итоге оказаться»: We ended up staying at home. He ended up in hospital. work out — «получиться, сложиться»: I hope everything works out. It didn't work out. pull off — «провернуть, суметь сделать трудное» (разг.): Nobody believed in it, but they pulled it off.",
+  "ex": [
+   {
+    "en": "We [ended up] staying at home.",
+    "ru": "В итоге мы остались дома."
+   },
+   {
+    "en": "I hope everything [works out].",
+    "ru": "Надеюсь, всё сложится."
+   },
+   {
+    "en": "They [pulled it off].",
+    "ru": "У них получилось."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "med",
+  "title": "В больнице и в статьях",
+  "sub": "failed to · achieved · coping",
+  "rule": "В научных статьях: The intervention failed to reduce mortality. We succeeded in recruiting 500 patients. The trial achieved its primary endpoint. В клинике: We managed to restore blood flow. How are you coping? Sadly, he didn't make it.",
+  "ex": [
+   {
+    "en": "The trial [achieved] its primary endpoint.",
+    "ru": "Исследование достигло первичной конечной точки."
+   },
+   {
+    "en": "We [managed to] restore blood flow.",
+    "ru": "Нам удалось восстановить кровоток."
+   },
+   {
+    "en": "How are you [coping]?",
+    "ru": "Как вы справляетесь?"
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "n1-finish",
+  "t": 1,
+  "q": "It was hard, but I ___ finish the report on time.",
+  "ru": "Было трудно, но мне удалось закончить отчёт вовремя.",
+  "opts": [
+   "managed to",
+   "managed",
+   "could"
+  ],
+  "a": "managed to",
+  "why": "Удалось один раз — managed to. Could — «умел вообще»."
+ },
+ {
+  "id": "n1-call",
+  "t": 1,
+  "q": "Did you manage ___ him?",
+  "ru": "Тебе удалось ему дозвониться?",
+  "opts": [
+   "to call",
+   "calling",
+   "call"
+  ],
+  "a": "to call",
+  "why": "manage to + глагол."
+ },
+ {
+  "id": "n1-ill",
+  "t": 1,
+  "q": "Don't worry about me — I'll ___.",
+  "ru": "Не беспокойся обо мне — я справлюсь.",
+  "opts": [
+   "manage",
+   "manage to",
+   "cope with"
+  ],
+  "a": "manage",
+  "why": "«Справлюсь» без дополнения — I'll manage."
+ },
+ {
+  "id": "n1-car",
+  "t": 1,
+  "q": "How do you ___ without a car?",
+  "ru": "Как ты обходишься без машины?",
+  "opts": [
+   "manage",
+   "succeed",
+   "achieve"
+  ],
+  "a": "manage",
+  "why": "Обходиться — manage without."
+ },
+ {
+  "id": "n1-tickets",
+  "t": 1,
+  "q": "I tried, but I didn't ___ to get tickets.",
+  "ru": "Я пытался, но билеты достать не удалось.",
+  "opts": [
+   "manage",
+   "succeed",
+   "achieve"
+  ],
+  "a": "manage",
+  "why": "Не удалось — didn't manage to."
+ },
+ {
+  "id": "n1-train",
+  "t": 1,
+  "q": "We ran and ___ to catch the last train.",
+  "ru": "Мы бежали и успели на последний поезд.",
+  "opts": [
+   "managed",
+   "could",
+   "succeeded"
+  ],
+  "a": "managed",
+  "why": "Удалось один раз — managed to."
+ },
+ {
+  "id": "n2-in",
+  "t": 2,
+  "q": "The team succeeded ___ restoring blood flow within an hour.",
+  "ru": "Команде удалось восстановить кровоток в течение часа.",
+  "opts": [
+   "in",
+   "to",
+   "at"
+  ],
+  "a": "in",
+  "why": "succeed in + -ing."
+ },
+ {
+  "id": "n2-ing",
+  "t": 2,
+  "q": "They succeeded in ___ the patient's condition.",
+  "ru": "Им удалось стабилизировать состояние пациента.",
+  "opts": [
+   "stabilising",
+   "stabilise",
+   "to stabilise"
+  ],
+  "a": "stabilising",
+  "why": "После succeed in — -ing."
+ },
+ {
+  "id": "n2-fail",
+  "t": 2,
+  "q": "The new drug failed ___ mortality.",
+  "ru": "Новый препарат не снизил смертность.",
+  "opts": [
+   "to reduce",
+   "reducing",
+   "in reducing"
+  ],
+  "a": "to reduce",
+  "why": "fail to + глагол."
+ },
+ {
+  "id": "n2-attend",
+  "t": 2,
+  "q": "The patient failed ___ his follow-up appointment.",
+  "ru": "Пациент не пришёл на контрольный приём.",
+  "opts": [
+   "to attend",
+   "attending",
+   "attend"
+  ],
+  "a": "to attend",
+  "why": "«Не сделал» (официально) — failed to."
+ },
+ {
+  "id": "n2-surgeons",
+  "t": 2,
+  "q": "Did the surgeons ___ in removing the whole tumour?",
+  "ru": "Хирургам удалось удалить всю опухоль?",
+  "opts": [
+   "succeed",
+   "manage",
+   "achieve"
+  ],
+  "a": "succeed",
+  "why": "С in + -ing — только succeed."
+ },
+ {
+  "id": "n3-stress",
+  "t": 3,
+  "q": "It's hard to ___ stress when you work night shifts.",
+  "ru": "Трудно справляться со стрессом, когда работаешь по ночам.",
+  "opts": [
+   "cope with",
+   "cope",
+   "handle with"
+  ],
+  "a": "cope with",
+  "why": "Справляться с трудностями — cope with."
+ },
+ {
+  "id": "n3-request",
+  "t": 3,
+  "q": "I'm busy now — I'll ___ your request tomorrow.",
+  "ru": "Сейчас я занят — займусь вашим запросом завтра.",
+  "opts": [
+   "deal with",
+   "deal",
+   "cope"
+  ],
+  "a": "deal with",
+  "why": "Заняться задачей — deal with."
+ },
+ {
+  "id": "n3-alone",
+  "t": 3,
+  "q": "Can you ___ this on your own?",
+  "ru": "Справишься с этим сам?",
+  "opts": [
+   "handle",
+   "handle with",
+   "cope"
+  ],
+  "a": "handle",
+  "why": "handle — без предлога."
+ },
+ {
+  "id": "n3-coping",
+  "t": 3,
+  "q": "How are you ___ since the diagnosis?",
+  "ru": "Как вы справляетесь с тех пор, как узнали диагноз?",
+  "opts": [
+   "coping",
+   "dealing",
+   "handling"
+  ],
+  "a": "coping",
+  "why": "«Как справляетесь?» — How are you coping?"
+ },
+ {
+  "id": "n3-patients",
+  "t": 3,
+  "q": "She ___ difficult patients very well.",
+  "ru": "Она отлично ладит с трудными пациентами.",
+  "opts": [
+   "handles",
+   "copes",
+   "deals"
+  ],
+  "a": "handles",
+  "why": "Без предлога — handles. Copes и deals требуют with."
+ },
+ {
+  "id": "n3-complaints",
+  "t": 3,
+  "q": "Who ___ complaints in your hospital?",
+  "ru": "Кто у вас в больнице разбирается с жалобами?",
+  "opts": [
+   "deals with",
+   "copes with",
+   "handles with"
+  ],
+  "a": "deals with",
+  "why": "Разбираться с задачей — deals with."
+ },
+ {
+  "id": "n4-station",
+  "t": 4,
+  "q": "We ran and just ___ it to the station on time.",
+  "ru": "Мы бежали и едва успели на вокзал.",
+  "opts": [
+   "made",
+   "did",
+   "managed"
+  ],
+  "a": "made",
+  "why": "Успеть, добраться — make it."
+ },
+ {
+  "id": "n4-meeting",
+  "t": 4,
+  "q": "Sorry, I can't ___ it to the meeting today.",
+  "ru": "Извините, сегодня я не успею на совещание.",
+  "opts": [
+   "make",
+   "do",
+   "manage"
+  ],
+  "a": "make",
+  "why": "Успеть, прийти — make it."
+ },
+ {
+  "id": "n4-survive",
+  "t": 4,
+  "q": "We did everything we could, but sadly he didn't ___ it.",
+  "ru": "Мы сделали всё возможное, но, к сожалению, он не выжил.",
+  "opts": [
+   "make",
+   "do",
+   "manage"
+  ],
+  "a": "make",
+  "why": "Выжить — make it."
+ },
+ {
+  "id": "n4-home",
+  "t": 4,
+  "q": "The road was closed, but we ___ it home before midnight.",
+  "ru": "Дорогу перекрыли, но мы добрались домой до полуночи.",
+  "opts": [
+   "made",
+   "did",
+   "got"
+  ],
+  "a": "made",
+  "why": "Добраться — make it."
+ },
+ {
+  "id": "n5-goal",
+  "t": 5,
+  "q": "She finally ___ her goal of running a marathon.",
+  "ru": "Она наконец достигла своей цели — пробежала марафон.",
+  "opts": [
+   "achieved",
+   "managed",
+   "succeeded"
+  ],
+  "a": "achieved",
+  "why": "Достичь цели — achieve a goal."
+ },
+ {
+  "id": "n5-exam",
+  "t": 5,
+  "q": "He ___ to pass the exam on his third attempt.",
+  "ru": "Ему удалось сдать экзамен с третьей попытки.",
+  "opts": [
+   "managed",
+   "achieved",
+   "succeeded"
+  ],
+  "a": "managed",
+  "why": "Удалось сделать — managed to. Achieve to — ошибка."
+ },
+ {
+  "id": "n5-wait",
+  "t": 5,
+  "q": "We can't ___ to wait — every minute counts.",
+  "ru": "Мы не можем позволить себе ждать — дорога каждая минута.",
+  "opts": [
+   "afford",
+   "allow",
+   "manage"
+  ],
+  "a": "afford",
+  "why": "Позволить себе — afford to."
+ },
+ {
+  "id": "n5-car",
+  "t": 5,
+  "q": "I can't afford ___ a new car.",
+  "ru": "Я не могу позволить себе купить новую машину.",
+  "opts": [
+   "to buy",
+   "buying",
+   "buy"
+  ],
+  "a": "to buy",
+  "why": "afford to + глагол."
+ },
+ {
+  "id": "n5-getby",
+  "t": 5,
+  "q": "My German isn't perfect, but I can get ___.",
+  "ru": "Мой немецкий не идеален, но объясниться я могу.",
+  "opts": [
+   "by",
+   "on",
+   "over"
+  ],
+  "a": "by",
+  "why": "Обходиться, справляться — get by."
+ },
+ {
+  "id": "n6-staying",
+  "t": 6,
+  "q": "It was raining, so we ended up ___ at home.",
+  "ru": "Шёл дождь, и в итоге мы остались дома.",
+  "opts": [
+   "staying",
+   "to stay",
+   "stay"
+  ],
+  "a": "staying",
+  "why": "end up + -ing."
+ },
+ {
+  "id": "n6-hospital",
+  "t": 6,
+  "q": "He ignored the symptoms and ended up ___ hospital.",
+  "ru": "Он не обращал внимания на симптомы и в итоге попал в больницу.",
+  "opts": [
+   "in",
+   "at",
+   "to"
+  ],
+  "a": "in",
+  "why": "Оказаться где-то — end up in."
+ },
+ {
+  "id": "n6-hope",
+  "t": 6,
+  "q": "I hope everything works ___ for you.",
+  "ru": "Надеюсь, у тебя всё сложится.",
+  "opts": [
+   "out",
+   "up",
+   "off"
+  ],
+  "a": "out",
+  "why": "Сложиться, получиться — work out."
+ },
+ {
+  "id": "n6-pull",
+  "t": 6,
+  "q": "It was a very difficult operation, but they pulled it ___.",
+  "ru": "Операция была очень сложной, но у них получилось.",
+  "opts": [
+   "off",
+   "out",
+   "up"
+  ],
+  "a": "off",
+  "why": "Провернуть трудное — pull it off."
+ },
+ {
+  "id": "n6-moscow",
+  "t": 6,
+  "q": "We tried living in Moscow, but it didn't work ___.",
+  "ru": "Мы пробовали жить в Москве, но не сложилось.",
+  "opts": [
+   "out",
+   "off",
+   "up"
+  ],
+  "a": "out",
+  "why": "Не сложилось — didn't work out."
+ },
+ {
+  "id": "n7-endpoint",
+  "t": 7,
+  "q": "The trial ___ its primary endpoint.",
+  "ru": "Исследование достигло первичной конечной точки.",
+  "opts": [
+   "achieved",
+   "managed",
+   "succeeded"
+  ],
+  "a": "achieved",
+  "why": "Достичь результата — achieve."
+ },
+ {
+  "id": "n7-recruit",
+  "t": 7,
+  "q": "We succeeded in ___ 500 patients.",
+  "ru": "Нам удалось набрать 500 пациентов.",
+  "opts": [
+   "recruiting",
+   "recruit",
+   "to recruit"
+  ],
+  "a": "recruiting",
+  "why": "succeed in + -ing."
+ },
+ {
+  "id": "n7-mortality",
+  "t": 7,
+  "q": "The intervention failed ___ mortality at 90 days.",
+  "ru": "Вмешательство не снизило смертность к 90-му дню.",
+  "opts": [
+   "to reduce",
+   "reducing",
+   "reduce"
+  ],
+  "a": "to reduce",
+  "why": "fail to + глагол."
+ },
+ {
+  "id": "n7-restore",
+  "t": 7,
+  "q": "We ___ restore blood flow within 20 minutes.",
+  "ru": "Нам удалось восстановить кровоток за 20 минут.",
+  "opts": [
+   "managed to",
+   "could",
+   "succeeded to"
+  ],
+  "a": "managed to",
+  "why": "Удалось один раз — managed to."
+ },
+ {
+  "id": "n7-mother",
+  "t": 7,
+  "q": "Your mother is ___ well after the stroke.",
+  "ru": "Ваша мама хорошо справляется после инсульта.",
+  "opts": [
+   "coping",
+   "dealing with",
+   "handling with"
+  ],
+  "a": "coping",
+  "why": "Справляться с трудностями — cope. Handle with и dealing with без дополнения — ошибки."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "manage:state";
+const LS_SPEAK = "manage:autospeak";
+const LS_TAB = "manage:tab";
+const LS_OPEN = "manage:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "manage to"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — конструкция в фокусе (оранжевый)
+function modalCls(){ return "pr"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: удалось, справиться и успеть чередуются — выбирать приходится по смыслу и конструкции.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

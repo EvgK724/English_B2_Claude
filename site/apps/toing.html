@@ -1,0 +1,2333 @@
+<title>To или -ing</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("toing",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw,.g-form i{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .obj,.st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .q.short{font-size:calc(40px*var(--k));line-height:1.2}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-title .h-plus{color:var(--muted)}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(28px*var(--k)) minmax(0,1fr) auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li span i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));white-space:nowrap}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .lbl .en{text-transform:none;letter-spacing:.02em;font-size:calc(15px*var(--k))}
+  .lbl.ing{color:var(--accent)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .grp{display:flex;flex-direction:column}
+  .grp-row{display:flex;flex-direction:column;gap:calc(3px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .grp-row:first-child{border-top:0}
+  .grp-name{margin:0;font-size:calc(14px*var(--k));font-weight:600;line-height:1.35;color:var(--soft)}
+  .grp-verbs{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4;color:var(--blue)}
+  .grp.ing .grp-verbs{color:var(--accent)}
+  .grp-verbs sup,.mx-foot sup{color:var(--accent);font-family:var(--sans);font-size:calc(12px*var(--k))}
+  .dual{width:100%;border-collapse:collapse}
+  .dual th,.dual td{padding:calc(9px*var(--k)) calc(8px*var(--k));text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .dual thead th{border-top:0;padding-top:calc(12px*var(--k));font-size:calc(14px*var(--k));font-weight:600;letter-spacing:.02em}
+  .dual tbody th{padding-left:calc(14px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));white-space:nowrap}
+  .dual td span{display:block;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.3}
+  .dual td small{display:block;margin-top:calc(2px*var(--k));font-size:calc(12px*var(--k));line-height:1.3;color:var(--muted)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-foot{margin:calc(6px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .mx-foot a{color:var(--blue)}
+  .go-wrap .t-train{flex:1}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-w{grid-column:1 / -1;margin:calc(6px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .ex-w b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(4px*var(--k))}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex.has-w .ex-play{grid-row:2 / span 2}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title"><span class="st" lang="en">to</span> <span class="h-plus">или</span> <span class="pr nw" lang="en">-ing</span></h1>
+      <p class="r-sub">После одних глаголов идёт <span class="st nw" lang="en">to do</span>, после других&nbsp;— <span class="pr nw" lang="en">-ing</span>. <b>Решает смысл: действие впереди или само действие.</b></p>
+      <div class="algo">
+        <p class="algo-h">Проверка за секунду</p>
+        <ol>
+          <li><span>Решение, желание, план, попытка&nbsp;— дело ещё впереди? <i lang="en">decide, want, hope</i></span><b class="st" lang="en">to do</b></li>
+          <li><span>Говорим о самом действии: нравится, избегаю, закончил, продолжаю? <i lang="en">enjoy, avoid, finish</i></span><b class="pr" lang="en">-ing</b></li>
+          <li><span>Перед глаголом предлог&nbsp;— <i lang="en">in, of, for, look forward to</i>?</span><b class="pr" lang="en">-ing</b></li>
+          <li><span>Глагол двойной&nbsp;— <i lang="en">remember, stop, try</i>? Смотри на смысл</span><b>смысл</b></li>
+        </ol>
+        <p class="algo-m"><span class="st" lang="en">to</span>&nbsp;— стрелка вперёд, <span class="pr nw" lang="en">-ing</span>&nbsp;— само действие.</p>
+        <p class="algo-note">Двойные глаголы&nbsp;— в таблице и в темах 5–8.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Глагол + <span class="en" lang="en">to do</span></h2>
+      <div class="mx-wrap">
+        <div class="grp">
+          <div class="grp-row"><p class="grp-name">хочу, надеюсь, жду</p><p class="grp-verbs" lang="en">want, would like, hope, expect, wish</p></div>
+          <div class="grp-row"><p class="grp-name">решаю, планирую</p><p class="grp-verbs" lang="en">decide, plan, choose, arrange, aim</p></div>
+          <div class="grp-row"><p class="grp-name">обещаю, соглашаюсь, отказываюсь</p><p class="grp-verbs" lang="en">agree, promise, offer, refuse, threaten</p></div>
+          <div class="grp-row"><p class="grp-name">получилось или нет</p><p class="grp-verbs" lang="en">manage, fail, afford, learn</p></div>
+          <div class="grp-row"><p class="grp-name">кажется, склонен</p><p class="grp-verbs" lang="en">seem, appear, tend, pretend</p></div>
+          <div class="grp-row"><p class="grp-name">заслуживает, надо</p><p class="grp-verbs" lang="en">deserve, need<sup aria-label="меняет смысл">*</sup></p></div>
+        </div>
+      </div>
+      <h2 class="lbl ing">Глагол + <span class="en" lang="en">-ing</span></h2>
+      <div class="mx-wrap">
+        <div class="grp ing">
+          <div class="grp-row"><p class="grp-name">нравится, не выношу, скучаю</p><p class="grp-verbs" lang="en">enjoy, mind, can&#x27;t stand, can&#x27;t help, miss</p></div>
+          <div class="grp-row"><p class="grp-name">избегаю, откладываю, рискую</p><p class="grp-verbs" lang="en">avoid, postpone, delay, put off, risk</p></div>
+          <div class="grp-row"><p class="grp-name">продолжаю, заканчиваю, бросаю</p><p class="grp-verbs" lang="en">keep, practise, finish, give up, quit</p></div>
+          <div class="grp-row"><p class="grp-name">предлагаю, обдумываю</p><p class="grp-verbs" lang="en">suggest, recommend, consider, imagine, involve</p></div>
+          <div class="grp-row"><p class="grp-name">признаю, отрицаю</p><p class="grp-verbs" lang="en">admit, deny, mention</p></div>
+          <div class="grp-row"><p class="grp-name">to здесь предлог</p><p class="grp-verbs" lang="en">look forward to, object to, get used to, be used to</p></div>
+        </div>
+      </div>
+      <p class="mx-foot"><sup>*</sup> <span lang="en">need to do</span>&nbsp;— надо сделать самому; <span lang="en">needs doing</span>&nbsp;— нужно, чтобы сделали (тема&nbsp;10).</p>
+      <div class="go-wrap"><button class="t-train" id="sortGo" type="button">Проверить себя по спискам</button></div>
+      <h2 class="lbl">Меняют смысл</h2>
+      <div class="mx-wrap">
+        <table class="dual">
+          <thead><tr><th scope="col"><span class="sr">Глагол</span></th><th scope="col" class="st">+ <span lang="en">to do</span></th><th scope="col" class="pr">+ <span class="nw" lang="en">-ing</span></th></tr></thead>
+          <tbody>
+            <tr><th scope="row" lang="en">remember</th><td><span class="st" lang="en">remember to check</span><small>не забыть сделать</small></td><td><span class="pr" lang="en">remember seeing</span><small>помнить, как было</small></td></tr>
+            <tr><th scope="row" lang="en">forget</th><td><span class="st" lang="en">forget to sign</span><small>забыть сделать</small></td><td><span class="pr" lang="en">never forget doing</span><small>не забыть, как было</small></td></tr>
+            <tr><th scope="row" lang="en">stop</th><td><span class="st" lang="en">stop to pick up</span><small>остановиться, чтобы</small></td><td><span class="pr" lang="en">stop smoking</span><small>прекратить</small></td></tr>
+            <tr><th scope="row" lang="en">try</th><td><span class="st" lang="en">try to keep still</span><small>стараться</small></td><td><span class="pr" lang="en">try taking paracetamol</span><small>попробовать способ</small></td></tr>
+            <tr><th scope="row" lang="en">regret</th><td><span class="st" lang="en">regret to inform</span><small>с сожалением сообщаю</small></td><td><span class="pr" lang="en">regret ordering</span><small>жалею о сделанном</small></td></tr>
+            <tr><th scope="row" lang="en">mean</th><td><span class="st" lang="en">didn&#x27;t mean to upset</span><small>намеревался</small></td><td><span class="pr" lang="en">means losing time</span><small>означает</small></td></tr>
+            <tr><th scope="row" lang="en">go on</th><td><span class="st" lang="en">go on to present</span><small>перейти к другому</small></td><td><span class="pr" lang="en">go on talking</span><small>продолжать то же</small></td></tr>
+            <tr><th scope="row" lang="en">need</th><td><span class="st" lang="en">need to sign</span><small>надо сделать самому</small></td><td><span class="pr" lang="en">needs changing</span><small>надо, чтобы сделали</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-note">Обе формы почти без разницы: <span lang="en">like, love, hate, prefer, begin, start, continue</span>. Но <span lang="en">would like, would love, would prefer</span>&nbsp;— только <span class="st nw" lang="en">to do</span>.</p>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">suggest to do</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">suggest doing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">look forward to hear</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">look forward to hearing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">avoid to drive</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">avoid driving</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">enjoy to work</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">enjoy working</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;d like going</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;d like to go</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;m used to work nights</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;m used to working nights</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. {…} — форма с to (синий), […] — форма на -ing (оранжевый).
+const SORT_TOPIC = 11;
+const MIXED_TOPIC = 12;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "to: действие впереди",
+  "rule": "Глаголы решений, желаний, планов и попыток смотрят в будущее: само действие ещё впереди, поэтому после них to do. Сюда относятся want, hope, expect, plan, decide, agree, promise, refuse, offer, manage, afford, fail, tend, seem.",
+  "ex": [
+   {
+    "en": "We decided {to start} thrombolysis immediately.",
+    "ru": "Мы решили сразу начать тромболизис."
+   },
+   {
+    "en": "The patient refused {to sign} the consent form.",
+    "ru": "Пациент отказался подписать согласие."
+   },
+   {
+    "en": "We can't afford {to lose} another hour.",
+    "ru": "Мы не можем позволить себе потерять ещё час."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "-ing: само действие",
+  "rule": "Глаголы, которые говорят о самом действии — нравится ли оно, избегаем ли его, закончили ли, повторяем ли, — берут -ing: enjoy, avoid, finish, keep, mind, risk, deny, admit, miss, practise, postpone, can't stand, give up.",
+  "ex": [
+   {
+    "en": "Patients should avoid [driving] for a month after a TIA.",
+    "ru": "После ТИА пациентам следует месяц не садиться за руль."
+   },
+   {
+    "en": "Have you finished [writing] the discharge summary?",
+    "ru": "Вы закончили писать выписку?"
+   },
+   {
+    "en": "He keeps [forgetting] his evening dose.",
+    "ru": "Он постоянно забывает вечернюю дозу."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "suggest, recommend, consider",
+  "rule": "Глаголы обсуждения и предложения — suggest, recommend, consider, advise (без «кого») — и ещё imagine, involve берут -ing. Главная ошибка русскоговорящих — suggest to do: правильно suggest doing или suggest that we do. Сравни: offer to do — предложить сделать самому.",
+  "ex": [
+   {
+    "en": "She suggested [repeating] the scan in 24 hours.",
+    "ru": "Она предложила повторить КТ через сутки."
+   },
+   {
+    "en": "We considered [stopping] aspirin before surgery.",
+    "ru": "Мы обсуждали отмену аспирина перед операцией."
+   },
+   {
+    "en": "The procedure involves [inserting] a catheter into the artery.",
+    "ru": "Процедура предполагает введение катетера в артерию."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "После предлога — всегда -ing",
+  "rule": "После любого предлога глагол идёт с -ing: interested in doing, instead of doing, before doing, thank you for doing. Ловушка — сочетания, где to само предлог: look forward to, be used to, get used to, object to. Правильно I look forward to hearing from you — а не to hear.",
+  "ex": [
+   {
+    "en": "I look forward to [hearing] from you.",
+    "ru": "Жду вашего ответа."
+   },
+   {
+    "en": "Instead of [waiting] for the MRI, we started treatment.",
+    "ru": "Вместо того чтобы ждать МРТ, мы начали лечение."
+   },
+   {
+    "en": "She is used to [working] night shifts.",
+    "ru": "Она привыкла работать в ночные смены."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "remember и forget",
+  "rule": "to — дело впереди, -ing — дело позади. Remember to check — не забыть проверить, это ещё предстоит. Remember seeing — помнить, как видел, это уже было. Так же forget: forgot to take — забыл принять и не принял; never forget doing — никогда не забуду, как делал.",
+  "ex": [
+   {
+    "en": "Remember {to check} the INR before discharge.",
+    "ru": "Не забудьте проверить МНО перед выпиской."
+   },
+   {
+    "en": "I remember [seeing] this patient last year.",
+    "ru": "Я помню, что видел этого пациента в прошлом году."
+   },
+   {
+    "en": "I'll never forget [doing] my first thrombectomy.",
+    "ru": "Никогда не забуду свою первую тромбэктомию."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "stop",
+  "rule": "stop doing — прекратить само действие: he stopped smoking — бросил курить. stop to do — остановиться, чтобы сделать что-то другое, to здесь значит «чтобы»: the ambulance stopped to pick up a patient.",
+  "ex": [
+   {
+    "en": "He stopped [smoking] after the stroke.",
+    "ru": "После инсульта он бросил курить."
+   },
+   {
+    "en": "The ambulance stopped {to pick up} a second patient.",
+    "ru": "Скорая остановилась, чтобы забрать второго пациента."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "try",
+  "rule": "try to do — стараться, прилагать усилие, и не факт, что выйдет: try to keep still. try doing — попробовать как способ, эксперимент, чтобы посмотреть, поможет ли: try taking paracetamol.",
+  "ex": [
+   {
+    "en": "Try {to keep} still during the scan.",
+    "ru": "Постарайтесь не двигаться во время исследования."
+   },
+   {
+    "en": "If the headache persists, try [taking] paracetamol.",
+    "ru": "Если голова не проходит, попробуйте принять парацетамол."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "regret, mean, go on",
+  "rule": "regret to inform — «с сожалением сообщаю» (официально), regret doing — жалеть о сделанном. mean to do — намереваться, mean doing — означать. go on to do — перейти к следующему, go on doing — продолжать то же самое.",
+  "ex": [
+   {
+    "en": "We regret {to inform} you that the clinic is closed.",
+    "ru": "С сожалением сообщаем, что клиника закрыта."
+   },
+   {
+    "en": "I regret [not ordering] an MRI earlier.",
+    "ru": "Жалею, что не назначил МРТ раньше."
+   },
+   {
+    "en": "Delaying the scan means [losing] brain tissue.",
+    "ru": "Откладывать КТ — значит терять мозговую ткань."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "title": "Можно и так, и так",
+  "rule": "like, love, hate, prefer, begin, start, continue берут обе формы почти без разницы: it started to rain = it started raining. Но would like, would love, would prefer — только с to: I'd like to speak to the consultant.",
+  "ex": [
+   {
+    "en": "The patient began {to improve} on the third day.",
+    "ru": "На третий день пациенту стало лучше."
+   },
+   {
+    "en": "Continue [taking] the tablets until your next appointment.",
+    "ru": "Продолжайте принимать таблетки до следующего приёма."
+   },
+   {
+    "en": "I'd like {to speak} to the consultant, please.",
+    "ru": "Я бы хотел поговорить с консультантом."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "title": "used to и needs doing",
+  "rule": "used to do — «раньше делал, теперь нет»: I used to work in Moscow. be used to doing, get used to doing — «привык, привыкнуть», to здесь предлог: I'm used to working nights. needs doing — «нужно, чтобы сделали»: the dressing needs changing = needs to be changed.",
+  "ex": [
+   {
+    "en": "I used {to work} in Moscow before I moved here.",
+    "ru": "Раньше я работал в Москве, пока не переехал сюда."
+   },
+   {
+    "en": "I'm used to [working] nights.",
+    "ru": "Я привык работать по ночам."
+   },
+   {
+    "en": "The dressing needs [changing] every day.",
+    "ru": "Повязку нужно менять каждый день."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "title": "Глагол → to или -ing",
+  "rule": "Быстрая проверка по спискам: видишь глагол — выбираешь to do или doing. Под глаголом — перевод, после ответа — его группа из шпаргалки. Глаголы, которые меняют смысл, здесь не встречаются — они в темах 5–8.",
+  "ex": []
+ },
+ {
+  "n": 12,
+  "title": "Итог — всё вместе",
+  "rule": "Пятнадцать случайных предложений из тем 1–10 вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже допустимые с пояснением, ru — перевод глагола (тема 11).
+const CARDS = [
+ {
+  "id": "t1-decide",
+  "t": 1,
+  "q": "We decided ___ thrombolysis immediately.",
+  "opts": [
+   "to start",
+   "starting"
+  ],
+  "a": "to start",
+  "why": "decide — решение, действие впереди: to start."
+ },
+ {
+  "id": "t1-hope",
+  "t": 1,
+  "q": "We hope ___ him home by Friday.",
+  "opts": [
+   "to send",
+   "sending"
+  ],
+  "a": "to send",
+  "why": "hope = надеяться, действие впереди: to send."
+ },
+ {
+  "id": "t1-refuse",
+  "t": 1,
+  "q": "The patient refused ___ the consent form.",
+  "opts": [
+   "to sign",
+   "signing"
+  ],
+  "a": "to sign",
+  "why": "refuse = отказаться сделать: to sign."
+ },
+ {
+  "id": "t1-agree",
+  "t": 1,
+  "q": "The surgeon agreed ___ the patient this afternoon.",
+  "opts": [
+   "to see",
+   "seeing"
+  ],
+  "a": "to see",
+  "why": "agree = согласиться сделать: to see."
+ },
+ {
+  "id": "t1-manage",
+  "t": 1,
+  "q": "Did you manage ___ the family?",
+  "opts": [
+   "to contact",
+   "contacting"
+  ],
+  "a": "to contact",
+  "why": "manage = суметь, справиться: to contact."
+ },
+ {
+  "id": "t1-afford",
+  "t": 1,
+  "q": "We can't afford ___ another hour.",
+  "opts": [
+   "to lose",
+   "losing"
+  ],
+  "a": "to lose",
+  "why": "afford = позволить себе: to lose."
+ },
+ {
+  "id": "t1-expect",
+  "t": 1,
+  "q": "We expect ___ the CT report by noon.",
+  "opts": [
+   "to get",
+   "getting"
+  ],
+  "a": "to get",
+  "why": "expect = рассчитывать: to get."
+ },
+ {
+  "id": "t1-tend",
+  "t": 1,
+  "q": "Older patients tend ___ more slowly.",
+  "opts": [
+   "to recover",
+   "recovering"
+  ],
+  "a": "to recover",
+  "why": "tend = обычно, иметь склонность: to recover."
+ },
+ {
+  "id": "t2-avoid",
+  "t": 2,
+  "q": "Patients should avoid ___ for a month after a TIA.",
+  "opts": [
+   "driving",
+   "to drive"
+  ],
+  "a": "driving",
+  "why": "avoid = избегать самого действия: driving."
+ },
+ {
+  "id": "t2-enjoy",
+  "t": 2,
+  "q": "Do you enjoy ___ in the stroke unit?",
+  "opts": [
+   "working",
+   "to work"
+  ],
+  "a": "working",
+  "why": "enjoy = нравится само действие: working. Enjoy to work — типичная ошибка."
+ },
+ {
+  "id": "t2-finish",
+  "t": 2,
+  "q": "Have you finished ___ the discharge summary?",
+  "opts": [
+   "writing",
+   "to write"
+  ],
+  "a": "writing",
+  "why": "finish = закончить процесс: writing."
+ },
+ {
+  "id": "t2-keep",
+  "t": 2,
+  "q": "He keeps ___ his evening dose.",
+  "opts": [
+   "forgetting",
+   "to forget"
+  ],
+  "a": "forgetting",
+  "why": "keep = всё время, снова и снова: forgetting."
+ },
+ {
+  "id": "t2-mind",
+  "t": 2,
+  "q": "Would you mind ___ the window?",
+  "opts": [
+   "closing",
+   "to close"
+  ],
+  "a": "closing",
+  "why": "mind = возражать против действия: closing."
+ },
+ {
+  "id": "t2-help",
+  "t": 2,
+  "q": "I couldn't help ___ at his joke.",
+  "opts": [
+   "laughing",
+   "to laugh"
+  ],
+  "a": "laughing",
+  "why": "can't help = не могу удержаться: laughing."
+ },
+ {
+  "id": "t2-risk",
+  "t": 2,
+  "q": "We can't risk ___ the patient before the scan.",
+  "opts": [
+   "moving",
+   "to move"
+  ],
+  "a": "moving",
+  "why": "risk = рисковать, сделав это: moving."
+ },
+ {
+  "id": "t2-deny",
+  "t": 2,
+  "q": "He denied ___ any alcohol that evening.",
+  "opts": [
+   "drinking",
+   "to drink"
+  ],
+  "a": "drinking",
+  "why": "deny = отрицать сделанное: drinking."
+ },
+ {
+  "id": "t3-suggest",
+  "t": 3,
+  "q": "She suggested ___ the scan in 24 hours.",
+  "opts": [
+   "repeating",
+   "to repeat"
+  ],
+  "a": "repeating",
+  "why": "suggest + -ing. Suggest to do — типичная ошибка."
+ },
+ {
+  "id": "t3-consider",
+  "t": 3,
+  "q": "We considered ___ aspirin before surgery.",
+  "opts": [
+   "stopping",
+   "to stop"
+  ],
+  "a": "stopping",
+  "why": "consider = обдумывать: stopping."
+ },
+ {
+  "id": "t3-recommend",
+  "t": 3,
+  "q": "I'd recommend ___ with a low dose.",
+  "opts": [
+   "starting",
+   "to start"
+  ],
+  "a": "starting",
+  "why": "recommend + -ing: starting."
+ },
+ {
+  "id": "t3-advise",
+  "t": 3,
+  "q": "I'd advise ___ for the MRI results.",
+  "opts": [
+   "waiting",
+   "to wait"
+  ],
+  "a": "waiting",
+  "why": "advise без «кого» — -ing; с «кем»: advise you to wait."
+ },
+ {
+  "id": "t3-involve",
+  "t": 3,
+  "q": "The procedure involves ___ a catheter into the artery.",
+  "opts": [
+   "inserting",
+   "to insert"
+  ],
+  "a": "inserting",
+  "why": "involve = предполагать, включать: inserting."
+ },
+ {
+  "id": "t3-imagine",
+  "t": 3,
+  "q": "Can you imagine ___ a night shift alone?",
+  "opts": [
+   "working",
+   "to work"
+  ],
+  "a": "working",
+  "why": "imagine = представить само действие: working."
+ },
+ {
+  "id": "t4-forward",
+  "t": 4,
+  "q": "I look forward to ___ from you.",
+  "opts": [
+   "hearing",
+   "hear"
+  ],
+  "a": "hearing",
+  "why": "to здесь предлог (look forward to + существительное), после него — -ing."
+ },
+ {
+  "id": "t4-used",
+  "t": 4,
+  "q": "She is used to ___ night shifts.",
+  "opts": [
+   "working",
+   "work"
+  ],
+  "a": "working",
+  "why": "be used to = привыкнуть; to — предлог: working."
+ },
+ {
+  "id": "t4-instead",
+  "t": 4,
+  "q": "Instead of ___ for the MRI, we started treatment.",
+  "opts": [
+   "waiting",
+   "to wait"
+  ],
+  "a": "waiting",
+  "why": "После предлога of — -ing."
+ },
+ {
+  "id": "t4-before",
+  "t": 4,
+  "q": "Check the INR before ___ warfarin.",
+  "opts": [
+   "restarting",
+   "to restart"
+  ],
+  "a": "restarting",
+  "why": "before здесь предлог: before restarting."
+ },
+ {
+  "id": "t4-thank",
+  "t": 4,
+  "q": "Thank you for ___ so quickly.",
+  "opts": [
+   "replying",
+   "to reply"
+  ],
+  "a": "replying",
+  "why": "После предлога for — -ing."
+ },
+ {
+  "id": "t4-object",
+  "t": 4,
+  "q": "Many patients object to ___ for parking.",
+  "opts": [
+   "paying",
+   "pay"
+  ],
+  "a": "paying",
+  "why": "object to = возражать против; to — предлог: paying."
+ },
+ {
+  "id": "t5-remember-to",
+  "t": 5,
+  "q": "Remember ___ the INR before discharge.",
+  "opts": [
+   "to check",
+   "checking"
+  ],
+  "a": "to check",
+  "why": "Не забыть сделать — дело впереди: to check."
+ },
+ {
+  "id": "t5-remember-ing",
+  "t": 5,
+  "q": "I remember ___ this patient last year.",
+  "opts": [
+   "seeing",
+   "to see"
+  ],
+  "a": "seeing",
+  "why": "Помню, как было, — дело позади: seeing."
+ },
+ {
+  "id": "t5-forget-to",
+  "t": 5,
+  "q": "Don't forget ___ the consent form.",
+  "opts": [
+   "to sign",
+   "signing"
+  ],
+  "a": "to sign",
+  "why": "Не забыть сделать — to sign."
+ },
+ {
+  "id": "t5-forget-ing",
+  "t": 5,
+  "q": "I'll never forget ___ my first thrombectomy.",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "Не забуду, как делал, — дело позади: doing."
+ },
+ {
+  "id": "t5-forgot",
+  "t": 5,
+  "q": "He forgot ___ his evening dose, so his INR dropped.",
+  "opts": [
+   "to take",
+   "taking"
+  ],
+  "a": "to take",
+  "why": "Забыл сделать и не сделал — forgot to take."
+ },
+ {
+  "id": "t6-smoking",
+  "t": 6,
+  "q": "He stopped ___ after the stroke.",
+  "opts": [
+   "smoking",
+   "to smoke"
+  ],
+  "a": "smoking",
+  "why": "stop doing = прекратить, бросить: smoking."
+ },
+ {
+  "id": "t6-pickup",
+  "t": 6,
+  "q": "The ambulance stopped ___ a second patient.",
+  "opts": [
+   "to pick up",
+   "picking up"
+  ],
+  "a": "to pick up",
+  "why": "stop to do = остановиться, чтобы: to pick up."
+ },
+ {
+  "id": "t6-talking",
+  "t": 6,
+  "q": "Please stop ___ — the patient is trying to sleep.",
+  "opts": [
+   "talking",
+   "to talk"
+  ],
+  "a": "talking",
+  "why": "Прекратить разговор — stop talking."
+ },
+ {
+  "id": "t6-blaming",
+  "t": 6,
+  "q": "Stop ___ yourself — it wasn't your fault.",
+  "opts": [
+   "blaming",
+   "to blame"
+  ],
+  "a": "blaming",
+  "why": "Прекратить действие — stop blaming."
+ },
+ {
+  "id": "t7-keep",
+  "t": 7,
+  "q": "Try ___ still during the scan.",
+  "opts": [
+   "to keep",
+   "keeping"
+  ],
+  "a": "to keep",
+  "why": "try to do = постараться, приложить усилие."
+ },
+ {
+  "id": "t7-taking",
+  "t": 7,
+  "q": "If the headache persists, try ___ paracetamol.",
+  "opts": [
+   "taking",
+   "to take"
+  ],
+  "a": "taking",
+  "why": "try doing = попробовать как способ: taking."
+ },
+ {
+  "id": "t7-turning",
+  "t": 7,
+  "q": "Have you tried ___ the monitor off and on again?",
+  "opts": [
+   "turning",
+   "to turn"
+  ],
+  "a": "turning",
+  "why": "Попробовать способ — tried turning."
+ },
+ {
+  "id": "t7-be",
+  "t": 7,
+  "q": "Please try ___ on time tomorrow.",
+  "opts": [
+   "to be",
+   "being"
+  ],
+  "a": "to be",
+  "why": "Постарайтесь — усилие: try to be."
+ },
+ {
+  "id": "t8-inform",
+  "t": 8,
+  "q": "We regret ___ you that the clinic is closed.",
+  "opts": [
+   "to inform",
+   "informing"
+  ],
+  "a": "to inform",
+  "why": "regret to inform — официальное «с сожалением сообщаем»."
+ },
+ {
+  "id": "t8-ordering",
+  "t": 8,
+  "q": "I regret ___ an MRI earlier.",
+  "opts": [
+   "not ordering",
+   "not to order"
+  ],
+  "a": "not ordering",
+  "why": "Жалею о сделанном или несделанном — -ing."
+ },
+ {
+  "id": "t8-means",
+  "t": 8,
+  "q": "Delaying the scan means ___ brain tissue.",
+  "opts": [
+   "losing",
+   "to lose"
+  ],
+  "a": "losing",
+  "why": "mean = означать: losing."
+ },
+ {
+  "id": "t8-meant",
+  "t": 8,
+  "q": "I didn't mean ___ you.",
+  "opts": [
+   "to upset",
+   "upsetting"
+  ],
+  "a": "to upset",
+  "why": "mean = намереваться: to upset."
+ },
+ {
+  "id": "t8-goon",
+  "t": 8,
+  "q": "After a short introduction, she went on ___ a clinical case.",
+  "opts": [
+   "to present",
+   "presenting"
+  ],
+  "a": "to present",
+  "why": "go on to do = перейти к следующему: to present."
+ },
+ {
+  "id": "t9-like",
+  "t": 9,
+  "q": "I'd like ___ to the consultant, please.",
+  "opts": [
+   "to speak",
+   "speaking"
+  ],
+  "a": "to speak",
+  "why": "would like — только to do."
+ },
+ {
+  "id": "t9-began",
+  "t": 9,
+  "q": "The patient began ___ on the third day.",
+  "opts": [
+   "to improve",
+   "improving"
+  ],
+  "a": "to improve",
+  "also": {
+   "improving": "begin берёт обе формы без разницы в смысле"
+  },
+  "why": "begin — обе формы верны."
+ },
+ {
+  "id": "t9-continue",
+  "t": 9,
+  "q": "Continue ___ the tablets until your next appointment.",
+  "opts": [
+   "taking",
+   "to take"
+  ],
+  "a": "taking",
+  "also": {
+   "to take": "continue берёт обе формы"
+  },
+  "why": "continue — обе формы верны."
+ },
+ {
+  "id": "t9-prefer",
+  "t": 9,
+  "q": "Would you prefer ___ the procedure under sedation?",
+  "opts": [
+   "to have",
+   "having"
+  ],
+  "a": "to have",
+  "why": "would prefer — только to do."
+ },
+ {
+  "id": "t9-started",
+  "t": 9,
+  "q": "It started ___ just as we left the hospital.",
+  "opts": [
+   "raining",
+   "to rain"
+  ],
+  "a": "raining",
+  "also": {
+   "to rain": "start берёт обе формы"
+  },
+  "why": "start — обе формы верны."
+ },
+ {
+  "id": "t10-used",
+  "t": 10,
+  "q": "I used to ___ in Moscow before I moved here.",
+  "opts": [
+   "work",
+   "working"
+  ],
+  "a": "work",
+  "why": "used to do = раньше делал, больше нет: work."
+ },
+ {
+  "id": "t10-am-used",
+  "t": 10,
+  "q": "I'm used to ___ nights.",
+  "opts": [
+   "working",
+   "work"
+  ],
+  "a": "working",
+  "why": "be used to = привык; to — предлог: working."
+ },
+ {
+  "id": "t10-get-used",
+  "t": 10,
+  "q": "You'll soon get used to ___ the new system.",
+  "opts": [
+   "using",
+   "use"
+  ],
+  "a": "using",
+  "why": "get used to = привыкнуть; дальше -ing."
+ },
+ {
+  "id": "t10-needs",
+  "t": 10,
+  "q": "The dressing needs ___ every day.",
+  "opts": [
+   "changing",
+   "to change"
+  ],
+  "a": "changing",
+  "why": "needs doing = нужно, чтобы сделали: needs changing."
+ },
+ {
+  "id": "t10-need-to",
+  "t": 10,
+  "q": "You need ___ this form before the procedure.",
+  "opts": [
+   "to sign",
+   "signing"
+  ],
+  "a": "to sign",
+  "why": "Делать будете вы сами — need to sign."
+ },
+ {
+  "id": "v-want",
+  "t": 11,
+  "q": "want ___",
+  "ru": "хотеть",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "want — хотеть. Группа «хочу, надеюсь, жду»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-would-like",
+  "t": 11,
+  "q": "would like ___",
+  "ru": "хотел бы",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "would like — хотел бы. Группа «хочу, надеюсь, жду»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-hope",
+  "t": 11,
+  "q": "hope ___",
+  "ru": "надеяться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "hope — надеяться. Группа «хочу, надеюсь, жду»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-expect",
+  "t": 11,
+  "q": "expect ___",
+  "ru": "рассчитывать, ожидать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "expect — рассчитывать, ожидать. Группа «хочу, надеюсь, жду»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-wish",
+  "t": 11,
+  "q": "wish ___",
+  "ru": "желать (официально)",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "wish — желать (официально). Группа «хочу, надеюсь, жду»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-decide",
+  "t": 11,
+  "q": "decide ___",
+  "ru": "решить",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "decide — решить. Группа «решаю, планирую»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-plan",
+  "t": 11,
+  "q": "plan ___",
+  "ru": "планировать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "plan — планировать. Группа «решаю, планирую»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-choose",
+  "t": 11,
+  "q": "choose ___",
+  "ru": "выбрать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "choose — выбрать. Группа «решаю, планирую»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-arrange",
+  "t": 11,
+  "q": "arrange ___",
+  "ru": "договориться, организовать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "arrange — договориться, организовать. Группа «решаю, планирую»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-aim",
+  "t": 11,
+  "q": "aim ___",
+  "ru": "стремиться, ставить целью",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "aim — стремиться, ставить целью. Группа «решаю, планирую»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-agree",
+  "t": 11,
+  "q": "agree ___",
+  "ru": "согласиться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "agree — согласиться. Группа «обещаю, соглашаюсь, отказываюсь»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-promise",
+  "t": 11,
+  "q": "promise ___",
+  "ru": "обещать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "promise — обещать. Группа «обещаю, соглашаюсь, отказываюсь»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-offer",
+  "t": 11,
+  "q": "offer ___",
+  "ru": "предложить сделать самому",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "offer — предложить сделать самому: to do. А suggest — предложить идею — с -ing."
+ },
+ {
+  "id": "v-refuse",
+  "t": 11,
+  "q": "refuse ___",
+  "ru": "отказаться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "refuse — отказаться. Группа «обещаю, соглашаюсь, отказываюсь»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-threaten",
+  "t": 11,
+  "q": "threaten ___",
+  "ru": "грозиться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "threaten — грозиться. Группа «обещаю, соглашаюсь, отказываюсь»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-manage",
+  "t": 11,
+  "q": "manage ___",
+  "ru": "суметь, справиться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "manage — суметь, справиться. Группа «получилось или нет»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-fail",
+  "t": 11,
+  "q": "fail ___",
+  "ru": "не суметь, не сделать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "fail — не суметь, не сделать. Группа «получилось или нет»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-afford",
+  "t": 11,
+  "q": "afford ___",
+  "ru": "позволить себе",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "afford — позволить себе. Группа «получилось или нет»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-learn",
+  "t": 11,
+  "q": "learn ___",
+  "ru": "научиться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "learn — научиться. Группа «получилось или нет»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-seem",
+  "t": 11,
+  "q": "seem ___",
+  "ru": "казаться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "seem — казаться. Группа «кажется, склонен»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-appear",
+  "t": 11,
+  "q": "appear ___",
+  "ru": "по-видимому, оказываться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "appear — по-видимому, оказываться. Группа «кажется, склонен»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-tend",
+  "t": 11,
+  "q": "tend ___",
+  "ru": "обычно, быть склонным",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "tend — обычно, быть склонным. Группа «кажется, склонен»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-pretend",
+  "t": 11,
+  "q": "pretend ___",
+  "ru": "притворяться",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "pretend — притворяться. Группа «кажется, склонен»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-deserve",
+  "t": 11,
+  "q": "deserve ___",
+  "ru": "заслуживать",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "deserve — заслуживать. Группа «заслуживает, надо»: действие впереди, поэтому to do."
+ },
+ {
+  "id": "v-need",
+  "t": 11,
+  "q": "need ___",
+  "ru": "нуждаться, надо",
+  "opts": [
+   "to do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "need — надо сделать самому: to do.",
+  "also": {
+   "doing": "needs doing — «нужно, чтобы сделали»: the dressing needs changing"
+  }
+ },
+ {
+  "id": "v-enjoy",
+  "t": 11,
+  "q": "enjoy ___",
+  "ru": "получать удовольствие",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "enjoy — получать удовольствие. Группа «нравится, не выношу, скучаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-mind",
+  "t": 11,
+  "q": "mind ___",
+  "ru": "возражать, быть против",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "mind — возражать, быть против. Группа «нравится, не выношу, скучаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-cant-stand",
+  "t": 11,
+  "q": "can't stand ___",
+  "ru": "терпеть не могу",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "can't stand — терпеть не могу. Группа «нравится, не выношу, скучаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-cant-help",
+  "t": 11,
+  "q": "can't help ___",
+  "ru": "не могу удержаться",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "can't help — не могу удержаться. Группа «нравится, не выношу, скучаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-miss",
+  "t": 11,
+  "q": "miss ___",
+  "ru": "скучать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "miss — скучать. Группа «нравится, не выношу, скучаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-avoid",
+  "t": 11,
+  "q": "avoid ___",
+  "ru": "избегать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "avoid — избегать. Группа «избегаю, откладываю, рискую»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-postpone",
+  "t": 11,
+  "q": "postpone ___",
+  "ru": "откладывать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "postpone — откладывать. Группа «избегаю, откладываю, рискую»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-delay",
+  "t": 11,
+  "q": "delay ___",
+  "ru": "откладывать, затягивать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "delay — откладывать, затягивать. Группа «избегаю, откладываю, рискую»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-put-off",
+  "t": 11,
+  "q": "put off ___",
+  "ru": "откладывать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "put off — откладывать. Группа «избегаю, откладываю, рискую»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-risk",
+  "t": 11,
+  "q": "risk ___",
+  "ru": "рисковать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "risk — рисковать. Группа «избегаю, откладываю, рискую»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-keep",
+  "t": 11,
+  "q": "keep ___",
+  "ru": "продолжать, всё время",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "keep — продолжать, всё время. Группа «продолжаю, заканчиваю, бросаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-practise",
+  "t": 11,
+  "q": "practise ___",
+  "ru": "тренировать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "practise — тренировать. Группа «продолжаю, заканчиваю, бросаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-finish",
+  "t": 11,
+  "q": "finish ___",
+  "ru": "закончить",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "finish — закончить. Группа «продолжаю, заканчиваю, бросаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-give-up",
+  "t": 11,
+  "q": "give up ___",
+  "ru": "бросить",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "give up — бросить. Группа «продолжаю, заканчиваю, бросаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-quit",
+  "t": 11,
+  "q": "quit ___",
+  "ru": "бросить",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "quit — бросить. Группа «продолжаю, заканчиваю, бросаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-suggest",
+  "t": 11,
+  "q": "suggest ___",
+  "ru": "предлагать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "suggest — предлагать. Группа «предлагаю, обдумываю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-recommend",
+  "t": 11,
+  "q": "recommend ___",
+  "ru": "рекомендовать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "recommend — рекомендовать. Группа «предлагаю, обдумываю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-consider",
+  "t": 11,
+  "q": "consider ___",
+  "ru": "обдумывать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "consider — обдумывать. Группа «предлагаю, обдумываю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-imagine",
+  "t": 11,
+  "q": "imagine ___",
+  "ru": "представлять",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "imagine — представлять. Группа «предлагаю, обдумываю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-involve",
+  "t": 11,
+  "q": "involve ___",
+  "ru": "предполагать, включать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "involve — предполагать, включать. Группа «предлагаю, обдумываю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-admit",
+  "t": 11,
+  "q": "admit ___",
+  "ru": "признавать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "admit — признавать. Группа «признаю, отрицаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-deny",
+  "t": 11,
+  "q": "deny ___",
+  "ru": "отрицать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "deny — отрицать. Группа «признаю, отрицаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-mention",
+  "t": 11,
+  "q": "mention ___",
+  "ru": "упоминать",
+  "opts": [
+   "doing",
+   "to do"
+  ],
+  "a": "doing",
+  "why": "mention — упоминать. Группа «признаю, отрицаю»: само действие, поэтому -ing."
+ },
+ {
+  "id": "v-look-forward-to",
+  "t": 11,
+  "q": "look forward ___",
+  "ru": "ждать с нетерпением",
+  "opts": [
+   "to doing",
+   "to do"
+  ],
+  "a": "to doing",
+  "why": "look forward to — ждать с нетерпением. to здесь предлог, после него -ing."
+ },
+ {
+  "id": "v-object-to",
+  "t": 11,
+  "q": "object ___",
+  "ru": "возражать против",
+  "opts": [
+   "to doing",
+   "to do"
+  ],
+  "a": "to doing",
+  "why": "object to — возражать против. to здесь предлог, после него -ing."
+ },
+ {
+  "id": "v-get-used-to",
+  "t": 11,
+  "q": "get used ___",
+  "ru": "привыкать",
+  "opts": [
+   "to doing",
+   "to do"
+  ],
+  "a": "to doing",
+  "why": "get used to — привыкать. to здесь предлог, после него -ing."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "toing:state";
+const LS_SPEAK = "toing:autospeak";
+const LS_TAB = "toing:tab";
+const LS_OPEN = "toing:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "to / -ing"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]{}]/g, ""); }
+function label(a){ return a === "" ? "ничего" : a; }
+// «-ing» и «to do» не должны разрываться в конце строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-ing\b|\bto do\b)/).forEach(part => { if (part === "-ing" || part === "to do") f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+// Новые карточки идут вперемешку: предложения и списки, ответы с to и с -ing —
+// чтобы каждый раз выбирать по смыслу, а не угадывать по теме.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => {
+    const k = (c.t === SORT_TOPIC ? "v" : "s") + (/ing$/.test(c.a) ? "i" : "t");
+    (pools[k] = pools[k] || []).push(c);
+  });
+  const list = Object.keys(pools).map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 2;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length;
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.filter(c => c.t < SORT_TOPIC)).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  q.append(card.q.slice(0, i), el("span", "gap"), card.q.slice(i + 3));
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  q.classList.toggle("short", card.t === SORT_TOPIC);
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.classList.remove("short");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+// {…} — форма с to (синий), […] — форма на -ing (оранжевый)
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]|\{([^}]+)\}/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(m[1] != null ? el("span", "pr", m[1]) : el("span", "st", m[2]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex" + (ex.w ? " has-w" : ""));
+        if (ex.w){
+          const w = el("p", "ex-w");
+          const b = el("b", null, ex.w);
+          b.lang = "en";
+          w.append(b, ex.wr);
+          row.append(w);
+        }
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("sortGo").addEventListener("click", () => { buildTopic(SORT_TOPIC); setTab("drill"); render(); });
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= TOPICS.length ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

@@ -1,0 +1,1841 @@
+<title>Make или do</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("makedo",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .aoi{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .aoi col.rh{width:calc(74px*var(--k))}
+  .aoi th,.aoi td{padding:calc(6px*var(--k)) calc(4px*var(--k));text-align:center;vertical-align:middle}
+  .aoi thead th{font-family:var(--serif);font-weight:400;font-size:calc(30px*var(--k));line-height:1}
+  .aoi .what td{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));line-height:1.3;color:var(--muted)}
+  .aoi tbody th{padding-left:0;text-align:left;font-size:calc(13px*var(--k));font-weight:600;color:var(--soft)}
+  .aoi tbody td{border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.25}
+  .algo-m .hl{font-family:var(--serif);font-size:calc(20px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .aoi .what td{padding-top:calc(6px*var(--k));vertical-align:top}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .algo-m b.pr{color:var(--accent)}
+  .wd-w{margin:0;line-height:1.3}
+  .wd-w .ph{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k))}
+  .wd-ru{font-size:calc(15px*var(--k));color:var(--muted)}
+  .wd-p{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Make or do?</h1>
+      <p class="r-sub">По-русски и&nbsp;то, и&nbsp;другое&nbsp;— «делать». Правило простое: <b>make&nbsp;— создаёшь, do&nbsp;— действуешь</b>. А&nbsp;в&nbsp;спорте ещё <i lang="en">play</i> и&nbsp;<i lang="en">go</i>.</p>
+      <div class="algo">
+        <p class="algo-h">Make или do</p>
+        <table class="aoi">
+          <colgroup><col class="rh"><col><col></colgroup>
+          <thead>
+            <tr><td></td><th scope="col" class="st" lang="en">make</th><th scope="col" class="pr" lang="en">do</th></tr>
+            <tr class="what"><td></td><td>создаёшь: не&nbsp;было&nbsp;— стало</td><td>действуешь: работа, дела, обязанности</td></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Еда</th><td lang="en"><span class="st">make</span> a cake</td><td lang="en"><span class="pr">do</span> the cooking</td></tr>
+            <tr><th scope="row">Дом</th><td lang="en"><span class="st">make</span> the bed</td><td lang="en"><span class="pr">do</span> the washing up</td></tr>
+            <tr><th scope="row">Работа</th><td lang="en"><span class="st">make</span> a plan</td><td lang="en"><span class="pr">do</span> the work</td></tr>
+            <tr><th scope="row">Учёба</th><td lang="en"><span class="st">make</span> progress</td><td lang="en"><span class="pr">do</span> homework</td></tr>
+            <tr><th scope="row">Больница</th><td lang="en"><span class="st">make</span> a diagnosis</td><td lang="en"><span class="pr">do</span> a blood test</td></tr>
+            <tr><th scope="row">Люди</th><td lang="en"><span class="st">make</span> friends</td><td lang="en"><span class="pr">do</span> a favour</td></tr>
+          </tbody>
+        </table>
+        <p class="algo-m">Делать вообще&nbsp;— всегда <b class="pr" lang="en">do</b>: <i lang="en">What&nbsp;are&nbsp;you&nbsp;doing?</i></p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Спорт</p>
+        <table class="aoi">
+          <thead>
+            <tr><th scope="col" class="good" lang="en">play</th><th scope="col" class="st" lang="en">go</th><th scope="col" class="pr" lang="en">do</th></tr>
+            <tr class="what"><td>мяч, игра против кого-то</td><td>занятие на&nbsp;-ing</td><td>всё остальное</td></tr>
+          </thead>
+          <tbody>
+            <tr><td lang="en">football</td><td lang="en">swimming</td><td lang="en">yoga</td></tr>
+            <tr><td lang="en">tennis</td><td lang="en">running</td><td lang="en">karate</td></tr>
+            <tr><td lang="en">chess</td><td lang="en">skiing</td><td lang="en">exercises</td></tr>
+          </tbody>
+        </table>
+        <p class="algo-note"><i lang="en">go swimming</i>&nbsp;— без <i lang="en">to</i>. С&nbsp;<i lang="en">to</i>&nbsp;— только место: <i lang="en">go&nbsp;to&nbsp;the&nbsp;gym</i>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Всегда make</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;a&nbsp;decision</span> <span class="wd-ru">принять решение</span></p><p class="wd-p" lang="en">We need to make a decision today.</p></div><button class="ex-play mm-play" type="button" data-key="rm-1" data-text="Make a decision. We need to make a decision today." aria-label="Прослушать: make a decision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;a&nbsp;mistake</span> <span class="wd-ru">ошибиться</span></p><p class="wd-p" lang="en">Everyone makes mistakes.</p></div><button class="ex-play mm-play" type="button" data-key="rm-2" data-text="Make a mistake. Everyone makes mistakes." aria-label="Прослушать: make a mistake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;a&nbsp;phone&nbsp;call</span> <span class="wd-ru">позвонить</span></p><p class="wd-p" lang="en">I need to make a phone call.</p></div><button class="ex-play mm-play" type="button" data-key="rm-3" data-text="Make a phone call. I need to make a phone call." aria-label="Прослушать: make a phone call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;an&nbsp;appointment</span> <span class="wd-ru">записаться на приём</span></p><p class="wd-p" lang="en">I&#x27;d like to make an appointment.</p></div><button class="ex-play mm-play" type="button" data-key="rm-4" data-text="Make an appointment. I&#x27;d like to make an appointment." aria-label="Прослушать: make an appointment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;progress</span> <span class="wd-ru">делать успехи</span></p><p class="wd-p" lang="en">She&#x27;s making good progress.</p></div><button class="ex-play mm-play" type="button" data-key="rm-5" data-text="Make progress. She&#x27;s making good progress." aria-label="Прослушать: make progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;an&nbsp;effort</span> <span class="wd-ru">постараться</span></p><p class="wd-p" lang="en">Please make an effort to walk every day.</p></div><button class="ex-play mm-play" type="button" data-key="rm-6" data-text="Make an effort. Please make an effort to walk every day." aria-label="Прослушать: make an effort"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;sure</span> <span class="wd-ru">убедиться, проследить</span></p><p class="wd-p" lang="en">Make sure he takes his tablets.</p></div><button class="ex-play mm-play" type="button" data-key="rm-7" data-text="Make sure. Make sure he takes his tablets." aria-label="Прослушать: make sure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;friends</span> <span class="wd-ru">заводить друзей</span></p><p class="wd-p" lang="en">He makes friends easily.</p></div><button class="ex-play mm-play" type="button" data-key="rm-8" data-text="Make friends. He makes friends easily." aria-label="Прослушать: make friends"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;money</span> <span class="wd-ru">зарабатывать</span></p><p class="wd-p" lang="en">He makes good money.</p></div><button class="ex-play mm-play" type="button" data-key="rm-9" data-text="Make money. He makes good money." aria-label="Прослушать: make money"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;a&nbsp;difference</span> <span class="wd-ru">иметь значение, менять к лучшему</span></p><p class="wd-p" lang="en">Every minute makes a difference.</p></div><button class="ex-play mm-play" type="button" data-key="rm-10" data-text="Make a difference. Every minute makes a difference." aria-label="Прослушать: make a difference"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;the&nbsp;bed</span> <span class="wd-ru">застелить кровать</span></p><p class="wd-p" lang="en">I make the bed every morning.</p></div><button class="ex-play mm-play" type="button" data-key="rm-11" data-text="Make the bed. I make the bed every morning." aria-label="Прослушать: make the bed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">make</span>&nbsp;a&nbsp;noise</span> <span class="wd-ru">шуметь</span></p><p class="wd-p" lang="en">Please don&#x27;t make a noise.</p></div><button class="ex-play mm-play" type="button" data-key="rm-12" data-text="Make a noise. Please don&#x27;t make a noise." aria-label="Прослушать: make a noise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Всегда do</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;homework</span> <span class="wd-ru">делать домашнее задание</span></p><p class="wd-p" lang="en">Have you done your homework?</p></div><button class="ex-play mm-play" type="button" data-key="rd-1" data-text="Do homework. Have you done your homework?" aria-label="Прослушать: do homework"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;the&nbsp;shopping</span> <span class="wd-ru">ходить за покупками</span></p><p class="wd-p" lang="en">I do the shopping on Saturdays.</p></div><button class="ex-play mm-play" type="button" data-key="rd-2" data-text="Do the shopping. I do the shopping on Saturdays." aria-label="Прослушать: do the shopping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;the&nbsp;washing&nbsp;up</span> <span class="wd-ru">мыть посуду</span></p><p class="wd-p" lang="en">Who&#x27;s doing the washing up?</p></div><button class="ex-play mm-play" type="button" data-key="rd-3" data-text="Do the washing up. Who&#x27;s doing the washing up?" aria-label="Прослушать: do the washing up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;the&nbsp;cleaning</span> <span class="wd-ru">убираться</span></p><p class="wd-p" lang="en">We do the cleaning at the weekend.</p></div><button class="ex-play mm-play" type="button" data-key="rd-4" data-text="Do the cleaning. We do the cleaning at the weekend." aria-label="Прослушать: do the cleaning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;a&nbsp;good&nbsp;job</span> <span class="wd-ru">хорошо справиться</span></p><p class="wd-p" lang="en">You did a good job!</p></div><button class="ex-play mm-play" type="button" data-key="rd-5" data-text="Do a good job. You did a good job!" aria-label="Прослушать: do a good job"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;your&nbsp;best</span> <span class="wd-ru">стараться изо всех сил</span></p><p class="wd-p" lang="en">We&#x27;ll do our best.</p></div><button class="ex-play mm-play" type="button" data-key="rd-6" data-text="Do your best. We&#x27;ll do our best." aria-label="Прослушать: do your best"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;someone&nbsp;a&nbsp;favour</span> <span class="wd-ru">оказать услугу</span></p><p class="wd-p" lang="en">Could you do me a favour?</p></div><button class="ex-play mm-play" type="button" data-key="rd-7" data-text="Do someone a favour. Could you do me a favour?" aria-label="Прослушать: do someone a favour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;research</span> <span class="wd-ru">проводить исследования</span></p><p class="wd-p" lang="en">She does research on stroke.</p></div><button class="ex-play mm-play" type="button" data-key="rd-8" data-text="Do research. She does research on stroke." aria-label="Прослушать: do research"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;a&nbsp;course</span> <span class="wd-ru">проходить курс</span></p><p class="wd-p" lang="en">I&#x27;m doing an English course.</p></div><button class="ex-play mm-play" type="button" data-key="rd-9" data-text="Do a course. I&#x27;m doing an English course." aria-label="Прослушать: do a course"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;harm&nbsp;/&nbsp;good</span> <span class="wd-ru">вредить / приносить пользу</span></p><p class="wd-p" lang="en">It may do more harm than good.</p></div><button class="ex-play mm-play" type="button" data-key="rd-10" data-text="Do harm, do good. It may do more harm than good." aria-label="Прослушать: do harm / good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;exercise</span> <span class="wd-ru">заниматься физкультурой</span></p><p class="wd-p" lang="en">Try to do some exercise every day.</p></div><button class="ex-play mm-play" type="button" data-key="rd-11" data-text="Do exercise. Try to do some exercise every day." aria-label="Прослушать: do exercise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">do</span>&nbsp;nothing</span> <span class="wd-ru">ничего не делать</span></p><p class="wd-p" lang="en">We can&#x27;t just do nothing.</p></div><button class="ex-play mm-play" type="button" data-key="rd-12" data-text="Do nothing. We can&#x27;t just do nothing." aria-label="Прослушать: do nothing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">«Сделать»&nbsp;— не make и не do</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="hl">take</span>&nbsp;a&nbsp;photo</span> <span class="wd-ru">сделать фото</span></p><p class="wd-p" lang="en">Can I take a photo?</p></div><button class="ex-play mm-play" type="button" data-key="rt-1" data-text="Take a photo. Can I take a photo?" aria-label="Прослушать: take a photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="hl">take</span>&nbsp;a&nbsp;deep&nbsp;breath</span> <span class="wd-ru">сделать глубокий вдох</span></p><p class="wd-p" lang="en">Take a deep breath and hold it.</p></div><button class="ex-play mm-play" type="button" data-key="rt-2" data-text="Take a deep breath. Take a deep breath and hold it." aria-label="Прослушать: take a deep breath"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="hl">take</span>&nbsp;a&nbsp;few&nbsp;steps</span> <span class="wd-ru">сделать несколько шагов</span></p><p class="wd-p" lang="en">Can you take a few steps for me?</p></div><button class="ex-play mm-play" type="button" data-key="rt-3" data-text="Take a few steps. Can you take a few steps for me?" aria-label="Прослушать: take a few steps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="hl">take</span>&nbsp;a&nbsp;break</span> <span class="wd-ru">сделать перерыв</span></p><p class="wd-p" lang="en">Let&#x27;s take a short break.</p></div><button class="ex-play mm-play" type="button" data-key="rt-4" data-text="Take a break. Let&#x27;s take a short break." aria-label="Прослушать: take a break"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="hl">give</span>&nbsp;an&nbsp;injection</span> <span class="wd-ru">сделать укол</span></p><p class="wd-p" lang="en">The nurse will give you an injection.</p></div><button class="ex-play mm-play" type="button" data-key="rt-5" data-text="Give an injection. The nurse will give you an injection." aria-label="Прослушать: give an injection"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="hl">draw</span>&nbsp;a&nbsp;conclusion</span> <span class="wd-ru">сделать вывод</span></p><p class="wd-p" lang="en">It&#x27;s too early to draw conclusions.</p></div><button class="ex-play mm-play" type="button" data-key="rt-6" data-text="Draw a conclusion. It&#x27;s too early to draw conclusions." aria-label="Прослушать: draw a conclusion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I made my homework.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I did my homework.</span><span class="err-note">домашнее задание&nbsp;— do</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I did a mistake.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I made a mistake.</span><span class="err-note">ошибка&nbsp;— make</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We must do a decision.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We must make a decision.</span><span class="err-note">решение&nbsp;— make</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Can you make me a favour?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Can you do me a favour?</span><span class="err-note">одолжение&nbsp;— do</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I make exercises every day.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I do exercises every day.</span><span class="err-note">упражнения&nbsp;— do</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I make sport.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I do sport.</span><span class="err-note">заниматься спортом&nbsp;— do sport</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I play yoga.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I do yoga.</span><span class="err-note">йога&nbsp;— do</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I go to swimming.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I go swimming.</span><span class="err-note">go + -ing, без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Can I make a photo?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Can I take a photo?</span><span class="err-note">фото&nbsp;— take</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The nurse made him an injection.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The nurse gave him an injection.</span><span class="err-note">укол&nbsp;— give</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — глагол (make и go — синий, do — оранжевый, play — зелёный).
+const MIXED_TOPIC = 10;
+const GROUPS = {"md": "Make или do", "sport": "Спорт: play, go или do", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "md",
+  "title": "make — создаём",
+  "sub": "еда, вещи, документы, планы",
+  "rule": "make — когда создаёшь то, чего раньше не было: еду, напиток, вещь, документ, план. make a cake, make coffee, make a list, make a copy, make a plan. Звук тоже создаёшь: make a noise.",
+  "ex": [
+   {
+    "en": "She [made] a cake for my birthday.",
+    "ru": "Она испекла торт мне на день рождения."
+   },
+   {
+    "en": "Let's [make] a list of his medications.",
+    "ru": "Давай составим список его лекарств."
+   },
+   {
+    "en": "Could you [make] a copy of this ECG?",
+    "ru": "Сделайте, пожалуйста, копию этой ЭКГ."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "md",
+  "title": "make — решения, ошибки, звонки",
+  "sub": "сочетания, которые надо запомнить",
+  "rule": "Эти сочетания проще запомнить, чем объяснить, — в них всегда make: make a decision, make a mistake, make a phone call, make an appointment, make progress, make an effort, make sure, make friends, make money, make a difference, make the bed.",
+  "ex": [
+   {
+    "en": "Everyone [makes] mistakes.",
+    "ru": "Все ошибаются."
+   },
+   {
+    "en": "We have to [make] a decision now.",
+    "ru": "Нам нужно принять решение прямо сейчас."
+   },
+   {
+    "en": "I'd like to [make] an appointment.",
+    "ru": "Я хотел бы записаться на приём."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "md",
+  "title": "do — работа, учёба, дом",
+  "sub": "действие, обязанность",
+  "rule": "do — действие, работа, обязанность; нового предмета не появляется. Работа и учёба: do the work, do a good job, do homework, do a course. Дела по дому: do the shopping, do the washing up, do the cleaning. Исключение: make the bed.",
+  "ex": [
+   {
+    "en": "Have you [done] your homework?",
+    "ru": "Ты сделал домашнее задание?"
+   },
+   {
+    "en": "I [do] the shopping on Saturdays.",
+    "ru": "По субботам я хожу за покупками."
+   },
+   {
+    "en": "I have a lot of work to [do].",
+    "ru": "У меня много работы."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "md",
+  "title": "do — «делать» вообще",
+  "sub": "something, nothing, your best",
+  "rule": "Если не говоришь, что именно делаешь, — всегда do: What are you doing? What do you do? — «Кем работаешь?», do something, do nothing. Ещё: do your best, do someone a favour, do research, do harm, do good.",
+  "ex": [
+   {
+    "en": "What do you [do]? — I'm a neurologist.",
+    "ru": "Кем вы работаете? — Я невролог."
+   },
+   {
+    "en": "We'll [do] our best.",
+    "ru": "Мы сделаем всё возможное."
+   },
+   {
+    "en": "Could you [do] me a favour?",
+    "ru": "Можешь оказать мне услугу?"
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "md",
+  "title": "make или do в больнице",
+  "sub": "диагноз · анализ · смена",
+  "rule": "Решение, вывод, результат — make: make a diagnosis, make a full recovery, make a complaint. Процедура, анализ, работа — do: do a blood test, do an ECG, do night shifts, do CPR.",
+  "ex": [
+   {
+    "en": "It's too early to [make] a diagnosis.",
+    "ru": "Ставить диагноз пока рано."
+   },
+   {
+    "en": "We need to [do] a blood test.",
+    "ru": "Нужно сделать анализ крови."
+   },
+   {
+    "en": "She [made] a full recovery.",
+    "ru": "Она полностью восстановилась."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "md",
+  "title": "«Сделать» — не make и не do",
+  "sub": "take · give · draw",
+  "rule": "Русское «сделать» — не всегда make или do. take: take a photo, take a deep breath, take a few steps, take a break. give: give an injection — сделать укол. draw: draw a conclusion — сделать вывод.",
+  "ex": [
+   {
+    "en": "[Take] a deep breath.",
+    "ru": "Сделайте глубокий вдох."
+   },
+   {
+    "en": "Can I [take] a photo?",
+    "ru": "Можно сфотографировать?"
+   },
+   {
+    "en": "The nurse will [give] you an injection.",
+    "ru": "Медсестра сделает вам укол."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "sport",
+  "title": "play — мяч и игры",
+  "sub": "football · tennis · chess",
+  "rule": "play — игры с мячом и игры, где соревнуешься с кем-то: play football, play tennis, play volleyball, play hockey, play chess, play cards. Без the: play football. С the — музыка: play the guitar.",
+  "ex": [
+   {
+    "en": "My son [plays] football.",
+    "ru": "Мой сын играет в футбол."
+   },
+   {
+    "en": "Do you [play] tennis?",
+    "ru": "Ты играешь в теннис?"
+   },
+   {
+    "en": "Let's [play] chess.",
+    "ru": "Давай сыграем в шахматы."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "sport",
+  "title": "go + -ing",
+  "sub": "swimming · running · skiing",
+  "rule": "go + занятие на -ing: go swimming, go running, go skiing, go cycling, go fishing. Без to: go swimming, а не go to swimming. Место — с to: go to the gym, go to the pool.",
+  "ex": [
+   {
+    "en": "I [go] swimming twice a week.",
+    "ru": "Я хожу плавать два раза в неделю."
+   },
+   {
+    "en": "She [goes] running every morning.",
+    "ru": "Она бегает каждое утро."
+   },
+   {
+    "en": "I [go] to the gym on Mondays.",
+    "ru": "По понедельникам я хожу в спортзал."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "sport",
+  "title": "do — йога, борьба, упражнения",
+  "sub": "без мяча и не на -ing",
+  "rule": "do — всё остальное: без мяча и не на -ing. do yoga, do Pilates, do karate, do judo, do gymnastics, do athletics, do exercises. Заниматься спортом вообще — do sport: Do you do any sport? (В американском — play sports.)",
+  "ex": [
+   {
+    "en": "She [does] yoga every evening.",
+    "ru": "Она каждый вечер занимается йогой."
+   },
+   {
+    "en": "He [did] karate as a teenager.",
+    "ru": "Подростком он занимался карате."
+   },
+   {
+    "en": "[Do] these exercises twice a day.",
+    "ru": "Делайте эти упражнения дважды в день."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "mk-cake",
+  "t": 1,
+  "q": "My daughter ___ a cake for my birthday.",
+  "ru": "Дочь испекла торт мне на день рождения.",
+  "opts": [
+   "made",
+   "did"
+  ],
+  "a": "made",
+  "why": "Приготовить, создать — make: make a cake, make coffee."
+ },
+ {
+  "id": "mk-coffee",
+  "t": 1,
+  "q": "Sit down, I'll ___ some coffee.",
+  "ru": "Садись, я сварю кофе.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Напитки и еду готовят — make."
+ },
+ {
+  "id": "mk-list",
+  "t": 1,
+  "q": "Let's ___ a list of his medications.",
+  "ru": "Давай составим список его лекарств.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Составить список — make a list: появляется новый документ."
+ },
+ {
+  "id": "mk-copy",
+  "t": 1,
+  "q": "Could you ___ a copy of this ECG?",
+  "ru": "Сделайте, пожалуйста, копию этой ЭКГ.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Сделать копию — make a copy: появляется новый лист."
+ },
+ {
+  "id": "mk-plan",
+  "t": 1,
+  "q": "We need to ___ a plan for his discharge.",
+  "ru": "Нужно составить план его выписки.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Составить план — make a plan."
+ },
+ {
+  "id": "mk-noise",
+  "t": 1,
+  "q": "Please don't ___ a noise — the patients are sleeping.",
+  "ru": "Пожалуйста, не шумите — пациенты спят.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Шуметь — make a noise: звук тоже создаёшь."
+ },
+ {
+  "id": "mc-mistake",
+  "t": 2,
+  "q": "Don't worry — everyone ___ mistakes.",
+  "ru": "Не переживай — все ошибаются.",
+  "opts": [
+   "makes",
+   "does"
+  ],
+  "a": "makes",
+  "why": "Ошибка — make a mistake."
+ },
+ {
+  "id": "mc-decision",
+  "t": 2,
+  "q": "We have to ___ a decision about thrombolysis now.",
+  "ru": "Нам нужно прямо сейчас принять решение о тромболизисе.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Решение — make a decision."
+ },
+ {
+  "id": "mc-call",
+  "t": 2,
+  "q": "Excuse me, I need to ___ a phone call.",
+  "ru": "Извините, мне нужно позвонить.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Позвонить — make a phone call."
+ },
+ {
+  "id": "mc-appointment",
+  "t": 2,
+  "q": "I'd like to ___ an appointment with a neurologist.",
+  "ru": "Я хотел бы записаться на приём к неврологу.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Записаться на приём — make an appointment."
+ },
+ {
+  "id": "mc-progress",
+  "t": 2,
+  "q": "She's ___ good progress with her speech.",
+  "ru": "Она делает хорошие успехи в восстановлении речи.",
+  "opts": [
+   "making",
+   "doing"
+  ],
+  "a": "making",
+  "why": "Успехи — make progress."
+ },
+ {
+  "id": "mc-sure",
+  "t": 2,
+  "q": "___ sure he takes his tablets every day.",
+  "ru": "Проследите, чтобы он каждый день принимал таблетки.",
+  "opts": [
+   "Make",
+   "Do"
+  ],
+  "a": "Make",
+  "why": "Убедиться, проследить — make sure."
+ },
+ {
+  "id": "mc-difference",
+  "t": 2,
+  "q": "In stroke, every minute ___ a difference.",
+  "ru": "При инсульте каждая минута имеет значение.",
+  "opts": [
+   "makes",
+   "does"
+  ],
+  "a": "makes",
+  "why": "Иметь значение, менять к лучшему — make a difference."
+ },
+ {
+  "id": "mc-bed",
+  "t": 2,
+  "q": "The nurse ___ the bed and opened the window.",
+  "ru": "Медсестра застелила кровать и открыла окно.",
+  "opts": [
+   "made",
+   "did"
+  ],
+  "a": "made",
+  "why": "Застелить кровать — make the bed. Это исключение: запомнить."
+ },
+ {
+  "id": "dw-homework",
+  "t": 3,
+  "q": "Have you ___ your homework?",
+  "ru": "Ты сделал домашнее задание?",
+  "opts": [
+   "done",
+   "made"
+  ],
+  "a": "done",
+  "why": "Домашнее задание — do homework."
+ },
+ {
+  "id": "dw-shopping",
+  "t": 3,
+  "q": "I usually ___ the shopping on Saturdays.",
+  "ru": "Обычно я хожу за покупками по субботам.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Дела по дому — do: do the shopping, do the cleaning."
+ },
+ {
+  "id": "dw-washing",
+  "t": 3,
+  "q": "Who's going to ___ the washing up?",
+  "ru": "Кто будет мыть посуду?",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Мыть посуду — do the washing up."
+ },
+ {
+  "id": "dw-cleaning",
+  "t": 3,
+  "q": "We ___ the cleaning at the weekend.",
+  "ru": "Мы убираемся по выходным.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Убираться — do the cleaning."
+ },
+ {
+  "id": "dw-course",
+  "t": 3,
+  "q": "I'm ___ an online English course.",
+  "ru": "Я прохожу онлайн-курс английского.",
+  "opts": [
+   "doing",
+   "making"
+  ],
+  "a": "doing",
+  "why": "Проходить курс — do a course."
+ },
+ {
+  "id": "dw-job",
+  "t": 3,
+  "q": "You ___ a great job with that patient.",
+  "ru": "Вы отлично справились с этим пациентом.",
+  "opts": [
+   "did",
+   "made"
+  ],
+  "a": "did",
+  "why": "Справиться с работой — do a good job."
+ },
+ {
+  "id": "dw-work",
+  "t": 3,
+  "q": "I have a lot of work to ___ today.",
+  "ru": "Сегодня у меня много работы.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Работа — do: do the work."
+ },
+ {
+  "id": "dg-living",
+  "t": 4,
+  "q": "What do you ___ for a living? — I'm a neurologist.",
+  "ru": "Кем вы работаете? — Я невролог.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Чем занимаешься, кем работаешь — do: What do you do?"
+ },
+ {
+  "id": "dg-nothing",
+  "t": 4,
+  "q": "We can't just ___ nothing.",
+  "ru": "Мы не можем просто ничего не делать.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "do nothing, do something, do anything — всегда do."
+ },
+ {
+  "id": "dg-best",
+  "t": 4,
+  "q": "Don't worry, we'll ___ our best.",
+  "ru": "Не волнуйтесь, мы сделаем всё возможное.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Стараться изо всех сил — do your best."
+ },
+ {
+  "id": "dg-favour",
+  "t": 4,
+  "q": "Could you ___ me a favour?",
+  "ru": "Можешь оказать мне услугу?",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Одолжение — do someone a favour."
+ },
+ {
+  "id": "dg-harm",
+  "t": 4,
+  "q": "This drug can ___ more harm than good.",
+  "ru": "Этот препарат может навредить больше, чем помочь.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Вред и польза — do harm, do good."
+ },
+ {
+  "id": "dg-research",
+  "t": 4,
+  "q": "She ___ research on stroke rehabilitation.",
+  "ru": "Она занимается исследованиями по реабилитации после инсульта.",
+  "opts": [
+   "does",
+   "makes"
+  ],
+  "a": "does",
+  "why": "Исследования — do research."
+ },
+ {
+  "id": "hs-diagnosis",
+  "t": 5,
+  "q": "It's too early to ___ a diagnosis.",
+  "ru": "Ставить диагноз пока рано.",
+  "opts": [
+   "make",
+   "do"
+  ],
+  "a": "make",
+  "why": "Поставить диагноз — make a diagnosis."
+ },
+ {
+  "id": "hs-blood",
+  "t": 5,
+  "q": "We need to ___ a blood test.",
+  "ru": "Нужно сделать анализ крови.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Анализ, процедура — do: do a blood test."
+ },
+ {
+  "id": "hs-ecg",
+  "t": 5,
+  "q": "Can you ___ an ECG before he goes to CT?",
+  "ru": "Сделаете ЭКГ, пока он не ушёл на КТ?",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Процедура — do an ECG."
+ },
+ {
+  "id": "hs-recovery",
+  "t": 5,
+  "q": "She ___ a full recovery after the stroke.",
+  "ru": "После инсульта она полностью восстановилась.",
+  "opts": [
+   "made",
+   "did"
+  ],
+  "a": "made",
+  "why": "Полностью восстановиться — make a full recovery."
+ },
+ {
+  "id": "hs-complaint",
+  "t": 5,
+  "q": "The patient's son ___ a complaint about the waiting time.",
+  "ru": "Сын пациента пожаловался на долгое ожидание.",
+  "opts": [
+   "made",
+   "did"
+  ],
+  "a": "made",
+  "why": "Жалоба — make a complaint."
+ },
+ {
+  "id": "hs-shifts",
+  "t": 5,
+  "q": "I ___ three night shifts a week.",
+  "ru": "Я работаю три ночные смены в неделю.",
+  "opts": [
+   "do",
+   "make"
+  ],
+  "a": "do",
+  "why": "Смены, дежурства — do: do night shifts."
+ },
+ {
+  "id": "hs-cpr",
+  "t": 5,
+  "q": "They ___ CPR for twenty minutes.",
+  "ru": "Реанимацию проводили двадцать минут.",
+  "opts": [
+   "did",
+   "made"
+  ],
+  "a": "did",
+  "why": "Процедура — do CPR."
+ },
+ {
+  "id": "tk-breath",
+  "t": 6,
+  "q": "___ a deep breath and hold it.",
+  "ru": "Сделайте глубокий вдох и задержите дыхание.",
+  "opts": [
+   "Take",
+   "Make",
+   "Do"
+  ],
+  "a": "Take",
+  "why": "Сделать вдох — take a breath."
+ },
+ {
+  "id": "tk-steps",
+  "t": 6,
+  "q": "Can you ___ a few steps for me?",
+  "ru": "Пройдите, пожалуйста, несколько шагов.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Сделать шаг — take a step."
+ },
+ {
+  "id": "tk-photo",
+  "t": 6,
+  "q": "Can I ___ a photo of the rash?",
+  "ru": "Можно я сфотографирую сыпь?",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Сделать фото — take a photo."
+ },
+ {
+  "id": "tk-break",
+  "t": 6,
+  "q": "Let's ___ a short break.",
+  "ru": "Давай сделаем небольшой перерыв.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Сделать перерыв — take a break."
+ },
+ {
+  "id": "tk-injection",
+  "t": 6,
+  "q": "The nurse will ___ you an injection.",
+  "ru": "Медсестра сделает вам укол.",
+  "opts": [
+   "give",
+   "make",
+   "do"
+  ],
+  "a": "give",
+  "why": "Сделать укол — give an injection."
+ },
+ {
+  "id": "pl-football",
+  "t": 7,
+  "q": "My son ___ football on Saturdays.",
+  "ru": "Мой сын по субботам играет в футбол.",
+  "opts": [
+   "plays",
+   "goes",
+   "does"
+  ],
+  "a": "plays",
+  "why": "Мяч — play: play football."
+ },
+ {
+  "id": "pl-tennis",
+  "t": 7,
+  "q": "Do you ___ tennis?",
+  "ru": "Ты играешь в теннис?",
+  "opts": [
+   "play",
+   "go",
+   "do"
+  ],
+  "a": "play",
+  "why": "Игры с мячом — play: play tennis."
+ },
+ {
+  "id": "pl-chess",
+  "t": 7,
+  "q": "My grandfather taught me to ___ chess.",
+  "ru": "Дедушка научил меня играть в шахматы.",
+  "opts": [
+   "play",
+   "do",
+   "go"
+  ],
+  "a": "play",
+  "why": "Игры, где соревнуешься, — play: play chess, play cards."
+ },
+ {
+  "id": "pl-hockey",
+  "t": 7,
+  "q": "They ___ hockey every winter.",
+  "ru": "Каждую зиму они играют в хоккей.",
+  "opts": [
+   "play",
+   "go",
+   "do"
+  ],
+  "a": "play",
+  "why": "Командная игра — play: play hockey."
+ },
+ {
+  "id": "pl-volleyball",
+  "t": 7,
+  "q": "We ___ volleyball on the beach.",
+  "ru": "Мы играли в волейбол на пляже.",
+  "opts": [
+   "played",
+   "went",
+   "did"
+  ],
+  "a": "played",
+  "why": "Мяч — play: play volleyball."
+ },
+ {
+  "id": "go-swim",
+  "t": 8,
+  "q": "I ___ swimming twice a week.",
+  "ru": "Я хожу плавать два раза в неделю.",
+  "opts": [
+   "go",
+   "play",
+   "do"
+  ],
+  "a": "go",
+  "why": "Занятие на -ing — go: go swimming."
+ },
+ {
+  "id": "go-ski",
+  "t": 8,
+  "q": "Every February we ___ skiing in the Urals.",
+  "ru": "Каждый февраль мы катаемся на лыжах на Урале.",
+  "opts": [
+   "go",
+   "do",
+   "play"
+  ],
+  "a": "go",
+  "why": "Занятие на -ing — go: go skiing."
+ },
+ {
+  "id": "go-run",
+  "t": 8,
+  "q": "She ___ running every morning before work.",
+  "ru": "Каждое утро перед работой она бегает.",
+  "opts": [
+   "goes",
+   "does",
+   "plays"
+  ],
+  "a": "goes",
+  "why": "Занятие на -ing — go: go running."
+ },
+ {
+  "id": "go-cycling",
+  "t": 8,
+  "q": "Let's ___ cycling on Sunday.",
+  "ru": "Давай в воскресенье покатаемся на велосипеде.",
+  "opts": [
+   "go",
+   "do",
+   "play"
+  ],
+  "a": "go",
+  "why": "Занятие на -ing — go: go cycling."
+ },
+ {
+  "id": "go-noto",
+  "t": 8,
+  "q": "On Fridays I go ___.",
+  "ru": "По пятницам я хожу плавать.",
+  "opts": [
+   "swimming",
+   "to swimming"
+  ],
+  "a": "swimming",
+  "why": "go + -ing без to: go swimming. To — только перед местом: go to the pool."
+ },
+ {
+  "id": "go-gym",
+  "t": 8,
+  "q": "I ___ the gym three times a week.",
+  "ru": "Я хожу в спортзал три раза в неделю.",
+  "opts": [
+   "go to",
+   "go",
+   "do"
+  ],
+  "a": "go to",
+  "why": "Место — go to: go to the gym, go to the pool."
+ },
+ {
+  "id": "ds-yoga",
+  "t": 9,
+  "q": "She ___ yoga every evening.",
+  "ru": "Она каждый вечер занимается йогой.",
+  "opts": [
+   "does",
+   "plays",
+   "goes"
+  ],
+  "a": "does",
+  "why": "Йога, пилатес — do: do yoga."
+ },
+ {
+  "id": "ds-karate",
+  "t": 9,
+  "q": "He ___ karate when he was a teenager.",
+  "ru": "Подростком он занимался карате.",
+  "opts": [
+   "did",
+   "played",
+   "went"
+  ],
+  "a": "did",
+  "why": "Единоборства — do: do karate, do judo."
+ },
+ {
+  "id": "ds-exercise",
+  "t": 9,
+  "q": "Patients should ___ these exercises twice a day.",
+  "ru": "Пациентам нужно выполнять эти упражнения дважды в день.",
+  "opts": [
+   "do",
+   "make",
+   "play"
+  ],
+  "a": "do",
+  "why": "Упражнения — do exercises. Make exercises — ошибка."
+ },
+ {
+  "id": "ds-sport",
+  "t": 9,
+  "q": "Do you ___ any sport?",
+  "ru": "Ты занимаешься спортом?",
+  "opts": [
+   "do",
+   "make",
+   "go"
+  ],
+  "a": "do",
+  "why": "Заниматься спортом — do sport. Make sport — ошибка."
+ },
+ {
+  "id": "ds-gym",
+  "t": 9,
+  "q": "She ___ gymnastics at school.",
+  "ru": "В школе она занималась гимнастикой.",
+  "opts": [
+   "did",
+   "played",
+   "went"
+  ],
+  "a": "did",
+  "why": "Гимнастика, лёгкая атлетика — do."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "makedo:state";
+const LS_SPEAK = "makedo:autospeak";
+const LS_TAB = "makedo:tab";
+const LS_OPEN = "makedo:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "make / do"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — глагол: make и go — синий, do — оранжевый, play — зелёный, остальные подчёркнуты
+const VERB_CLS = {};
+[["st", "make makes made making go goes went gone going"], ["pr", "do does did done doing"], ["good", "play plays played playing"]]
+  .forEach(([cls, forms]) => forms.split(" ").forEach(w => { VERB_CLS[w] = cls; }));
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", VERB_CLS[m[1].toLowerCase()] || "hl", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Сочетания: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: make, do и спорт чередуются — выбирать приходится по смыслу.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

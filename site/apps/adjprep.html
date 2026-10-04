@@ -1,0 +1,1830 @@
+<title>Прилагательные с предлогами</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("adjprep",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw,.g-form i{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .obj,.st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-title .h-plus{color:var(--muted)}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(28px*var(--k)) minmax(0,1fr) auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li span i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));white-space:nowrap}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .pv-row{display:grid;grid-template-columns:calc(74px*var(--k)) minmax(0,1fr);column-gap:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .pv-row:first-child{border-top:0}
+  .pv-p{margin:0;font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.1;color:var(--accent)}
+  .pv-q{margin:0;font-size:calc(16px*var(--k));font-weight:600;line-height:1.35}
+  .pv-q span{font-weight:400;color:var(--muted)}
+  .pv-adj{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.4;color:var(--blue)}
+  .pv-note{margin:calc(3px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.4;color:var(--muted)}
+  .mb{padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(9px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .mb:first-child{border-top:0}
+  .mb-adj{margin:0 0 calc(4px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.3;color:var(--blue)}
+  .mb-list{list-style:none;margin:0;padding:0}
+  .mb-list li{display:grid;grid-template-columns:calc(92px*var(--k)) minmax(0,1fr);column-gap:calc(10px*var(--k));padding:calc(5px*var(--k)) 0}
+  .mb-list b{grid-row:1 / span 2;font-family:var(--serif);font-weight:400;font-size:calc(19px*var(--k));line-height:1.3;color:var(--accent);white-space:nowrap}
+  .mb-ru{font-size:calc(15px*var(--k));line-height:1.35;color:var(--soft)}
+  .mb-ex{font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.35;color:var(--muted)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-foot{margin:calc(6px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .mx-foot a{color:var(--blue)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-w{grid-column:1 / -1;margin:calc(6px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .ex-w b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(4px*var(--k))}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex.has-w .ex-play{grid-row:2 / span 2}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери предлог</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title">Прилагательное <span class="h-plus">+</span> <span class="pr">предлог</span></h1>
+      <p class="r-sub">Предлог после прилагательного не&nbsp;случаен: у&nbsp;каждого свой смысл. <b>Поймёшь смысл&nbsp;— выберешь предлог.</b></p>
+      <div class="algo">
+        <p class="algo-h">Проверка за секунду</p>
+        <ol>
+          <li><span>Переживаю о&nbsp;ситуации&nbsp;— «о&nbsp;чём?» <i lang="en">confused, excited, depressed</i></span><b class="pr" lang="en">about</b></li>
+          <li><span>Реакция&nbsp;— «на&nbsp;что?» Или умение&nbsp;— «в&nbsp;чём?» <i lang="en">shocked, good, bad</i></span><b class="pr" lang="en">at</b></li>
+          <li><span>Что-то вызвало чувство&nbsp;— «это меня поразило» <i lang="en">amazed, disappointed</i></span><b class="pr" lang="en">by</b></li>
+          <li><span>Оцениваю человека или результат&nbsp;— «кем, чем доволен?» <i lang="en">satisfied, pleased</i></span><b class="pr" lang="en">with</b></li>
+        </ol>
+        <p class="algo-m">Задай вопрос по-русски&nbsp;— он подскажет предлог.</p>
+        <p class="algo-note">Остальное&nbsp;— пары наизусть: <span lang="en">interested in, keen on, terrified of, tired of&nbsp;/&nbsp;from, depressed over</span>. Разные предлоги у&nbsp;одного слова&nbsp;— в&nbsp;таблице и в&nbsp;темах 8–12.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Смысл предлогов</h2>
+      <div class="mx-wrap">
+        <div class="pv-row"><p class="pv-p" lang="en">about</p><div><p class="pv-q">о чём? <span>ситуация, тема, факт</span></p><p class="pv-adj" lang="en">confused, depressed, excited, embarrassed, disappointed, pleased, annoyed, worried</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">at</p><div><p class="pv-q">на что? <span>реакция на новость, вид, событие</span></p><p class="pv-adj" lang="en">amazed, shocked, surprised, embarrassed, annoyed, pleased, excited</p><p class="pv-note">с amazed, shocked, surprised можно и by</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">at</p><div><p class="pv-q">в чём? <span>умение</span></p><p class="pv-adj" lang="en">good, bad</p><p class="pv-note">но good with patients — умеет обращаться, good for you — полезно</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">by</p><div><p class="pv-q">чем вызвано? <span>причина, как в пассиве</span></p><p class="pv-adj" lang="en">amazed, shocked, surprised, disappointed, bored, confused</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">with</p><div><p class="pv-q">кем, чем? <span>оцениваю человека или результат</span></p><p class="pv-adj" lang="en">satisfied, pleased, happy, disappointed, bored, annoyed</p><p class="pv-note">annoyed with — на человека</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">in</p><div><p class="pv-q">в ком, в чём? <span>интерес, разочарование в человеке</span></p><p class="pv-adj" lang="en">interested, disappointed</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">on</p><div><p class="pv-q">на чём? <span>увлечён</span></p><p class="pv-adj" lang="en">keen</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">of</p><div><p class="pv-q">чего? <span>страх и «надоело»</span></p><p class="pv-adj" lang="en">terrified, afraid, scared, tired, bored</p><p class="pv-note">tired of — надоело; bored of — разговорное</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">from</p><div><p class="pv-q">от чего? <span>устал физически или умственно</span></p><p class="pv-adj" lang="en">tired</p></div></div>
+        <div class="pv-row"><p class="pv-p" lang="en">over</p><div><p class="pv-q">из-за чего? <span>потеря, затяжная беда</span></p><p class="pv-adj" lang="en">depressed</p></div></div>
+      </div>
+      <h2 class="lbl">Одно слово&nbsp;— разные предлоги</h2>
+      <div class="mx-wrap">
+        <div class="mb"><p class="mb-adj" lang="en">disappointed</p><ul class="mb-list"><li><b lang="en">in</b><span class="mb-ru">в человеке</span><span class="mb-ex" lang="en">disappointed <span class="pr">in</span> you</span></li><li><b lang="en">with</b><span class="mb-ru">результатом, вещью</span><span class="mb-ex" lang="en">disappointed <span class="pr">with</span> the results</span></li><li><b lang="en">about</b><span class="mb-ru">ситуацией, фактом</span><span class="mb-ex" lang="en">disappointed <span class="pr">about</span> not getting the job</span></li><li><b lang="en">by</b><span class="mb-ru">чем вызвано</span><span class="mb-ex" lang="en">disappointed <span class="pr">by</span> the decision</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">tired</p><ul class="mb-list"><li><b lang="en">of</b><span class="mb-ru">надоело</span><span class="mb-ex" lang="en">tired <span class="pr">of</span> waiting</span></li><li><b lang="en">from</b><span class="mb-ru">устал физически</span><span class="mb-ex" lang="en">tired <span class="pr">from</span> the night shift</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">pleased</p><ul class="mb-list"><li><b lang="en">with</b><span class="mb-ru">доволен человеком, результатом</span><span class="mb-ex" lang="en">pleased <span class="pr">with</span> your progress</span></li><li><b lang="en">about · at</b><span class="mb-ru">рад новости, событию</span><span class="mb-ex" lang="en">pleased <span class="pr">about</span> the news</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">excited</p><ul class="mb-list"><li><b lang="en">about</b><span class="mb-ru">предвкушаю событие</span><span class="mb-ex" lang="en">excited <span class="pr">about</span> the trip</span></li><li><b lang="en">at</b><span class="mb-ru">перспектива, мысль</span><span class="mb-ex" lang="en">excited <span class="pr">at</span> the prospect of…</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">embarrassed</p><ul class="mb-list"><li><b lang="en">about</b><span class="mb-ru">стыдно за что-то</span><span class="mb-ex" lang="en">embarrassed <span class="pr">about</span> my accent</span></li><li><b lang="en">at</b><span class="mb-ru">неловко в моменте</span><span class="mb-ex" lang="en">embarrassed <span class="pr">at</span> being late</span></li><li><b lang="en">by</b><span class="mb-ru">кто или что смутило</span><span class="mb-ex" lang="en">embarrassed <span class="pr">by</span> his questions</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">amazed · shocked · surprised</p><ul class="mb-list"><li><b lang="en">at = by</b><span class="mb-ru">почти без разницы</span><span class="mb-ex" lang="en">shocked <span class="pr">at</span> / <span class="pr">by</span> the news</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">bored</p><ul class="mb-list"><li><b lang="en">with</b><span class="mb-ru">нейтрально</span><span class="mb-ex" lang="en">bored <span class="pr">with</span> the job</span></li><li><b lang="en">of</b><span class="mb-ru">разговорно</span><span class="mb-ex" lang="en">bored <span class="pr">of</span> the film</span></li><li><b lang="en">by</b><span class="mb-ru">что нагнало скуку</span><span class="mb-ex" lang="en">bored <span class="pr">by</span> the lecture</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">annoyed</p><ul class="mb-list"><li><b lang="en">with</b><span class="mb-ru">на человека</span><span class="mb-ex" lang="en">annoyed <span class="pr">with</span> him</span></li><li><b lang="en">at · about</b><span class="mb-ru">на ситуацию</span><span class="mb-ex" lang="en">annoyed <span class="pr">about</span> the delay</span></li></ul></div>
+        <div class="mb"><p class="mb-adj" lang="en">depressed</p><ul class="mb-list"><li><b lang="en">about</b><span class="mb-ru">о ситуации</span><span class="mb-ex" lang="en">depressed <span class="pr">about</span> his health</span></li><li><b lang="en">over</b><span class="mb-ru">о потере, беде</span><span class="mb-ex" lang="en">depressed <span class="pr">over</span> losing his job</span></li></ul></div>
+      </div>
+      <p class="mx-note">После любого предлога глагол идёт с&nbsp;<span class="nw" lang="en">-ing</span>: <span lang="en">good at explaining, tired of waiting, interested in joining</span>.</p>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">annoyed on him</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">annoyed with him</span><span class="err-note">«злюсь на» — не on</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">interested about</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">interested in</span><span class="err-note">только in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">good in English</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">good at English</span><span class="err-note">«хорош в» — не in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">tired from waiting</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">tired of waiting</span><span class="err-note">если «надоело»</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">shocked with the news</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">shocked at / by the news</span><span class="err-note">«удивлён чем» — не with</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. {…} — прилагательное (синий), […] — предлог (оранжевый).
+const MIXED_TOPIC = 13;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "about — о чём",
+  "rule": "about отвечает на вопрос «о чём?»: ситуация, тема, факт, из-за которого переживаешь. Так говорят с confused, depressed, excited, embarrassed, disappointed, pleased, annoyed — и ещё worried, nervous, upset. После about глагол идёт с -ing: embarrassed about being late.",
+  "ex": [
+   {
+    "en": "The patient is {confused} [about] the new dose.",
+    "ru": "Пациент путается в новой дозировке."
+   },
+   {
+    "en": "We're all {excited} [about] the new CT scanner.",
+    "ru": "Мы все ждём не дождёмся нового КТ."
+   },
+   {
+    "en": "He's {embarrassed} [about] his speech.",
+    "ru": "Он стесняется своей речи."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "at — на что: реакция",
+  "rule": "at — мгновенная реакция на то, что увидел, услышал или узнал: «на что?» Так говорят amazed, shocked, surprised, annoyed, pleased, embarrassed. Часто дальше the news, the sight, how или what: amazed at how quickly he recovered. С amazed, shocked и surprised можно и by.",
+  "ex": [
+   {
+    "en": "I was {amazed} [at] how quickly he recovered.",
+    "ru": "Я поразился, как быстро он поправился."
+   },
+   {
+    "en": "Everyone was {shocked} [at] the news.",
+    "ru": "Все были потрясены новостью."
+   },
+   {
+    "en": "She was {annoyed} [at] the delay.",
+    "ru": "Её раздражала задержка."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "at — в чём: умение",
+  "rule": "at — «в чём силён или слаб?»: good at, bad at, brilliant at, hopeless at. Дальше существительное или -ing: good at explaining. Не путай: good with — умеет обращаться (good with patients, with her hands), good for — полезно (walking is good for you). И никогда не good in.",
+  "ex": [
+   {
+    "en": "She's really {good} [at] explaining things.",
+    "ru": "Она очень хорошо объясняет."
+   },
+   {
+    "en": "I'm {bad} [at] remembering names.",
+    "ru": "Я плохо запоминаю имена."
+   },
+   {
+    "en": "He's {good} [with] elderly patients.",
+    "ru": "Он умеет находить подход к пожилым пациентам."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "by — чем вызвано",
+  "rule": "by — причина, как в пассиве: «что вызвало чувство?» The results amazed us → we were amazed by the results. Так говорят amazed, shocked, surprised, disappointed, bored, confused. Проверка: можно перевернуть — «это меня поразило»? Значит, by.",
+  "ex": [
+   {
+    "en": "We were {amazed} [by] the results of the trial.",
+    "ru": "Результаты исследования нас поразили."
+   },
+   {
+    "en": "The students were {bored} [by] the lecture.",
+    "ru": "Лекция нагнала на студентов скуку."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "with — кем, чем: оценка",
+  "rule": "with — когда оцениваешь человека или результат: «кем, чем доволен?» Так говорят satisfied, pleased, happy, disappointed, bored. На человека раздражаются тоже с with: annoyed with him — не on him. Но удивление — не with: amazed at или by.",
+  "ex": [
+   {
+    "en": "Are you {satisfied} [with] your care?",
+    "ru": "Вы довольны тем, как вас лечат?"
+   },
+   {
+    "en": "The doctor is {pleased} [with] your progress.",
+    "ru": "Врач доволен вашими успехами."
+   },
+   {
+    "en": "Don't be {annoyed} [with] him — he's new.",
+    "ru": "Не злись на него — он новенький."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "in и on",
+  "rule": "in — interested in: по-русски «интересуюсь чем-то» без предлога, по-английски только in. И disappointed in — разочаровался в человеке. on — keen on: очень увлечён. После обоих — существительное или -ing: interested in joining, keen on running.",
+  "ex": [
+   {
+    "en": "Are you {interested} [in] joining the study?",
+    "ru": "Хотите участвовать в исследовании?"
+   },
+   {
+    "en": "I'm really {disappointed} [in] you.",
+    "ru": "Я в тебе очень разочарован."
+   },
+   {
+    "en": "He's very {keen} [on] running.",
+    "ru": "Он очень увлекается бегом."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "of — страх и «надоело»",
+  "rule": "of — «чего?»: страх и «надоело». terrified, afraid, scared, frightened of; tired of — надоело; bored of — разговорный вариант bored with. После of глагол идёт с -ing: tired of waiting.",
+  "ex": [
+   {
+    "en": "She's {terrified} [of] needles.",
+    "ru": "Она панически боится игл."
+   },
+   {
+    "en": "I'm {tired} [of] waiting for the results.",
+    "ru": "Мне надоело ждать результатов."
+   },
+   {
+    "en": "The kids got {bored} [of] the film.",
+    "ru": "Детям надоел фильм."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "tired of или tired from",
+  "rule": "tired of — надоело, это эмоция: I'm tired of waiting. tired from — устал физически или умственно: tired from the night shift. Проверка: подходит «надоело» — of; «вымотался от» — from.",
+  "ex": [
+   {
+    "en": "I'm {tired} [of] his excuses.",
+    "ru": "Мне надоели его отговорки."
+   },
+   {
+    "en": "I'm {tired} [from] the night shift.",
+    "ru": "Я устал после ночной смены."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "title": "disappointed: in, with, about, by",
+  "rule": "disappointed берёт четыре предлога. in — в человеке: I'm disappointed in you. with — результатом, вещью: with the results. about — ситуацией, фактом: about not getting the job. by — чем вызвано: by the decision. С человеком годится и with, с событием — и at.",
+  "ex": [
+   {
+    "en": "Her parents were {disappointed} [in] her.",
+    "ru": "Родители в ней разочаровались."
+   },
+   {
+    "en": "We were {disappointed} [with] the results.",
+    "ru": "Результаты нас не устроили."
+   },
+   {
+    "en": "She's {disappointed} [about] not getting the job.",
+    "ru": "Она расстроена, что не получила эту работу."
+   },
+   {
+    "en": "I was {disappointed} [by] his reaction.",
+    "ru": "Его реакция меня разочаровала."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "title": "amazed, shocked: at = by",
+  "rule": "amazed, shocked и surprised берут и at, и by — разница минимальная. by — причина, как в пассиве: the news shocked me → shocked by the news. at — реакция, особенно с how и what: amazed at how fast he walked again. Главное — не with и не of.",
+  "ex": [
+   {
+    "en": "I was {shocked} [by] the price.",
+    "ru": "Меня шокировала цена."
+   },
+   {
+    "en": "She was {amazed} [at] how much he remembered.",
+    "ru": "Она поразилась, как много он помнил."
+   },
+   {
+    "en": "Nobody was {surprised} [at] his decision.",
+    "ru": "Его решение никого не удивило."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "title": "pleased, excited, embarrassed",
+  "rule": "pleased with — доволен результатом или человеком; pleased about — рад новости, событию (at — то же, чуть книжнее). excited about — предвкушаю событие; excited at — с the prospect, the thought, the idea. embarrassed about — стыдно за что-то; embarrassed by — кто или что смутило.",
+  "ex": [
+   {
+    "en": "I'm really {pleased} [with] my new team.",
+    "ru": "Я очень доволен своей новой командой."
+   },
+   {
+    "en": "We're all {pleased} [about] the news.",
+    "ru": "Мы все рады этой новости."
+   },
+   {
+    "en": "She's {excited} [at] the prospect of working in London.",
+    "ru": "Её радует перспектива поработать в Лондоне."
+   },
+   {
+    "en": "He was {embarrassed} [by] all the attention.",
+    "ru": "Его смутило всеобщее внимание."
+   }
+  ]
+ },
+ {
+  "n": 12,
+  "title": "annoyed, bored, depressed",
+  "rule": "annoyed with — на человека (with him for being late), annoyed at или about — на ситуацию. bored with — нейтрально, bored of — разговорно, bored by — что нагнало скуку. depressed about — о ситуации, depressed over — о потере, затяжной беде; часто это одно и то же.",
+  "ex": [
+   {
+    "en": "He gets {annoyed} [with] people who interrupt.",
+    "ru": "Его раздражают люди, которые перебивают."
+   },
+   {
+    "en": "I'm {bored} [with] this job.",
+    "ru": "Мне наскучила эта работа."
+   },
+   {
+    "en": "He's still {depressed} [over] losing his job.",
+    "ru": "Он до сих пор подавлен из-за потери работы."
+   }
+  ]
+ },
+ {
+  "n": 13,
+  "title": "Итог — всё вместе",
+  "rule": "Пятнадцать случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже допустимые с пояснением.
+const CARDS = [
+ {
+  "id": "a-confused",
+  "t": 1,
+  "q": "Many patients are confused ___ their tablets.",
+  "opts": [
+   "about",
+   "at",
+   "of"
+  ],
+  "a": "about",
+  "why": "confused about — путаюсь «в чём, о чём»: тема, ситуация."
+ },
+ {
+  "id": "a-excited",
+  "t": 1,
+  "q": "The whole team is excited ___ the new stroke pathway.",
+  "opts": [
+   "about",
+   "with",
+   "of"
+  ],
+  "a": "about",
+  "why": "excited about — предвкушаем событие, план."
+ },
+ {
+  "id": "a-depressed",
+  "t": 1,
+  "q": "He's been depressed ___ his health since the stroke.",
+  "opts": [
+   "about",
+   "at",
+   "with"
+  ],
+  "a": "about",
+  "why": "depressed about — подавлен ситуацией. Можно и over."
+ },
+ {
+  "id": "a-embarrassed",
+  "t": 1,
+  "q": "She's embarrassed ___ her accent.",
+  "opts": [
+   "about",
+   "with",
+   "on"
+  ],
+  "a": "about",
+  "why": "embarrassed about — стыдно за что-то в себе."
+ },
+ {
+  "id": "a-worried",
+  "t": 1,
+  "q": "The family is worried ___ the scan results.",
+  "opts": [
+   "about",
+   "of",
+   "at"
+  ],
+  "a": "about",
+  "why": "worried about — как все чувства «о чём?»."
+ },
+ {
+  "id": "b-amazed",
+  "t": 2,
+  "q": "I was amazed ___ how calm she stayed.",
+  "opts": [
+   "at",
+   "with",
+   "about"
+  ],
+  "a": "at",
+  "why": "amazed at + how / what — реакция на увиденное. by тоже можно."
+ },
+ {
+  "id": "b-sight",
+  "t": 2,
+  "q": "Visitors are often shocked ___ the sight of all the monitors.",
+  "opts": [
+   "at",
+   "with",
+   "of"
+  ],
+  "a": "at",
+  "why": "shocked at the sight — реакция на увиденное; by тоже верно."
+ },
+ {
+  "id": "b-delay",
+  "t": 2,
+  "q": "He was annoyed ___ the delay.",
+  "opts": [
+   "at",
+   "of",
+   "on"
+  ],
+  "a": "at",
+  "why": "annoyed at / about — на ситуацию. На человека — with."
+ },
+ {
+  "id": "b-news",
+  "t": 2,
+  "q": "She was pleased ___ the news.",
+  "opts": [
+   "at",
+   "of",
+   "on"
+  ],
+  "a": "at",
+  "why": "pleased at — реакция на новость; about тоже верно."
+ },
+ {
+  "id": "b-centre",
+  "t": 2,
+  "q": "He felt embarrassed ___ being the centre of attention.",
+  "opts": [
+   "at",
+   "with",
+   "on"
+  ],
+  "a": "at",
+  "why": "embarrassed at — неловко в моменте; about тоже можно. Дальше -ing."
+ },
+ {
+  "id": "c-explaining",
+  "t": 3,
+  "q": "She's good ___ explaining things to families.",
+  "opts": [
+   "at",
+   "in",
+   "with"
+  ],
+  "a": "at",
+  "why": "good at — «в чём силён?». in — калька с «хорош в»."
+ },
+ {
+  "id": "c-names",
+  "t": 3,
+  "q": "I'm terribly bad ___ remembering names.",
+  "opts": [
+   "at",
+   "in",
+   "with"
+  ],
+  "a": "at",
+  "why": "bad at — плохо получается; дальше -ing."
+ },
+ {
+  "id": "c-english",
+  "t": 3,
+  "q": "He's good ___ English, but his writing is weak.",
+  "opts": [
+   "at",
+   "in",
+   "with"
+  ],
+  "a": "at",
+  "why": "good at English — не in."
+ },
+ {
+  "id": "c-with",
+  "t": 3,
+  "q": "She's very good ___ anxious patients.",
+  "opts": [
+   "with",
+   "at",
+   "in"
+  ],
+  "a": "with",
+  "why": "good with — умеет обращаться с людьми, детьми, руками. at — про навык."
+ },
+ {
+  "id": "c-for",
+  "t": 3,
+  "q": "Regular walking is good ___ you.",
+  "opts": [
+   "for",
+   "at",
+   "with"
+  ],
+  "a": "for",
+  "why": "good for — полезно для."
+ },
+ {
+  "id": "d-results",
+  "t": 4,
+  "q": "We were amazed ___ the results of the trial.",
+  "opts": [
+   "by",
+   "of",
+   "about"
+  ],
+  "a": "by",
+  "why": "The results amazed us → amazed by. at тоже можно."
+ },
+ {
+  "id": "d-lecture",
+  "t": 4,
+  "q": "Half the audience was bored ___ the lecture.",
+  "opts": [
+   "by",
+   "at",
+   "about"
+  ],
+  "a": "by",
+  "why": "The lecture bored them → bored by. Так же bored with."
+ },
+ {
+  "id": "d-saw",
+  "t": 4,
+  "q": "I was shocked ___ what I saw in A&E.",
+  "opts": [
+   "by",
+   "of",
+   "with"
+  ],
+  "a": "by",
+  "why": "What I saw shocked me → shocked by; at тоже верно."
+ },
+ {
+  "id": "d-instructions",
+  "t": 4,
+  "q": "Patients are often confused ___ the discharge instructions.",
+  "opts": [
+   "by",
+   "of",
+   "with"
+  ],
+  "a": "by",
+  "why": "The instructions confuse them → confused by; about — «в чём путаются»."
+ },
+ {
+  "id": "d-turnout",
+  "t": 4,
+  "q": "We were disappointed ___ the low turnout at the stroke awareness day.",
+  "opts": [
+   "by",
+   "of",
+   "on"
+  ],
+  "a": "by",
+  "why": "The turnout disappointed us → by; можно и with, about, at."
+ },
+ {
+  "id": "e-satisfied",
+  "t": 5,
+  "q": "Most patients were satisfied ___ their care.",
+  "opts": [
+   "with",
+   "of",
+   "about"
+  ],
+  "a": "with",
+  "why": "satisfied with — доволен чем-то. Оценка — with."
+ },
+ {
+  "id": "e-progress",
+  "t": 5,
+  "q": "I'm very pleased ___ your progress.",
+  "opts": [
+   "with",
+   "of",
+   "on"
+  ],
+  "a": "with",
+  "why": "pleased with — доволен результатом, человеком."
+ },
+ {
+  "id": "e-him",
+  "t": 5,
+  "q": "Don't be annoyed ___ him — it's his first night shift.",
+  "opts": [
+   "with",
+   "on",
+   "of"
+  ],
+  "a": "with",
+  "why": "На человека — annoyed with. on — калька с «злиться на»."
+ },
+ {
+  "id": "e-exercises",
+  "t": 5,
+  "q": "He soon got bored ___ the exercises.",
+  "opts": [
+   "with",
+   "at",
+   "about"
+  ],
+  "a": "with",
+  "why": "bored with — наскучило; разговорно — bored of."
+ },
+ {
+  "id": "e-plan",
+  "t": 5,
+  "q": "Are you happy ___ the plan?",
+  "opts": [
+   "with",
+   "at",
+   "of"
+  ],
+  "a": "with",
+  "why": "happy with — доволен, согласен: частый вопрос пациенту."
+ },
+ {
+  "id": "f-joining",
+  "t": 6,
+  "q": "Are you interested ___ joining our research group?",
+  "opts": [
+   "in",
+   "about",
+   "of"
+  ],
+  "a": "in",
+  "why": "interested in — только in; about — частая ошибка. Дальше -ing."
+ },
+ {
+  "id": "f-neuro",
+  "t": 6,
+  "q": "She's always been interested ___ neurology.",
+  "opts": [
+   "in",
+   "about",
+   "for"
+  ],
+  "a": "in",
+  "why": "interested in — «интересуюсь чем-то»."
+ },
+ {
+  "id": "f-him",
+  "t": 6,
+  "q": "His father was disappointed ___ him.",
+  "opts": [
+   "in",
+   "about",
+   "of"
+  ],
+  "a": "in",
+  "why": "Разочаровался в человеке — in (можно и with)."
+ },
+ {
+  "id": "f-cycling",
+  "t": 6,
+  "q": "He's very keen ___ cycling.",
+  "opts": [
+   "on",
+   "of",
+   "in"
+  ],
+  "a": "on",
+  "why": "keen on — увлечён; дальше -ing."
+ },
+ {
+  "id": "f-food",
+  "t": 6,
+  "q": "I'm not very keen ___ hospital food.",
+  "opts": [
+   "on",
+   "of",
+   "at"
+  ],
+  "a": "on",
+  "why": "not keen on — не в восторге от."
+ },
+ {
+  "id": "g-terrified",
+  "t": 7,
+  "q": "My mother is terrified ___ hospitals.",
+  "opts": [
+   "of",
+   "from",
+   "about"
+  ],
+  "a": "of",
+  "why": "terrified of — «боюсь чего?» — of."
+ },
+ {
+  "id": "g-afraid",
+  "t": 7,
+  "q": "Many patients are afraid ___ having another stroke.",
+  "opts": [
+   "of",
+   "from",
+   "about"
+  ],
+  "a": "of",
+  "why": "afraid / scared / terrified of + -ing."
+ },
+ {
+  "id": "g-excuses",
+  "t": 7,
+  "q": "I'm tired ___ hearing the same excuses.",
+  "opts": [
+   "of",
+   "about",
+   "at"
+  ],
+  "a": "of",
+  "why": "tired of — надоело."
+ },
+ {
+  "id": "g-scared",
+  "t": 7,
+  "q": "Don't be scared ___ asking questions.",
+  "opts": [
+   "of",
+   "from",
+   "at"
+  ],
+  "a": "of",
+  "why": "scared of + -ing — боюсь сделать."
+ },
+ {
+  "id": "g-bored",
+  "t": 7,
+  "q": "The kids got bored ___ waiting and started running around.",
+  "opts": [
+   "of",
+   "from",
+   "in"
+  ],
+  "a": "of",
+  "why": "bored of — разговорный вариант bored with; оба верны."
+ },
+ {
+  "id": "h-waiting",
+  "t": 8,
+  "q": "The family is tired ___ waiting — they want answers now.",
+  "opts": [
+   "of",
+   "from"
+  ],
+  "a": "of",
+  "why": "Надоело ждать — tired of."
+ },
+ {
+  "id": "h-legs",
+  "t": 8,
+  "q": "His legs were tired ___ the physio exercises.",
+  "opts": [
+   "from",
+   "of"
+  ],
+  "a": "from",
+  "why": "Устали ноги — физически: tired from."
+ },
+ {
+  "id": "h-noise",
+  "t": 8,
+  "q": "I'm sick and tired ___ the noise on this ward.",
+  "opts": [
+   "of",
+   "from"
+  ],
+  "a": "of",
+  "why": "sick and tired of — «сыт по горло»."
+ },
+ {
+  "id": "h-eyes",
+  "t": 8,
+  "q": "My eyes are tired ___ reading scans all day.",
+  "opts": [
+   "from",
+   "of"
+  ],
+  "a": "from",
+  "why": "Устали глаза от работы — tired from."
+ },
+ {
+  "id": "h-shift",
+  "t": 8,
+  "q": "She was too tired ___ the night shift to drive home.",
+  "opts": [
+   "from",
+   "of"
+  ],
+  "a": "from",
+  "why": "Вымоталась за смену — tired from (или after)."
+ },
+ {
+  "id": "i-you",
+  "t": 9,
+  "q": "I'm disappointed ___ you — you promised to call.",
+  "opts": [
+   "in",
+   "about",
+   "at"
+  ],
+  "a": "in",
+  "why": "Разочаровался в человеке — in (можно и with)."
+ },
+ {
+  "id": "i-missing",
+  "t": 9,
+  "q": "She's disappointed ___ missing the conference.",
+  "opts": [
+   "about",
+   "in",
+   "with"
+  ],
+  "a": "about",
+  "why": "Ситуация, факт — about; дальше -ing. at тоже возможно."
+ },
+ {
+  "id": "i-outcome",
+  "t": 9,
+  "q": "The surgeon was disappointed ___ the outcome.",
+  "opts": [
+   "with",
+   "of",
+   "from"
+  ],
+  "a": "with",
+  "why": "Недоволен результатом — with."
+ },
+ {
+  "id": "i-decision",
+  "t": 9,
+  "q": "Many doctors were disappointed ___ the hospital's decision.",
+  "opts": [
+   "by",
+   "of",
+   "to"
+  ],
+  "a": "by",
+  "why": "The decision disappointed them → by. Можно и with, about, at."
+ },
+ {
+  "id": "i-herself",
+  "t": 9,
+  "q": "She was disappointed ___ herself for giving up.",
+  "opts": [
+   "in",
+   "about",
+   "of"
+  ],
+  "a": "in",
+  "why": "В себе — in (или with)."
+ },
+ {
+  "id": "j-bp",
+  "t": 10,
+  "q": "I was shocked ___ his blood pressure.",
+  "opts": [
+   "by",
+   "with",
+   "of"
+  ],
+  "a": "by",
+  "why": "shocked by / at — оба верны; with — ошибка."
+ },
+ {
+  "id": "j-dose",
+  "t": 10,
+  "q": "We were surprised ___ the low dose.",
+  "opts": [
+   "at",
+   "with",
+   "of"
+  ],
+  "a": "at",
+  "why": "surprised at / by — оба; with — калька «удивлён чем»."
+ },
+ {
+  "id": "j-recovery",
+  "t": 10,
+  "q": "Everyone was amazed ___ her recovery.",
+  "opts": [
+   "by",
+   "at",
+   "of"
+  ],
+  "a": "by",
+  "also": {
+   "at": "amazed at и amazed by — разницы почти нет"
+  },
+  "why": "amazed by = amazed at."
+ },
+ {
+  "id": "j-news",
+  "t": 10,
+  "q": "The whole hospital was shocked ___ the news.",
+  "opts": [
+   "at",
+   "by",
+   "with"
+  ],
+  "a": "at",
+  "also": {
+   "by": "shocked by и shocked at — одно и то же"
+  },
+  "why": "shocked at = shocked by; with — ошибка."
+ },
+ {
+  "id": "j-result",
+  "t": 10,
+  "q": "Nobody was surprised ___ the result.",
+  "opts": [
+   "by",
+   "with",
+   "of"
+  ],
+  "a": "by",
+  "why": "surprised by / at — оба верны."
+ },
+ {
+  "id": "k-you",
+  "t": 11,
+  "q": "I'm very pleased ___ you — well done.",
+  "opts": [
+   "with",
+   "about",
+   "at"
+  ],
+  "a": "with",
+  "why": "Доволен человеком — pleased with."
+ },
+ {
+  "id": "k-promotion",
+  "t": 11,
+  "q": "I'm so pleased ___ your promotion.",
+  "opts": [
+   "about",
+   "of",
+   "on"
+  ],
+  "a": "about",
+  "why": "Рад новости, событию — pleased about (или at)."
+ },
+ {
+  "id": "k-holiday",
+  "t": 11,
+  "q": "The kids are excited ___ the holiday.",
+  "opts": [
+   "about",
+   "at",
+   "of"
+  ],
+  "a": "about",
+  "why": "Предвкушение события — excited about."
+ },
+ {
+  "id": "k-prospect",
+  "t": 11,
+  "q": "He's excited ___ the prospect of a new job.",
+  "opts": [
+   "at",
+   "of",
+   "with"
+  ],
+  "a": "at",
+  "why": "at the prospect / the thought / the idea — устойчиво; about тоже можно."
+ },
+ {
+  "id": "k-questions",
+  "t": 11,
+  "q": "He was embarrassed ___ his mother's questions.",
+  "opts": [
+   "by",
+   "of",
+   "with"
+  ],
+  "a": "by",
+  "why": "Вопросы матери смутили его → by (at тоже можно)."
+ },
+ {
+  "id": "l-me",
+  "t": 12,
+  "q": "She's annoyed ___ me for being late.",
+  "opts": [
+   "with",
+   "on",
+   "about"
+  ],
+  "a": "with",
+  "why": "На человека — with (+ for doing). on — калька."
+ },
+ {
+  "id": "l-parking",
+  "t": 12,
+  "q": "Everyone's annoyed ___ the parking situation.",
+  "opts": [
+   "about",
+   "on",
+   "for"
+  ],
+  "a": "about",
+  "why": "На ситуацию — about или at."
+ },
+ {
+  "id": "l-series",
+  "t": 12,
+  "q": "I'm bored ___ this TV series.",
+  "opts": [
+   "of",
+   "about",
+   "at"
+  ],
+  "a": "of",
+  "why": "bored of — разговорное; нейтрально bored with."
+ },
+ {
+  "id": "l-loss",
+  "t": 12,
+  "q": "He's been depressed ___ the loss of his wife.",
+  "opts": [
+   "over",
+   "at",
+   "with"
+  ],
+  "a": "over",
+  "why": "depressed over — из-за потери, затяжной беды; about тоже верно."
+ },
+ {
+  "id": "l-result",
+  "t": 12,
+  "q": "Don't get depressed ___ one bad result.",
+  "opts": [
+   "about",
+   "with",
+   "at"
+  ],
+  "a": "about",
+  "why": "depressed about — о ситуации."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "adjprep:state";
+const LS_SPEAK = "adjprep:autospeak";
+const LS_TAB = "adjprep:tab";
+const LS_OPEN = "adjprep:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Предлоги"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]{}]/g, ""); }
+function label(a){ return a === "" ? "ничего" : a; }
+// «-ing» и «to do» не должны разрываться в конце строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-ing\b|\bto do\b)/).forEach(part => { if (part === "-ing" || part === "to do") f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+// Новые карточки идут вперемешку по ответам (about, at, by, with…) —
+// чтобы каждый раз выбирать предлог по смыслу, а не угадывать по теме.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { (pools[c.a] = pools[c.a] || []).push(c); });
+  const list = Object.keys(pools).map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 2;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length;
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  q.append(card.q.slice(0, i), el("span", "gap"), card.q.slice(i + 3));
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = "Выбери предлог";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+// {…} — прилагательное (синий), […] — предлог (оранжевый)
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]|\{([^}]+)\}/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(m[1] != null ? el("span", "pr", m[1]) : el("span", "st", m[2]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex" + (ex.w ? " has-w" : ""));
+        if (ex.w){
+          const w = el("p", "ex-w");
+          const b = el("b", null, ex.w);
+          b.lang = "en";
+          w.append(b, ex.wr);
+          row.append(w);
+        }
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= TOPICS.length ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

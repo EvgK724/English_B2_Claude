@@ -1,0 +1,1662 @@
+<title>In или into</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("into",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">In or into? On or onto?</h1>
+      <p class="r-sub">По-русски «в» и&nbsp;«на» отвечают на&nbsp;оба вопроса. В&nbsp;английском спроси себя: <b>где?</b>&nbsp;— in, on; <b>куда?</b>&nbsp;— into, onto.</p>
+      <div class="algo">
+        <p class="algo-h">Где или куда</p>
+        <table class="g4">
+          <colgroup><col class="rh"><col><col></colgroup>
+          <thead><tr><td></td><th scope="col">Где?<small>на месте</small></th><th scope="col">Куда?<small>движение</small></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">внутри</th><td class="st"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="6" fill="currentColor"/></svg><span class="w" lang="en">in</span><span class="e" lang="en">in the room</span></td><td class="pr"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="17" y="7" width="20" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 20h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M19 14l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="w" lang="en">into</span><span class="e" lang="en">into the room</span></td></tr>
+            <tr><th scope="row">на поверх&shy;ности</th><td class="st"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="19" r="7" fill="currentColor"/><path d="M5 30h30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="w" lang="en">on</span><span class="e" lang="en">on the table</span></td><td class="pr"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 33h30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M20 4v20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M13 18l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="w" lang="en">onto</span><span class="e" lang="en">onto the table</span></td></tr>
+          </tbody>
+        </table>
+        <p class="algo-m">Движение&nbsp;— <b class="pr" lang="en">into</b>, <b class="pr" lang="en">onto</b>. На&nbsp;месте&nbsp;— <b class="st" lang="en">in</b>, <b class="st" lang="en">on</b>.</p>
+        <p class="algo-note">Без существительного после предлога&nbsp;— только in, on: <i lang="en">Come in!</i> <i lang="en">Hold on!</i> Транспорт: <i lang="en">in the car</i>, но <i lang="en">on the bus</i>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Один глагол&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">We walked <span class="st">in</span> the park.</p><p class="cp-ru">гуляли в парке</p><p class="cp-en" lang="en">We walked <span class="pr">into</span> the park.</p><p class="cp-ru">вошли в парк</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="We walked in the park. We walked into the park." aria-label="Прослушать: We walked in the park. / We walked into the park."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The children swam <span class="st">in</span> the lake.</p><p class="cp-ru">плавали в озере</p><p class="cp-en" lang="en">The children jumped <span class="pr">into</span> the lake.</p><p class="cp-ru">прыгнули в озеро</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="The children swam in the lake. The children jumped into the lake." aria-label="Прослушать: The children swam in the lake. / The children jumped into the lake."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He&#x27;s <span class="st">in</span> the car.</p><p class="cp-ru">сидит в машине</p><p class="cp-en" lang="en">He got <span class="pr">into</span> the car.</p><p class="cp-ru">сел в машину</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="He&#x27;s in the car. He got into the car." aria-label="Прослушать: He&#x27;s in the car. / He got into the car."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The cat is <span class="st">on</span> the table.</p><p class="cp-ru">сидит на столе</p><p class="cp-en" lang="en">The cat jumped <span class="pr">onto</span> the table.</p><p class="cp-ru">запрыгнула на стол</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="The cat is on the table. The cat jumped onto the table." aria-label="Прослушать: The cat is on the table. / The cat jumped onto the table."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The children ran <span class="st">on</span> the ice.</p><p class="cp-ru">бегали по льду</p><p class="cp-en" lang="en">The children ran <span class="pr">onto</span> the ice.</p><p class="cp-ru">выбежали на лёд</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="The children ran on the ice. The children ran onto the ice." aria-label="Прослушать: The children ran on the ice. / The children ran onto the ice."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Move the patient <span class="st">on</span> the trolley.</p><p class="cp-ru">везите пациента на каталке</p><p class="cp-en" lang="en">Move the patient <span class="pr">onto</span> the trolley.</p><p class="cp-ru">переложите пациента на каталку</p></div><button class="ex-play mm-play" type="button" data-key="cp-6" data-text="Move the patient on the trolley. Move the patient onto the trolley." aria-label="Прослушать: Move the patient on the trolley. / Move the patient onto the trolley."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">into&nbsp;— не&nbsp;только «внутрь»</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">turn&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">превращаться в</span></p><p class="snd-ex" lang="en">Water turns into ice.</p></div><button class="ex-play mm-play" type="button" data-key="it-1" data-text="Turn into. Water turns into ice." aria-label="Прослушать: turn into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">translate&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">переводить на (язык)</span></p><p class="snd-ex" lang="en">Translate it into English.</p></div><button class="ex-play mm-play" type="button" data-key="it-2" data-text="Translate into. Translate it into English." aria-label="Прослушать: translate into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">divide&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">делить на</span></p><p class="snd-ex" lang="en">Divide the students into groups.</p></div><button class="ex-play mm-play" type="button" data-key="it-3" data-text="Divide into. Divide the students into groups." aria-label="Прослушать: divide into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">crash&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">врезаться в</span></p><p class="snd-ex" lang="en">The car crashed into a tree.</p></div><button class="ex-play mm-play" type="button" data-key="it-4" data-text="Crash into. The car crashed into a tree." aria-label="Прослушать: crash into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">bump&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">случайно встретить</span></p><p class="snd-ex" lang="en">I bumped into an old friend.</p></div><button class="ex-play mm-play" type="button" data-key="it-5" data-text="Bump into. I bumped into an old friend." aria-label="Прослушать: bump into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">look&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">разобраться, изучить</span></p><p class="snd-ex" lang="en">We&#x27;ll look into the problem.</p></div><button class="ex-play mm-play" type="button" data-key="it-6" data-text="Look into. We&#x27;ll look into the problem." aria-label="Прослушать: look into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w" lang="en">be&nbsp;<span&nbsp;class="pr">into</span></span> <span class="pw-ru">увлекаться (разг.)</span></p><p class="snd-ex" lang="en">My son is into football.</p></div><button class="ex-play mm-play" type="button" data-key="it-7" data-text="Be into. My son is into football." aria-label="Прослушать: be into"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Translate it in English.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Translate it into English.</span><span class="err-note">перевести на язык&nbsp;— into</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Water turns in ice.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Water turns into ice.</span><span class="err-note">превращаться&nbsp;— into</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Come into, please!</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Come in, please!</span><span class="err-note">без существительного&nbsp;— in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Get in the bus.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Get on the bus.</span><span class="err-note">автобус, поезд&nbsp;— on</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He&#x27;s sitting on the car.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He&#x27;s sitting in the car.</span><span class="err-note">машина&nbsp;— in; on the car&nbsp;— на крыше</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Divide them in groups.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Divide them into groups.</span><span class="err-note">делить на&nbsp;— into</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I bumped on an old friend.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I bumped into an old friend.</span><span class="err-note">случайно встретить&nbsp;— bump into</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The patient is into bed.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The patient is in bed.</span><span class="err-note">где?&nbsp;— in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We&#x27;ll look in the problem.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We&#x27;ll look into the problem.</span><span class="err-note">разобраться&nbsp;— look into</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Let&#x27;s move onto the next topic.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Let&#x27;s move on to the next topic.</span><span class="err-note">move on + to&nbsp;— два слова</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — предлог (in, on — синий; into, onto — оранжевый).
+const MIXED_TOPIC = 9;
+const GROUPS = {"in": "in или into", "on": "on или onto", "more": "Транспорт и тонкости", "med": "В больнице", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "in",
+  "title": "in — где?",
+  "sub": "внутри, уже на месте",
+  "rule": "in — где? Внутри, в пределах чего-то: in the room, in my bag, in London, in bed, in the car. Движения нет — человек или предмет уже там: The keys are in my bag. We walked in the park — гуляли в парке, по его территории.",
+  "ex": [
+   {
+    "en": "The keys are [in] my bag.",
+    "ru": "Ключи у меня в сумке."
+   },
+   {
+    "en": "The patient is [in] bed.",
+    "ru": "Пациент в постели."
+   },
+   {
+    "en": "We walked [in] the park.",
+    "ru": "Мы гуляли в парке."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "in",
+  "title": "into — куда?",
+  "sub": "движение внутрь",
+  "rule": "into — куда? Движение снаружи внутрь: walk into the room, move into a new flat, run into the house. Сравни: We walked in the park — гуляли в парке; We walked into the park — вошли в парк. После put, throw, jump, fall в разговоре годится и in: Put it in the box.",
+  "ex": [
+   {
+    "en": "She walked [into] the room.",
+    "ru": "Она вошла в комнату."
+   },
+   {
+    "en": "We walked [into] the park.",
+    "ru": "Мы вошли в парк."
+   },
+   {
+    "en": "They moved [into] a new flat.",
+    "ru": "Они переехали в новую квартиру."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "in",
+  "title": "into — не только «внутрь»",
+  "sub": "превращение · встреча · интерес",
+  "rule": "into — ещё и превращение, деление: turn into ice, translate into English, divide into groups. Столкновение: crash into a tree. Случайная встреча: bump into, run into an old friend. Разобраться: look into a problem. Увлекаться (разг.): I'm into jazz.",
+  "ex": [
+   {
+    "en": "Translate it [into] English.",
+    "ru": "Переведи это на английский."
+   },
+   {
+    "en": "Water turns [into] ice.",
+    "ru": "Вода превращается в лёд."
+   },
+   {
+    "en": "I bumped [into] an old friend.",
+    "ru": "Я случайно встретил старого друга."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "on",
+  "title": "on — где?",
+  "sub": "на поверхности",
+  "rule": "on — где? На поверхности: on the table, on the wall, on the floor, on the screen, on the roof. Движения нет: The results are on your desk. The cat is on the table.",
+  "ex": [
+   {
+    "en": "The results are [on] your desk.",
+    "ru": "Результаты у вас на столе."
+   },
+   {
+    "en": "There's a clock [on] the wall.",
+    "ru": "На стене висят часы."
+   },
+   {
+    "en": "The cat is [on] the table.",
+    "ru": "Кошка сидит на столе."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "on",
+  "title": "onto — куда?",
+  "sub": "движение на поверхность",
+  "rule": "onto — куда? Движение на поверхность: jump onto the table, move the patient onto the trolley, roll onto the road. Иногда без onto меняется смысл: run on the ice — бегать по льду, run onto the ice — выбежать на лёд. В разговоре часто говорят и on: jump on the table. После put обычно просто on: Put it on the table.",
+  "ex": [
+   {
+    "en": "The cat jumped [onto] the table.",
+    "ru": "Кошка запрыгнула на стол."
+   },
+   {
+    "en": "Move the patient [onto] the trolley.",
+    "ru": "Переложите пациента на каталку."
+   },
+   {
+    "en": "The ball rolled [onto] the road.",
+    "ru": "Мяч выкатился на дорогу."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "more",
+  "title": "Транспорт: in или on",
+  "sub": "in the car · on the bus",
+  "rule": "Машина, такси — сидишь внутри и встать нельзя: in the car, get in(to) the car, get out of the car. Автобус, поезд, самолёт — можно ходить внутри: on the bus, get on the bus, get off the bus. Велосипед, мотоцикл — сидишь сверху: on a bike. Осторожно: on the car — «на крыше машины».",
+  "ex": [
+   {
+    "en": "She's [in] the car.",
+    "ru": "Она в машине."
+   },
+   {
+    "en": "We got [on] the bus.",
+    "ru": "Мы сели в автобус."
+   },
+   {
+    "en": "Get [off] at the next stop.",
+    "ru": "Выходите на следующей остановке."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "more",
+  "title": "Тонкости",
+  "sub": "Come in! · Hold on! · move on to",
+  "rule": "Если после предлога нет существительного — только in или on: Come in! Get in! Hold on! Into и onto всегда требуют существительного: come into the room. Когда on — часть глагола, а to — отдельный предлог, пишут раздельно: move on to the next topic.",
+  "ex": [
+   {
+    "en": "Come [in]!",
+    "ru": "Входите!"
+   },
+   {
+    "en": "Hold [on]!",
+    "ru": "Подождите!"
+   },
+   {
+    "en": "Let's move [on to] the next topic.",
+    "ru": "Переходим к следующей теме."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "med",
+  "title": "В больнице",
+  "sub": "in intensive care · on a drip · onto his side",
+  "rule": "in: in hospital (брит.), in intensive care, in bed. on: on a drip — под капельницей, on medication — на лекарствах. into: inject into a vein, insert into. onto: move onto the trolley, roll onto his side.",
+  "ex": [
+   {
+    "en": "He's [in] intensive care.",
+    "ru": "Он в реанимации."
+   },
+   {
+    "en": "She's [on] a drip.",
+    "ru": "Она под капельницей."
+   },
+   {
+    "en": "Roll him [onto] his side.",
+    "ru": "Поверните его на бок."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "i1-bag",
+  "t": 1,
+  "q": "The keys are ___ my bag.",
+  "ru": "Ключи у меня в сумке.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Где? — in. Движения нет."
+ },
+ {
+  "id": "i1-bed",
+  "t": 1,
+  "q": "The patient is still ___ bed.",
+  "ru": "Пациент ещё в постели.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Где? — in: in bed."
+ },
+ {
+  "id": "i1-flat",
+  "t": 1,
+  "q": "She lives ___ a small flat near the hospital.",
+  "ru": "Она живёт в маленькой квартире рядом с больницей.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Где живёт? — in."
+ },
+ {
+  "id": "i1-car",
+  "t": 1,
+  "q": "He's waiting ___ the car.",
+  "ru": "Он ждёт в машине.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Где ждёт? — in."
+ },
+ {
+  "id": "i1-park",
+  "t": 1,
+  "q": "We walked ___ the park for an hour.",
+  "ru": "Мы целый час гуляли в парке.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Гулять в парке (где?) — in. Walk into the park — «войти в парк»."
+ },
+ {
+  "id": "i1-swim",
+  "t": 1,
+  "q": "The children are swimming ___ the pool.",
+  "ru": "Дети плавают в бассейне.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Плавать в бассейне (где?) — in. Прыгнуть в бассейн — into."
+ },
+ {
+  "id": "i2-room",
+  "t": 2,
+  "q": "She walked ___ the room and sat down.",
+  "ru": "Она вошла в комнату и села.",
+  "opts": [
+   "into",
+   "in"
+  ],
+  "a": "into",
+  "why": "Куда? Движение внутрь — into."
+ },
+ {
+  "id": "i2-ward",
+  "t": 2,
+  "q": "A nurse came ___ the ward with the results.",
+  "ru": "В палату вошла медсестра с результатами.",
+  "opts": [
+   "into",
+   "in"
+  ],
+  "a": "into",
+  "why": "Вошла куда? — into."
+ },
+ {
+  "id": "i2-blood",
+  "t": 2,
+  "q": "The drug is injected directly ___ the bloodstream.",
+  "ru": "Препарат вводят прямо в кровоток.",
+  "opts": [
+   "into",
+   "in"
+  ],
+  "a": "into",
+  "why": "Ввести внутрь — into: inject into."
+ },
+ {
+  "id": "i2-hide",
+  "t": 2,
+  "q": "The boy ran ___ the house to hide.",
+  "ru": "Мальчик забежал в дом, чтобы спрятаться.",
+  "opts": [
+   "into",
+   "in"
+  ],
+  "a": "into",
+  "why": "Забежать внутрь — into. Run in the house — «бегать по дому»."
+ },
+ {
+  "id": "i2-gate",
+  "t": 2,
+  "q": "We walked ___ the park through the main gate.",
+  "ru": "Мы вошли в парк через главные ворота.",
+  "opts": [
+   "into",
+   "in"
+  ],
+  "a": "into",
+  "why": "Войти в парк — into. Гулять в парке — in."
+ },
+ {
+  "id": "i2-flat",
+  "t": 2,
+  "q": "They moved ___ a new flat last month.",
+  "ru": "В прошлом месяце они переехали в новую квартиру.",
+  "opts": [
+   "into",
+   "in"
+  ],
+  "a": "into",
+  "why": "Въехать куда? — move into."
+ },
+ {
+  "id": "i3-translate",
+  "t": 3,
+  "q": "Can you translate this letter ___ English?",
+  "ru": "Можете перевести это письмо на английский?",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Перевести на язык — translate into."
+ },
+ {
+  "id": "i3-ice",
+  "t": 3,
+  "q": "Water turns ___ ice at 0 °C.",
+  "ru": "При 0 °C вода превращается в лёд.",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Превращаться — turn into."
+ },
+ {
+  "id": "i3-groups",
+  "t": 3,
+  "q": "The teacher divided the students ___ three groups.",
+  "ru": "Преподаватель разделил студентов на три группы.",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Делить на — divide into."
+ },
+ {
+  "id": "i3-bump",
+  "t": 3,
+  "q": "I bumped ___ an old classmate at the supermarket.",
+  "ru": "В супермаркете я случайно встретил бывшего одноклассника.",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Случайно встретить — bump into."
+ },
+ {
+  "id": "i3-look",
+  "t": 3,
+  "q": "We'll look ___ the problem and call you back.",
+  "ru": "Мы разберёмся с проблемой и перезвоним вам.",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Разобраться, изучить — look into."
+ },
+ {
+  "id": "i3-crash",
+  "t": 3,
+  "q": "The car crashed ___ a tree.",
+  "ru": "Машина врезалась в дерево.",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Врезаться — crash into."
+ },
+ {
+  "id": "i3-fan",
+  "t": 3,
+  "q": "My son is really ___ football at the moment.",
+  "ru": "Мой сын сейчас очень увлекается футболом.",
+  "opts": [
+   "into",
+   "in",
+   "on"
+  ],
+  "a": "into",
+  "why": "Увлекаться (разг.) — be into."
+ },
+ {
+  "id": "o4-desk",
+  "t": 4,
+  "q": "The results are ___ your desk.",
+  "ru": "Результаты у вас на столе.",
+  "opts": [
+   "on",
+   "onto"
+  ],
+  "a": "on",
+  "why": "Где? На поверхности — on."
+ },
+ {
+  "id": "o4-wall",
+  "t": 4,
+  "q": "There's a clock ___ the wall.",
+  "ru": "На стене висят часы.",
+  "opts": [
+   "on",
+   "onto"
+  ],
+  "a": "on",
+  "why": "Где? — on the wall."
+ },
+ {
+  "id": "o4-floor",
+  "t": 4,
+  "q": "The patient was lying ___ the floor when we arrived.",
+  "ru": "Когда мы приехали, пациент лежал на полу.",
+  "opts": [
+   "on",
+   "onto"
+  ],
+  "a": "on",
+  "why": "Где лежал? — on."
+ },
+ {
+  "id": "o4-screen",
+  "t": 4,
+  "q": "Look at the image ___ the screen.",
+  "ru": "Посмотрите на изображение на экране.",
+  "opts": [
+   "on",
+   "onto"
+  ],
+  "a": "on",
+  "why": "На экране — on the screen."
+ },
+ {
+  "id": "o4-roof",
+  "t": 4,
+  "q": "The cat is sitting ___ the roof.",
+  "ru": "Кошка сидит на крыше.",
+  "opts": [
+   "on",
+   "onto"
+  ],
+  "a": "on",
+  "why": "Где сидит? — on."
+ },
+ {
+  "id": "o5-trolley",
+  "t": 5,
+  "q": "Let's move the patient ___ the trolley — one, two, three!",
+  "ru": "Перекладываем пациента на каталку — раз, два, три!",
+  "opts": [
+   "onto",
+   "on"
+  ],
+  "a": "onto",
+  "why": "Переложить на — onto. Move him on the trolley — «везти его на каталке»."
+ },
+ {
+  "id": "o5-road",
+  "t": 5,
+  "q": "The ball rolled ___ the road.",
+  "ru": "Мяч выкатился на дорогу.",
+  "opts": [
+   "onto",
+   "on"
+  ],
+  "a": "onto",
+  "why": "Выкатиться на — onto. Roll on the road — «катиться по дороге»."
+ },
+ {
+  "id": "o5-ice",
+  "t": 5,
+  "q": "The children ran ___ the ice.",
+  "ru": "Дети выбежали на лёд.",
+  "opts": [
+   "onto",
+   "on"
+  ],
+  "a": "onto",
+  "why": "Выбежать на — onto. Run on the ice — «бегать по льду»."
+ },
+ {
+  "id": "o5-cat",
+  "t": 5,
+  "q": "The cat jumped ___ the table.",
+  "ru": "Кошка запрыгнула на стол.",
+  "opts": [
+   "onto",
+   "on",
+   "into"
+  ],
+  "a": "onto",
+  "why": "Движение на поверхность — onto.",
+  "also": {
+   "on": "в разговоре так говорят, но движение на поверхность точнее — onto"
+  }
+ },
+ {
+  "id": "t6-bus",
+  "t": 6,
+  "q": "We got ___ the bus at the railway station.",
+  "ru": "Мы сели в автобус у вокзала.",
+  "opts": [
+   "on",
+   "in",
+   "into"
+  ],
+  "a": "on",
+  "why": "Автобус, поезд, самолёт — get on."
+ },
+ {
+  "id": "t6-car",
+  "t": 6,
+  "q": "She's sitting ___ the car, waiting for you.",
+  "ru": "Она сидит в машине и ждёт тебя.",
+  "opts": [
+   "in",
+   "on"
+  ],
+  "a": "in",
+  "why": "Машина — in. On the car — «на крыше машины»."
+ },
+ {
+  "id": "t6-taxi",
+  "t": 6,
+  "q": "He got ___ a taxi and went to the airport.",
+  "ru": "Он сел в такси и поехал в аэропорт.",
+  "opts": [
+   "into",
+   "on",
+   "onto"
+  ],
+  "a": "into",
+  "why": "Такси, машина — get into (или get in)."
+ },
+ {
+  "id": "t6-plane",
+  "t": 6,
+  "q": "There were 200 passengers ___ the plane.",
+  "ru": "В самолёте было 200 пассажиров.",
+  "opts": [
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Самолёт, поезд, автобус — on."
+ },
+ {
+  "id": "t6-bike",
+  "t": 6,
+  "q": "My son goes to school ___ his bike.",
+  "ru": "Мой сын ездит в школу на велосипеде.",
+  "opts": [
+   "on",
+   "in",
+   "by"
+  ],
+  "a": "on",
+  "why": "На своём велосипеде — on his bike (или by bike, без his)."
+ },
+ {
+  "id": "t6-out",
+  "t": 6,
+  "q": "Get ___ of the car, please.",
+  "ru": "Выйдите из машины, пожалуйста.",
+  "opts": [
+   "out",
+   "off"
+  ],
+  "a": "out",
+  "why": "Из машины — get out of. Из автобуса — get off."
+ },
+ {
+  "id": "t6-off",
+  "t": 6,
+  "q": "We need to get ___ at the next stop.",
+  "ru": "Нам выходить на следующей остановке.",
+  "opts": [
+   "off",
+   "out"
+  ],
+  "a": "off",
+  "why": "Из автобуса — get off."
+ },
+ {
+  "id": "t7-comein",
+  "t": 7,
+  "q": "Come ___, please — the door is open.",
+  "ru": "Входите, пожалуйста, — дверь открыта.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "После предлога нет существительного — только in: Come in!"
+ },
+ {
+  "id": "t7-getin",
+  "t": 7,
+  "q": "Get ___ — I'll drive you home.",
+  "ru": "Садись — я отвезу тебя домой.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Без существительного — in: Get in!"
+ },
+ {
+  "id": "t7-hold",
+  "t": 7,
+  "q": "Hold ___! I'm coming.",
+  "ru": "Подожди! Я иду.",
+  "opts": [
+   "on",
+   "onto"
+  ],
+  "a": "on",
+  "why": "Без существительного — on: Hold on!"
+ },
+ {
+  "id": "t7-moveon",
+  "t": 7,
+  "q": "Let's move ___ the next patient.",
+  "ru": "Переходим к следующему пациенту.",
+  "opts": [
+   "on to",
+   "onto"
+  ],
+  "a": "on to",
+  "why": "move on (продолжать) + to — два слова. Onto здесь значило бы «залезть на пациента»."
+ },
+ {
+  "id": "h8-hospital",
+  "t": 8,
+  "q": "My father has been ___ hospital for a week.",
+  "ru": "Отец уже неделю в больнице.",
+  "opts": [
+   "in",
+   "into"
+  ],
+  "a": "in",
+  "why": "Где? — in hospital (британский вариант)."
+ },
+ {
+  "id": "h8-icu",
+  "t": 8,
+  "q": "He's ___ intensive care.",
+  "ru": "Он в реанимации.",
+  "opts": [
+   "in",
+   "on",
+   "into"
+  ],
+  "a": "in",
+  "why": "В реанимации — in intensive care."
+ },
+ {
+  "id": "h8-drip",
+  "t": 8,
+  "q": "The patient is ___ a drip.",
+  "ru": "Пациент под капельницей.",
+  "opts": [
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Под капельницей — on a drip."
+ },
+ {
+  "id": "h8-meds",
+  "t": 8,
+  "q": "She's ___ medication for high blood pressure.",
+  "ru": "Она принимает препараты от давления.",
+  "opts": [
+   "on",
+   "in"
+  ],
+  "a": "on",
+  "why": "Принимать лекарства — be on medication."
+ },
+ {
+  "id": "h8-vein",
+  "t": 8,
+  "q": "The contrast is injected ___ a vein in the arm.",
+  "ru": "Контраст вводят в вену на руке.",
+  "opts": [
+   "into",
+   "onto"
+  ],
+  "a": "into",
+  "why": "Ввести в вену — inject into."
+ },
+ {
+  "id": "h8-side",
+  "t": 8,
+  "q": "Roll the patient ___ his side.",
+  "ru": "Поверните пациента на бок.",
+  "opts": [
+   "onto",
+   "into"
+  ],
+  "a": "onto",
+  "why": "Повернуть на бок — onto: на поверхность, а не внутрь."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "into:state";
+const LS_SPEAK = "into:autospeak";
+const LS_TAB = "into:tab";
+const LS_OPEN = "into:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "in / into"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — предлог: in и on — синий (где?), into и onto — оранжевый (куда?), остальные подчёркнуты
+const PREP_CLS = { in: "st", on: "st", into: "pr", onto: "pr" };
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", PREP_CLS[m[1].toLowerCase()] || "hl", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Сравнения и значения into: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: где и куда чередуются — выбирать приходится по смыслу.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

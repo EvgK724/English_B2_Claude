@@ -1,0 +1,180 @@
+# Содержание приложения «Кого + to do».
+# В примерах: {…} — «кого» (синий), […] — нужная форма (зелёный).
+
+TOPICS = [
+    {"n": 1, "title": "Толкаю: кого + to do",
+     "rule": "Действие выполняет другой человек — тот, кого просят, кому советуют и разрешают. Схема: глагол + кого + to do. Так работают десять глаголов ниже. Отрицание ставится перед to: warned him not to drive.",
+     "ex": [
+         {"w": "encourage", "wr": "поощрять, побуждать", "en": "We encourage {patients} [to ask] questions about their treatment.", "ru": "Мы поощряем пациентов задавать вопросы о лечении."},
+         {"w": "advise", "wr": "советовать", "en": "The neurologist advised {him} [to stop] smoking.", "ru": "Невролог посоветовал ему бросить курить."},
+         {"w": "allow", "wr": "разрешать, позволять", "en": "The new protocol allows {paramedics} [to alert] the stroke team directly.", "ru": "Новый протокол позволяет фельдшерам оповещать инсультную бригаду напрямую."},
+         {"w": "ask", "wr": "просить", "en": "I asked {the family} [to bring] his medication list.", "ru": "Я попросил родственников принести список его лекарств."},
+         {"w": "persuade", "wr": "уговорить, убедить", "en": "We persuaded {her} [to stay] for observation.", "ru": "Мы уговорили её остаться под наблюдением."},
+         {"w": "remind", "wr": "напомнить", "en": "Remind {the residents} [to complete] the discharge summaries.", "ru": "Напомните ординаторам заполнить выписные эпикризы."},
+         {"w": "urge", "wr": "настоятельно призывать", "en": "The guidelines urge {clinicians} [to minimise] door-to-needle time.", "ru": "Рекомендации настоятельно призывают врачей сокращать время «от двери до иглы»."},
+         {"w": "warn", "wr": "предупреждать", "en": "I warned {him} [not to drive] for a month.", "ru": "Я предупредил его, чтобы месяц не садился за руль."},
+         {"w": "expect", "wr": "ожидать, рассчитывать", "en": "We expect {her} [to recover] fully.", "ru": "Мы рассчитываем, что она полностью восстановится."},
+         {"w": "want", "wr": "хотеть, чтобы", "en": "I want {you} [to repeat] the CT in 24 hours.", "ru": "Я хочу, чтобы вы повторили КТ через 24 часа."},
+     ]},
+    {"n": 2, "title": "suggest: идея на стол",
+     "rule": "Suggest — предложить идею, вариант. Человека после него не ставят: ✗ suggested me to repeat. Два верных пути: suggest + -ing или suggest that + кто + начальная форма (that и should можно опустить). «Что-то кому» — через to: suggest a plan to the team.",
+     "ex": [
+         {"en": "She suggested [repeating] the scan.", "ru": "Она предложила повторить исследование."},
+         {"en": "She suggested [that I repeat] the scan.", "ru": "Она предложила, чтобы я повторил исследование."},
+         {"en": "She suggested a new plan [to] the team.", "ru": "Она предложила команде новый план."},
+     ]},
+    {"n": 3, "title": "recommend: рекомендую",
+     "rule": "Та же схема, что у suggest: recommend + -ing или recommend that + кто + начальная форма. «Не рекомендовать» — recommend against + -ing. Recommend him to rest Oxford допускает как британский вариант, Longman считает ошибкой — в письмах и статьях не используйте.",
+     "ex": [
+         {"en": "The panel recommends [repeating] the test in six months.", "ru": "Комиссия рекомендует повторить анализ через полгода."},
+         {"en": "The doctor recommended [that he rest] for a week.", "ru": "Врач рекомендовал ему неделю отдыхать."},
+         {"en": "The guidelines recommend [against using] this drug in pregnancy.", "ru": "Рекомендации не советуют применять этот препарат при беременности."},
+     ]},
+    {"n": 4, "title": "propose: официально",
+     "rule": "Propose — предложить официально: план, поправку, перенос. После него, как после suggest, -ing или that + кто + начальная форма. Propose + to do значит другое — «собираться»: делаю сам.",
+     "ex": [
+         {"en": "I propose [postponing] the audit until March.", "ru": "Предлагаю перенести аудит на март."},
+         {"en": "The committee proposed [that] the audit [be postponed].", "ru": "Комиссия предложила перенести аудит."},
+         {"en": "How do you propose [to fund] the study?", "ru": "Как вы собираетесь финансировать исследование?"},
+     ]},
+    {"n": 5, "title": "offer: протягиваю руку",
+     "rule": "Offer — предлагаю себя, помощь или вещь. Два пути: offer to do (делаю сам, «вызываюсь») и offer кому + что. Ни -ing, ни that, ни «кого + to do». «Предложила мне отдохнуть» — отдыхать буду я — это уже suggest.",
+     "ex": [
+         {"en": "She offered [to cover] the night shift.", "ru": "Она вызвалась взять ночную смену."},
+         {"en": "She offered {me} [a coffee].", "ru": "Она предложила мне кофе."},
+         {"en": "She suggested [that I take] a break.", "ru": "Она предложила мне сделать перерыв."},
+     ]},
+    {"n": 6, "title": "«Предложил…» — какой глагол",
+     "rule": "По-русски одно слово, по-английски четыре. Первый вопрос к себе: кто будет делать? Другие или все вместе — suggest. Я сам — offer to do. Вещь или место — offer кому + что. Официально — propose. Пациенту, чтобы он сделал, — advise кого + to do.",
+     "ex": [
+         {"en": "He suggested [ordering] an MRI.", "ru": "Он предложил назначить МРТ."},
+         {"en": "He offered [to help].", "ru": "Он вызвался помочь."},
+         {"en": "The doctor advised {him} [to rest].", "ru": "Врач посоветовал ему отдохнуть."},
+     ]},
+    {"n": 7, "title": "advise, allow, want: тонкости",
+     "rule": "Без «кого» advise и allow берут -ing: I'd advise waiting, we don't allow smoking. С «кем» — снова to do: allow visitors to stay. Want никогда не бывает с that: I want you to repeat. Expect умеет и так, и так: expect her to recover = expect that she will recover.",
+     "ex": [
+         {"en": "I'd advise [waiting] for the MRI.", "ru": "Я бы посоветовал дождаться МРТ."},
+         {"en": "We don't allow [smoking] on the ward.", "ru": "Курить в отделении не разрешается."},
+         {"en": "I want {the results} [to be sent] today.", "ru": "Я хочу, чтобы результаты прислали сегодня."},
+     ]},
+    {"n": 8, "title": "Делаю сам и that-часть",
+     "rule": "Если делаю я сам, «кого» не нужно: I asked to see the consultant, she offered to help. Так умеют ask, want, expect, offer и propose. Suggest и recommend — нет: ✗ I suggest to wait → I suggest waiting. В that-части — начальная форма: без -s и без to.",
+     "ex": [
+         {"en": "I asked [to see] the consultant.", "ru": "Я попросил о встрече с консультантом."},
+         {"en": "I suggest [waiting] until the results come back.", "ru": "Предлагаю подождать результатов."},
+         {"en": "Her GP recommended that she [see] a neurologist.", "ru": "Терапевт рекомендовал ей обратиться к неврологу."},
+     ]},
+    {"n": 9, "title": "В протоколах: пассив",
+     "rule": "В инструкциях удобен пассив: Patients are advised to fast — так можно с advise, ask, encourage, allow, remind. С suggest нельзя: ✗ Patients are suggested to fast. Patients are recommended to fast — частая калька; надёжнее безличный оборот: It is recommended that patients fast.",
+     "ex": [
+         {"en": "Patients are [advised to fast] from midnight.", "ru": "Пациентам рекомендуется не есть с полуночи."},
+         {"en": "It is recommended [that patients fast] from midnight.", "ru": "Рекомендуется, чтобы пациенты не ели с полуночи."},
+     ]},
+    {"n": 10, "title": "Итог — всё вместе",
+     "rule": "Пятнадцать случайных карточек из всех тем вперемешку.",
+     "ex": []},
+]
+
+# opts — варианты ("" — ничего не нужно), a — правильный.
+CARDS = [
+    # 1 — кого + to do
+    {"id": "t1-advise", "t": 1, "q": "The neurologist advised him ___ smoking.", "opts": ["to stop", "stopping"], "a": "to stop",
+     "why": "advise + кого + to do: бросать будет он."},
+    {"id": "t1-encourage", "t": 1, "q": "We encourage patients ___ questions about their treatment.", "opts": ["to ask", "asking"], "a": "to ask",
+     "why": "encourage + кого + to do: побуждаем их самих спрашивать."},
+    {"id": "t1-allow", "t": 1, "q": "The new protocol ___ paramedics to alert the stroke team directly.", "opts": ["allows", "suggests"], "a": "allows",
+     "why": "allow + кого + to do. У suggest такой схемы нет."},
+    {"id": "t1-persuade", "t": 1, "q": "We finally persuaded the patient ___ against medical advice.", "opts": ["not to leave", "not leaving"], "a": "not to leave",
+     "why": "persuade + кого + to do; отрицание not — перед to."},
+    {"id": "t1-want", "t": 1, "q": "I want ___ the CT in 24 hours.", "opts": ["you to repeat", "that you repeat"], "a": "you to repeat",
+     "why": "want никогда не берёт that: want + кого + to do."},
+    {"id": "t1-urge", "t": 1, "q": "The guidelines urge clinicians ___ door-to-needle time.", "opts": ["to minimise", "minimising"], "a": "to minimise",
+     "why": "urge + кого + to do: настоятельно призывают врачей."},
+
+    # 2 — suggest
+    {"id": "t2-scan", "t": 2, "q": "She suggested ___ the scan.", "opts": ["repeating", "me to repeat", "to repeat"], "a": "repeating",
+     "why": "suggest + -ing: идея на стол. Ни «кого + to do», ни to do."},
+    {"id": "t2-dose", "t": 2, "q": "The cardiologist suggested ___ the dose.", "opts": ["that he reduce", "him to reduce"], "a": "that he reduce",
+     "why": "suggest that + кто + начальная форма, без -s: that he reduce."},
+    {"id": "t2-wait", "t": 2, "q": "I suggest ___ until the results come back.", "opts": ["waiting", "to wait"], "a": "waiting",
+     "why": "suggest to do — ошибка: только -ing или that."},
+    {"id": "t2-team", "t": 2, "q": "She suggested a new plan ___ the team.", "opts": ["to", ""], "a": "to",
+     "why": "Что-то кому — через to: suggest a plan to the team. ✗ suggested the team a plan."},
+    {"id": "t2-order", "t": 2, "q": "He suggested that we ___ an MRI.", "opts": ["order", "to order", "ordering"], "a": "order",
+     "why": "В that-части — начальная форма: that we order."},
+
+    # 3 — recommend
+    {"id": "t3-test", "t": 3, "q": "The panel recommends ___ the test in six months.", "opts": ["repeating", "to repeat"], "a": "repeating",
+     "why": "recommend + -ing. Recommend to do — ошибка."},
+    {"id": "t3-rest", "t": 3, "q": "The doctor recommended that he ___ for a week.", "opts": ["rest", "to rest"], "a": "rest",
+     "why": "В that-части — начальная форма: that he rest (или should rest)."},
+    {"id": "t3-against", "t": 3, "q": "The guidelines recommend ___ this drug in pregnancy.", "opts": ["against using", "not to use"], "a": "against using",
+     "why": "«Не рекомендовать» — recommend against + -ing."},
+    {"id": "t3-gp", "t": 3, "q": "Her GP recommended ___ a neurologist.", "opts": ["that she see", "to see"], "a": "that she see",
+     "why": "«Рекомендовал обратиться» — recommend that + кто + начальная форма. Recommend to do — ошибка."},
+
+    # 4 — propose
+    {"id": "t4-audit", "t": 4, "q": "I propose ___ the audit until March.", "opts": ["postponing", "you to postpone"], "a": "postponing",
+     "why": "propose, как suggest: -ing или that. «Кого + to do» нельзя."},
+    {"id": "t4-reviewers", "t": 4, "q": "The reviewers proposed ___ a sensitivity analysis.", "opts": ["adding", "us to add"], "a": "adding",
+     "why": "propose + -ing (или that we add)."},
+    {"id": "t4-committee", "t": 4, "q": "The committee proposed that the audit ___ postponed.", "opts": ["be", "to be"], "a": "be",
+     "why": "В that-части — начальная форма: that the audit be postponed (или should be)."},
+    {"id": "t4-meet", "t": 4, "q": "I propose ___ again on Friday.", "opts": ["that we meet", "us to meet"], "a": "that we meet",
+     "why": "«Предлагаю нам встретиться» — propose that we meet. ✗ propose us to meet."},
+
+    # 5 — offer
+    {"id": "t5-shift", "t": 5, "q": "She offered ___ the night shift.", "opts": ["to cover", "covering", "me to cover"], "a": "to cover",
+     "why": "offer to do: делает она сама. Ни -ing, ни «кого + to do»."},
+    {"id": "t5-family", "t": 5, "q": "My colleague offered ___ the patient's family.", "opts": ["to call", "calling"], "a": "to call",
+     "why": "«Вызвался позвонить» = offered to call."},
+    {"id": "t5-tea", "t": 5, "q": "The nurse offered ___ a cup of tea.", "opts": ["him", "to him"], "a": "him",
+     "why": "offer кому + что: offered him a cup of tea (или offered a cup of tea to him)."},
+    {"id": "t5-break", "t": 5, "q": "She ___ that I take a break.", "opts": ["suggested", "offered"], "a": "suggested",
+     "why": "Отдыхать буду я — это suggest. Offer не берёт that."},
+    {"id": "t5-help", "t": 5, "q": "He ___ to help with the discharge summaries.", "opts": ["offered", "suggested"], "a": "offered",
+     "why": "Делает он сам — offer to do. ✗ suggested to help."},
+
+    # 6 — какой глагол
+    {"id": "t6-mri", "t": 6, "q": "He ___ ordering an MRI.", "opts": ["suggested", "offered"], "a": "suggested",
+     "why": "Назначать будут другие или все вместе — suggest + -ing. Offer не берёт -ing."},
+    {"id": "t6-job", "t": 6, "q": "The hospital ___ her a job in the stroke unit.", "opts": ["offered", "suggested"], "a": "offered",
+     "why": "Место или вещь кому-то — offer кому + что. ✗ suggested her a job."},
+    {"id": "t6-board", "t": 6, "q": "The board formally ___ that the audit be postponed.", "opts": ["proposed", "offered"], "a": "proposed",
+     "why": "Официальное предложение — propose that. Offer не берёт that."},
+    {"id": "t6-rest", "t": 6, "q": "The doctor ___ him to rest.", "opts": ["advised", "suggested"], "a": "advised",
+     "why": "Пациенту, чтобы он сделал, — advise + кого + to do. Suggest так не умеет."},
+
+    # 7 — advise, allow, want
+    {"id": "t7-advise", "t": 7, "q": "I'd advise ___ for the MRI results before starting treatment.", "opts": ["waiting", "to wait"], "a": "waiting",
+     "why": "Без «кого» advise берёт -ing. С «кем»: I'd advise you to wait."},
+    {"id": "t7-smoking", "t": 7, "q": "We don't allow ___ on the ward.", "opts": ["smoking", "to smoke"], "a": "smoking",
+     "why": "allow без «кого» — -ing. ✗ allow to smoke."},
+    {"id": "t7-visitors", "t": 7, "q": "We allow visitors ___ until 8 pm.", "opts": ["to stay", "staying"], "a": "to stay",
+     "why": "С «кем» — снова to do: allow visitors to stay."},
+    {"id": "t7-results", "t": 7, "q": "I want ___ to me by Friday.", "opts": ["the results to be sent", "that the results are sent"], "a": "the results to be sent",
+     "why": "want не бывает с that. «Чтобы прислали» — to be + V3."},
+    {"id": "t7-expect", "t": 7, "q": "We expect the patient ___ on Friday.", "opts": ["to be discharged", "being discharged"], "a": "to be discharged",
+     "why": "expect + кого + to do, в пассиве to be + V3. Можно и: We expect that the patient will be discharged."},
+
+    # 8 — делаю сам, that-часть
+    {"id": "t8-consultant", "t": 8, "q": "I asked ___ the consultant.", "opts": ["to see", "seeing"], "a": "to see",
+     "why": "Делаю сам — to do без «кого»: asked to see."},
+    {"id": "t8-rate", "t": 8, "q": "I'd suggest ___ the infusion rate.", "opts": ["reducing", "to reduce"], "a": "reducing",
+     "why": "suggest to do — ошибка: suggest + -ing."},
+    {"id": "t8-check", "t": 8, "q": "The nurse recommended that he ___ his blood pressure daily.", "opts": ["check", "to check"], "a": "check",
+     "why": "В that-части — начальная форма: без -s и без to."},
+    {"id": "t8-myself", "t": 8, "q": "I want ___ the results myself.", "opts": ["to check", "that I check"], "a": "to check",
+     "why": "Хочу сам — want to do. ✗ want that."},
+
+    # 9 — протоколы
+    {"id": "t9-fast", "t": 9, "q": "Patients are ___ to fast from midnight.", "opts": ["advised", "suggested"], "a": "advised",
+     "why": "Пассив advise: are advised to do. ✗ are suggested to fast."},
+    {"id": "t9-that", "t": 9, "q": "It is recommended that patients ___ from midnight.", "opts": ["fast", "to fast", "fasting"], "a": "fast",
+     "why": "Безличный оборот It is recommended that + кто + начальная форма: that patients fast."},
+    {"id": "t9-mobilise", "t": 9, "q": "Patients are encouraged ___ early.", "opts": ["to mobilise", "mobilising"], "a": "to mobilise",
+     "why": "Пассив сохраняет to do: are encouraged to mobilise."},
+    {"id": "t9-wash", "t": 9, "q": "Visitors are asked ___ their hands before entering the ward.", "opts": ["to wash", "washing"], "a": "to wash",
+     "why": "ask в пассиве: are asked to do."},
+]

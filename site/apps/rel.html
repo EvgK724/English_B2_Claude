@@ -1,0 +1,1791 @@
+<title>Который</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("rel",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .mt tbody th small{display:block;margin-top:calc(3px*var(--k));font-family:var(--sans);font-size:calc(12px*var(--k));line-height:1.2;color:var(--muted)}
+  .mt.wx col.rh{width:calc(78px*var(--k))}
+  .mt.wx td .f{font-size:calc(18px*var(--k))}
+  .mt td i{display:block;font-family:var(--serif);font-style:normal;font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .mt td small{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mt td small i{display:inline;font-size:calc(13px*var(--k));color:var(--soft)}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:46%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .w.st{color:var(--blue)}
+  .vt .w.hl{color:var(--text)}
+  .vt tr.pb th,.vt tr.pb td{border-top:0;padding-top:0}
+  .vt .w.good{color:var(--yes-text)}
+  .wd-w{margin:0;line-height:1.3}
+  .wd-w .ph{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k))}
+  .wd-ru{font-size:calc(15px*var(--k));color:var(--muted)}
+  .wd-p{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .mt.af thead th{padding:calc(2px*var(--k)) calc(8px*var(--k)) calc(8px*var(--k)) 0}
+  .mt.af td{padding:calc(12px*var(--k)) calc(8px*var(--k)) calc(12px*var(--k)) 0}
+  .mt.af td .f{font-size:calc(20px*var(--k))}
+  .mt.af td small{margin-top:calc(4px*var(--k))}
+  .vt.sv col.v{width:40%}
+  .mt.af .sep{color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Relative clauses</h1>
+      <p class="r-sub">«Который»&nbsp;— это <i lang="en">who</i>, <i lang="en">which</i> или <i lang="en">that</i>. По‑русски перед ним всегда запятая, по‑английски&nbsp;— только когда придаточное добавляет сведения, а&nbsp;не&nbsp;уточняет, о&nbsp;ком речь.</p>
+      <div class="algo">
+        <p class="algo-h">Кто или что</p>
+        <table class="vt sv">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr><th scope="row"><span class="w pr" lang="en">who</span><span class="p">о&nbsp;людях</span></th><td><span class="e" lang="en">the nurse <span class="pr">who</span> called</span><span class="r">медсестра, которая звонила</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">which</span><span class="p">о&nbsp;вещах</span></th><td><span class="e" lang="en">the scan <span class="pr">which</span> showed a bleed</span><span class="r">снимок, который показал кровоизлияние</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">that</span><span class="p">о&nbsp;людях и&nbsp;вещах, без запятых</span></th><td><span class="e" lang="en">the test <span class="pr">that</span> we ordered</span><span class="r">анализ, который мы назначили</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">whose</span><span class="p">чей, у&nbsp;которого</span></th><td><span class="e" lang="en">a man <span class="pr">whose</span> wife called</span><span class="r">мужчина, чья жена звонила</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">where</span><span class="p">где, в&nbsp;котором</span></th><td><span class="e" lang="en">the unit <span class="pr">where</span> I work</span><span class="r">отделение, где я работаю</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">when</span><span class="p">когда</span></th><td><span class="e" lang="en">the day <span class="pr">when</span> it happened</span><span class="r">день, когда это случилось</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Запятая или нет</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Уточняет, о&nbsp;ком речь? Без запятых</p><p class="s-f" lang="en"><span class="nw">patients <span class="pr">who</span> smoke</span> <span class="sep">·</span> <span class="nw">the drug <span class="pr">that</span> works</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Добавляет сведения? Запятые с&nbsp;двух сторон</p><p class="s-f" lang="en"><span class="nw">my father<span class="pr">,&nbsp;who</span> is 80,</span> <span class="sep">·</span> <span class="nw">aspirin<span class="pr">,&nbsp;which</span> is cheap,</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Который&nbsp;— дополнение? Можно опустить</p><p class="s-f" lang="en"><span class="nw">the drug (<span class="pr">that</span>) we gave</span> <span class="sep">·</span> <span class="nw">the man (<span class="pr">who</span>) I met</span></p></div></li>
+        </ol>
+        <p class="algo-m">Запятые&nbsp;— как скобки. После запятой только <b class="pr" lang="en">who</b> или <b class="st" lang="en">which</b>, не&nbsp;that.</p>
+        <p class="algo-note">Проверка: убери придаточное. Всё ещё понятно, о&nbsp;ком речь,&nbsp;— запятые нужны: <i lang="en">My father, who is 80, still drives</i>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна фраза&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">Patients <span class="pr">who had AF</span> received apixaban.</p><p class="cp-ru">без запятых: апиксабан получили только пациенты с&nbsp;ФП</p><p class="cp-en" lang="en">The patients, <span class="pr">who had AF</span>, received apixaban.</p><p class="cp-ru">с&nbsp;запятыми: ФП была у&nbsp;всех пациентов</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="Patients who had AF received apixaban. The patients, who had AF, received apixaban." aria-label="Прослушать: Patients who had AF received apixaban. / The patients, who had AF, received apixaban."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">My brother <span class="pr">who lives in Moscow</span> is a surgeon.</p><p class="cp-ru">братьев несколько&nbsp;— речь о&nbsp;том, что в&nbsp;Москве</p><p class="cp-en" lang="en">My brother, <span class="pr">who lives in Moscow</span>, is a surgeon.</p><p class="cp-ru">брат один, и&nbsp;он живёт в&nbsp;Москве</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="My brother who lives in Moscow is a surgeon. My brother, who lives in Moscow, is a surgeon." aria-label="Прослушать: My brother who lives in Moscow is a surgeon. / My brother, who lives in Moscow, is a surgeon."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He refused surgery, <span class="pr">which</span> surprised us.</p><p class="cp-ru">что нас удивило: which&nbsp;— обо всём предложении</p><p class="cp-en" lang="en"><span class="pr">What</span> surprised us was his refusal.</p><p class="cp-ru">то, что нас удивило: what</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="He refused surgery, which surprised us. What surprised us was his refusal." aria-label="Прослушать: He refused surgery, which surprised us. / What surprised us was his refusal."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The nurse <span class="pr">I asked</span> didn&#x27;t know.</p><p class="cp-ru">who опущено: я спросил медсестру</p><p class="cp-en" lang="en">The nurse <span class="pr">who answered</span> didn&#x27;t know.</p><p class="cp-ru">who нужно: медсестра ответила</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="The nurse I asked didn&#x27;t know. The nurse who answered didn&#x27;t know." aria-label="Прослушать: The nurse I asked didn&#x27;t know. / The nurse who answered didn&#x27;t know."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">This is the unit <span class="pr">where</span> I work.</p><p class="cp-ru">где: дальше своё подлежащее&nbsp;— I</p><p class="cp-en" lang="en">This is the unit <span class="pr">which</span> has 30 beds.</p><p class="cp-ru">в&nbsp;котором 30 коек: which само подлежащее</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="This is the unit where I work. This is the unit which has 30 beds." aria-label="Прослушать: This is the unit where I work. / This is the unit which has 30 beds."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the patient which was admitted</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the patient who was admitted</span><span class="err-note">о&nbsp;людях&nbsp;— who</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">My father, that is 80, …</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">My father, who is 80, …</span><span class="err-note">после запятой that не&nbsp;ставят</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the drug which we prescribed it</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the drug which we prescribed</span><span class="err-note">it лишнее: which уже его заменяет</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He refused, what surprised us.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He refused, which surprised us.</span><span class="err-note">«что» обо всём предложении&nbsp;— which</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">everything what he said</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">everything that he said</span><span class="err-note">после everything и&nbsp;all&nbsp;— that</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a patient who&#x27;s father…</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">a patient whose father…</span><span class="err-note">чей&nbsp;— whose; who&#x27;s = who is</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a hospital where has an MRI</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">a hospital which has an MRI</span><span class="err-note">where&nbsp;— только со своим подлежащим</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Patients, who smoke, have…</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Patients who smoke have…</span><span class="err-note">уточняем, какие пациенты,&nbsp;— без запятых</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">120 patients, most of them were men</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">120 patients, most of whom were men</span><span class="err-note">из&nbsp;которых&nbsp;— most of whom</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the reason because he came</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the reason why he came</span><span class="err-note">причина, по&nbsp;которой&nbsp;— the reason why</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — форма в фокусе (оранжевый).
+const MIXED_TOPIC = 9;
+const GROUPS = {"who": "Кто, что, чей", "comma": "Запятая", "drop": "Опустить который · предлог в конце", "what": "То, что", "papers": "В статьях", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "who",
+  "title": "who, which, that",
+  "sub": "который: о людях и о вещах",
+  "rule": "О людях — who, о вещах — which: the nurse who called, the scan which showed a bleed. That подходит и для людей, и для вещей, но только без запятых; в речи без запятых that даже чаще. Which о людях — ошибка: the patient which… И «который» — никогда не what.",
+  "ex": [
+   {
+    "en": "The nurse [who] took the blood sample has gone home.",
+    "ru": "Медсестра, которая брала кровь, ушла домой."
+   },
+   {
+    "en": "The ward [which] was closed last year has reopened.",
+    "ru": "Отделение, которое закрыли в прошлом году, снова открылось."
+   },
+   {
+    "en": "She's a doctor [that] everyone trusts.",
+    "ru": "Она врач, которому все доверяют."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "who",
+  "title": "whose, where, when",
+  "sub": "чей, где, когда, почему",
+  "rule": "Чей, у которого — whose + существительное: a patient whose son is a surgeon. Whose бывает и о вещах: a drug whose effect lasts 24 hours. Где, в котором — where, если дальше своё подлежащее: the unit where I work. Своего подлежащего нет — which: the unit which has 30 beds. Когда — when: the day when we met. Причина, по которой — the reason why. Who's = who is, это не «чей».",
+  "ex": [
+   {
+    "en": "We need a nurse [whose] English is good.",
+    "ru": "Нам нужна медсестра, которая хорошо знает английский."
+   },
+   {
+    "en": "This is the ward [where] I did my residency.",
+    "ru": "Это отделение, где я проходил ординатуру."
+   },
+   {
+    "en": "I remember the day [when] he was admitted.",
+    "ru": "Я помню день, когда его госпитализировали."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "comma",
+  "title": "Запятая или нет",
+  "sub": "уточняет или добавляет",
+  "rule": "Без запятых придаточное уточняет, о ком речь: Patients who arrive within 4.5 hours can receive thrombolysis — только они. С запятыми — добавляет сведения о том, кто и так понятен: My grandfather, who is 90, still reads. Проверка: убери придаточное. Всё ещё понятно, о ком речь, — ставь запятые. В статье запятые меняют смысл: The patients, who had AF, … — ФП была у всех.",
+  "ex": [
+   {
+    "en": "Patients [who arrive within 4.5 hours] can receive thrombolysis.",
+    "ru": "Пациентам, поступившим в первые 4,5 часа, можно провести тромболизис."
+   },
+   {
+    "en": "Aspirin, [which is cheap], is still widely used.",
+    "ru": "Аспирин, который стоит недорого, по-прежнему широко применяется."
+   },
+   {
+    "en": "My grandfather, [who is 90], still reads without glasses.",
+    "ru": "Мой дедушка, которому 90, до сих пор читает без очков."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "comma",
+  "title": "После запятой",
+  "sub": "who, which — не that; which = «что»",
+  "rule": "В придаточном с запятыми — только who (о людях) или which (о вещах). That после запятой не ставят. Which после запятой бывает и обо всём предложении — «что»: He stopped smoking, which was great news. Здесь не what и не that.",
+  "ex": [
+   {
+    "en": "My sister, [who] lives in Kazan, visits us every summer.",
+    "ru": "Моя сестра, которая живёт в Казани, приезжает к нам каждое лето."
+   },
+   {
+    "en": "The new scanner, [which] arrived in May, is much faster.",
+    "ru": "Новый томограф, который привезли в мае, работает гораздо быстрее."
+   },
+   {
+    "en": "He stopped smoking, [which] was great news.",
+    "ru": "Он бросил курить, что стало отличной новостью."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "drop",
+  "title": "Когда «который» опускают",
+  "sub": "the drug we prescribed",
+  "rule": "Если «который» — дополнение, его можно опустить: the advice (that) you gave me — ты дал совет. Если «который» — подлежащее, нельзя: the paramedic who brought him in — фельдшер привёз. Проверка: сразу после «который» стоит своё подлежащее (you, we, the doctor) — можно опустить. Опускают только без запятых. И не повторяй местоимение: the drug which we prescribed, не prescribed it.",
+  "ex": [
+   {
+    "en": "The advice [you gave me] really helped.",
+    "ru": "Совет, который ты мне дал, очень помог."
+   },
+   {
+    "en": "The paramedic [who brought him in] noticed the facial droop.",
+    "ru": "Фельдшер, который его привёз, заметил асимметрию лица."
+   },
+   {
+    "en": "The man [she married] is a surgeon.",
+    "ru": "Мужчина, за которого она вышла замуж, — хирург."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "drop",
+  "title": "Предлог в конце",
+  "sub": "the doctor I spoke to",
+  "rule": "Русское «с которым, о котором, в котором» по‑английски обычно строится с предлогом в конце: the colleague I work with, the patient you were worried about. Книжный вариант — предлог впереди, и тогда только whom или which: the consultant to whom I spoke, the method by which… После предлога who и that не ставят.",
+  "ex": [
+   {
+    "en": "That's the colleague I work [with].",
+    "ru": "Это коллега, с которым я работаю."
+   },
+   {
+    "en": "Who's the patient you were worried [about]?",
+    "ru": "Кто тот пациент, о котором ты беспокоился?"
+   },
+   {
+    "en": "The method [by which] the samples were collected is described below.",
+    "ru": "Способ, которым собирали образцы, описан ниже."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "what",
+  "title": "what, that, which",
+  "sub": "то, что · всё, что",
+  "rule": "То, что — what: What he needs is rest. I don't understand what you mean. После everything, all, nothing, something и превосходной степени — that или ничего: everything (that) he said, the best treatment (that) we have. Не everything what. «Что» обо всём предложении после запятой — which: He stopped his tablets, which was a mistake.",
+  "ex": [
+   {
+    "en": "[What] he needs now is rest.",
+    "ru": "Что ему сейчас нужно, так это покой."
+   },
+   {
+    "en": "I agree with everything [that] you said.",
+    "ru": "Я согласен со всем, что ты сказал."
+   },
+   {
+    "en": "He stopped taking his tablets, [which] was a mistake.",
+    "ru": "Он перестал пить таблетки, что было ошибкой."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "papers",
+  "title": "В статьях",
+  "sub": "treated, taking, most of whom",
+  "rule": "В методах и результатах придаточные сокращают. Которых лечили — -ed: patients treated with thrombectomy = who were treated. Которые принимают — -ing: patients taking warfarin = who were taking. Из которых — most of whom (о людях), 40 of which (о вещах): We enrolled 85 patients, most of whom were over 70. Most of them после запятой — ошибка. Most of whom — сверх уровня, но в статьях встречается постоянно.",
+  "ex": [
+   {
+    "en": "Patients [treated] with thrombectomy were analysed separately.",
+    "ru": "Пациентов, которым провели тромбэктомию, анализировали отдельно."
+   },
+   {
+    "en": "Patients [taking] warfarin were excluded.",
+    "ru": "Пациентов, принимающих варфарин, исключали."
+   },
+   {
+    "en": "We enrolled 85 patients, [most of whom] were over 70.",
+    "ru": "Мы включили 85 пациентов, большинство из которых были старше 70 лет."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "w1-doctor",
+  "t": 1,
+  "q": "The doctor ___ examined him was very thorough.",
+  "ru": "Врач, который его осматривал, был очень внимательным.",
+  "opts": [
+   "who",
+   "which",
+   "what"
+  ],
+  "a": "who",
+  "why": "О человеке — who."
+ },
+ {
+  "id": "w1-article",
+  "t": 1,
+  "q": "Did you read the article ___ I sent you?",
+  "ru": "Ты прочитал статью, которую я тебе отправил?",
+  "opts": [
+   "which",
+   "who",
+   "what"
+  ],
+  "a": "which",
+  "why": "О вещи — which (или that)."
+ },
+ {
+  "id": "w1-drug",
+  "t": 1,
+  "q": "It's a drug ___ lowers blood pressure quickly.",
+  "ru": "Это препарат, который быстро снижает давление.",
+  "opts": [
+   "that",
+   "who",
+   "what"
+  ],
+  "a": "that",
+  "why": "О вещи без запятых — that или which."
+ },
+ {
+  "id": "w1-only",
+  "t": 1,
+  "q": "She's the only neurologist ___ works on Sundays.",
+  "ru": "Она единственный невролог, который работает по воскресеньям.",
+  "opts": [
+   "that",
+   "which",
+   "what"
+  ],
+  "a": "that",
+  "why": "О человеке без запятых — who или that; which — только о вещах."
+ },
+ {
+  "id": "w1-patients",
+  "t": 1,
+  "q": "The patients ___ took part in the study were all over 60.",
+  "ru": "Всем пациентам, которые участвовали в исследовании, было больше 60.",
+  "opts": [
+   "who",
+   "which",
+   "whose"
+  ],
+  "a": "who",
+  "why": "О людях — who, не which."
+ },
+ {
+  "id": "w1-tablets",
+  "t": 1,
+  "q": "The tablets ___ you gave me made me feel sick.",
+  "ru": "От таблеток, которые вы мне дали, меня тошнило.",
+  "opts": [
+   "which",
+   "who",
+   "whose"
+  ],
+  "a": "which",
+  "why": "О вещах — which, that или ничего."
+ },
+ {
+  "id": "w2-son",
+  "t": 2,
+  "q": "This is the patient ___ son is a surgeon.",
+  "ru": "Это пациент, сын которого — хирург.",
+  "opts": [
+   "whose",
+   "who's",
+   "who"
+  ],
+  "a": "whose",
+  "why": "Чей, у которого — whose + сущ. Who's = who is."
+ },
+ {
+  "id": "w2-effect",
+  "t": 2,
+  "q": "It's a drug ___ effect lasts 24 hours.",
+  "ru": "Это препарат, действие которого длится 24 часа.",
+  "opts": [
+   "whose",
+   "which",
+   "who's"
+  ],
+  "a": "whose",
+  "why": "Whose бывает и о вещах: действие которого — whose effect."
+ },
+ {
+  "id": "w2-park",
+  "t": 2,
+  "q": "Do you know a place ___ we can park?",
+  "ru": "Знаешь место, где можно припарковаться?",
+  "opts": [
+   "where",
+   "which",
+   "when"
+  ],
+  "a": "where",
+  "why": "Где — where: дальше своё подлежащее, we."
+ },
+ {
+  "id": "w2-met",
+  "t": 2,
+  "q": "Do you remember the day ___ we met?",
+  "ru": "Помнишь день, когда мы познакомились?",
+  "opts": [
+   "when",
+   "where",
+   "which"
+  ],
+  "a": "when",
+  "why": "Когда — when."
+ },
+ {
+  "id": "w2-mri",
+  "t": 2,
+  "q": "We sent him to a hospital ___ has an MRI scanner.",
+  "ru": "Мы направили его в больницу, где есть МРТ.",
+  "opts": [
+   "which",
+   "where",
+   "when"
+  ],
+  "a": "which",
+  "why": "Своего подлежащего нет — больница имеет: which. Where — только с подлежащим: where I work."
+ },
+ {
+  "id": "w2-results",
+  "t": 2,
+  "q": "We phoned the patients ___ results were abnormal.",
+  "ru": "Мы обзвонили пациентов, у которых были отклонения в анализах.",
+  "opts": [
+   "whose",
+   "who",
+   "which"
+  ],
+  "a": "whose",
+  "why": "У которых результаты — whose results."
+ },
+ {
+  "id": "w2-reason",
+  "t": 2,
+  "q": "That's the reason ___ he was late.",
+  "ru": "Вот причина, по которой он опоздал.",
+  "opts": [
+   "why",
+   "because",
+   "which"
+  ],
+  "a": "why",
+  "why": "Причина, по которой — the reason why."
+ },
+ {
+  "id": "w3-stroke",
+  "t": 3,
+  "q": "___ need a statin.",
+  "ru": "Пациентам, перенёсшим инсульт, нужен статин.",
+  "opts": [
+   "Patients who had a stroke",
+   "Patients, who had a stroke,",
+   "Patients which had a stroke"
+  ],
+  "a": "Patients who had a stroke",
+  "why": "Уточняем, каким пациентам, — без запятых."
+ },
+ {
+  "id": "w3-mother",
+  "t": 3,
+  "q": "___ lives alone.",
+  "ru": "Моя мама, которой 78, живёт одна.",
+  "opts": [
+   "My mother, who is 78,",
+   "My mother who is 78",
+   "My mother, that is 78,"
+  ],
+  "a": "My mother, who is 78,",
+  "why": "Мама одна — придаточное добавляет сведения: запятые и who."
+ },
+ {
+  "id": "w3-all",
+  "t": 3,
+  "q": "The relatives, who were worried, asked a lot of questions. ___ the relatives were worried.",
+  "ru": "Родственники, которые волновались, задавали много вопросов. Волновались все?",
+  "opts": [
+   "all",
+   "not all"
+  ],
+  "a": "all",
+  "why": "С запятыми придаточное добавляет сведения: волновались все."
+ },
+ {
+  "id": "w3-not-all",
+  "t": 3,
+  "q": "The relatives who were worried asked a lot of questions. ___ the relatives were worried.",
+  "ru": "Родственники, которые волновались, задавали много вопросов. Волновались все?",
+  "opts": [
+   "not all",
+   "all"
+  ],
+  "a": "not all",
+  "why": "Без запятых придаточное выделяет часть: спрашивали те, кто волновался."
+ },
+ {
+  "id": "w3-son",
+  "t": 3,
+  "q": "My son, who is a surgeon, lives in Moscow. I have ___ son.",
+  "ru": "Мой сын, который работает хирургом, живёт в Москве. Сколько у меня сыновей?",
+  "opts": [
+   "only one",
+   "more than one"
+  ],
+  "a": "only one",
+  "why": "С запятыми — сын один, придаточное просто добавляет сведения."
+ },
+ {
+  "id": "w4-mri",
+  "t": 4,
+  "q": "The MRI, ___ was done on Monday, was normal.",
+  "ru": "МРТ, которую сделали в понедельник, была в норме.",
+  "opts": [
+   "which",
+   "that",
+   "what"
+  ],
+  "a": "which",
+  "why": "После запятой — which, не that."
+ },
+ {
+  "id": "w4-petrov",
+  "t": 4,
+  "q": "Dr Petrov, ___ runs the stroke unit, is on holiday.",
+  "ru": "Доктор Петров, который руководит отделением, в отпуске.",
+  "opts": [
+   "who",
+   "that",
+   "which"
+  ],
+  "a": "who",
+  "why": "После запятой о человеке — who."
+ },
+ {
+  "id": "w4-cancelled",
+  "t": 4,
+  "q": "The operation was cancelled, ___ upset the whole family.",
+  "ru": "Операцию отменили, что расстроило всю семью.",
+  "opts": [
+   "which",
+   "what",
+   "that"
+  ],
+  "a": "which",
+  "why": "«Что» обо всём предложении — which."
+ },
+ {
+  "id": "w4-ambulance",
+  "t": 4,
+  "q": "The ambulance arrived in eight minutes, ___ was very quick.",
+  "ru": "Скорая приехала за восемь минут, что было очень быстро.",
+  "opts": [
+   "which",
+   "what",
+   "that"
+  ],
+  "a": "which",
+  "why": "«Что» обо всём предложении — which, не what."
+ },
+ {
+  "id": "w4-apixaban",
+  "t": 4,
+  "q": "Apixaban, ___ is taken twice a day, doesn't need regular blood tests.",
+  "ru": "Апиксабан, который принимают дважды в день, не требует регулярных анализов.",
+  "opts": [
+   "which",
+   "that",
+   "who"
+  ],
+  "a": "which",
+  "why": "После запятой о вещи — which."
+ },
+ {
+  "id": "w4-wife",
+  "t": 4,
+  "q": "The patient's wife, ___ is a nurse, noticed the symptoms first.",
+  "ru": "Жена пациента, которая работает медсестрой, первой заметила симптомы.",
+  "opts": [
+   "who",
+   "which",
+   "that"
+  ],
+  "a": "who",
+  "why": "После запятой о человеке — who, не that."
+ },
+ {
+  "id": "w5-caused",
+  "t": 5,
+  "q": "The drug ___ caused the rash was stopped.",
+  "ru": "Препарат, который вызвал сыпь, отменили.",
+  "opts": [
+   "that",
+   "",
+   "what"
+  ],
+  "a": "that",
+  "why": "Который — подлежащее (препарат вызвал): опускать нельзя."
+ },
+ {
+  "id": "w5-prescribed",
+  "t": 5,
+  "q": "The drug ___ we prescribed worked well.",
+  "ru": "Препарат, который мы назначили, хорошо подействовал.",
+  "opts": [
+   "",
+   "what",
+   "who"
+  ],
+  "a": "",
+  "why": "Который — дополнение (мы назначили препарат): можно опустить. Можно и that."
+ },
+ {
+  "id": "w5-it",
+  "t": 5,
+  "q": "Is this the drug which you prescribed ___ yesterday?",
+  "ru": "Это тот препарат, который вы вчера назначили?",
+  "opts": [
+   "",
+   "it",
+   "him"
+  ],
+  "a": "",
+  "why": "it не нужен: which уже заменяет препарат."
+ },
+ {
+  "id": "w5-saw",
+  "t": 5,
+  "q": "The patient ___ you saw yesterday has gone home.",
+  "ru": "Пациент, которого ты видел вчера, уже дома.",
+  "opts": [
+   "",
+   "what",
+   "which"
+  ],
+  "a": "",
+  "why": "Который — дополнение (ты видел пациента): можно опустить. Можно и who или that."
+ },
+ {
+  "id": "w5-nurse",
+  "t": 5,
+  "q": "The nurse ___ looks after him is very experienced.",
+  "ru": "Медсестра, которая за ним ухаживает, очень опытная.",
+  "opts": [
+   "who",
+   "",
+   "whose"
+  ],
+  "a": "who",
+  "why": "Который — подлежащее (медсестра ухаживает): опускать нельзя."
+ },
+ {
+  "id": "w5-wants",
+  "t": 5,
+  "q": "There's a man at reception ___ wants to see you.",
+  "ru": "В регистратуре мужчина, который хочет вас видеть.",
+  "opts": [
+   "who",
+   "",
+   "what"
+  ],
+  "a": "who",
+  "why": "Который — подлежащее (мужчина хочет): опускать нельзя."
+ },
+ {
+  "id": "w6-for",
+  "t": 6,
+  "q": "Is this the book you were looking ___?",
+  "ru": "Это та книга, которую ты искал?",
+  "opts": [
+   "for",
+   "",
+   "to"
+  ],
+  "a": "for",
+  "why": "Искать — look for: предлог остаётся в конце."
+ },
+ {
+  "id": "w6-to",
+  "t": 6,
+  "q": "The man I was talking ___ is my neighbour.",
+  "ru": "Мужчина, с которым я разговаривал, — мой сосед.",
+  "opts": [
+   "to",
+   "",
+   "at"
+  ],
+  "a": "to",
+  "why": "Разговаривать с кем-то — talk to: предлог в конце."
+ },
+ {
+  "id": "w6-allergic",
+  "t": 6,
+  "q": "The drug he is allergic ___ is penicillin.",
+  "ru": "Препарат, на который у него аллергия, — пенициллин.",
+  "opts": [
+   "to",
+   "on",
+   ""
+  ],
+  "a": "to",
+  "why": "Аллергия на — allergic to; предлог остаётся в конце."
+ },
+ {
+  "id": "w6-based",
+  "t": 6,
+  "q": "This is the trial on ___ the guidelines are based.",
+  "ru": "Это исследование, на котором основаны рекомендации.",
+  "opts": [
+   "which",
+   "that",
+   "what"
+  ],
+  "a": "which",
+  "why": "После предлога — which, не that."
+ },
+ {
+  "id": "w6-whom",
+  "t": 6,
+  "q": "The consultant to ___ I spoke was very helpful.",
+  "ru": "Консультант, с которым я говорил, очень помог.",
+  "opts": [
+   "whom",
+   "who",
+   "that"
+  ],
+  "a": "whom",
+  "why": "После предлога о человеке — whom."
+ },
+ {
+  "id": "w6-trained",
+  "t": 6,
+  "q": "The hospital in ___ I trained has closed.",
+  "ru": "Больница, в которой я учился, закрылась.",
+  "opts": [
+   "which",
+   "where",
+   "that"
+  ],
+  "a": "which",
+  "why": "После предлога — which: in which = where."
+ },
+ {
+  "id": "w7-understand",
+  "t": 7,
+  "q": "I don't understand ___ you mean.",
+  "ru": "Не понимаю, что ты имеешь в виду.",
+  "opts": [
+   "what",
+   "that",
+   "which"
+  ],
+  "a": "what",
+  "why": "То, что — what."
+ },
+ {
+  "id": "w7-everything",
+  "t": 7,
+  "q": "He told me everything ___ he knew.",
+  "ru": "Он рассказал мне всё, что знал.",
+  "opts": [
+   "that",
+   "what",
+   "who"
+  ],
+  "a": "that",
+  "why": "После everything — that или ничего, не what."
+ },
+ {
+  "id": "w7-best",
+  "t": 7,
+  "q": "It's the best treatment ___ we have.",
+  "ru": "Это лучшее лечение, какое у нас есть.",
+  "opts": [
+   "that",
+   "what",
+   "where"
+  ],
+  "a": "that",
+  "why": "После превосходной степени — that или ничего."
+ },
+ {
+  "id": "w7-weight",
+  "t": 7,
+  "q": "She lost ten kilos, ___ really helped her blood pressure.",
+  "ru": "Она похудела на десять килограммов, что заметно помогло её давлению.",
+  "opts": [
+   "which",
+   "what",
+   "that"
+  ],
+  "a": "which",
+  "why": "«Что» обо всём предложении после запятой — which."
+ },
+ {
+  "id": "w7-worries",
+  "t": 7,
+  "q": "___ worries me is his speech.",
+  "ru": "Что меня беспокоит, так это его речь.",
+  "opts": [
+   "what",
+   "that",
+   "which"
+  ],
+  "a": "what",
+  "why": "То, что — what."
+ },
+ {
+  "id": "w7-nothing",
+  "t": 7,
+  "q": "I'm afraid there's nothing ___ we can do.",
+  "ru": "Боюсь, мы ничего не можем сделать.",
+  "opts": [
+   "",
+   "what",
+   "it"
+  ],
+  "a": "",
+  "why": "После nothing — ничего или that, не what."
+ },
+ {
+  "id": "w8-treated",
+  "t": 8,
+  "q": "Patients ___ with alteplase had better outcomes.",
+  "ru": "У пациентов, которых лечили алтеплазой, исходы были лучше.",
+  "opts": [
+   "treated",
+   "treating",
+   "who treated"
+  ],
+  "a": "treated",
+  "why": "Которых лечили — пассив: treated = who were treated."
+ },
+ {
+  "id": "w8-receiving",
+  "t": 8,
+  "q": "Patients ___ anticoagulants were excluded.",
+  "ru": "Пациентов, получающих антикоагулянты, исключали.",
+  "opts": [
+   "receiving",
+   "received",
+   "who receiving"
+  ],
+  "a": "receiving",
+  "why": "Которые получают — -ing: receiving = who were receiving."
+ },
+ {
+  "id": "w8-living",
+  "t": 8,
+  "q": "Patients ___ alone had longer hospital stays.",
+  "ru": "Пациенты, живущие одни, дольше лежали в больнице.",
+  "opts": [
+   "living",
+   "lived",
+   "who living"
+  ],
+  "a": "living",
+  "why": "Которые живут — -ing: living alone = who lived alone."
+ },
+ {
+  "id": "w8-admitted",
+  "t": 8,
+  "q": "All patients ___ to the unit in 2025 were included.",
+  "ru": "Включили всех пациентов, госпитализированных в отделение в 2025 году.",
+  "opts": [
+   "admitted",
+   "admitting",
+   "who admitted"
+  ],
+  "a": "admitted",
+  "why": "Которых госпитализировали — пассив: admitted."
+ },
+ {
+  "id": "w8-whom",
+  "t": 8,
+  "q": "We enrolled 120 patients, most of ___ were men.",
+  "ru": "Мы включили 120 пациентов, большинство из которых — мужчины.",
+  "opts": [
+   "whom",
+   "them",
+   "who"
+  ],
+  "a": "whom",
+  "why": "Большинство из которых (о людях) — most of whom. Most of them здесь — ошибка."
+ },
+ {
+  "id": "w8-which",
+  "t": 8,
+  "q": "We reviewed 300 CT scans, 40 of ___ showed a bleed.",
+  "ru": "Мы проанализировали 300 КТ, в 40 из которых было кровоизлияние.",
+  "opts": [
+   "which",
+   "them",
+   "whom"
+  ],
+  "a": "which",
+  "why": "Из которых (о вещах) — of which."
+ },
+ {
+  "id": "w8-whose",
+  "t": 8,
+  "q": "Patients ___ symptoms resolved quickly did not receive thrombolysis.",
+  "ru": "Пациенты, у которых симптомы быстро регрессировали, тромболизис не получали.",
+  "opts": [
+   "whose",
+   "who",
+   "which"
+  ],
+  "a": "whose",
+  "why": "У которых симптомы — whose symptoms."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "rel:state";
+const LS_SPEAK = "rel:autospeak";
+const LS_TAB = "rel:tab";
+const LS_OPEN = "rel:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Который"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\|\w\]/g, "]").replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// [текст|x] — форма в фокусе: без метки used to — оранжевый, |b be used to — зелёный, |g get used to — синий, |w would и |p пассив — подчёркнуты
+const MARK_CLS = { b: "good", g: "st", w: "hl", p: "hl" };
+function modalCls(t){ const i = t.lastIndexOf("|"); return i > 0 ? (MARK_CLS[t.slice(i + 1)] || "pr") : "pr"; }
+function markText(t){ const i = t.lastIndexOf("|"); return i > 0 ? t.slice(0, i) : t; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), markText(m[1])));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: who и which, запятые, пропуск «который», предлоги и what чередуются.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

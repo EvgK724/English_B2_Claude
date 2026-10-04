@@ -1,0 +1,1552 @@
+<title>Фразы из Breaking Bad</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("bbapp",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --accent-soft:rgba(217,119,87,.14);
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --blue-line:rgba(124,192,221,.45);
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.14);
+    --no-line:rgba(233,167,160,.45);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button,input{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .lbl{margin:0;font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .tag{flex:0 0 auto;display:inline-block;font-family:var(--sans);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;line-height:1.5;color:var(--accent);border:calc(1px*var(--k)) solid var(--accent);border-radius:calc(999px*var(--k));padding:calc(1px*var(--k)) calc(9px*var(--k));vertical-align:.15em}
+  .tag.day{color:var(--blue);border-color:var(--blue-line)}
+
+  /* ——— Главная */
+  .home{overflow-y:auto;overscroll-behavior:contain;gap:calc(14px*var(--k));padding-bottom:calc(4px*var(--k))}
+  .h-left,.h-right{display:flex;flex-direction:column;gap:calc(14px*var(--k))}
+  .hero{display:flex;flex-direction:column;gap:calc(4px*var(--k));padding:calc(18px*var(--k)) calc(18px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k))}
+  .ph-row{display:flex;align-items:center;gap:calc(12px*var(--k));padding:calc(12px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .hero-top + .ph-row{border-top:0}
+  .ph-open{flex:1;min-width:0;display:flex;flex-direction:column;gap:calc(3px*var(--k));padding:0;border:0;background:transparent;text-align:left;cursor:pointer}
+  .ph-term{font-family:var(--serif);font-size:calc(27px*var(--k));line-height:1.2;text-wrap:balance}
+  .ph-ru{font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .ph-who{font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .hero-more{align-self:flex-start;border:0;background:transparent;padding:calc(4px*var(--k)) 0 calc(2px*var(--k));color:var(--blue);font-size:calc(16px*var(--k));cursor:pointer}
+
+  .deck{padding:calc(14px*var(--k)) calc(16px*var(--k)) calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k))}
+  .deck-head{display:flex;align-items:baseline;justify-content:space-between;gap:calc(10px*var(--k));margin-bottom:calc(12px*var(--k))}
+  .deck-count{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(calc(20px*var(--k)),1fr));gap:calc(6px*var(--k))}
+  .cell{display:block;aspect-ratio:1;max-width:100%;border-radius:calc(5px*var(--k));border:calc(1.5px*var(--k)) solid var(--line-2)}
+  .cell.l0,.sw-learn{background:rgba(217,119,87,.3);border-color:transparent}
+  .cell.l1{background:rgba(217,119,87,.55);border-color:transparent}
+  .cell.l2{background:rgba(217,119,87,.8);border-color:transparent}
+  .cell.l3,.sw-done{background:var(--yes);border-color:transparent}
+  .cell.today{border-color:var(--accent);border-width:calc(2px*var(--k))}
+  .legend{display:flex;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(16px*var(--k));margin:calc(12px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:calc(6px*var(--k))}
+  .legend b{font-weight:600;color:var(--soft);font-variant-numeric:tabular-nums}
+  .sw{display:inline-block;width:calc(12px*var(--k));height:calc(12px*var(--k));border-radius:calc(3px*var(--k))}
+  .sw-new{border:calc(1.5px*var(--k)) solid var(--line-2)}
+  .result{margin:0;font-size:calc(17px*var(--k));line-height:1.45;color:var(--yes-text)}
+  .plan{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .plan b{font-weight:600}
+  .foot{margin:0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+
+  /* ——— Тренировка */
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:calc(10px*var(--k));min-height:calc(28px*var(--k));font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .link{border:0;background:transparent;color:var(--muted);font-size:calc(15px*var(--k));padding:calc(4px*var(--k)) 0 calc(4px*var(--k)) calc(12px*var(--k));cursor:pointer;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:calc(3px*var(--k))}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-6px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(20px*var(--k)) calc(20px*var(--k)) calc(22px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .kind.new{color:var(--accent);background:var(--accent-soft)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(20px*var(--k));color:var(--text)}
+  .qbox{display:flex;flex-direction:column;gap:calc(14px*var(--k))}
+  .q-row{display:flex;align-items:center;justify-content:space-between;gap:calc(12px*var(--k))}
+  .q-term{margin:0;font-family:var(--serif);font-size:calc(34px*var(--k));line-height:1.2;text-wrap:balance}
+  .q-ru{margin:0;font-size:calc(27px*var(--k));line-height:1.3;text-wrap:balance}
+  .q-rest{margin:0;font-size:calc(17px*var(--k));line-height:1.45;color:var(--muted)}
+  .listen{display:flex;flex-direction:column;align-items:center;gap:calc(14px*var(--k));padding:calc(18px*var(--k)) 0 calc(6px*var(--k));text-align:center}
+  .play-big{width:calc(96px*var(--k));height:calc(96px*var(--k));border-radius:50%;border:calc(2px*var(--k)) solid var(--accent);background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .play-big svg{width:calc(40px*var(--k));height:calc(40px*var(--k))}
+  .play-big:active{background:rgba(217,119,87,.28)}
+  .listen p{margin:0;font-size:calc(18px*var(--k));color:var(--soft)}
+  .built{display:flex;flex-wrap:wrap;align-content:flex-start;gap:calc(8px*var(--k));min-height:calc(68px*var(--k));padding:calc(10px*var(--k));border:calc(1.5px*var(--k)) dashed var(--line-2);border-radius:calc(14px*var(--k))}
+  .built.ok{border-style:solid;border-color:var(--yes)}
+  .built.bad{border-style:solid;border-color:var(--no-line)}
+  .built-ph{align-self:center;margin:0 calc(4px*var(--k));font-size:calc(15px*var(--k));color:var(--muted)}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+
+  .opts{display:grid;grid-template-columns:1fr;gap:calc(10px*var(--k))}
+  .opt{min-height:calc(62px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center}
+  .opts.en .opt{font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.25}
+  .opts.ru .opt{font-size:calc(18px*var(--k));line-height:1.3;text-wrap:balance}
+  .opt:active{background:var(--raise)}
+  .opts.tiles{display:flex;flex-wrap:wrap;align-content:flex-start;gap:calc(8px*var(--k))}
+  .tile{min-height:calc(50px*var(--k));padding:calc(6px*var(--k)) calc(14px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(22px*var(--k));line-height:1.2;cursor:pointer}
+  .tile:active{background:var(--raise)}
+  .built .tile{background:var(--raise);border-color:var(--accent)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active,.tile:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+  .say-sm{width:calc(48px*var(--k));height:calc(48px*var(--k));flex:0 0 calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say-sm svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .say-sm:active,.say:active{background:var(--accent-soft)}
+
+  /* ——— Карточка фразы */
+  .det{display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .det-head{display:flex;align-items:center;justify-content:space-between;gap:calc(12px*var(--k))}
+  .det-term{margin:0;font-family:var(--serif);font-weight:400;font-size:calc(32px*var(--k));line-height:1.2;text-wrap:balance}
+  .chips{display:flex;flex-wrap:wrap;align-items:center;gap:calc(6px*var(--k)) calc(10px*var(--k))}
+  .who{font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .chip{font-size:calc(14px*var(--k));line-height:1.4;color:var(--blue);padding:calc(3px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--blue-line);background:var(--blue-soft)}
+  .chip.slang{color:var(--accent);border-color:rgba(217,119,87,.5);background:var(--accent-soft)}
+  .chip.rude{color:var(--no-text);border-color:var(--no-line);background:var(--no-soft)}
+  .det-ru{margin:0;font-size:calc(21px*var(--k));line-height:1.4;text-wrap:pretty}
+  .note{display:flex;flex-direction:column;gap:calc(8px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .det-note{margin:0;font-size:calc(17px*var(--k));line-height:1.55;color:var(--soft)}
+  .more{align-self:flex-start;border:0;background:transparent;padding:calc(4px*var(--k)) 0;color:var(--blue);font-size:calc(16px*var(--k));cursor:pointer}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(6px*var(--k)) calc(12px*var(--k));align-items:start;padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .ex .lbl{grid-column:1 / -1}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.45}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:2 / span 2}
+  .status{margin:0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+
+  /* ——— Все фразы */
+  .d-left{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(10px*var(--k))}
+  .d-head{display:flex;align-items:baseline;justify-content:space-between;gap:calc(10px*var(--k));padding:0 calc(2px*var(--k))}
+  .d-title{margin:0;font-family:var(--serif);font-weight:400;font-size:calc(30px*var(--k));line-height:1.2}
+  .d-count{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .search{width:100%;min-height:calc(48px*var(--k));padding:calc(10px*var(--k)) calc(14px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);color:var(--text);font-size:calc(17px*var(--k));outline:none;-webkit-appearance:none;appearance:none}
+  .search:focus{border-color:var(--blue)}
+  .search::placeholder{color:var(--muted)}
+  .list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;border-top:calc(1px*var(--k)) solid var(--line)}
+  .d-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .d-row{width:100%;min-height:calc(66px*var(--k));display:grid;grid-template-columns:minmax(0,1fr) auto calc(16px*var(--k));align-items:center;gap:calc(12px*var(--k));padding:calc(10px*var(--k)) calc(4px*var(--k));border:0;border-radius:calc(12px*var(--k));background:transparent;text-align:left;cursor:pointer}
+  .d-main{display:flex;flex-direction:column;min-width:0;gap:calc(3px*var(--k))}
+  .d-term{font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.25}
+  .d-term .tag{margin-left:calc(8px*var(--k))}
+  .d-ru{font-size:calc(15px*var(--k));line-height:1.35;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .d-side{display:flex;align-items:center}
+  .dots{display:inline-flex;gap:calc(4px*var(--k))}
+  .dots i{display:block;width:calc(8px*var(--k));height:calc(8px*var(--k));border-radius:50%;background:var(--line-2)}
+  .dots i.on{background:var(--accent)}
+  .dots.done i.on{background:var(--yes)}
+  .d-chev{color:var(--muted);transition:transform .2s ease}
+  .d-row[aria-expanded="true"] .d-chev{transform:rotate(90deg)}
+  .d-body{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(22px*var(--k))}
+  .d-right{display:none}
+  .empty{margin:calc(18px*var(--k)) calc(4px*var(--k));color:var(--muted)}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.d-chev{transition:none}.big:active,.opt:active,.tile:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #home{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:calc(28px*var(--k));align-content:start;align-items:start}
+  body.wide .hero{padding:calc(22px*var(--k)) calc(24px*var(--k)) calc(14px*var(--k))}
+  body.wide .ph-term{font-size:calc(34px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;column-gap:calc(18px*var(--k));row-gap:calc(12px*var(--k))}
+  body.wide #drill .meta,body.wide #drill .bar{grid-column:1 / -1}
+  body.wide #drill .card{grid-column:1;grid-row:3 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:3;align-content:end}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:4}
+  body.wide #dict{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);column-gap:calc(28px*var(--k))}
+  body.wide .d-right{display:block;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(24px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k))}
+  body.wide .d-row[aria-current="true"]{background:var(--raise)}
+  body.wide .d-chev{visibility:hidden}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  var lastW = 0;
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var a = document.activeElement;
+    if (lastW && w === lastW && a && a.tagName === "INPUT") return;   // клавиатура не меняет масштаб
+    lastW = w;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Раздел">
+      <button class="tab" id="tabTrain" role="tab" type="button" aria-selected="true" aria-controls="home drill">Тренировка</button>
+      <button class="tab" id="tabDict" role="tab" type="button" aria-selected="false" aria-controls="dict">Все фразы</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+
+  <section class="view home" id="home" role="tabpanel" aria-labelledby="tabTrain">
+    <div class="h-left">
+      <div class="hero" id="hero">
+        <div class="hero-top"><p class="lbl" id="heroKicker">Фразы дня</p></div>
+        <div id="pair"></div>
+        <button class="hero-more" id="heroMore" type="button">Разбор и свой пример ›</button>
+      </div>
+    </div>
+    <div class="h-right">
+      <p class="result" id="result" hidden></p>
+      <div class="deck">
+        <div class="deck-head"><p class="lbl">Колода</p><span class="deck-count" id="deckCount"></span></div>
+        <div class="cells" id="cells" aria-hidden="true"></div>
+        <p class="legend">
+          <span><i class="sw sw-new"></i>новые <b id="lgNew">0</b></span>
+          <span><i class="sw sw-learn"></i>учу <b id="lgLearn">0</b></span>
+          <span><i class="sw sw-done"></i>выучены <b id="lgDone">0</b></span>
+        </p>
+      </div>
+      <p class="plan" id="plan"></p>
+      <div class="actions"><button class="big primary" id="start" type="button" data-kind="main">Начать тренировку</button></div>
+      <p class="foot">Две новые фразы добавляются каждый день около 08:00. Повторы: завтра, через 3, 7, 16 дней — и дальше реже.</p>
+    </div>
+  </section>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabTrain" hidden>
+    <div class="meta"><span id="status"></span><button class="link" id="quit" type="button">Завершить</button></div>
+    <div class="bar"><span class="bar-fill" id="barFill"></span></div>
+    <article class="card" id="card">
+      <span class="kind" id="kind"></span>
+      <p class="verdict" id="verdict" hidden></p>
+      <div class="qbox" id="qbox"></div>
+      <p class="hint" id="hint">Выбери вариант</p>
+    </article>
+    <div class="opts" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать ещё раз">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+  </section>
+
+  <section class="view" id="dict" role="tabpanel" aria-labelledby="tabDict" hidden>
+    <div class="d-left">
+      <div class="d-head"><h2 class="d-title">Все фразы</h2><span class="d-count" id="dCount"></span></div>
+      <input class="search" id="find" type="search" placeholder="Найти фразу, перевод или героя" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Поиск по фразам">
+      <div class="list" id="list"></div>
+    </div>
+    <div class="d-right" id="pane"></div>
+  </section>
+</div>
+
+<script>
+// ——— Фразы. Ежедневная задача дописывает два новых объекта над строкой-маркером.
+// au: 1 — есть записи голосом Andrew: audio/us/<id>-t.mp3 (фраза) и audio/us/<id>-x.mp3 (свой пример); added — дата добавления, ГГГГ-ММ-ДД.
+const CARDS = [
+  {
+    id: "better-call-saul",
+    au: 1,
+    term: "Better call Saul.",
+    who: "Сол Гудман — слоган его рекламы",
+    reg: "разговорное",
+    ru: "Лучше позвони Солу. Тут без Сола не обойтись.",
+    note: "Полная форма — you had better call. В живой речи had сжимается до 'd, а потом пропадает вместе с you: You'd better call → You better call → Better call. После better всегда голый инфинитив: better call, никогда «better to call» — это самая частая ошибка русскоговорящих. Смысл жёстче, чем у should: не «неплохо бы», а «иначе будут последствия». Отрицание строится как better not call, а не «better don't call».",
+    ex: "You'd better call him back before he changes his mind.",
+    exru: "Лучше перезвони ему, пока он не передумал."
+  },
+  {
+    id: "in-the-business",
+    au: 1,
+    term: "I'm in the empire business.",
+    who: "Уолтер Уайт",
+    reg: "разговорное",
+    ru: "Я занимаюсь империей. Моё дело — империя.",
+    note: "Конструкция be in the … business значит «заниматься этим как своим делом», а вовсе не «работать в бизнесе». В середину подставляется любое существительное или герундий: we're in the people business, I'm not in the guessing business. Чаще всего звучит в отрицании, когда отказываются от навязанной роли: We're not in the charity business — «мы вам не благотворительный фонд». Артикль the обязателен: in a business — это уже «внутри некой фирмы», совсем другой смысл.",
+    ex: "We're not in the guessing business, so let's wait for the scan before we decide.",
+    exru: "Мы тут не гадаем, так что дождёмся снимка и тогда решим."
+  },
+  {
+    id: "the-one-who-knocks",
+    au: 1,
+    term: "I am the one who knocks.",
+    who: "Уолтер Уайт",
+    reg: "разговорное",
+    ru: "Это я стучу в дверь. Бояться надо не за меня, а меня.",
+    note: "Каркас — выделительная конструкция I'm the one who…, «тот, кто это делает, — я». Глагол после who ставится по третьему лицу, потому что подлежащее придаточного — the one, а не I: I'm the one who knocks, I'm the one who pays. Русскоговорящие обычно спотыкаются здесь дважды: говорят «I am the one who knock» и выбрасывают the one — «I am who decides». Меняется всё после who, а отрицание выносится вперёд: I'm not the one who made this call. Не путать с I'm the only one who… — это уже «единственный, кто», про исключительность, а не про указание пальцем.",
+    ex: "I'm the one who signs these forms, so bring them straight to me.",
+    exru: "Эти бланки подписываю я, так что несите их сразу мне."
+  },
+  {
+    id: "no-more-half-measures",
+    au: 1,
+    term: "No more half measures.",
+    who: "Майк Эрмантраут",
+    reg: "разговорное",
+    ru: "Всё, больше никаких полумер.",
+    note: "Здесь две вещи сразу. Первая — формула no more + существительное: целая фраза без глагола, которой ставят точку в вопросе (no more excuses, no more delays, no more late shifts); после no more годится и герундий — no more waiting. Вторая — идиома half measures, «сделано наполовину», обычно с глаголом take: he took half measures and it backfired. Типичная ошибка русскоговорящих — «not more excuses» или лишний of: of нужен только перед this, that, it и притяжательным (no more of this). И не путайте с no longer: то про время («уже не работает здесь»), а no more — про количество и прекращение.",
+    ex: "No more excuses — either you send me the results today or I call the lab myself.",
+    exru: "Больше никаких отговорок: либо ты присылаешь мне результаты сегодня, либо я сам звоню в лабораторию."
+  },
+  {
+    id: "just-because-doesnt-mean",
+    au: 1,
+    term: "Just because you shot Jesse James doesn't make you Jesse James.",
+    who: "Майк Эрмантраут",
+    reg: "разговорное",
+    ru: "То, что ты застрелил Джесси Джеймса, ещё не делает тебя Джесси Джеймсом.",
+    note: "Каркас фразы — Just because + целое предложение, а дальше сразу doesn't mean или doesn't make без всякого подлежащего: подлежащим работает весь первый кусок, поэтому глагол в третьем лице единственного числа. Меняется обе половины: Just because it's expensive doesn't mean it works, just because he asked doesn't make it your job. Главная ошибка русскоговорящих — вставить of после because (because of бывает только перед существительным) и поставить отрицание в первую часть вместо второй. Не путайте с простым because: без just получается причина, а с just — возражение в смысле «этого ещё мало, чтобы…».",
+    ex: "Just because a test is expensive doesn't mean it's the right one for this patient.",
+    exru: "То, что анализ дорогой, ещё не значит, что он нужен именно этому пациенту."
+  },
+  {
+    id: "know-who-youre-talking-to",
+    au: 1,
+    term: "You clearly don't know who you're talking to.",
+    who: "Уолтер Уайт",
+    reg: "разговорное",
+    ru: "Ты, похоже, вообще не понимаешь, с кем разговариваешь.",
+    note: "Здесь косвенный вопрос внутри предложения: после know, tell, remember, а также после I wonder вопросительное слово сохраняется, но порядок становится прямым и вспомогательный глагол уходит. Менять можно всю вторую часть: I don't know where he lives, what she wants, how long it takes. Главная ошибка русскоговорящих — тащить сюда инверсию и говорить I don't know who are you talking to или where does he live. Второй момент: предлог остаётся в конце (talk to → who you're talking to), а вариант to whom you are talking звучит книжно. Clearly стоит перед глаголом и значит «явно, сразу видно», а не «ясно».",
+    ex: "I still don't know who I'm supposed to send this report to.",
+    exru: "Я до сих пор не знаю, кому мне отправлять этот отчёт."
+  },
+  {
+    id: "either-or",
+    au: 1,
+    term: "You either run from things or you face them.",
+    who: "Джесси Пинкман",
+    reg: "разговорное",
+    ru: "Либо ты бежишь от того, что случилось, либо встречаешь это лицом к лицу.",
+    note: "Каркас — either … or …, «либо …, либо …»: два варианта, третьего не дано. Главное правило места: either ставится ровно перед тем куском, который меняется, и после or идёт такая же часть речи; здесь подлежащее общее, поэтому either стоит после you, а не в начале. Меняется всё: either call me or send a message, either today or tomorrow, either he pays or we stop. Типичная ошибка русскоговорящих — сказать «or either» или повесить either в начало, когда разные только глаголы. Не путайте с neither … nor … (это отрицание обоих вариантов) и с either в конце отрицательной фразы, где оно значит «тоже нет»: I don’t know either.",
+    ex: "You either book the appointment today or you wait another three weeks.",
+    exru: "Либо ты записываешься на приём сегодня, либо ждёшь ещё три недели."
+  },
+  {
+    id: "when-i-say-so",
+    au: 1,
+    term: "We’re done when I say we’re done.",
+    who: "из сериала",
+    reg: "разговорное",
+    ru: "Мы закончили тогда, когда я скажу, что закончили.",
+    note: "Самое ценное здесь — временное придаточное с when: речь о будущем, а глагол в настоящем — when I say, when he calls, when the results come back. Готовая рамка «X будет тогда, когда я скажу» строится повтором той же части: it’s over when I say it’s over, you leave when I say you leave; есть и короткий вариант — when I say so. Главная ошибка русскоговорящих — «when I will say»: после when, until, as soon as, before будущее время не ставится. Второй момент — be done, «закончить» про человека (I’m done, are you done?), а не «быть сделанным»; с дополнением нужен предлог with: I’m done with this.",
+    ex: "I’ll tell you the results when I get them, not before.",
+    exru: "Я скажу вам результаты, когда их получу, не раньше."
+  },
+  {
+    id: "say-my-name",
+    au: 1,
+    term: "Say my name.",
+    who: "Уолтер Уайт",
+    reg: "разговорное",
+    ru: "Назови моё имя. Ну, скажи, кто я такой.",
+    note: "Ценность фразы — в выборе между say и tell. Say отвечает на вопрос «что сказано» и берёт прямое дополнение без адресата: say my name, say the word, say something, say nothing; адресат, если он нужен, идёт с предлогом — say it to my face. Tell, наоборот, почти всегда требует человека сразу после себя: tell me, tell him the truth, tell us what happened. Главная ошибка русскоговорящих — сказать «say me» или «tell that it works»: по-русски «скажи мне» одно слово, а в английском say и tell делят работу. Не путайте и с speak/talk: те про сам процесс разговора (speak English, talk to a patient), а в устойчивых оборотах tell the truth, tell the difference, tell a story менять глагол нельзя.",
+    ex: "Don’t just say yes — tell me what you really think.",
+    exru: "Не отвечай просто «да» — скажи мне, что ты на самом деле думаешь."
+  },
+  {
+    id: "good-at-it",
+    au: 1,
+    term: "I was good at it.",
+    who: "Уолтер Уайт",
+    reg: "нейтральное",
+    ru: "И у меня это хорошо получалось.",
+    note: "Каркас — be good at + существительное или герундий: «хорошо получается», «умею». Предлог at жёстко привязан к прилагательному, а после любого предлога глагол идёт в форме -ing: good at explaining, good at remembering names. Меняется само прилагательное, и вся шкала строится одинаково: bad at, terrible at, great at, not very good at. Типичная ошибка русскоговорящих — «good in English» или инфинитив «good to explain»; правильно I’m good at English, I’m good at explaining. Не путайте с be good for (полезно: walking is good for your back), be good with (умело обращаться: good with kids) и be good to somebody (хорошо относиться к кому-то).",
+    ex: "She is really good at calming patients down before a procedure.",
+    exru: "Она отлично умеет успокаивать пациентов перед процедурой."
+  },
+  {
+    id: "gotta-be-kidding",
+    au: 1,
+    term: "You've got to be kidding me.",
+    who: "из сериала",
+    reg: "разговорное",
+    ru: "Да ты издеваешься. Ты это серьёзно вообще?",
+    note: "Каркас — have got to + голый инфинитив, разговорный двойник must: в живой речи от него остаётся gotta (You gotta be kidding me, I gotta go, we gotta talk). Меняется всё после got to: you've got to see this, he's got to be at least sixty. Важно, что здесь это не обязанность, а уверенный вывод — «да не может быть, чтобы всерьёз»; ровно так же работает must: you must be joking. Типичная ошибка русскоговорящих — вставить to перед инфинитивом дважды («got to to be») или сказать «you are kidding me» вместо kidding без are при gotta; ещё путают have got to («должен») с have got («иметь»): I've got a car — у меня есть машина. Не путайте и с be kidding somebody в смысле «дразнить»: устойчивая реплика недоверия — именно you've got to be kidding me.",
+    ex: "You've got to be kidding me — the lab lost the samples again?",
+    exru: "Да вы издеваетесь — в лаборатории опять потеряли образцы?"
+  },
+  {
+    id: "get-away-with-it",
+    au: 1,
+    term: "He can't keep getting away with it.",
+    who: "Джесси Пинкман",
+    reg: "разговорное",
+    ru: "Нельзя, чтобы ему это и дальше сходило с рук.",
+    note: "Здесь сразу две рабочие детали. Первая — фразовый глагол get away with something: «сделать что-то плохое и не получить за это по шапке», то есть «сойти с рук»; после with идёт существительное или герундий — get away with lying, get away with a warning. Вторая — keep + -ing, «продолжать делать» или «делать снова и снова»: he keeps calling, she kept apologizing; после keep инфинитив невозможен, «keep to do» — типичная ошибка русскоговорящих. Второе место, где спотыкаются: путают get away with (остаться безнаказанным) и get away from (сбежать откуда-то или от кого-то). Подлежащее здесь — тот, кому сходит с рук, а не пострадавший: he got away with it, а не «it got away with him».",
+    ex: "He keeps showing up late and getting away with it because nobody says anything.",
+    exru: "Он постоянно опаздывает, и ему это сходит с рук, потому что все молчат."
+  },
+  {
+    id: "whats-the-point-of",
+    au: 1,
+    term: "What's the point of being an outlaw when you got responsibilities?",
+    who: "Джесси Пинкман",
+    reg: "разговорное",
+    ru: "Какой смысл быть вне закона, когда на тебе обязательства?",
+    note: "Рабочая рамка тут — What's the point of + герундий, «какой смысл это делать»; по сути это не вопрос, а возражение. После of идёт только форма на -ing: what's the point of arguing, of waiting, of paying twice, — и самая частая ошибка русскоговорящих именно здесь: «what's the point to argue». Ту же мысль в утверждении строят с другим предлогом: there's no point in doing it, «нет смысла этим заниматься», то есть of в вопросе, in в ответе. Обратите внимание и на разговорное when you got вместо when you've got: в живой речи have выпадает, но в письме и в официальной речи так не пишут. Голое What's the point? значит просто «и зачем всё это?», это реплика раздражения, а не философский вопрос о смысле.",
+    ex: "What's the point of buying a gym membership if you never find the time to go?",
+    exru: "Какой смысл покупать абонемент в зал, если ты всё равно никогда не выбираешься?"
+  },
+  {
+    id: "let-me-do-it",
+    au: 1,
+    term: "Shut the hell up and let me die in peace.",
+    who: "Майк Эрмантраут",
+    reg: "грубое",
+    ru: "Да замолчи ты и дай мне спокойно умереть.",
+    note: "Главное здесь — конструкция let + кого + голый инфинитив: let me know, let him finish, let me check the chart. Частица to после let не ставится никогда, и «let me to know» — типичная ошибка русскоговорящих; в вежливом письменном варианте берут другой глагол, и вот у него to обязательно: allow me to explain. Дальше — усилитель the hell, который вставляют в приказы и вопросы для злости (what the hell, shut the hell up); звучит грубо, с пациентами и коллегами так не говорят, но узнавать на слух надо. И запомните in peace, «в покое, не мешая»: leave me in peace — это «отстань», а не «оставь меня в мире».",
+    ex: "Let me finish this call and then we'll go through the list together.",
+    exru: "Дай мне договорить по телефону, и потом мы вместе пройдёмся по списку."
+  },
+  {
+    id: "tread-lightly",
+    au: 1,
+    term: "Tread lightly.",
+    who: "Уолтер Уайт",
+    reg: "разговорное",
+    ru: "Поосторожнее. Я бы на твоём месте не нарывался.",
+    note: "Идиома tread lightly значит «действовать осторожно, не давить, не лезть на рожон»; чаще она звучит как предупреждение, а в обычной речи ещё ходит вариант tread carefully. Важнее самой идиомы то, как она устроена: после глагола ставится наречие на -ly, а не прилагательное, — tread lightly, speak slowly, drive carefully, ask politely. Самая частая ошибка русскоговорящих — сказать «tread light» или «speak slow»: в русском одна и та же форма («осторожно») работает и там и там, в английском формы разные. Меняется наречие, а заодно к нему подставляется with или around, когда нужен человек: I'd tread lightly with him. Не путайте с take it easy — это «расслабься, не напрягайся», а tread lightly — «смотри, куда ступаешь».",
+    ex: "I'd tread lightly with the new supervisor until you see how she reacts to bad news.",
+    exru: "На твоём месте я бы поосторожнее с новой заведующей, пока не увидишь, как она реагирует на плохие новости."
+  },
+  {
+    id: "a-man-provides",
+    au: 1,
+    term: "A man provides for his family.",
+    who: "Гус Фринг",
+    reg: "нейтральное",
+    ru: "Мужчина обеспечивает свою семью.",
+    note: "Это формула обобщения: артикль a перед существительным в единственном числе плюс Present Simple означают «любой такой человек, так устроено вообще», а не «один какой-то мужчина». По той же схеме строится что угодно: A doctor listens first, a good teacher admits mistakes, a nurse checks the name twice. Главная ошибка русскоговорящих — выбросить артикль («Man provides») или поставить the, отчего фраза превращается в разговор про конкретного человека; альтернатива без артикля — множественное число: Doctors listen first. Второй момент — глагол provide: в значении «обеспечивать кого-то» он требует for (provide for his family), а без for он значит «предоставлять что-то»: the clinic provides free tests.",
+    ex: "A good doctor explains the risks before the patient thinks to ask about them.",
+    exru: "Хороший врач объясняет риски раньше, чем пациент догадается о них спросить."
+  },
+  {
+    id: "stay-out-of",
+    au: 1,
+    term: "Stay out of my territory.",
+    who: "Уолтер Уайт",
+    reg: "разговорное",
+    ru: "Не суйтесь на мою территорию.",
+    note: "Рабочая часть — фразовый глагол stay out of + существительное: «не заходить, держаться в стороне, не вмешиваться». Меняется то, что после of: stay out of this — «не лезь в это», stay out of trouble — «не влипай в неприятности», stay out of the sun — «избегайте солнца», это прямо готовая фраза для рекомендаций пациенту. Типичные ошибки русскоговорящих — «stay out from» или потерянный of: stay out this. Не путайте со stay away from: это «держаться подальше, не приближаться» (stay away from sugar), а stay out of — «не входить внутрь» или «не вмешиваться» в дело, место, спор.",
+    ex: "Try to stay out of the sun for a couple of weeks after the procedure.",
+    exru: "Постарайтесь пару недель после процедуры не бывать на солнце."
+  },
+  {
+    id: "same-as-you",
+    au: 1,
+    term: "I hide in plain sight, same as you.",
+    who: "Гус Фринг",
+    reg: "нейтральное",
+    ru: "Я прячусь у всех на виду — так же, как и ты.",
+    note: "Здесь два переносимых куска. Первый — идиома in plain sight, «у всех на виду, открыто»: hide in plain sight — «прятаться, не прячась», а про ответ, который был под носом, говорят it was right there in plain sight. Второй — разговорное same as you в конце фразы, короткая версия the same as you или just like you: «как и ты», «так же, как у тебя»; меняется только местоимение или имя — same as me, same as last time, same as always. Типичная ошибка русскоговорящих — «same like you» или «same with you»: после same нужен только as. И не путайте с same here — это отдельная реплика-согласие «у меня так же», её ставят в ответ, а не внутрь своей фразы.",
+    ex: "I'll have the soup and a coffee, same as last time.",
+    exru: "Мне суп и кофе — как в прошлый раз."
+  },
+  {
+    id: "youre-damn-right",
+    au: 1,
+    term: "You're goddamn right.",
+    who: "Уолтер Уайт",
+    reg: "грубое",
+    ru: "Ещё бы, чёрт возьми.",
+    note: "Это усиленное согласие: к обычному you're right вставляют damn или goddamn, и получается «ещё как», «абсолютно верно», с нажимом. Основа — be right, «быть правым»: по-английски правота выражается глаголом be, а не have, поэтому калька с русского или французского «you have right» — ошибка. Степень грубости регулируется вставкой: you're absolutely right — нейтрально и вежливо, you're damn right или просто damn right — разговорно, goddamn — уже грубовато, при пациентах и начальстве лучше не надо. Не путать с that's right, которым просто подтверждают факт без эмоций.",
+    ex: "You think we should have ordered the MRI sooner? You're damn right we should have.",
+    exru: "Думаешь, МРТ надо было назначить раньше? Ещё бы не надо было."
+  },
+  {
+    id: "committed-enough",
+    au: 1,
+    term: "If you're committed enough, you can make any story work.",
+    who: "Сол Гудман",
+    reg: "разговорное",
+    ru: "Если по-настоящему упереться, продать можно любую историю.",
+    note: "Главная деталь — место enough: после прилагательного или наречия, но перед существительным. Committed enough, old enough, fast enough — и enough time, enough staff. Типичная ошибка русскоговорящего — ставить его как «достаточно» по-русски, впереди: enough committed, enough good. Продолжение идёт через to + инфинитив: good enough to work, sure enough to sign. Второй полезный кусок — make something work, «заставить сработать, довести до ума»: make the plan work, make it work with our budget.",
+    ex: "The new schedule is tight, but if we're organized enough, we can make it work.",
+    exru: "График новый плотный, но если толком всё организовать, мы справимся."
+  },
+  {
+    id: "its-all-good",
+    au: 1,
+    added: "2026-09-23",
+    term: "It's all good, man.",
+    who: "из сериала",
+    reg: "разговорное",
+    ru: "Да всё нормально. Забей, всё в порядке.",
+    note: "It's all good — готовая реплика «всё улажено, вопрос закрыт»: ею отвечают на чужое извинение или снимают напряжение, и good здесь не про качество, а про то, что между вами всё ровно. Рядом стоит целая семья таких же коротких реплик: we're good — «мы в расчёте, мы не в ссоре», вопрос we good?, чужая оплошность — no worries, своя — my bad. Меняется подлежащее: it's all good, we're good, I'm good, причём I'm good в ответ на предложение значит «спасибо, не надо». Типичная ошибка русскоговорящих — собрать фразу по-русски: «all is good» или «everything is good»; порядок здесь жёсткий — it's all good. Не путайте с it's a good thing («хорошо, что…»), а обращение man — это просто «слушай, чувак», в разговоре с пациентом или начальством его не используют.",
+    ex: "You don't have to apologize for the delay — it's all good.",
+    exru: "Не надо извиняться за задержку — всё нормально."
+  },
+  {
+    id: "in-danger",
+    au: 1,
+    added: "2026-09-23",
+    term: "I'm not in danger, Skyler.",
+    who: "Уолтер Уайт",
+    reg: "нейтральное",
+    ru: "Мне ничего не угрожает, Скайлер.",
+    note: "Каркас — be in + существительное: так по-английски описывают состояние, в котором человек находится. Меняется только существительное, глагол всегда be: in danger, in trouble, in pain, in charge, in touch, а вот in a hurry — с артиклем, это надо запомнить отдельно. Главная ошибка русскоговорящих — тащить сюда have («I have danger», «I have pain») или ставить артикль: правильно I'm in danger и are you in pain?, но не «in the danger». Второе место, где путаются: in danger значит «сам под угрозой», а dangerous — «опасен для других»; Уолтер в сериале как раз доигрывает эту разницу следующей репликой — I am the danger. Если надо назвать, кому именно грозит, добавляют предлог: he's a danger to himself, the roof is in danger of collapsing.",
+    ex: "She's not in danger, but she's in a lot of pain, so let's start with that.",
+    exru: "Ей ничего не угрожает, но ей очень больно, так что начнём с этого."
+  },
+  {
+    id: "supposed-to",
+    au: 1,
+    added: "2026-09-24",
+    term: "What am I supposed to do?",
+    who: "из сериала",
+    reg: "разговорное",
+    ru: "И что мне теперь делать? Что я, по-твоему, должен делать?",
+    note: "Каркас — be supposed to + голый инфинитив: «должен по плану, так задумано, так принято». Меняется подлежащее и время, а supposed to остаётся целым куском: I'm supposed to be there at eight, he was supposed to call, you're not supposed to park here. В вопросе вперёд выходит только am/is/are: What am I supposed to do? Самая частая ошибка русскоговорящих — «I suppose to do» или «I'm supposed do»: suppose здесь всегда с -ed, и после него всегда to. Не путать с must и have to: supposed to — про чужое ожидание или правило со стороны, поэтому was supposed to обычно намекает, что как раз не сделали.",
+    ex: "The results were supposed to be ready this morning, but nobody has called me.",
+    exru: "Результаты должны были быть готовы утром, но мне никто так и не позвонил."
+  },
+  {
+    id: "capable-of",
+    au: 1,
+    added: "2026-09-24",
+    term: "You're not capable of being the guy.",
+    who: "из сериала",
+    reg: "разговорное",
+    ru: "Ты не тянешь на главного. Не твоё это — быть тем, кто за всё отвечает.",
+    note: "Рабочий каркас — be capable of + существительное или герундий: «способен на это, в состоянии это сделать». После of всегда форма на -ing, поэтому «capable to do» — ошибка, хотя по-русски так и тянет сказать; у близкого be able to, наоборот, идёт инфинитив: able to do. Меняется только то, что стоит после of: capable of handling it, capable of running the place, not capable of murder. Второй переносимый кусок — the guy в значении «тот самый человек, который за это отвечает»: I know a guy, he's not the guy, talk to the guy. Артикль тут решает всё: a guy — просто какой-то человек, the guy — именно нужный.",
+    ex: "I'm not sure he's capable of handling this on his own.",
+    exru: "Не уверен, что он справится с этим сам."
+  },
+  {
+    id: "know-a-guy",
+    au: 1,
+    added: "2026-09-25",
+    term: "I know a guy who knows a guy who knows another guy.",
+    who: "Сол Гудман",
+    reg: "разговорное",
+    ru: "У меня есть человек, а у него свой человек, а у того — ещё один. Короче: связи найдутся.",
+    note: "Ключевое тут — идиома I know a guy: это не «я знаю мужчину», а «есть у меня нужный человек, знакомый, который это решит». Дальше идёт цепочка определительных придаточных с who, и who сам работает подлежащим, поэтому второе подлежащее не нужно: a guy who knows, а не «a guy who he knows». Меняете существительное и глагол — и каркас ваш: I know a guy who fixes laptops, I know a woman who rents out flats. Типичная ошибка русскоговорящего — калька «I have a man» с «у меня есть человек», а ещё which вместо who про людей. Не путайте с know about — это «знать о чём-то», а не «иметь выход на кого-то».",
+    ex: "If you need a good plumber, I know a guy who works fast and doesn’t overcharge.",
+    exru: "Если нужен нормальный сантехник — есть у меня человек, работает быстро и не задирает цену.",
+  },
+  {
+    id: "stop-focusing",
+    au: 1,
+    added: "2026-09-25",
+    term: "You need to stop focusing on the darkness behind you.",
+    who: "из сериала",
+    reg: "нейтральное",
+    ru: "Хватит зацикливаться на том тёмном, что осталось позади. Перестань оглядываться назад.",
+    note: "Рабочий каркас — stop + герундий: stop doing значит «перестать делать». Инфинитив после stop меняет смысл целиком: he stopped to smoke — «остановился, чтобы покурить», а he stopped smoking — «бросил курить». Меняется только глагол после stop: stop worrying, stop arguing, stop checking your phone. Типичная ошибка русскоговорящего — сказать «stop to worry» в значении «перестань волноваться»; получится «остановись, чтобы поволноваться». То же правило работает у keep, avoid, finish, mind и после предлогов — там тоже только форма на -ing; а вот у need to инфинитив как раз с to: you need to rest.",
+    ex: "You need to stop checking your email every ten minutes if you want to finish this report.",
+    exru: "Тебе надо перестать проверять почту каждые десять минут, если хочешь дописать этот отчёт.",
+  },
+  {
+    id: "if-you-do",
+    au: 1,
+    added: "2026-09-26",
+    term: "Don't drink and drive, but if you do, call me.",
+    who: "Сол Гудман — слоган его рекламы",
+    reg: "разговорное",
+    ru: "Не пей за рулём, а если выпил — звони мне. Не садись пьяным за руль, но если сел — звони.",
+    note: "Главная деталь — слово do, которое заменяет собой целый уже сказанный глагол: if you do = if you drink and drive. Так работает любой вспомогательный глагол: I didn't call him, but she did; he says he will finish it, and I hope he does. Меняется только лицо и время — if you do, if he does, if you did, — а повторять весь оборот заново не нужно. Русскоговорящие обычно либо проговаривают всё второй раз (if you drink and drive again), либо строят «if you will do»: после if будущего времени не бывает. И не путайте этот do с усилительным do в I do care — там он подчёркивает, а здесь именно заменяет.",
+    ex: "Try not to skip breakfast, but if you do, at least drink some water.",
+    exru: "Постарайся не пропускать завтрак, а если всё же пропустишь — хотя бы выпей воды."
+  },
+  {
+    id: "on-your-own-terms",
+    au: 1,
+    added: "2026-09-26",
+    term: "Live life on your own terms.",
+    who: "из сериала",
+    reg: "нейтральное",
+    ru: "Живи по своим правилам. Живи так, как считаешь нужным ты, а не кто-то другой.",
+    note: "Рабочий оборот здесь — on one's own terms, «на своих условиях, по своим правилам, не под чужую диктовку». Меняется только притяжательное: on my own terms, on his own terms, on their own terms; слово own можно и убрать — on our terms звучит суше, по-деловому. Предлог строго on, поэтому «in my terms» или «by my terms» — ошибка. Не путайте с in terms of, «с точки зрения, в плане»: in terms of cost — это про критерий сравнения, а on my terms — про то, кто решает. Сочетание live life по-русски кажется тавтологией, но в английском это нормальная рамка: live life to the fullest, live your own life.",
+    ex: "She turned down the offer because she wanted to come back on her own terms.",
+    exru: "Она отказалась от предложения, потому что хотела вернуться на своих условиях."
+  },
+  {
+    id: "turning-down-you",
+    au: 1,
+    added: "2026-09-27",
+    term: "I'm not turning down the money, I'm turning down you.",
+    who: "Джесси Пинкман",
+    reg: "разговорное",
+    ru: "Я отказываюсь не от денег — я отказываюсь от тебя. Дело не в деньгах, а в тебе.",
+    note: "Рабочий каркас — фразовый глагол turn down, «отказаться от того, что предлагают»: turn down an offer, turn down the job, turn down an invitation, а в медицине turn down a referral. Меняется только то, что стоит после: деньги, работа, предложение, человек. Главное правило места: если дополнение — местоимение, оно уходит внутрь, между turn и down (I turned it down, they turned him down), и «turn down it» — типичная ошибка русскоговорящих; Джесси нарушает это правило намеренно, чтобы вынести you в самый конец и ударить по нему. Не путайте turn down с turn off (выключить) и turn out (оказаться); в значении «сделать тише» turn down ведёт себя точно так же: turn the music down.",
+    ex: "My colleague offered me a ride home, but I turned it down.",
+    exru: "Коллега предложил подвезти меня домой, но я отказался."
+  },
+  {
+    id: "did-it-for-me",
+    au: 1,
+    added: "2026-09-27",
+    term: "I did it for me.",
+    who: "Уолтер Уайт",
+    reg: "нейтральное",
+    ru: "Я делал это для себя. Не ради семьи — ради себя самого.",
+    note: "Каркас — do something for + человек: for me, for you, for my family. После любого предлога местоимение идёт в объектной форме — for me, for him, for us, но никогда «for I». Главная путаница — три похожих оборота: I did it for me значит «для себя, в своих интересах»; I did it myself — «сам, без чужой помощи»; I did it by myself — «один, в одиночку». Поэтому «я сам заполнил бумаги» — I filled in the forms myself, а не «for myself». Тот же каркас удобно называет настоящую причину поступка: I did it for the money, I did it for her.",
+    ex: "I took the evening course for me, not for my boss.",
+    exru: "Я пошёл на вечерний курс для себя, а не ради начальника."
+  },
+  // НОВАЯ КАРТОЧКА ВСТАВЛЯЕТСЯ ВЫШЕ ЭТОЙ СТРОКИ
+];
+
+(window.__EXTRA_CARDS||[]).forEach(function(c){if(c&&c.id&&!CARDS.some(function(x){return x.id===c.id}))CARDS.push(c)});
+
+const NEW_PER_SESSION = 4;
+const PRACTICE_SIZE = 10;
+const INTERVALS = [1, 3, 7, 16, 35, 90];    // дни
+const LEARNED = 3;                          // с этой ступени фраза считается выученной
+const DAY = 86400000;
+const LS_STATE = "bbphrases:state";         // те же ключи, что у прежней версии: прогресс не теряется
+const LS_SPEAK = "bbphrases:autospeak";
+const LS_OPEN = "bb:open";
+const DOC_PATH = "progress/main";
+const AUDIO_DIR = "audio/us/";
+
+let progress = {};
+let queue = [];            // [{ card, type, retry }], type: intro | rec | listen | build | prod
+let index = 0;
+let mode = null;           // null — нет сессии; main | practice
+let answered = false;
+let autoSpeak = true;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let lastResult = null;
+let shownOpts = [];
+let build = null;
+let tab = "train";
+let openId = null;
+let lastClip = null;
+let drillStale = false;
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+function show(id, on){ $(id).hidden = !on; }
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Фразы BB"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+// ——— Хранение
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+
+// ——— Даты и числа
+const MONTHS = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function daysFromToday(ts){ return Math.round((dayStart(ts) - dayStart(Date.now())) / DAY); }
+function dateLabel(ts){ const d = new Date(ts); return d.getDate() + " " + MONTHS[d.getMonth()]; }
+function parseDay(s){
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ""));
+  return m ? new Date(+m[1], +m[2] - 1, +m[3]).getTime() : null;
+}
+function addedLabel(c){
+  const t = parseDay(c.added);
+  if (t === null) return "";
+  const d = daysFromToday(t);
+  if (d === 0) return "сегодня";
+  if (d === -1) return "вчера";
+  return dateLabel(t);
+}
+function whenLabel(ts){
+  const d = daysFromToday(ts);
+  if (d <= 0) return "сегодня";
+  if (d === 1) return "завтра";
+  if (d === 2) return "послезавтра";
+  return dateLabel(ts);
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+
+// ——— Прогресс
+function isDue(c){ const p = progress[c.id]; return !!p && dayStart(p.due) <= dayStart(Date.now()); }
+function dueCards(){ return CARDS.filter(isDue); }
+function newCards(){ return CARDS.filter(c => !progress[c.id]).reverse(); }   // свежие — первыми
+function stepOf(c){ const p = progress[c.id]; return p ? Math.max(0, p.step | 0) : -1; }
+function nextDue(){
+  let m = null;
+  CARDS.forEach(c => { const p = progress[c.id]; if (p && (m === null || p.due < m)) m = p.due; });
+  return m;
+}
+function todaysPair(){ return CARDS.slice(-2); }
+
+// ——— Поля карточки
+function words(s){ return String(s || "").trim().split(/\s+/).filter(Boolean); }
+// Первое предложение перевода — главный вариант, остальное — уточнение
+function coreRu(c){
+  const s = String(c.ru || "").trim();
+  const m = /^(.+?[.!?…])(\s|$)/.exec(s);
+  return (m ? m[1] : s).trim().replace(/\.$/, "");
+}
+function restRu(c){
+  const s = String(c.ru || "").trim();
+  const m = /^(.+?[.!?…])(\s|$)/.exec(s);
+  return m ? s.slice(m[1].length).trim() : "";
+}
+function regClass(r){ r = String(r || "").toLowerCase(); return r.indexOf("груб") >= 0 ? " rude" : r.indexOf("сленг") >= 0 ? " slang" : ""; }
+
+// Слова фразы для упражнения «собери фразу»
+function normWord(w){ return String(w).toLowerCase().replace(/[’‘]/g, "'").replace(/^[^a-z0-9']+|[^a-z0-9']+$/g, ""); }
+function tokens(c){
+  const out = [];
+  words(c.term).forEach((w, i) => {
+    let show = w.replace(/^[«"“(\[]+|[.,!?;:…»"”)\]]+$/g, "");
+    if (!show) return;
+    if (i === 0 && !/^I($|['’])/.test(show)) show = show.charAt(0).toLowerCase() + show.slice(1);
+    out.push({ show: show, key: normWord(w) });
+  });
+  return out;
+}
+function canBuild(c){ const n = tokens(c).length; return n >= 2 && n <= 12; }
+
+// ——— Отвлекающие варианты: без близких по смыслу, похожей длины
+function stems(s){
+  return words(String(s).toLowerCase().replace(/[^а-яёa-z\s-]/g, " "))
+    .filter(x => x.length >= 5 && !/-(то|либо|нибудь)$/.test(x))
+    .map(x => x.slice(0, 5));
+}
+function closeMeaning(a, b){
+  const sa = new Set(stems(coreRu(a)));
+  return stems(coreRu(b)).some(s => sa.has(s));
+}
+function optLabel(c, type){ return type === "prod" ? c.term : coreRu(c); }
+function pickDistractors(card, type){
+  const own = optLabel(card, type);
+  const pool = CARDS.filter(c => c.id !== card.id && optLabel(c, type) !== own);
+  const clear = pool.filter(c => !closeMeaning(card, c));
+  const src = clear.length >= 2 ? clear : pool;
+  const L = own.length;
+  const scored = src.map(c => {
+    const l = optLabel(c, type).length;
+    return { c: c, s: Math.random() + 0.8 * (1 - Math.min(1, Math.abs(l - L) / Math.max(L, l, 1))) };
+  }).sort((a, b) => b.s - a.s);
+  const out = [], labels = new Set([own]);
+  for (const x of scored){
+    const lab = optLabel(x.c, type);
+    if (labels.has(lab)) continue;
+    labels.add(lab);
+    out.push(x.c);
+    if (out.length === 2) break;
+  }
+  return out;
+}
+
+// ——— Какое упражнение дать: понять → узнать на слух → собрать → вспомнить
+function reviewType(c){
+  const s = stepOf(c);
+  if (s <= 0) return "rec";
+  if (s === 1) return "listen";
+  if (s === 2) return canBuild(c) ? "build" : "prod";
+  const r = Math.random();
+  if (r < 0.34) return "listen";
+  if (r < 0.67 && canBuild(c)) return "build";
+  return "prod";
+}
+function practiceType(c){
+  const r = Math.random();
+  if (r < 0.25) return "rec";
+  if (r < 0.5) return "listen";
+  if (r < 0.75 && canBuild(c)) return "build";
+  return "prod";
+}
+
+// ——— Синхронизация прогресса между устройствами
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const db = await window.claude.use("db");
+    if (!db) return;
+    let ref;
+    try{ ref = db.doc(DOC_PATH); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before) refreshViews();
+  }catch(e){ /* работаем на локальном прогрессе */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Andrew (en-US) в папке audio/us/.
+// Если записи нет или она не загрузилась — лучший американский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-US";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-us")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("andrew")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = AUDIO_DIR + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!key || !player.paused) return;
+  const src = AUDIO_DIR + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+function clipKey(c, part){ return c.au ? c.id + "-" + part : null; }
+function sayCard(c, part){
+  const isEx = part === "x";
+  lastClip = { id: c.id, part: part };
+  playClip(clipKey(c, part), isEx ? c.ex : c.term, isEx ? 0.9 : 0.92);
+}
+
+// ——— Общие детали
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+function sayBtn(fn, label, cls){
+  const b = el("button", cls || "say-sm");
+  b.type = "button";
+  b.setAttribute("aria-label", label);
+  b.innerHTML = PLAY_SVG;
+  b.addEventListener("click", e => { e.stopPropagation(); fn(); });
+  return b;
+}
+function enText(tag, cls, text){ const n = el(tag, cls, text); n.lang = "en"; return n; }
+function metaNode(c){
+  const box = el("div", "chips");
+  if (c.who) box.append(el("span", "who", c.who));
+  if (c.reg) box.append(el("span", "chip" + regClass(c.reg), c.reg));
+  return box;
+}
+function noteNode(c, open){
+  const wrap = el("div", "note");
+  const txt = el("p", "det-note", c.note);
+  if (open){ wrap.append(el("p", "lbl", "Разбор"), txt); return wrap; }
+  const b = el("button", "more", "Разбор ›");
+  b.type = "button";
+  txt.hidden = true;
+  b.addEventListener("click", () => { txt.hidden = false; b.replaceWith(el("p", "lbl", "Разбор")); });
+  wrap.append(b, txt);
+  return wrap;
+}
+function exampleNode(c){
+  const box = el("div", "ex");
+  box.append(el("p", "lbl", "Как сказать самому"), enText("p", "ex-en", c.ex),
+             sayBtn(() => sayCard(c, "x"), "Прослушать свой пример", "say-sm ex-play"), el("p", "ex-ru", c.exru || ""));
+  return box;
+}
+function statusText(c){
+  const p = progress[c.id];
+  const al = addedLabel(c);
+  const added = al ? "Добавлена " + al + ". " : "";
+  if (!p) return added + "Ещё не тренировалась — будет в ближайшей тренировке.";
+  const s = stepOf(c);
+  const when = whenLabel(p.due);
+  if (s >= LEARNED) return added + "Выучена · следующий повтор — " + when + ".";
+  return added + "Уровень " + (s + 1) + " из 4 · повтор — " + when + ".";
+}
+function detailNode(c, o){
+  o = o || {};
+  const d = el("div", "det");
+  const head = el("div", "det-head");
+  head.append(enText("h2", "det-term", c.term), sayBtn(() => sayCard(c, "t"), "Прослушать фразу"));
+  d.append(head, metaNode(c), el("p", "det-ru", c.ru || ""));
+  if (c.note) d.append(noteNode(c, !!o.note));
+  if (c.ex) d.append(exampleNode(c));
+  if (o.status) d.append(el("p", "status", statusText(c)));
+  return d;
+}
+function dotsNode(c){
+  const s = stepOf(c);
+  const n = Math.min(4, s + 1);
+  const d = el("span", "dots" + (s >= LEARNED ? " done" : ""));
+  d.setAttribute("role", "img");
+  d.setAttribute("aria-label", s >= LEARNED ? "выучена" : "уровень " + n + " из 4");
+  for (let i = 0; i < 4; i++) d.append(el("i", i < n ? "on" : null));
+  return d;
+}
+
+// ——— Главная
+function renderHome(){
+  const pair = todaysPair();
+  const latest = pair[pair.length - 1];
+  const al = latest ? addedLabel(latest) : "";
+  $("heroKicker").textContent = (pair.length > 1 ? "Фразы дня" : "Фраза дня") + (al ? " · " + al : "");
+  const box = $("pair");
+  box.textContent = "";
+  pair.forEach(c => {
+    const row = el("div", "ph-row");
+    const open = el("button", "ph-open");
+    open.type = "button";
+    const t = enText("span", "ph-term", c.term);
+    if (!progress[c.id]){ const g = el("span", "tag", "новая"); g.lang = "ru"; t.append(" ", g); }
+    open.append(t, el("span", "ph-ru", coreRu(c)), el("span", "ph-who", [c.who, c.reg].filter(Boolean).join(" · ")));
+    open.addEventListener("click", () => openInDict(c));
+    row.append(open, sayBtn(() => sayCard(c, "t"), "Прослушать фразу"));
+    box.append(row);
+  });
+
+  const r = $("result");
+  if (lastResult){
+    r.hidden = false;
+    r.textContent = (lastResult.mode === "practice" ? "Практика пройдена" : "Готово") + ": с первого раза верно " + lastResult.correct + " из " + lastResult.first + ".";
+  } else r.hidden = true;
+
+  const cells = $("cells");
+  cells.textContent = "";
+  let nNew = 0, nLearn = 0, nDone = 0;
+  const fresh = new Set(pair.map(c => c.id));
+  CARDS.forEach(x => {
+    const s = stepOf(x);
+    const cls = s < 0 ? "" : " l" + Math.min(LEARNED, s);
+    cells.append(el("i", "cell" + cls + (fresh.has(x.id) && s < 0 ? " today" : "")));
+    if (s < 0) nNew++; else if (s >= LEARNED) nDone++; else nLearn++;
+  });
+  $("deckCount").textContent = CARDS.length + " " + plural(CARDS.length, "фраза", "фразы", "фраз");
+  $("lgNew").textContent = nNew;
+  $("lgLearn").textContent = nLearn;
+  $("lgDone").textContent = nDone;
+
+  const due = dueCards().length, nfresh = Math.min(NEW_PER_SESSION, newCards().length);
+  const plan = $("plan"), btn = $("start");
+  plan.textContent = "";
+  if (due || nfresh){
+    const parts = [];
+    if (due) parts.push(due + " " + plural(due, "повтор", "повтора", "повторов"));
+    if (nfresh) parts.push(nfresh + " " + plural(nfresh, "новая", "новые", "новых"));
+    plan.append("Сегодня: ", el("b", null, parts.join(" · ")));
+    btn.textContent = "Начать тренировку";
+    btn.dataset.kind = "main";
+  } else {
+    const nd = nextDue();
+    plan.textContent = "На сегодня всё." + (nd ? " Следующий повтор — " + whenLabel(nd) + "." : "");
+    btn.textContent = "Свободная практика";
+    btn.dataset.kind = "practice";
+  }
+}
+
+// ——— Тренировка
+function buildMain(){
+  const due = shuffle(dueCards());
+  const fresh = newCards().slice(0, NEW_PER_SESSION);
+  const items = [];
+  let di = 0;
+  fresh.forEach(c => {
+    items.push({ card: c, type: "intro" });
+    for (let k = 0; k < 2 && di < due.length; k++, di++) items.push({ card: due[di], type: reviewType(due[di]) });
+  });
+  for (; di < due.length; di++) items.push({ card: due[di], type: reviewType(due[di]) });
+  return items;
+}
+function buildPractice(){
+  const pool = CARDS.filter(c => progress[c.id]);
+  const src = pool.length ? pool.slice() : CARDS.slice();
+  return shuffle(src).slice(0, PRACTICE_SIZE).map(c => ({ card: c, type: practiceType(c) }));
+}
+function startSession(kind){
+  queue = kind === "practice" ? buildPractice() : buildMain();
+  mode = kind === "practice" ? "practice" : "main";
+  index = 0; lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; lastResult = null;
+  if (!queue.length){ mode = null; renderHome(); return; }
+  setTab("train");
+  render();
+}
+function finishSession(){
+  stopAudio();
+  if (stats.first) lastResult = { first: stats.first, correct: stats.correct, mode: mode };
+  mode = null; queue = []; index = 0; answered = false;
+  setTab("train");
+}
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function kindText(item){
+  if (item.type === "intro") return addedLabel(item.card) === "сегодня" ? "Новая фраза · фраза дня" : "Новая фраза";
+  const base = { rec: "Что значит?", listen: "На слух", build: "Собери фразу", prod: "Как сказать по-английски?" }[item.type];
+  return item.retry ? "Ещё раз · " + base.charAt(0).toLowerCase() + base.slice(1) : base;
+}
+function renderOpts(item){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle([item.card].concat(pickDistractors(item.card, item.type)));
+  box.className = "opts " + (item.type === "prod" ? "en" : "ru");
+  shownOpts.forEach(c => {
+    const b = el("button", "opt");
+    b.type = "button";
+    if (item.type === "prod"){ b.lang = "en"; b.append(el("span", null, c.term)); }
+    else b.textContent = coreRu(c);
+    b.addEventListener("click", () => choose(c));
+    box.append(b);
+  });
+}
+function drawBuild(){
+  const line = $("built");
+  line.textContent = "";
+  line.className = "built";
+  build.placed.forEach((ti, pos) => {
+    const b = enText("button", "tile", build.toks[ti].show);
+    b.type = "button";
+    b.addEventListener("click", () => {
+      if (answered) return;
+      build.placed.splice(pos, 1);
+      build.pool.push(ti);
+      drawBuild();
+    });
+    line.append(b);
+  });
+  if (!build.placed.length) line.append(el("span", "built-ph", "Нажимай на слова по порядку"));
+  const pool = $("opts");
+  pool.textContent = "";
+  pool.className = "opts tiles";
+  build.pool.forEach((ti, pos) => {
+    const b = enText("button", "tile", build.toks[ti].show);
+    b.type = "button";
+    b.addEventListener("click", () => {
+      if (answered) return;
+      build.pool.splice(pos, 1);
+      build.placed.push(ti);
+      drawBuild();
+      if (!build.pool.length) checkBuild();
+    });
+    pool.append(b);
+  });
+}
+function checkBuild(){
+  const got = build.placed.map(i => build.toks[i].key).join(" ");
+  const want = build.toks.map(t => t.key).join(" ");
+  const said = build.placed.map(i => build.toks[i].show).join(" ");
+  finishAnswer(got === want, null, said);
+}
+function render(){
+  stopAudio();
+  answered = false;
+  drillStale = false;
+  build = null;
+  const item = queue[index];
+  if (!item){ finishSession(); return; }
+  const c = item.card;
+  $("card").scrollTop = 0;
+  const kind = $("kind");
+  kind.className = "kind" + (item.type === "intro" ? " new" : "");
+  kind.textContent = kindText(item);
+  show("verdict", false);
+  const box = $("qbox");
+  box.textContent = "";
+  $("next").textContent = "Дальше";
+  if (item.type === "intro"){
+    box.append(detailNode(c, { note: true }));
+    show("hint", false);
+    show("opts", false);
+    $("next").textContent = "Запомнил — проверить";
+    show("actNext", true);
+    if (autoSpeak) sayCard(c, "t");
+  } else {
+    let hint = "Выбери перевод";
+    if (item.type === "rec"){
+      const row = el("div", "q-row");
+      row.append(enText("p", "q-term", c.term), sayBtn(() => sayCard(c, "t"), "Прослушать фразу"));
+      box.append(row, metaNode(c));
+    } else if (item.type === "listen"){
+      const l = el("div", "listen");
+      const b = el("button", "play-big");
+      b.type = "button";
+      b.setAttribute("aria-label", "Прослушать фразу ещё раз");
+      b.innerHTML = PLAY_SVG;
+      b.addEventListener("click", () => sayCard(c, "t"));
+      l.append(b, el("p", null, "Что прозвучало?"));
+      box.append(l);
+      hint = "Послушай и выбери перевод — текст покажем после ответа";
+    } else if (item.type === "build"){
+      box.append(el("p", "q-ru", coreRu(c)));
+      const rest = restRu(c);
+      if (rest) box.append(el("p", "q-rest", rest));
+      box.append(el("div", "built", null));
+      box.lastChild.id = "built";
+      hint = "Собери фразу по-английски: нажимай на слова, лишнее убирается нажатием";
+    } else {
+      box.append(el("p", "q-ru", coreRu(c)));
+      const rest = restRu(c);
+      if (rest) box.append(el("p", "q-rest", rest));
+      hint = "Выбери фразу";
+    }
+    $("hint").textContent = hint;
+    show("hint", true);
+    if (item.type === "build"){
+      const toks = tokens(c);
+      build = { toks: toks, pool: shuffle(toks.map((_, i) => i)), placed: [] };
+      if (toks.length > 1 && build.pool.every((v, i) => toks[v].key === toks[i].key)) build.pool.reverse();
+      drawBuild();
+    } else renderOpts(item);
+    show("opts", true);
+    show("actNext", false);
+    if ((item.type === "rec" || item.type === "listen") && autoSpeak) sayCard(c, "t");
+    else preloadClip(clipKey(c, "t"));
+  }
+  $("status").textContent = (mode === "practice" ? "Практика · " : "Карточка ") + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+}
+function grade(c, ok){
+  const prev = progress[c.id];
+  let step = prev ? (prev.step | 0) : -1;
+  if (!ok){ step = 0; lapsed[c.id] = true; }
+  else if (step < 0 || lapsed[c.id]) step = 0;
+  else if (isDue(c)) step = Math.min(INTERVALS.length - 1, step + 1);
+  else return;
+  progress[c.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+}
+function choose(opt){
+  if (answered) return;
+  const item = queue[index];
+  if (!item || item.type === "intro" || item.type === "build") return;
+  finishAnswer(opt.id === item.card.id, opt, null);
+}
+function finishAnswer(ok, opt, said){
+  const item = queue[index];
+  if (!item || answered) return;
+  answered = true;
+  const c = item.card;
+  if (!seen.has(c.id)){ seen.add(c.id); stats.first++; if (ok) stats.correct++; }
+  if (mode === "main") grade(c, ok);
+  if (!ok) queue.splice(Math.min(queue.length, index + 4), 0, { card: c, type: "rec", retry: true });
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (ok){ v.className = "verdict ok"; v.append("Верно"); }
+  else if (opt){
+    v.className = "verdict bad";
+    if (item.type === "prod"){
+      v.append("Нет: ", enText("b", null, opt.term), " — это «" + coreRu(opt) + "». Правильно:");
+    } else {
+      v.append("Нет: «" + coreRu(opt) + "» — это ", enText("b", null, opt.term), ". Прозвучало другое:");
+    }
+  } else {
+    v.className = "verdict bad";
+    v.append("Не совсем. У тебя: ", enText("b", null, said || ""), ". Правильно:");
+  }
+  show("verdict", true);
+  if (item.type === "build" && $("built")) $("built").className = "built " + (ok ? "ok" : "bad");
+  const box = $("qbox");
+  box.textContent = "";
+  box.append(detailNode(c, { note: !ok }));
+  show("hint", false);
+  show("opts", false);
+  show("actNext", true);
+  $("card").scrollTop = 0;
+  if (autoSpeak) sayCard(c, item.type === "rec" ? "x" : "t");
+}
+function next(){
+  const item = queue[index];
+  if (!item) return;
+  if (item.type === "intro") queue.splice(Math.min(queue.length, index + 3), 0, { card: item.card, type: "rec" });
+  else if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Все фразы
+function isWide(){ return document.body.classList.contains("wide"); }
+function renderDict(){
+  const q = $("find").value.trim().toLowerCase();
+  const list = $("list");
+  list.textContent = "";
+  $("dCount").textContent = CARDS.length + " " + plural(CARDS.length, "фраза", "фразы", "фраз");
+  const wide = isWide();
+  if (wide && !CARDS.some(c => c.id === openId)){ const l = CARDS[CARDS.length - 1]; openId = l ? l.id : null; }
+  const items = CARDS.slice().reverse().filter(c => !q ||
+    [c.term, c.ru, c.who, c.ex].some(s => String(s || "").toLowerCase().indexOf(q) >= 0));
+  items.forEach(c => {
+    const item = el("div", "d-item");
+    const row = el("button", "d-row");
+    row.type = "button";
+    const open = openId === c.id;
+    if (wide) row.setAttribute("aria-current", String(open));
+    else row.setAttribute("aria-expanded", String(open));
+    const main = el("span", "d-main");
+    const t = enText("span", "d-term", c.term);
+    const al = addedLabel(c);
+    if (al === "сегодня" || al === "вчера"){ const g = el("span", "tag day", al); g.lang = "ru"; t.append(g); }
+    main.append(t, el("span", "d-ru", coreRu(c)));
+    const side = el("span", "d-side");
+    side.append(progress[c.id] ? dotsNode(c) : el("span", "tag", "новая"));
+    row.append(main, side, el("span", "d-chev", "›"));
+    row.addEventListener("click", () => {
+      openId = (open && !isWide()) ? null : c.id;
+      lsSet(LS_OPEN, openId || "");
+      stopAudio();
+      renderDict();
+      if (openId && !isWide()){
+        const n = $("list").querySelector('[data-id="' + openId + '"]');
+        if (n) n.scrollIntoView({ block: "nearest" });
+      }
+    });
+    item.dataset.id = c.id;
+    item.append(row);
+    if (open && !wide){
+      const body = el("div", "d-body");
+      body.append(detailNode(c, { note: true, status: true }));
+      item.append(body);
+    }
+    list.append(item);
+  });
+  if (!items.length) list.append(el("p", "empty", "Ничего не нашлось. Ищи по-английски, по-русски или по имени героя."));
+  const pane = $("pane");
+  pane.textContent = "";
+  if (wide){
+    const c = CARDS.find(x => x.id === openId);
+    if (c) pane.append(detailNode(c, { note: true, status: true }));
+  }
+}
+function openInDict(c){
+  if (!c) return;
+  openId = c.id;
+  lsSet(LS_OPEN, openId);
+  $("find").value = "";
+  setTab("dict");
+  const n = $("list").querySelector('[data-id="' + c.id + '"]');
+  if (n) n.scrollIntoView({ block: "start" });
+}
+
+// ——— Вкладки
+function setTab(name){
+  tab = name === "dict" ? "dict" : "train";
+  const train = tab === "train";
+  $("tabTrain").setAttribute("aria-selected", String(train));
+  $("tabDict").setAttribute("aria-selected", String(!train));
+  $("dict").hidden = train;
+  $("home").hidden = !train || !!mode;
+  $("drill").hidden = !train || !mode;
+  if (!train){ stopAudio(); renderDict(); }
+  else if (!mode) renderHome();
+  else if (drillStale) render();
+}
+function refreshViews(){
+  if (tab === "dict") renderDict();
+  else if (!mode) renderHome();
+}
+
+// ——— События
+$("tabTrain").addEventListener("click", () => { if (tab !== "train") setTab("train"); });
+$("tabDict").addEventListener("click", () => { if (tab !== "dict") setTab("dict"); });
+$("start").addEventListener("click", () => startSession($("start").dataset.kind));
+$("heroMore").addEventListener("click", () => openInDict(CARDS[CARDS.length - 1]));
+$("next").addEventListener("click", next);
+$("quit").addEventListener("click", finishSession);
+$("say").addEventListener("click", () => {
+  const item = queue[index];
+  if (!item) return;
+  sayCard(item.card, lastClip && lastClip.id === item.card.id ? lastClip.part : "t");
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, JSON.stringify(autoSpeak));
+  if (!autoSpeak) stopAudio();
+});
+$("find").addEventListener("input", renderDict);
+// Свайп влево по карточке — дальше (когда ответ уже дан)
+(function(){
+  let x0 = null, y0 = null;
+  const card = $("card");
+  card.addEventListener("touchstart", e => { const t = e.changedTouches[0]; x0 = t.clientX; y0 = t.clientY; }, { passive: true });
+  card.addEventListener("touchend", e => {
+    if (x0 === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - x0, dy = t.clientY - y0;
+    x0 = null;
+    if (dx < -70 && Math.abs(dy) < 50){
+      const item = queue[index];
+      if (item && (answered || item.type === "intro")) next();
+    }
+  }, { passive: true });
+})();
+// Клавиатура: 1, 2, 3 — варианты по порядку; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button,input")) return;
+  if (tab !== "train" || !mode) return;
+  const item = queue[index];
+  if (!item) return;
+  if (item.type !== "intro" && item.type !== "build" && !answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length) choose(shownOpts[i]);
+  } else if ((answered || item.type === "intro") && (e.key === " " || e.key === "Enter")){
+    e.preventDefault();
+    next();
+  }
+});
+let wasWide = isWide();
+function onResize(){
+  const w = isWide();
+  if (w !== wasWide){ wasWide = w; if (tab === "dict") renderDict(); }
+}
+window.addEventListener("resize", onResize);
+window.addEventListener("orientationchange", () => setTimeout(onResize, 200));
+document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshViews(); });
+
+// ——— Состояние при обновлении страницы: новые фразы дня приходят, не сбивая тренировку
+function hotState(){
+  return {
+    v: 1, tab: tab, openId: openId, find: $("find").value, lastResult: lastResult,
+    session: mode ? {
+      mode: mode, index: answered ? index + 1 : index,
+      items: queue.map(it => [it.card.id, it.type, it.retry ? 1 : 0]),
+      stats: stats, seen: Array.from(seen), lapsed: Object.keys(lapsed)
+    } : null
+  };
+}
+function restore(data){
+  if (!data || data.v !== 1) return false;
+  const byId = {};
+  CARDS.forEach(c => { byId[c.id] = c; });
+  if (typeof data.find === "string") $("find").value = data.find;
+  if (data.openId && byId[data.openId]) openId = data.openId;
+  if (data.lastResult && typeof data.lastResult === "object") lastResult = data.lastResult;
+  const s = data.session;
+  if (s && Array.isArray(s.items)){
+    queue = s.items.filter(x => Array.isArray(x) && byId[x[0]]).map(x => ({ card: byId[x[0]], type: x[1], retry: !!x[2] }));
+    queue = queue.filter(it => ["intro", "rec", "listen", "build", "prod"].indexOf(it.type) >= 0 && (it.type !== "build" || canBuild(it.card)));
+    index = Math.max(0, Math.min(s.index | 0, queue.length));
+    mode = s.mode === "practice" ? "practice" : "main";
+    stats = (s.stats && typeof s.stats === "object") ? { first: s.stats.first | 0, correct: s.stats.correct | 0 } : { first: 0, correct: 0 };
+    seen = new Set(Array.isArray(s.seen) ? s.seen : []);
+    lapsed = {};
+    (Array.isArray(s.lapsed) ? s.lapsed : []).forEach(id => { lapsed[id] = true; });
+    if (index >= queue.length){ finishSession(); return true; }
+    drillStale = true;
+  }
+  setTab(data.tab === "dict" ? "dict" : "train");
+  return true;
+}
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = !(s === "false" || s === "0");
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = lsGet(LS_OPEN);
+  if (o && CARDS.some(c => c.id === o)) openId = o;
+  setTab("train");
+  connectCloud();
+}
+let touched = false;
+document.addEventListener("pointerdown", () => { touched = true; }, { capture: true, once: true });
+document.addEventListener("keydown", () => { touched = true; }, { capture: true, once: true });
+(function start(){
+  const hot = window.claude && window.claude.hot;
+  try{ if (hot && typeof hot.snapshot === "function") hot.snapshot(hotState); }catch(e){}
+  boot();
+  const apply = d => {
+    if (touched || !d || typeof d !== "object") return;
+    try{ restore(d); }catch(e){ mode = null; queue = []; index = 0; setTab("train"); }
+  };
+  try{
+    if (hot && typeof hot.ready === "function") hot.ready(apply);
+    else if (hot && hot.data) apply(hot.data);
+  }catch(e){}
+})();
+</script>

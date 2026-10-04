@@ -1,0 +1,1596 @@
+<title>Условные предложения</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("cond",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw,.g-form i{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .obj,.st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-title .h-plus{color:var(--muted)}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(28px*var(--k)) minmax(0,1fr) auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li{grid-template-columns:minmax(0,1fr) auto}
+  .algo li::before{display:none}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li span i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));white-space:nowrap}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .ty{display:grid;grid-template-columns:calc(40px*var(--k)) minmax(0,1fr);column-gap:calc(12px*var(--k));padding:calc(13px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .ty:first-child{border-top:0}
+  .ty-n{margin:0;font-family:var(--serif);font-size:calc(34px*var(--k));line-height:1;color:var(--accent)}
+  .ty-when{margin:0;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35}
+  .ty-f{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35}
+  .ty-f i{font-style:normal;color:var(--muted)}
+  .ty-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .ty-ru{margin:calc(2px*var(--k)) 0 0;font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .rb{padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .rb:first-child{border-top:0}
+  .rb-ru{margin:0;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft)}
+  .rb-tag{display:inline-block;margin-left:calc(6px*var(--k));padding:0 calc(8px*var(--k));border:calc(1px*var(--k)) solid currentColor;border-radius:calc(999px*var(--k));font-size:calc(12px*var(--k));line-height:1.6;color:var(--blue);white-space:nowrap}
+  .rb-en{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35}
+  .ot{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);column-gap:calc(12px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .ot:first-child{border-top:0}
+  .ot-c{margin:0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.3}
+  .ot-ru{margin:calc(2px*var(--k)) 0 0;font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .ot-ex{margin:0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .ot-note{margin:calc(3px*var(--k)) 0 0;font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-foot{margin:calc(6px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .mx-foot a{color:var(--blue)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-w{grid-column:1 / -1;margin:calc(6px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .ex-w b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(4px*var(--k))}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex.has-w .ex-play{grid-row:2 / span 2}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Conditionals</h1>
+      <p class="r-sub">Условные предложения. Всего четыре типа, и&nbsp;выбирает их один вопрос: <b>насколько это реально и&nbsp;о&nbsp;каком времени речь?</b></p>
+      <div class="algo">
+        <p class="algo-h">Проверка за секунду</p>
+        <ol>
+          <li><span>Всегда так: факт, правило? <i lang="en">if + Present → Present</i></span><b class="pr">0</b></li>
+          <li><span>Реально может случиться? <i lang="en">if + Present → will</i></span><b class="pr">1</b></li>
+          <li><span>Воображаю: сейчас не&nbsp;так или вряд&nbsp;ли будет? <i lang="en">if + Past → would</i></span><b class="pr">2</b></li>
+          <li><span>Уже поздно: в&nbsp;прошлом было иначе? <i lang="en">if + had done → would have done</i></span><b class="pr">3</b></li>
+        </ol>
+        <p class="algo-m">В&nbsp;части с&nbsp;<span class="st" lang="en">if</span> нет <span lang="en">will</span> и&nbsp;<span lang="en">would</span>.</p>
+        <p class="algo-note">Русское «если бы»&nbsp;— это второй или третий тип: смотри, о&nbsp;каком времени речь.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Четыре типа</h2>
+      <div class="mx-wrap">
+        <div class="ty"><p class="ty-n">0</p><div><p class="ty-when">всегда так: факт, правило</p><p class="ty-f" lang="en"><span class="st">if + Present</span> <i>→</i> <span class="pr">Present</span></p><p class="ty-ex" lang="en">If you <span class="st">take</span> warfarin, you <span class="pr">bruise</span> easily.</p><p class="ty-ru">Если принимаете варфарин, легко появляются синяки.</p></div></div>
+        <div class="ty"><p class="ty-n">1</p><div><p class="ty-when">реально может случиться</p><p class="ty-f" lang="en"><span class="st">if + Present</span> <i>→</i> <span class="pr">will + глагол</span></p><p class="ty-ex" lang="en">If the CT <span class="st">is</span> clear, we<span class="pr">&#x27;ll start</span> thrombolysis.</p><p class="ty-ru">Если КТ чистая, начнём тромболизис.</p></div></div>
+        <div class="ty"><p class="ty-n">2</p><div><p class="ty-when">воображаю: сейчас не так или вряд ли будет</p><p class="ty-f" lang="en"><span class="st">if + Past</span> <i>→</i> <span class="pr">would + глагол</span></p><p class="ty-ex" lang="en">If I <span class="st">had</span> time, I<span class="pr">&#x27;d help</span> you.</p><p class="ty-ru">Если бы у меня было время, я бы помог.</p></div></div>
+        <div class="ty"><p class="ty-n">3</p><div><p class="ty-when">уже поздно: в прошлом было иначе</p><p class="ty-f" lang="en"><span class="st">if + Past Perfect</span> <i>→</i> <span class="pr">would have + V3</span></p><p class="ty-ex" lang="en">If he <span class="st">had come</span> earlier, we<span class="pr">&#x27;d have treated</span> him.</p><p class="ty-ru">Если бы он приехал раньше, мы бы его пролечили.</p></div></div>
+      </div>
+      <p class="mx-note"><span class="st">Синим</span>&nbsp;— часть с&nbsp;<span lang="en">if</span>, <span class="pr">оранжевым</span>&nbsp;— главная часть. Если <span lang="en">if</span> в&nbsp;начале&nbsp;— после его части ставим запятую.</p>
+      <h2 class="lbl">«Если бы»&nbsp;— второй или третий?</h2>
+      <div class="mx-wrap">
+        <div class="rb"><p class="rb-ru">Если бы у меня было время, я бы помог. <span class="rb-tag">сейчас → 2</span></p><p class="rb-en" lang="en">If I <span class="st">had</span> time, I<span class="pr">&#x27;d help</span>.</p></div>
+        <div class="rb"><p class="rb-ru">Если бы вчера у меня было время, я бы помог. <span class="rb-tag">прошлое → 3</span></p><p class="rb-en" lang="en">If I <span class="st">had had</span> time, I<span class="pr">&#x27;d have helped</span>.</p></div>
+        <div class="rb"><p class="rb-ru">Если бы он принимал таблетки, ему было бы лучше. <span class="rb-tag">вообще, сейчас → 2</span></p><p class="rb-en" lang="en">If he <span class="st">took</span> his tablets, he<span class="pr">&#x27;d feel</span> better.</p></div>
+        <div class="rb"><p class="rb-ru">Если бы он принимал таблетки, инсульта бы не было. <span class="rb-tag">уже случилось → 3</span></p><p class="rb-en" lang="en">If he <span class="st">had taken</span> them, he <span class="pr">wouldn&#x27;t have had</span> a stroke.</p></div>
+      </div>
+      <h2 class="lbl">Не только <span class="en" lang="en">if</span></h2>
+      <div class="mx-wrap">
+        <div class="ot"><div><p class="ot-c" lang="en">unless</p><p class="ot-ru">если не</p></div><div><p class="ot-ex" lang="en"><span class="st">Unless</span> you stop smoking, the risk stays high.</p><p class="ot-note">= if … not; второе not не нужно</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">as long as · provided</p><p class="ot-ru">при условии, что</p></div><div><p class="ot-ex" lang="en">You can go home <span class="st">as long as</span> someone stays with you.</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">in case</p><p class="ot-ru">на случай, если</p></div><div><p class="ot-ex" lang="en">Take a spare dose <span class="st">in case</span> your flight is delayed.</p><p class="ot-note">это не if: делаю заранее</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">when · as soon as · until</p><p class="ot-ru">когда, как только, пока не</p></div><div><p class="ot-ex" lang="en">I&#x27;ll call you <span class="st">as soon as</span> the results come.</p><p class="ot-note">тоже без will</p></div></div>
+      </div>
+      <h2 class="lbl"><span class="en" lang="en">I wish</span> и&nbsp;<span class="en" lang="en">If only</span></h2>
+      <div class="mx-wrap">
+        <div class="ot"><div><p class="ot-c" lang="en">wish + Past</p><p class="ot-ru">жаль, что сейчас не так</p></div><div><p class="ot-ex" lang="en">I wish I <span class="st">had</span> more time.</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">wish + Past Perfect</p><p class="ot-ru">жаль, что тогда было так</p></div><div><p class="ot-ex" lang="en">I wish I <span class="st">had listened</span> to you.</p></div></div>
+        <div class="ot"><div><p class="ot-c" lang="en">wish + would</p><p class="ot-ru">хочу, чтобы другой изменился</p></div><div><p class="ot-ex" lang="en">I wish you <span class="pr">would stop</span> interrupting.</p></div></div>
+      </div>
+      <p class="mx-note">Сверх уровня, для писем: <span lang="en">Should you have any questions…</span> = <span lang="en">If you have…</span> · <span lang="en">Had I known…</span> = <span lang="en">If I had known…</span></p>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">If it will rain, we&#x27;ll stay in</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">If it rains, we&#x27;ll stay in</span><span class="err-note">в части с if нет will</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">If I would have time, I&#x27;d help</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">If I had time, I&#x27;d help</span><span class="err-note">в части с if нет would</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">If he would have come earlier…</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">If he had come earlier…</span><span class="err-note">третий тип — had + V3</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">When the results will come, I&#x27;ll call</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">When the results come, I&#x27;ll call</span><span class="err-note">when, as soon as — тоже без will</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Unless you don&#x27;t stop smoking</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Unless you stop smoking</span><span class="err-note">unless уже значит «если не»</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I wish I would have more time</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I wish I had more time</span><span class="err-note">wish о настоящем — Past</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. {…} — часть с if (синий), […] — главная часть (оранжевый).
+const MIXED_TOPIC = 10;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "0 — всегда так",
+  "rule": "Нулевой тип — факты, законы, правила, инструкции: то, что происходит всегда, когда выполнено условие. Обе части в Present Simple: If you take warfarin, you bruise easily. if здесь почти равно when. Никаких would.",
+  "ex": [
+   {
+    "en": "If you {take} warfarin, you [bruise] more easily.",
+    "ru": "Если принимаете варфарин, легче появляются синяки."
+   },
+   {
+    "en": "If blood sugar {drops} too low, the patient [gets] confused.",
+    "ru": "Если сахар сильно падает, пациент становится спутанным."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "1 — реальное будущее",
+  "rule": "Первый тип — то, что реально может случиться: if + Present, в главной части will, can, may или повелительное наклонение. Главная ловушка: по-русски «если будет», по-английски в части с if — Present: If the CT is clear, we'll start thrombolysis, а не if the CT will be clear. Так же после when, as soon as, before, after, until: I'll call you as soon as the results come.",
+  "ex": [
+   {
+    "en": "If the CT {is} clear, we['ll start] thrombolysis.",
+    "ru": "Если КТ чистая, начнём тромболизис."
+   },
+   {
+    "en": "I['ll call] you as soon as the results {come} back.",
+    "ru": "Позвоню, как только придут результаты."
+   },
+   {
+    "en": "If the pain {gets} worse, [call] us.",
+    "ru": "Если боль усилится, звоните нам."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "2 — воображаю: сейчас не так",
+  "rule": "Второй тип — воображаемое: сейчас не так или вряд ли будет. if + Past Simple, в главной части would (could, might) + глагол: If I had more time, I'd do a PhD — времени нет. По-русски «бы» в обеих частях, по-английски would — только в главной. If I were you — «на твоём месте»: were для всех лиц; в разговоре бывает и was.",
+  "ex": [
+   {
+    "en": "If I {had} more time, I['d do] a PhD.",
+    "ru": "Если бы у меня было больше времени, я бы писал диссертацию."
+   },
+   {
+    "en": "If I {were} you, I['d see] a neurologist.",
+    "ru": "На твоём месте я бы сходил к неврологу."
+   },
+   {
+    "en": "What [would you do] if a patient {refused} treatment?",
+    "ru": "Что бы вы сделали, если бы пациент отказался от лечения?"
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "3 — уже поздно: прошлое",
+  "rule": "Третий тип — прошлое, которое уже не изменить: сожаление, разбор ошибок. if + Past Perfect (had + V3), в главной части would have + V3 (или could have, might have): If he had arrived earlier, we could have given thrombolysis — но он приехал поздно.",
+  "ex": [
+   {
+    "en": "If he {had arrived} earlier, we [could have given] thrombolysis.",
+    "ru": "Если бы он приехал раньше, мы могли бы провести тромболизис."
+   },
+   {
+    "en": "If we {had known} about the allergy, we [wouldn't have given] penicillin.",
+    "ru": "Если бы мы знали об аллергии, мы бы не дали пенициллин."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "«Если бы»: второй или третий?",
+  "rule": "Русское «если бы» — одна форма, английских две. Решает время. Речь о сейчас или вообще — второй тип: If I had time, I'd help. Речь о прошлом, которое уже случилось, — третий: If I'd had time yesterday, I'd have helped. Подсказки третьего: yesterday, then, last year, уже случилось.",
+  "ex": [
+   {
+    "en": "If I {had} time, I['d help] you.",
+    "ru": "Если бы у меня было время (сейчас), я бы помог."
+   },
+   {
+    "en": "If I {had had} time, I['d have helped] you.",
+    "ru": "Если бы у меня было время (тогда), я бы помог."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "unless, as long as, in case",
+  "rule": "unless — «если не»: Unless you stop smoking = If you don't stop smoking; второе not не нужно. as long as, provided (that) — «при условии, что». in case — «на случай, если»: делаю заранее, это не if: Take a spare dose in case your flight is delayed. После всех них, как после if, — без will.",
+  "ex": [
+   {
+    "en": "{Unless} you stop smoking, your risk will stay high.",
+    "ru": "Если не бросите курить, риск останется высоким."
+   },
+   {
+    "en": "You can go home {as long as} someone stays with you.",
+    "ru": "Можете идти домой, если кто-то останется с вами."
+   },
+   {
+    "en": "Take a spare dose {in case} your flight is delayed.",
+    "ru": "Возьмите запасную дозу на случай, если рейс задержат."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "Смешанные: прошлое → сейчас",
+  "late": 0.35,
+  "rule": "Сверх уровня, но часто нужно. Причина в прошлом, результат сейчас: if + Past Perfect, в главной части would + глагол: If he had taken his tablets, he wouldn't be in hospital now. Подсказка — now, today, still в главной части.",
+  "ex": [
+   {
+    "en": "If he {had taken} his tablets, he [wouldn't be] in hospital now.",
+    "ru": "Если бы он принимал таблетки, он бы сейчас не лежал в больнице."
+   },
+   {
+    "en": "If I {hadn't become} a doctor, I['d probably be] a teacher.",
+    "ru": "Если бы я не стал врачом, я бы, наверное, был учителем."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "I wish и If only",
+  "late": 0.15,
+  "rule": "I wish и If only — «жаль, что…», те же сдвиги, что во втором и третьем типе. О настоящем — Past: I wish I had more time. О прошлом — Past Perfect: I wish I had listened. wish + would — хочу, чтобы другой изменил поведение: I wish you would stop interrupting.",
+  "ex": [
+   {
+    "en": "I wish I {had} more time.",
+    "ru": "Жаль, что у меня мало времени."
+   },
+   {
+    "en": "I wish I {had listened} to you.",
+    "ru": "Жаль, что я тебя не послушал."
+   },
+   {
+    "en": "I wish you [would stop] interrupting me.",
+    "ru": "Хоть бы ты перестал меня перебивать."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "title": "Для писем: Should you…",
+  "late": 0.5,
+  "rule": "Сверх уровня, но пригодится в официальных письмах: if убирают и меняют порядок слов. Should you have any questions = If you have any questions. Had I known = If I had known. Were it not for = If it weren't for.",
+  "ex": [
+   {
+    "en": "{Should} you have any questions, please contact us.",
+    "ru": "Если у вас возникнут вопросы, свяжитесь с нами."
+   },
+   {
+    "en": "{Had} I known, I would have called you.",
+    "ru": "Знал бы я — позвонил бы тебе."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "title": "Итог — всё вместе",
+  "rule": "Пятнадцать случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, ru — русская фраза (подсказка).
+const CARDS = [
+ {
+  "id": "z-neurons",
+  "t": 1,
+  "q": "If the brain doesn't get oxygen for a few minutes, neurons ___.",
+  "opts": [
+   "die",
+   "would die",
+   "died"
+  ],
+  "a": "die",
+  "why": "Факт, так всегда — Present: die."
+ },
+ {
+  "id": "z-warfarin",
+  "t": 1,
+  "q": "If you ___ warfarin, you bruise more easily.",
+  "opts": [
+   "take",
+   "will take",
+   "took"
+  ],
+  "a": "take",
+  "why": "Нулевой тип: Present в обеих частях."
+ },
+ {
+  "id": "z-sugar",
+  "t": 1,
+  "q": "When blood sugar ___ too low, patients often feel confused.",
+  "opts": [
+   "drops",
+   "will drop",
+   "dropped"
+  ],
+  "a": "drops",
+  "why": "Так бывает всегда — Present: drops."
+ },
+ {
+  "id": "z-cuff",
+  "t": 1,
+  "q": "If the cuff is too small, the reading ___ falsely high.",
+  "opts": [
+   "is",
+   "would be",
+   "was"
+  ],
+  "a": "is",
+  "why": "Правило, так всегда — Present: is."
+ },
+ {
+  "id": "z-stroke",
+  "t": 1,
+  "q": "If a patient ___ a stroke, every minute counts.",
+  "opts": [
+   "has",
+   "will have",
+   "had"
+  ],
+  "a": "has",
+  "why": "Общее правило — Present: has."
+ },
+ {
+  "id": "f-ct",
+  "t": 2,
+  "q": "If the CT ___ clear, we'll start thrombolysis.",
+  "opts": [
+   "is",
+   "will be",
+   "would be"
+  ],
+  "a": "is",
+  "why": "В части с if нет will: if the CT is clear."
+ },
+ {
+  "id": "f-call",
+  "t": 2,
+  "q": "If the pain gets worse, ___ me immediately.",
+  "opts": [
+   "call",
+   "you would call",
+   "you called"
+  ],
+  "a": "call",
+  "why": "Первый тип с повелительным: If…, call me."
+ },
+ {
+  "id": "f-dose",
+  "t": 2,
+  "q": "___ the dose if his INR is still high tomorrow.",
+  "opts": [
+   "We'll reduce",
+   "We'd reduce",
+   "We reduced"
+  ],
+  "a": "We'll reduce",
+  "why": "Реальное будущее — will в главной части."
+ },
+ {
+  "id": "f-results",
+  "t": 2,
+  "q": "I'll call you as soon as the results ___ back.",
+  "opts": [
+   "come",
+   "will come",
+   "came"
+  ],
+  "a": "come",
+  "why": "После as soon as, как после if, — без will."
+ },
+ {
+  "id": "f-until",
+  "t": 2,
+  "q": "Don't discharge him until he ___ able to walk.",
+  "opts": [
+   "is",
+   "will be",
+   "would be"
+  ],
+  "a": "is",
+  "why": "После until — без will: until he is able."
+ },
+ {
+  "id": "f-smoking",
+  "t": 2,
+  "q": "If you ___ smoking, your risk will fall.",
+  "opts": [
+   "stop",
+   "will stop",
+   "stopped"
+  ],
+  "a": "stop",
+  "why": "Реально — if + Present: if you stop."
+ },
+ {
+  "id": "s-phd",
+  "t": 3,
+  "q": "If I ___ more time, I'd do a PhD.",
+  "opts": [
+   "had",
+   "have",
+   "would have"
+  ],
+  "a": "had",
+  "why": "Времени нет — второй тип: if + Past. Would в части с if не ставят."
+ },
+ {
+  "id": "s-were",
+  "t": 3,
+  "q": "If I ___ you, I'd see a neurologist.",
+  "opts": [
+   "were",
+   "would be",
+   "am"
+  ],
+  "a": "were",
+  "why": "If I were you — «на твоём месте»."
+ },
+ {
+  "id": "s-refused",
+  "t": 3,
+  "q": "What ___ you do if a patient refused treatment?",
+  "opts": [
+   "would",
+   "will",
+   "did"
+  ],
+  "a": "would",
+  "why": "refused — воображаемая ситуация: what would you do?"
+ },
+ {
+  "id": "s-scanner",
+  "t": 3,
+  "q": "If we had a second scanner, patients ___ so long.",
+  "opts": [
+   "wouldn't wait",
+   "won't wait",
+   "didn't wait"
+  ],
+  "a": "wouldn't wait",
+  "why": "Второго сканера нет — would в главной части."
+ },
+ {
+  "id": "s-tablets",
+  "t": 3,
+  "q": "If he ___ his tablets regularly, his blood pressure would be normal.",
+  "opts": [
+   "took",
+   "takes",
+   "would take"
+  ],
+  "a": "took",
+  "why": "Он их не принимает — воображаем: if + Past."
+ },
+ {
+  "id": "s-drug",
+  "t": 3,
+  "q": "I ___ that drug if I were you.",
+  "opts": [
+   "wouldn't take",
+   "won't take",
+   "didn't take"
+  ],
+  "a": "wouldn't take",
+  "why": "if I were you — второй тип: would."
+ },
+ {
+  "id": "t-arrived",
+  "t": 4,
+  "q": "If he ___ earlier, we could have given thrombolysis.",
+  "opts": [
+   "had arrived",
+   "arrived",
+   "would have arrived"
+  ],
+  "a": "had arrived",
+  "why": "Прошлое, уже поздно — if + Past Perfect."
+ },
+ {
+  "id": "t-allergy",
+  "t": 4,
+  "q": "If we had known about the allergy, we ___ penicillin.",
+  "opts": [
+   "wouldn't have given",
+   "wouldn't give",
+   "didn't give"
+  ],
+  "a": "wouldn't have given",
+  "why": "Третий тип — would have + V3."
+ },
+ {
+  "id": "t-rails",
+  "t": 4,
+  "q": "She ___ the fall if the bed rails had been up.",
+  "opts": [
+   "wouldn't have had",
+   "wouldn't have",
+   "hadn't had"
+  ],
+  "a": "wouldn't have had",
+  "why": "Упала в прошлом — would have + V3."
+ },
+ {
+  "id": "t-ecg",
+  "t": 4,
+  "q": "If I ___ at the ECG more carefully, I would have spotted the AF.",
+  "opts": [
+   "had looked",
+   "looked",
+   "would look"
+  ],
+  "a": "had looked",
+  "why": "Сожаление о прошлом — if + had + V3."
+ },
+ {
+  "id": "t-might",
+  "t": 4,
+  "q": "If the ambulance had come sooner, he ___ survived.",
+  "opts": [
+   "might have",
+   "might",
+   "will have"
+  ],
+  "a": "might have",
+  "why": "Третий тип — might have + V3."
+ },
+ {
+  "id": "b-now",
+  "t": 5,
+  "q": "If I ___ more time, I'd help you.",
+  "ru": "Если бы у меня было больше времени (сейчас), я бы тебе помог.",
+  "opts": [
+   "had",
+   "had had"
+  ],
+  "a": "had",
+  "why": "Сейчас — второй тип: had."
+ },
+ {
+  "id": "b-then",
+  "t": 5,
+  "q": "If I ___ more time yesterday, I'd have helped you.",
+  "ru": "Если бы вчера у меня было больше времени, я бы тебе помог.",
+  "opts": [
+   "had had",
+   "had"
+  ],
+  "a": "had had",
+  "why": "Вчера, уже прошло — третий тип: had had."
+ },
+ {
+  "id": "b-stroke",
+  "t": 5,
+  "q": "If he ___ his anticoagulant, he wouldn't have had a stroke.",
+  "ru": "Если бы он принимал антикоагулянт, инсульта бы не было.",
+  "opts": [
+   "had taken",
+   "took"
+  ],
+  "a": "had taken",
+  "why": "Инсульт уже случился — третий тип."
+ },
+ {
+  "id": "b-safer",
+  "t": 5,
+  "q": "If he ___ his anticoagulant every day, he'd be safer.",
+  "ru": "Если бы он принимал антикоагулянт каждый день (а он не принимает), ему было бы безопаснее.",
+  "opts": [
+   "took",
+   "had taken"
+  ],
+  "a": "took",
+  "why": "Вообще, сейчас — второй тип: took."
+ },
+ {
+  "id": "b-called",
+  "t": 5,
+  "q": "If you ___ me, I would have come.",
+  "ru": "Если бы ты мне тогда позвонил, я бы пришёл.",
+  "opts": [
+   "had called",
+   "called"
+  ],
+  "a": "had called",
+  "why": "Тогда — третий тип: had called."
+ },
+ {
+  "id": "b-often",
+  "t": 5,
+  "q": "If you ___ me more often, I'd know what's going on.",
+  "ru": "Если бы ты чаще звонил, я бы знал, что происходит.",
+  "opts": [
+   "called",
+   "had called"
+  ],
+  "a": "called",
+  "why": "Сейчас, вообще — второй тип: called."
+ },
+ {
+  "id": "u-unless",
+  "t": 6,
+  "q": "___ you stop smoking, your risk will stay high.",
+  "ru": "Если не бросите курить, риск останется высоким.",
+  "opts": [
+   "Unless",
+   "If",
+   "In case"
+  ],
+  "a": "Unless",
+  "why": "«Если не» — unless."
+ },
+ {
+  "id": "u-inr",
+  "t": 6,
+  "q": "Unless the INR ___ below 1.7, we can't operate.",
+  "ru": "Пока МНО не будет ниже 1,7, оперировать нельзя.",
+  "opts": [
+   "is",
+   "isn't",
+   "will be"
+  ],
+  "a": "is",
+  "why": "unless уже значит «если не» — второе not не нужно."
+ },
+ {
+  "id": "u-flight",
+  "t": 6,
+  "q": "Take a spare dose ___ your flight is delayed.",
+  "ru": "Возьмите запасную дозу на случай, если рейс задержат.",
+  "opts": [
+   "in case",
+   "if",
+   "unless"
+  ],
+  "a": "in case",
+  "why": "Делаю заранее, на всякий случай — in case."
+ },
+ {
+  "id": "u-home",
+  "t": 6,
+  "q": "You can go home ___ someone stays with you tonight.",
+  "ru": "Можете идти домой при условии, что кто-то останется с вами на ночь.",
+  "opts": [
+   "as long as",
+   "in case",
+   "unless"
+  ],
+  "a": "as long as",
+  "why": "«При условии, что» — as long as."
+ },
+ {
+  "id": "u-write",
+  "t": 6,
+  "q": "Write the dose down ___ you forget it.",
+  "ru": "Запишите дозу на случай, если забудете.",
+  "opts": [
+   "in case",
+   "if",
+   "unless"
+  ],
+  "a": "in case",
+  "why": "На всякий случай — in case."
+ },
+ {
+  "id": "m-now",
+  "t": 7,
+  "q": "If he had taken his tablets, he ___ in hospital now.",
+  "opts": [
+   "wouldn't be",
+   "wouldn't have been",
+   "won't be"
+  ],
+  "a": "wouldn't be",
+  "why": "Причина в прошлом, результат сейчас (now) — would be."
+ },
+ {
+  "id": "m-teacher",
+  "t": 7,
+  "q": "If I hadn't become a doctor, I ___ a teacher now.",
+  "opts": [
+   "would be",
+   "would have been"
+  ],
+  "a": "would be",
+  "why": "now — результат сейчас: would be."
+ },
+ {
+  "id": "m-scanner",
+  "t": 7,
+  "q": "If we had bought a new scanner last year, we ___ faster results now.",
+  "opts": [
+   "would have",
+   "would have had",
+   "will have"
+  ],
+  "a": "would have",
+  "why": "now — сейчас: would have (глагол have)."
+ },
+ {
+  "id": "m-lungs",
+  "t": 7,
+  "q": "If he hadn't smoked for forty years, his lungs ___ healthier today.",
+  "opts": [
+   "would be",
+   "would have been"
+  ],
+  "a": "would be",
+  "why": "today — результат сейчас: would be."
+ },
+ {
+  "id": "w-time",
+  "t": 8,
+  "q": "I wish I ___ more time for my family.",
+  "opts": [
+   "had",
+   "have",
+   "would have"
+  ],
+  "a": "had",
+  "why": "Жаль, что сейчас не так — wish + Past."
+ },
+ {
+  "id": "w-spoken",
+  "t": 8,
+  "q": "I wish I ___ to him before he left.",
+  "opts": [
+   "had spoken",
+   "spoke",
+   "would speak"
+  ],
+  "a": "had spoken",
+  "why": "Жаль, что тогда не поговорил — wish + Past Perfect."
+ },
+ {
+  "id": "w-stop",
+  "t": 8,
+  "q": "I wish you ___ interrupting me!",
+  "opts": [
+   "would stop",
+   "stopped",
+   "had stopped"
+  ],
+  "a": "would stop",
+  "why": "Раздражает, хочу, чтобы перестал, — wish + would."
+ },
+ {
+  "id": "w-checked",
+  "t": 8,
+  "q": "If only I ___ the results earlier!",
+  "opts": [
+   "had checked",
+   "checked",
+   "would check"
+  ],
+  "a": "had checked",
+  "why": "earlier — о прошлом: If only + Past Perfect."
+ },
+ {
+  "id": "w-french",
+  "t": 8,
+  "q": "I wish I ___ French — the patient doesn't speak English.",
+  "opts": [
+   "spoke",
+   "speak",
+   "had spoken"
+  ],
+  "a": "spoke",
+  "why": "Сейчас не говорю — wish + Past."
+ },
+ {
+  "id": "i-should",
+  "t": 9,
+  "q": "___ you have any questions, please contact the ward.",
+  "opts": [
+   "Should",
+   "Would",
+   "Will"
+  ],
+  "a": "Should",
+  "why": "Should you… = If you… — официально."
+ },
+ {
+  "id": "i-had",
+  "t": 9,
+  "q": "___ I known about his allergy, I would never have prescribed it.",
+  "opts": [
+   "Had",
+   "If",
+   "Have"
+  ],
+  "a": "Had",
+  "why": "Had I known = If I had known."
+ },
+ {
+  "id": "i-return",
+  "t": 9,
+  "q": "___ the symptoms return, seek medical help immediately.",
+  "opts": [
+   "Should",
+   "Would",
+   "Will"
+  ],
+  "a": "Should",
+  "why": "Should the symptoms return = If the symptoms return."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "cond:state";
+const LS_SPEAK = "cond:autospeak";
+const LS_TAB = "cond:tab";
+const LS_OPEN = "cond:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Conditionals"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]{}|]/g, ""); }
+function label(a){ return a === "" ? "ничего" : a; }
+// «-ing» и «to do» не должны разрываться в конце строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-ing\b|\bto do\b)/).forEach(part => { if (part === "-ing" || part === "to do") f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: смысл предлога и форма глагола чередуются,
+// чтобы каждый раз выбирать по смыслу, а не угадывать по теме.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх уровня» (late) вступают позже: сначала основа
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+// {…} — часть с if (синий), […] — главная часть (оранжевый)
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]|\{([^}]+)\}|\|([^|]+)\|/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(m[1] != null ? el("span", "pr", m[1]) : m[2] != null ? el("span", "st", m[2]) : el("span", "good", m[3]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex" + (ex.w ? " has-w" : ""));
+        if (ex.w){
+          const w = el("p", "ex-w");
+          const b = el("b", null, ex.w);
+          b.lang = "en";
+          w.append(b, ex.wr);
+          row.append(w);
+        }
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= TOPICS.length ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

@@ -1,0 +1,2254 @@
+<title>Топ-10 ошибок</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("top10",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .q.ruq{font-family:var(--sans);font-size:calc(24px*var(--k));line-height:1.35}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt.xl{font-size:calc(19px*var(--k));line-height:1.25;padding:calc(8px*var(--k)) calc(14px*var(--k));text-wrap:balance}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .verdict s{font-family:var(--serif);font-size:calc(19px*var(--k));text-decoration-thickness:calc(1.5px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .ck-list{list-style:none;margin:0;padding:0}
+  .ck-list li{border-top:calc(1px*var(--k)) solid var(--line)}
+  .ck-list li:first-child{border-top:0}
+  .ck{width:100%;min-height:calc(52px*var(--k));display:grid;grid-template-columns:calc(30px*var(--k)) minmax(0,1fr);column-gap:calc(8px*var(--k));align-items:baseline;padding:calc(8px*var(--k)) 0;border:0;background:transparent;text-align:left;cursor:pointer}
+  .ck-n{font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+  .ck-t{font-size:calc(16px*var(--k));line-height:1.35}
+  .ck-ex{grid-column:2;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.3;color:var(--blue)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .pairs{display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .pair{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .p-bad{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--no-text);text-decoration:line-through;text-decoration-thickness:calc(1.5px*var(--k))}
+  .p-top{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.35;color:var(--soft)}
+  .p-good{margin:calc(2px*var(--k)) 0 0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.35}
+  .p-good .good{text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .p-ru{margin:calc(2px*var(--k)) 0 0;grid-column:1;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .p-ru s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .pair .ex-play{grid-column:2;grid-row:1 / span 3}
+  .b2{margin:0;padding:calc(10px*var(--k)) calc(12px*var(--k));border-radius:calc(12px*var(--k));background:var(--blue-soft);font-size:calc(16px*var(--k));line-height:1.5;color:var(--text)}
+  .b2 b{display:block;margin-bottom:calc(2px*var(--k));font-size:calc(13px*var(--k));letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .t-lab{margin:0 0 -8px;font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .more{margin:-2px 0 0;font-size:calc(14px*var(--k));line-height:1.4;color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(64px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-family:var(--serif);font-size:calc(26px*var(--k));line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--soft)}
+  .t-sub s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .t-sub .arr{font-family:var(--sans);color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Ошибка 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Top 10 mistakes</h1>
+      <p class="r-sub">Десять ошибок, которые почти всегда выдают русскоговорящего и&nbsp;держат речь на&nbsp;<b>B1</b>. Все они приходят из&nbsp;русского языка. Исправишь их&nbsp;— и&nbsp;английский сразу звучит на&nbsp;уровень выше, ближе к&nbsp;<b>B2</b>.</p>
+      <div class="algo">
+        <p class="algo-h">Чек-лист перед фразой</p>
+        <ol class="ck-list">
+          <li><button class="ck" type="button" data-n="1"><span class="ck-n">1</span><span class="ck-t">Перед существительным есть a или the?</span><span class="ck-ex" lang="en">a doctor · the results</span></button></li>
+          <li><button class="ck" type="button" data-n="2"><span class="ck-n">2</span><span class="ck-t">yesterday, ago — Past; since, for, ever — Perfect</span><span class="ck-ex" lang="en">I saw · I&#x27;ve seen</span></button></li>
+          <li><button class="ck" type="button" data-n="3"><span class="ck-n">3</span><span class="ck-t">В вопросе есть do, does или did?</span><span class="ck-ex" lang="en">Where do you work?</span></button></li>
+          <li><button class="ck" type="button" data-n="4"><span class="ck-n">4</span><span class="ck-t">После when и if нет will</span><span class="ck-ex" lang="en">when I finish</span></button></li>
+          <li><button class="ck" type="button" data-n="5"><span class="ck-n">5</span><span class="ck-t">Отрицание в предложении одно</span><span class="ck-ex" lang="en">I don&#x27;t know anything</span></button></li>
+          <li><button class="ck" type="button" data-n="6"><span class="ck-n">6</span><span class="ck-t">want + кого + to</span><span class="ck-ex" lang="en">I want you to check</span></button></li>
+          <li><button class="ck" type="button" data-n="7"><span class="ck-n">7</span><span class="ck-t">information, advice, news — без a и без <span class="nw">-s</span></span><span class="ck-ex" lang="en">some advice</span></button></li>
+          <li><button class="ck" type="button" data-n="8"><span class="ck-n">8</span><span class="ck-t">Предлог — английский, а не русский</span><span class="ck-ex" lang="en">explain to me · discuss it</span></button></li>
+          <li><button class="ck" type="button" data-n="9"><span class="ck-n">9</span><span class="ck-t">Глагол и объект не разрываем</span><span class="ck-ex" lang="en">speak English very well</span></button></li>
+          <li><button class="ck" type="button" data-n="10"><span class="ck-n">10</span><span class="ck-t">Похожее слово — не всегда то же</span><span class="ck-ex">ангина = tonsillitis</span></button></li>
+        </ol>
+        <p class="algo-note">Нажми на пункт&nbsp;— откроется разбор этой ошибки.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">10 ошибок</h2>
+      <div class="topics" id="topics"></div>
+      <h2 class="lbl">Ещё 8 ошибок на пути к B2</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Is cold today.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It&#x27;s cold today.</span><span class="err-note">подлежащее обязательно: it или there</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Here is many patients.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">There are many patients here.</span><span class="err-note">«есть, находится» — there is / there are</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;m boring at work.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;m bored at work.</span><span class="err-note"><span class="nw">-ed</span> — что я чувствую, <span class="nw">-ing</span> — какой предмет</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I feel myself tired.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I feel tired.</span><span class="err-note">feel, relax, concentrate — без myself</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He said me the news.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He told me the news.</span><span class="err-note">say что-то, tell кому-то</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I did a mistake.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I made a mistake.</span><span class="err-note">make a mistake, make a decision</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">during two years</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">for two years</span><span class="err-note">for — сколько времени, during — во время чего</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">in Monday, at the morning</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">on Monday, in the morning</span><span class="err-note">дни — on, части дня — in</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Ошибки: откуда, правило, пары «неверно → верно» (|…| — что исправили), шаг к B2.
+const MIXED_TOPIC = 11;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "Артикли",
+  "bad": "I am doctor.",
+  "good": "I'm a doctor.",
+  "why": "В русском артиклей нет, поэтому мозг их просто пропускает. А англичанин фразу без артикля сразу слышит как ошибку.",
+  "rule": "Перед исчисляемым существительным в единственном числе артикль нужен всегда: a — один из многих или впервые (a doctor, a headache), the — тот самый, понятно какой (the window, the results). Без артикля — только множественное число или неисчисляемое в общем смысле: Patients need sleep. Life is hard.",
+  "pairs": [
+   {
+    "bad": "I am doctor.",
+    "good": "I'm |a| doctor.",
+    "ru": "Я врач."
+   },
+   {
+    "bad": "Can you open window?",
+    "good": "Can you open |the| window?",
+    "ru": "Можешь открыть окно?"
+   },
+   {
+    "bad": "He has headache.",
+    "good": "He has |a| headache.",
+    "ru": "У него болит голова."
+   },
+   {
+    "bad": "The life is hard.",
+    "good": "|Life| is hard.",
+    "ru": "Жизнь — непростая штука."
+   }
+  ],
+  "b2": "The ставим перед превосходной степенью и словами «единственный», «первый»: the best option, the only way, the first time. И когда уточняем, какой именно: the patient in bed 5.",
+  "more": "Подробнее — плитки «Артикли» и «Без a/an»."
+ },
+ {
+  "n": 2,
+  "title": "Present Perfect или Past",
+  "bad": "I have seen him yesterday.",
+  "good": "I saw him yesterday.",
+  "why": "В русском одно прошедшее время: «видел» — и вчера, и вообще в жизни. В английском их два. А «живу здесь пять лет» по-русски звучит в настоящем, по-английски — только have lived.",
+  "rule": "Есть момент в прошлом (yesterday, ago, last week, in 2019, вопрос when?) — Past Simple: I saw him yesterday. Момента нет, важны опыт или результат (ever, never, already, yet, just) — Present Perfect: I've seen this before. «Уже N лет, до сих пор» — have + V3 + for или since: I've worked here for ten years.",
+  "pairs": [
+   {
+    "bad": "I have seen him yesterday.",
+    "good": "I |saw| him yesterday.",
+    "ru": "Я видел его вчера."
+   },
+   {
+    "bad": "I work here for five years.",
+    "good": "I|'ve worked| here for five years.",
+    "ru": "Я работаю здесь пять лет."
+   },
+   {
+    "bad": "When have you arrived?",
+    "good": "When |did you arrive|?",
+    "ru": "Когда ты приехал?"
+   }
+  ],
+  "b2": "Для длительности чаще Present Perfect Continuous: I've been waiting for an hour. Вопрос «как долго?» — How long have you been working here?",
+  "more": "Подробнее — плитки «Времена» и «gone / been»."
+ },
+ {
+  "n": 3,
+  "title": "Вопросы без do",
+  "bad": "Where you work?",
+  "good": "Where do you work?",
+  "why": "В русском вопрос делает интонация: «Ты здесь работаешь?» В английском нужен помощник — do, does или did, — и он встаёт перед подлежащим.",
+  "rule": "Вопрос: вопросительное слово + do / does / did + подлежащее + глагол: Where do you work? Why didn't you call? «Что значит…?» — What does … mean? Исключение — вопрос к подлежащему «кто? что?»: Who called? What happened? — без did.",
+  "pairs": [
+   {
+    "bad": "Where you work?",
+    "good": "Where |do you| work?",
+    "ru": "Где ты работаешь?"
+   },
+   {
+    "bad": "Why you didn't call?",
+    "good": "Why |didn't you| call?",
+    "ru": "Почему ты не позвонил?"
+   },
+   {
+    "bad": "What means TIA?",
+    "good": "What |does| TIA |mean|?",
+    "ru": "Что значит TIA?"
+   }
+  ],
+  "b2": "Вежливый (косвенный) вопрос — с обычным порядком слов и без do: Could you tell me where the lab is? Do you know what time it starts?",
+  "more": ""
+ },
+ {
+  "n": 4,
+  "title": "Will после when и if",
+  "bad": "When I will finish…",
+  "good": "When I finish…",
+  "why": "По-русски «когда закончу», «если будет» — будущее время. В английском после when, if, until, as soon as, before, after будущее передают настоящим.",
+  "rule": "В части с when / if / until / as soon as / before / after — Present Simple, в другой части — will: I'll call you when I finish. If it rains, we'll stay. Will сразу после when и if в значении будущего не ставим.",
+  "pairs": [
+   {
+    "bad": "When I will finish, I'll call you.",
+    "good": "When I |finish|, I'll call you.",
+    "ru": "Когда закончу, позвоню тебе."
+   },
+   {
+    "bad": "If the pain will come back, take this.",
+    "good": "If the pain |comes| back, take this.",
+    "ru": "Если боль вернётся, выпейте это."
+   },
+   {
+    "bad": "Wait until the doctor will come.",
+    "good": "Wait until the doctor |comes|.",
+    "ru": "Подождите, пока не придёт врач."
+   }
+  ],
+  "b2": "Если действие должно сначала завершиться — Present Perfect: I'll call you as soon as I've seen the scan.",
+  "more": "Подробнее — плитка «Conditionals»."
+ },
+ {
+  "n": 5,
+  "title": "Двойное отрицание",
+  "bad": "I don't know nothing.",
+  "good": "I don't know anything.",
+  "why": "По-русски «я ничего не знаю», «никто не пришёл» — два отрицания, и это норма. В английском отрицание в предложении одно.",
+  "rule": "Одно отрицание на фразу: I don't know anything = I know nothing. Nobody came (не nobody didn't come). I've never seen it (не haven't never). После not — слова на any-: anything, anyone, anywhere.",
+  "pairs": [
+   {
+    "bad": "I don't know nothing.",
+    "good": "I don't know |anything|.",
+    "ru": "Я ничего не знаю."
+   },
+   {
+    "bad": "Nobody didn't call.",
+    "good": "Nobody |called|.",
+    "ru": "Никто не позвонил."
+   },
+   {
+    "bad": "I haven't never seen it.",
+    "good": "I've |never| seen it.",
+    "ru": "Я никогда такого не видел."
+   }
+  ],
+  "b2": "hardly, barely, rarely — уже «почти не»: I can hardly breathe (не can't hardly). Neither и nor — тоже отрицание: Neither drug helped.",
+  "more": ""
+ },
+ {
+  "n": 6,
+  "title": "«Хочу, чтобы ты…»",
+  "bad": "I want that you check it.",
+  "good": "I want you to check it.",
+  "why": "Русское «хочу, чтобы ты…» тянет за собой that. Но want, would like, need, expect, ask, tell устроены иначе: кого + to + глагол.",
+  "rule": "want / would like / need / expect / ask / tell + кого + to + глагол: I want you to check it. She asked me to wait. А после let и make — без to: Let me explain. It made him cough.",
+  "pairs": [
+   {
+    "bad": "I want that you check the dose.",
+    "good": "I want |you to check| the dose.",
+    "ru": "Я хочу, чтобы ты проверил дозу."
+   },
+   {
+    "bad": "Let me to explain.",
+    "good": "Let me |explain|.",
+    "ru": "Позвольте, я объясню."
+   },
+   {
+    "bad": "The drug made him to feel sick.",
+    "good": "The drug made him |feel| sick.",
+    "ru": "От лекарства его тошнило."
+   }
+  ],
+  "b2": "suggest и recommend так не работают: I suggest doing a CT · The doctor recommended that he rest. Suggest you to — ошибка.",
+  "more": "Подробнее — плитки «Кого+to do» и «to / -ing»."
+ },
+ {
+  "n": 7,
+  "title": "information, advice, news",
+  "bad": "an advice, informations",
+  "good": "some advice, information",
+  "why": "По-русски «советы», «новости», «сведения» бывают во множественном числе. В английском information, advice, news, equipment, research, evidence — неисчисляемые.",
+  "rule": "Без a и без -s: some information, a lot of advice, the equipment. Один совет — a piece of advice. News — единственное число: The news is good.",
+  "pairs": [
+   {
+    "bad": "Can you give me an advice?",
+    "good": "Can you give me |some advice|?",
+    "ru": "Можете дать совет?"
+   },
+   {
+    "bad": "Thanks for the informations.",
+    "good": "Thanks for the |information|.",
+    "ru": "Спасибо за информацию."
+   },
+   {
+    "bad": "The news are bad.",
+    "good": "The news |is| bad.",
+    "ru": "Новости плохие."
+   }
+  ],
+  "b2": "Ещё неисчисляемые, о которые спотыкаются на B2: research, evidence, feedback, progress, knowledge, damage. Одно исследование — a study, а не a research.",
+  "more": "Подробнее — плитка «Countable»."
+ },
+ {
+  "n": 8,
+  "title": "Предлоги-кальки",
+  "bad": "explain me, discuss about",
+  "good": "explain to me, discuss",
+  "why": "Предлог переносят из русского или теряют: «объясни мне» — explain me, «обсудить что-то» превращается в discuss about. У английского глагола свой набор предлогов.",
+  "rule": "С предлогом: listen to, wait for, explain sth to sb, depend on, pay for, agree with. Без предлога, хотя в русском он есть: discuss, enter, answer, call, attend, reach.",
+  "pairs": [
+   {
+    "bad": "Please explain me the results.",
+    "good": "Please explain the results |to me|.",
+    "ru": "Объясните мне, пожалуйста, результаты."
+   },
+   {
+    "bad": "We discussed about the plan.",
+    "good": "We |discussed the plan|.",
+    "ru": "Мы обсудили план."
+   },
+   {
+    "bad": "I'm waiting you.",
+    "good": "I'm waiting |for| you.",
+    "ru": "Я жду тебя."
+   }
+  ],
+  "b2": "arrive in (город, страна) и arrive at (здание): arrive at the hospital, никогда не arrive to. Ещё: married to, consist of, suffer from, recover from.",
+  "more": "Подробнее — плитки «Предлоги» и «to / for»."
+ },
+ {
+  "n": 9,
+  "title": "Порядок слов",
+  "bad": "I very like it.",
+  "good": "I really like it.",
+  "why": "В русском порядок слов свободный: «очень люблю», «по-английски хорошо говорит». В английском он жёсткий: кто — что делает — что, а наречия стоят на своих местах.",
+  "rule": "Very не ставим перед глаголом: I really like it или I like it very much. Глагол и объект не разрываем: He speaks English very well. Always, often, never, usually — перед основным глаголом, но после be: I often work nights, he is always late. Время и место — в конце: I go there every day.",
+  "pairs": [
+   {
+    "bad": "I very like this job.",
+    "good": "I |really like| this job.",
+    "ru": "Мне очень нравится эта работа."
+   },
+   {
+    "bad": "He speaks very well English.",
+    "good": "He speaks |English very well|.",
+    "ru": "Он очень хорошо говорит по-английски."
+   },
+   {
+    "bad": "Always I drink coffee.",
+    "good": "I |always drink| coffee.",
+    "ru": "Я всегда пью кофе."
+   }
+  ],
+  "b2": "Если сказуемое из двух слов, наречие встаёт после первого: I have never seen… · You should always check… · It will probably work.",
+  "more": ""
+ },
+ {
+  "n": 10,
+  "title": "Ложные друзья",
+  "bad": "angina, analysis",
+  "good": "tonsillitis, tests",
+  "why": "Слово похоже на русское, и кажется, что значит то же самое. Для врача это особенно коварно: angina — это стенокардия, а не ангина.",
+  "rule": "Запомни пары, где похожее английское слово значит совсем другое.",
+  "ff": [
+   {
+    "ru": "ангина",
+    "en": "tonsillitis, a sore throat",
+    "no": "angina",
+    "means": "стенокардия"
+   },
+   {
+    "ru": "анализы",
+    "en": "tests, blood tests",
+    "no": "analysis",
+    "means": "разбор, анализ данных"
+   },
+   {
+    "ru": "препарат",
+    "en": "drug, medication",
+    "no": "preparation",
+    "means": "обычно «подготовка»"
+   },
+   {
+    "ru": "рецепт врача",
+    "en": "prescription",
+    "no": "recipe",
+    "means": "кулинарный рецепт"
+   },
+   {
+    "ru": "реанимация (отделение)",
+    "en": "intensive care, ICU",
+    "no": "reanimation",
+    "means": "так не говорят"
+   },
+   {
+    "ru": "диагноз",
+    "en": "diagnosis",
+    "no": "diagnose",
+    "means": "глагол «диагностировать»"
+   },
+   {
+    "ru": "терапевт",
+    "en": "GP, physician",
+    "no": "therapist",
+    "means": "психотерапевт или физиотерапевт"
+   },
+   {
+    "ru": "наркоз",
+    "en": "general anaesthetic",
+    "no": "narcosis",
+    "means": "оглушение (редкий термин)"
+   },
+   {
+    "ru": "симпатичный",
+    "en": "nice, good-looking",
+    "no": "sympathetic",
+    "means": "сочувствующий"
+   },
+   {
+    "ru": "аккуратный",
+    "en": "careful, neat",
+    "no": "accurate",
+    "means": "точный"
+   },
+   {
+    "ru": "актуальный",
+    "en": "relevant, up to date",
+    "no": "actual",
+    "means": "настоящий, фактический"
+   },
+   {
+    "ru": "кабинет врача",
+    "en": "office, consulting room",
+    "no": "cabinet",
+    "means": "шкаф; кабинет министров"
+   }
+  ],
+  "b2": "Ещё: magazine — журнал (магазин — shop), fabric — ткань (фабрика — factory), decade — десятилетие, intelligent — умный, control — управлять, сдерживать (контролировать = check, monitor).",
+  "more": ""
+ },
+ {
+  "n": 11,
+  "title": "Итог — всё вместе",
+  "rule": "15 случайных карточек из всех десяти ошибок вперемешку."
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, ru — перевод; pick — «выбери правильную фразу», b2 — шаг к B2.
+const CARDS = [
+ {
+  "id": "a1-nurse",
+  "t": 1,
+  "q": "My wife is ___ nurse.",
+  "ru": "Моя жена — медсестра.",
+  "opts": [
+   "a",
+   "the",
+   ""
+  ],
+  "a": "a",
+  "why": "Профессия, одна из многих: a nurse."
+ },
+ {
+  "id": "a1-door",
+  "t": 1,
+  "q": "Could you close ___ door, please?",
+  "ru": "Закройте, пожалуйста, дверь.",
+  "opts": [
+   "the",
+   "a",
+   ""
+  ],
+  "a": "the",
+  "why": "Понятно, какая дверь — вот эта: the door."
+ },
+ {
+  "id": "a1-smoking",
+  "t": 1,
+  "q": "___ smoking increases the risk of stroke.",
+  "ru": "Курение повышает риск инсульта.",
+  "opts": [
+   "",
+   "The",
+   "A"
+  ],
+  "a": "",
+  "why": "Курение вообще, в общем смысле — без артикля. The smoking — ошибка."
+ },
+ {
+  "id": "a1-headache",
+  "t": 1,
+  "q": "___",
+  "ru": "У него болит голова.",
+  "opts": [
+   "He has a headache.",
+   "He has headache.",
+   "He has the headache."
+  ],
+  "a": "He has a headache.",
+  "why": "headache — исчисляемое: a headache, как a cold и a cough.",
+  "pick": 1
+ },
+ {
+  "id": "a1-day",
+  "t": 1,
+  "q": "Take one tablet three times ___ day.",
+  "ru": "Принимайте по одной таблетке три раза в день.",
+  "opts": [
+   "a",
+   "the",
+   "in"
+  ],
+  "a": "a",
+  "why": "«В день, в неделю» — a: three times a day. In day — калька с русского."
+ },
+ {
+  "id": "a1-results",
+  "t": 1,
+  "q": "Have you seen ___ results of his MRI?",
+  "ru": "Ты видел результаты его МРТ?",
+  "opts": [
+   "the",
+   "a",
+   ""
+  ],
+  "a": "the",
+  "why": "Конкретные результаты — его МРТ: the results."
+ },
+ {
+  "id": "a1-best",
+  "t": 1,
+  "q": "___",
+  "ru": "Это лучший вариант лечения.",
+  "opts": [
+   "It's the best treatment option.",
+   "It's best treatment option.",
+   "It's a best treatment option."
+  ],
+  "a": "It's the best treatment option.",
+  "why": "Превосходная степень — всегда the: the best.",
+  "pick": 1,
+  "b2": 1
+ },
+ {
+  "id": "pp-yesterday",
+  "t": 2,
+  "q": "I ___ him in the corridor yesterday.",
+  "ru": "Я видел его в коридоре вчера.",
+  "opts": [
+   "saw",
+   "have seen",
+   "see"
+  ],
+  "a": "saw",
+  "why": "yesterday — момент в прошлом: Past Simple."
+ },
+ {
+  "id": "pp-since",
+  "t": 2,
+  "q": "She ___ in this hospital since 2015.",
+  "ru": "Она работает в этой больнице с 2015 года.",
+  "opts": [
+   "has worked",
+   "works",
+   "worked"
+  ],
+  "a": "has worked",
+  "why": "«С 2015-го и до сих пор» — has worked. Works since — ошибка."
+ },
+ {
+  "id": "pp-for",
+  "t": 2,
+  "q": "___",
+  "ru": "Я живу здесь пять лет.",
+  "opts": [
+   "I've lived here for five years.",
+   "I live here for five years.",
+   "I'm living here five years."
+  ],
+  "a": "I've lived here for five years.",
+  "why": "«Уже пять лет, до сих пор» — have + V3 + for.",
+  "pick": 1
+ },
+ {
+  "id": "pp-when",
+  "t": 2,
+  "q": "When ___ you arrive?",
+  "ru": "Когда ты приехал?",
+  "opts": [
+   "did",
+   "have",
+   "do"
+  ],
+  "a": "did",
+  "why": "When — вопрос о моменте в прошлом: Past Simple. When have you… — ошибка."
+ },
+ {
+  "id": "pp-ever",
+  "t": 2,
+  "q": "Have you ever ___ a case like this?",
+  "ru": "Ты когда-нибудь видел такой случай?",
+  "opts": [
+   "seen",
+   "saw",
+   "see"
+  ],
+  "a": "seen",
+  "why": "ever — опыт: Present Perfect, have seen."
+ },
+ {
+  "id": "pp-ago",
+  "t": 2,
+  "q": "The symptoms ___ two hours ago.",
+  "ru": "Симптомы появились два часа назад.",
+  "opts": [
+   "started",
+   "have started",
+   "start"
+  ],
+  "a": "started",
+  "why": "ago — всегда Past Simple."
+ },
+ {
+  "id": "pp-waiting",
+  "t": 2,
+  "q": "I ___ for the lab results for two hours!",
+  "ru": "Я жду результаты из лаборатории уже два часа!",
+  "opts": [
+   "have been waiting",
+   "wait",
+   "am waiting"
+  ],
+  "a": "have been waiting",
+  "why": "«Уже два часа жду» — have been + -ing + for.",
+  "b2": 1
+ },
+ {
+  "id": "qu-where",
+  "t": 3,
+  "q": "Where ___ you work?",
+  "ru": "Где ты работаешь?",
+  "opts": [
+   "do",
+   "are",
+   ""
+  ],
+  "a": "do",
+  "why": "Вопрос с обычным глаголом — нужен do."
+ },
+ {
+  "id": "qu-why",
+  "t": 3,
+  "q": "___",
+  "ru": "Почему ты не позвонил?",
+  "opts": [
+   "Why didn't you call?",
+   "Why you didn't call?",
+   "Why you not called?"
+  ],
+  "a": "Why didn't you call?",
+  "why": "didn't встаёт перед подлежащим: Why didn't you…?",
+  "pick": 1
+ },
+ {
+  "id": "qu-mean",
+  "t": 3,
+  "q": "___",
+  "ru": "Что значит TIA?",
+  "opts": [
+   "What does TIA mean?",
+   "What means TIA?",
+   "What is mean TIA?"
+  ],
+  "a": "What does TIA mean?",
+  "why": "What does … mean? — с does, а mean без -s.",
+  "pick": 1
+ },
+ {
+  "id": "qu-does",
+  "t": 3,
+  "q": "How often ___ he take his tablets?",
+  "ru": "Как часто он принимает таблетки?",
+  "opts": [
+   "does",
+   "do",
+   "is"
+  ],
+  "a": "does",
+  "why": "he — does, а take без -s."
+ },
+ {
+  "id": "qu-who",
+  "t": 3,
+  "q": "Who ___ the ambulance?",
+  "ru": "Кто вызвал скорую?",
+  "opts": [
+   "called",
+   "did called",
+   "does called"
+  ],
+  "a": "called",
+  "why": "Вопрос к подлежащему (кто?) — без did: Who called?"
+ },
+ {
+  "id": "qu-indirect",
+  "t": 3,
+  "q": "___",
+  "ru": "Не подскажете, где рентген-кабинет?",
+  "opts": [
+   "Could you tell me where the X-ray room is?",
+   "Could you tell me where is the X-ray room?",
+   "Could you tell me where does the X-ray room?"
+  ],
+  "a": "Could you tell me where the X-ray room is?",
+  "why": "В косвенном вопросе — обычный порядок слов: where the X-ray room is.",
+  "pick": 1,
+  "b2": 1
+ },
+ {
+  "id": "qu-time",
+  "t": 3,
+  "q": "Do you know what time ___?",
+  "ru": "Вы не знаете, во сколько открывается поликлиника?",
+  "opts": [
+   "the clinic opens",
+   "does the clinic open",
+   "opens the clinic"
+  ],
+  "a": "the clinic opens",
+  "why": "Косвенный вопрос — без does и с обычным порядком слов.",
+  "b2": 1
+ },
+ {
+  "id": "wi-when",
+  "t": 4,
+  "q": "I'll call you when I ___ the results.",
+  "ru": "Я позвоню тебе, когда получу результаты.",
+  "opts": [
+   "get",
+   "will get",
+   "got"
+  ],
+  "a": "get",
+  "why": "После when — Present Simple, даже о будущем."
+ },
+ {
+  "id": "wi-if",
+  "t": 4,
+  "q": "If the pain ___ back, take another tablet.",
+  "ru": "Если боль вернётся, выпейте ещё таблетку.",
+  "opts": [
+   "comes",
+   "will come",
+   "come"
+  ],
+  "a": "comes",
+  "why": "После if — Present Simple: comes."
+ },
+ {
+  "id": "wi-until",
+  "t": 4,
+  "q": "Stay in bed until the doctor ___.",
+  "ru": "Лежите, пока не придёт врач.",
+  "opts": [
+   "comes",
+   "will come",
+   "came"
+  ],
+  "a": "comes",
+  "why": "until — тоже без will."
+ },
+ {
+  "id": "wi-soon",
+  "t": 4,
+  "q": "___",
+  "ru": "Как только придут анализы, мы начнём лечение.",
+  "opts": [
+   "As soon as the tests come back, we'll start treatment.",
+   "As soon as the tests will come back, we'll start treatment.",
+   "As soon as the tests will come back, we start treatment."
+  ],
+  "a": "As soon as the tests come back, we'll start treatment.",
+  "why": "После as soon as — Present, в главной части — will.",
+  "pick": 1
+ },
+ {
+  "id": "wi-before",
+  "t": 4,
+  "q": "Wash your hands before you ___ the patient.",
+  "ru": "Мойте руки, прежде чем осматривать пациента.",
+  "opts": [
+   "examine",
+   "will examine",
+   "examined"
+  ],
+  "a": "examine",
+  "why": "before — без will."
+ },
+ {
+  "id": "wi-bp",
+  "t": 4,
+  "q": "___",
+  "ru": "Если давление будет выше 180, позвоните мне.",
+  "opts": [
+   "If his blood pressure is over 180, call me.",
+   "If his blood pressure will be over 180, call me.",
+   "If his blood pressure would be over 180, call me."
+  ],
+  "a": "If his blood pressure is over 180, call me.",
+  "why": "«Если будет» — по-английски if + is.",
+  "pick": 1
+ },
+ {
+  "id": "wi-seen",
+  "t": 4,
+  "q": "I'll call you as soon as I ___ the scan.",
+  "ru": "Я позвоню, как только посмотрю снимок.",
+  "opts": [
+   "have seen",
+   "will see",
+   "will have seen"
+  ],
+  "a": "have seen",
+  "why": "«Как только посмотрю» — можно Present Perfect: as soon as I've seen. Will — нельзя.",
+  "b2": 1
+ },
+ {
+  "id": "ng-anything",
+  "t": 5,
+  "q": "I don't know ___ about his medical history.",
+  "ru": "Я ничего не знаю о его анамнезе.",
+  "opts": [
+   "anything",
+   "nothing",
+   "something"
+  ],
+  "a": "anything",
+  "why": "После not — anything. Nothing вместе с not — двойное отрицание."
+ },
+ {
+  "id": "ng-nobody",
+  "t": 5,
+  "q": "Nobody ___ me about the allergy.",
+  "ru": "Никто не сказал мне про аллергию.",
+  "opts": [
+   "told",
+   "didn't tell",
+   "not told"
+  ],
+  "a": "told",
+  "why": "Nobody — уже отрицание: nobody told me."
+ },
+ {
+  "id": "ng-never",
+  "t": 5,
+  "q": "___",
+  "ru": "Я никогда не видел такой сыпи.",
+  "opts": [
+   "I've never seen a rash like this.",
+   "I haven't never seen a rash like this.",
+   "I never haven't seen a rash like this."
+  ],
+  "a": "I've never seen a rash like this.",
+  "why": "never — уже отрицание, not не нужен.",
+  "pick": 1
+ },
+ {
+  "id": "ng-nothing",
+  "t": 5,
+  "q": "The patient said ___ about the pain.",
+  "ru": "Пациент ничего не сказал о боли.",
+  "opts": [
+   "nothing",
+   "anything",
+   "not nothing"
+  ],
+  "a": "nothing",
+  "why": "Без not — nothing. Или так: didn't say anything."
+ },
+ {
+  "id": "ng-anyone",
+  "t": 5,
+  "q": "I didn't see ___ in the waiting room.",
+  "ru": "В приёмной я никого не видел.",
+  "opts": [
+   "anyone",
+   "no one",
+   "not anyone"
+  ],
+  "a": "anyone",
+  "why": "После didn't — anyone. No one вместе с not — двойное отрицание."
+ },
+ {
+  "id": "ng-anywhere",
+  "t": 5,
+  "q": "___",
+  "ru": "Я нигде не могу найти его историю болезни.",
+  "opts": [
+   "I can't find his notes anywhere.",
+   "I can't find his notes nowhere.",
+   "I can't find nowhere his notes."
+  ],
+  "a": "I can't find his notes anywhere.",
+  "why": "После can't — anywhere.",
+  "pick": 1
+ },
+ {
+  "id": "ng-hardly",
+  "t": 5,
+  "q": "He ___ breathe.",
+  "ru": "Он еле дышит.",
+  "opts": [
+   "can hardly",
+   "can't hardly",
+   "hardly can't"
+  ],
+  "a": "can hardly",
+  "why": "hardly — уже «почти не»: can hardly, без not.",
+  "b2": 1
+ },
+ {
+  "id": "wt-want",
+  "t": 6,
+  "q": "___",
+  "ru": "Я хочу, чтобы ты проверил дозу.",
+  "opts": [
+   "I want you to check the dose.",
+   "I want that you check the dose.",
+   "I want you check the dose."
+  ],
+  "a": "I want you to check the dose.",
+  "why": "want + кого + to + глагол.",
+  "pick": 1
+ },
+ {
+  "id": "wt-let",
+  "t": 6,
+  "q": "Let me ___ the procedure.",
+  "ru": "Позвольте, я объясню процедуру.",
+  "opts": [
+   "explain",
+   "to explain",
+   "explaining"
+  ],
+  "a": "explain",
+  "why": "let + кого + глагол без to."
+ },
+ {
+  "id": "wt-made",
+  "t": 6,
+  "q": "The tablets made him ___ sick.",
+  "ru": "От таблеток его тошнило.",
+  "opts": [
+   "feel",
+   "to feel",
+   "feeling"
+  ],
+  "a": "feel",
+  "why": "make + кого + глагол без to."
+ },
+ {
+  "id": "wt-like",
+  "t": 6,
+  "q": "Would you like me ___ your family?",
+  "ru": "Хотите, я позвоню вашим родным?",
+  "opts": [
+   "to call",
+   "call",
+   "that I call"
+  ],
+  "a": "to call",
+  "why": "would like + кого + to."
+ },
+ {
+  "id": "wt-asked",
+  "t": 6,
+  "q": "___",
+  "ru": "Медсестра попросила его подождать.",
+  "opts": [
+   "The nurse asked him to wait.",
+   "The nurse asked him wait.",
+   "The nurse asked to him to wait."
+  ],
+  "a": "The nurse asked him to wait.",
+  "why": "ask + кого + to + глагол.",
+  "pick": 1
+ },
+ {
+  "id": "wt-expect",
+  "t": 6,
+  "q": "We don't expect the swelling ___ quickly.",
+  "ru": "Мы не ждём, что отёк быстро спадёт.",
+  "opts": [
+   "to go down",
+   "go down",
+   "that goes down"
+  ],
+  "a": "to go down",
+  "why": "expect + что + to + глагол."
+ },
+ {
+  "id": "wt-suggest",
+  "t": 6,
+  "q": "___",
+  "ru": "Предлагаю сделать повторную КТ.",
+  "opts": [
+   "I suggest doing a repeat CT.",
+   "I suggest to do a repeat CT.",
+   "I suggest you to do a repeat CT."
+  ],
+  "a": "I suggest doing a repeat CT.",
+  "why": "suggest + -ing (или suggest that…). Suggest to и suggest you to — ошибки.",
+  "pick": 1,
+  "b2": 1
+ },
+ {
+  "id": "un-advice",
+  "t": 7,
+  "q": "Can I give you ___ advice?",
+  "ru": "Можно дать вам совет?",
+  "opts": [
+   "some",
+   "an",
+   "many"
+  ],
+  "a": "some",
+  "why": "advice — неисчисляемое: some advice или a piece of advice."
+ },
+ {
+  "id": "un-info",
+  "t": 7,
+  "q": "Thank you for the ___.",
+  "ru": "Спасибо за информацию.",
+  "opts": [
+   "information",
+   "informations"
+  ],
+  "a": "information",
+  "why": "information — без -s."
+ },
+ {
+  "id": "un-news",
+  "t": 7,
+  "q": "The news ___ not good, I'm afraid.",
+  "ru": "Боюсь, новости плохие.",
+  "opts": [
+   "is",
+   "are",
+   "were"
+  ],
+  "a": "is",
+  "why": "news — единственное число: the news is."
+ },
+ {
+  "id": "un-equipment",
+  "t": 7,
+  "q": "___",
+  "ru": "Нам нужно новое оборудование.",
+  "opts": [
+   "We need new equipment.",
+   "We need new equipments.",
+   "We need a new equipment."
+  ],
+  "a": "We need new equipment.",
+  "why": "equipment — неисчисляемое: без a и без -s.",
+  "pick": 1
+ },
+ {
+  "id": "un-feedback",
+  "t": 7,
+  "q": "Thanks for your ___ on my talk.",
+  "ru": "Спасибо за отзыв о моём докладе.",
+  "opts": [
+   "feedback",
+   "feedbacks",
+   "a feedback"
+  ],
+  "a": "feedback",
+  "why": "feedback — неисчисляемое."
+ },
+ {
+  "id": "un-evidence",
+  "t": 7,
+  "q": "There is no ___ that this drug helps.",
+  "ru": "Нет доказательств, что этот препарат помогает.",
+  "opts": [
+   "evidence",
+   "evidences",
+   "an evidence"
+  ],
+  "a": "evidence",
+  "why": "evidence — неисчисляемое.",
+  "b2": 1
+ },
+ {
+  "id": "un-research",
+  "t": 7,
+  "q": "___",
+  "ru": "Он занимается исследованиями инсульта.",
+  "opts": [
+   "He does research on stroke.",
+   "He does researches on stroke.",
+   "He does a research on stroke."
+  ],
+  "a": "He does research on stroke.",
+  "why": "research — неисчисляемое. Одно исследование — a study.",
+  "pick": 1,
+  "b2": 1
+ },
+ {
+  "id": "un-progress",
+  "t": 7,
+  "q": "The patient is making good ___.",
+  "ru": "Пациент хорошо идёт на поправку.",
+  "opts": [
+   "progress",
+   "progresses",
+   "a progress"
+  ],
+  "a": "progress",
+  "why": "progress — неисчисляемое: make good progress.",
+  "b2": 1
+ },
+ {
+  "id": "pr-explain",
+  "t": 8,
+  "q": "___",
+  "ru": "Объясните мне, пожалуйста, результаты.",
+  "opts": [
+   "Please explain the results to me.",
+   "Please explain me the results.",
+   "Please explain to me about the results."
+  ],
+  "a": "Please explain the results to me.",
+  "why": "explain + что + to + кому. Explain me — ошибка.",
+  "pick": 1
+ },
+ {
+  "id": "pr-discuss",
+  "t": 8,
+  "q": "We need to discuss ___ his treatment.",
+  "ru": "Нам нужно обсудить его лечение.",
+  "opts": [
+   "",
+   "about",
+   "on"
+  ],
+  "a": "",
+  "why": "discuss — без предлога: discuss the treatment."
+ },
+ {
+  "id": "pr-wait",
+  "t": 8,
+  "q": "I'll wait ___ you in the corridor.",
+  "ru": "Я подожду тебя в коридоре.",
+  "opts": [
+   "for",
+   "",
+   "to"
+  ],
+  "a": "for",
+  "why": "wait for someone."
+ },
+ {
+  "id": "pr-listen",
+  "t": 8,
+  "q": "Listen ___ his chest.",
+  "ru": "Послушай его грудную клетку.",
+  "opts": [
+   "to",
+   "",
+   "at"
+  ],
+  "a": "to",
+  "why": "listen to."
+ },
+ {
+  "id": "pr-enter",
+  "t": 8,
+  "q": "The surgeon entered ___ the room.",
+  "ru": "Хирург вошёл в палату.",
+  "opts": [
+   "",
+   "into",
+   "to"
+  ],
+  "a": "",
+  "why": "enter — без предлога."
+ },
+ {
+  "id": "pr-depend",
+  "t": 8,
+  "q": "It depends ___ the results.",
+  "ru": "Это зависит от результатов.",
+  "opts": [
+   "on",
+   "from",
+   "of"
+  ],
+  "a": "on",
+  "why": "depend on, а не from."
+ },
+ {
+  "id": "pr-call",
+  "t": 8,
+  "q": "Call ___ me when you get home.",
+  "ru": "Позвони мне, когда доберёшься домой.",
+  "opts": [
+   "",
+   "to",
+   "at"
+  ],
+  "a": "",
+  "why": "call someone — без to."
+ },
+ {
+  "id": "pr-arrive",
+  "t": 8,
+  "q": "What time did you arrive ___ the hospital?",
+  "ru": "Во сколько ты приехал в больницу?",
+  "opts": [
+   "at",
+   "to",
+   "in"
+  ],
+  "a": "at",
+  "why": "arrive at (здание) или in (город). Arrive to — ошибка.",
+  "b2": 1
+ },
+ {
+  "id": "wo-like",
+  "t": 9,
+  "q": "___",
+  "ru": "Мне очень нравится эта работа.",
+  "opts": [
+   "I really like this job.",
+   "I very like this job.",
+   "I like very much this job."
+  ],
+  "a": "I really like this job.",
+  "why": "very не ставим перед глаголом; very much — после объекта: I like this job very much.",
+  "pick": 1
+ },
+ {
+  "id": "wo-english",
+  "t": 9,
+  "q": "___",
+  "ru": "Он очень хорошо говорит по-английски.",
+  "opts": [
+   "He speaks English very well.",
+   "He speaks very well English.",
+   "He very well speaks English."
+  ],
+  "a": "He speaks English very well.",
+  "why": "Глагол и объект вместе — speaks English, потом very well.",
+  "pick": 1
+ },
+ {
+  "id": "wo-always",
+  "t": 9,
+  "q": "I ___ my patients' blood pressure myself.",
+  "ru": "Я всегда сам проверяю давление у своих пациентов.",
+  "opts": [
+   "always check",
+   "check always",
+   "always am checking"
+  ],
+  "a": "always check",
+  "why": "always — перед основным глаголом."
+ },
+ {
+  "id": "wo-late",
+  "t": 9,
+  "q": "He ___ late for the morning meeting.",
+  "ru": "Он часто опаздывает на утреннюю планёрку.",
+  "opts": [
+   "is often",
+   "often is",
+   "often"
+  ],
+  "a": "is often",
+  "why": "С be — наоборот: is often."
+ },
+ {
+  "id": "wo-everyday",
+  "t": 9,
+  "q": "___",
+  "ru": "Я каждый день хожу на работу пешком.",
+  "opts": [
+   "I walk to work every day.",
+   "I every day walk to work.",
+   "I walk every day to work."
+  ],
+  "a": "I walk to work every day.",
+  "why": "Время — в конце: every day.",
+  "pick": 1
+ },
+ {
+  "id": "wo-never",
+  "t": 9,
+  "q": "I have ___ this complication before.",
+  "ru": "Я никогда раньше не видел такого осложнения.",
+  "opts": [
+   "never seen",
+   "seen never",
+   "never saw"
+  ],
+  "a": "never seen",
+  "why": "Сказуемое из двух слов — наречие после первого: have never seen.",
+  "b2": 1
+ },
+ {
+  "id": "wo-probably",
+  "t": 9,
+  "q": "It ___ work, but let's try.",
+  "ru": "Скорее всего, не сработает, но давай попробуем.",
+  "opts": [
+   "probably won't",
+   "won't probably",
+   "probably not will"
+  ],
+  "a": "probably won't",
+  "why": "probably — перед won't, но после will: it will probably work.",
+  "b2": 1
+ },
+ {
+  "id": "ff-angina",
+  "t": 10,
+  "q": "The child has ___: a sore throat and a high temperature.",
+  "ru": "У ребёнка ангина: болит горло и высокая температура.",
+  "opts": [
+   "tonsillitis",
+   "angina",
+   "angina pectoris"
+  ],
+  "a": "tonsillitis",
+  "why": "Ангина — tonsillitis. Angina — стенокардия."
+ },
+ {
+  "id": "ff-tests",
+  "t": 10,
+  "q": "We're still waiting for his blood ___.",
+  "ru": "Мы всё ещё ждём его анализы крови.",
+  "opts": [
+   "tests",
+   "analyses",
+   "analysis"
+  ],
+  "a": "tests",
+  "why": "Анализы — tests (в больнице говорят и bloods). Analysis — разбор данных."
+ },
+ {
+  "id": "ff-careful",
+  "t": 10,
+  "q": "Please be ___ with the dressing — the skin is fragile.",
+  "ru": "Пожалуйста, аккуратнее с повязкой — кожа очень тонкая.",
+  "opts": [
+   "careful",
+   "accurate"
+  ],
+  "a": "careful",
+  "why": "Аккуратный, осторожный — careful. Accurate — точный."
+ },
+ {
+  "id": "ff-prescription",
+  "t": 10,
+  "q": "The doctor gave me a ___ for antibiotics.",
+  "ru": "Врач выписал мне рецепт на антибиотики.",
+  "opts": [
+   "prescription",
+   "recipe",
+   "receipt"
+  ],
+  "a": "prescription",
+  "why": "Рецепт врача — prescription. Recipe — кулинарный рецепт, receipt — чек."
+ },
+ {
+  "id": "ff-icu",
+  "t": 10,
+  "q": "After the operation he was taken to ___.",
+  "ru": "После операции его отвезли в реанимацию.",
+  "opts": [
+   "intensive care",
+   "reanimation",
+   "the reanimation"
+  ],
+  "a": "intensive care",
+  "why": "Реанимация как отделение — intensive care, ICU. Resuscitation — сами реанимационные мероприятия."
+ },
+ {
+  "id": "ff-diagnosis",
+  "t": 10,
+  "q": "The final ___ was ischaemic stroke.",
+  "ru": "Окончательный диагноз — ишемический инсульт.",
+  "opts": [
+   "diagnosis",
+   "diagnose",
+   "diagnostic"
+  ],
+  "a": "diagnosis",
+  "why": "Диагноз — diagnosis (существительное). Diagnose — глагол."
+ },
+ {
+  "id": "ff-gp",
+  "t": 10,
+  "q": "If the headaches continue, see your ___.",
+  "ru": "Если головные боли не пройдут, сходите к терапевту.",
+  "opts": [
+   "GP",
+   "therapist"
+  ],
+  "a": "GP",
+  "why": "Участковый терапевт — GP. Therapist — обычно психотерапевт или физиотерапевт."
+ },
+ {
+  "id": "ff-nice",
+  "t": 10,
+  "q": "Our new nurse is very ___ — everyone likes her.",
+  "ru": "Наша новая медсестра очень симпатичная — все её любят.",
+  "opts": [
+   "nice",
+   "sympathetic"
+  ],
+  "a": "nice",
+  "why": "Симпатичный, приятный — nice. Sympathetic — сочувствующий."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "top10:state";
+const LS_SPEAK = "top10:autospeak";
+const LS_TAB = "top10:tab";
+const LS_OPEN = "top10:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "10 ошибок"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Ошибка " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[{}|_]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// |…| — то, что исправили (зелёный); {…} — синий; _…_ — оранжевый
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /_([^_]+)_|\{([^}]+)\}|\|([^|]+)\|/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(m[1] != null ? el("span", "pr", m[1]) : m[2] != null ? el("span", "st", m[2]) : el("span", "good", m[3]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+// Новые карточки идут вперемешку: за сессию встречаются все десять ошибок, шаги к B2 — ближе к концу каждой темы.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 26 ? " xl" : longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t) + (card.b2 ? " · шаг к B2" : "");
+  const q = $("q");
+  q.textContent = "";
+  q.className = "q";
+  q.lang = "en";
+  if (card.pick){
+    q.className = "q ruq";
+    q.lang = "ru";
+    q.textContent = "«" + card.ru + "»";
+    q.removeAttribute("aria-label");
+    $("hint").textContent = "Как это сказать по-английски?";
+    show("hint", true);
+    show("back", false);
+    renderOpts(card);
+    show("opts", true);
+    show("actNext", false);
+    show("actDone", false);
+    renderStatus();
+    preloadClip(card.id);
+    return;
+  }
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  renderStatus();
+  preloadClip(card.id);
+}
+function renderStatus(){
+  const prefix = mode === "topic" ? "Ошибка " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.className = "q";
+  q.lang = "ru";
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Ошибка " + topicN + " — разобрана";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  q.className = "q";
+  q.lang = "en";
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else if (card.pick){
+    v.className = "verdict bad";
+    const w = el("s", null, opt); w.lang = "en";
+    v.append("Правильно — как выше. Твой вариант: ", w);
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  if (card.pick) $("hint").textContent = card.ru;
+  show("hint", !!card.pick);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function playButton(label, fn){
+  const b = el("button", "ex-play");
+  b.type = "button";
+  b.setAttribute("aria-label", label);
+  b.innerHTML = PLAY_SVG;
+  b.addEventListener("click", fn);
+  return b;
+}
+function headSub(t){
+  const s = el("span", "t-sub");
+  const bad = el("s", null, t.bad); bad.lang = "en";
+  const good = el("span", "good", t.good); good.lang = "en";
+  s.append(el("span", "sr", "Неверно: "), bad, el("span", "arr", " → "), el("span", "sr", "верно: "), good);
+  return s;
+}
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.dataset.n = String(t.n);
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    txt.append(el("span", "t-title", t.title));
+    if (t.bad) txt.append(headSub(t));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      if (t.why){
+        body.append(el("p", "t-lab", "Откуда ошибка"));
+        const w = el("p", "t-rule"); w.append(richText(t.why)); body.append(w);
+        body.append(el("p", "t-lab", "Как правильно"));
+      }
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      if (t.pairs || t.ff){
+        const list = el("div", "pairs");
+        (t.pairs || []).forEach((pr, i) => {
+          const row = el("div", "pair");
+          const bad = el("p", "p-bad", pr.bad); bad.lang = "en";
+          const good = el("p", "p-good"); good.lang = "en"; good.append(marked(pr.good));
+          row.append(el("span", "sr", "Неверно: "), bad, playButton("Прослушать правильный вариант", () => playClip("r" + t.n + "-" + (i + 1), pr.good.replace(/\|/g, ""), 0.9)), good, el("p", "p-ru", pr.ru));
+          list.append(row);
+        });
+        (t.ff || []).forEach((f, i) => {
+          const row = el("div", "pair");
+          const en = el("p", "p-good"); en.lang = "en"; en.append(el("span", "good", f.en));
+          const no = el("p", "p-ru"); const s = el("s", null, f.no); s.lang = "en";
+          no.append(el("span", "sr", "не "), s, " — " + f.means);
+          row.append(el("p", "p-top", f.ru), playButton("Прослушать: " + f.en, () => playClip("fw-" + (i + 1), f.en, 0.85)), en, no);
+          list.append(row);
+        });
+        body.append(list);
+      }
+      if (t.b2){
+        const b2 = el("p", "b2");
+        b2.append(el("b", null, "Шаг к B2"), richText(t.b2));
+        body.append(b2);
+      }
+      if (t.more) body.append(el("p", "more", t.more));
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту ошибку");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+function openAndShow(n){
+  openTopic = n;
+  lsSet(LS_OPEN, String(n));
+  stopAudio();
+  renderTopics();
+  const head = document.querySelector('.t-head[data-n="' + n + '"]');
+  if (!head) return;
+  const rule = $("rule");
+  const y = rule.scrollTop + head.getBoundingClientRect().top - rule.getBoundingClientRect().top - 6;
+  let reduce = false;
+  try{ reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
+  try{ rule.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" }); }catch(e){ rule.scrollTop = y; }
+}
+document.querySelectorAll(".ck").forEach(b => b.addEventListener("click", () => openAndShow(+b.dataset.n)));
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

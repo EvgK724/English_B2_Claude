@@ -1,0 +1,964 @@
+<title>Артикли в три вопроса</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("artikli",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.18);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --yes-soft:rgba(78,135,103,.2);
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(31px*var(--k));line-height:1.3;text-wrap:pretty}
+  .gap{display:inline-block;min-width:2.1em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .good{color:var(--yes-text)}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:calc(10px*var(--k))}
+  .opt{min-height:calc(66px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.1;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(14px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(33px*var(--k));line-height:1.15;text-wrap:balance}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(10px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(30px*var(--k)) 1fr auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(9px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));color:var(--yes-text);white-space:nowrap}
+  .algo-m{margin:calc(12px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(16px*var(--k));color:var(--soft)}
+  .algo-m i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-en .zero{font-size:.75em;vertical-align:.12em}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-row:1 / span 2;grid-column:2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;grid-template-columns:1fr;align-content:end}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+
+<div class="app">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери артикль</p>
+      <div class="back" id="back" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts" id="opts">
+      <button class="opt" type="button" data-opt="a" lang="en">a</button>
+      <button class="opt" type="button" data-opt="an" lang="en">an</button>
+      <button class="opt" type="button" data-opt="the" lang="en">the</button>
+      <button class="opt" type="button" data-opt="" aria-label="Без артикля"><span>—</span><small>без артикля</small></button>
+    </div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+    <h1 class="r-title">Артикли в три вопроса</h1>
+    <div class="algo">
+      <p class="algo-h">К каждому существительному</p>
+      <ol>
+        <li><span>Слушатель понимает, о каком именно?</span><b lang="en">the</b></li>
+        <li><span>Нет. Это одна исчисляемая штука?</span><b lang="en">a / an</b></li>
+        <li><span>Нет. Речь вообще, о многих или о неисчисляемом</span><b>∅</b></li>
+      </ol>
+      <p class="algo-m"><i lang="en">the</i> — тот самый · <i lang="en">a</i> — какой-то один · <i>∅</i> — вообще</p>
+      <p class="algo-note">Особые случаи — имена, места, устойчивые сочетания, должности — в темах 6–8 и 11.</p>
+    </div>
+    <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+    <h2 class="lbl">Темы курса</h2>
+    <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и два примера. В примерах [x] — выделенный артикль, [0] — место без артикля.
+const TOPICS = [
+  { n: 1, title: "Знает ли слушатель",
+    rule: "Слушатель ещё не знает, о чём речь, — a / an. Уже знает, потому что это упоминали, — the.",
+    ex: [
+      { en: "[A] patient came in with chest pain. [The] patient was 64.", ru: "Поступил пациент с болью в груди. Пациенту было 64 года." },
+      { en: "We ordered [a] CT scan. [The] scan was normal.", ru: "Мы назначили КТ. КТ оказалась без патологии." }
+    ] },
+  { n: 2, title: "A или an — по звуку",
+    rule: "An — перед гласным звуком, a — перед согласным. Решает произношение, а не буква: an hour, an MRI, но a university, a useful tip. С профессией артикль обязателен: She is a nurse.",
+    ex: [
+      { en: "We waited [an] hour for [an] MRI.", ru: "Мы ждали МРТ целый час." },
+      { en: "He is [a] university lecturer.", ru: "Он преподаёт в университете." }
+    ] },
+  { n: 3, title: "Единственное и ясное из ситуации",
+    rule: "The — если предмет единственный (the sun, the government) или обоим собеседникам ясно, о каком речь: the lab, the light.",
+    ex: [
+      { en: "Could you call [the] lab?", ru: "Позвони, пожалуйста, в лабораторию — нашу." },
+      { en: "[The] government has changed the rules.", ru: "Правительство изменило правила." }
+    ] },
+  { n: 4, title: "The с уточнением",
+    rule: "Если уточнение выделяет конкретный предмет — the: the patient in bed 4, the man who called. Если оно только описывает одного из многих — остаётся a: a nurse who speaks Russian.",
+    ex: [
+      { en: "[The] patient in bed 4 needs a review.", ru: "Пациента на четвёртой койке нужно посмотреть." },
+      { en: "We need [a] nurse who speaks Russian.", ru: "Нам нужна медсестра, которая говорит по-русски, — любая." }
+    ] },
+  { n: 5, title: "Без артикля — когда «вообще»",
+    rule: "О явлении вообще — неисчисляемое или множественное без артикля: Smoking causes strokes. The появляется, как только речь о конкретном: the nurses on our ward.",
+    ex: [
+      { en: "[0]Smoking damages blood vessels.", ru: "Курение повреждает сосуды." },
+      { en: "[The] nurses on our ward are brilliant.", ru: "Медсёстры у нас в отделении — замечательные." }
+    ] },
+  { n: 6, title: "Страны, реки, горы",
+    rule: "Без артикля — большинство стран, городов, улиц, отдельных вершин и озёр: Canada, Moscow, Mount Elbrus, Lake Baikal. С the — названия во множественном и со словами Kingdom, States, Republic, а также реки, моря, океаны и горные цепи: the Netherlands, the USA, the Volga, the Urals.",
+    ex: [
+      { en: "She moved from [0]Russia to [the] Netherlands.", ru: "Она переехала из России в Нидерланды." },
+      { en: "[The] Volga is the longest river in Europe.", ru: "Волга — самая длинная река Европы." }
+    ] },
+  { n: 7, title: "Больница, школа, дом",
+    rule: "Без артикля, когда важна функция места: in hospital (лечится), at school (учится), in bed, at work, at home. The — когда речь о здании: she went to the hospital to visit him. В американском английском пациент лежит in the hospital.",
+    ex: [
+      { en: "He is in [0]hospital after a stroke.", ru: "Он в больнице после инсульта." },
+      { en: "His wife went to [the] hospital to visit him.", ru: "Жена пришла в больницу его навестить." }
+    ] },
+  { n: 8, title: "Устойчивые сочетания",
+    rule: "Их запоминают целиком. Без артикля: at night, by car, on foot, in time, on time, at first, in fact. С the: in the morning, in the evening, on the whole.",
+    ex: [
+      { en: "Many strokes happen in [the] morning.", ru: "Многие инсульты случаются утром." },
+      { en: "He woke up at [0]night with a headache.", ru: "Он проснулся ночью с головной болью." }
+    ] },
+  { n: 9, title: "The + прилагательное, the best, the first",
+    rule: "The + прилагательное — это группа людей: the elderly, the poor, the British. Превосходная степень и порядковые числительные — всегда с the: the best, the first, the last.",
+    ex: [
+      { en: "[The] elderly are at higher risk of falls.", ru: "Пожилые чаще падают." },
+      { en: "This is [the] first time she has had these symptoms.", ru: "Такие симптомы у неё впервые." }
+    ] },
+  { n: 10, title: "В день, в час, the same",
+    rule: "A / an значит «в, за» при частоте, скорости и цене: twice a day, 90 kilometres an hour. The — в сочетаниях the same и the earlier…, the better.",
+    ex: [
+      { en: "Take one tablet twice [a] day.", ru: "Принимайте по одной таблетке два раза в день." },
+      { en: "[The] earlier we treat, [the] better the outcome.", ru: "Чем раньше начинаем лечение, тем лучше исход." }
+    ] },
+  { n: 11, title: "Должности и титулы",
+    rule: "Титул с именем — без артикля: Dr Petrova, Professor Ivanov. Титул без имени — с the: the President. Единственная должность после elect, appoint, become — обычно без артикля: she was elected president of the society.",
+    ex: [
+      { en: "[0]Dr Petrova will see you now.", ru: "Доктор Петрова вас сейчас примет." },
+      { en: "[The] President opened the new hospital.", ru: "Президент открыл новую больницу." }
+    ] },
+  { n: 12, title: "Медицинский английский",
+    rule: "Большинство болезней — без артикля: diabetes, pneumonia, atrial fibrillation. Эпизоды — с a: a stroke, a heart attack, a fever. Орган как часть тела вообще — с the: the brain, the heart.",
+    ex: [
+      { en: "She had [a] stroke two years ago.", ru: "Два года назад у неё был инсульт." },
+      { en: "He has had [0]diabetes for twenty years.", ru: "У него диабет уже двадцать лет." }
+    ] },
+  { n: 13, title: "Типичные ошибки",
+    rule: "Три главные: пропуск a — He is doctor вместо He is a doctor; лишний the перед общим понятием — The life is hard вместо Life is hard; the с множественным в общем смысле — The doctors work hard, когда речь о врачах вообще.",
+    ex: [
+      { en: "My brother is [an] anaesthetist.", ru: "Мой брат — анестезиолог." },
+      { en: "[0]Life in a big city can be stressful.", ru: "Жизнь в большом городе бывает нервной." }
+    ] },
+  { n: 14, title: "Итог — всё вместе",
+    rule: "Пятнадцать случайных карточек из всех тем вперемешку — как на итоговом тесте курса.",
+    ex: [] }
+];
+
+// ——— Карточки. a — правильный ответ ("" — без артикля); also — тоже допустимые ответы с пояснением.
+const CARDS = [
+  { id:"t1-man", t:1, q:"A man was admitted last night. ___ man had a history of atrial fibrillation.", a:"the",
+    why:"Мужчину уже упомянули — слушатель знает, о ком речь." },
+  { id:"t1-ct", t:1, q:"We ordered ___ CT scan, and it showed no bleeding.", a:"a",
+    why:"КТ появляется впервые, одна из многих. C читается /siː/ — согласный звук, поэтому a." },
+  { id:"t1-article", t:1, q:"I read ___ interesting article about sleep yesterday.", a:"an",
+    why:"Статья упоминается впервые; interesting начинается с гласного звука — an." },
+  { id:"t1-letter", t:1, q:"She brought a photo and a letter. ___ letter was from her son.", a:"the",
+    why:"Письмо уже упоминали в первой фразе — теперь the." },
+
+  { id:"t2-hour", t:2, q:"The scan took almost ___ hour.", a:"an",
+    why:"В hour буква h не читается, слово начинается с гласного звука — an." },
+  { id:"t2-lecturer", t:2, q:"He is ___ university lecturer.", a:"a",
+    why:"University начинается со звука /j/ — это согласный, поэтому a. Профессия — всегда с артиклем." },
+  { id:"t2-mri", t:2, q:"The patient needs ___ MRI of the brain.", a:"an",
+    why:"MRI читается /em-ɑː-raɪ/ — первый звук гласный, поэтому an." },
+  { id:"t2-nurse", t:2, q:"He works as ___ nurse in the stroke unit.", a:"a",
+    why:"С профессией артикль обязателен: as a nurse. Пропуск — самая частая ошибка русскоговорящих." },
+  { id:"t2-tip", t:2, q:"She gave me ___ useful tip about the new software.", a:"a",
+    why:"Useful начинается со звука /j/ — согласный, поэтому a, хотя буква u гласная." },
+
+  { id:"t3-light", t:3, q:"Could you turn off ___ light? I'm trying to sleep.", a:"the",
+    why:"Обоим ясно, о какой лампе речь, — о той, что в комнате." },
+  { id:"t3-government", t:3, q:"___ government has announced new targets for stroke care.", a:"the",
+    why:"Правительство страны одно, все понимают, какое имеется в виду." },
+  { id:"t3-lab", t:3, q:"Please call ___ lab and ask about the troponin result.", a:"the",
+    why:"Речь о своей лаборатории больницы — это ясно из ситуации." },
+  { id:"t3-sun", t:3, q:"Never look directly at ___ sun.", a:"the",
+    why:"Солнце единственное — the sun." },
+
+  { id:"t4-bed", t:4, q:"___ patient in bed 4 is asking for you.", a:"the",
+    why:"Уточнение in bed 4 выделяет одного конкретного пациента." },
+  { id:"t4-nurse", t:4, q:"We need ___ nurse who speaks Russian.", a:"a",
+    why:"Подойдёт любая медсестра с русским языком — уточнение описывает, а не выделяет." },
+  { id:"t4-effective", t:4, q:"This is ___ most effective treatment we have.", a:"the",
+    why:"Превосходная степень — всегда с the: the most effective." },
+  { id:"t4-results", t:4, q:"___ results of the second test were normal.", a:"the",
+    why:"Результаты конкретного анализа — второго: the results of…" },
+  { id:"t4-caller", t:4, q:"___ man who called this morning was her son.", a:"the",
+    why:"Придаточное who called this morning указывает на конкретного человека." },
+
+  { id:"t5-smoking", t:5, q:"___ smoking is a major risk factor for stroke.", a:"",
+    why:"Курение вообще — неисчисляемое в общем смысле, без артикля." },
+  { id:"t5-nurses", t:5, q:"___ nurses on our ward work twelve-hour shifts.", a:"the",
+    why:"Не медсёстры вообще, а конкретные — в нашем отделении." },
+  { id:"t5-patients", t:5, q:"___ patients often forget to take their tablets.", a:"",
+    why:"Пациенты вообще, как явление — множественное без артикля." },
+  { id:"t5-leaflet", t:5, q:"___ information on this leaflet is out of date.", a:"the",
+    why:"Информация конкретная — та, что в этой листовке." },
+  { id:"t5-exercise", t:5, q:"Regular exercise lowers ___ blood pressure.", a:"",
+    why:"Давление вообще, а не чьё-то конкретное, — без артикля." },
+
+  { id:"t6-netherlands", t:6, q:"My sister lives in ___ Netherlands.", a:"the",
+    why:"Название во множественном числе — с the: the Netherlands, the Philippines." },
+  { id:"t6-canada", t:6, q:"He has never been to ___ Canada.", a:"",
+    why:"Обычное название страны — без артикля: Canada, France, Russia." },
+  { id:"t6-urals", t:6, q:"Yekaterinburg lies on the eastern side of ___ Urals.", a:"the",
+    why:"Горная цепь — с the: the Urals, the Alps, the Andes." },
+  { id:"t6-volga", t:6, q:"___ Volga flows into the Caspian Sea.", a:"the",
+    why:"Реки всегда с the: the Volga, the Thames." },
+  { id:"t6-elbrus", t:6, q:"They climbed ___ Mount Elbrus last summer.", a:"",
+    why:"Отдельная вершина со словом Mount — без артикля: Mount Elbrus, Mount Everest." },
+
+  { id:"t7-inhospital", t:7, q:"My father is in ___ hospital after a stroke.", a:"", also:{ "the":"так говорят в американском английском" },
+    why:"In hospital без артикля — лежит там как пациент. Это британская норма." },
+  { id:"t7-visit", t:7, q:"His wife went to ___ hospital to visit him.", a:"the",
+    why:"Жена пришла как посетитель — речь о здании больницы." },
+  { id:"t7-home", t:7, q:"I'll call you when I get ___ home.", a:"",
+    why:"Get home, go home, at home — без артикля и без предлога to." },
+  { id:"t7-bed", t:7, q:"The patient was still in ___ bed at ten o'clock.", a:"",
+    why:"In bed — в постели, отдыхает или спит; без артикля." },
+  { id:"t7-school", t:7, q:"Our daughter starts ___ school in September.", a:"",
+    why:"Start school — пойти учиться: важна функция, а не здание." },
+
+  { id:"t8-morning", t:8, q:"Many strokes happen in ___ morning.", a:"the",
+    why:"Части суток с in — с the: in the morning, in the evening." },
+  { id:"t8-car", t:8, q:"She usually comes to work by ___ car.", a:"",
+    why:"Способ передвижения с by — без артикля: by car, by bus, by train." },
+  { id:"t8-night", t:8, q:"He woke up at ___ night with a severe headache.", a:"",
+    why:"At night — устойчиво без артикля (но in the night)." },
+  { id:"t8-whole", t:8, q:"On ___ whole, the new protocol works well.", a:"the",
+    why:"On the whole — «в целом», устойчиво с the." },
+  { id:"t8-time", t:8, q:"The ambulance arrived just in ___ time.", a:"",
+    why:"In time — «вовремя, успеть», без артикля." },
+
+  { id:"t9-elderly", t:9, q:"Stroke services must meet the needs of ___ elderly.", a:"the",
+    why:"The + прилагательное — это группа людей: the elderly, the poor." },
+  { id:"t9-first", t:9, q:"This is ___ first time she has had symptoms like this.", a:"the",
+    why:"Порядковые числительные — с the: the first, the second." },
+  { id:"t9-best", t:9, q:"He's ___ best neurologist I know.", a:"the",
+    why:"Превосходная степень — с the: the best." },
+  { id:"t9-british", t:9, q:"___ British drive on the left.", a:"the",
+    why:"Национальность как весь народ (на -sh, -ch) — с the: the British, the French." },
+
+  { id:"t10-day", t:10, q:"Take one tablet twice ___ day.", a:"a",
+    why:"A значит «в» при частоте: twice a day, three times a week." },
+  { id:"t10-hour", t:10, q:"The ambulance was doing 90 kilometres ___ hour.", a:"an",
+    why:"An значит «в» при скорости; hour начинается с гласного звука." },
+  { id:"t10-earlier", t:10, q:"___ earlier we treat, the better the outcome.", a:"the",
+    why:"Конструкция the …-er, the …-er: the earlier, the better." },
+  { id:"t10-same", t:10, q:"Both patients received ___ same dose.", a:"the",
+    why:"Same почти всегда с the: the same dose." },
+
+  { id:"t11-president", t:11, q:"In 2020 she was elected ___ president of the stroke society.", a:"", also:{ "the":"тоже встречается, но стандарт — без артикля" },
+    why:"Единственная должность после elect — обычно без артикля." },
+  { id:"t11-petrova", t:11, q:"___ Dr Petrova will see you in five minutes.", a:"",
+    why:"Титул с именем — без артикля: Dr Petrova, Professor Ivanov." },
+  { id:"t11-thepresident", t:11, q:"___ President will open the new hospital on Monday.", a:"the",
+    why:"Титул без имени, всем ясно, кто это, — the President." },
+  { id:"t11-professor", t:11, q:"Let me introduce ___ Professor Ivanov.", a:"",
+    why:"Титул перед именем — без артикля." },
+
+  { id:"t12-diabetes", t:12, q:"He has had ___ diabetes for twenty years.", a:"",
+    why:"Названия большинства болезней — без артикля: diabetes, pneumonia." },
+  { id:"t12-stroke", t:12, q:"She had ___ stroke two years ago.", a:"a",
+    why:"Инсульт как эпизод — исчисляемый: a stroke." },
+  { id:"t12-heart", t:12, q:"He was treated for ___ heart attack last year.", a:"a",
+    why:"Инфаркт как эпизод — a heart attack." },
+  { id:"t12-brain", t:12, q:"___ brain needs a constant supply of oxygen.", a:"the",
+    why:"Орган как часть тела вообще — the brain, the heart." },
+  { id:"t12-af", t:12, q:"Patients with ___ atrial fibrillation often need anticoagulation.", a:"",
+    why:"Название болезни — без артикля: atrial fibrillation." },
+
+  { id:"t13-anaesthetist", t:13, q:"My brother is ___ anaesthetist.", a:"an",
+    why:"Профессия — с артиклем; anaesthetist начинается с гласного звука — an." },
+  { id:"t13-life", t:13, q:"___ life in a big city can be stressful.", a:"",
+    why:"Жизнь вообще — абстрактное понятие без артикля. The life здесь — ошибка." },
+  { id:"t13-doctors", t:13, q:"___ doctors all over the world face burnout.", a:"",
+    why:"Врачи вообще, по всему миру — множественное без артикля." },
+  { id:"t13-advice", t:13, q:"He gave me ___ good advice.", a:"",
+    why:"Advice неисчисляемое — никакого a, даже с прилагательным." },
+  { id:"t13-pharmacy", t:13, q:"There is ___ pharmacy on the corner.", a:"a",
+    why:"There is + предмет, упомянутый впервые, — a." },
+  // НОВАЯ КАРТОЧКА ВСТАВЛЯЕТСЯ ВЫШЕ ЭТОЙ СТРОКИ
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "artikli:state";
+const LS_SPEAK = "artikli:autospeak";
+const LS_TAB = "artikli:tab";
+const LS_OPEN = "artikli:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};          // id -> { step, due, ts }
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Артикли"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, art){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (art) return { pre: pre, art: start ? cap(art) : art, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, art: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.art + p.post; }
+function exText(en){ return en.replace(/\[0\]/g, "").replace(/\[([^\]]+)\]/g, "$1"); }
+function label(a){ return a === "" ? "без артикля" : a; }
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя).
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const AUDIO_READY = true;
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!AUDIO_READY || !key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!AUDIO_READY || !player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = CARDS.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(fresh);
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === 14){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  q.append(card.q.slice(0, i), el("span", "gap"), card.q.slice(i + 3));
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = "Выбери артикль";
+  show("back", false);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.art) q.append(p.pre, el("span", "good", p.art), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), " — " + alsoNote + ".");
+  } else {
+    v.className = "verdict bad";
+    const right = el("b", "good", label(card.a));
+    const mine = el("b", null, label(opt));
+    v.append("Нужно ", right, " · твой ответ: ", mine);
+  }
+  $("why").textContent = card.why;
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    if (m[1] === "0") p.append(el("span", "zero", "∅"));
+    else p.append(el("span", "good", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === 14 ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      body.append(el("p", "t-rule", t.rule));
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === 14 ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+document.querySelectorAll("[data-opt]").forEach(b => {
+  b.addEventListener("click", () => choose(b.dataset.opt));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1–4 — a / an / the / без артикля; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const map = { "1": "a", "2": "an", "3": "the", "4": "" };
+    if (Object.prototype.hasOwnProperty.call(map, e.key)) choose(map[e.key]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= 14 ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

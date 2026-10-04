@@ -1,0 +1,1204 @@
+<title>Фразовые глаголы</title>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --accent-soft:rgba(217,119,87,.14);
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --blue-line:rgba(124,192,221,.45);
+    --no-text:#e9a7a0;
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:17px;line-height:1.5;display:flex;justify-content:center}
+  button,input{font:inherit;color:inherit}
+  .app{width:100%;max-width:440px;height:100%;display:flex;flex-direction:column;gap:10px;padding:10px 16px 14px}
+
+  .top{display:flex;align-items:center;gap:10px}
+  .tabs{flex:1;display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:14px}
+  .tab{flex:1;min-height:44px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:16px;cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:52px;height:52px;flex:0 0 52px;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:22px;height:22px}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:12px}
+  .vb{color:var(--text)}
+  .pt{color:var(--accent)}
+  .lbl{margin:0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .tag{flex:0 0 auto;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;line-height:1.5;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px}
+  .tag.day{color:var(--blue);border-color:var(--blue-line)}
+
+  /* ——— Главная */
+  .home{overflow-y:auto;overscroll-behavior:contain;gap:14px;padding-bottom:4px}
+  .h-left,.h-right{display:flex;flex-direction:column;gap:14px}
+  .hero{display:flex;flex-direction:column;gap:6px;padding:18px 20px 16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;cursor:pointer}
+  .hero:active{background:var(--raise)}
+  .hero-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px}
+  .hero-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}
+  .hero-term{margin:0;font-family:var(--serif);font-weight:400;font-size:48px;line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+  .hero-ru{margin:4px 0 0;font-size:21px;line-height:1.35;text-wrap:pretty}
+  .hero-more{align-self:flex-start;margin-top:4px;border:0;background:transparent;padding:6px 0;color:var(--blue);font-size:16px;cursor:pointer}
+
+  .deck{padding:14px 16px 12px;border:1px solid var(--line);border-radius:18px}
+  .deck-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .deck-count{font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(20px,1fr));gap:6px}
+  .cell{display:block;aspect-ratio:1;max-width:100%;border-radius:5px;border:1.5px solid var(--line-2)}
+  .cell.l0,.sw-learn{background:rgba(217,119,87,.3);border-color:transparent}
+  .cell.l1{background:rgba(217,119,87,.55);border-color:transparent}
+  .cell.l2{background:rgba(217,119,87,.8);border-color:transparent}
+  .cell.l3,.sw-done{background:var(--yes);border-color:transparent}
+  .cell.today{border-color:var(--accent);border-width:2px}
+  .legend{display:flex;flex-wrap:wrap;gap:4px 16px;margin:12px 0 0;font-size:14px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend b{font-weight:600;color:var(--soft);font-variant-numeric:tabular-nums}
+  .sw{display:inline-block;width:12px;height:12px;border-radius:3px}
+  .sw-new{border:1.5px solid var(--line-2)}
+
+  .result{margin:0;font-size:17px;line-height:1.45;color:var(--yes-text)}
+  .plan{margin:0;font-size:18px;line-height:1.45}
+  .plan b{font-weight:600}
+  .foot{margin:0;font-size:15px;line-height:1.45;color:var(--muted)}
+
+  /* ——— Тренировка */
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:28px;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .link{border:0;background:transparent;color:var(--muted);font-size:15px;padding:4px 0 4px 12px;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px}
+  .bar{height:3px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:-6px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:20px 20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:20px;display:flex;flex-direction:column;gap:16px}
+  .kind{align-self:flex-start;font-size:14px;letter-spacing:.02em;color:var(--blue);padding:5px 11px;border-radius:999px;border:1px solid currentColor;background:var(--blue-soft)}
+  .kind.new{color:var(--accent);background:var(--accent-soft)}
+  .verdict{margin:0;font-size:18px;line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:21px;color:var(--text)}
+  .qbox{display:flex;flex-direction:column;gap:14px}
+  .q-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .q-term{margin:0;font-family:var(--serif);font-weight:400;font-size:50px;line-height:1.05;text-wrap:balance}
+  .q-sent{margin:0;font-family:var(--serif);font-size:24px;line-height:1.45;text-wrap:pretty}
+  .q-tr{margin:0;font-size:16px;line-height:1.45;color:var(--muted)}
+  .q-ru{margin:0;font-size:28px;line-height:1.3;text-wrap:balance}
+  .q-rest{margin:0;font-size:17px;line-height:1.45;color:var(--muted)}
+  .gap{display:inline-block;min-width:4.2em;height:.95em;border-bottom:3px solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:17px;color:var(--muted)}
+
+  .opts{display:grid;grid-template-columns:1fr;gap:10px}
+  .opt{min-height:62px;padding:10px 16px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center}
+  .opts.en .opt{font-family:var(--serif);font-size:25px;line-height:1.15}
+  .opts.ru .opt{font-size:18px;line-height:1.3;text-wrap:balance}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:10px}
+  .big{flex:1;min-height:58px;border-radius:14px;border:1px solid var(--line-2);background:transparent;font-size:19px;cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:58px;height:58px;flex:0 0 58px;border-radius:14px;border:1px solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:24px;height:24px}
+  .say-sm{width:48px;height:48px;flex:0 0 48px;border-radius:50%;border:1px solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say-sm svg{width:20px;height:20px}
+  .say-sm:active,.say:active{background:var(--accent-soft)}
+
+  /* ——— Карточка глагола */
+  .det{display:flex;flex-direction:column;gap:12px}
+  .det-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .det-term{margin:0;font-family:var(--serif);font-weight:400;font-size:40px;line-height:1.08;text-wrap:balance}
+  .ipa{margin:-4px 0 0;font-size:17px;line-height:1.4;color:var(--blue)}
+  .ipa .forms{color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:14px;line-height:1.4;color:var(--blue);padding:4px 11px;border-radius:999px;border:1px solid var(--blue-line);background:var(--blue-soft)}
+  .pattern{margin:0;font-size:15px;color:var(--muted)}
+  .pattern .ph{font-family:var(--serif);font-size:20px;color:var(--text);margin-left:4px}
+  .pattern i{color:var(--muted)}
+  .det-ru{margin:0;font-size:20px;line-height:1.42;text-wrap:pretty}
+  .ex{display:grid;grid-template-columns:1fr 48px;gap:6px 12px;align-items:start;padding-top:14px;border-top:1px solid var(--line)}
+  .ex-en{margin:0;font-family:var(--serif);font-size:20px;line-height:1.45}
+  .hl{color:var(--accent)}
+  .ex-ru{margin:0;grid-column:1;font-size:15px;line-height:1.45;color:var(--muted)}
+  .ex-play{grid-row:1 / span 2;grid-column:2}
+  .note{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--line)}
+  .det-note{margin:0;font-size:17px;line-height:1.55;color:var(--soft)}
+  .more{align-self:flex-start;border:0;background:transparent;padding:4px 0;color:var(--blue);font-size:16px;cursor:pointer}
+  .status{margin:0;font-size:15px;line-height:1.45;color:var(--muted)}
+
+  /* ——— Словарь */
+  .d-left{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px}
+  .d-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 2px}
+  .d-title{margin:0;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.2}
+  .d-count{font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .search{width:100%;min-height:48px;padding:10px 14px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface);color:var(--text);font-size:17px;outline:none;-webkit-appearance:none;appearance:none}
+  .search:focus{border-color:var(--blue)}
+  .search::placeholder{color:var(--muted)}
+  .list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;border-top:1px solid var(--line)}
+  .d-item{border-bottom:1px solid var(--line)}
+  .d-row{width:100%;min-height:66px;display:grid;grid-template-columns:minmax(0,1fr) auto 16px;align-items:center;gap:12px;padding:10px 4px;border:0;border-radius:12px;background:transparent;text-align:left;cursor:pointer}
+  .d-main{display:flex;flex-direction:column;min-width:0;gap:2px}
+  .d-tl{display:flex;align-items:center;gap:8px;min-width:0}
+  .d-term{font-family:var(--serif);font-size:23px;line-height:1.2}
+  .d-ru{font-size:15px;line-height:1.35;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .d-side{display:flex;align-items:center}
+  .dots{display:inline-flex;gap:4px}
+  .dots i{display:block;width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+  .dots i.on{background:var(--accent)}
+  .dots.done i.on{background:var(--yes)}
+  .d-chev{color:var(--muted);transition:transform .2s ease}
+  .d-row[aria-expanded="true"] .d-chev{transform:rotate(90deg)}
+  .d-body{padding:4px 4px 22px}
+  .d-right{display:none}
+  .empty{margin:18px 4px;color:var(--muted)}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.d-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:600px}
+  body.wide .app{max-width:none;padding-left:28px;padding-right:28px}
+  body.wide #home{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:28px;align-content:start;align-items:start}
+  body.wide .hero{padding:24px 26px 20px}
+  body.wide .hero-term{font-size:64px}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto;column-gap:18px;row-gap:12px}
+  body.wide #drill .meta,body.wide #drill .bar{grid-column:1 / -1}
+  body.wide #drill .card{grid-column:1;grid-row:3 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:3;align-content:end}
+  body.wide #drill .opt{min-height:76px}
+  body.wide #drill .actions{grid-column:2;grid-row:4}
+  body.wide #dict{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);column-gap:28px}
+  body.wide .d-right{display:block;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-radius:20px}
+  body.wide .d-row[aria-current="true"]{background:var(--raise)}
+  body.wide .d-chev{visibility:hidden}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  var lastW = 0;
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var a = document.activeElement;
+    if (lastW && w === lastW && a && a.tagName === "INPUT") return;   // клавиатура не меняет масштаб
+    lastW = w;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Раздел">
+      <button class="tab" id="tabTrain" role="tab" type="button" aria-selected="true" aria-controls="home drill">Тренировка</button>
+      <button class="tab" id="tabDict" role="tab" type="button" aria-selected="false" aria-controls="dict">Словарь</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+
+  <section class="view home" id="home" role="tabpanel" aria-labelledby="tabTrain">
+    <div class="h-left">
+      <div class="hero" id="hero">
+        <div class="hero-top">
+          <p class="lbl" id="heroKicker">Глагол дня</p>
+          <span class="tag" id="heroBadge" hidden>новый</span>
+        </div>
+        <div class="hero-row">
+          <h1 class="hero-term" id="heroTerm" lang="en"></h1>
+          <button class="say-sm" id="heroSay" type="button" aria-label="Прослушать глагол дня">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>
+          </button>
+        </div>
+        <p class="ipa" id="heroIpa" lang="en"></p>
+        <p class="hero-ru" id="heroRu"></p>
+        <button class="hero-more" id="heroMore" type="button">Пример и разбор ›</button>
+      </div>
+    </div>
+    <div class="h-right">
+      <p class="result" id="result" hidden></p>
+      <div class="deck">
+        <div class="deck-head"><p class="lbl">Колода</p><span class="deck-count" id="deckCount"></span></div>
+        <div class="cells" id="cells" aria-hidden="true"></div>
+        <p class="legend">
+          <span><i class="sw sw-new"></i>новые <b id="lgNew">0</b></span>
+          <span><i class="sw sw-learn"></i>учу <b id="lgLearn">0</b></span>
+          <span><i class="sw sw-done"></i>выучены <b id="lgDone">0</b></span>
+        </p>
+      </div>
+      <p class="plan" id="plan"></p>
+      <div class="actions"><button class="big primary" id="start" type="button" data-kind="main">Начать тренировку</button></div>
+      <p class="foot">Новый глагол добавляется каждый день около 11:00. Повторы: завтра, через 3, 7, 16 дней — и дальше реже.</p>
+    </div>
+  </section>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabTrain" hidden>
+    <div class="meta"><span id="status"></span><button class="link" id="quit" type="button">Завершить</button></div>
+    <div class="bar"><span class="bar-fill" id="barFill"></span></div>
+    <article class="card" id="card">
+      <span class="kind" id="kind"></span>
+      <p class="verdict" id="verdict" hidden></p>
+      <div class="qbox" id="qbox"></div>
+      <p class="hint" id="hint">Выбери вариант</p>
+    </article>
+    <div class="opts" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать ещё раз">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+  </section>
+
+  <section class="view" id="dict" role="tabpanel" aria-labelledby="tabDict" hidden>
+    <div class="d-left">
+      <div class="d-head"><h2 class="d-title">Словарь</h2><span class="d-count" id="dCount"></span></div>
+      <input class="search" id="find" type="search" placeholder="Найти глагол или перевод" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Поиск по словарю">
+      <div class="list" id="list"></div>
+    </div>
+    <div class="d-right" id="pane"></div>
+  </section>
+</div>
+
+<script>
+// ——— Глаголы. Ежедневная задача дописывает новый объект над строкой-маркером.
+// au: 1 — есть записи audio/<id>-t.mp3 (глагол) и audio/<id>-x.mp3 (пример); added — дата добавления, ГГГГ-ММ-ДД.
+/*__CARDS__*/
+
+const NEW_PER_SESSION = 5;
+const PRACTICE_SIZE = 10;
+const INTERVALS = [1, 3, 7, 16, 35, 90];    // дни
+const LEARNED = 3;                          // с этой ступени глагол считается выученным
+const DAY = 86400000;
+const LS_STATE = "flashcards:state";        // те же ключи, что у прежней версии: прогресс не теряется
+const LS_SPEAK = "flashcards:autospeak";
+const LS_OPEN = "pv:open";
+const DOC_PATH = "progress/main";
+
+let progress = {};
+let queue = [];            // [{ card, type, retry }], type: intro | rec | cloze | prod
+let index = 0;
+let mode = null;           // null — нет сессии; main | practice
+let answered = false;
+let autoSpeak = true;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let lastResult = null;
+let shownOpts = [];
+let tab = "train";
+let openId = null;
+let lastClip = null;
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+function show(id, on){ $(id).hidden = !on; }
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Фразовые"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", "__ICON180__"],
+    ["icon", "192x192", "__ICON192__"]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+// ——— Хранение
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+
+// ——— Даты
+const MONTHS = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function daysFromToday(ts){ return Math.round((dayStart(ts) - dayStart(Date.now())) / DAY); }
+function dateLabel(ts){ const d = new Date(ts); return d.getDate() + " " + MONTHS[d.getMonth()]; }
+function parseDay(s){
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ""));
+  return m ? new Date(+m[1], +m[2] - 1, +m[3]).getTime() : null;
+}
+function addedLabel(c){
+  const t = parseDay(c.added);
+  if (t === null) return "";
+  const d = daysFromToday(t);
+  if (d === 0) return "сегодня";
+  if (d === -1) return "вчера";
+  return dateLabel(t);
+}
+function whenLabel(ts){
+  const d = daysFromToday(ts);
+  if (d <= 0) return "сегодня";
+  if (d === 1) return "завтра";
+  if (d === 2) return "послезавтра";
+  return dateLabel(ts);
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+
+// ——— Прогресс
+function latestCard(){ return CARDS[CARDS.length - 1] || null; }
+function isDue(c){ const p = progress[c.id]; return !!p && dayStart(p.due) <= dayStart(Date.now()); }
+function dueCards(){ return CARDS.filter(isDue); }
+function newCards(){ return CARDS.filter(c => !progress[c.id]).reverse(); }   // свежие — первыми
+function stepOf(c){ const p = progress[c.id]; return p ? Math.max(0, p.step | 0) : -1; }
+function nextDue(){
+  let m = null;
+  CARDS.forEach(c => { const p = progress[c.id]; if (p && (m === null || p.due < m)) m = p.due; });
+  return m;
+}
+
+// ——— Разбор полей карточки
+function words(s){ return String(s || "").trim().split(/\s+/).filter(Boolean); }
+function coreRu(c){ const s = String(c.ru || ""); const i = s.indexOf(" — "); return (i > 0 ? s.slice(0, i) : s).trim(); }
+function restRu(c){ const s = String(c.ru || ""); const i = s.indexOf(" — "); return i > 0 ? s.slice(i + 3).trim() : ""; }
+function posInfo(c){
+  const raw = String(c.pos || "");
+  const pos = raw.toLowerCase();
+  return {
+    chips: raw.split("·").map(s => s.trim()).filter(s => s && !/^phrasal verb$/i.test(s)),
+    trans: pos.indexOf("без дополнения") < 0,
+    sep: pos.indexOf("разделяемый") >= 0 && pos.indexOf("неразделяемый") < 0
+  };
+}
+
+// Формы глагола: правильные окончания + формы из поля ipa («/…/ · wore off · worn off»)
+function verbForms(c){
+  const v = (words(c.term.toLowerCase())[0] || "");
+  const set = new Set([v]);
+  const cvc = /^[^aeiou]*[aeiou][^aeiouwxy]$/.test(v);
+  if (/(s|x|z|ch|sh|o)$/.test(v)) set.add(v + "es");
+  else if (/[^aeiou]y$/.test(v)) set.add(v.slice(0, -1) + "ies");
+  else set.add(v + "s");
+  if (v === "have") set.add("has");
+  if (/ie$/.test(v)) set.add(v.slice(0, -2) + "ying");
+  else if (/[^e]e$/.test(v)) set.add(v.slice(0, -1) + "ing");
+  else if (cvc) set.add(v + v.slice(-1) + "ing");
+  else set.add(v + "ing");
+  if (/e$/.test(v)) set.add(v + "d");
+  else if (/[^aeiou]y$/.test(v)) set.add(v.slice(0, -1) + "ied");
+  else if (cvc) set.add(v + v.slice(-1) + "ed");
+  else set.add(v + "ed");
+  String(c.ipa || "").split("·").slice(1).forEach(seg => {
+    const f = (words(seg.toLowerCase())[0] || "");
+    if (/^[a-z’'-]+$/.test(f)) set.add(f);
+  });
+  return Array.from(set).filter(Boolean);
+}
+function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+// Где в примере стоит сам глагол: одна область (came down with) или две (rule it out)
+function findVerb(c){
+  if (Object.prototype.hasOwnProperty.call(c, "_m")) return c._m;
+  const text = String(c.ex || "");
+  const w = words(c.term.toLowerCase());
+  const forms = verbForms(c).sort((a, b) => b.length - a.length).map(escRe).join("|");
+  const parts = w.slice(1).map(escRe);
+  let m = null;
+  try{
+    if (!forms) m = null;
+    else if (parts.length){
+      const a = new RegExp("\\b(" + forms + ")\\s+" + parts.join("\\s+") + "\\b", "i").exec(text);
+      if (a) m = { ranges: [[a.index, a.index + a[0].length]], joined: true };
+      else {
+        const b = new RegExp("\\b(" + forms + ")\\b((?:\\s+[\\w’'-]+){1,4}?)\\s+(" + parts.join("\\s+") + ")\\b", "i").exec(text);
+        if (b){
+          const end = b.index + b[0].length;
+          m = { ranges: [[b.index, b.index + b[1].length], [end - b[3].length, end]], joined: false };
+        }
+      }
+    } else {
+      const r = new RegExp("\\b(" + forms + ")\\b", "i").exec(text);
+      if (r) m = { ranges: [[r.index, r.index + r[0].length]], joined: true };
+    }
+  }catch(e){ m = null; }
+  try{ Object.defineProperty(c, "_m", { value: m, enumerable: false }); }catch(e){}
+  return m;
+}
+function canCloze(c){ const m = findVerb(c); return !!(m && m.joined); }
+
+// ——— Отвлекающие варианты: без близких по смыслу, для английских — похожие по форме
+function stems(s){
+  return words(String(s).toLowerCase().replace(/[^а-яёa-z\s-]/g, " "))
+    .filter(x => x.length >= 5 && !/-(то|либо|нибудь)$/.test(x))
+    .map(x => x.slice(0, 5));
+}
+function closeMeaning(a, b){
+  const sa = new Set(stems(coreRu(a)));
+  return stems(coreRu(b)).some(s => sa.has(s));
+}
+function pickDistractors(card, type){
+  const tw = words(card.term.toLowerCase());
+  const tp = tw.slice(1);
+  const pool = CARDS.filter(c => c.id !== card.id && c.term.toLowerCase() !== card.term.toLowerCase() && coreRu(c) !== coreRu(card));
+  const clear = pool.filter(c => !closeMeaning(card, c));
+  const src = clear.length >= 2 ? clear : pool;
+  const scored = src.map(c => {
+    let s = Math.random();
+    if (type !== "rec"){
+      const w = words(c.term.toLowerCase());
+      if (w[0] === tw[0]) s += 1.2;
+      if (w.slice(1).some(p => tp.indexOf(p) >= 0)) s += 1;
+    }
+    return { c: c, s: s };
+  }).sort((a, b) => b.s - a.s);
+  const out = [], labels = new Set([type === "rec" ? coreRu(card) : card.term.toLowerCase()]);
+  for (const x of scored){
+    const lab = type === "rec" ? coreRu(x.c) : x.c.term.toLowerCase();
+    if (labels.has(lab)) continue;
+    labels.add(lab);
+    out.push(x.c);
+    if (out.length === 2) break;
+  }
+  return out;
+}
+
+// ——— Какое упражнение дать: узнать смысл → вставить в контекст → вспомнить по-английски
+function reviewType(c){
+  const s = stepOf(c);
+  if (s <= 0) return "rec";
+  if (s === 1) return canCloze(c) ? "cloze" : "prod";
+  if (s === 2) return "prod";
+  return canCloze(c) && Math.random() < 0.5 ? "cloze" : "prod";
+}
+function practiceType(c){
+  const r = Math.random();
+  if (r < 0.34) return "rec";
+  if (r < 0.67 && canCloze(c)) return "cloze";
+  return "prod";
+}
+
+// ——— Синхронизация прогресса между устройствами
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const db = await window.claude.use("db");
+    if (!db) return;
+    let ref;
+    try{ ref = db.doc(DOC_PATH); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before) refreshViews();
+  }catch(e){ /* работаем на локальном прогрессе */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если записи нет или она не загрузилась — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!key || !player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+function clipKey(c, part){ return c.au ? c.id + "-" + part : null; }
+function sayCard(c, part){
+  const isEx = part === "x";
+  lastClip = { id: c.id, part: part };
+  playClip(clipKey(c, part), isEx ? c.ex : c.term, isEx ? 0.85 : 0.9);
+}
+
+// ——— Общие детали
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+function sayBtn(fn, label, cls){
+  const b = el("button", cls || "say-sm");
+  b.type = "button";
+  b.setAttribute("aria-label", label);
+  b.innerHTML = PLAY_SVG;
+  b.addEventListener("click", e => { e.stopPropagation(); fn(); });
+  return b;
+}
+function termInner(c){
+  const w = words(c.term);
+  const f = document.createDocumentFragment();
+  f.append(el("span", "vb", w[0] || ""));
+  if (w.length > 1) f.append(" ", el("span", "pt", w.slice(1).join(" ")));
+  return f;
+}
+function termNode(c, cls, tag){
+  const n = el(tag || "span", cls);
+  n.lang = "en";
+  n.append(termInner(c));
+  return n;
+}
+function ipaInner(c){
+  const parts = String(c.ipa || "").split("·").map(s => s.trim()).filter(Boolean);
+  const f = document.createDocumentFragment();
+  if (parts.length) f.append(el("span", null, parts[0]));
+  if (parts.length > 1) f.append(el("span", "forms", " · " + parts.slice(1).join(" · ")));
+  return f;
+}
+function ipaNode(c){ const p = el("p", "ipa"); p.lang = "en"; p.append(ipaInner(c)); return p; }
+function patternNode(c){
+  const info = posInfo(c);
+  const w = words(c.term);
+  if (!info.trans || w.length < 2) return null;
+  const p = el("p", "pattern", "С местоимением:");
+  const s = el("span", "ph");
+  s.lang = "en";
+  if (info.sep) s.append(el("span", "vb", w[0]), " ", el("i", null, "it"), " ", el("span", "pt", w.slice(1).join(" ")));
+  else s.append(termInner(c), " ", el("i", null, "it"));
+  p.append(s);
+  return p;
+}
+function exampleNode(c){
+  const box = el("div", "ex");
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const text = String(c.ex || "");
+  const m = findVerb(c);
+  if (m){
+    let last = 0;
+    m.ranges.forEach(r => {
+      if (r[0] > last) p.append(text.slice(last, r[0]));
+      p.append(el("span", "hl", text.slice(r[0], r[1])));
+      last = r[1];
+    });
+    if (last < text.length) p.append(text.slice(last));
+  } else p.textContent = text;
+  box.append(p, sayBtn(() => sayCard(c, "x"), "Прослушать пример", "say-sm ex-play"), el("p", "ex-ru", c.exru || ""));
+  return box;
+}
+function noteNode(c, open){
+  const wrap = el("div", "note");
+  const txt = el("p", "det-note", c.note);
+  if (open){ wrap.append(el("p", "lbl", "Разбор"), txt); return wrap; }
+  const b = el("button", "more", "Разбор ›");
+  b.type = "button";
+  txt.hidden = true;
+  b.addEventListener("click", () => { txt.hidden = false; b.replaceWith(el("p", "lbl", "Разбор")); });
+  wrap.append(b, txt);
+  return wrap;
+}
+function statusText(c){
+  const p = progress[c.id];
+  const al = addedLabel(c);
+  const added = al ? "Добавлен " + al + ". " : "";
+  if (!p) return added + "Ещё не тренировался — будет в ближайшей тренировке.";
+  const s = stepOf(c);
+  const when = whenLabel(p.due);
+  if (s >= LEARNED) return added + "Выучен · следующий повтор — " + when + ".";
+  return added + "Уровень " + (s + 1) + " из 4 · повтор — " + when + ".";
+}
+function detailNode(c, o){
+  o = o || {};
+  const d = el("div", "det");
+  const head = el("div", "det-head");
+  head.append(termNode(c, "det-term", "h2"), sayBtn(() => sayCard(c, "t"), "Прослушать глагол"));
+  d.append(head, ipaNode(c));
+  const info = posInfo(c);
+  if (info.chips.length){
+    const ch = el("div", "chips");
+    info.chips.forEach(s => ch.append(el("span", "chip", s)));
+    d.append(ch);
+  }
+  const pat = patternNode(c);
+  if (pat) d.append(pat);
+  d.append(el("p", "det-ru", c.ru || ""));
+  if (c.ex) d.append(exampleNode(c));
+  if (c.note) d.append(noteNode(c, !!o.note));
+  if (o.status) d.append(el("p", "status", statusText(c)));
+  return d;
+}
+function dotsNode(c){
+  const s = stepOf(c);
+  const n = Math.min(4, s + 1);
+  const d = el("span", "dots" + (s >= LEARNED ? " done" : ""));
+  d.setAttribute("role", "img");
+  d.setAttribute("aria-label", s >= LEARNED ? "выучен" : "уровень " + n + " из 4");
+  for (let i = 0; i < 4; i++) d.append(el("i", i < n ? "on" : null));
+  return d;
+}
+
+// ——— Главная
+function renderHome(){
+  const c = latestCard();
+  if (c){
+    const al = addedLabel(c);
+    $("heroKicker").textContent = "Глагол дня" + (al ? " · " + al : "");
+    $("heroBadge").hidden = !!progress[c.id];
+    const t = $("heroTerm"); t.textContent = ""; t.append(termInner(c));
+    const ip = $("heroIpa"); ip.textContent = ""; ip.append(ipaInner(c));
+    $("heroRu").textContent = coreRu(c);
+  }
+  const r = $("result");
+  if (lastResult){
+    r.hidden = false;
+    r.textContent = (lastResult.mode === "practice" ? "Практика пройдена" : "Готово") + ": с первого раза верно " + lastResult.correct + " из " + lastResult.first + ".";
+  } else r.hidden = true;
+
+  const cells = $("cells");
+  cells.textContent = "";
+  const latest = latestCard();
+  let nNew = 0, nLearn = 0, nDone = 0;
+  CARDS.forEach(x => {
+    const s = stepOf(x);
+    const cls = s < 0 ? "" : " l" + Math.min(LEARNED, s);
+    cells.append(el("i", "cell" + cls + (x === latest && s < 0 ? " today" : "")));
+    if (s < 0) nNew++; else if (s >= LEARNED) nDone++; else nLearn++;
+  });
+  $("deckCount").textContent = CARDS.length + " " + plural(CARDS.length, "глагол", "глагола", "глаголов");
+  $("lgNew").textContent = nNew;
+  $("lgLearn").textContent = nLearn;
+  $("lgDone").textContent = nDone;
+
+  const due = dueCards().length, fresh = Math.min(NEW_PER_SESSION, newCards().length);
+  const plan = $("plan"), btn = $("start");
+  plan.textContent = "";
+  if (due || fresh){
+    const parts = [];
+    if (due) parts.push(due + " " + plural(due, "повтор", "повтора", "повторов"));
+    if (fresh) parts.push(fresh + " " + plural(fresh, "новый", "новых", "новых"));
+    plan.append("Сегодня: ", el("b", null, parts.join(" · ")));
+    btn.textContent = "Начать тренировку";
+    btn.dataset.kind = "main";
+  } else {
+    const nd = nextDue();
+    plan.textContent = "На сегодня всё." + (nd ? " Следующий повтор — " + whenLabel(nd) + "." : "");
+    btn.textContent = "Свободная практика";
+    btn.dataset.kind = "practice";
+  }
+}
+
+// ——— Тренировка
+function buildMain(){
+  const due = shuffle(dueCards());
+  const fresh = newCards().slice(0, NEW_PER_SESSION);
+  const items = [];
+  let di = 0;
+  fresh.forEach(c => {
+    items.push({ card: c, type: "intro" });
+    for (let k = 0; k < 2 && di < due.length; k++, di++) items.push({ card: due[di], type: reviewType(due[di]) });
+  });
+  for (; di < due.length; di++) items.push({ card: due[di], type: reviewType(due[di]) });
+  return items;
+}
+function buildPractice(){
+  const pool = CARDS.filter(c => progress[c.id]);
+  const src = pool.length ? pool.slice() : CARDS.slice();
+  return shuffle(src).slice(0, PRACTICE_SIZE).map(c => ({ card: c, type: practiceType(c) }));
+}
+function startSession(kind){
+  queue = kind === "practice" ? buildPractice() : buildMain();
+  mode = kind === "practice" ? "practice" : "main";
+  index = 0; lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; lastResult = null;
+  if (!queue.length){ mode = null; renderHome(); return; }
+  setTab("train");
+  render();
+}
+function finishSession(){
+  stopAudio();
+  if (stats.first) lastResult = { first: stats.first, correct: stats.correct, mode: mode };
+  mode = null; queue = []; index = 0; answered = false;
+  setTab("train");
+}
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function kindText(item){
+  if (item.type === "intro") return addedLabel(item.card) === "сегодня" ? "Новый глагол · глагол дня" : "Новый глагол";
+  const base = item.type === "rec" ? "Что значит?" : item.type === "cloze" ? "Вставь глагол" : "Как сказать по-английски?";
+  return item.retry ? "Ещё раз · " + base.charAt(0).toLowerCase() + base.slice(1) : base;
+}
+function renderOpts(item){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle([item.card].concat(pickDistractors(item.card, item.type)));
+  box.className = "opts " + (item.type === "rec" ? "ru" : "en");
+  shownOpts.forEach(c => {
+    const b = el("button", "opt");
+    b.type = "button";
+    if (item.type === "rec") b.textContent = coreRu(c);
+    else { b.lang = "en"; b.append(termNode(c, null)); }   // обёртка: во flex-кнопке пробел между словами иначе пропадает
+    b.addEventListener("click", () => choose(c));
+    box.append(b);
+  });
+}
+function render(){
+  stopAudio();
+  answered = false;
+  drillStale = false;
+  const item = queue[index];
+  if (!item){ finishSession(); return; }
+  const c = item.card;
+  $("card").scrollTop = 0;
+  const kind = $("kind");
+  kind.className = "kind" + (item.type === "intro" ? " new" : "");
+  kind.textContent = kindText(item);
+  show("verdict", false);
+  const box = $("qbox");
+  box.textContent = "";
+  if (item.type === "intro"){
+    box.append(detailNode(c, { note: true }));
+    show("hint", false);
+    show("opts", false);
+    $("next").textContent = "Запомнил — проверить";
+    show("actNext", true);
+    if (autoSpeak) sayCard(c, "t");
+  } else {
+    if (item.type === "rec"){
+      const row = el("div", "q-row");
+      row.append(termNode(c, "q-term", "p"), sayBtn(() => sayCard(c, "t"), "Прослушать глагол"));
+      box.append(row, ipaNode(c));
+    } else if (item.type === "cloze"){
+      const m = findVerb(c), r = m.ranges[0];
+      const p = el("p", "q-sent");
+      p.lang = "en";
+      p.append(c.ex.slice(0, r[0]), el("span", "gap"), c.ex.slice(r[1]));
+      box.append(p, el("p", "q-tr", c.exru || ""));
+    } else {
+      box.append(el("p", "q-ru", coreRu(c)));
+      const rest = restRu(c);
+      if (rest) box.append(el("p", "q-rest", rest));
+    }
+    $("hint").textContent = item.type === "cloze" ? "Выбери глагол — в предложении он может стоять в другой форме" : "Выбери вариант";
+    show("hint", true);
+    renderOpts(item);
+    show("opts", true);
+    show("actNext", false);
+    $("next").textContent = "Дальше";
+    if (item.type === "rec" && autoSpeak) sayCard(c, "t");
+    else preloadClip(clipKey(c, item.type === "prod" ? "t" : "x"));
+  }
+  $("status").textContent = (mode === "practice" ? "Практика · " : "Карточка ") + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+}
+function grade(c, ok){
+  const prev = progress[c.id];
+  let step = prev ? (prev.step | 0) : -1;
+  if (!ok){ step = 0; lapsed[c.id] = true; }
+  else if (step < 0 || lapsed[c.id]) step = 0;
+  else if (isDue(c)) step = Math.min(INTERVALS.length - 1, step + 1);
+  else return;
+  progress[c.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+}
+function choose(opt){
+  if (answered) return;
+  const item = queue[index];
+  if (!item || item.type === "intro") return;
+  answered = true;
+  const c = item.card;
+  const ok = opt.id === c.id;
+  if (!seen.has(c.id)){ seen.add(c.id); stats.first++; if (ok) stats.correct++; }
+  if (mode === "main") grade(c, ok);
+  if (!ok) queue.splice(Math.min(queue.length, index + 4), 0, { card: c, type: "rec", retry: true });
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (ok){ v.className = "verdict ok"; v.append("Верно"); }
+  else {
+    v.className = "verdict bad";
+    const b = el("b", null);
+    b.lang = "en";
+    b.append(termInner(opt));
+    v.append("Нет: ", b, " — это «" + coreRu(opt) + "». Правильный ответ:");
+  }
+  show("verdict", true);
+  const box = $("qbox");
+  box.textContent = "";
+  box.append(detailNode(c, { note: !ok }));
+  show("hint", false);
+  show("opts", false);
+  show("actNext", true);
+  $("card").scrollTop = 0;
+  if (autoSpeak) sayCard(c, item.type === "prod" ? "t" : "x");
+}
+function next(){
+  const item = queue[index];
+  if (!item) return;
+  if (item.type === "intro") queue.splice(Math.min(queue.length, index + 3), 0, { card: item.card, type: "rec" });
+  else if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Словарь
+function isWide(){ return document.body.classList.contains("wide"); }
+function renderDict(){
+  const q = $("find").value.trim().toLowerCase();
+  const list = $("list");
+  list.textContent = "";
+  $("dCount").textContent = CARDS.length + " " + plural(CARDS.length, "глагол", "глагола", "глаголов");
+  const wide = isWide();
+  if (wide && !CARDS.some(c => c.id === openId)){ const l = latestCard(); openId = l ? l.id : null; }
+  const items = CARDS.slice().reverse().filter(c => !q || c.term.toLowerCase().indexOf(q) >= 0 || String(c.ru || "").toLowerCase().indexOf(q) >= 0);
+  items.forEach(c => {
+    const item = el("div", "d-item");
+    const row = el("button", "d-row");
+    row.type = "button";
+    const open = openId === c.id;
+    if (wide) row.setAttribute("aria-current", String(open));
+    else row.setAttribute("aria-expanded", String(open));
+    const main = el("span", "d-main");
+    const tl = el("span", "d-tl");
+    tl.append(termNode(c, "d-term"));
+    const al = addedLabel(c);
+    if (al === "сегодня" || al === "вчера") tl.append(el("span", "tag day", al));
+    main.append(tl, el("span", "d-ru", coreRu(c)));
+    const side = el("span", "d-side");
+    side.append(progress[c.id] ? dotsNode(c) : el("span", "tag", "новый"));
+    row.append(main, side, el("span", "d-chev", "›"));
+    row.addEventListener("click", () => {
+      openId = (open && !isWide()) ? null : c.id;
+      lsSet(LS_OPEN, openId || "");
+      stopAudio();
+      renderDict();
+      if (openId && !isWide()){
+        const n = $("list").querySelector('[data-id="' + openId + '"]');
+        if (n) n.scrollIntoView({ block: "nearest" });
+      }
+    });
+    item.dataset.id = c.id;
+    item.append(row);
+    if (open && !wide){
+      const body = el("div", "d-body");
+      body.append(detailNode(c, { note: true, status: true }));
+      item.append(body);
+    }
+    list.append(item);
+  });
+  if (!items.length) list.append(el("p", "empty", "Ничего не нашлось. Ищи по-английски или по-русски."));
+  const pane = $("pane");
+  pane.textContent = "";
+  if (wide){
+    const c = CARDS.find(x => x.id === openId);
+    if (c) pane.append(detailNode(c, { note: true, status: true }));
+  }
+}
+function openInDict(c){
+  if (!c) return;
+  openId = c.id;
+  lsSet(LS_OPEN, openId);
+  $("find").value = "";
+  setTab("dict");
+  const n = $("list").querySelector('[data-id="' + c.id + '"]');
+  if (n) n.scrollIntoView({ block: "start" });
+}
+
+// ——— Вкладки
+let drillStale = false;     // сессия восстановлена, но карточка ещё не нарисована
+function setTab(name){
+  tab = name === "dict" ? "dict" : "train";
+  const train = tab === "train";
+  $("tabTrain").setAttribute("aria-selected", String(train));
+  $("tabDict").setAttribute("aria-selected", String(!train));
+  $("dict").hidden = train;
+  $("home").hidden = !train || !!mode;
+  $("drill").hidden = !train || !mode;
+  if (!train){ stopAudio(); renderDict(); }
+  else if (!mode) renderHome();
+  else if (drillStale) render();
+}
+function refreshViews(){
+  if (tab === "dict") renderDict();
+  else if (!mode) renderHome();
+}
+
+// ——— События
+$("tabTrain").addEventListener("click", () => { if (tab !== "train") setTab("train"); });
+$("tabDict").addEventListener("click", () => { if (tab !== "dict") setTab("dict"); });
+$("start").addEventListener("click", () => startSession($("start").dataset.kind));
+$("hero").addEventListener("click", () => openInDict(latestCard()));
+$("heroMore").addEventListener("click", e => { e.stopPropagation(); openInDict(latestCard()); });
+$("heroSay").addEventListener("click", e => { e.stopPropagation(); const c = latestCard(); if (c) sayCard(c, "t"); });
+$("next").addEventListener("click", next);
+$("quit").addEventListener("click", finishSession);
+$("say").addEventListener("click", () => {
+  const item = queue[index];
+  if (!item) return;
+  sayCard(item.card, lastClip && lastClip.id === item.card.id ? lastClip.part : "x");
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, JSON.stringify(autoSpeak));
+  if (!autoSpeak) stopAudio();
+});
+$("find").addEventListener("input", renderDict);
+// Клавиатура: 1, 2, 3 — варианты по порядку; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button,input")) return;
+  if (tab !== "train" || !mode) return;
+  const item = queue[index];
+  if (!item) return;
+  if (item.type !== "intro" && !answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault();
+    next();
+  }
+});
+let wasWide = isWide();
+function onResize(){
+  const w = isWide();
+  if (w !== wasWide){ wasWide = w; if (tab === "dict") renderDict(); }
+}
+window.addEventListener("resize", onResize);
+window.addEventListener("orientationchange", () => setTimeout(onResize, 200));
+document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshViews(); });
+
+// ——— Состояние при обновлении страницы: новая версия (новый глагол дня) приходит, не сбивая тренировку
+function hotState(){
+  return {
+    v: 1, tab: tab, openId: openId, find: $("find").value, lastResult: lastResult,
+    session: mode ? {
+      mode: mode, index: answered ? index + 1 : index,
+      items: queue.map(it => [it.card.id, it.type, it.retry ? 1 : 0]),
+      stats: stats, seen: Array.from(seen), lapsed: Object.keys(lapsed)
+    } : null
+  };
+}
+function restore(data){
+  if (!data || data.v !== 1) return false;
+  const byId = {};
+  CARDS.forEach(c => { byId[c.id] = c; });
+  if (typeof data.find === "string") $("find").value = data.find;
+  if (data.openId && byId[data.openId]) openId = data.openId;
+  if (data.lastResult && typeof data.lastResult === "object") lastResult = data.lastResult;
+  const s = data.session;
+  if (s && Array.isArray(s.items)){
+    queue = s.items.filter(x => Array.isArray(x) && byId[x[0]]).map(x => ({ card: byId[x[0]], type: x[1], retry: !!x[2] }));
+    queue = queue.filter(it => it.type !== "cloze" || canCloze(it.card));
+    index = Math.max(0, Math.min(s.index | 0, queue.length));
+    mode = s.mode === "practice" ? "practice" : "main";
+    stats = (s.stats && typeof s.stats === "object") ? { first: s.stats.first | 0, correct: s.stats.correct | 0 } : { first: 0, correct: 0 };
+    seen = new Set(Array.isArray(s.seen) ? s.seen : []);
+    lapsed = {};
+    (Array.isArray(s.lapsed) ? s.lapsed : []).forEach(id => { lapsed[id] = true; });
+    if (index >= queue.length){ finishSession(); return true; }
+    drillStale = true;
+  }
+  setTab(data.tab === "dict" ? "dict" : "train");
+  return true;
+}
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = !(s === "false" || s === "0");
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = lsGet(LS_OPEN);
+  if (o && CARDS.some(c => c.id === o)) openId = o;
+  setTab("train");
+  connectCloud();
+}
+let touched = false;
+document.addEventListener("pointerdown", () => { touched = true; }, { capture: true, once: true });
+document.addEventListener("keydown", () => { touched = true; }, { capture: true, once: true });
+(function start(){
+  const hot = window.claude && window.claude.hot;
+  try{ if (hot && typeof hot.snapshot === "function") hot.snapshot(hotState); }catch(e){}
+  boot();
+  const apply = d => {
+    if (touched || !d || typeof d !== "object") return;
+    try{ restore(d); }catch(e){ mode = null; queue = []; index = 0; setTab("train"); }
+  };
+  try{
+    if (hot && typeof hot.ready === "function") hot.ready(apply);
+    else if (hot && hot.data) apply(hot.data);
+  }catch(e){}
+})();
+</script>

@@ -1,0 +1,1526 @@
+<title>Кого + to do</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("kogo",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw,.g-form i{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .obj{color:var(--blue)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-title .h-plus{color:var(--muted)}
+  .r-title .h-to{color:var(--yes-text)}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .gest{list-style:none;margin:0;padding:0;counter-reset:g}
+  .gest li{counter-increment:g;display:grid;grid-template-columns:calc(28px*var(--k)) minmax(0,1fr);column-gap:calc(8px*var(--k));row-gap:calc(3px*var(--k));padding:calc(12px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .gest li:first-child{border-top:0}
+  .gest li::before{content:counter(g);grid-row:1 / span 4;font-size:calc(15px*var(--k));line-height:1.6;color:var(--blue);font-variant-numeric:tabular-nums}
+  .g-name{margin:0;font-size:calc(17px*var(--k));font-weight:600;line-height:1.35}
+  .g-form{margin:0;font-size:calc(16px*var(--k));line-height:1.4;color:var(--soft)}
+  .g-form i{font-family:var(--serif);font-style:normal;font-size:calc(19px*var(--k))}
+  .g-ex{margin:calc(2px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.35}
+  .g-verbs{margin:0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(17px*var(--k));color:var(--text)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx{width:100%;border-collapse:collapse}
+  .mx th,.mx td{padding:calc(10px*var(--k)) calc(4px*var(--k));text-align:center;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mx thead th{border-top:0;padding-top:calc(12px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.25;color:var(--blue);vertical-align:bottom}
+  .mx thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .mx tbody th{text-align:left;padding-left:calc(14px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(19px*var(--k));white-space:nowrap}
+  .mx td{font-size:calc(20px*var(--k));line-height:1.1}
+  .mx td.ok{color:var(--yes-text)}
+  .mx td.no{color:var(--no-text)}
+  .mx td small{display:block;margin-top:calc(3px*var(--k));font-size:calc(11px*var(--k));line-height:1.2;color:var(--muted)}
+  .mx td sup{font-size:calc(12px*var(--k));color:var(--muted)}
+  .mx .k{background:var(--no-soft)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-foot{margin:calc(6px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .mx-foot a{color:var(--blue)}
+  .topics + .mx-foot{margin-top:calc(18px*var(--k))}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-w{grid-column:1 / -1;margin:calc(6px*var(--k)) 0 0;font-size:calc(14px*var(--k));color:var(--muted)}
+  .ex-w b{font-family:var(--serif);font-weight:400;font-size:calc(18px*var(--k));color:var(--text);margin-right:calc(4px*var(--k))}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex.has-w .ex-play{grid-row:2 / span 2}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title"><span class="obj">Кого</span> <span class="h-plus">+</span> <span class="h-to" lang="en">to do</span></h1>
+      <p class="r-sub">«Посоветовал ему отдохнуть» и «предложил ему отдохнуть»&nbsp;— по-русски одна схема, по-английски две. <b>Решает глагол.</b></p>
+      <div class="algo">
+        <p class="algo-h">Три жеста</p>
+        <ol class="gest">
+          <li>
+            <p class="g-name">Толкаю человека</p>
+            <p class="g-form"><i class="obj">кого</i> + <i class="good" lang="en">to do</i>&nbsp;— делает он</p>
+            <p class="g-ex" lang="en">advised <span class="obj">him</span> <span class="good">to rest</span></p>
+            <p class="g-verbs" lang="en">encourage, advise, allow, ask, persuade, remind, urge, warn, expect, want</p>
+          </li>
+          <li>
+            <p class="g-name">Кладу идею на стол</p>
+            <p class="g-form"><i class="good" lang="en">-ing</i> или <i class="good" lang="en">that</i> + кто + начальная форма</p>
+            <p class="g-ex" lang="en">suggested <span class="good">resting</span> · suggested <span class="good">that he rest</span></p>
+            <p class="g-verbs" lang="en">suggest, recommend, propose</p>
+          </li>
+          <li>
+            <p class="g-name">Протягиваю руку</p>
+            <p class="g-form"><i class="good" lang="en">to do</i>&nbsp;— делаю сам · <i class="obj">кому</i> + что</p>
+            <p class="g-ex" lang="en">offered <span class="good">to help</span> · offered <span class="obj">him</span> <span class="good">a coffee</span></p>
+            <p class="g-verbs" lang="en">offer</p>
+          </li>
+        </ol>
+        <p class="algo-m">Кто предлагает&nbsp;— тот не толкает.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Что может стоять после глагола</h2>
+      <div class="mx-wrap">
+        <table class="mx">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr">Глагол</span></th>
+              <th scope="col" class="k">кого +<br><span lang="en">to do</span></th>
+              <th scope="col"><span lang="en">to do</span><small>делаю сам</small></th>
+              <th scope="col"><span lang="en">-ing</span></th>
+              <th scope="col"><span lang="en">that</span> +<br>кто + V</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" lang="en">suggest</th><td class="no k">✗<span class="sr"> нет</span></td><td class="no">✗<span class="sr"> нет</span></td><td class="ok">✓<span class="sr"> да</span></td><td class="ok">✓<span class="sr"> да</span></td></tr>
+            <tr><th scope="row" lang="en">recommend</th><td class="no k">✗<sup>*</sup><span class="sr"> нет, см. примечание</span></td><td class="no">✗<span class="sr"> нет</span></td><td class="ok">✓<span class="sr"> да</span></td><td class="ok">✓<span class="sr"> да</span></td></tr>
+            <tr><th scope="row" lang="en">propose</th><td class="no k">✗<span class="sr"> нет</span></td><td class="ok">✓<small>собираюсь</small></td><td class="ok">✓<span class="sr"> да</span></td><td class="ok">✓<span class="sr"> да</span></td></tr>
+            <tr><th scope="row" lang="en">offer</th><td class="no k">✗<span class="sr"> нет</span></td><td class="ok">✓<small>вызываюсь</small></td><td class="no">✗<span class="sr"> нет</span></td><td class="no">✗<span class="sr"> нет</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-note"><b lang="en">offer</b>&nbsp;— исключение внутри исключения: ни <span class="nw" lang="en">-ing</span>, ни <span lang="en">that</span>. Только <span lang="en">to do</span> или кому + что.</p>
+      <p class="mx-foot"><sup>*</sup> <span lang="en">recommend him to rest</span>: Oxford допускает как британский вариант, Longman считает ошибкой. В&nbsp;письмах и&nbsp;статьях не&nbsp;используйте.</p>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+      <p class="mx-foot">Модели сверены по словарям <a href="https://www.oxfordlearnersdictionaries.com/definition/english/suggest" target="_blank" rel="noopener">Oxford Learner's</a> и&nbsp;<a href="https://www.ldoceonline.com/dictionary/recommend" target="_blank" rel="noopener">Longman</a>.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. {…} — «кого» (синий), […] — нужная форма (зелёный).
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "Толкаю: кого + to do",
+  "rule": "Действие выполняет другой человек — тот, кого просят, кому советуют и разрешают. Схема: глагол + кого + to do. Так работают десять глаголов ниже. Отрицание ставится перед to: warned him not to drive.",
+  "ex": [
+   {
+    "w": "encourage",
+    "wr": "поощрять, побуждать",
+    "en": "We encourage {patients} [to ask] questions about their treatment.",
+    "ru": "Мы поощряем пациентов задавать вопросы о лечении."
+   },
+   {
+    "w": "advise",
+    "wr": "советовать",
+    "en": "The neurologist advised {him} [to stop] smoking.",
+    "ru": "Невролог посоветовал ему бросить курить."
+   },
+   {
+    "w": "allow",
+    "wr": "разрешать, позволять",
+    "en": "The new protocol allows {paramedics} [to alert] the stroke team directly.",
+    "ru": "Новый протокол позволяет фельдшерам оповещать инсультную бригаду напрямую."
+   },
+   {
+    "w": "ask",
+    "wr": "просить",
+    "en": "I asked {the family} [to bring] his medication list.",
+    "ru": "Я попросил родственников принести список его лекарств."
+   },
+   {
+    "w": "persuade",
+    "wr": "уговорить, убедить",
+    "en": "We persuaded {her} [to stay] for observation.",
+    "ru": "Мы уговорили её остаться под наблюдением."
+   },
+   {
+    "w": "remind",
+    "wr": "напомнить",
+    "en": "Remind {the residents} [to complete] the discharge summaries.",
+    "ru": "Напомните ординаторам заполнить выписные эпикризы."
+   },
+   {
+    "w": "urge",
+    "wr": "настоятельно призывать",
+    "en": "The guidelines urge {clinicians} [to minimise] door-to-needle time.",
+    "ru": "Рекомендации настоятельно призывают врачей сокращать время «от двери до иглы»."
+   },
+   {
+    "w": "warn",
+    "wr": "предупреждать",
+    "en": "I warned {him} [not to drive] for a month.",
+    "ru": "Я предупредил его, чтобы месяц не садился за руль."
+   },
+   {
+    "w": "expect",
+    "wr": "ожидать, рассчитывать",
+    "en": "We expect {her} [to recover] fully.",
+    "ru": "Мы рассчитываем, что она полностью восстановится."
+   },
+   {
+    "w": "want",
+    "wr": "хотеть, чтобы",
+    "en": "I want {you} [to repeat] the CT in 24 hours.",
+    "ru": "Я хочу, чтобы вы повторили КТ через 24 часа."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "suggest: идея на стол",
+  "rule": "Suggest — предложить идею, вариант. Человека после него не ставят: ✗ suggested me to repeat. Два верных пути: suggest + -ing или suggest that + кто + начальная форма (that и should можно опустить). «Что-то кому» — через to: suggest a plan to the team.",
+  "ex": [
+   {
+    "en": "She suggested [repeating] the scan.",
+    "ru": "Она предложила повторить исследование."
+   },
+   {
+    "en": "She suggested [that I repeat] the scan.",
+    "ru": "Она предложила, чтобы я повторил исследование."
+   },
+   {
+    "en": "She suggested a new plan [to] the team.",
+    "ru": "Она предложила команде новый план."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "recommend: рекомендую",
+  "rule": "Та же схема, что у suggest: recommend + -ing или recommend that + кто + начальная форма. «Не рекомендовать» — recommend against + -ing. Recommend him to rest Oxford допускает как британский вариант, Longman считает ошибкой — в письмах и статьях не используйте.",
+  "ex": [
+   {
+    "en": "The panel recommends [repeating] the test in six months.",
+    "ru": "Комиссия рекомендует повторить анализ через полгода."
+   },
+   {
+    "en": "The doctor recommended [that he rest] for a week.",
+    "ru": "Врач рекомендовал ему неделю отдыхать."
+   },
+   {
+    "en": "The guidelines recommend [against using] this drug in pregnancy.",
+    "ru": "Рекомендации не советуют применять этот препарат при беременности."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "propose: официально",
+  "rule": "Propose — предложить официально: план, поправку, перенос. После него, как после suggest, -ing или that + кто + начальная форма. Propose + to do значит другое — «собираться»: делаю сам.",
+  "ex": [
+   {
+    "en": "I propose [postponing] the audit until March.",
+    "ru": "Предлагаю перенести аудит на март."
+   },
+   {
+    "en": "The committee proposed [that] the audit [be postponed].",
+    "ru": "Комиссия предложила перенести аудит."
+   },
+   {
+    "en": "How do you propose [to fund] the study?",
+    "ru": "Как вы собираетесь финансировать исследование?"
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "offer: протягиваю руку",
+  "rule": "Offer — предлагаю себя, помощь или вещь. Два пути: offer to do (делаю сам, «вызываюсь») и offer кому + что. Ни -ing, ни that, ни «кого + to do». «Предложила мне отдохнуть» — отдыхать буду я — это уже suggest.",
+  "ex": [
+   {
+    "en": "She offered [to cover] the night shift.",
+    "ru": "Она вызвалась взять ночную смену."
+   },
+   {
+    "en": "She offered {me} [a coffee].",
+    "ru": "Она предложила мне кофе."
+   },
+   {
+    "en": "She suggested [that I take] a break.",
+    "ru": "Она предложила мне сделать перерыв."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "«Предложил…» — какой глагол",
+  "rule": "По-русски одно слово, по-английски четыре. Первый вопрос к себе: кто будет делать? Другие или все вместе — suggest. Я сам — offer to do. Вещь или место — offer кому + что. Официально — propose. Пациенту, чтобы он сделал, — advise кого + to do.",
+  "ex": [
+   {
+    "en": "He suggested [ordering] an MRI.",
+    "ru": "Он предложил назначить МРТ."
+   },
+   {
+    "en": "He offered [to help].",
+    "ru": "Он вызвался помочь."
+   },
+   {
+    "en": "The doctor advised {him} [to rest].",
+    "ru": "Врач посоветовал ему отдохнуть."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "advise, allow, want: тонкости",
+  "rule": "Без «кого» advise и allow берут -ing: I'd advise waiting, we don't allow smoking. С «кем» — снова to do: allow visitors to stay. Want никогда не бывает с that: I want you to repeat. Expect умеет и так, и так: expect her to recover = expect that she will recover.",
+  "ex": [
+   {
+    "en": "I'd advise [waiting] for the MRI.",
+    "ru": "Я бы посоветовал дождаться МРТ."
+   },
+   {
+    "en": "We don't allow [smoking] on the ward.",
+    "ru": "Курить в отделении не разрешается."
+   },
+   {
+    "en": "I want {the results} [to be sent] today.",
+    "ru": "Я хочу, чтобы результаты прислали сегодня."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "Делаю сам и that-часть",
+  "rule": "Если делаю я сам, «кого» не нужно: I asked to see the consultant, she offered to help. Так умеют ask, want, expect, offer и propose. Suggest и recommend — нет: ✗ I suggest to wait → I suggest waiting. В that-части — начальная форма: без -s и без to.",
+  "ex": [
+   {
+    "en": "I asked [to see] the consultant.",
+    "ru": "Я попросил о встрече с консультантом."
+   },
+   {
+    "en": "I suggest [waiting] until the results come back.",
+    "ru": "Предлагаю подождать результатов."
+   },
+   {
+    "en": "Her GP recommended that she [see] a neurologist.",
+    "ru": "Терапевт рекомендовал ей обратиться к неврологу."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "title": "В протоколах: пассив",
+  "rule": "В инструкциях удобен пассив: Patients are advised to fast — так можно с advise, ask, encourage, allow, remind. С suggest нельзя: ✗ Patients are suggested to fast. Patients are recommended to fast — частая калька; надёжнее безличный оборот: It is recommended that patients fast.",
+  "ex": [
+   {
+    "en": "Patients are [advised to fast] from midnight.",
+    "ru": "Пациентам рекомендуется не есть с полуночи."
+   },
+   {
+    "en": "It is recommended [that patients fast] from midnight.",
+    "ru": "Рекомендуется, чтобы пациенты не ели с полуночи."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "title": "Итог — всё вместе",
+  "rule": "Пятнадцать случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты ("" — ничего не нужно), a — правильный.
+const CARDS = [
+ {
+  "id": "t1-advise",
+  "t": 1,
+  "q": "The neurologist advised him ___ smoking.",
+  "opts": [
+   "to stop",
+   "stopping"
+  ],
+  "a": "to stop",
+  "why": "advise + кого + to do: бросать будет он."
+ },
+ {
+  "id": "t1-encourage",
+  "t": 1,
+  "q": "We encourage patients ___ questions about their treatment.",
+  "opts": [
+   "to ask",
+   "asking"
+  ],
+  "a": "to ask",
+  "why": "encourage + кого + to do: побуждаем их самих спрашивать."
+ },
+ {
+  "id": "t1-allow",
+  "t": 1,
+  "q": "The new protocol ___ paramedics to alert the stroke team directly.",
+  "opts": [
+   "allows",
+   "suggests"
+  ],
+  "a": "allows",
+  "why": "allow + кого + to do. У suggest такой схемы нет."
+ },
+ {
+  "id": "t1-persuade",
+  "t": 1,
+  "q": "We finally persuaded the patient ___ against medical advice.",
+  "opts": [
+   "not to leave",
+   "not leaving"
+  ],
+  "a": "not to leave",
+  "why": "persuade + кого + to do; отрицание not — перед to."
+ },
+ {
+  "id": "t1-want",
+  "t": 1,
+  "q": "I want ___ the CT in 24 hours.",
+  "opts": [
+   "you to repeat",
+   "that you repeat"
+  ],
+  "a": "you to repeat",
+  "why": "want никогда не берёт that: want + кого + to do."
+ },
+ {
+  "id": "t1-urge",
+  "t": 1,
+  "q": "The guidelines urge clinicians ___ door-to-needle time.",
+  "opts": [
+   "to minimise",
+   "minimising"
+  ],
+  "a": "to minimise",
+  "why": "urge + кого + to do: настоятельно призывают врачей."
+ },
+ {
+  "id": "t2-scan",
+  "t": 2,
+  "q": "She suggested ___ the scan.",
+  "opts": [
+   "repeating",
+   "me to repeat",
+   "to repeat"
+  ],
+  "a": "repeating",
+  "why": "suggest + -ing: идея на стол. Ни «кого + to do», ни to do."
+ },
+ {
+  "id": "t2-dose",
+  "t": 2,
+  "q": "The cardiologist suggested ___ the dose.",
+  "opts": [
+   "that he reduce",
+   "him to reduce"
+  ],
+  "a": "that he reduce",
+  "why": "suggest that + кто + начальная форма, без -s: that he reduce."
+ },
+ {
+  "id": "t2-wait",
+  "t": 2,
+  "q": "I suggest ___ until the results come back.",
+  "opts": [
+   "waiting",
+   "to wait"
+  ],
+  "a": "waiting",
+  "why": "suggest to do — ошибка: только -ing или that."
+ },
+ {
+  "id": "t2-team",
+  "t": 2,
+  "q": "She suggested a new plan ___ the team.",
+  "opts": [
+   "to",
+   ""
+  ],
+  "a": "to",
+  "why": "Что-то кому — через to: suggest a plan to the team. ✗ suggested the team a plan."
+ },
+ {
+  "id": "t2-order",
+  "t": 2,
+  "q": "He suggested that we ___ an MRI.",
+  "opts": [
+   "order",
+   "to order",
+   "ordering"
+  ],
+  "a": "order",
+  "why": "В that-части — начальная форма: that we order."
+ },
+ {
+  "id": "t3-test",
+  "t": 3,
+  "q": "The panel recommends ___ the test in six months.",
+  "opts": [
+   "repeating",
+   "to repeat"
+  ],
+  "a": "repeating",
+  "why": "recommend + -ing. Recommend to do — ошибка."
+ },
+ {
+  "id": "t3-rest",
+  "t": 3,
+  "q": "The doctor recommended that he ___ for a week.",
+  "opts": [
+   "rest",
+   "to rest"
+  ],
+  "a": "rest",
+  "why": "В that-части — начальная форма: that he rest (или should rest)."
+ },
+ {
+  "id": "t3-against",
+  "t": 3,
+  "q": "The guidelines recommend ___ this drug in pregnancy.",
+  "opts": [
+   "against using",
+   "not to use"
+  ],
+  "a": "against using",
+  "why": "«Не рекомендовать» — recommend against + -ing."
+ },
+ {
+  "id": "t3-gp",
+  "t": 3,
+  "q": "Her GP recommended ___ a neurologist.",
+  "opts": [
+   "that she see",
+   "to see"
+  ],
+  "a": "that she see",
+  "why": "«Рекомендовал обратиться» — recommend that + кто + начальная форма. Recommend to do — ошибка."
+ },
+ {
+  "id": "t4-audit",
+  "t": 4,
+  "q": "I propose ___ the audit until March.",
+  "opts": [
+   "postponing",
+   "you to postpone"
+  ],
+  "a": "postponing",
+  "why": "propose, как suggest: -ing или that. «Кого + to do» нельзя."
+ },
+ {
+  "id": "t4-reviewers",
+  "t": 4,
+  "q": "The reviewers proposed ___ a sensitivity analysis.",
+  "opts": [
+   "adding",
+   "us to add"
+  ],
+  "a": "adding",
+  "why": "propose + -ing (или that we add)."
+ },
+ {
+  "id": "t4-committee",
+  "t": 4,
+  "q": "The committee proposed that the audit ___ postponed.",
+  "opts": [
+   "be",
+   "to be"
+  ],
+  "a": "be",
+  "why": "В that-части — начальная форма: that the audit be postponed (или should be)."
+ },
+ {
+  "id": "t4-meet",
+  "t": 4,
+  "q": "I propose ___ again on Friday.",
+  "opts": [
+   "that we meet",
+   "us to meet"
+  ],
+  "a": "that we meet",
+  "why": "«Предлагаю нам встретиться» — propose that we meet. ✗ propose us to meet."
+ },
+ {
+  "id": "t5-shift",
+  "t": 5,
+  "q": "She offered ___ the night shift.",
+  "opts": [
+   "to cover",
+   "covering",
+   "me to cover"
+  ],
+  "a": "to cover",
+  "why": "offer to do: делает она сама. Ни -ing, ни «кого + to do»."
+ },
+ {
+  "id": "t5-family",
+  "t": 5,
+  "q": "My colleague offered ___ the patient's family.",
+  "opts": [
+   "to call",
+   "calling"
+  ],
+  "a": "to call",
+  "why": "«Вызвался позвонить» = offered to call."
+ },
+ {
+  "id": "t5-tea",
+  "t": 5,
+  "q": "The nurse offered ___ a cup of tea.",
+  "opts": [
+   "him",
+   "to him"
+  ],
+  "a": "him",
+  "why": "offer кому + что: offered him a cup of tea (или offered a cup of tea to him)."
+ },
+ {
+  "id": "t5-break",
+  "t": 5,
+  "q": "She ___ that I take a break.",
+  "opts": [
+   "suggested",
+   "offered"
+  ],
+  "a": "suggested",
+  "why": "Отдыхать буду я — это suggest. Offer не берёт that."
+ },
+ {
+  "id": "t5-help",
+  "t": 5,
+  "q": "He ___ to help with the discharge summaries.",
+  "opts": [
+   "offered",
+   "suggested"
+  ],
+  "a": "offered",
+  "why": "Делает он сам — offer to do. ✗ suggested to help."
+ },
+ {
+  "id": "t6-mri",
+  "t": 6,
+  "q": "He ___ ordering an MRI.",
+  "opts": [
+   "suggested",
+   "offered"
+  ],
+  "a": "suggested",
+  "why": "Назначать будут другие или все вместе — suggest + -ing. Offer не берёт -ing."
+ },
+ {
+  "id": "t6-job",
+  "t": 6,
+  "q": "The hospital ___ her a job in the stroke unit.",
+  "opts": [
+   "offered",
+   "suggested"
+  ],
+  "a": "offered",
+  "why": "Место или вещь кому-то — offer кому + что. ✗ suggested her a job."
+ },
+ {
+  "id": "t6-board",
+  "t": 6,
+  "q": "The board formally ___ that the audit be postponed.",
+  "opts": [
+   "proposed",
+   "offered"
+  ],
+  "a": "proposed",
+  "why": "Официальное предложение — propose that. Offer не берёт that."
+ },
+ {
+  "id": "t6-rest",
+  "t": 6,
+  "q": "The doctor ___ him to rest.",
+  "opts": [
+   "advised",
+   "suggested"
+  ],
+  "a": "advised",
+  "why": "Пациенту, чтобы он сделал, — advise + кого + to do. Suggest так не умеет."
+ },
+ {
+  "id": "t7-advise",
+  "t": 7,
+  "q": "I'd advise ___ for the MRI results before starting treatment.",
+  "opts": [
+   "waiting",
+   "to wait"
+  ],
+  "a": "waiting",
+  "why": "Без «кого» advise берёт -ing. С «кем»: I'd advise you to wait."
+ },
+ {
+  "id": "t7-smoking",
+  "t": 7,
+  "q": "We don't allow ___ on the ward.",
+  "opts": [
+   "smoking",
+   "to smoke"
+  ],
+  "a": "smoking",
+  "why": "allow без «кого» — -ing. ✗ allow to smoke."
+ },
+ {
+  "id": "t7-visitors",
+  "t": 7,
+  "q": "We allow visitors ___ until 8 pm.",
+  "opts": [
+   "to stay",
+   "staying"
+  ],
+  "a": "to stay",
+  "why": "С «кем» — снова to do: allow visitors to stay."
+ },
+ {
+  "id": "t7-results",
+  "t": 7,
+  "q": "I want ___ to me by Friday.",
+  "opts": [
+   "the results to be sent",
+   "that the results are sent"
+  ],
+  "a": "the results to be sent",
+  "why": "want не бывает с that. «Чтобы прислали» — to be + V3."
+ },
+ {
+  "id": "t7-expect",
+  "t": 7,
+  "q": "We expect the patient ___ on Friday.",
+  "opts": [
+   "to be discharged",
+   "being discharged"
+  ],
+  "a": "to be discharged",
+  "why": "expect + кого + to do, в пассиве to be + V3. Можно и: We expect that the patient will be discharged."
+ },
+ {
+  "id": "t8-consultant",
+  "t": 8,
+  "q": "I asked ___ the consultant.",
+  "opts": [
+   "to see",
+   "seeing"
+  ],
+  "a": "to see",
+  "why": "Делаю сам — to do без «кого»: asked to see."
+ },
+ {
+  "id": "t8-rate",
+  "t": 8,
+  "q": "I'd suggest ___ the infusion rate.",
+  "opts": [
+   "reducing",
+   "to reduce"
+  ],
+  "a": "reducing",
+  "why": "suggest to do — ошибка: suggest + -ing."
+ },
+ {
+  "id": "t8-check",
+  "t": 8,
+  "q": "The nurse recommended that he ___ his blood pressure daily.",
+  "opts": [
+   "check",
+   "to check"
+  ],
+  "a": "check",
+  "why": "В that-части — начальная форма: без -s и без to."
+ },
+ {
+  "id": "t8-myself",
+  "t": 8,
+  "q": "I want ___ the results myself.",
+  "opts": [
+   "to check",
+   "that I check"
+  ],
+  "a": "to check",
+  "why": "Хочу сам — want to do. ✗ want that."
+ },
+ {
+  "id": "t9-fast",
+  "t": 9,
+  "q": "Patients are ___ to fast from midnight.",
+  "opts": [
+   "advised",
+   "suggested"
+  ],
+  "a": "advised",
+  "why": "Пассив advise: are advised to do. ✗ are suggested to fast."
+ },
+ {
+  "id": "t9-that",
+  "t": 9,
+  "q": "It is recommended that patients ___ from midnight.",
+  "opts": [
+   "fast",
+   "to fast",
+   "fasting"
+  ],
+  "a": "fast",
+  "why": "Безличный оборот It is recommended that + кто + начальная форма: that patients fast."
+ },
+ {
+  "id": "t9-mobilise",
+  "t": 9,
+  "q": "Patients are encouraged ___ early.",
+  "opts": [
+   "to mobilise",
+   "mobilising"
+  ],
+  "a": "to mobilise",
+  "why": "Пассив сохраняет to do: are encouraged to mobilise."
+ },
+ {
+  "id": "t9-wash",
+  "t": 9,
+  "q": "Visitors are asked ___ their hands before entering the ward.",
+  "opts": [
+   "to wash",
+   "washing"
+  ],
+  "a": "to wash",
+  "why": "ask в пассиве: are asked to do."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_TOPIC = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "kogo:state";
+const LS_SPEAK = "kogo:autospeak";
+const LS_TAB = "kogo:tab";
+const LS_OPEN = "kogo:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Кого+to do"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]{}]/g, ""); }
+function label(a){ return a === "" ? "ничего" : a; }
+// «-ing» не должен разрываться по дефису в конце строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).split(/(-ing\b)/).forEach(part => { if (part === "-ing") f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = CARDS.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(fresh);
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  q.append(card.q.slice(0, i), el("span", "gap"), card.q.slice(i + 3));
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+// {…} — «кого» (синий), […] — нужная форма (зелёный)
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]|\{([^}]+)\}/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(m[1] != null ? el("span", "good", m[1]) : el("span", "obj", m[2]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex" + (ex.w ? " has-w" : ""));
+        if (ex.w){
+          const w = el("p", "ex-w");
+          const b = el("b", null, ex.w);
+          b.lang = "en";
+          w.append(b, ex.wr);
+          row.append(w);
+        }
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= TOPICS.length ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

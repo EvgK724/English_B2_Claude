@@ -1,0 +1,992 @@
+<title>Штуки и масса</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("countable",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(31px*var(--k));line-height:1.3;text-wrap:pretty}
+  .gap{display:inline-block;min-width:2.4em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .good{color:var(--yes-text)}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(26px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(33px*var(--k));line-height:1.15;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(16px*var(--k));color:var(--muted)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(10px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .algo ol{list-style:none;margin:0;padding:0;counter-reset:q}
+  .algo li{counter-increment:q;display:grid;grid-template-columns:calc(30px*var(--k)) 1fr auto;align-items:baseline;gap:calc(8px*var(--k));padding:calc(9px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .algo li:first-child{border-top:0}
+  .algo li::before{content:counter(q);font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .algo li span{font-size:calc(17px*var(--k));line-height:1.4}
+  .algo li span i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo li b{font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));color:var(--yes-text);white-space:nowrap}
+  .algo-m{margin:calc(12px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(16px*var(--k));color:var(--soft)}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) 1fr auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-row:1 / span 2;grid-column:2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+
+<div class="app">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+    <h1 class="r-title">Штуки и масса</h1>
+    <p class="r-sub" lang="en">countable · uncountable</p>
+    <div class="algo">
+      <p class="algo-h">Проверка за секунду</p>
+      <ol>
+        <li><span>Можно сказать <i lang="en">two ___s</i>? Это штуки: <i lang="en">a/an, -s, many, few</i></span><b lang="en">C</b></li>
+        <li><span>Нельзя — это масса: без <i lang="en">a/an</i> и <i lang="en">-s</i>, <i lang="en">much, little</i>, глагол <i lang="en">is</i></span><b lang="en">U</b></li>
+        <li><span>Нужна одна штука из массы — порция или близнец: <i lang="en">a study, a tip</i></span><b lang="en">a piece of</b></li>
+      </ol>
+      <p class="algo-m">Штуки считаем, массу отмеряем.</p>
+      <p class="algo-note">Слова с двумя значениями — тема 5, еда и волосы — тема 6.</p>
+    </div>
+    <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+    <h2 class="lbl">Темы курса</h2>
+    <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и два примера. В примерах [x] — выделенное слово.
+const TOPICS = [
+  { n: 1, title: "Штуки или масса",
+    rule: "Исчисляемые (C) можно посчитать: a patient, two patients. Неисчисляемые (U) — масса, у них нет a/an и -s: advice, information, news, furniture, luggage, equipment, knowledge. Проверка: скажи two ___s — если звучит странно, слово неисчисляемое.",
+    ex: [
+      { en: "Can I give you some [advice]?", ru: "Можно я дам вам совет?" },
+      { en: "How much [luggage] do you have?", ru: "Сколько у вас багажа?" }
+    ] },
+  { n: 2, title: "Much, many и другие",
+    rule: "Вещества — water, blood, oxygen, sugar — неисчисляемые. С ними much, little, a little; со штуками — many, few, a few. A lot of, plenty of, some, any, no подходят и тем и другим.",
+    ex: [
+      { en: "How [much] blood did he lose?", ru: "Сколько крови он потерял?" },
+      { en: "How [many] patients are waiting?", ru: "Сколько пациентов ждёт?" }
+    ] },
+  { n: 3, title: "Порции: a piece of…",
+    rule: "Чтобы посчитать массу, берут порцию: a piece of advice, a slice of bread, a bar of chocolate, a sheet of paper, a drop of blood, an item of luggage, a bit of help.",
+    ex: [
+      { en: "Write it down on a [sheet of] paper.", ru: "Запишите это на листе бумаги." },
+      { en: "A single [drop of] blood is enough.", ru: "Достаточно одной капли крови." }
+    ] },
+  { n: 4, title: "Абстрактные: progress, research…",
+    rule: "Progress, research, evidence, advice, permission, behaviour, work — неисчисляемые: без a/an и -s. Одна штука — через близнеца: a study, a finding, a job, a tip.",
+    ex: [
+      { en: "The patient is making good [progress].", ru: "У пациента хорошая динамика." },
+      { en: "Recent [research] supports this approach.", ru: "Недавние исследования подтверждают этот подход." }
+    ] },
+  { n: 5, title: "Одно слово — два смысла",
+    rule: "Смысл меняется вместе с исчисляемостью: paper — бумага, a paper — статья; experience — опыт, an experience — случай; time — время, three times — три раза; room — место, a room — комната; glass — стекло, a glass — стакан.",
+    ex: [
+      { en: "She published [a paper] on sleep apnoea.", ru: "Она опубликовала статью об апноэ во сне." },
+      { en: "Is there [room] for one more chair?", ru: "Здесь есть место ещё для одного стула?" }
+    ] },
+  { n: 6, title: "Еда, напитки, волосы",
+    rule: "Еда как вещество — неисчисляемая: chicken, cheese, fish, coffee. Порция или целая штука — исчисляемая: a coffee (чашка), a chicken (птица). Так же hair — волосы, a hair — волосок; iron — железо, an iron — утюг.",
+    ex: [
+      { en: "Two [coffees], please.", ru: "Два кофе, пожалуйста." },
+      { en: "There's [a hair] in my soup.", ru: "У меня в супе волос." }
+    ] },
+  { n: 7, title: "Police, staff, scissors",
+    rule: "Police, people, cattle — глагол во множественном: the police are. Staff в британском английском — обычно are. Clothes, scissors, trousers, glasses бывают только во множественном: these scissors are; одна штука — a pair of.",
+    ex: [
+      { en: "The police [are] investigating the accident.", ru: "Полиция расследует аварию." },
+      { en: "I need [a pair of] scissors.", ru: "Мне нужны ножницы." }
+    ] },
+  { n: 8, title: "Few, little, fewer, less",
+    rule: "Few, a few, fewer — со штуками; little, a little, less — с массой. Без a — «мало, почти нет», с a — «немного, но есть». Too many и too much, enough — по тому же принципу.",
+    ex: [
+      { en: "We have [a few] beds left.", ru: "У нас осталось несколько коек." },
+      { en: "There was [little] time to think.", ru: "Подумать было почти некогда." }
+    ] },
+  { n: 9, title: "Артикли с неисчисляемыми",
+    rule: "Неисчисляемое вообще — без артикля: Water is essential. Конкретная порция — с the: the water in this jug. A/an появляется с прилагательным в значении «такого рода»: a good knowledge of, a warm welcome.",
+    ex: [
+      { en: "[The] water in this bottle is not safe to drink.", ru: "Воду из этой бутылки пить нельзя." },
+      { en: "She has [a good] knowledge of French.", ru: "Она хорошо знает французский." }
+    ] },
+  { n: 10, title: "Is или are",
+    rule: "Неисчисляемое — глагол в единственном числе: the news is, the equipment was. The number of — это число, is; a number of — это «ряд, много», are. The majority of patients — are. Data в научном тексте — чаще are.",
+    ex: [
+      { en: "[The number of] strokes [is] rising.", ru: "Число инсультов растёт." },
+      { en: "[A number of] patients [were] discharged early.", ru: "Ряд пациентов выписали раньше срока." }
+    ] },
+  { n: 11, title: "Наука и работа",
+    rule: "Feedback, research, training, funding, software — неисчисляемые: some feedback, a lot of training. У греко-латинских слов особое множественное: analysis — analyses, criterion — criteria, datum — data.",
+    ex: [
+      { en: "Thank you for your [feedback].", ru: "Спасибо за отзыв." },
+      { en: "The study used strict inclusion [criteria].", ru: "В исследовании были строгие критерии включения." }
+    ] },
+  { n: 12, title: "Типичные ошибки",
+    rule: "Главные ловушки русскоговорящих: informations, advices, moneys, knowledges, a research, many equipments. Правильно: information, advice, money, knowledge, research или a study, much equipment.",
+    ex: [
+      { en: "How [much] money do we need?", ru: "Сколько денег нам нужно?" },
+      { en: "She did [a study] on sleep and stroke.", ru: "Она провела исследование о сне и инсульте." }
+    ] },
+  { n: 13, title: "Медицинская лексика",
+    rule: "Treatment, care, therapy, imaging, admission, medication — неисчисляемые, когда речь о процессе: patient care, treatment is available. Исчисляемые, когда речь о конкретных вариантах или случаях: two treatments, several medications, three admissions.",
+    ex: [
+      { en: "Good nursing [care] prevents complications.", ru: "Хороший сестринский уход предотвращает осложнения." },
+      { en: "He is on four different [medications].", ru: "Он принимает четыре разных препарата." }
+    ] },
+  { n: 14, title: "Итог — всё вместе",
+    rule: "Пятнадцать случайных карточек из всех тем вперемешку — как на итоговом тесте курса.",
+    ex: [] }
+];
+
+// ——— Карточки. opts — варианты ("" — ничего не нужно), a — правильный, also — тоже допустимые с пояснением.
+const CARDS = [
+  { id:"t1-info", t:1, q:"Could you give me ___ information about visiting hours?", opts:["some","an"], a:"some",
+    why:"Information неисчисляемое — без an; «немного сведений» — some." },
+  { id:"t1-furniture", t:1, q:"All the ___ in the waiting room is new.", opts:["furniture","furnitures"], a:"furniture",
+    why:"Furniture — вся мебель как масса: множественного нет, глагол is." },
+  { id:"t1-news", t:1, q:"The news ___ better than we expected.", opts:["is","are"], a:"is",
+    why:"News похоже на множественное, но это неисчисляемое: the news is." },
+  { id:"t1-luggage", t:1, q:"How much ___ do you have?", opts:["luggage","luggages"], a:"luggage",
+    why:"Luggage неисчисляемое: how much luggage. Одно место — an item of luggage." },
+  { id:"t1-knowledge", t:1, q:"His ___ of pharmacology is impressive.", opts:["knowledge","knowledges"], a:"knowledge",
+    why:"Knowledge не бывает во множественном числе." },
+
+  { id:"t2-oxygen", t:2, q:"How ___ oxygen is left in the cylinder?", opts:["much","many"], a:"much",
+    why:"Кислород — вещество, масса: how much." },
+  { id:"t2-beds", t:2, q:"There aren't ___ beds free on the ward today.", opts:["many","much"], a:"many",
+    why:"Койки можно посчитать — many." },
+  { id:"t2-plenty", t:2, q:"We've got ___ of time before the scan.", opts:["plenty","many"], a:"plenty",
+    why:"Plenty of — «с запасом», годится и для штук, и для массы. Many of time — ошибка." },
+  { id:"t2-sugar", t:2, q:"Is there ___ sugar in this tea?", opts:["any","many"], a:"any",
+    why:"Any подходит к массе; many — только к штукам." },
+  { id:"t2-water", t:2, q:"He drinks ___ water during night shifts.", opts:["a lot of","many"], a:"a lot of",
+    why:"A lot of — и для штук, и для массы; many water — ошибка." },
+
+  { id:"t3-bread", t:3, q:"Could I have a ___ of bread, please?", opts:["slice","sheet","bar"], a:"slice",
+    why:"Хлеб — ломтиками: a slice of bread." },
+  { id:"t3-chocolate", t:3, q:"She ate a whole ___ of chocolate.", opts:["bar","drop","slice"], a:"bar",
+    why:"Шоколад — плитками: a bar of chocolate." },
+  { id:"t3-paper", t:3, q:"Write it down on a ___ of paper.", opts:["sheet","drop","bar"], a:"sheet",
+    why:"Бумага — листами: a sheet of paper (или a piece of paper)." },
+  { id:"t3-blood", t:3, q:"A single ___ of blood is enough for a glucose test.", opts:["drop","bar","slice"], a:"drop",
+    why:"Жидкость — каплями: a drop of blood." },
+  { id:"t3-advice", t:3, q:"Let me give you a ___ of advice.", opts:["piece","slice","sheet"], a:"piece",
+    why:"Универсальная порция для абстрактного — a piece of: a piece of advice, a piece of news." },
+
+  { id:"t4-permission", t:4, q:"Did you get ___ to use the scanner?", opts:["permission","a permission"], a:"permission",
+    why:"Permission неисчисляемое — без a." },
+  { id:"t4-behaviour", t:4, q:"His ___ on the ward was completely unacceptable.", opts:["behaviour","behaviours"], a:"behaviour",
+    why:"Behaviour — поведение в целом, без -s." },
+  { id:"t4-work", t:4, q:"She is looking for ___ in a private clinic.", opts:["work","a work"], a:"work",
+    why:"Work в значении «работа» неисчисляемое; одна должность — a job." },
+  { id:"t4-evidence", t:4, q:"There is strong ___ that the drug reduces mortality.", opts:["evidence","an evidence"], a:"evidence",
+    why:"Evidence неисчисляемое, даже с прилагательным strong." },
+  { id:"t4-progress", t:4, q:"The team has made ___ progress this year.", opts:["great","a great"], a:"great",
+    why:"Progress без a — даже с прилагательным: great progress." },
+
+  { id:"t5-experience", t:5, q:"He has ten years of ___ in intensive care.", opts:["experience","experiences"], a:"experience",
+    why:"Experience — опыт, неисчисляемое." },
+  { id:"t5-experiences", t:5, q:"We had some strange ___ on night shifts.", opts:["experiences","experience"], a:"experiences",
+    why:"An experience — отдельный случай, исчисляемое: strange experiences." },
+  { id:"t5-papers", t:5, q:"I've read three ___ on this topic this week.", opts:["papers","paper"], a:"papers",
+    why:"A paper — научная статья, исчисляемое." },
+  { id:"t5-room", t:5, q:"Is there ___ for another bed in this bay?", opts:["room","a room"], a:"room",
+    why:"Room без a — «место, пространство»; a room — комната." },
+  { id:"t5-times", t:5, q:"Take this tablet three ___ a day.", opts:["times","time"], a:"times",
+    why:"Time в значении «раз» исчисляемое: three times." },
+
+  { id:"t6-coffees", t:6, q:"Two ___, please — one with milk.", opts:["coffees","coffee"], a:"coffees",
+    why:"Кофе как порция (чашка) исчисляемый: two coffees." },
+  { id:"t6-chicken", t:6, q:"I don't eat ___ — I'm a vegetarian.", opts:["chicken","chickens"], a:"chicken",
+    why:"Курица как еда, мясо — неисчисляемое." },
+  { id:"t6-hair", t:6, q:"Her ___ is long and dark.", opts:["hair","hairs"], a:"hair",
+    why:"Hair — волосы на голове, масса: her hair is." },
+  { id:"t6-iron", t:6, q:"Red meat is rich in ___.", opts:["iron","an iron"], a:"iron",
+    why:"Iron без a — железо; an iron — утюг." },
+  { id:"t6-hairs", t:6, q:"I found two ___ in the sample tube.", opts:["hairs","hair"], a:"hairs",
+    why:"Отдельные волоски считаются: two hairs." },
+
+  { id:"t7-police", t:7, q:"The police ___ looking for the driver.", opts:["are","is"], a:"are",
+    why:"Police всегда с глаголом во множественном: the police are." },
+  { id:"t7-glasses", t:7, q:"Where ___ my glasses? I can't read the chart.", opts:["are","is"], a:"are",
+    why:"Glasses (очки) — только множественное: my glasses are." },
+  { id:"t7-scissors", t:7, q:"These scissors ___ very sharp.", opts:["are","is"], a:"are",
+    why:"Scissors — только множественное; одни ножницы — a pair of scissors." },
+  { id:"t7-people", t:7, q:"How many ___ came to the meeting?", opts:["people","peoples"], a:"people",
+    why:"People — «люди», уже множественное. Peoples — «народы»." },
+  { id:"t7-staff", t:7, q:"Our nursing staff ___ doing an amazing job.", opts:["are","is"], a:"are", also:{ "is":"так говорят в американском английском" },
+    why:"Staff в британском английском — обычно are: думают о людях." },
+
+  { id:"t8-fewer", t:8, q:"There were ___ people in the waiting room than yesterday.", opts:["fewer","less"], a:"fewer",
+    why:"Людей можно посчитать — fewer." },
+  { id:"t8-less", t:8, q:"Try to eat ___ salt.", opts:["less","fewer"], a:"less",
+    why:"Соль — масса: less." },
+  { id:"t8-alittle", t:8, q:"Don't worry — we still have ___ time before the ambulance arrives.", opts:["a little","a few"], a:"a little",
+    why:"Время — масса: a little; «немного, но есть»." },
+  { id:"t8-few", t:8, q:"Unfortunately, ___ patients understand the risks of smoking.", opts:["few","little"], a:"few",
+    why:"Пациентов считают — few; без a — «мало кто»." },
+  { id:"t8-toomuch", t:8, q:"You've put too ___ sugar in my coffee.", opts:["much","many"], a:"much",
+    why:"Сахар — масса: too much." },
+
+  { id:"t9-water", t:9, q:"___ water is essential for life.", opts:["","The"], a:"",
+    why:"Вода вообще — без артикля." },
+  { id:"t9-jug", t:9, q:"___ water in this jug is too cold.", opts:["The",""], a:"The",
+    why:"Конкретная вода — в этом кувшине: the." },
+  { id:"t9-knowledge", t:9, q:"He has ___ good knowledge of statistics.", opts:["a",""], a:"a", also:{ "":"тоже встречается, но с a звучит естественнее" },
+    why:"Knowledge + прилагательное + of часто берёт a: a good knowledge of." },
+  { id:"t9-welcome", t:9, q:"We received ___ warm welcome from the staff.", opts:["a",""], a:"a",
+    why:"A warm welcome — устойчиво с a." },
+  { id:"t9-info", t:9, q:"___ information you sent us was very useful.", opts:["The",""], a:"The",
+    why:"Конкретная информация — та, что вы прислали: the." },
+
+  { id:"t10-number", t:10, q:"The number of beds ___ limited.", opts:["is","are"], a:"is",
+    why:"The number of — это число, одно: is." },
+  { id:"t10-anumber", t:10, q:"A number of patients ___ complained about the noise.", opts:["have","has"], a:"have",
+    why:"A number of — «ряд, несколько»: глагол во множественном." },
+  { id:"t10-equipment", t:10, q:"The equipment ___ checked every morning.", opts:["is","are"], a:"is",
+    why:"Equipment неисчисляемое — глагол в единственном." },
+  { id:"t10-majority", t:10, q:"The majority of our patients ___ over seventy.", opts:["are","is"], a:"are",
+    why:"The majority of + множественное — глагол во множественном." },
+  { id:"t10-data", t:10, q:"The data ___ that the new protocol is safe.", opts:["suggest","suggests"], a:"suggest", also:{ "suggests":"так тоже говорят, особенно в обычной речи" },
+    why:"В научном тексте data — множественное от datum: the data suggest." },
+
+  { id:"t11-feedback", t:11, q:"We received a lot of positive ___ from patients.", opts:["feedback","feedbacks"], a:"feedback",
+    why:"Feedback неисчисляемое — без -s." },
+  { id:"t11-analyses", t:11, q:"Two separate ___ were performed.", opts:["analyses","analysis"], a:"analyses",
+    why:"Analysis — analyses: греческое множественное." },
+  { id:"t11-criterion", t:11, q:"One ___ for inclusion was age over 18.", opts:["criterion","criteria"], a:"criterion",
+    why:"Один критерий — criterion; criteria — множественное." },
+  { id:"t11-funding", t:11, q:"The hospital received extra ___ for the stroke unit.", opts:["funding","fundings"], a:"funding",
+    why:"Funding неисчисляемое." },
+  { id:"t11-training", t:11, q:"All staff must complete ___ in basic life support.", opts:["training","a training"], a:"training",
+    why:"Training неисчисляемое; один курс — a training course." },
+
+  { id:"t12-advice", t:12, q:"Thank you for all the ___.", opts:["advice","advices"], a:"advice",
+    why:"Advice — без -s: all the advice." },
+  { id:"t12-money", t:12, q:"The hospital doesn't have enough ___.", opts:["money","moneys"], a:"money",
+    why:"Money неисчисляемое: enough money." },
+  { id:"t12-research", t:12, q:"She is doing ___ on stroke rehabilitation.", opts:["research","a research"], a:"research",
+    why:"Research без a; одна работа — a study." },
+  { id:"t12-equipment", t:12, q:"We don't have much ___ for this procedure.", opts:["equipment","equipments"], a:"equipment",
+    why:"Equipment без -s: much equipment." },
+  { id:"t12-information", t:12, q:"Can you give me more ___ about the side effects?", opts:["information","informations"], a:"information",
+    why:"Information без -s: more information." },
+
+  { id:"t13-treatment", t:13, q:"Early ___ improves outcomes after stroke.", opts:["treatment","a treatment"], a:"treatment",
+    why:"Лечение как процесс — неисчисляемое." },
+  { id:"t13-treatments", t:13, q:"There are two ___ available for this condition.", opts:["treatments","treatment"], a:"treatments",
+    why:"Конкретные варианты лечения можно посчитать: two treatments." },
+  { id:"t13-care", t:13, q:"The patient needs 24-hour ___.", opts:["care","cares"], a:"care",
+    why:"Care — уход, неисчисляемое." },
+  { id:"t13-medications", t:13, q:"He is currently taking three ___.", opts:["medications","medication"], a:"medications",
+    why:"Отдельные препараты считаются: three medications." },
+  { id:"t13-admissions", t:13, q:"She has had three ___ this year.", opts:["admissions","admission"], a:"admissions",
+    why:"Госпитализации как случаи считаются: three admissions." },
+  // НОВАЯ КАРТОЧКА ВСТАВЛЯЕТСЯ ВЫШЕ ЭТОЙ СТРОКИ
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "shtuki:state";
+const LS_SPEAK = "shtuki:autospeak";
+const LS_TAB = "shtuki:tab";
+const LS_OPEN = "shtuki:open";
+const TOPIC_TITLE = {};
+TOPICS.forEach(t => { TOPIC_TITLE[t.n] = t.title; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Countable"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]]+)\]/g, "$1"); }
+function label(a){ return a === "" ? "без артикля" : a; }
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const AUDIO_READY = true;
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!AUDIO_READY || !key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!AUDIO_READY || !player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Очередь
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = CARDS.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(fresh);
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === 14){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Без артикля");
+      b.append(el("span", null, "—"), el("small", null, "без артикля"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = "Тема " + card.t + " · " + TOPIC_TITLE[card.t];
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  q.append(card.q.slice(0, i), el("span", "gap"), card.q.slice(i + 3));
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, label(opt)), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  $("why").textContent = card.why;
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(ex.en))){
+    if (m.index > last) p.append(ex.en.slice(last, m.index));
+    p.append(el("span", "good", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < ex.en.length) p.append(ex.en.slice(last));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    head.append(el("span", "t-n", String(t.n)), el("span", "t-title", t.title),
+                el("span", "t-count", t.n === 14 ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      body.append(el("p", "t-rule", t.rule));
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(renderExample(ex), play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === 14 ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = o >= 1 && o <= 14 ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

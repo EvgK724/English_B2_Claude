@@ -1,0 +1,1201 @@
+<title>Сокращения</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("abbr",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --almost:#9a7f3d;
+    --almost-text:#dcc38a;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:40%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  /* ——— Карточка */
+  [hidden]{display:none!important}
+  .fc{cursor:pointer;touch-action:pan-y;-webkit-user-select:none;user-select:none;transition:transform .2s ease,border-color .15s ease}
+  .fc.drag{transition:border-color .15s ease}
+  .fc.lean-yes{border-color:var(--yes)}
+  .fc.lean-no{border-color:var(--no)}
+  .front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(12px*var(--k));padding-bottom:calc(36px*var(--k));text-align:center}
+  .ab{margin:0;font-family:var(--serif);font-weight:400;font-size:calc(76px*var(--k));line-height:1.05;letter-spacing:.01em}
+  .ab.m{font-size:calc(58px*var(--k))}
+  .ab.s{font-size:calc(46px*var(--k))}
+  .ctx{margin:0;font-family:var(--serif);font-size:calc(21px*var(--k));color:var(--soft)}
+  .front .hint{max-width:17em;font-size:calc(16px*var(--k));line-height:1.4}
+  .fc .back{flex:1;gap:calc(12px*var(--k));padding-top:0;border-top:0}
+  .say-front{border-radius:50%}
+  .b-head{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:calc(14px*var(--k))}
+  .ab2{font-family:var(--serif);font-size:calc(46px*var(--k));line-height:1.1}
+  .ipa2{font-size:calc(19px*var(--k));color:var(--blue);white-space:nowrap}
+  .gram{margin:-8px 0 0;font-size:calc(15px*var(--k));line-height:1.35;color:var(--muted)}
+  .fl{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center}
+  .full{margin:0;font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.25;text-wrap:pretty}
+  .fl .ex-play{grid-column:2;grid-row:1}
+  .ru{margin:-4px 0 0;font-size:calc(22px*var(--k));line-height:1.35}
+  .note{margin:0;font-size:calc(16px*var(--k));line-height:1.45;color:var(--soft)}
+  .exb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start;padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .swipe{margin:auto 0 0;text-align:center;font-size:calc(13px*var(--k));color:var(--muted)}
+  .done{flex:1;display:flex;flex-direction:column;justify-content:center;gap:calc(12px*var(--k))}
+  .done-t{margin:0;font-family:var(--serif);font-size:calc(34px*var(--k));line-height:1.15}
+  .done-p{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+  .grades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(10px*var(--k))}
+  .grades .big{min-height:calc(62px*var(--k));padding:0 calc(4px*var(--k))}
+  .g0{border-color:var(--no);color:var(--no-text)}
+  .g1{border-color:var(--almost);color:var(--almost-text)}
+  .g2{border-color:var(--yes);color:var(--yes-text)}
+
+  /* ——— Правила: буквы, a/an, списки тем */
+  .s-f .ipa{font-family:var(--sans);font-size:calc(14px*var(--k));color:var(--muted)}
+  .lts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:calc(8px*var(--k));margin-top:calc(10px*var(--k))}
+  .lt{min-height:calc(66px*var(--k));padding:calc(6px*var(--k)) calc(2px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);border-radius:calc(12px*var(--k));background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(3px*var(--k));cursor:pointer}
+  .lt:active{background:var(--raise)}
+  .lt-l{font-family:var(--serif);font-size:calc(27px*var(--k));line-height:1}
+  .lt-i{font-size:calc(13px*var(--k));line-height:1.2;color:var(--blue);white-space:nowrap}
+  .algo-m .ltrs{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(22px*var(--k));letter-spacing:.04em;color:var(--accent)}
+  .abl{display:flex;flex-direction:column}
+  .abl-row{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(9px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .abl-row:first-child{border-top:0}
+  .abl-row .ex-play{grid-row:auto}
+  .abl-t{margin:0;line-height:1.3}
+  .abl-a{margin-right:calc(8px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k));color:var(--text)}
+  .abl-f{font-family:var(--serif);font-size:calc(16px*var(--k));color:var(--soft)}
+  .abl-r{display:block;margin-top:calc(2px*var(--k));font-size:calc(14px*var(--k));color:var(--muted)}
+  .known .abl-a::after{content:"✓";margin-left:calc(6px*var(--k));font-family:var(--sans);font-size:calc(14px*var(--k));color:var(--yes-text)}
+
+  @media (max-height:43.7em){
+    .card{padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k));gap:calc(12px*var(--k))}
+    .fc .back{gap:calc(9px*var(--k))}
+    .ab{font-size:calc(64px*var(--k))}
+    .ab2{font-size:calc(38px*var(--k))}
+    .ipa2{font-size:calc(17px*var(--k))}
+    .gram{margin-top:-5px}
+    .full{font-size:calc(22px*var(--k))}
+    .ru{font-size:calc(20px*var(--k))}
+    .note{font-size:calc(15px*var(--k));line-height:1.4}
+    .exb{padding-top:calc(10px*var(--k))}
+    .exb .ex-en{font-size:calc(18px*var(--k))}
+    .swipe{display:none}
+  }
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev,.fc{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill,body.wide .meta,body.wide .bar{width:100%;max-width:calc(880px*var(--k));margin-left:auto;margin-right:auto}
+  body.wide .fc .back{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr auto;column-gap:calc(36px*var(--k));row-gap:calc(12px*var(--k))}
+  body.wide .fc .back > *{grid-column:1}
+  body.wide .fc .exb{grid-column:2;grid-row:1 / span 5;align-self:center;padding:0 0 0 calc(30px*var(--k));border-top:0;border-left:calc(1px*var(--k)) solid var(--line)}
+  body.wide .fc .swipe{grid-column:1 / -1;grid-row:6}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card fc" id="card">
+      <span class="kind" id="kind">В больнице</span>
+      <div class="front" id="front">
+        <p class="ab" id="ab" lang="en"></p>
+        <p class="ctx" id="ctx" lang="en" hidden></p>
+        <button class="say say-front" id="say" type="button" aria-label="Прослушать сокращение">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+        </button>
+        <p class="hint" id="hint">Вспомни расшифровку и&nbsp;перевод, потом открой карточку</p>
+      </div>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="b-head"><span class="ab2" id="ab2" lang="en"></span><span class="ipa2" id="ipa"></span></p>
+        <p class="gram" id="gram"></p>
+        <div class="fl">
+          <p class="full" id="full" lang="en"></p>
+          <button class="ex-play" id="playL" type="button" aria-label="Прослушать расшифровку"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button>
+        </div>
+        <p class="ru" id="ru"></p>
+        <p class="note" id="note"></p>
+        <div class="exb">
+          <p class="ex-en" id="exEn" lang="en"></p>
+          <button class="ex-play" id="playE" type="button" aria-label="Прослушать пример"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button>
+          <p class="ex-ru" id="exRu"></p>
+        </div>
+        <p class="swipe" aria-hidden="true">← не&nbsp;знаю · знаю&nbsp;→</p>
+      </div>
+      <div class="done" id="done" hidden>
+        <p class="done-t" id="doneT">На сегодня всё</p>
+        <p class="done-p" id="doneP"></p>
+      </div>
+    </article>
+    <div class="actions" id="actShow">
+      <button class="big primary" id="show" type="button">Показать</button>
+    </div>
+    <div class="grades" id="actGrade" hidden>
+      <button class="big g0" type="button" data-g="0">Не знаю</button>
+      <button class="big g1" type="button" data-g="1">Почти</button>
+      <button class="big g2" type="button" data-g="2">Знаю</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Abbreviations</h1>
+      <p class="r-sub">Сокращение читают по&nbsp;буквам или как слово. <b>Артикль выбирают по&nbsp;звуку, а&nbsp;не по&nbsp;букве</b>: <i lang="en">an MRI</i>, но <i lang="en">a UN report</i>.</p>
+      <div class="algo">
+        <p class="algo-h">Как читать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Обычно&nbsp;— по&nbsp;буквам, ударение на&nbsp;последнюю</p><p class="s-f" lang="en"><span class="nw"><span class="pr">CT</span> <span class="ipa">/ˌsiː ˈtiː/</span></span> <span class="sep">·</span> <span class="nw"><span class="pr">FBI</span> <span class="ipa">/ˌef biː ˈaɪ/</span></span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Складывается в&nbsp;слово&nbsp;— читают словом</p><p class="s-f" lang="en"><span class="nw"><span class="pr">NATO</span> <span class="ipa">/ˈneɪtəʊ/</span></span> <span class="sep">·</span> <span class="nw"><span class="pr">PIN</span> <span class="ipa">/pɪn/</span></span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Латинские вслух заменяют словами</p><p class="s-f" lang="en"><span class="nw"><span class="pr">e.g.</span> → for example</span> <span class="sep">·</span> <span class="nw"><span class="pr">i.e.</span> → that is</span></p></div></li>
+        </ol>
+        <p class="algo-note">ASAP и&nbsp;LOL читают и&nbsp;так, и&nbsp;так: по&nbsp;буквам или словом.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Трудные буквы</p>
+        <div class="lts">
+          <button class="lt" type="button" data-key="lt-a" data-text="A. A and E." aria-label="Прослушать букву A"><span class="lt-l" lang="en">A</span><span class="lt-i">/eɪ/</span></button>
+          <button class="lt" type="button" data-key="lt-e" data-text="E. E C G." aria-label="Прослушать букву E"><span class="lt-l" lang="en">E</span><span class="lt-i">/iː/</span></button>
+          <button class="lt" type="button" data-key="lt-i" data-text="I. I C U." aria-label="Прослушать букву I"><span class="lt-l" lang="en">I</span><span class="lt-i">/aɪ/</span></button>
+          <button class="lt" type="button" data-key="lt-u" data-text="U. U K." aria-label="Прослушать букву U"><span class="lt-l" lang="en">U</span><span class="lt-i">/juː/</span></button>
+          <button class="lt" type="button" data-key="lt-y" data-text="Y. D I Y." aria-label="Прослушать букву Y"><span class="lt-l" lang="en">Y</span><span class="lt-i">/waɪ/</span></button>
+          <button class="lt" type="button" data-key="lt-g" data-text="G. G P." aria-label="Прослушать букву G"><span class="lt-l" lang="en">G</span><span class="lt-i">/dʒiː/</span></button>
+          <button class="lt" type="button" data-key="lt-j" data-text="J." aria-label="Прослушать букву J"><span class="lt-l" lang="en">J</span><span class="lt-i">/dʒeɪ/</span></button>
+          <button class="lt" type="button" data-key="lt-h" data-text="H. H R." aria-label="Прослушать букву H"><span class="lt-l" lang="en">H</span><span class="lt-i">/eɪtʃ/</span></button>
+          <button class="lt" type="button" data-key="lt-r" data-text="R. R C T." aria-label="Прослушать букву R"><span class="lt-l" lang="en">R</span><span class="lt-i">/ɑː/</span></button>
+          <button class="lt" type="button" data-key="lt-z" data-text="Z." aria-label="Прослушать букву Z"><span class="lt-l" lang="en">Z</span><span class="lt-i">/zed/</span></button>
+        </div>
+        <p class="algo-note">H&nbsp;— /eɪtʃ/, не&nbsp;«аш»; R&nbsp;— /ɑː/, не&nbsp;«эр»; Z&nbsp;— /zed/, в&nbsp;Америке /ziː/. Нажми на&nbsp;букву, чтобы услышать.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">a или an</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Первый звук гласный&nbsp;→ an</p><p class="s-f" lang="en"><span class="nw"><span class="pr">an</span> MRI</span> <span class="sep">·</span> <span class="nw"><span class="pr">an</span> FBI agent</span> <span class="sep">·</span> <span class="nw"><span class="pr">an</span> HR manager</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Первый звук согласный&nbsp;→ a</p><p class="s-f" lang="en"><span class="nw"><span class="st">a</span> CT scan</span> <span class="sep">·</span> <span class="nw"><span class="st">a</span> UK citizen</span> <span class="sep">·</span> <span class="nw"><span class="st">a</span> UNESCO site</span></p></div></li>
+        </ol>
+        <p class="algo-m">an&nbsp;— перед буквами <b class="ltrs" lang="en">A E F H I L M N O R S X</b></p>
+        <p class="algo-note">Проверка: произнеси первую букву вслух. F&nbsp;— /ef/, M&nbsp;— /em/, H&nbsp;— /eɪtʃ/: в&nbsp;начале гласный звук&nbsp;— значит <i lang="en">an</i>. U&nbsp;— /juː/: в&nbsp;начале [j]&nbsp;— значит <i lang="en">a</i>.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">the и&nbsp;множественное число</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Название по&nbsp;буквам&nbsp;→ the</p><p class="s-f" lang="en"><span class="nw"><span class="pr">the</span> FBI</span> <span class="sep">·</span> <span class="nw"><span class="pr">the</span> UN</span> <span class="sep">·</span> <span class="nw"><span class="pr">the</span> USA</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Название словом&nbsp;→ без артикля</p><p class="s-f" lang="en"><span class="nw"><span class="zero">∅</span>NATO</span> <span class="sep">·</span> <span class="nw"><span class="zero">∅</span>NASA</span> <span class="sep">·</span> <span class="nw"><span class="zero">∅</span>UNESCO</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Много&nbsp;→ просто -s</p><p class="s-f" lang="en">two CT<span class="pr">s</span> <span class="sep">·</span> MRI<span class="pr">s</span> <span class="sep">·</span> CEO<span class="pr">s</span></p></div></li>
+        </ol>
+        <p class="algo-note">Апостроф не&nbsp;нужен: <i lang="en">CT's</i>&nbsp;— ошибка.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a MRI</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">an MRI</span><span class="err-note">M читается /em/&nbsp;— гласный звук</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">an UN report</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">a UN report</span><span class="err-note">U читается /juː/&nbsp;— в начале звук [j]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a FBI agent</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">an FBI agent</span><span class="err-note">F читается /ef/&nbsp;— гласный звук</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">two CT&#x27;s</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">two CTs</span><span class="err-note">множественное число&nbsp;— без апострофа</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I live in USA.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I live in the USA.</span><span class="err-note">название по буквам&nbsp;— с the</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He works in FBI.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He works for the FBI.</span><span class="err-note">работать в организации&nbsp;— work for, и с the</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Finland joined the NATO.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Finland joined NATO.</span><span class="err-note">название словом&nbsp;— без the</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the only option, e.g. surgery</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the only option, i.e. surgery</span><span class="err-note">единственный вариант&nbsp;— i.e.; один пример из многих&nbsp;— e.g.</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">at 8 a.m. in the morning</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">at 8 a.m.</span><span class="err-note">a.m. уже значит «утра»</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">tests, scans and etc.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">tests, scans, etc.</span><span class="err-note">et и так значит and</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам
+const MIXED_TOPIC = 7;
+const GROUPS = {"med": "Медицина и наука", "world": "Работа и мир", "life": "Быт и переписка", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "med",
+  "title": "В больнице",
+  "sub": "CT, MRI, ICU, GP…",
+  "rule": "Больничные сокращения почти все читаются по буквам, ударение — на последней: CT, MRI, ICU. Артикль — по первому звуку: an MRI, an ECG, an IV, но a CT scan, a GP, a TIA. Неотложка в Британии — A&E, в Америке — the ER."
+ },
+ {
+  "n": 2,
+  "group": "med",
+  "title": "Наука и статьи",
+  "sub": "RCT, CI, et al., e.g.…",
+  "rule": "В статьях сокращения стоят рядом с цифрами: OR 1.8, HR 0.75, 95% CI, mean ± SD. Латинские — e.g., i.e., etc., et al., vs — вслух обычно заменяют словами: for example, that is, and so on."
+ },
+ {
+  "n": 3,
+  "group": "world",
+  "title": "Работа и бизнес",
+  "sub": "NDA, CEO, ASAP, FYI…",
+  "rule": "Рабочие сокращения чаще пишут, чем произносят: FYI, TBC, AOB, OOO — в письмах и повестках. ASAP в письме начальнику звучит резко — вежливее as soon as you can."
+ },
+ {
+  "n": 4,
+  "group": "world",
+  "title": "Организации и страны",
+  "sub": "FBI, UN, WHO, NATO…",
+  "rule": "Название читается по буквам — нужен the: the FBI, the UN, the UK, the USA. Читается как слово — без артикля: NATO, NASA, UNESCO. Перед другим существительным артикль выбирают по звуку: an FBI agent, a UN report."
+ },
+ {
+  "n": 5,
+  "group": "life",
+  "title": "На каждый день",
+  "sub": "ATM, ID, PIN, a.m.…",
+  "rule": "PIN и SIM читаются как слова, остальные — по буквам. a.m. — до полудня, p.m. — после: 8 a.m. — 8 утра, 8 p.m. — 8 вечера. In the morning после a.m. не добавляют."
+ },
+ {
+  "n": 6,
+  "group": "life",
+  "title": "Переписка",
+  "sub": "BTW, LOL, IMO…",
+  "rule": "Только для чатов и сообщений знакомым — в рабочих письмах их лучше не писать. Вслух их почти не произносят: говорят всю фразу — by the way, to be honest."
+ },
+ {
+  "n": 7,
+  "group": "mix",
+  "title": "Всё вместе",
+  "sub": "15 случайных карточек",
+  "rule": "Карточки из всех тем вперемешку."
+ }
+];
+
+// ——— Карточки. Новые добавляются сюда, в конец своей темы.
+// ab — сокращение; full — расшифровка, [x] — буква, от которой оно образовано; ru — перевод; ipa — как читается;
+// gram — часть речи и артикль; ex, exRu — пример и перевод; note — заметка; ctx — подсказка на лицевой стороне;
+// sa, sl, se — что озвучить голосом устройства, если запись audio/<id>-a|l|e.mp3 не загрузится.
+const CARDS = [
+ {"id": "h-ct", "t": 1, "ab": "CT", "full": "[c]omputed [t]omography", "ru": "компьютерная томография, КТ", "ipa": "/ˌsiː ˈtiː/", "gram": "сущ. (C+U) · a CT scan", "ex": "A non-contrast [CT] ruled out haemorrhage.", "exRu": "Бесконтрастная КТ исключила кровоизлияние.", "note": "a CT scan — C /siː/, согласный звук. «На КТ» — on CT.", "sa": "C T", "sl": "C T. Computed tomography.", "se": "A non-contrast C T ruled out haemorrhage."},
+ {"id": "h-mri", "t": 1, "ab": "MRI", "full": "[m]agnetic [r]esonance [i]maging", "ru": "магнитно-резонансная томография, МРТ", "ipa": "/ˌem ɑːr ˈaɪ/", "gram": "сущ. (C+U) · an MRI", "ex": "The [MRI] showed a small infarct in the left thalamus.", "exRu": "На МРТ — небольшой инфаркт в левом таламусе.", "note": "an MRI — M /em/, гласный звук.", "sa": "M R I", "sl": "M R I. Magnetic resonance imaging.", "se": "The M R I showed a small infarct in the left thalamus."},
+ {"id": "h-ecg", "t": 1, "ab": "ECG", "full": "[e]lectro[c]ardio[g]ram", "ru": "ЭКГ, электрокардиограмма", "ipa": "/ˌiː siː ˈdʒiː/", "gram": "сущ. (C) · an ECG", "ex": "His [ECG] showed atrial fibrillation.", "exRu": "На ЭКГ у него фибрилляция предсердий.", "note": "Амер. — EKG. an ECG — E /iː/, гласный звук.", "sa": "E C G", "sl": "E C G. Electrocardiogram.", "se": "His E C G showed atrial fibrillation."},
+ {"id": "h-eeg", "t": 1, "ab": "EEG", "full": "[e]lectro[e]ncephalo[g]ram", "ru": "ЭЭГ, электроэнцефалограмма", "ipa": "/ˌiː iː ˈdʒiː/", "gram": "сущ. (C) · an EEG", "ex": "The [EEG] showed no seizure activity.", "exRu": "На ЭЭГ нет эпилептической активности.", "note": "Две E подряд: /ˌiː iː ˈdʒiː/.", "sa": "E E G", "sl": "E E G. Electroencephalogram.", "se": "The E E G showed no seizure activity."},
+ {"id": "h-icu", "t": 1, "ab": "ICU", "full": "[i]ntensive [c]are [u]nit", "ru": "отделение реанимации, ОРИТ", "ipa": "/ˌaɪ siː ˈjuː/", "gram": "сущ. (C) · the ICU", "ex": "She was transferred to the [ICU] after the operation.", "exRu": "После операции её перевели в реанимацию.", "note": "in the ICU — в реанимации. an ICU nurse — I /aɪ/, гласный звук.", "sa": "I C U", "sl": "I C U. Intensive care unit.", "se": "She was transferred to the I C U after the operation."},
+ {"id": "h-ae", "t": 1, "ab": "A&E", "full": "[a]ccident and [e]mergency", "ru": "приёмное отделение, неотложка (брит.)", "ipa": "/ˌeɪ ənd ˈiː/", "gram": "сущ. (U) · без артикля", "ex": "He spent six hours waiting in [A&E].", "exRu": "Он шесть часов ждал в приёмном отделении.", "note": "Брит.: go to A&E. Амер. — the ER.", "sa": "A and E", "sl": "A and E. Accident and emergency.", "se": "He spent six hours waiting in A and E."},
+ {"id": "h-er", "t": 1, "ab": "ER", "full": "[e]mergency [r]oom", "ru": "отделение неотложной помощи (амер.)", "ipa": "/ˌiː ˈɑː/", "gram": "сущ. (C) · the ER", "ex": "She was rushed to the [ER] with chest pain.", "exRu": "Её срочно доставили в неотложку с болью в груди.", "note": "Брит. — A&E. В документах часто ED — emergency department.", "sa": "E R", "sl": "E R. Emergency room.", "se": "She was rushed to the E R with chest pain."},
+ {"id": "h-gp", "t": 1, "ab": "GP", "full": "[g]eneral [p]ractitioner", "ru": "врач общей практики, терапевт", "ipa": "/ˌdʒiː ˈpiː/", "gram": "сущ. (C) · a GP", "ex": "Please make an appointment with your [GP] in two weeks.", "exRu": "Запишитесь к своему терапевту через две недели.", "note": "see your GP — сходить к своему врачу. G /dʒiː/, согласный звук.", "sa": "G P", "sl": "G P. General practitioner.", "se": "Please make an appointment with your G P in two weeks."},
+ {"id": "h-bp", "t": 1, "ab": "BP", "full": "[b]lood [p]ressure", "ru": "артериальное давление", "ipa": "/ˌbiː ˈpiː/", "gram": "сущ. (U) · BP", "ex": "Her [BP] was 180 over 100 on admission.", "exRu": "При поступлении давление было 180 на 100.", "note": "180/100 читают «180 over 100».", "ctx": "BP 180/100", "sa": "B P", "sl": "B P. Blood pressure.", "se": "Her B P was 180 over 100 on admission."},
+ {"id": "h-iv", "t": 1, "ab": "IV", "full": "[i]ntra[v]enous", "ru": "внутривенно; капельница", "ipa": "/ˌaɪ ˈviː/", "gram": "прил., нареч.; сущ. (C) · an IV", "ex": "The antibiotic was given [IV].", "exRu": "Антибиотик вводили внутривенно.", "note": "an IV — капельница или катетер. I /aɪ/, гласный звук.", "sa": "I V", "sl": "I V. Intravenous.", "se": "The antibiotic was given I V."},
+ {"id": "h-cpr", "t": 1, "ab": "CPR", "full": "[c]ardio[p]ulmonary [r]esuscitation", "ru": "сердечно-лёгочная реанимация, СЛР", "ipa": "/ˌsiː piː ˈɑː/", "gram": "сущ. (U) · CPR", "ex": "Bystanders started [CPR] before the ambulance arrived.", "exRu": "Прохожие начали СЛР до приезда скорой.", "note": "perform CPR, do CPR — без артикля.", "sa": "C P R", "sl": "C P R. Cardiopulmonary resuscitation.", "se": "Bystanders started C P R before the ambulance arrived."},
+ {"id": "h-dnr", "t": 1, "ab": "DNR", "full": "[d]o [n]ot [r]esuscitate", "ru": "не реанимировать", "ipa": "/ˌdiː en ˈɑː/", "gram": "прил. · a DNR order", "ex": "The patient has a [DNR] order in his notes.", "exRu": "В истории болезни пациента есть распоряжение не реанимировать.", "note": "a DNR order — распоряжение не проводить СЛР.", "sa": "D N R", "sl": "D N R. Do not resuscitate.", "se": "The patient has a D N R order in his notes."},
+ {"id": "h-tia", "t": 1, "ab": "TIA", "full": "[t]ransient [i]schaemic [a]ttack", "ru": "транзиторная ишемическая атака, ТИА", "ipa": "/ˌtiː aɪ ˈeɪ/", "gram": "сущ. (C) · a TIA", "ex": "A [TIA] is often a warning sign of a stroke.", "exRu": "ТИА часто предвещает инсульт.", "note": "Брит. ischaemic, амер. ischemic.", "sa": "T I A", "sl": "T I A. Transient ischaemic attack.", "se": "A T I A is often a warning sign of a stroke."},
+ {"id": "h-bmi", "t": 1, "ab": "BMI", "full": "[b]ody [m]ass [i]ndex", "ru": "индекс массы тела, ИМТ", "ipa": "/ˌbiː em ˈaɪ/", "gram": "сущ. (C) · a BMI of 32", "ex": "Patients with a [BMI] over 40 were excluded.", "exRu": "Пациентов с ИМТ больше 40 исключали.", "note": "a BMI of 32 — ИМТ 32. B /biː/, согласный звук.", "sa": "B M I", "sl": "B M I. Body mass index.", "se": "Patients with a B M I over 40 were excluded."},
+ {"id": "h-mi", "t": 1, "ab": "MI", "full": "[m]yocardial [i]nfarction", "ru": "инфаркт миокарда", "ipa": "/ˌem ˈaɪ/", "gram": "сущ. (C) · an MI", "ex": "He had an [MI] five years ago.", "exRu": "Пять лет назад он перенёс инфаркт миокарда.", "note": "С пациентом говорят heart attack.", "sa": "M I", "sl": "M I. Myocardial infarction.", "se": "He had an M I five years ago."},
+ {"id": "h-dvt", "t": 1, "ab": "DVT", "full": "[d]eep [v]ein [t]hrombosis", "ru": "тромбоз глубоких вен, ТГВ", "ipa": "/ˌdiː viː ˈtiː/", "gram": "сущ. (C+U) · a DVT", "ex": "Long flights increase the risk of [DVT].", "exRu": "Долгие перелёты повышают риск тромбоза глубоких вен.", "note": "a DVT — один эпизод тромбоза; risk of DVT — без артикля.", "sa": "D V T", "sl": "D V T. Deep vein thrombosis.", "se": "Long flights increase the risk of D V T."},
+ {"id": "s-rct", "t": 2, "ab": "RCT", "full": "[r]andomised [c]ontrolled [t]rial", "ru": "рандомизированное контролируемое исследование, РКИ", "ipa": "/ˌɑː siː ˈtiː/", "gram": "сущ. (C) · an RCT", "ex": "We conducted an [RCT] in 12 stroke centres.", "exRu": "Мы провели РКИ в 12 инсультных центрах.", "note": "an RCT — R /ɑː/, гласный звук. Амер. randomized.", "sa": "R C T", "sl": "R C T. Randomised controlled trial.", "se": "We conducted an R C T in 12 stroke centres."},
+ {"id": "s-ci", "t": 2, "ab": "CI", "full": "[c]onfidence [i]nterval", "ru": "доверительный интервал, ДИ", "ipa": "/ˌsiː ˈaɪ/", "gram": "сущ. (C) · a 95% CI", "ex": "The 95% [CI] was wide because the sample was small.", "exRu": "95% ДИ получился широким: выборка была маленькой.", "note": "95% CI читают «ninety-five per cent C I».", "ctx": "95% CI", "sa": "C I", "sl": "C I. Confidence interval.", "se": "The 95% C I was wide because the sample was small."},
+ {"id": "s-or", "t": 2, "ab": "OR", "full": "[o]dds [r]atio", "ru": "отношение шансов, ОШ", "ipa": "/ˌəʊ ˈɑː/", "gram": "сущ. (C) · an OR of 1.8", "ex": "The [OR] for stroke in smokers was 1.8.", "exRu": "ОШ инсульта у курильщиков составило 1,8.", "note": "В американской больнице OR — ещё и operating room, операционная.", "ctx": "OR 1.8", "sa": "O R", "sl": "O R. Odds ratio.", "se": "The O R for stroke in smokers was 1.8."},
+ {"id": "s-hr", "t": 2, "ab": "HR", "full": "[h]azard [r]atio", "ru": "отношение рисков, ОР", "ipa": "/ˌeɪtʃ ˈɑː/", "gram": "сущ. (C) · an HR of 0.75", "ex": "The [HR] for death in the treatment group was 0.75.", "exRu": "ОР смерти в группе лечения — 0,75.", "note": "an HR — H /eɪtʃ/, гласный звук. На работе HR — отдел кадров.", "ctx": "HR 0.75", "sa": "H R", "sl": "H R. Hazard ratio.", "se": "The H R for death in the treatment group was 0.75."},
+ {"id": "s-sd", "t": 2, "ab": "SD", "full": "[s]tandard [d]eviation", "ru": "стандартное отклонение", "ipa": "/ˌes ˈdiː/", "gram": "сущ. (C) · mean ± SD", "ex": "The mean age was 67, with an [SD] of 11.", "exRu": "Средний возраст — 67 лет, стандартное отклонение — 11.", "note": "an SD — S /es/, гласный звук.", "ctx": "mean ± SD", "sa": "S D", "sl": "S D. Standard deviation.", "se": "The mean age was 67, with an S D of 11."},
+ {"id": "s-nnt", "t": 2, "ab": "NNT", "full": "[n]umber [n]eeded to [t]reat", "ru": "число больных, которых нужно пролечить, ЧБНЛ", "ipa": "/ˌen en ˈtiː/", "gram": "сущ. (C) · an NNT of 5", "ex": "An [NNT] of 5 means we treat five patients to help one.", "exRu": "ЧБНЛ = 5: лечим пятерых, чтобы помочь одному.", "note": "an NNT — N /en/, гласный звук.", "sa": "N N T", "sl": "N N T. Number needed to treat.", "se": "An N N T of 5 means we treat five patients to help one."},
+ {"id": "s-phd", "t": 2, "ab": "PhD", "full": "Doctor of Philosophy", "ru": "степень PhD (≈ кандидат наук)", "ipa": "/ˌpiː eɪtʃ ˈdiː/", "gram": "сущ. (C) · a PhD", "ex": "She's doing a [PhD] in neuroscience.", "exRu": "Она пишет диссертацию по нейронаукам.", "note": "От лат. Philosophiae Doctor. do a PhD — учиться в аспирантуре.", "sa": "P H D", "sl": "P H D. Doctor of Philosophy.", "se": "She's doing a P H D in neuroscience."},
+ {"id": "s-etal", "t": 2, "ab": "et al.", "full": "[et al]ii — and others", "ru": "и соавторы, и др.", "ipa": "/et ˈæl/", "gram": "лат. · после фамилии", "ex": "Smith [et al.] reported similar results.", "exRu": "Смит и соавт. получили похожие результаты.", "note": "Точка — после al, не после et.", "sa": "et al", "sl": "Et al. And others.", "se": "Smith et al reported similar results."},
+ {"id": "s-eg", "t": 2, "ab": "e.g.", "full": "[e]xempli [g]ratia — for example", "ru": "например", "ipa": "/ˌiː ˈdʒiː/", "gram": "лат. · вводное", "ex": "Some risk factors, [e.g.] smoking, can be changed.", "exRu": "Некоторые факторы риска, например курение, можно изменить.", "note": "Вслух — for example. e.g. — один пример из многих.", "sa": "E G", "sl": "E G. For example.", "se": "Some risk factors, for example smoking, can be changed."},
+ {"id": "s-ie", "t": 2, "ab": "i.e.", "full": "[i]d [e]st — that is", "ru": "то есть", "ipa": "/ˌaɪ ˈiː/", "gram": "лат. · вводное", "ex": "The drug is taken once daily, [i.e.] every 24 hours.", "exRu": "Препарат принимают раз в сутки, то есть каждые 24 часа.", "note": "Вслух — that is. i.e. уточняет: другого варианта нет.", "sa": "I E", "sl": "I E. That is.", "se": "The drug is taken once daily, that is, every 24 hours."},
+ {"id": "s-etc", "t": 2, "ab": "etc.", "full": "[et c]etera — and so on", "ru": "и так далее, и т. д.", "ipa": "/et ˈsetərə/", "gram": "лат. · в конце списка", "ex": "Bring your passport, test results, [etc.]", "exRu": "Возьмите паспорт, результаты анализов и т. д.", "note": "Не пиши and etc.: et уже значит and.", "sa": "et cetera", "sl": "Et cetera. And so on.", "se": "Bring your passport, test results, et cetera."},
+ {"id": "s-vs", "t": 2, "ab": "vs", "full": "[v]er[s]us", "ru": "против; в сравнении с", "ipa": "/ˈvɜːsəs/", "gram": "лат. · предлог", "ex": "Stroke unit [vs] general ward: which is better?", "exRu": "Инсультное отделение или обычная палата: что лучше?", "note": "Брит. vs, амер. vs. — с точкой.", "sa": "versus", "sl": "Versus. Against, or compared with.", "se": "Stroke unit versus general ward: which is better?"},
+ {"id": "s-nb", "t": 2, "ab": "NB", "full": "[n]ota [b]ene — note well", "ru": "обратите внимание", "ipa": "/ˌen ˈbiː/", "gram": "лат. · в заметках", "ex": "[NB]: reduce the dose in renal failure.", "exRu": "NB: при почечной недостаточности дозу снижают.", "note": "Пишут в инструкциях и конспектах, вслух почти не говорят.", "sa": "N B", "sl": "N B. Note well.", "se": "N B: reduce the dose in renal failure."},
+ {"id": "w-nda", "t": 3, "ab": "NDA", "full": "[n]on-[d]isclosure [a]greement", "ru": "соглашение о неразглашении", "ipa": "/ˌen diː ˈeɪ/", "gram": "сущ. (C) · an NDA", "ex": "All the investigators had to sign an [NDA].", "exRu": "Все исследователи должны были подписать соглашение о неразглашении.", "note": "an NDA — N /en/, гласный звук.", "sa": "N D A", "sl": "N D A. Non-disclosure agreement.", "se": "All the investigators had to sign an N D A."},
+ {"id": "w-ceo", "t": 3, "ab": "CEO", "full": "[c]hief [e]xecutive [o]fficer", "ru": "генеральный директор", "ipa": "/ˌsiː iː ˈəʊ/", "gram": "сущ. (C) · the CEO", "ex": "The hospital's new [CEO] used to be a surgeon.", "exRu": "Новый директор больницы раньше был хирургом.", "note": "Мн. ч. — CEOs, без апострофа.", "sa": "C E O", "sl": "C E O. Chief executive officer.", "se": "The hospital's new C E O used to be a surgeon."},
+ {"id": "w-cv", "t": 3, "ab": "CV", "full": "[c]urriculum [v]itae", "ru": "резюме", "ipa": "/ˌsiː ˈviː/", "gram": "сущ. (C) · a CV", "ex": "Please send your [CV] and a cover letter.", "exRu": "Пришлите, пожалуйста, резюме и сопроводительное письмо.", "note": "Амер. — résumé. Лат. «ход жизни».", "sa": "C V", "sl": "C V. Curriculum vitae.", "se": "Please send your C V and a cover letter."},
+ {"id": "w-hr", "t": 3, "ab": "HR", "full": "[h]uman [r]esources", "ru": "отдел кадров, HR", "ipa": "/ˌeɪtʃ ˈɑː/", "gram": "сущ. (U) · HR", "ex": "Send your sick note to [HR].", "exRu": "Отправьте больничный в отдел кадров.", "note": "an HR manager — H /eɪtʃ/, гласный звук.", "sa": "H R", "sl": "H R. Human resources.", "se": "Send your sick note to H R."},
+ {"id": "w-pr", "t": 3, "ab": "PR", "full": "[p]ublic [r]elations", "ru": "связи с общественностью, пиар", "ipa": "/ˌpiː ˈɑː/", "gram": "сущ. (U) · PR", "ex": "The scandal was a [PR] disaster for the clinic.", "exRu": "Скандал стал для клиники пиар-катастрофой.", "note": "a PR disaster — P /piː/, согласный звук.", "sa": "P R", "sl": "P R. Public relations.", "se": "The scandal was a P R disaster for the clinic."},
+ {"id": "w-asap", "t": 3, "ab": "ASAP", "full": "[a]s [s]oon [a]s [p]ossible", "ru": "как можно скорее", "ipa": "/ˌeɪ es eɪ ˈpiː/", "gram": "нареч.", "ex": "Please send me the results [ASAP].", "exRu": "Пришлите мне результаты как можно скорее.", "note": "Читают по буквам или словом /ˈeɪsæp/. Начальнику вежливее — as soon as you can.", "sa": "A S A P", "sl": "A S A P. As soon as possible.", "se": "Please send me the results A S A P."},
+ {"id": "w-fyi", "t": 3, "ab": "FYI", "full": "[f]or [y]our [i]nformation", "ru": "к вашему сведению", "ipa": "/ˌef waɪ ˈaɪ/", "gram": "фраза · в письмах", "ex": "[FYI], the meeting has moved to 3 p.m.", "exRu": "К сведению: встречу перенесли на 15:00.", "note": "Пишут в начале короткого письма или пересылки.", "sa": "F Y I", "sl": "F Y I. For your information.", "se": "F Y I, the meeting has moved to 3 P M."},
+ {"id": "w-eta", "t": 3, "ab": "ETA", "full": "[e]stimated [t]ime of [a]rrival", "ru": "ожидаемое время прибытия", "ipa": "/ˌiː tiː ˈeɪ/", "gram": "сущ. (C) · an ETA", "ex": "The ambulance's [ETA] is ten minutes.", "exRu": "Скорая будет примерно через десять минут.", "note": "What's your ETA? — Когда будешь?", "sa": "E T A", "sl": "E T A. Estimated time of arrival.", "se": "The ambulance's E T A is ten minutes."},
+ {"id": "w-tbc", "t": 3, "ab": "TBC", "full": "[t]o [b]e [c]onfirmed", "ru": "уточняется, будет подтверждено", "ipa": "/ˌtiː biː ˈsiː/", "gram": "прил. · после сущ.", "ex": "The date of the next meeting is [TBC].", "exRu": "Дата следующего совещания уточняется.", "note": "Похожее: TBA — to be announced, «будет объявлено».", "sa": "T B C", "sl": "T B C. To be confirmed.", "se": "The date of the next meeting is T B C."},
+ {"id": "w-rsvp", "t": 3, "ab": "RSVP", "full": "[r]épondez [s]'il [v]ous [p]laît — please reply", "ru": "просьба ответить", "ipa": "/ˌɑːr es viː ˈpiː/", "gram": "глаг. · в приглашениях", "ex": "Please [RSVP] by Friday.", "exRu": "Пожалуйста, ответьте до пятницы, придёте ли вы.", "note": "Из французского. Стоит в конце приглашения.", "sa": "R S V P", "sl": "R S V P. Please reply.", "se": "Please R S V P by Friday."},
+ {"id": "w-kpi", "t": 3, "ab": "KPI", "full": "[k]ey [p]erformance [i]ndicator", "ru": "ключевой показатель эффективности, KPI", "ipa": "/ˌkeɪ piː ˈaɪ/", "gram": "сущ. (C) · a KPI", "ex": "Door-to-needle time is an important [KPI] for stroke units.", "exRu": "Время «от двери до иглы» — важный KPI инсультного отделения.", "note": "a KPI — K /keɪ/, согласный звук.", "sa": "K P I", "sl": "K P I. Key performance indicator.", "se": "Door-to-needle time is an important K P I for stroke units."},
+ {"id": "w-cc", "t": 3, "ab": "cc", "full": "[c]arbon [c]opy", "ru": "копия письма", "ipa": "/ˌsiː ˈsiː/", "gram": "глаг.; сущ. (C)", "ex": "Could you [cc] me on your reply?", "exRu": "Поставь меня, пожалуйста, в копию ответа.", "note": "bcc — скрытая копия. Прош. вр. — cc'd.", "sa": "C C", "sl": "C C. Carbon copy.", "se": "Could you C C me on your reply?"},
+ {"id": "w-ps", "t": 3, "ab": "PS", "full": "[p]ost[s]cript", "ru": "постскриптум, P. S.", "ipa": "/ˌpiː ˈes/", "gram": "сущ. (C)", "ex": "[PS]: don't forget to bring the consent forms.", "exRu": "P. S. Не забудьте принести формы согласия.", "note": "Брит. чаще PS без точек, амер. — P.S.", "sa": "P S", "sl": "P S. Postscript.", "se": "P S: don't forget to bring the consent forms."},
+ {"id": "w-qa", "t": 3, "ab": "Q&A", "full": "[q]uestions and [a]nswers", "ru": "вопросы и ответы", "ipa": "/ˌkjuː ənd ˈeɪ/", "gram": "сущ. (C+U) · a Q&A session", "ex": "There will be a short [Q&A] after the talk.", "exRu": "После доклада будет короткая сессия вопросов и ответов.", "note": "a Q&A — Q /kjuː/, согласный звук.", "sa": "Q and A", "sl": "Q and A. Questions and answers.", "se": "There will be a short Q and A after the talk."},
+ {"id": "w-aob", "t": 3, "ab": "AOB", "full": "[a]ny [o]ther [b]usiness", "ru": "разное (последний пункт повестки)", "ipa": "/ˌeɪ əʊ ˈbiː/", "gram": "сущ. (U)", "ex": "The last item on the agenda is [AOB].", "exRu": "Последний пункт повестки — разное.", "note": "Брит. В конце совещания: Any other business?", "sa": "A O B", "sl": "A O B. Any other business.", "se": "The last item on the agenda is A O B."},
+ {"id": "w-ooo", "t": 3, "ab": "OOO", "full": "[o]ut [o]f [o]ffice", "ru": "нет на месте, в отъезде", "ipa": "/ˌəʊ əʊ ˈəʊ/", "gram": "фраза · в автоответе", "ex": "I'm [OOO] until Monday with limited access to email.", "exRu": "Меня не будет до понедельника, почту смотрю редко.", "note": "Вслух — out of office. Автоответ — an out-of-office reply.", "sa": "O O O", "sl": "O O O. Out of office.", "se": "I'm out of office until Monday with limited access to email."},
+ {"id": "o-fbi", "t": 4, "ab": "FBI", "full": "[F]ederal [B]ureau of [I]nvestigation", "ru": "ФБР", "ipa": "/ˌef biː ˈaɪ/", "gram": "название · the FBI", "ex": "He worked for the [FBI] for twenty years.", "exRu": "Он двадцать лет проработал в ФБР.", "note": "an FBI agent — F /ef/, гласный звук.", "sa": "F B I", "sl": "F B I. Federal Bureau of Investigation.", "se": "He worked for the F B I for twenty years."},
+ {"id": "o-cia", "t": 4, "ab": "CIA", "full": "[C]entral [I]ntelligence [A]gency", "ru": "ЦРУ", "ipa": "/ˌsiː aɪ ˈeɪ/", "gram": "название · the CIA", "ex": "The [CIA] gathers intelligence outside the US.", "exRu": "ЦРУ собирает разведданные за пределами США.", "note": "a CIA officer — C /siː/, согласный звук.", "sa": "C I A", "sl": "C I A. Central Intelligence Agency.", "se": "The C I A gathers intelligence outside the U S."},
+ {"id": "o-un", "t": 4, "ab": "UN", "full": "[U]nited [N]ations", "ru": "ООН", "ipa": "/ˌjuː ˈen/", "gram": "название · the UN", "ex": "The [UN] was founded in 1945.", "exRu": "ООН основали в 1945 году.", "note": "a UN report — U /juː/, в начале звук [j].", "sa": "U N", "sl": "U N. United Nations.", "se": "The U N was founded in 1945."},
+ {"id": "o-eu", "t": 4, "ab": "EU", "full": "[E]uropean [U]nion", "ru": "Евросоюз, ЕС", "ipa": "/ˌiː ˈjuː/", "gram": "название · the EU", "ex": "Poland joined the [EU] in 2004.", "exRu": "Польша вступила в ЕС в 2004 году.", "note": "an EU country — E /iː/, гласный звук.", "sa": "E U", "sl": "E U. European Union.", "se": "Poland joined the E U in 2004."},
+ {"id": "o-who", "t": 4, "ab": "WHO", "full": "[W]orld [H]ealth [O]rganization", "ru": "ВОЗ", "ipa": "/ˌdʌbljuː eɪtʃ ˈəʊ/", "gram": "название · the WHO", "ex": "The [WHO] declared COVID-19 a pandemic in 2020.", "exRu": "ВОЗ объявила COVID-19 пандемией в 2020 году.", "note": "По буквам — не как who. Сама ВОЗ пишет без артикля: WHO recommends…", "sa": "W H O", "sl": "W H O. World Health Organization.", "se": "The W H O declared COVID-19 a pandemic in 2020."},
+ {"id": "o-nato", "t": 4, "ab": "NATO", "full": "[N]orth [A]tlantic [T]reaty [O]rganization", "ru": "НАТО", "ipa": "/ˈneɪtəʊ/", "gram": "название · без артикля", "ex": "[NATO] was founded in 1949.", "exRu": "НАТО основали в 1949 году.", "note": "Читается как слово, поэтому без the.", "sa": "Nato", "sl": "Nato. North Atlantic Treaty Organization.", "se": "Nato was founded in 1949."},
+ {"id": "o-nasa", "t": 4, "ab": "NASA", "full": "[N]ational [A]eronautics and [S]pace [A]dministration", "ru": "НАСА", "ipa": "/ˈnæsə/", "gram": "название · без артикля", "ex": "[NASA] first landed astronauts on the Moon in 1969.", "exRu": "НАСА впервые высадило астронавтов на Луну в 1969 году.", "note": "Как слово — без the: work for NASA.", "sa": "Nasa", "sl": "Nasa. National Aeronautics and Space Administration.", "se": "Nasa first landed astronauts on the Moon in 1969."},
+ {"id": "o-nhs", "t": 4, "ab": "NHS", "full": "[N]ational [H]ealth [S]ervice", "ru": "государственное здравоохранение Великобритании", "ipa": "/ˌen eɪtʃ ˈes/", "gram": "название · the NHS", "ex": "Most [NHS] treatment is free at the point of use.", "exRu": "Большая часть лечения в NHS для пациента бесплатна.", "note": "on the NHS — за счёт государства. an NHS hospital — N /en/.", "sa": "N H S", "sl": "N H S. National Health Service.", "se": "Most N H S treatment is free at the point of use."},
+ {"id": "o-bbc", "t": 4, "ab": "BBC", "full": "[B]ritish [B]roadcasting [C]orporation", "ru": "Би-би-си", "ipa": "/ˌbiː biː ˈsiː/", "gram": "название · the BBC", "ex": "I listen to the [BBC] every morning to practise my English.", "exRu": "Каждое утро слушаю Би-би-си, чтобы тренировать английский.", "note": "a BBC journalist — B /biː/, согласный звук.", "sa": "B B C", "sl": "B B C. British Broadcasting Corporation.", "se": "I listen to the B B C every morning to practise my English."},
+ {"id": "o-uk", "t": 4, "ab": "UK", "full": "[U]nited [K]ingdom", "ru": "Великобритания", "ipa": "/ˌjuː ˈkeɪ/", "gram": "название · the UK", "ex": "She moved to the [UK] to work as a doctor.", "exRu": "Она переехала в Великобританию работать врачом.", "note": "a UK citizen — U /juː/, в начале звук [j].", "sa": "U K", "sl": "U K. United Kingdom.", "se": "She moved to the U K to work as a doctor."},
+ {"id": "o-usa", "t": 4, "ab": "USA", "full": "[U]nited [S]tates of [A]merica", "ru": "США", "ipa": "/ˌjuː es ˈeɪ/", "gram": "название · the USA", "ex": "He did his residency in the [USA].", "exRu": "Он проходил ординатуру в США.", "note": "Чаще просто the US. Всегда с the.", "sa": "U S A", "sl": "U S A. United States of America.", "se": "He did his residency in the U S A."},
+ {"id": "o-unesco", "t": 4, "ab": "UNESCO", "full": "[U]nited [N]ations [E]ducational, [S]cientific and [C]ultural [O]rganization", "ru": "ЮНЕСКО", "ipa": "/juːˈneskəʊ/", "gram": "название · без артикля", "ex": "The old town is a [UNESCO] World Heritage Site.", "exRu": "Старый город — объект всемирного наследия ЮНЕСКО.", "note": "Как слово /juːˈneskəʊ/: в начале звук [j], поэтому a UNESCO site.", "sa": "Unesco", "sl": "Unesco. United Nations Educational, Scientific and Cultural Organization.", "se": "The old town is a Unesco World Heritage Site."},
+ {"id": "d-atm", "t": 5, "ab": "ATM", "full": "[a]utomated [t]eller [m]achine", "ru": "банкомат", "ipa": "/ˌeɪ tiː ˈem/", "gram": "сущ. (C) · an ATM", "ex": "Is there an [ATM] near the hospital?", "exRu": "Рядом с больницей есть банкомат?", "note": "Брит. в речи — cash machine.", "sa": "A T M", "sl": "A T M. Automated teller machine.", "se": "Is there an A T M near the hospital?"},
+ {"id": "d-id", "t": 5, "ab": "ID", "full": "[id]entification", "ru": "удостоверение личности, документ", "ipa": "/ˌaɪ ˈdiː/", "gram": "сущ. (C+U) · an ID card", "ex": "Please bring some photo [ID] with you.", "exRu": "Возьмите с собой документ с фотографией.", "note": "some ID — какой-нибудь документ. an ID card — I /aɪ/, гласный звук.", "sa": "I D", "sl": "I D. Identification.", "se": "Please bring some photo I D with you."},
+ {"id": "d-pin", "t": 5, "ab": "PIN", "full": "[p]ersonal [i]dentification [n]umber", "ru": "ПИН-код", "ipa": "/pɪn/", "gram": "сущ. (C) · a PIN", "ex": "Never tell anyone your [PIN].", "exRu": "Никому не говорите свой ПИН-код.", "note": "Читается как слово /pɪn/, поэтому a PIN.", "sa": "pin", "sl": "Pin. Personal identification number.", "se": "Never tell anyone your pin."},
+ {"id": "d-diy", "t": 5, "ab": "DIY", "full": "[d]o [i]t [y]ourself", "ru": "ремонт своими руками", "ipa": "/ˌdiː aɪ ˈwaɪ/", "gram": "сущ. (U); прил. · a DIY store", "ex": "He spends his weekends doing [DIY].", "exRu": "Выходные он проводит за ремонтом своими руками.", "note": "a DIY store — строительный магазин.", "sa": "D I Y", "sl": "D I Y. Do it yourself.", "se": "He spends his weekends doing D I Y."},
+ {"id": "d-vip", "t": 5, "ab": "VIP", "full": "[v]ery [i]mportant [p]erson", "ru": "важная персона, VIP", "ipa": "/ˌviː aɪ ˈpiː/", "gram": "сущ. (C) · a VIP", "ex": "The minister was treated like a [VIP].", "exRu": "С министром обращались как с VIP-гостем.", "note": "Читается по буквам, не «вип».", "sa": "V I P", "sl": "V I P. Very important person.", "se": "The minister was treated like a V I P."},
+ {"id": "d-gps", "t": 5, "ab": "GPS", "full": "[G]lobal [P]ositioning [S]ystem", "ru": "спутниковая навигация, GPS", "ipa": "/ˌdʒiː piː ˈes/", "gram": "сущ. (U) · by GPS", "ex": "The ambulance found us using [GPS].", "exRu": "Скорая нашла нас по GPS.", "note": "Навигатор в машине — satnav (брит.) или GPS.", "sa": "G P S", "sl": "G P S. Global Positioning System.", "se": "The ambulance found us using G P S."},
+ {"id": "d-ai", "t": 5, "ab": "AI", "full": "[a]rtificial [i]ntelligence", "ru": "искусственный интеллект, ИИ", "ipa": "/ˌeɪ ˈaɪ/", "gram": "сущ. (U) · an AI tool", "ex": "[AI] can help radiologists read CT scans faster.", "exRu": "ИИ помогает рентгенологам быстрее читать КТ.", "note": "an AI tool — A /eɪ/, гласный звук.", "sa": "A I", "sl": "A I. Artificial intelligence.", "se": "A I can help radiologists read C T scans faster."},
+ {"id": "d-dob", "t": 5, "ab": "DOB", "full": "[d]ate [o]f [b]irth", "ru": "дата рождения", "ipa": "/ˌdiː əʊ ˈbiː/", "gram": "сущ. (C)", "ex": "Please check the patient's name and [DOB].", "exRu": "Проверьте имя пациента и дату рождения.", "note": "В анкетах. Вслух — date of birth.", "sa": "D O B", "sl": "D O B. Date of birth.", "se": "Please check the patient's name and D O B."},
+ {"id": "d-ampm", "t": 5, "ab": "a.m. / p.m.", "full": "[a]nte [m]eridiem · [p]ost [m]eridiem", "ru": "до полудня · после полудня", "ipa": "/ˌeɪ ˈem/ · /ˌpiː ˈem/", "gram": "нареч. · после числа", "ex": "The ward round starts at 8 [a.m.]", "exRu": "Обход начинается в 8 утра.", "note": "12 p.m. — полдень, 12 a.m. — полночь. «8 a.m. in the morning» — ошибка.", "sa": "A M. P M.", "sl": "A M: before noon. P M: after noon.", "se": "The ward round starts at 8 A M."},
+ {"id": "d-na", "t": 5, "ab": "n/a", "full": "[n]ot [a]pplicable", "ru": "не применимо; нет данных", "ipa": "/ˌen ˈeɪ/", "gram": "в анкетах и таблицах", "ex": "If a question doesn't apply to you, write [n/a].", "exRu": "Если вопрос вас не касается, напишите n/a.", "note": "Ещё not available — «нет данных, нет в наличии».", "sa": "N A", "sl": "N A. Not applicable.", "se": "If a question doesn't apply to you, write N A."},
+ {"id": "d-sim", "t": 5, "ab": "SIM", "full": "[s]ubscriber [i]dentity [m]odule", "ru": "SIM-карта", "ipa": "/sɪm/", "gram": "сущ. (C) · a SIM card", "ex": "I need a local [SIM] card for my trip.", "exRu": "Мне нужна местная SIM-карта для поездки.", "note": "Читается как слово /sɪm/.", "sa": "sim", "sl": "Sim. Subscriber identity module.", "se": "I need a local sim card for my trip."},
+ {"id": "d-it", "t": 5, "ab": "IT", "full": "[i]nformation [t]echnology", "ru": "ИТ, информационные технологии", "ipa": "/ˌaɪ ˈtiː/", "gram": "сущ. (U) · the IT department", "ex": "Call [IT] if the system goes down again.", "exRu": "Звоните айтишникам, если система снова упадёт.", "note": "IT specialist — без дефиса. an IT problem — I /aɪ/.", "sa": "I T", "sl": "I T. Information technology.", "se": "Call I T if the system goes down again."},
+ {"id": "c-btw", "t": 6, "ab": "BTW", "full": "[b]y [t]he [w]ay", "ru": "кстати", "ipa": "/ˌbiː tiː ˈdʌbljuː/", "gram": "фраза · в чатах", "ex": "[BTW], did you get my email about the rota?", "exRu": "Кстати, ты получил моё письмо про график дежурств?", "note": "Вслух — by the way.", "sa": "B T W", "sl": "B T W. By the way.", "se": "By the way, did you get my email about the rota?"},
+ {"id": "c-lol", "t": 6, "ab": "LOL", "full": "[l]aughing [o]ut [l]oud", "ru": "очень смешно, «ржу»", "ipa": "/ˌel əʊ ˈel/", "gram": "межд. · в чатах", "ex": "He replied “[LOL]” to my serious question.", "exRu": "На мой серьёзный вопрос он ответил «LOL».", "note": "Читают по буквам или словом /lɒl/. Не для рабочих писем.", "sa": "L O L", "sl": "L O L. Laughing out loud.", "se": "He replied L O L to my serious question."},
+ {"id": "c-imo", "t": 6, "ab": "IMO", "full": "[i]n [m]y [o]pinion", "ru": "по-моему", "ipa": "/ˌaɪ em ˈəʊ/", "gram": "фраза · в чатах", "ex": "[IMO], the new protocol is too complicated.", "exRu": "По-моему, новый протокол слишком сложный.", "note": "IMHO — in my humble opinion, «по моему скромному мнению».", "sa": "I M O", "sl": "I M O. In my opinion.", "se": "In my opinion, the new protocol is too complicated."},
+ {"id": "c-tbh", "t": 6, "ab": "TBH", "full": "[t]o [b]e [h]onest", "ru": "честно говоря", "ipa": "/ˌtiː biː ˈeɪtʃ/", "gram": "фраза · в чатах", "ex": "[TBH], I didn't read the whole paper.", "exRu": "Честно говоря, я не прочитал статью целиком.", "note": "Вслух — to be honest.", "sa": "T B H", "sl": "T B H. To be honest.", "se": "To be honest, I didn't read the whole paper."},
+ {"id": "c-idk", "t": 6, "ab": "IDK", "full": "[I] [d]on't [k]now", "ru": "не знаю", "ipa": "/ˌaɪ diː ˈkeɪ/", "gram": "фраза · в чатах", "ex": "[IDK] if I can make it to the meeting.", "exRu": "Не знаю, успею ли на встречу.", "note": "Вслух — I don't know.", "sa": "I D K", "sl": "I D K. I don't know.", "se": "I don't know if I can make it to the meeting."},
+ {"id": "c-omg", "t": 6, "ab": "OMG", "full": "[o]h [m]y [G]od", "ru": "о боже", "ipa": "/ˌəʊ em ˈdʒiː/", "gram": "межд. · в чатах", "ex": "[OMG], I forgot my badge again!", "exRu": "О боже, я опять забыл пропуск!", "note": "Вслух чаще целиком: oh my God.", "sa": "O M G", "sl": "O M G. Oh my God.", "se": "Oh my God, I forgot my badge again!"},
+ {"id": "c-dm", "t": 6, "ab": "DM", "full": "[d]irect [m]essage", "ru": "личное сообщение, «личка»", "ipa": "/ˌdiː ˈem/", "gram": "сущ. (C); глаг.", "ex": "[DM] me the details.", "exRu": "Скинь подробности в личку.", "note": "Прош. вр. — DMed или DM'd.", "sa": "D M", "sl": "D M. Direct message.", "se": "D M me the details."},
+ {"id": "c-brb", "t": 6, "ab": "BRB", "full": "[b]e [r]ight [b]ack", "ru": "сейчас вернусь", "ipa": "/ˌbiː ɑː ˈbiː/", "gram": "фраза · в чатах", "ex": "[BRB], my pager is going off.", "exRu": "Сейчас вернусь — пейджер пищит.", "note": "Вслух — be right back.", "sa": "B R B", "sl": "B R B. Be right back.", "se": "Be right back, my pager is going off."}
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "abbr:state";
+const LS_SPEAK = "abbr:autospeak";
+const LS_TAB = "abbr:tab";
+const LS_OPEN = "abbr:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let flipped = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Сокращения"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Разметка: [x] — оранжевым (буквы-источники в расшифровке, сокращение в примере)
+function richText(s){
+  const f = document.createDocumentFragment();
+  f.append(String(s).replace(/ → /g, "\u00a0→\u00a0"));
+  return f;
+}
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", "pr", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !flipped){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Буквы в правилах: прослушать
+document.querySelectorAll(".lt").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: больница, статьи, работа, организации, быт и переписка чередуются.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+// ——— Карточка: лицевая сторона — сокращение; оборот — расшифровка, перевод, пример
+function sayFront(){
+  const c = queue[index];
+  if (c && !flipped) playClip(c.id + "-a", c.sa, 0.8);
+}
+function render(){
+  stopAudio();
+  flipped = false;
+  const card = queue[index];
+  const box = $("card");
+  box.scrollTop = 0;
+  box.style.transform = "";
+  box.classList.remove("lean-yes", "lean-no");
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = TOPIC_BY[card.t].title;
+  show("front", true);
+  show("back", false);
+  show("done", false);
+  const ab = $("ab");
+  ab.textContent = card.ab;
+  ab.className = "ab" + (card.ab.length > 7 ? " s" : card.ab.length > 4 ? " m" : "");
+  $("ctx").textContent = card.ctx || "";
+  show("ctx", !!card.ctx);
+  show("actShow", true);
+  show("actGrade", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? TOPIC_BY[topicN].title + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  if (autoSpeak && !$("drill").hidden) sayFront();
+  else preloadClip(card.id + "-a");
+}
+
+function fillBack(card){
+  $("ab2").textContent = card.ab;
+  $("ipa").textContent = card.ipa;
+  $("gram").textContent = card.gram;
+  const full = $("full"); full.textContent = ""; full.append(marked(card.full));
+  $("ru").textContent = card.ru;
+  const note = $("note"); note.textContent = "";
+  if (card.note) note.append(richText(card.note));
+  show("note", !!card.note);
+  const ex = $("exEn"); ex.textContent = ""; ex.append(marked(card.ex));
+  $("exRu").textContent = card.exRu;
+}
+
+function flip(){
+  const card = queue[index];
+  if (!card || flipped) return;
+  flipped = true;
+  fillBack(card);
+  show("front", false);
+  show("back", true);
+  show("actShow", false);
+  show("actGrade", true);
+  $("card").scrollTop = 0;
+  if (autoSpeak) playClip(card.id + "-l", card.sl, 0.85);
+  else stopAudio();
+}
+
+// «Не знаю» — завтра и ещё раз в этой же сессии; «почти» — тот же интервал; «знаю» — следующий: 1 → 3 → 7 → 16 дней
+function grade(g){
+  const card = queue[index];
+  if (!card || !flipped) return;
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (g === 2) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (g === 0){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (g === 1){
+    step = lapsed[card.id] ? 0 : Math.max(0, step);
+  } else {
+    step = (step < 0 || lapsed[card.id]) ? 0 : Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+  index++;
+  render();
+}
+
+function renderDone(){
+  show("kind", false);
+  show("front", false);
+  show("back", false);
+  show("done", true);
+  $("doneT").textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема «" + TOPIC_BY[topicN].title + "» пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Знаю с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("doneP").textContent = text;
+  show("actShow", false);
+  show("actGrade", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      const cards = CARDS.filter(c => c.t === t.n);
+      if (cards.length){
+        const list = el("div", "abl");
+        cards.forEach(c => {
+          const row = el("div", "abl-row" + (progress[c.id] && progress[c.id].step >= 1 ? " known" : ""));
+          const txt = el("p", "abl-t");
+          const a = el("span", "abl-a", c.ab); a.lang = "en";
+          const f = el("span", "abl-f"); f.lang = "en"; f.append(marked(c.full));
+          txt.append(a, f, el("span", "abl-r", c.ru));
+          const play = el("button", "ex-play");
+          play.type = "button";
+          play.setAttribute("aria-label", "Прослушать: " + c.ab);
+          play.innerHTML = PLAY_SVG;
+          play.addEventListener("click", () => playClip(c.id + "-l", c.sl, 0.85));
+          row.append(txt, play);
+          list.append(row);
+        });
+        body.append(list);
+      }
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  const was = !$("drill").hidden;
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  else if (!was && autoSpeak) sayFront();
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("show").addEventListener("click", flip);
+$("say").addEventListener("click", sayFront);
+$("playL").addEventListener("click", () => { const c = queue[index]; if (c) playClip(c.id + "-l", c.sl, 0.85); });
+$("playE").addEventListener("click", () => { const c = queue[index]; if (c) playClip(c.id + "-e", c.se, 0.85); });
+document.querySelectorAll("#actGrade .big").forEach(b => b.addEventListener("click", () => grade(Number(b.dataset.g))));
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+
+// Свайп по карточке: на лицевой стороне — открыть; на обороте вправо — «знаю», влево — «не знаю».
+// Нажатие на лицевую сторону тоже открывает карточку.
+const SWIPE = 70;
+const reduceMotion = (function(){ try{ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } })();
+const cardBox = $("card");
+let drag = null, swallowClick = false;
+cardBox.addEventListener("pointerdown", e => {
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  if (!queue[index] || (e.target.closest && e.target.closest("button"))) return;
+  drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, on: false };
+});
+cardBox.addEventListener("pointermove", e => {
+  if (!drag || e.pointerId !== drag.id) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (!drag.on){
+    if (Math.abs(dx) < 12 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+    drag.on = true;
+    try{ cardBox.setPointerCapture(e.pointerId); }catch(_){}
+    cardBox.classList.add("drag");
+  }
+  drag.dx = dx;
+  if (!reduceMotion) cardBox.style.transform = "translateX(" + dx + "px) rotate(" + (dx / 40).toFixed(2) + "deg)";
+  cardBox.classList.toggle("lean-yes", flipped && dx > SWIPE);
+  cardBox.classList.toggle("lean-no", flipped && dx < -SWIPE);
+});
+function endDrag(e, cancel){
+  if (!drag || e.pointerId !== drag.id) return;
+  const d = drag;
+  drag = null;
+  cardBox.classList.remove("drag", "lean-yes", "lean-no");
+  if (!d.on) return;
+  swallowClick = true;
+  setTimeout(() => { swallowClick = false; }, 0);
+  cardBox.style.transform = "";
+  if (cancel || Math.abs(d.dx) < SWIPE) return;
+  if (!flipped) flip();
+  else grade(d.dx > 0 ? 2 : 0);
+}
+cardBox.addEventListener("pointerup", e => endDrag(e, false));
+cardBox.addEventListener("pointercancel", e => endDrag(e, true));
+cardBox.addEventListener("click", e => {
+  if (swallowClick){ swallowClick = false; return; }
+  if (e.target.closest && e.target.closest("button")) return;
+  if (!flipped && queue[index]) flip();
+});
+
+// Клавиатура на компьютере: пробел или Enter — открыть; 1, 2, 3 — не знаю, почти, знаю; стрелки ← и → — не знаю и знаю
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!queue[index]) return;
+  if (!flipped){
+    if (e.key === " " || e.key === "Enter"){ e.preventDefault(); flip(); }
+    return;
+  }
+  const g = { "1": 0, "2": 1, "3": 2, "ArrowLeft": 0, "ArrowRight": 2 }[e.key];
+  if (g !== undefined){ e.preventDefault(); grade(g); }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

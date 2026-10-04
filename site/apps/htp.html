@@ -1,0 +1,1814 @@
+<title>Have, take, pay</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("htp",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:40%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .w.st{color:var(--blue)}
+  .vt .w.good{color:var(--yes-text)}
+  .wd-w{margin:0;line-height:1.3}
+  .wd-w .ph{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k))}
+  .wd-ru{font-size:calc(15px*var(--k));color:var(--muted)}
+  .wd-p{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Have, take, pay</h1>
+      <p class="r-sub">По-русски мы «делаем» перерыв, фото и&nbsp;комплимент, «попадаем» в&nbsp;аварию и&nbsp;«видим» сон. По-английски в&nbsp;этих выражениях свой глагол&nbsp;— <b>запоминай его вместе с&nbsp;существительным</b>.</p>
+      <div class="algo">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Можно сказать «у&nbsp;меня был(о)…»?</p><p class="s-f" lang="en"><span class="pr">have</span> an&nbsp;accident <span class="sep">·</span> a&nbsp;dream <span class="sep">·</span> a&nbsp;chat&nbsp;<span class="sep">·</span>&nbsp;fun</p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">«Беру» или «принимаю»: транспорт, фото, риск, меры?</p><p class="s-f" lang="en"><span class="st">take</span> a&nbsp;bus <span class="sep">·</span> a&nbsp;photo <span class="sep">·</span> a&nbsp;risk&nbsp;<span class="sep">·</span>&nbsp;action</p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">«Плачу» вниманием или уважением?</p><p class="s-f" lang="en"><span class="good">pay</span> attention <span class="sep">·</span> a&nbsp;compliment&nbsp;<span class="sep">·</span>&nbsp;tribute</p></div></li>
+        </ol>
+        <p class="algo-m">Было&nbsp;— <b class="pr" lang="en">have</b>, беру&nbsp;— <b class="st" lang="en">take</b>, плачу вниманием&nbsp;— <b class="good" lang="en">pay</b>.</p>
+        <p class="algo-note">make и&nbsp;get здесь не&nbsp;подходят: <i lang="en">make a photo, make a party, get an accident</i>&nbsp;— ошибки.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Что после</p>
+        <table class="vt">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr><th scope="row"><span class="w good" lang="en">pay attention</span><span class="p">to +&nbsp;сущ.</span></th><td><span class="e" lang="en">Pay attention to his speech.</span><span class="r">обращать внимание на</span></td></tr>
+            <tr><th scope="row"><span class="w good" lang="en">pay tribute</span><span class="p">to +&nbsp;сущ.</span></th><td><span class="e" lang="en">They paid tribute to the nurses.</span><span class="r">воздать должное</span></td></tr>
+            <tr><th scope="row"><span class="w st" lang="en">take an interest</span><span class="p">in +&nbsp;сущ.</span></th><td><span class="e" lang="en">She takes an interest in research.</span><span class="r">интересоваться</span></td></tr>
+            <tr><th scope="row"><span class="w st" lang="en">take a liking</span><span class="p">to +&nbsp;сущ.</span></th><td><span class="e" lang="en">He took a liking to her.</span><span class="r">проникнуться симпатией</span></td></tr>
+            <tr><th scope="row"><span class="w st" lang="en">take advantage</span><span class="p">of +&nbsp;сущ.</span></th><td><span class="e" lang="en">Take advantage of the offer.</span><span class="r">воспользоваться</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">have a look</span><span class="p">at +&nbsp;сущ.</span></th><td><span class="e" lang="en">Have a look at this.</span><span class="r">взглянуть на</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">have difficulty</span><span class="p">+&nbsp;-ing</span></th><td><span class="e" lang="en">He has difficulty walking.</span><span class="r">с трудом делать</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl"><span class="pr" lang="en">have</span>&nbsp;— «у&nbsp;меня было»</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;an&nbsp;accident</span> <span class="wd-ru">попасть в аварию, несчастный случай</span></p><p class="wd-p" lang="en">He had an accident at work and hurt his back.</p></div><button class="ex-play mm-play" type="button" data-key="mh-1" data-text="Have an accident. He had an accident at work and hurt his back." aria-label="Прослушать: have an accident"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;an&nbsp;argument / a&nbsp;row</span> <span class="wd-ru">поссориться; row /raʊ/</span></p><p class="wd-p" lang="en">They had a row about who should drive.</p></div><button class="ex-play mm-play" type="button" data-key="mh-2" data-text="Have an argument, have a row. They had a row about who should drive." aria-label="Прослушать: have an argument / a row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;break</span> <span class="wd-ru">сделать перерыв</span></p><p class="wd-p" lang="en">Let&#x27;s have a break for lunch.</p></div><button class="ex-play mm-play" type="button" data-key="mh-3" data-text="Have a break. Let&#x27;s have a break for lunch." aria-label="Прослушать: have a break"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;conversation / a&nbsp;chat</span> <span class="wd-ru">поговорить, поболтать</span></p><p class="wd-p" lang="en">I had a chat with the family after the round.</p></div><button class="ex-play mm-play" type="button" data-key="mh-4" data-text="Have a conversation, have a chat. I had a chat with the family after the round." aria-label="Прослушать: have a conversation / a chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;difficulty&nbsp;+&nbsp;-ing</span> <span class="wd-ru">с трудом что-то делать</span></p><p class="wd-p" lang="en">She has difficulty finding the right words.</p></div><button class="ex-play mm-play" type="button" data-key="mh-5" data-text="Have difficulty. She has difficulty finding the right words." aria-label="Прослушать: have difficulty + -ing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;dream / a&nbsp;nightmare</span> <span class="wd-ru">видеть сон, кошмар</span></p><p class="wd-p" lang="en">I had a strange dream about work.</p></div><button class="ex-play mm-play" type="button" data-key="mh-6" data-text="Have a dream, have a nightmare. I had a strange dream about work." aria-label="Прослушать: have a dream / a nightmare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;an&nbsp;experience</span> <span class="wd-ru">случай, переживание</span></p><p class="wd-p" lang="en">Have you ever had a bad experience with a doctor?</p></div><button class="ex-play mm-play" type="button" data-key="mh-7" data-text="Have an experience. Have you ever had a bad experience with a doctor?" aria-label="Прослушать: have an experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;feeling</span> <span class="wd-ru">есть ощущение, предчувствие</span></p><p class="wd-p" lang="en">I have a feeling we&#x27;ve met before.</p></div><button class="ex-play mm-play" type="button" data-key="mh-8" data-text="Have a feeling. I have a feeling we&#x27;ve met before." aria-label="Прослушать: have a feeling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;fun / a&nbsp;good&nbsp;time</span> <span class="wd-ru">повеселиться, хорошо провести время</span></p><p class="wd-p" lang="en">We had a great time in Lisbon.</p></div><button class="ex-play mm-play" type="button" data-key="mh-9" data-text="Have fun, have a good time. We had a great time in Lisbon." aria-label="Прослушать: have fun / a good time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;look&nbsp;(at)</span> <span class="wd-ru">взглянуть</span></p><p class="wd-p" lang="en">Could you have a look at my ECG?</p></div><button class="ex-play mm-play" type="button" data-key="mh-10" data-text="Have a look. Could you have a look at my ECG?" aria-label="Прослушать: have a look (at)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;party</span> <span class="wd-ru">устроить вечеринку</span></p><p class="wd-p" lang="en">Let&#x27;s have a party when the project is over.</p></div><button class="ex-play mm-play" type="button" data-key="mh-11" data-text="Have a party. Let&#x27;s have a party when the project is over." aria-label="Прослушать: have a party"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;problem / problems</span> <span class="wd-ru">есть проблема, трудности</span></p><p class="wd-p" lang="en">I&#x27;m having problems with my computer.</p></div><button class="ex-play mm-play" type="button" data-key="mh-12" data-text="Have a problem. I&#x27;m having problems with my computer." aria-label="Прослушать: have a problem / problems"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="pr">have</span>&nbsp;a&nbsp;try / a&nbsp;go</span> <span class="wd-ru">попробовать</span></p><p class="wd-p" lang="en">Can I have a go?</p></div><button class="ex-play mm-play" type="button" data-key="mh-13" data-text="Have a try, have a go. Can I have a go?" aria-label="Прослушать: have a try / a go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl"><span class="st" lang="en">take</span>&nbsp;— «беру, принимаю»</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;holiday</span> <span class="wd-ru">взять отпуск, поехать отдыхать</span></p><p class="wd-p" lang="en">You need to take a proper holiday.</p></div><button class="ex-play mm-play" type="button" data-key="mt-1" data-text="Take a holiday. You need to take a proper holiday." aria-label="Прослушать: take a holiday"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;trip</span> <span class="wd-ru">съездить, совершить поездку</span></p><p class="wd-p" lang="en">We took a trip to Kazan last spring.</p></div><button class="ex-play mm-play" type="button" data-key="mt-2" data-text="Take a trip. We took a trip to Kazan last spring." aria-label="Прослушать: take a trip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;train / a&nbsp;bus</span> <span class="wd-ru">поехать поездом, автобусом</span></p><p class="wd-p" lang="en">It&#x27;s quicker to take the train.</p></div><button class="ex-play mm-play" type="button" data-key="mt-3" data-text="Take a train, take a bus. It&#x27;s quicker to take the train." aria-label="Прослушать: take a train / a bus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;risk</span> <span class="wd-ru">рисковать</span></p><p class="wd-p" lang="en">I don&#x27;t want to take any risks.</p></div><button class="ex-play mm-play" type="button" data-key="mt-4" data-text="Take a risk. I don&#x27;t want to take any risks." aria-label="Прослушать: take a risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;chance</span> <span class="wd-ru">рискнуть, попытать счастья</span></p><p class="wd-p" lang="en">It&#x27;s a long shot, but let&#x27;s take a chance.</p></div><button class="ex-play mm-play" type="button" data-key="mt-5" data-text="Take a chance. It&#x27;s a long shot, but let&#x27;s take a chance." aria-label="Прослушать: take a chance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;action</span> <span class="wd-ru">принять меры, действовать</span></p><p class="wd-p" lang="en">The hospital took action to cut waiting times.</p></div><button class="ex-play mm-play" type="button" data-key="mt-6" data-text="Take action. The hospital took action to cut waiting times." aria-label="Прослушать: take action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;advantage&nbsp;of</span> <span class="wd-ru">воспользоваться</span></p><p class="wd-p" lang="en">Take advantage of the good weather.</p></div><button class="ex-play mm-play" type="button" data-key="mt-7" data-text="Take advantage of. Take advantage of the good weather." aria-label="Прослушать: take advantage of"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;liking&nbsp;to</span> <span class="wd-ru">проникнуться симпатией</span></p><p class="wd-p" lang="en">Our dog took a liking to the neighbours.</p></div><button class="ex-play mm-play" type="button" data-key="mt-8" data-text="Take a liking to. Our dog took a liking to the neighbours." aria-label="Прослушать: take a liking to"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;a&nbsp;dislike&nbsp;to</span> <span class="wd-ru">невзлюбить</span></p><p class="wd-p" lang="en">She took an instant dislike to him.</p></div><button class="ex-play mm-play" type="button" data-key="mt-9" data-text="Take a dislike to. She took an instant dislike to him." aria-label="Прослушать: take a dislike to"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;an&nbsp;interest&nbsp;in</span> <span class="wd-ru">заинтересоваться</span></p><p class="wd-p" lang="en">He&#x27;s taken an interest in medical English.</p></div><button class="ex-play mm-play" type="button" data-key="mt-10" data-text="Take an interest in. He&#x27;s taken an interest in medical English." aria-label="Прослушать: take an interest in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="st">take</span>&nbsp;photos</span> <span class="wd-ru">фотографировать</span></p><p class="wd-p" lang="en">Please don&#x27;t take photos here.</p></div><button class="ex-play mm-play" type="button" data-key="mt-11" data-text="Take photos. Please don&#x27;t take photos here." aria-label="Прослушать: take photos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl"><span class="good" lang="en">pay</span>&nbsp;— «плачу вниманием»</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="good">pay</span>&nbsp;attention&nbsp;(to)</span> <span class="wd-ru">обращать внимание</span></p><p class="wd-p" lang="en">Pay attention to what the patient says.</p></div><button class="ex-play mm-play" type="button" data-key="mp-1" data-text="Pay attention. Pay attention to what the patient says." aria-label="Прослушать: pay attention (to)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="good">pay</span>&nbsp;a&nbsp;compliment</span> <span class="wd-ru">сделать комплимент</span></p><p class="wd-p" lang="en">He paid me a nice compliment.</p></div><button class="ex-play mm-play" type="button" data-key="mp-2" data-text="Pay a compliment. He paid me a nice compliment." aria-label="Прослушать: pay a compliment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="good">pay</span>&nbsp;your&nbsp;(last)&nbsp;respects</span> <span class="wd-ru">проститься с умершим</span></p><p class="wd-p" lang="en">We went to the funeral to pay our respects.</p></div><button class="ex-play mm-play" type="button" data-key="mp-3" data-text="Pay your last respects. We went to the funeral to pay our respects." aria-label="Прослушать: pay your (last) respects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="wd-w"><span class="ph" lang="en"><span class="good">pay</span>&nbsp;tribute&nbsp;(to)</span> <span class="wd-ru">воздать должное (офиц.)</span></p><p class="wd-p" lang="en">The minister paid tribute to the doctors.</p></div><button class="ex-play mm-play" type="button" data-key="mp-4" data-text="Pay tribute. The minister paid tribute to the doctors." aria-label="Прослушать: pay tribute (to)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">We <span class="pr">had an argument</span> about the plan.</p><p class="cp-ru">поспорили, поссорились</p><p class="cp-en" lang="en">She <span class="hl">made a good argument</span> for surgery.</p><p class="cp-ru">привела веский довод в пользу операции</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="We had an argument about the plan. She made a good argument for surgery." aria-label="Прослушать: We had an argument about the plan. / She made a good argument for surgery."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">You <span class="pr">have a good chance</span> of recovery.</p><p class="cp-ru">у вас хорошие шансы</p><p class="cp-en" lang="en">We decided to <span class="st">take a chance</span>.</p><p class="cp-ru">решили рискнуть</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="You have a good chance of recovery. We decided to take a chance." aria-label="Прослушать: You have a good chance of recovery. / We decided to take a chance."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">She <span class="pr">has experience</span> in stroke care.</p><p class="cp-ru">опыт работы&nbsp;— (U), без a</p><p class="cp-en" lang="en">She <span class="pr">had a bad experience</span> with anaesthesia.</p><p class="cp-ru">случай, переживание&nbsp;— (C), с a</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="She has experience in stroke care. She had a bad experience with anaesthesia." aria-label="Прослушать: She has experience in stroke care. / She had a bad experience with anaesthesia."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="pr">Have a look</span> at this scan.</p><p class="cp-ru">британский вариант</p><p class="cp-en" lang="en"><span class="st">Take a look</span> at this scan.</p><p class="cp-ru">американский&nbsp;— оба верны</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="Have a look at this scan. Take a look at this scan." aria-label="Прослушать: Have a look at this scan. / Take a look at this scan."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">We <span class="pr">had fun</span> at the party.</p><p class="cp-ru">нам было весело</p><p class="cp-en" lang="en">They <span class="hl">made fun of</span> him.</p><p class="cp-ru">они смеялись над ним</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="We had fun at the party. They made fun of him." aria-label="Прослушать: We had fun at the party. / They made fun of him."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Can I make a photo?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Can I take a photo?</span><span class="err-note">фото&nbsp;— take</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We&#x27;re making a party.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We&#x27;re having a party.</span><span class="err-note">устроить вечеринку&nbsp;— have</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I saw a strange dream.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I had a strange dream.</span><span class="err-note">видеть сон&nbsp;— have a dream</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He got an accident.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He had an accident.</span><span class="err-note">попасть в аварию&nbsp;— have an accident</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Let&#x27;s make a break.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Let&#x27;s have a break.</span><span class="err-note">перерыв&nbsp;— have или take</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Give attention to his speech.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Pay attention to his speech.</span><span class="err-note">внимание&nbsp;— pay</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Pay attention on this.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Pay attention to this.</span><span class="err-note">pay attention to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Don&#x27;t make risks.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Don&#x27;t take risks.</span><span class="err-note">рисковать&nbsp;— take a risk</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He made me a compliment.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He paid me a compliment.</span><span class="err-note">комплимент&nbsp;— pay</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She has difficulty to walk.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She has difficulty walking.</span><span class="err-note">have difficulty + -ing</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — сочетание (have — оранжевый, take — синий, pay — зелёный).
+const MIXED_TOPIC = 8;
+const GROUPS = {"have": "have — «у меня было»", "take": "take — «беру, принимаю»", "pay": "pay — «плачу вниманием»", "med": "В больнице", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "have",
+  "title": "have — что случилось",
+  "sub": "авария, ссора, сон, чувство, трудности",
+  "rule": "have — когда по-русски хочется сказать «у меня был(о)»: у меня была авария — I had an accident, приснился кошмар — I had a nightmare, была ссора — we had an argument, есть ощущение — I have a feeling, есть проблемы — I have problems. Трудно что-то делать — have difficulty + -ing: He has difficulty walking. Попасть в аварию — have, не get; видеть сон — have, не see.",
+  "ex": [
+   {
+    "en": "He [had an accident] on his way to work.",
+    "ru": "По дороге на работу он попал в аварию."
+   },
+   {
+    "en": "I [had a strange dream] last night.",
+    "ru": "Мне ночью приснился странный сон."
+   },
+   {
+    "en": "He [has difficulty] swallowing.",
+    "ru": "Ему трудно глотать."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "have",
+  "title": "have — чем заняты",
+  "sub": "перерыв, разговор, вечеринка, попробовать",
+  "rule": "have + занятие: have a break, have a chat, have a look, have a go, have a party, have fun. По-русски тут «сделать», «устроить», «поговорить», а по-английски — have. В американском английском чаще take a break, take a look — это тоже верно.",
+  "ex": [
+   {
+    "en": "Let's [have a break] after the ward round.",
+    "ru": "Давай сделаем перерыв после обхода."
+   },
+   {
+    "en": "Can I [have a look] at the scan?",
+    "ru": "Можно взглянуть на снимок?"
+   },
+   {
+    "en": "Did you [have a good time] at the conference?",
+    "ru": "Хорошо провели время на конференции?"
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "take",
+  "title": "take — транспорт, поездки, фото",
+  "sub": "bus, train, trip, holiday, photos",
+  "rule": "take — «беру»: транспорт — take the bus, take a train, take a taxi; поездки и отпуск — take a trip, take a holiday; фото — take photos. Сфотографировать — take a photo, не make. Съездить — take a trip или go on a trip, но не go a trip.",
+  "ex": [
+   {
+    "en": "I usually [take the bus] to work.",
+    "ru": "Обычно я езжу на работу на автобусе."
+   },
+   {
+    "en": "We [took a trip] to the mountains.",
+    "ru": "Мы съездили в горы."
+   },
+   {
+    "en": "Visitors may not [take photos] on the ward.",
+    "ru": "Посетителям нельзя фотографировать в отделении."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "take",
+  "title": "take — риск и решительные шаги",
+  "sub": "risk, chance, action, advantage of",
+  "rule": "take a risk — рисковать; take a chance — рискнуть, попытать счастья; take action — принять меры (без артикля); take advantage of — воспользоваться возможностью. Сравни: have a chance — иметь шанс: You have a good chance of recovery. А take a chance — рискнуть: We decided to take a chance.",
+  "ex": [
+   {
+    "en": "Don't [take any risks] with your health.",
+    "ru": "Не рискуйте здоровьем."
+   },
+   {
+    "en": "We must [take action] now.",
+    "ru": "Нужно принимать меры сейчас."
+   },
+   {
+    "en": "[Take advantage of] the free course.",
+    "ru": "Воспользуйтесь бесплатным курсом."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "take",
+  "title": "take — отношение",
+  "sub": "liking to, dislike to, interest in",
+  "rule": "take a liking to — проникнуться симпатией, take a dislike to — невзлюбить, take an interest in — заинтересоваться, проявить интерес. Предлоги держатся крепко: liking to, dislike to, interest in.",
+  "ex": [
+   {
+    "en": "The children [took a liking to] the new nurse.",
+    "ru": "Дети сразу полюбили новую медсестру."
+   },
+   {
+    "en": "He [took a dislike to] his new boss.",
+    "ru": "Он невзлюбил нового начальника."
+   },
+   {
+    "en": "She's [taken an interest in] neurology.",
+    "ru": "Она заинтересовалась неврологией."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "pay",
+  "title": "pay — внимание и уважение",
+  "sub": "attention, compliment, respects, tribute",
+  "rule": "pay — «платишь» вниманием и уважением: pay attention to — обращать внимание на; pay someone a compliment — сделать комплимент; pay your last respects — проститься с умершим; pay tribute to — воздать должное (официально). Внимание — pay, не give; предлог — to, не on. Ещё: pay someone a visit — навестить.",
+  "ex": [
+   {
+    "en": "[Pay attention to] the patient's speech.",
+    "ru": "Обращайте внимание на речь пациента."
+   },
+   {
+    "en": "He [paid her a compliment] on her talk.",
+    "ru": "Он сделал ей комплимент по поводу доклада."
+   },
+   {
+    "en": "The director [paid tribute to] the nurses.",
+    "ru": "Директор воздал должное медсёстрам."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "med",
+  "title": "В больнице",
+  "sub": "сверх страницы: stroke, history, blood",
+  "rule": "Сверх страницы учебника, но пригодится каждый день. have — что случилось с пациентом или что ему делают: have a stroke, have a seizure, have surgery, have a scan. take — что делают врач и сестра: take a history, take blood, take someone's blood pressure; и пациент: take tablets. Пить таблетки — take, не drink.",
+  "ex": [
+   {
+    "en": "She [had a stroke] two years ago.",
+    "ru": "Два года назад она перенесла инсульт."
+   },
+   {
+    "en": "The nurse will [take some blood].",
+    "ru": "Сестра возьмёт кровь."
+   },
+   {
+    "en": "[Take] one tablet twice a day.",
+    "ru": "Принимайте по одной таблетке два раза в день."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "h1-accident",
+  "t": 1,
+  "q": "Mr Lee ___ an accident on his way to work, but he's fine now.",
+  "ru": "По дороге на работу мистер Ли попал в аварию, но сейчас с ним всё в порядке.",
+  "opts": [
+   "had",
+   "got",
+   "made"
+  ],
+  "a": "had",
+  "why": "Попасть в аварию — have an accident."
+ },
+ {
+  "id": "h1-row",
+  "t": 1,
+  "q": "They ___ a row about money again.",
+  "ru": "Они опять поругались из-за денег.",
+  "opts": [
+   "had",
+   "did",
+   "took"
+  ],
+  "a": "had",
+  "why": "Поссориться — have a row /raʊ/ (разг.) или have an argument."
+ },
+ {
+  "id": "h1-argument",
+  "t": 1,
+  "q": "They ___ a terrible argument and stopped speaking to each other.",
+  "ru": "Они ужасно поссорились и перестали разговаривать.",
+  "opts": [
+   "had",
+   "made",
+   "did"
+  ],
+  "a": "had",
+  "why": "Поссориться — have an argument. Make an argument — привести довод."
+ },
+ {
+  "id": "h1-nightmare",
+  "t": 1,
+  "q": "I ___ a terrible nightmare last night.",
+  "ru": "Мне ночью приснился ужасный кошмар.",
+  "opts": [
+   "had",
+   "saw",
+   "made"
+  ],
+  "a": "had",
+  "why": "Видеть сон, кошмар — have a dream, have a nightmare. Saw a dream — калька."
+ },
+ {
+  "id": "h1-feeling",
+  "t": 1,
+  "q": "I ___ a feeling that something is wrong with him.",
+  "ru": "У меня такое чувство, что с ним что-то не так.",
+  "opts": [
+   "have",
+   "take",
+   "make"
+  ],
+  "a": "have",
+  "why": "У меня такое чувство — I have a feeling."
+ },
+ {
+  "id": "h1-experience",
+  "t": 1,
+  "q": "She ___ a bad experience with anaesthesia years ago.",
+  "ru": "Много лет назад у неё был неприятный случай с наркозом.",
+  "opts": [
+   "had",
+   "made",
+   "got"
+  ],
+  "a": "had",
+  "why": "Случай, переживание — have an experience (C)."
+ },
+ {
+  "id": "h1-difficulty",
+  "t": 1,
+  "q": "He ___ difficulty swallowing after the stroke.",
+  "ru": "После инсульта ему трудно глотать.",
+  "opts": [
+   "has",
+   "makes",
+   "takes"
+  ],
+  "a": "has",
+  "why": "Трудно что-то делать — have difficulty + -ing."
+ },
+ {
+  "id": "h1-diff-ing",
+  "t": 1,
+  "q": "She has difficulty ___ long sentences.",
+  "ru": "Ей трудно понимать длинные предложения.",
+  "opts": [
+   "understanding",
+   "to understand",
+   "understand"
+  ],
+  "a": "understanding",
+  "why": "have difficulty + -ing: difficulty understanding."
+ },
+ {
+  "id": "h1-problems",
+  "t": 1,
+  "q": "Are you ___ any problems with the new tablets?",
+  "ru": "С новыми таблетками есть какие-то проблемы?",
+  "opts": [
+   "having",
+   "making",
+   "taking"
+  ],
+  "a": "having",
+  "why": "Есть проблемы — have problems; сейчас, в процессе — are you having problems."
+ },
+ {
+  "id": "h2-break",
+  "t": 2,
+  "q": "Let's ___ a short break after the ward round.",
+  "ru": "Давай сделаем небольшой перерыв после обхода.",
+  "opts": [
+   "have",
+   "make",
+   "take"
+  ],
+  "a": "have",
+  "why": "Перерыв — have a break (брит.). Make a break — ошибка.",
+  "also": {
+   "take": "так чаще говорят в Америке"
+  }
+ },
+ {
+  "id": "h2-chat",
+  "t": 2,
+  "q": "I ___ a long chat with his daughter yesterday.",
+  "ru": "Вчера я долго разговаривал с его дочерью.",
+  "opts": [
+   "had",
+   "made",
+   "did"
+  ],
+  "a": "had",
+  "why": "Поговорить, поболтать — have a chat, have a conversation."
+ },
+ {
+  "id": "h2-conversation",
+  "t": 2,
+  "q": "We need to ___ a serious conversation about his treatment.",
+  "ru": "Нам нужно серьёзно поговорить о его лечении.",
+  "opts": [
+   "have",
+   "make",
+   "take"
+  ],
+  "a": "have",
+  "why": "Поговорить — have a conversation."
+ },
+ {
+  "id": "h2-look",
+  "t": 2,
+  "q": "Can I ___ a look at the CT scan?",
+  "ru": "Можно взглянуть на КТ?",
+  "opts": [
+   "have",
+   "make",
+   "do"
+  ],
+  "a": "have",
+  "why": "Взглянуть — have a look (брит.), take a look (амер.)."
+ },
+ {
+  "id": "h2-time",
+  "t": 2,
+  "q": "Did you ___ a good time at the conference?",
+  "ru": "Хорошо провели время на конференции?",
+  "opts": [
+   "have",
+   "make",
+   "spend"
+  ],
+  "a": "have",
+  "why": "Хорошо провести время — have a good time. Spend — просто «проводить»: spend a week in Paris."
+ },
+ {
+  "id": "h2-fun",
+  "t": 2,
+  "q": "The kids ___ great fun at the party.",
+  "ru": "Детям на празднике было очень весело.",
+  "opts": [
+   "had",
+   "made",
+   "got"
+  ],
+  "a": "had",
+  "why": "Веселиться — have fun. Make fun of — смеяться над кем-то."
+ },
+ {
+  "id": "h2-party",
+  "t": 2,
+  "q": "We're ___ a party for her retirement on Friday.",
+  "ru": "В пятницу устраиваем вечеринку в честь её выхода на пенсию.",
+  "opts": [
+   "having",
+   "making",
+   "doing"
+  ],
+  "a": "having",
+  "why": "Устроить вечеринку — have a party. Make a party — калька."
+ },
+ {
+  "id": "h2-go",
+  "t": 2,
+  "q": "It looks hard, but ___ a go — you'll see it's easy.",
+  "ru": "Выглядит сложно, но попробуй — увидишь, что это легко.",
+  "opts": [
+   "have",
+   "make",
+   "do"
+  ],
+  "a": "have",
+  "why": "Попробовать — have a go, have a try (разг.)."
+ },
+ {
+  "id": "t3-bus",
+  "t": 3,
+  "q": "I usually ___ the bus to the hospital.",
+  "ru": "Обычно я езжу в больницу на автобусе.",
+  "opts": [
+   "take",
+   "go",
+   "make"
+  ],
+  "a": "take",
+  "why": "Поехать на транспорте — take the bus, take a train, take a taxi."
+ },
+ {
+  "id": "t3-train",
+  "t": 3,
+  "q": "We ___ a train to a small town and walked from there.",
+  "ru": "Мы доехали поездом до маленького городка, а дальше пошли пешком.",
+  "opts": [
+   "took",
+   "went",
+   "made"
+  ],
+  "a": "took",
+  "why": "Поехать поездом — take a train."
+ },
+ {
+  "id": "t3-trip",
+  "t": 3,
+  "q": "Why don't we ___ a trip to the mountains this summer?",
+  "ru": "Может, съездим летом в горы?",
+  "opts": [
+   "take",
+   "go",
+   "do"
+  ],
+  "a": "take",
+  "why": "Съездить — take a trip или go on a trip (с on). Go a trip — ошибка."
+ },
+ {
+  "id": "t3-holiday",
+  "t": 3,
+  "q": "I'm going to ___ a holiday in October.",
+  "ru": "В октябре я собираюсь взять отпуск.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Взять отпуск — take a holiday (брит.), take a vacation (амер.)."
+ },
+ {
+  "id": "t3-photos",
+  "t": 3,
+  "q": "Visitors are not allowed to ___ photos on the ward.",
+  "ru": "Посетителям нельзя фотографировать в отделении.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Фотографировать — take photos. Make a photo — калька."
+ },
+ {
+  "id": "t3-taxi",
+  "t": 3,
+  "q": "It was late, so we ___ a taxi home.",
+  "ru": "Было поздно, и мы поехали домой на такси.",
+  "opts": [
+   "took",
+   "went",
+   "made"
+  ],
+  "a": "took",
+  "why": "Поехать на такси — take a taxi."
+ },
+ {
+  "id": "t4-risk",
+  "t": 4,
+  "q": "Don't ___ any risks with your health.",
+  "ru": "Не рискуйте своим здоровьем.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Рисковать — take a risk."
+ },
+ {
+  "id": "t4-the-risk",
+  "t": 4,
+  "q": "Operating on him was risky, but we decided to ___ the risk.",
+  "ru": "Оперировать его было рискованно, но мы решили рискнуть.",
+  "opts": [
+   "take",
+   "make",
+   "have"
+  ],
+  "a": "take",
+  "why": "Пойти на риск — take the risk."
+ },
+ {
+  "id": "t4-chance",
+  "t": 4,
+  "q": "I decided to ___ a chance and apply for the job in London.",
+  "ru": "Я решил рискнуть и подать заявку на работу в Лондоне.",
+  "opts": [
+   "take",
+   "have",
+   "make"
+  ],
+  "a": "take",
+  "why": "Рискнуть — take a chance. Have a chance — иметь шанс."
+ },
+ {
+  "id": "t4-have-chance",
+  "t": 4,
+  "q": "You ___ a good chance of a full recovery.",
+  "ru": "У вас хорошие шансы на полное выздоровление.",
+  "opts": [
+   "have",
+   "take",
+   "make"
+  ],
+  "a": "have",
+  "why": "Иметь шансы — have a chance. Take a chance — рискнуть."
+ },
+ {
+  "id": "t4-action",
+  "t": 4,
+  "q": "We must ___ action before the infection spreads.",
+  "ru": "Нужно принять меры, пока инфекция не распространилась.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Принять меры — take action, без артикля."
+ },
+ {
+  "id": "t4-advantage",
+  "t": 4,
+  "q": "___ advantage of the free training courses.",
+  "ru": "Воспользуйтесь бесплатными курсами повышения квалификации.",
+  "opts": [
+   "take",
+   "make",
+   "have"
+  ],
+  "a": "take",
+  "why": "Воспользоваться — take advantage of."
+ },
+ {
+  "id": "t4-adv-of",
+  "t": 4,
+  "q": "He took advantage ___ the quiet night shift to finish his paper.",
+  "ru": "Он воспользовался спокойной ночной сменой, чтобы дописать статью.",
+  "opts": [
+   "of",
+   "from",
+   "on"
+  ],
+  "a": "of",
+  "why": "take advantage of — только of."
+ },
+ {
+  "id": "t5-liking",
+  "t": 5,
+  "q": "The children ___ a liking to the new nurse at once.",
+  "ru": "Дети сразу полюбили новую медсестру.",
+  "opts": [
+   "took",
+   "had",
+   "made"
+  ],
+  "a": "took",
+  "why": "Проникнуться симпатией — take a liking to."
+ },
+ {
+  "id": "t5-liking-to",
+  "t": 5,
+  "q": "He took a liking ___ her from the start.",
+  "ru": "Она понравилась ему с самого начала.",
+  "opts": [
+   "to",
+   "for",
+   "on"
+  ],
+  "a": "to",
+  "why": "take a liking to — с to."
+ },
+ {
+  "id": "t5-dislike",
+  "t": 5,
+  "q": "For some reason, the boss ___ a dislike to him.",
+  "ru": "Почему-то начальник его невзлюбил.",
+  "opts": [
+   "took",
+   "had",
+   "made"
+  ],
+  "a": "took",
+  "why": "Невзлюбить — take a dislike to."
+ },
+ {
+  "id": "t5-interest",
+  "t": 5,
+  "q": "The new doctor ___ a real interest in our research.",
+  "ru": "Новый врач всерьёз заинтересовался нашим исследованием.",
+  "opts": [
+   "took",
+   "made",
+   "gave"
+  ],
+  "a": "took",
+  "why": "Заинтересоваться — take an interest in."
+ },
+ {
+  "id": "t5-interest-in",
+  "t": 5,
+  "q": "He's never taken much interest ___ politics.",
+  "ru": "Он никогда особо не интересовался политикой.",
+  "opts": [
+   "in",
+   "to",
+   "for"
+  ],
+  "a": "in",
+  "why": "take an interest in — с in."
+ },
+ {
+  "id": "p6-attention",
+  "t": 6,
+  "q": "Please ___ attention to the patient's speech.",
+  "ru": "Обратите внимание на речь пациента.",
+  "opts": [
+   "pay",
+   "make",
+   "take"
+  ],
+  "a": "pay",
+  "why": "Обращать внимание — pay attention to."
+ },
+ {
+  "id": "p6-to",
+  "t": 6,
+  "q": "You should pay more attention ___ your blood pressure.",
+  "ru": "Вам нужно внимательнее следить за давлением.",
+  "opts": [
+   "to",
+   "on",
+   "at"
+  ],
+  "a": "to",
+  "why": "pay attention to — с to. On — калька с «внимание на»."
+ },
+ {
+  "id": "p6-listen",
+  "t": 6,
+  "q": "Sorry, I wasn't ___ attention. Could you repeat that?",
+  "ru": "Извините, я отвлёкся. Повторите, пожалуйста.",
+  "opts": [
+   "paying",
+   "giving",
+   "making"
+  ],
+  "a": "paying",
+  "why": "Быть внимательным — pay attention. «Я отвлёкся» — I wasn't paying attention."
+ },
+ {
+  "id": "p6-compliment",
+  "t": 6,
+  "q": "He ___ her a compliment on her presentation.",
+  "ru": "Он сделал ей комплимент по поводу её доклада.",
+  "opts": [
+   "paid",
+   "made",
+   "did"
+  ],
+  "a": "paid",
+  "why": "Сделать комплимент — pay a compliment. Make a compliment — калька."
+ },
+ {
+  "id": "p6-respects",
+  "t": 6,
+  "q": "Hundreds of people came to ___ their last respects.",
+  "ru": "Сотни людей пришли проститься.",
+  "opts": [
+   "pay",
+   "make",
+   "take"
+  ],
+  "a": "pay",
+  "why": "Проститься с умершим — pay your last respects."
+ },
+ {
+  "id": "p6-tribute",
+  "t": 6,
+  "q": "The director ___ tribute to the nurses for their work during the pandemic.",
+  "ru": "Директор воздал должное медсёстрам за их работу во время пандемии.",
+  "opts": [
+   "paid",
+   "made",
+   "gave"
+  ],
+  "a": "paid",
+  "why": "Воздать должное (офиц.) — pay tribute to."
+ },
+ {
+  "id": "m7-stroke",
+  "t": 7,
+  "q": "She ___ a stroke two years ago.",
+  "ru": "Два года назад она перенесла инсульт.",
+  "opts": [
+   "had",
+   "got",
+   "made"
+  ],
+  "a": "had",
+  "why": "Перенести инсульт, инфаркт, приступ — have a stroke, a heart attack, a seizure."
+ },
+ {
+  "id": "m7-seizure",
+  "t": 7,
+  "q": "He ___ a seizure in the waiting room.",
+  "ru": "В зале ожидания у него случился судорожный приступ.",
+  "opts": [
+   "had",
+   "made",
+   "took"
+  ],
+  "a": "had",
+  "why": "Случился приступ — have a seizure."
+ },
+ {
+  "id": "m7-surgery",
+  "t": 7,
+  "q": "My father is ___ surgery on his knee next week.",
+  "ru": "На следующей неделе отцу оперируют колено.",
+  "opts": [
+   "having",
+   "making",
+   "doing"
+  ],
+  "a": "having",
+  "why": "Пациент — have surgery, have an operation. Хирург — do или perform surgery."
+ },
+ {
+  "id": "m7-scan",
+  "t": 7,
+  "q": "You need to ___ an MRI scan before we decide.",
+  "ru": "Прежде чем решать, вам нужно сделать МРТ.",
+  "opts": [
+   "have",
+   "make",
+   "do"
+  ],
+  "a": "have",
+  "why": "Пациент проходит обследование — have a scan, have a blood test."
+ },
+ {
+  "id": "m7-history",
+  "t": 7,
+  "q": "The first step is to ___ a detailed history.",
+  "ru": "Первым делом нужно собрать подробный анамнез.",
+  "opts": [
+   "take",
+   "make",
+   "collect"
+  ],
+  "a": "take",
+  "why": "Собрать анамнез — take a history."
+ },
+ {
+  "id": "m7-blood",
+  "t": 7,
+  "q": "The nurse will ___ some blood from your arm.",
+  "ru": "Сестра возьмёт кровь из вены.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Взять кровь — take blood."
+ },
+ {
+  "id": "m7-bp",
+  "t": 7,
+  "q": "Let me ___ your blood pressure again.",
+  "ru": "Давайте ещё раз измерим давление.",
+  "opts": [
+   "take",
+   "make",
+   "do"
+  ],
+  "a": "take",
+  "why": "Измерить давление, пульс, температуру — take someone's blood pressure, pulse, temperature."
+ },
+ {
+  "id": "m7-tablets",
+  "t": 7,
+  "q": "___ one tablet twice a day with food.",
+  "ru": "Принимайте по одной таблетке два раза в день во время еды.",
+  "opts": [
+   "take",
+   "drink",
+   "eat"
+  ],
+  "a": "take",
+  "why": "Принимать лекарство — take. Drink tablets — калька с «пить таблетки»."
+ },
+ {
+  "id": "m7-visit",
+  "t": 7,
+  "q": "A neurologist will ___ you a visit on the ward.",
+  "ru": "Невролог зайдёт к вам в отделение.",
+  "opts": [
+   "pay",
+   "make",
+   "do"
+  ],
+  "a": "pay",
+  "why": "Навестить, зайти — pay someone a visit."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "htp:state";
+const LS_SPEAK = "htp:autospeak";
+const LS_TAB = "htp:tab";
+const LS_OPEN = "htp:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "have/take/pay"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — сочетание: have — оранжевый, take — синий, pay — зелёный, остальные подчёркнуты
+const VERB_CLS = {};
+[["pr", "have has had having"], ["st", "take takes took taken taking"], ["good", "pay pays paid paying"]]
+  .forEach(([cls, forms]) => forms.split(" ").forEach(w => { VERB_CLS[w] = cls; }));
+function modalCls(t){ return VERB_CLS[String(t).split(" ")[0].toLowerCase()] || "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Шпаргалка и ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: have, take и pay чередуются — выбирать глагол приходится по сочетанию.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

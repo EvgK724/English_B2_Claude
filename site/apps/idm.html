@@ -1,0 +1,1190 @@
+<title>Идиомы</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("idm",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --almost:#9a7f3d;
+    --almost-text:#dcc38a;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:40%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  /* ——— Карточка */
+  [hidden]{display:none!important}
+  .fc{cursor:pointer;touch-action:pan-y;-webkit-user-select:none;user-select:none;transition:transform .2s ease,border-color .15s ease}
+  .fc.drag{transition:border-color .15s ease}
+  .fc.lean-yes{border-color:var(--yes)}
+  .fc.lean-no{border-color:var(--no)}
+  .front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(12px*var(--k));padding-bottom:calc(36px*var(--k));text-align:center}
+  .ab{margin:0;font-family:var(--serif);font-weight:400;font-size:calc(76px*var(--k));line-height:1.05;letter-spacing:.01em}
+  .ab.m{font-size:calc(58px*var(--k))}
+  .ab.s{font-size:calc(46px*var(--k))}
+  .ab.s2{font-size:calc(40px*var(--k))}
+  .ab.xs{font-size:calc(34px*var(--k))}
+  .b-head .ipa2{white-space:nowrap}
+  .ctx{margin:0;font-family:var(--serif);font-size:calc(21px*var(--k));color:var(--soft)}
+  .front .hint{max-width:17em;font-size:calc(16px*var(--k));line-height:1.4}
+  .fc .back{flex:1;gap:calc(12px*var(--k));padding-top:0;border-top:0}
+  .say-front{border-radius:50%}
+  .b-head{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:calc(14px*var(--k))}
+  .ab2{font-family:var(--serif);font-size:calc(32px*var(--k));line-height:1.15}
+  .ipa2{font-size:calc(19px*var(--k));color:var(--blue);white-space:nowrap}
+  .gram{margin:-8px 0 0;font-size:calc(15px*var(--k));line-height:1.35;color:var(--muted)}
+  .fl{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center}
+  .full{margin:0;font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.25;text-wrap:pretty}
+  .fl .ex-play{grid-column:2;grid-row:1}
+  .ru{margin:-4px 0 0;font-size:calc(22px*var(--k));line-height:1.35}
+  .note{margin:0;font-size:calc(16px*var(--k));line-height:1.45;color:var(--soft)}
+  .exb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start;padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .swipe{margin:auto 0 0;text-align:center;font-size:calc(13px*var(--k));color:var(--muted)}
+  .done{flex:1;display:flex;flex-direction:column;justify-content:center;gap:calc(12px*var(--k))}
+  .done-t{margin:0;font-family:var(--serif);font-size:calc(34px*var(--k));line-height:1.15}
+  .done-p{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+  .grades{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:calc(10px*var(--k))}
+  .grades .big{min-height:calc(62px*var(--k));padding:0 calc(4px*var(--k))}
+  .g0{border-color:var(--no);color:var(--no-text)}
+  .g1{border-color:var(--almost);color:var(--almost-text)}
+  .g2{border-color:var(--yes);color:var(--yes-text)}
+
+  /* ——— Правила: буквы, a/an, списки тем */
+  .s-f .ipa{font-family:var(--sans);font-size:calc(14px*var(--k));color:var(--muted)}
+  .lts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:calc(8px*var(--k));margin-top:calc(10px*var(--k))}
+  .lt{min-height:calc(66px*var(--k));padding:calc(6px*var(--k)) calc(2px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);border-radius:calc(12px*var(--k));background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(3px*var(--k));cursor:pointer}
+  .lt:active{background:var(--raise)}
+  .lt-l{font-family:var(--serif);font-size:calc(27px*var(--k));line-height:1}
+  .lt-i{font-size:calc(13px*var(--k));line-height:1.2;color:var(--blue);white-space:nowrap}
+  .algo-m .ltrs{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(22px*var(--k));letter-spacing:.04em;color:var(--accent)}
+  .abl{display:flex;flex-direction:column}
+  .abl-row{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(9px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .abl-row:first-child{border-top:0}
+  .abl-row .ex-play{grid-row:auto}
+  .abl-t{margin:0;line-height:1.3}
+  .abl-a{margin-right:calc(8px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k));color:var(--text)}
+  .abl-f{font-family:var(--serif);font-size:calc(16px*var(--k));color:var(--soft)}
+  .abl-r{display:block;margin-top:calc(2px*var(--k));font-size:calc(14px*var(--k));color:var(--muted)}
+  .known .abl-a::after{content:"✓";margin-left:calc(6px*var(--k));font-family:var(--sans);font-size:calc(14px*var(--k));color:var(--yes-text)}
+
+  @media (max-height:43.7em){
+    .card{padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k));gap:calc(12px*var(--k))}
+    .fc .back{gap:calc(9px*var(--k))}
+    .ab{font-size:calc(64px*var(--k))}
+    .ab2{font-size:calc(28px*var(--k))}
+    .ipa2{font-size:calc(17px*var(--k))}
+    .gram{margin-top:-5px}
+    .full{font-size:calc(22px*var(--k))}
+    .ru{font-size:calc(20px*var(--k))}
+    .note{font-size:calc(15px*var(--k));line-height:1.4}
+    .exb{padding-top:calc(10px*var(--k))}
+    .exb .ex-en{font-size:calc(18px*var(--k))}
+    .swipe{display:none}
+  }
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev,.fc{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill,body.wide .meta,body.wide .bar{width:100%;max-width:calc(880px*var(--k));margin-left:auto;margin-right:auto}
+  body.wide .fc .back{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr auto;column-gap:calc(36px*var(--k));row-gap:calc(12px*var(--k))}
+  body.wide .fc .back > *{grid-column:1}
+  body.wide .fc .exb{grid-column:2;grid-row:1 / span 5;align-self:center;padding:0 0 0 calc(30px*var(--k));border-top:0;border-left:calc(1px*var(--k)) solid var(--line)}
+  body.wide .fc .swipe{grid-column:1 / -1;grid-row:6}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card fc" id="card">
+      <span class="kind" id="kind">Легко и трудно</span>
+      <div class="front" id="front">
+        <p class="ab" id="ab" lang="en"></p>
+        <p class="ctx" id="ctx" lang="en" hidden></p>
+        <button class="say say-front" id="say" type="button" aria-label="Прослушать идиому">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+        </button>
+        <p class="hint" id="hint">Вспомни смысл и&nbsp;русский аналог, потом открой карточку</p>
+      </div>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="b-head"><span class="ab2" id="ab2" lang="en"></span><span class="ipa2" id="ipa"></span></p>
+        <p class="gram" id="gram"></p>
+        <div class="fl">
+          <p class="full" id="full" lang="en"></p>
+          <button class="ex-play" id="playL" type="button" aria-label="Прослушать идиому и значение"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button>
+        </div>
+        <p class="ru" id="ru"></p>
+        <p class="note" id="note"></p>
+        <div class="exb">
+          <p class="ex-en" id="exEn" lang="en"></p>
+          <button class="ex-play" id="playE" type="button" aria-label="Прослушать пример"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button>
+          <p class="ex-ru" id="exRu"></p>
+        </div>
+        <p class="swipe" aria-hidden="true">← не&nbsp;знаю · знаю&nbsp;→</p>
+      </div>
+      <div class="done" id="done" hidden>
+        <p class="done-t" id="doneT">На сегодня всё</p>
+        <p class="done-p" id="doneP"></p>
+      </div>
+    </article>
+    <div class="actions" id="actShow">
+      <button class="big primary" id="show" type="button">Показать</button>
+    </div>
+    <div class="grades" id="actGrade" hidden>
+      <button class="big g0" type="button" data-g="0">Не знаю</button>
+      <button class="big g1" type="button" data-g="1">Почти</button>
+      <button class="big g2" type="button" data-g="2">Знаю</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Idioms</h1>
+      <p class="r-sub">Идиому нельзя перевести по&nbsp;словам&nbsp;— её запоминают целиком, как картинку. На&nbsp;лицевой стороне карточки&nbsp;— идиома, на&nbsp;обороте&nbsp;— буквальная картинка, смысл, русский аналог и&nbsp;пример.</p>
+      <div class="algo">
+        <p class="algo-h">Как запомнить</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Представь буквальную картинку</p><p class="s-f" lang="en"><span class="nw"><span class="pr">a piece of cake</span></span> <i lang="ru">— кусок торта</i></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Свяжи с&nbsp;русским аналогом</p><p class="s-f" lang="en"><span class="nw"><span class="pr">the last straw</span></span> <i lang="ru">— последняя капля</i></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Скажи пример вслух</p><p class="s-f" lang="en">It was <span class="pr">a piece of cake</span>.</p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Вставь в&nbsp;свою фразу сегодня&nbsp;же</p><p class="s-f" lang="en">OK, let's <span class="pr">call it a day</span>.</p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr">картинка</b> → <b class="st">смысл</b> → своя фраза</p>
+        <p class="algo-note">На&nbsp;обороте нажми на&nbsp;значок звука: прозвучат идиома, её значение и&nbsp;пример.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как ведут себя идиомы</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Слова не&nbsp;заменяют</p><p class="s-f" lang="en"><span class="nw">the last <span class="pr">straw</span></span>, <i lang="ru">не</i> the last drop</p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Глагол меняется по&nbsp;временам</p><p class="s-f" lang="en"><span class="nw"><span class="pr">spilled</span> the beans</span> <span class="sep">·</span> <span class="nw"><span class="pr">got</span> cold feet</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">your и&nbsp;someone&nbsp;— по&nbsp;смыслу</p><p class="s-f" lang="en"><span class="nw">make up <span class="pr">her</span> mind</span> <span class="sep">·</span> <span class="nw">pull <span class="pr">my</span> leg</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Большинство&nbsp;— разговорные: в&nbsp;статье и&nbsp;протоколе обходись без них</p><p class="s-f" lang="en"><i lang="ru">пометки:</i> <span class="pr">разг.</span> <span class="sep">·</span> <span class="pr">нейтр.</span> <span class="sep">·</span> <span class="pr">брит.</span></p></div></li>
+        </ol>
+        <p class="algo-note">Пометка «брит.»: американцы поймут, но&nbsp;скажут иначе&nbsp;— <i lang="en">a storm in a teacup</i> у&nbsp;них <i lang="en">a tempest in a teapot</i>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Не переводи дословно</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">kill two hares</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">kill two birds with one stone</span><span class="err-note">не&nbsp;зайцы, а&nbsp;птицы&nbsp;— и&nbsp;одним камнем</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the last drop</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the last straw</span><span class="err-note">не&nbsp;капля, а&nbsp;соломинка</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a storm in a glass of water</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">a storm in a teacup</span><span class="err-note">буря в&nbsp;чайной чашке</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">like two drops of water</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">like two peas in a pod</span><span class="err-note">две горошины в&nbsp;стручке</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">in the seventh sky</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">on cloud nine</span><span class="err-note">не&nbsp;седьмое небо, а&nbsp;девятое облако</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">as healthy as a bull</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">as fit as a fiddle</span><span class="err-note">не&nbsp;бык, а&nbsp;скрипка</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">not in my plate</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">like a fish out of water</span><span class="err-note">не&nbsp;в&nbsp;своей тарелке&nbsp;— рыба без воды</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">on the same boat</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">in the same boat</span><span class="err-note">в&nbsp;лодке&nbsp;— in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">learn from heart</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">learn by heart</span><span class="err-note">наизусть&nbsp;— by heart</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">under weather</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">under the weather</span><span class="err-note">с&nbsp;the</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам
+const MIXED_TOPIC = 9;
+const GROUPS = {"sit": "Ситуации", "work": "Решения и работа", "people": "Люди", "every": "Деньги и разговор", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "sit",
+  "title": "Легко и трудно",
+  "sub": "a piece of cake, the last straw…",
+  "rule": "Как сказать, что дело лёгкое, трудное или вышло из-под контроля. Главная пара: a piece of cake — «проще простого» и easier said than done — «легко сказать»."
+ },
+ {
+  "n": 2,
+  "group": "sit",
+  "title": "Время",
+  "sub": "once in a blue moon, from scratch…",
+  "rule": "Редко, круглосуточно, в последний момент, с нуля. Многие из этих идиом нейтральны — их можно сказать и на работе: around the clock, in the long run, a race against time."
+ },
+ {
+  "n": 3,
+  "group": "work",
+  "title": "Решения и риски",
+  "sub": "make up your mind, a long shot…",
+  "rule": "Решиться, колебаться, рискнуть или перестраховаться. В идиомах с your местоимение меняется по смыслу: make up her mind, the ball is in their court."
+ },
+ {
+  "n": 4,
+  "group": "work",
+  "title": "Работа и учёба",
+  "sub": "hit the nail on the head, learn the ropes…",
+  "rule": "Идиомы для отделения и совещаний: попасть в точку, халтурить, освоиться, быть в курсе. Большинство нейтральны и звучат нормально в рабочей речи."
+ },
+ {
+  "n": 5,
+  "group": "people",
+  "title": "Люди и отношения",
+  "sub": "break the ice, see eye to eye…",
+  "rule": "Знакомство, согласие, секреты и шутки. Someone в идиоме заменяют нужным словом: pull my leg, give him the benefit of the doubt."
+ },
+ {
+  "n": 6,
+  "group": "people",
+  "title": "Здоровье и чувства",
+  "sub": "under the weather, on the mend…",
+  "rule": "Как сказать о самочувствии и настроении — пригодится и с пациентами: under the weather — приболел, on the mend — идёт на поправку, back on your feet — снова на ногах."
+ },
+ {
+  "n": 7,
+  "group": "every",
+  "title": "Деньги",
+  "sub": "cost an arm and a leg, make ends meet…",
+  "rule": "Дорого, дёшево, экономить, сводить концы с концами. Make ends meet — та же картинка, что в русском; cost an arm and a leg — своя, английская."
+ },
+ {
+  "n": 8,
+  "group": "every",
+  "title": "Разговор",
+  "sub": "cut to the chase, in a nutshell…",
+  "rule": "Говорить прямо или ходить вокруг да около, пересказать в двух словах, выдать секрет, сообщить новость. Break the news — важная идиома для врача: сообщить плохую новость."
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Всё вместе",
+  "sub": "15 случайных карточек",
+  "rule": "Карточки из всех тем вперемешку."
+ }
+];
+
+// ——— Карточки. Новые добавляются сюда, в конец своей темы.
+// ab — идиома; full — значение по-английски; ru — русский аналог; ipa — пометка (разг., нейтр., брит.);
+// gram — буквальная картинка; ex, exRu — пример ([…] — идиома) и перевод; note — как употреблять;
+// sa, sl, se — что озвучить голосом устройства, если запись audio/<id>-a|l|e.mp3 не загрузится.
+const CARDS = [
+ {"id": "piece-of-cake", "t": 1, "ab": "a piece of cake", "full": "something very easy to do", "ru": "проще простого, раз плюнуть", "ipa": "разг.", "gram": "буквально: «кусок торта»", "ex": "After twenty lumbar punctures, the next one was [a piece of cake].", "exRu": "После двадцати люмбальных пункций следующая была проще простого.", "note": "Обычно: it's / it was a piece of cake. Всегда с a и в единственном числе.", "sa": "A piece of cake.", "sl": "A piece of cake. Something very easy to do.", "se": "After twenty lumbar punctures, the next one was a piece of cake."},
+ {"id": "easier-said", "t": 1, "ab": "easier said than done", "full": "it sounds easy, but it is hard to do", "ru": "легко сказать", "ipa": "нейтр.", "gram": "буквально: «легче сказано, чем сделано»", "ex": "“Just get more sleep,” he said. That's [easier said than done] on night shifts.", "exRu": "«Просто больше спи», — сказал он. Легко сказать, когда работаешь по ночам.", "note": "Обычно отдельной репликой: That's easier said than done.", "sa": "Easier said than done.", "sl": "Easier said than done. It sounds easy, but it is hard to do.", "se": "Just get more sleep, he said. That's easier said than done on night shifts."},
+ {"id": "tip-of-iceberg", "t": 1, "ab": "the tip of the iceberg", "full": "a small, visible part of a much bigger problem", "ru": "верхушка айсберга", "ipa": "нейтр.", "gram": "буквально: «верхушка айсберга»", "ex": "The reported cases are only [the tip of the iceberg].", "exRu": "Зарегистрированные случаи — лишь верхушка айсберга.", "note": "Та же картинка, что в русском. Чаще: only the tip of the iceberg.", "sa": "The tip of the iceberg.", "sl": "The tip of the iceberg. A small, visible part of a much bigger problem.", "se": "The reported cases are only the tip of the iceberg."},
+ {"id": "out-of-hand", "t": 1, "ab": "get out of hand", "full": "to become impossible to control", "ru": "выйти из-под контроля", "ipa": "нейтр.", "gram": "буквально: «выйти из руки»", "ex": "The queue in A&E [got out of hand] during the flu outbreak.", "exRu": "Во время вспышки гриппа очередь в приёмном вышла из-под контроля.", "note": "Подлежащее — ситуация, а не человек: things got out of hand.", "sa": "Get out of hand.", "sl": "Get out of hand. To become impossible to control.", "se": "The queue in A and E got out of hand during the flu outbreak."},
+ {"id": "hot-water", "t": 1, "ab": "in hot water", "full": "in trouble, especially with someone in authority", "ru": "влипнуть, попасть в переплёт", "ipa": "разг.", "gram": "буквально: «в горячей воде»", "ex": "He'll be [in hot water] if he misses another deadline.", "exRu": "Он влипнет, если сорвёт ещё один срок.", "note": "be / get into hot water — обычно неприятности с начальством или законом.", "sa": "In hot water.", "sl": "In hot water. In trouble, especially with someone in authority.", "se": "He'll be in hot water if he misses another deadline."},
+ {"id": "blessing", "t": 1, "ab": "a blessing in disguise", "full": "something bad that turns out to be good", "ru": "не было бы счастья, да несчастье помогло", "ipa": "нейтр.", "gram": "буквально: «переодетое благословение»", "ex": "Failing the exam the first time turned out to be [a blessing in disguise].", "exRu": "Провал на экзамене с первой попытки в итоге пошёл на пользу.", "note": "Часто: turned out to be a blessing in disguise.", "sa": "A blessing in disguise.", "sl": "A blessing in disguise. Something bad that turns out to be good.", "se": "Failing the exam the first time turned out to be a blessing in disguise."},
+ {"id": "last-straw", "t": 1, "ab": "the last straw", "full": "the last of several bad things that makes you lose patience", "ru": "последняя капля", "ipa": "нейтр.", "gram": "буквально: «последняя соломинка»", "ex": "The third night call in a row was [the last straw].", "exRu": "Третий ночной вызов подряд стал последней каплей.", "note": "По-русски капля, по-английски соломинка — из поговорки о соломинке, сломавшей спину верблюду.", "sa": "The last straw.", "sl": "The last straw. The last of several bad things that makes you lose patience.", "se": "The third night call in a row was the last straw."},
+ {"id": "storm-teacup", "t": 1, "ab": "a storm in a teacup", "full": "a lot of anger or worry about something unimportant", "ru": "буря в стакане воды", "ipa": "нейтр. · брит.", "gram": "буквально: «буря в чайной чашке»", "ex": "The row about the rota was just [a storm in a teacup].", "exRu": "Скандал из-за графика дежурств был бурей в стакане воды.", "note": "Брит. Американцы говорят a tempest in a teapot.", "sa": "A storm in a teacup.", "sl": "A storm in a teacup. A lot of anger or worry about something unimportant.", "se": "The row about the rota was just a storm in a teacup."},
+ {"id": "blue-moon", "t": 2, "ab": "once in a blue moon", "full": "very rarely", "ru": "раз в сто лет, крайне редко", "ipa": "разг.", "gram": "буквально: «раз в голубую луну»", "ex": "We see a case like this [once in a blue moon].", "exRu": "Такой случай у нас бывает раз в сто лет.", "note": "Обычно в конце фразы: I see him once in a blue moon.", "sa": "Once in a blue moon.", "sl": "Once in a blue moon. Very rarely.", "se": "We see a case like this once in a blue moon."},
+ {"id": "long-run", "t": 2, "ab": "in the long run", "full": "over a long period of time; in the end", "ru": "в долгосрочной перспективе, в конечном счёте", "ipa": "нейтр.", "gram": "буквально: «на длинной дистанции»", "ex": "[In the long run], prevention is cheaper than treatment.", "exRu": "В долгосрочной перспективе профилактика дешевле лечения.", "note": "Пара: in the short run. Часто в начале фразы.", "sa": "In the long run.", "sl": "In the long run. Over a long period of time; in the end.", "se": "In the long run, prevention is cheaper than treatment."},
+ {"id": "call-it-a-day", "t": 2, "ab": "call it a day", "full": "to stop working for the rest of the day", "ru": "закончить на сегодня", "ipa": "разг.", "gram": "буквально: «назвать это днём»", "ex": "We'd done six procedures, so we [called it a day].", "exRu": "Мы сделали шесть процедур и на этом закончили.", "note": "Let's call it a day — «на сегодня всё». Вечером — ещё и call it a night.", "sa": "Call it a day.", "sl": "Call it a day. To stop working for the rest of the day.", "se": "We'd done six procedures, so we called it a day."},
+ {"id": "round-clock", "t": 2, "ab": "around the clock", "full": "all day and all night, without stopping", "ru": "круглосуточно", "ipa": "нейтр.", "gram": "буквально: «вокруг циферблата»", "ex": "The stroke unit admits patients [around the clock].", "exRu": "Инсультное отделение принимает пациентов круглосуточно.", "note": "Брит. чаще round the clock. Перед существительным — через дефисы: round-the-clock care.", "sa": "Around the clock.", "sl": "Around the clock. All day and all night, without stopping.", "se": "The stroke unit admits patients around the clock."},
+ {"id": "nick-of-time", "t": 2, "ab": "in the nick of time", "full": "at the last possible moment", "ru": "как раз вовремя, в последний момент", "ipa": "нейтр.", "gram": "буквально: «в зарубку времени»", "ex": "The ambulance arrived [in the nick of time].", "exRu": "Скорая приехала как раз вовремя.", "note": "Только о хорошем исходе: успели. Похоже: just in time.", "sa": "In the nick of time.", "sl": "In the nick of time. At the last possible moment.", "se": "The ambulance arrived in the nick of time."},
+ {"id": "spur-moment", "t": 2, "ab": "on the spur of the moment", "full": "suddenly, without planning", "ru": "спонтанно, под влиянием момента", "ipa": "нейтр.", "gram": "буквально: «под шпорой момента»", "ex": "We booked the trip [on the spur of the moment].", "exRu": "Мы забронировали поездку спонтанно.", "note": "Перед существительным: a spur-of-the-moment decision.", "sa": "On the spur of the moment.", "sl": "On the spur of the moment. Suddenly, without planning.", "se": "We booked the trip on the spur of the moment."},
+ {"id": "from-scratch", "t": 2, "ab": "from scratch", "full": "from the very beginning, without using anything done before", "ru": "с нуля", "ipa": "нейтр.", "gram": "буквально: «от стартовой черты»", "ex": "We had to rewrite the protocol [from scratch].", "exRu": "Протокол пришлось переписать с нуля.", "note": "start / build / learn from scratch.", "sa": "From scratch.", "sl": "From scratch. From the very beginning, without using anything done before.", "se": "We had to rewrite the protocol from scratch."},
+ {"id": "race-time", "t": 2, "ab": "a race against time", "full": "a situation where you must do something very quickly", "ru": "гонка со временем", "ipa": "нейтр.", "gram": "буквально: «гонка против времени»", "ex": "Treating a stroke is always [a race against time].", "exRu": "Лечение инсульта — всегда гонка со временем.", "note": "Ещё: a race against the clock. В инсульте это буквально: time is brain.", "sa": "A race against time.", "sl": "A race against time. A situation where you must do something very quickly.", "se": "Treating a stroke is always a race against time."},
+ {"id": "better-late", "t": 2, "ab": "better late than never", "full": "it is better to do something late than not at all", "ru": "лучше поздно, чем никогда", "ipa": "нейтр.", "gram": "буквально: «лучше поздно, чем никогда»", "ex": "He finally quit smoking at seventy — [better late than never].", "exRu": "Он наконец бросил курить в семьдесят — лучше поздно, чем никогда.", "note": "Та же пословица, что в русском. Часто шутливо, когда кто-то опоздал.", "sa": "Better late than never.", "sl": "Better late than never. It is better to do something late than not at all.", "se": "He finally quit smoking at seventy — better late than never."},
+ {"id": "make-up-mind", "t": 3, "ab": "make up your mind", "full": "to decide", "ru": "решиться, определиться", "ipa": "нейтр.", "gram": "буквально: «собрать свой ум»", "ex": "She couldn't [make up her mind] about the surgery.", "exRu": "Она никак не могла решиться на операцию.", "note": "your меняется: make up my / his / her mind. Можно и make your mind up.", "sa": "Make up your mind.", "sl": "Make up your mind. To decide.", "se": "She couldn't make up her mind about the surgery."},
+ {"id": "on-the-fence", "t": 3, "ab": "sit on the fence", "full": "to avoid choosing between two sides", "ru": "занимать выжидательную позицию, ни нашим ни вашим", "ipa": "разг.", "gram": "буквально: «сидеть на заборе»", "ex": "You can't [sit on the fence] forever — we need a decision.", "exRu": "Нельзя вечно отмалчиваться — нужно решение.", "note": "Обычно с неодобрением: Stop sitting on the fence!", "sa": "Sit on the fence.", "sl": "Sit on the fence. To avoid choosing between two sides.", "se": "You can't sit on the fence forever — we need a decision."},
+ {"id": "by-ear", "t": 3, "ab": "play it by ear", "full": "to decide what to do as things happen, without a plan", "ru": "действовать по обстоятельствам", "ipa": "разг.", "gram": "буквально: «играть на слух»", "ex": "We don't know how busy it'll be, so let's [play it by ear].", "exRu": "Неизвестно, сколько будет работы, так что будем действовать по обстоятельствам.", "note": "Всегда с it: Let's play it by ear.", "sa": "Play it by ear.", "sl": "Play it by ear. To decide what to do as things happen, without a plan.", "se": "We don't know how busy it'll be, so let's play it by ear."},
+ {"id": "pinch-salt", "t": 3, "ab": "take something with a pinch of salt", "full": "not to believe something completely", "ru": "относиться скептически, делить на два", "ipa": "нейтр.", "gram": "буквально: «со щепоткой соли»", "ex": "Take online reviews [with a pinch of salt].", "exRu": "К отзывам в интернете относись скептически.", "note": "Амер. — a grain of salt.", "sa": "Take something with a pinch of salt.", "sl": "Take something with a pinch of salt. Not to believe something completely.", "se": "Take online reviews with a pinch of salt."},
+ {"id": "cold-feet", "t": 3, "ab": "get cold feet", "full": "to suddenly feel too nervous to do something you planned", "ru": "струсить, дрогнуть в последний момент", "ipa": "разг.", "gram": "буквально: «получить холодные ноги»", "ex": "He [got cold feet] the night before the operation.", "exRu": "Накануне операции он струсил.", "note": "feet — всегда во множественном числе. Часто перед свадьбой или операцией.", "sa": "Get cold feet.", "sl": "Get cold feet. To suddenly feel too nervous to do something you planned.", "se": "He got cold feet the night before the operation."},
+ {"id": "ball-court", "t": 3, "ab": "the ball is in your court", "full": "it is your turn to act or decide", "ru": "ход за тобой, слово за тобой", "ipa": "нейтр.", "gram": "буквально: «мяч на твоей половине корта»", "ex": "We've sent the offer, so [the ball is in their court] now.", "exRu": "Мы отправили предложение, теперь ход за ними.", "note": "your меняется: the ball is in their court.", "sa": "The ball is in your court.", "sl": "The ball is in your court. It is your turn to act or decide.", "se": "We've sent the offer, so the ball is in their court now."},
+ {"id": "long-shot", "t": 3, "ab": "a long shot", "full": "an attempt that is unlikely to succeed", "ru": "шансов мало, но попробовать стоит", "ipa": "разг.", "gram": "буквально: «выстрел издалека»", "ex": "It's [a long shot], but the new trial might accept him.", "exRu": "Шансов мало, но его могут взять в новое исследование.", "note": "It's a long shot, but… — вежливое начало просьбы с малыми шансами.", "sa": "A long shot.", "sl": "A long shot. An attempt that is unlikely to succeed.", "se": "It's a long shot, but the new trial might accept him."},
+ {"id": "better-safe", "t": 3, "ab": "better safe than sorry", "full": "it is wiser to be careful than to take a risk", "ru": "лучше перестраховаться, бережёного бог бережёт", "ipa": "нейтр.", "gram": "буквально: «лучше осторожно, чем жаль»", "ex": "Let's repeat the scan tomorrow — [better safe than sorry].", "exRu": "Давай повторим снимок завтра — лучше перестраховаться.", "note": "Обычно отдельной репликой: Better safe than sorry.", "sa": "Better safe than sorry.", "sl": "Better safe than sorry. It is wiser to be careful than to take a risk.", "se": "Let's repeat the scan tomorrow — better safe than sorry."},
+ {"id": "two-minds", "t": 3, "ab": "in two minds", "full": "unable to decide between two choices", "ru": "в раздумьях, колеблюсь", "ipa": "нейтр. · брит.", "gram": "буквально: «в двух умах»", "ex": "I'm [in two minds] about taking the job.", "exRu": "Никак не решу, соглашаться ли на эту работу.", "note": "be in two minds about something. Амер. — of two minds.", "sa": "In two minds.", "sl": "In two minds. Unable to decide between two choices.", "se": "I'm in two minds about taking the job."},
+ {"id": "nail-head", "t": 4, "ab": "hit the nail on the head", "full": "to describe exactly what is causing a problem", "ru": "попасть в точку", "ipa": "нейтр.", "gram": "буквально: «попасть гвоздю по шляпке»", "ex": "You've [hit the nail on the head] — the delay is in the lab.", "exRu": "Ты попал в точку: задержка — в лаборатории.", "note": "Часто как похвала: You've hit the nail on the head.", "sa": "Hit the nail on the head.", "sl": "Hit the nail on the head. To describe exactly what is causing a problem.", "se": "You've hit the nail on the head — the delay is in the lab."},
+ {"id": "cut-corners", "t": 4, "ab": "cut corners", "full": "to do something quickly or cheaply by ignoring rules or quality", "ru": "халтурить, экономить на качестве", "ipa": "нейтр.", "gram": "буквально: «срезать углы»", "ex": "Never [cut corners] with sterile technique.", "exRu": "Никогда не экономьте на стерильности.", "note": "Всегда с неодобрением: речь не о коротком пути, а о пренебрежении правилами.", "sa": "Cut corners.", "sl": "Cut corners. To do something quickly or cheaply by ignoring rules or quality.", "se": "Never cut corners with sterile technique."},
+ {"id": "pull-weight", "t": 4, "ab": "pull your weight", "full": "to do your fair share of the work", "ru": "работать наравне со всеми", "ipa": "нейтр.", "gram": "буквально: «тянуть свой вес»", "ex": "Everyone on the team has to [pull their weight].", "exRu": "Каждый в команде должен работать наравне со всеми.", "note": "Чаще с отрицанием: He isn't pulling his weight. your меняется.", "sa": "Pull your weight.", "sl": "Pull your weight. To do your fair share of the work.", "se": "Everyone on the team has to pull their weight."},
+ {"id": "extra-mile", "t": 4, "ab": "go the extra mile", "full": "to make more effort than is expected", "ru": "сделать больше, чем требуется", "ipa": "нейтр.", "gram": "буквально: «пройти лишнюю милю»", "ex": "The nurses on this ward [go the extra mile] for every patient.", "exRu": "Медсёстры в этом отделении делают для каждого пациента больше, чем требуется.", "note": "Похвала: She always goes the extra mile for her patients.", "sa": "Go the extra mile.", "sl": "Go the extra mile. To make more effort than is expected.", "se": "The nurses on this ward go the extra mile for every patient."},
+ {"id": "ball-rolling", "t": 4, "ab": "get the ball rolling", "full": "to start an activity", "ru": "начать, сдвинуть дело с мёртвой точки", "ipa": "разг.", "gram": "буквально: «покатить мяч»", "ex": "Let's [get the ball rolling] with the first case.", "exRu": "Давайте начнём с первого случая.", "note": "Часто в начале собрания: Let me get the ball rolling.", "sa": "Get the ball rolling.", "sl": "Get the ball rolling. To start an activity.", "se": "Let's get the ball rolling with the first case."},
+ {"id": "drawing-board", "t": 4, "ab": "back to the drawing board", "full": "to start again because a plan has failed", "ru": "начинать заново", "ipa": "нейтр.", "gram": "буквально: «назад к чертёжной доске»", "ex": "The pilot project failed, so it's [back to the drawing board].", "exRu": "Пилотный проект провалился — начинаем заново.", "note": "Обычно: It's back to the drawing board.", "sa": "Back to the drawing board.", "sl": "Back to the drawing board. To start again because a plan has failed.", "se": "The pilot project failed, so it's back to the drawing board."},
+ {"id": "learn-ropes", "t": 4, "ab": "learn the ropes", "full": "to learn how to do a job", "ru": "освоиться, войти в курс дела", "ipa": "разг.", "gram": "буквально: «выучить снасти»", "ex": "It took me a month to [learn the ropes] in the new unit.", "exRu": "Мне понадобился месяц, чтобы освоиться в новом отделении.", "note": "Кто учит — show someone the ropes.", "sa": "Learn the ropes.", "sl": "Learn the ropes. To learn how to do a job.", "se": "It took me a month to learn the ropes in the new unit."},
+ {"id": "midnight-oil", "t": 4, "ab": "burn the midnight oil", "full": "to work or study late at night", "ru": "засиживаться за работой допоздна", "ipa": "нейтр.", "gram": "буквально: «жечь полуночное масло»", "ex": "I've been [burning the midnight oil] to finish the paper.", "exRu": "Я засиживаюсь допоздна, чтобы закончить статью.", "note": "Обычно о подготовке и учёбе: burning the midnight oil before exams.", "sa": "Burn the midnight oil.", "sl": "Burn the midnight oil. To work or study late at night.", "se": "I've been burning the midnight oil to finish the paper."},
+ {"id": "same-page", "t": 4, "ab": "on the same page", "full": "agreeing about what is happening or what to do", "ru": "на одной волне, понимать одинаково", "ipa": "разг.", "gram": "буквально: «на одной странице»", "ex": "Before we start, let's make sure we're all [on the same page].", "exRu": "Перед началом убедимся, что все понимают план одинаково.", "note": "Часто вопросом: Are we all on the same page?", "sa": "On the same page.", "sl": "On the same page. Agreeing about what is happening or what to do.", "se": "Before we start, let's make sure we're all on the same page."},
+ {"id": "up-to-speed", "t": 4, "ab": "up to speed", "full": "having the latest information about something", "ru": "в курсе дела", "ipa": "нейтр.", "gram": "буквально: «до нужной скорости»", "ex": "Can you bring me [up to speed] on bed twelve?", "exRu": "Введёшь меня в курс по двенадцатой койке?", "note": "bring someone up to speed — ввести в курс; get up to speed — войти в курс.", "sa": "Up to speed.", "sl": "Up to speed. Having the latest information about something.", "se": "Can you bring me up to speed on bed twelve?"},
+ {"id": "break-ice", "t": 5, "ab": "break the ice", "full": "to make people feel relaxed when they first meet", "ru": "растопить лёд, разрядить обстановку", "ipa": "нейтр.", "gram": "буквально: «сломать лёд»", "ex": "A joke about the weather helped [break the ice].", "exRu": "Шутка о погоде помогла разрядить обстановку.", "note": "Существительное — an icebreaker.", "sa": "Break the ice.", "sl": "Break the ice. To make people feel relaxed when they first meet.", "se": "A joke about the weather helped break the ice."},
+ {"id": "same-boat", "t": 5, "ab": "in the same boat", "full": "in the same difficult situation as others", "ru": "в одной лодке", "ipa": "нейтр.", "gram": "буквально: «в одной лодке»", "ex": "Don't worry about the exam — we're all [in the same boat].", "exRu": "Не переживай из-за экзамена — мы все в одной лодке.", "note": "Та же картинка, что в русском, но предлог — in, не on.", "sa": "In the same boat.", "sl": "In the same boat. In the same difficult situation as others.", "se": "Don't worry about the exam — we're all in the same boat."},
+ {"id": "eye-to-eye", "t": 5, "ab": "see eye to eye", "full": "to agree with someone", "ru": "сходиться во мнениях", "ipa": "нейтр.", "gram": "буквально: «видеть глаз в глаз»", "ex": "Surgeons and neurologists don't always [see eye to eye].", "exRu": "Хирурги и неврологи не всегда сходятся во мнениях.", "note": "Чаще с отрицанием: We don't always see eye to eye.", "sa": "See eye to eye.", "sl": "See eye to eye. To agree with someone.", "se": "Surgeons and neurologists don't always see eye to eye."},
+ {"id": "house-fire", "t": 5, "ab": "get on like a house on fire", "full": "to like each other and become friends very quickly", "ru": "сразу найти общий язык", "ipa": "разг. · брит.", "gram": "буквально: «ладить, как горит дом»", "ex": "My mum and my wife [got on like a house on fire].", "exRu": "Мама и жена сразу нашли общий язык.", "note": "Картинка — быстро, как огонь. Амер. — get along like a house on fire.", "sa": "Get on like a house on fire.", "sl": "Get on like a house on fire. To like each other and become friends very quickly.", "se": "My mum and my wife got on like a house on fire."},
+ {"id": "benefit-doubt", "t": 5, "ab": "give someone the benefit of the doubt", "full": "to trust someone without proof", "ru": "поверить на слово, не судить заранее", "ipa": "нейтр.", "gram": "буквально: «дать кому-то выгоду сомнения»", "ex": "He's never been late before, so I'll [give him the benefit of the doubt].", "exRu": "Раньше он не опаздывал, так что поверю ему на слово.", "note": "someone меняется: give him the benefit…", "sa": "Give someone the benefit of the doubt.", "sl": "Give someone the benefit of the doubt. To trust someone without proof.", "se": "He's never been late before, so I'll give him the benefit of the doubt."},
+ {"id": "cat-bag", "t": 5, "ab": "let the cat out of the bag", "full": "to tell a secret by mistake", "ru": "проболтаться", "ipa": "разг.", "gram": "буквально: «выпустить кота из мешка»", "ex": "Who [let the cat out of the bag] about the party?", "exRu": "Кто проболтался про вечеринку?", "note": "Не путай с «кот в мешке» — это a pig in a poke. Близко: spill the beans.", "sa": "Let the cat out of the bag.", "sl": "Let the cat out of the bag. To tell a secret by mistake.", "se": "Who let the cat out of the bag about the party?"},
+ {"id": "pull-leg", "t": 5, "ab": "pull someone's leg", "full": "to tell someone something untrue as a joke", "ru": "разыгрывать, подшучивать", "ipa": "разг.", "gram": "буквально: «тянуть кого-то за ногу»", "ex": "Relax, I'm just [pulling your leg]!", "exRu": "Расслабься, я просто шучу!", "note": "Are you pulling my leg? — «Ты шутишь?» Это безобидная шутка, а не обман.", "sa": "Pull someone's leg.", "sl": "Pull someone's leg. To tell someone something untrue as a joke.", "se": "Relax, I'm just pulling your leg!"},
+ {"id": "blind-eye", "t": 5, "ab": "turn a blind eye", "full": "to pretend not to notice something wrong", "ru": "закрывать глаза (на что-то)", "ipa": "нейтр.", "gram": "буквально: «повернуть слепой глаз»", "ex": "Managers can't [turn a blind eye] to unsafe staffing levels.", "exRu": "Руководство не может закрывать глаза на опасную нехватку персонала.", "note": "turn a blind eye to something.", "sa": "Turn a blind eye.", "sl": "Turn a blind eye. To pretend not to notice something wrong.", "se": "Managers can't turn a blind eye to unsafe staffing levels."},
+ {"id": "behind-back", "t": 5, "ab": "behind someone's back", "full": "without someone knowing, in an unfair way", "ru": "за спиной", "ipa": "нейтр.", "gram": "буквально: «за чьей-то спиной»", "ex": "They changed the rota [behind my back].", "exRu": "Они поменяли график за моей спиной.", "note": "Та же картинка, что в русском. someone меняется: behind my back.", "sa": "Behind someone's back.", "sl": "Behind someone's back. Without someone knowing, in an unfair way.", "se": "They changed the rota behind my back."},
+ {"id": "weather", "t": 6, "ab": "under the weather", "full": "slightly ill", "ru": "неважно себя чувствовать, приболеть", "ipa": "разг.", "gram": "буквально: «под погодой»", "ex": "I'm feeling a bit [under the weather] today.", "exRu": "Я сегодня что-то приболел.", "note": "feel / be under the weather — о лёгком недомогании, не о тяжёлой болезни.", "sa": "Under the weather.", "sl": "Under the weather. Slightly ill.", "se": "I'm feeling a bit under the weather today."},
+ {"id": "on-the-mend", "t": 6, "ab": "on the mend", "full": "getting better after an illness or injury", "ru": "идти на поправку", "ipa": "разг.", "gram": "буквально: «в починке»", "ex": "His speech is improving — he's definitely [on the mend].", "exRu": "Речь улучшается — он явно идёт на поправку.", "note": "be on the mend — о здоровье, а ещё об отношениях и экономике.", "sa": "On the mend.", "sl": "On the mend. Getting better after an illness or injury.", "se": "His speech is improving — he's definitely on the mend."},
+ {"id": "back-on-feet", "t": 6, "ab": "back on your feet", "full": "healthy again after an illness, or recovered after a problem", "ru": "снова на ногах, оправиться", "ipa": "нейтр.", "gram": "буквально: «снова на своих ногах»", "ex": "Physio will help get you [back on your feet].", "exRu": "Физиотерапия поможет вам снова встать на ноги.", "note": "get / be back on your feet; your меняется.", "sa": "Back on your feet.", "sl": "Back on your feet. Healthy again after an illness, or recovered after a problem.", "se": "Physio will help get you back on your feet."},
+ {"id": "fit-fiddle", "t": 6, "ab": "as fit as a fiddle", "full": "very healthy and strong", "ru": "здоров как бык", "ipa": "разг.", "gram": "буквально: «в форме, как скрипка»", "ex": "At eighty, my grandfather is still [as fit as a fiddle].", "exRu": "В восемьдесят мой дедушка всё ещё здоров как бык.", "note": "По-русски бык, по-английски скрипка. fit — «в хорошей форме».", "sa": "As fit as a fiddle.", "sl": "As fit as a fiddle. Very healthy and strong.", "se": "At eighty, my grandfather is still as fit as a fiddle."},
+ {"id": "clean-bill", "t": 6, "ab": "a clean bill of health", "full": "a report that someone is healthy or something is in good condition", "ru": "заключение «здоров», «всё чисто»", "ipa": "нейтр.", "gram": "буквально: «чистое свидетельство о здоровье»", "ex": "After the tests, the cardiologist gave him [a clean bill of health].", "exRu": "После обследования кардиолог признал его здоровым.", "note": "give someone a clean bill of health. Бывает и о зданиях, компаниях.", "sa": "A clean bill of health.", "sl": "A clean bill of health. A report that someone is healthy or something is in good condition.", "se": "After the tests, the cardiologist gave him a clean bill of health."},
+ {"id": "over-moon", "t": 6, "ab": "over the moon", "full": "extremely happy", "ru": "вне себя от радости", "ipa": "разг. · брит.", "gram": "буквально: «выше луны»", "ex": "She was [over the moon] when her paper was accepted.", "exRu": "Она была вне себя от радости, когда её статью приняли.", "note": "be over the moon about something. Похоже: on cloud nine.", "sa": "Over the moon.", "sl": "Over the moon. Extremely happy.", "se": "She was over the moon when her paper was accepted."},
+ {"id": "butterflies", "t": 6, "ab": "butterflies in your stomach", "full": "a nervous feeling before something important", "ru": "мандраж, волнение", "ipa": "разг.", "gram": "буквально: «бабочки в животе»", "ex": "I always get [butterflies in my stomach] before a presentation.", "exRu": "Перед выступлением у меня всегда мандраж.", "note": "have / get butterflies (in my stomach).", "sa": "Butterflies in your stomach.", "sl": "Butterflies in your stomach. A nervous feeling before something important.", "se": "I always get butterflies in my stomach before a presentation."},
+ {"id": "chin-up", "t": 6, "ab": "keep your chin up", "full": "stay positive in a difficult situation", "ru": "не вешай нос, держись", "ipa": "разг.", "gram": "буквально: «держи подбородок выше»", "ex": "[Keep your chin up] — the worst part is over.", "exRu": "Не вешай нос — самое трудное позади.", "note": "Обычно как поддержка: Keep your chin up!", "sa": "Keep your chin up.", "sl": "Keep your chin up. Stay positive in a difficult situation.", "se": "Keep your chin up — the worst part is over."},
+ {"id": "off-chest", "t": 6, "ab": "get something off your chest", "full": "to talk about something that has been worrying you", "ru": "выговориться, облегчить душу", "ipa": "разг.", "gram": "буквально: «снять что-то с груди»", "ex": "Talking to a counsellor helped her [get it off her chest].", "exRu": "Разговор с психологом помог ей выговориться.", "note": "something меняется: get it off my chest.", "sa": "Get something off your chest.", "sl": "Get something off your chest. To talk about something that has been worrying you.", "se": "Talking to a counsellor helped her get it off her chest."},
+ {"id": "pain-neck", "t": 6, "ab": "a pain in the neck", "full": "a person or thing that is very annoying", "ru": "зануда, сплошная головная боль", "ipa": "разг.", "gram": "буквально: «боль в шее»", "ex": "Filling in these forms is [a pain in the neck].", "exRu": "Заполнять эти бланки — сплошная головная боль.", "note": "О надоедливом человеке или деле: The paperwork is a real pain in the neck.", "sa": "A pain in the neck.", "sl": "A pain in the neck. A person or thing that is very annoying.", "se": "Filling in these forms is a pain in the neck."},
+ {"id": "arm-leg", "t": 7, "ab": "cost an arm and a leg", "full": "to be very expensive", "ru": "стоить целое состояние", "ipa": "разг.", "gram": "буквально: «стоить руки и ноги»", "ex": "The new scanner [cost an arm and a leg].", "exRu": "Новый томограф стоил целое состояние.", "note": "Обычно: It cost (me) an arm and a leg.", "sa": "Cost an arm and a leg.", "sl": "Cost an arm and a leg. To be very expensive.", "se": "The new scanner cost an arm and a leg."},
+ {"id": "break-bank", "t": 7, "ab": "break the bank", "full": "to cost too much money", "ru": "разорить, ударить по карману", "ipa": "разг.", "gram": "буквально: «сорвать банк»", "ex": "A good pair of trainers won't [break the bank].", "exRu": "Хорошие кроссовки не разорят.", "note": "Обычно с отрицанием: It won't break the bank — «не разоришься».", "sa": "Break the bank.", "sl": "Break the bank. To cost too much money.", "se": "A good pair of trainers won't break the bank."},
+ {"id": "ends-meet", "t": 7, "ab": "make ends meet", "full": "to have just enough money for basic things", "ru": "сводить концы с концами", "ipa": "нейтр.", "gram": "буквально: «свести концы»", "ex": "Many junior doctors struggle to [make ends meet].", "exRu": "Многим молодым врачам трудно сводить концы с концами.", "note": "Та же картинка, что в русском. Часто: struggle to make ends meet.", "sa": "Make ends meet.", "sl": "Make ends meet. To have just enough money for basic things.", "se": "Many junior doctors struggle to make ends meet."},
+ {"id": "tighten-belt", "t": 7, "ab": "tighten your belt", "full": "to spend less money", "ru": "затянуть пояса, экономить", "ipa": "нейтр.", "gram": "буквально: «затянуть свой ремень»", "ex": "After the cuts, the hospital had to [tighten its belt].", "exRu": "После сокращений больнице пришлось затянуть пояса.", "note": "В русском — пояса, в английском — your belt; your меняется: its, their.", "sa": "Tighten your belt.", "sl": "Tighten your belt. To spend less money.", "se": "After the cuts, the hospital had to tighten its belt."},
+ {"id": "shoestring", "t": 7, "ab": "on a shoestring", "full": "with very little money", "ru": "на копейки, с минимальным бюджетом", "ipa": "разг.", "gram": "буквально: «на шнурке»", "ex": "They ran the whole study [on a shoestring].", "exRu": "Всё исследование они провели на копейки.", "note": "run something on a shoestring; a shoestring budget.", "sa": "On a shoestring.", "sl": "On a shoestring. With very little money.", "se": "They ran the whole study on a shoestring."},
+ {"id": "money-trees", "t": 7, "ab": "money doesn't grow on trees", "full": "money is limited, so you should not waste it", "ru": "деньги с неба не падают", "ipa": "разг.", "gram": "буквально: «деньги не растут на деревьях»", "ex": "No new phone this year — [money doesn't grow on trees]!", "exRu": "В этом году без нового телефона — деньги с неба не падают!", "note": "Обычно родители — детям.", "sa": "Money doesn't grow on trees.", "sl": "Money doesn't grow on trees. Money is limited, so you should not waste it.", "se": "No new phone this year — money doesn't grow on trees!"},
+ {"id": "beat-bush", "t": 8, "ab": "beat around the bush", "full": "to avoid talking about the main point", "ru": "ходить вокруг да около", "ipa": "разг.", "gram": "буквально: «бить по кустам вокруг»", "ex": "Don't [beat around the bush] — just tell me the results.", "exRu": "Не ходи вокруг да около — просто скажи результаты.", "note": "Брит. — beat about the bush. Чаще с отрицанием: Don't beat around the bush.", "sa": "Beat around the bush.", "sl": "Beat around the bush. To avoid talking about the main point.", "se": "Don't beat around the bush — just tell me the results."},
+ {"id": "cut-chase", "t": 8, "ab": "cut to the chase", "full": "to talk about the most important thing immediately", "ru": "сразу к делу", "ipa": "разг.", "gram": "буквально: «перейти к погоне»", "ex": "Let me [cut to the chase]: we need two more nurses.", "exRu": "Сразу к делу: нам нужны ещё две медсестры.", "note": "Из кино: скучное вырезают и сразу переходят к погоне.", "sa": "Cut to the chase.", "sl": "Cut to the chase. To talk about the most important thing immediately.", "se": "Let me cut to the chase: we need two more nurses."},
+ {"id": "nutshell", "t": 8, "ab": "in a nutshell", "full": "in a very short summary", "ru": "в двух словах, вкратце", "ipa": "нейтр.", "gram": "буквально: «в ореховой скорлупе»", "ex": "[In a nutshell], the new drug didn't work.", "exRu": "Вкратце: новый препарат не сработал.", "note": "Часто в начале итога: In a nutshell, the trial was negative.", "sa": "In a nutshell.", "sl": "In a nutshell. In a very short summary.", "se": "In a nutshell, the new drug didn't work."},
+ {"id": "speak-mind", "t": 8, "ab": "speak your mind", "full": "to say honestly what you think", "ru": "говорить прямо", "ipa": "нейтр.", "gram": "буквально: «сказать, что на уме»", "ex": "At the meeting, feel free to [speak your mind].", "exRu": "На собрании можете говорить прямо.", "note": "your меняется: She always speaks her mind.", "sa": "Speak your mind.", "sl": "Speak your mind. To say honestly what you think.", "se": "At the meeting, feel free to speak your mind."},
+ {"id": "wrong-end", "t": 8, "ab": "get the wrong end of the stick", "full": "to understand something wrongly", "ru": "неправильно понять, всё перепутать", "ipa": "разг. · брит.", "gram": "буквально: «взяться не за тот конец палки»", "ex": "I think you've [got the wrong end of the stick] — the scan was normal.", "exRu": "Кажется, ты не так понял: снимок в норме.", "note": "Брит. Обычно: you've got the wrong end of the stick.", "sa": "Get the wrong end of the stick.", "sl": "Get the wrong end of the stick. To understand something wrongly.", "se": "I think you've got the wrong end of the stick — the scan was normal."},
+ {"id": "spill-beans", "t": 8, "ab": "spill the beans", "full": "to tell people secret information", "ru": "проболтаться, выложить всё", "ipa": "разг.", "gram": "буквально: «рассыпать бобы»", "ex": "Come on, [spill the beans] — did you get the job?", "exRu": "Ну, выкладывай — тебя взяли на работу?", "note": "Come on, spill the beans! — «Ну, выкладывай!» Близко: let the cat out of the bag.", "sa": "Spill the beans.", "sl": "Spill the beans. To tell people secret information.", "se": "Come on, spill the beans — did you get the job?"},
+ {"id": "break-news", "t": 8, "ab": "break the news", "full": "to tell someone important, often bad, news", "ru": "сообщить (плохую) новость", "ipa": "нейтр.", "gram": "буквально: «разбить новость»", "ex": "The consultant [broke the news] to the family.", "exRu": "Консультант сообщил родственникам печальную новость.", "note": "break the news to someone. В медицине — breaking bad news.", "sa": "Break the news.", "sl": "Break the news. To tell someone important, often bad, news.", "se": "The consultant broke the news to the family."},
+ {"id": "word-mouth", "t": 8, "ab": "word of mouth", "full": "information passed from person to person by talking", "ru": "сарафанное радио, из уст в уста", "ipa": "нейтр.", "gram": "буквально: «слово из уст»", "ex": "Most of our patients find us by [word of mouth].", "exRu": "Большинство пациентов узнают о нас по сарафанному радио.", "note": "by word of mouth.", "sa": "Word of mouth.", "sl": "Word of mouth. Information passed from person to person by talking.", "se": "Most of our patients find us by word of mouth."},
+ {"id": "by-heart", "t": 8, "ab": "by heart", "full": "from memory", "ru": "наизусть", "ipa": "нейтр.", "gram": "буквально: «сердцем»", "ex": "Every resident should know the NIHSS [by heart].", "exRu": "Каждый ординатор должен знать шкалу NIHSS наизусть.", "note": "learn / know something by heart. Не from heart.", "sa": "By heart.", "sl": "By heart. From memory.", "se": "Every resident should know the N I H S S by heart."},
+ {"id": "bite-tongue", "t": 8, "ab": "bite your tongue", "full": "to stop yourself from saying something", "ru": "прикусить язык, сдержаться", "ipa": "разг.", "gram": "буквально: «прикусить язык»", "ex": "I wanted to argue, but I [bit my tongue].", "exRu": "Хотелось возразить, но я сдержался.", "note": "Та же картинка, что в русском. your меняется: I bit my tongue.", "sa": "Bite your tongue.", "sl": "Bite your tongue. To stop yourself from saying something.", "se": "I wanted to argue, but I bit my tongue."}
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "idm:state";
+const LS_SPEAK = "idm:autospeak";
+const LS_TAB = "idm:tab";
+const LS_OPEN = "idm:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let flipped = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Идиомы"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+
+// ——— Разметка: [x] — оранжевым (идиома в примере)
+function richText(s){
+  const f = document.createDocumentFragment();
+  f.append(String(s).replace(/ → /g, "\u00a0→\u00a0"));
+  return f;
+}
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", "pr", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !flipped){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Буквы в правилах: прослушать
+document.querySelectorAll(".lt").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: ситуации, время, решения, работа, люди, здоровье, деньги и разговор чередуются.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+// ——— Карточка: лицевая сторона — идиома; оборот — картинка, смысл, русский аналог, пример
+function sayFront(){
+  const c = queue[index];
+  if (c && !flipped) playClip(c.id + "-a", c.sa, 0.8);
+}
+function render(){
+  stopAudio();
+  flipped = false;
+  const card = queue[index];
+  const box = $("card");
+  box.scrollTop = 0;
+  box.style.transform = "";
+  box.classList.remove("lean-yes", "lean-no");
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = TOPIC_BY[card.t].title;
+  show("front", true);
+  show("back", false);
+  show("done", false);
+  const ab = $("ab");
+  ab.textContent = card.ab;
+  ab.className = "ab " + (card.ab.length > 22 ? "xs" : card.ab.length > 12 ? "s2" : "s");
+  $("ctx").textContent = card.ctx || "";
+  show("ctx", !!card.ctx);
+  show("actShow", true);
+  show("actGrade", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? TOPIC_BY[topicN].title + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  if (autoSpeak && !$("drill").hidden) sayFront();
+  else preloadClip(card.id + "-a");
+}
+
+function fillBack(card){
+  $("ab2").textContent = card.ab;
+  $("ipa").textContent = card.ipa;
+  $("gram").textContent = card.gram;
+  const full = $("full"); full.textContent = ""; full.append(marked(card.full));
+  $("ru").textContent = card.ru;
+  const note = $("note"); note.textContent = "";
+  if (card.note) note.append(richText(card.note));
+  show("note", !!card.note);
+  const ex = $("exEn"); ex.textContent = ""; ex.append(marked(card.ex));
+  $("exRu").textContent = card.exRu;
+}
+
+function flip(){
+  const card = queue[index];
+  if (!card || flipped) return;
+  flipped = true;
+  fillBack(card);
+  show("front", false);
+  show("back", true);
+  show("actShow", false);
+  show("actGrade", true);
+  $("card").scrollTop = 0;
+  if (autoSpeak) playClip(card.id + "-l", card.sl, 0.85);
+  else stopAudio();
+}
+
+// «Не знаю» — завтра и ещё раз в этой же сессии; «почти» — тот же интервал; «знаю» — следующий: 1 → 3 → 7 → 16 дней
+function grade(g){
+  const card = queue[index];
+  if (!card || !flipped) return;
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (g === 2) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (g === 0){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (g === 1){
+    step = lapsed[card.id] ? 0 : Math.max(0, step);
+  } else {
+    step = (step < 0 || lapsed[card.id]) ? 0 : Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+  index++;
+  render();
+}
+
+function renderDone(){
+  show("kind", false);
+  show("front", false);
+  show("back", false);
+  show("done", true);
+  $("doneT").textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема «" + TOPIC_BY[topicN].title + "» пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Знаю с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("doneP").textContent = text;
+  show("actShow", false);
+  show("actGrade", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      const cards = CARDS.filter(c => c.t === t.n);
+      if (cards.length){
+        const list = el("div", "abl");
+        cards.forEach(c => {
+          const row = el("div", "abl-row" + (progress[c.id] && progress[c.id].step >= 1 ? " known" : ""));
+          const txt = el("p", "abl-t");
+          const a = el("span", "abl-a", c.ab); a.lang = "en";
+          const f = el("span", "abl-f"); f.lang = "en"; f.append(marked(c.full));
+          txt.append(a, f, el("span", "abl-r", c.ru));
+          const play = el("button", "ex-play");
+          play.type = "button";
+          play.setAttribute("aria-label", "Прослушать: " + c.ab);
+          play.innerHTML = PLAY_SVG;
+          play.addEventListener("click", () => playClip(c.id + "-l", c.sl, 0.85));
+          row.append(txt, play);
+          list.append(row);
+        });
+        body.append(list);
+      }
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  const was = !$("drill").hidden;
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  else if (!was && autoSpeak) sayFront();
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("show").addEventListener("click", flip);
+$("say").addEventListener("click", sayFront);
+$("playL").addEventListener("click", () => { const c = queue[index]; if (c) playClip(c.id + "-l", c.sl, 0.85); });
+$("playE").addEventListener("click", () => { const c = queue[index]; if (c) playClip(c.id + "-e", c.se, 0.85); });
+document.querySelectorAll("#actGrade .big").forEach(b => b.addEventListener("click", () => grade(Number(b.dataset.g))));
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+
+// Свайп по карточке: на лицевой стороне — открыть; на обороте вправо — «знаю», влево — «не знаю».
+// Нажатие на лицевую сторону тоже открывает карточку.
+const SWIPE = 70;
+const reduceMotion = (function(){ try{ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } })();
+const cardBox = $("card");
+let drag = null, swallowClick = false;
+cardBox.addEventListener("pointerdown", e => {
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  if (!queue[index] || (e.target.closest && e.target.closest("button"))) return;
+  drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, on: false };
+});
+cardBox.addEventListener("pointermove", e => {
+  if (!drag || e.pointerId !== drag.id) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (!drag.on){
+    if (Math.abs(dx) < 12 || Math.abs(dx) < Math.abs(dy) * 1.3) return;
+    drag.on = true;
+    try{ cardBox.setPointerCapture(e.pointerId); }catch(_){}
+    cardBox.classList.add("drag");
+  }
+  drag.dx = dx;
+  if (!reduceMotion) cardBox.style.transform = "translateX(" + dx + "px) rotate(" + (dx / 40).toFixed(2) + "deg)";
+  cardBox.classList.toggle("lean-yes", flipped && dx > SWIPE);
+  cardBox.classList.toggle("lean-no", flipped && dx < -SWIPE);
+});
+function endDrag(e, cancel){
+  if (!drag || e.pointerId !== drag.id) return;
+  const d = drag;
+  drag = null;
+  cardBox.classList.remove("drag", "lean-yes", "lean-no");
+  if (!d.on) return;
+  swallowClick = true;
+  setTimeout(() => { swallowClick = false; }, 0);
+  cardBox.style.transform = "";
+  if (cancel || Math.abs(d.dx) < SWIPE) return;
+  if (!flipped) flip();
+  else grade(d.dx > 0 ? 2 : 0);
+}
+cardBox.addEventListener("pointerup", e => endDrag(e, false));
+cardBox.addEventListener("pointercancel", e => endDrag(e, true));
+cardBox.addEventListener("click", e => {
+  if (swallowClick){ swallowClick = false; return; }
+  if (e.target.closest && e.target.closest("button")) return;
+  if (!flipped && queue[index]) flip();
+});
+
+// Клавиатура на компьютере: пробел или Enter — открыть; 1, 2, 3 — не знаю, почти, знаю; стрелки ← и → — не знаю и знаю
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!queue[index]) return;
+  if (!flipped){
+    if (e.key === " " || e.key === "Enter"){ e.preventDefault(); flip(); }
+    return;
+  }
+  const g = { "1": 0, "2": 1, "3": 2, "ArrowLeft": 0, "ArrowRight": 2 }[e.key];
+  if (g !== undefined){ e.preventDefault(); grade(g); }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

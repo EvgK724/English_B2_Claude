@@ -1,0 +1,936 @@
+<title>Семь слов без a/an</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("bez-a-an",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.18);
+    --almost:#9a7f3d;
+    --almost-text:#dcc38a;
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --yes-soft:rgba(78,135,103,.2);
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(14px*var(--k));cursor:pointer;user-select:none}
+  .card.flipped,.card.done{cursor:default}
+  .card.flipped{user-select:text}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.03em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(32px*var(--k));line-height:1.22;text-wrap:balance}
+  .card.flipped .q{font-size:calc(20px*var(--k));line-height:1.35;color:var(--muted)}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(14px*var(--k));padding-top:calc(16px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .feedback{margin:0;font-size:calc(17px*var(--k))}
+  .feedback.is-right{color:var(--yes-text)}
+  .feedback.is-wrong{color:var(--no-text)}
+  .verdict{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:calc(6px*var(--k)) calc(10px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.35}
+  .v-tag{font-family:var(--sans);font-size:calc(14px*var(--k));letter-spacing:.03em;padding:calc(3px*var(--k)) calc(10px*var(--k));border-radius:calc(999px*var(--k));align-self:center}
+  .v-tag.no{color:var(--no-text);background:var(--no-soft)}
+  .v-tag.yes{color:var(--yes-text);background:var(--yes-soft)}
+  .bad{color:var(--no-text);text-decoration-thickness:calc(2px*var(--k))}
+  .arr{color:var(--muted);font-family:var(--sans)}
+  .fix-to .arr{margin-right:calc(8px*var(--k))}
+  .good{color:var(--yes-text)}
+  .ansrow{display:flex;align-items:flex-start;gap:calc(12px*var(--k))}
+  .ans{flex:1;margin:0;font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.36}
+  .say{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .say:active{background:rgba(217,119,87,.15)}
+  .alt{margin:0}
+  .lbl-in{display:block;font-size:calc(13px*var(--k));letter-spacing:.07em;text-transform:uppercase;color:var(--blue);margin-bottom:calc(3px*var(--k))}
+  #altText{font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4;color:var(--soft)}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+  .wordchip{margin:0;align-self:flex-start;font-size:calc(15px*var(--k));color:var(--blue);padding:calc(4px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .r0{border-color:var(--no);color:var(--no-text)}
+  .r1{border-color:var(--almost);color:var(--almost-text)}
+  .r2{border-color:var(--yes);color:var(--yes-text)}
+  .big:active{transform:scale(.985)}
+
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(10px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(6px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(34px*var(--k));line-height:1.15;text-wrap:balance}
+  .r-sub{margin:0 0 calc(18px*var(--k));font-size:calc(18px*var(--k));line-height:1.45;color:var(--soft)}
+  .lbl{margin:calc(30px*var(--k)) 0 calc(10px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .seven{list-style:none;margin:0;padding:0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .seven li{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .w{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;column-gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(2px*var(--k));border:0;background:transparent;cursor:pointer;text-align:left}
+  .w-en{font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.25}
+  .w-ipa{font-size:calc(15px*var(--k));color:var(--blue)}
+  .w-play{color:var(--muted);align-self:center}
+  .w-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k));display:block}
+  .w-ru{grid-column:1/-1;font-size:calc(16px*var(--k));color:var(--muted)}
+  .tap-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));color:var(--muted)}
+
+  .pairs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:calc(8px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.35}
+  .pairs li{display:flex;flex-wrap:wrap;align-items:baseline;gap:calc(2px*var(--k)) calc(10px*var(--k))}
+  .pairs s{color:var(--no-text)}
+  .pairs b{font-weight:400;color:var(--yes-text)}
+  .aside{margin:calc(12px*var(--k)) 0 0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .aside i,.aside em{font-family:var(--serif);font-size:calc(18px*var(--k));color:var(--text)}
+
+  .pass-h{margin:calc(14px*var(--k)) 0 calc(8px*var(--k));font-size:calc(16px*var(--k));color:var(--soft)}
+  .chips{margin:0;display:flex;flex-wrap:wrap;gap:calc(8px*var(--k))}
+  .chips span{font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3;padding:calc(5px*var(--k)) calc(12px*var(--k));border-radius:calc(10px*var(--k));border:calc(1px*var(--k)) solid var(--line-2)}
+  .chips.no span{color:var(--no-text);border-color:rgba(180,84,74,.55)}
+  .chips.yes span{color:var(--yes-text);border-color:rgba(78,135,103,.6)}
+  .chips.ok span{color:var(--text)}
+
+  .one{margin:0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .one-head,.one dd{display:grid;grid-template-columns:1fr 1fr;column-gap:calc(12px*var(--k))}
+  .one-head{font-size:calc(13px*var(--k));letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:calc(8px*var(--k)) 0}
+  .one > div{padding:calc(9px*var(--k)) 0;border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .one dt{font-family:var(--serif);font-size:calc(21px*var(--k));color:var(--text)}
+  .one dd{margin:calc(2px*var(--k)) 0 0}
+  .one dd span{font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .one dd .tw{color:var(--yes-text)}
+  .one dd s{color:var(--no-text)}
+
+  .anchor{margin:0;padding:calc(2px*var(--k)) 0 calc(2px*var(--k)) calc(14px*var(--k));border-left:calc(3px*var(--k)) solid var(--blue);font-family:var(--serif);font-size:calc(22px*var(--k));line-height:1.5}
+  .anchor b{font-weight:400;color:var(--yes-text)}
+  .listen{margin-top:calc(14px*var(--k));min-height:calc(50px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));display:inline-flex;align-items:center;gap:calc(10px*var(--k));cursor:pointer}
+  .listen svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .anchor-ru{margin:calc(14px*var(--k)) 0 0;font-size:calc(17px*var(--k));line-height:1.55;color:var(--muted)}
+  .anchor-ru u{text-decoration:none;color:var(--soft);border-bottom:calc(1px*var(--k)) dashed var(--line-2)}
+  .go-wrap{margin-top:calc(30px*var(--k));display:flex}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill{transition:none}.big:active{transform:none}}
+
+  /* ——— Планшет */
+  .sec{break-inside:avoid}
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .actions{grid-column:2;grid-row:2;flex-direction:column}
+  body.wide #rule .cols{max-width:calc(640px*var(--k));margin:0 auto}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+
+<div class="app">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правило</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 12</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Найди ошибку</span>
+      <p class="q" id="q"></p>
+      <p class="hint" id="hint"></p>
+      <div class="back" id="back" hidden>
+        <p class="feedback" id="feedback" hidden></p>
+        <p class="verdict" id="verdict" hidden></p>
+        <div class="ansrow">
+          <p class="ans" id="ans" lang="en"></p>
+          <button class="say" id="say" type="button" aria-label="Прослушать правильный вариант" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+          </button>
+        </div>
+        <p class="alt" id="alt" hidden><span class="lbl-in">Ещё можно</span><span id="altText" lang="en"></span></p>
+        <p class="why" id="why"></p>
+        <p class="wordchip" id="wordchip"></p>
+      </div>
+    </article>
+    <div class="actions" id="actFront"><button class="big primary" id="reveal" type="button">Показать ответ</button></div>
+    <div class="actions" id="actJudge" hidden>
+      <button class="big" type="button" data-judge="1">Верно</button>
+      <button class="big" type="button" data-judge="0">Ошибка</button>
+    </div>
+    <div class="actions" id="actGrade" hidden>
+      <button class="big r0" type="button" data-grade="0">Не знаю</button>
+      <button class="big r1" type="button" data-grade="1">Почти</button>
+      <button class="big r2" type="button" data-grade="2">Знаю</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 12 новых</button>
+      <button class="big" id="toRule" type="button">Правило</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="cols">
+    <div class="sec">
+    <h1 class="r-title">Семь слов без <span lang="en">a/an</span></h1>
+    <p class="r-sub">Даже с прилагательным. Даже когда по-русски их можно посчитать.</p>
+
+    <ul class="seven">
+      <li><button class="w" type="button" data-say="advice"><span class="w-en" lang="en">advice</span><span class="w-ipa">/ədˈvaɪs/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">совет, советы, рекомендации</span></button></li>
+      <li><button class="w" type="button" data-say="information"><span class="w-en" lang="en">information</span><span class="w-ipa">/ˌɪnfəˈmeɪʃn/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">информация, сведения</span></button></li>
+      <li><button class="w" type="button" data-say="news"><span class="w-en" lang="en">news</span><span class="w-ipa">/njuːz/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">новость, новости</span></button></li>
+      <li><button class="w" type="button" data-say="evidence"><span class="w-en" lang="en">evidence</span><span class="w-ipa">/ˈevɪdəns/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">доказательства, данные</span></button></li>
+      <li><button class="w" type="button" data-say="progress"><span class="w-en" lang="en">progress</span><span class="w-ipa">/ˈprəʊɡres/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">прогресс, успехи, динамика</span></button></li>
+      <li><button class="w" type="button" data-say="research"><span class="w-en" lang="en">research</span><span class="w-ipa">/rɪˈsɜːtʃ/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">исследование, исследования</span></button></li>
+      <li><button class="w" type="button" data-say="equipment"><span class="w-en" lang="en">equipment</span><span class="w-ipa">/ɪˈkwɪpmənt/</span><span class="w-play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></span><span class="w-ru">оборудование, аппаратура</span></button></li>
+    </ul>
+    <p class="tap-note">Нажми на слово — оно прозвучит.</p>
+
+    </div>
+    <div class="sec">
+    <h2 class="lbl">С прилагательным — тоже без a</h2>
+    <ul class="pairs" lang="en">
+      <li><s>a good advice</s><span class="arr">→</span><b>good advice</b></li>
+      <li><s>an important information</s><span class="arr">→</span><b>important information</b></li>
+      <li><s>a strong evidence</s><span class="arr">→</span><b>strong evidence</b></li>
+      <li><s>a significant progress</s><span class="arr">→</span><b>significant progress</b></li>
+    </ul>
+    <p class="aside">Прилагательное не делает слово «штучным». Для сравнения: <i lang="en">a good knowledge of English</i> — можно, у knowledge так бывает. У семёрки — никогда.</p>
+
+    </div>
+    <div class="sec">
+    <h2 class="lbl">Можно и нельзя</h2>
+    <p class="pass-h">Нельзя</p>
+    <p class="chips no" lang="en"><span>a / an</span><span>-s</span><span>many</span><span>few</span><span>several</span><span>one, two</span><span>these, those</span></p>
+    <p class="pass-h">Можно</p>
+    <p class="chips yes" lang="en"><span>∅</span><span>the</span><span>some</span><span>any</span><span>no</span><span>much</span><span>little</span><span>a lot of</span><span>this, that</span></p>
+    <p class="aside">Глагол — в единственном числе: <i lang="en">the news is, the evidence suggests</i>. Местоимение — <i lang="en">it</i>.</p>
+    <p class="aside">Проверка за секунду: подходит <i lang="en">much</i> — значит, <i lang="en">a/an</i> нельзя.</p>
+
+    </div>
+    <div class="sec">
+    <h2 class="lbl">Нужна одна штука</h2>
+    <p class="aside" style="margin:0 0 calc(10px*var(--k))">Два пути: порция через <i lang="en">a piece of</i> или исчисляемый близнец.</p>
+    <dl class="one" lang="en">
+      <div class="one-head" lang="ru"><span>Порция</span><span>Близнец</span></div>
+      <div><dt>advice</dt><dd><span>a piece of advice</span><span class="tw">a tip</span></dd></div>
+      <div><dt>information</dt><dd><span>a piece of information</span><span class="tw">a fact</span></dd></div>
+      <div><dt>news</dt><dd><span>a piece of news</span><span class="tw">an update</span></dd></div>
+      <div><dt>evidence</dt><dd><span>a piece of evidence</span><span class="tw">a finding</span></dd></div>
+      <div><dt>progress</dt><dd><span><s>a piece of progress</s></span><span class="tw">a step forward</span></dd></div>
+      <div><dt>research</dt><dd><span>a piece of research</span><span class="tw">a study</span></dd></div>
+      <div><dt>equipment</dt><dd><span>a piece of equipment</span><span class="tw">a device</span></dd></div>
+    </dl>
+    <p class="aside">У progress порции нет — только близнец: <i lang="en">a step forward, an improvement</i>. Прилагательное переезжает к piece: <i lang="en">an important piece of evidence</i>.</p>
+
+    </div>
+    <div class="sec">
+    <h2 class="lbl">Ловушка наоборот</h2>
+    <p class="aside" style="margin:0 0 calc(10px*var(--k))">Если слово стоит перед другим существительным, <i lang="en">a/an</i> принадлежит второму — и это верно:</p>
+    <p class="chips ok" lang="en"><span>a progress note</span><span>a research grant</span><span>an evidence base</span><span>an information leaflet</span><span>a news conference</span><span>an equipment failure</span></p>
+
+    </div>
+    <div class="sec">
+    <h2 class="lbl">Фраза-якорь</h2>
+    <blockquote class="anchor" lang="en"><b>Good news</b> from the ward round: the patient is making <b>steady progress</b>, <b>recent research</b> provides <b>strong evidence</b> that <b>the new equipment</b> helps, and the family got <b>clear information</b> and <b>practical advice</b>.</blockquote>
+    <button class="listen" id="listen" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      Прослушать
+    </button>
+    <p class="anchor-ru">Хорошие <u>новости</u> с обхода: у пациента стабильная положительная <u>динамика</u>, свежие <u>исследования</u> дают убедительные <u>доказательства</u>, что новое <u>оборудование</u> помогает, а семья получила понятную <u>информацию</u> и практические <u>советы</u>.</p>
+    <p class="aside">По-русски половина этих слов во множественном числе. По-английски все семь — без <i lang="en">a</i> и без <i lang="en">-s</i>. Образ на память: как <i lang="en">rice</i> — <i lang="en">a grain of rice, a piece of advice</i>.</p>
+
+    </div>
+    <div class="sec">
+    <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Карточки тренировки. Порядок = порядок показа новых карточек (по 12 за сессию).
+// t: fix — найди ошибку; say — скажи по-английски; judge — верно или ошибка (ok: true/false).
+const CARDS = [
+  { id:"adv-important", w:"advice", t:"fix",
+    q:"The neurologist gave him an important advice about driving.",
+    bad:"an important advice", good:"important advice",
+    a:"The neurologist gave him important advice about driving.",
+    alt:"The neurologist gave him an important piece of advice about driving.",
+    why:"Advice не берёт a/an, и прилагательное important этого не меняет. Нужна «одна штука» — артикль уходит к piece: an important piece of advice." },
+  { id:"res-study", w:"research", t:"say",
+    q:"Недавнее исследование подтвердило этот вывод.",
+    good:"A recent study",
+    a:"A recent study confirmed this finding.",
+    alt:"Recent research confirmed this finding.",
+    why:"«Одно исследование» — это a study, исчисляемый близнец. Само research — только без a: recent research." },
+  { id:"news-bad", w:"news", t:"fix",
+    q:"I'm afraid I have a bad news for you.",
+    bad:"a bad news", good:"some bad news",
+    a:"I'm afraid I have some bad news for you.",
+    alt:"I'm afraid I have bad news for you.",
+    why:"News — неисчисляемое, хоть и кончается на -s. Вместо a — some или ничего. Одна новость — a piece of news." },
+  { id:"prog-good", w:"progress", t:"judge", ok:false,
+    q:"The patient has made a good progress since admission.",
+    bad:"a good progress", good:"good progress",
+    a:"The patient has made good progress since admission.",
+    why:"Make progress — без артикля, с любым прилагательным: good, steady, slow progress. По-русски это «положительная динамика»." },
+  { id:"evid-strong", w:"evidence", t:"fix",
+    q:"There is a strong evidence that earlier thrombolysis improves outcomes.",
+    bad:"a strong evidence", good:"strong evidence",
+    a:"There is strong evidence that earlier thrombolysis improves outcomes.",
+    why:"Evidence не бывает «одним»: strong evidence, good evidence, no evidence. Одно доказательство — a piece of evidence." },
+  { id:"equip-new", w:"equipment", t:"say",
+    q:"Отделение закупило новое оборудование.",
+    good:"new equipment",
+    a:"The unit has bought new equipment.",
+    alt:"The unit has bought a new device.",
+    why:"Equipment — без a и без -s: new equipment, medical equipment. Про один аппарат — a new piece of equipment или близнец a new device." },
+  { id:"info-important", w:"information", t:"say",
+    q:"Это важная информация.",
+    good:"important information",
+    a:"This is important information.",
+    alt:"This is an important piece of information.",
+    why:"После This is рука тянется к an — но information не берёт a/an ни с каким прилагательным. Один факт — an important piece of information или an important fact." },
+  { id:"info-leaflet", w:"information", t:"judge", ok:true,
+    q:"We gave the family an information leaflet.",
+    good:"an information leaflet",
+    a:"We gave the family an information leaflet.",
+    why:"Верно: an относится к leaflet, а information здесь — определение («информационный листок»). Само слово — только information, без an." },
+  { id:"adv-piece", w:"advice", t:"judge", ok:true,
+    q:"Let me give you a useful piece of advice.",
+    good:"a useful piece of advice",
+    a:"Let me give you a useful piece of advice.",
+    why:"Верно: a относится к piece, и прилагательное стоит перед piece. А вот a useful advice — ошибка." },
+  { id:"news-these", w:"news", t:"judge", ok:false,
+    q:"These news are very encouraging.",
+    bad:"These news are", good:"This news is",
+    a:"This news is very encouraging.",
+    why:"«Эти новости» — this news: слово неисчисляемое, поэтому this вместо these и is вместо are." },
+  { id:"prog-great", w:"progress", t:"say",
+    q:"Это большой прогресс для нашего отделения.",
+    good:"great progress",
+    a:"This is great progress for our unit.",
+    alt:"This is a big step forward for our unit.",
+    why:"Great, real, major progress — без a. У progress нет порции: a piece of progress не говорят. Нужна «штука» — зови близнеца: a step forward, an improvement." },
+  { id:"cmp-knowledge", w:"knowledge", t:"judge", ok:true,
+    q:"She has a good knowledge of medical English.",
+    good:"a good knowledge of",
+    a:"She has a good knowledge of medical English.",
+    why:"Верно. У knowledge (как у education, understanding) прилагательное открывает дорогу к a: a good knowledge of, a sound understanding of. У семёрки так не бывает: a good advice — ошибка." },
+
+  { id:"equip-was", w:"equipment", t:"judge", ok:false,
+    q:"The equipments were checked before the shift.",
+    bad:"equipments were", good:"equipment was",
+    a:"The equipment was checked before the shift.",
+    why:"У equipment нет множественного числа — и глагол в единственном: was, is, has." },
+  { id:"res-carry", w:"research", t:"fix",
+    q:"Our team made a research on stroke outcomes.",
+    bad:"made a research on", good:"carried out research into",
+    a:"Our team carried out research into stroke outcomes.",
+    alt:"Our team conducted a study on stroke outcomes.",
+    why:"Калька «сделать исследование». С research работают do, carry out, conduct — и без a. Конкретная работа — a study." },
+  { id:"evid-body", w:"evidence", t:"judge", ok:true,
+    q:"A growing body of evidence supports this approach.",
+    good:"A growing body of evidence",
+    a:"A growing body of evidence supports this approach.",
+    why:"Верно: a относится к body. Порции evidence: a body of evidence (массив данных), a piece of evidence, a line of evidence." },
+  { id:"info-additional", w:"information", t:"judge", ok:false,
+    q:"We need an additional information about the time of onset.",
+    bad:"an additional information", good:"additional information",
+    a:"We need additional information about the time of onset.",
+    alt:"We need further information about the time of onset.",
+    why:"Information не берёт an ни с каким прилагательным: additional, further, more information." },
+  { id:"adv-it", w:"advice", t:"fix",
+    q:"Thank you for your advices — they were really helpful.",
+    bad:"advices — they were", good:"advice — it was",
+    a:"Thank you for your advice — it was really helpful.",
+    why:"У advice нет множественного числа, поэтому и местоимение it, и глагол was — в единственном." },
+  { id:"news-piece", w:"news", t:"say",
+    q:"У меня для вас одна хорошая новость.",
+    good:"a piece of good news",
+    a:"I have a piece of good news for you.",
+    alt:"I have some good news for you.",
+    why:"«Одна новость» — a piece of news. В живой речи чаще говорят просто some good news." },
+  { id:"prog-note", w:"progress", t:"judge", ok:true,
+    q:"She wrote a progress note after the ward round.",
+    good:"a progress note",
+    a:"She wrote a progress note after the ward round.",
+    why:"Верно: a относится к note, а progress здесь определение — дневниковая запись о динамике. Само progress — без a." },
+  { id:"res-many", w:"research", t:"judge", ok:false,
+    q:"Many researches have shown the benefit of stroke units.",
+    bad:"Many researches have", good:"Much research has",
+    a:"Much research has shown the benefit of stroke units.",
+    alt:"Many studies have shown the benefit of stroke units.",
+    why:"Research — без -s и без many. Либо much research has, либо близнец: many studies have." },
+  { id:"evid-lines", w:"evidence", t:"say",
+    q:"Несколько доказательств подтверждают эту гипотезу.",
+    good:"Several lines of evidence",
+    a:"Several lines of evidence support this hypothesis.",
+    alt:"Several findings support this hypothesis.",
+    why:"Several evidence сказать нельзя. В научном тексте — several lines of evidence или близнец: several findings." },
+  { id:"equip-failure", w:"equipment", t:"judge", ok:true,
+    q:"The delay was caused by an equipment failure.",
+    good:"an equipment failure",
+    a:"The delay was caused by an equipment failure.",
+    why:"Верно: an относится к failure, equipment здесь — определение. Само equipment — без an." },
+  { id:"adv-ama", w:"advice", t:"say",
+    q:"Пациент ушёл вопреки рекомендациям врачей.",
+    good:"against medical advice",
+    a:"The patient left against medical advice.",
+    why:"«Рекомендации» во множественном по-русски — одно advice по-английски. Устойчивое сочетание без артикля; в выписках его сокращают до AMA." },
+  { id:"equip-piece", w:"equipment", t:"say",
+    q:"Это очень дорогой аппарат.",
+    good:"a very expensive piece of equipment",
+    a:"This is a very expensive piece of equipment.",
+    alt:"This is a very expensive device.",
+    why:"«Один аппарат» — a piece of equipment, и прилагательное встаёт перед piece. Или близнец: a device, a machine." }
+];
+
+const WORDS = {
+  advice:"/ədˈvaɪs/", information:"/ˌɪnfəˈmeɪʃn/", news:"/njuːz/", evidence:"/ˈevɪdəns/",
+  progress:"/ˈprəʊɡres/", research:"/rɪˈsɜːtʃ/", equipment:"/ɪˈkwɪpmənt/", knowledge:"для сравнения"
+};
+const KIND = { fix:"Найди ошибку", say:"Скажи по-английски", judge:"Верно или ошибка?" };
+const HINT = {
+  fix:"Скажи правильный вариант вслух — потом открой ответ.",
+  say:"Сначала скажи вслух — потом открой ответ.",
+  judge:""
+};
+const ANCHOR = "Good news from the ward round: the patient is making steady progress, recent research provides strong evidence that the new equipment helps, and the family got clear information and practical advice.";
+
+const NEW_PER_SESSION = 12;
+const INTERVALS = [1, 3, 7, 16];          // дни
+const DAY = 86400000;
+const LS_STATE = "bez-a-an:state";
+const LS_SPEAK = "bez-a-an:autospeak";
+const LS_TAB = "bez-a-an:tab";
+
+let progress = {};      // id -> { step, due, ts }
+let queue = [];
+let index = 0;
+let flipped = false;
+let autoSpeak = true;
+let graded = 0;
+let lapsed = {};
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Без a/an"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+
+// По каждой карточке берём более свежую оценку
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function nextDueText(){
+  const dues = Object.values(progress).map(p => p && p.due).filter(Boolean);
+  if (!dues.length) return "";
+  const d = Math.round((dayStart(Math.min.apply(null, dues)) - dayStart(Date.now())) / DAY);
+  if (d <= 0) return "сегодня";
+  if (d === 1) return "завтра";
+  return "через " + d + " " + plural(d, "день", "дня", "дней");
+}
+
+function buildQueue(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = CARDS.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(fresh);
+  index = 0;
+  lapsed = {};
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя).
+// Страница полностью работает и без неё — на localStorage.
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (graded === 0 && !flipped && JSON.stringify(progress) !== before){ buildQueue(); render(); }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: звучит только правильный английский вариант, после ответа.
+// Основной путь — заранее записанные файлы голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства.
+const AUDIO_READY = true;
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!AUDIO_READY){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!AUDIO_READY || !player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// Запасной путь — синтез речи браузера: британский, лучший по качеству из установленных
+let voice = null;
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  let s;
+  if (n.includes("siri")) return -1;          // на iPhone голоса Siri видны в списке, но молчат
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){
+      const s = scoreVoice(v);
+      if (s > bestScore){ bestScore = s; best = v; }
+    }
+    voice = best;
+  }catch(e){ voice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-GB";
+      if (withVoice && voice) u.voice = voice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (voice){
+      // Выбранный голос не сработал — повторяем голосом по умолчанию
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+// ——— Отрисовка
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function showActions(which){
+  ["actFront", "actJudge", "actGrade", "actDone"].forEach(id => { $(id).hidden = id !== which; });
+}
+function appendMarked(node, text, sub){
+  const i = sub ? text.indexOf(sub) : -1;
+  if (i < 0){ node.textContent = text; return; }
+  node.append(text.slice(0, i), el("span", "good", sub), text.slice(i + sub.length));
+}
+
+function render(){
+  const card = queue[index];
+  const cardEl = $("card");
+  stopAudio();
+  flipped = false;
+  cardEl.classList.remove("flipped", "done");
+  $("back").hidden = true;
+  $("say").hidden = true;
+  cardEl.scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  $("kind").hidden = false;
+  $("kind").textContent = KIND[card.t];
+  const q = $("q");
+  q.textContent = card.q;
+  q.lang = card.t === "say" ? "ru" : "en";
+  const h = HINT[card.t];
+  $("hint").textContent = h;
+  $("hint").hidden = !h;
+  showActions(card.t === "judge" ? "actJudge" : "actFront");
+  $("status").textContent = "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  $("card").classList.add("done");
+  $("kind").hidden = true;
+  const left = unseenCount();
+  const q = $("q");
+  q.lang = "ru";
+  q.textContent = "На сегодня всё";
+  const next = nextDueText();
+  $("hint").textContent = left
+    ? "Новых карточек в запасе: " + left + ". Повторы вернутся сами — завтра, через 3, 7 и 16 дней."
+    : "Все карточки в работе." + (next ? " Следующий повтор — " + next + "." : "");
+  $("hint").hidden = false;
+  $("more").hidden = !left;
+  $("more").textContent = "Ещё " + Math.min(NEW_PER_SESSION, left) + " " + plural(Math.min(NEW_PER_SESSION, left), "новая", "новых", "новых");
+  showActions("actDone");
+  $("status").textContent = graded ? "Готово · оценено карточек: " + graded : "Готово";
+  setBar(1, 1);
+}
+
+function flip(choice){
+  const card = queue[index];
+  if (!card || flipped) return;
+  if (card.t === "judge" && choice === undefined) return;
+  flipped = true;
+  $("card").classList.add("flipped");
+  $("hint").hidden = true;
+
+  const fb = $("feedback");
+  if (card.t === "judge"){
+    const right = (choice === 1) === card.ok;
+    fb.textContent = "Твой ответ — «" + (choice === 1 ? "Верно" : "Ошибка") + "». " + (right ? "В точку." : "Мимо.");
+    fb.className = "feedback " + (right ? "is-right" : "is-wrong");
+    fb.hidden = false;
+  } else {
+    fb.hidden = true;
+  }
+
+  const v = $("verdict");
+  v.textContent = "";
+  const wrongFront = card.t === "fix" || (card.t === "judge" && !card.ok);
+  if (wrongFront){
+    const bad = el("s", "bad", card.bad); bad.lang = "en";
+    const good = el("span", "good", card.good); good.lang = "en";
+    const fixTo = el("span", "fix-to");
+    fixTo.append(el("span", "arr", "→"), good);
+    v.append(el("span", "v-tag no", "Ошибка"), bad, fixTo);
+    v.hidden = false;
+  } else if (card.t === "judge"){
+    v.append(el("span", "v-tag yes", "Верно"));
+    v.hidden = false;
+  } else {
+    v.hidden = true;
+  }
+
+  const ans = $("ans");
+  ans.textContent = "";
+  appendMarked(ans, card.a, card.good);
+
+  if (card.alt){ $("altText").textContent = card.alt; $("alt").hidden = false; }
+  else { $("alt").hidden = true; }
+  $("why").textContent = card.why;
+  $("wordchip").textContent = card.w + " · " + (WORDS[card.w] || "");
+
+  $("back").hidden = false;
+  $("say").hidden = false;
+  showActions("actGrade");
+  if (autoSpeak) playClip(card.id, card.a);
+}
+
+function grade(g){
+  const card = queue[index];
+  if (!card || !flipped) return;
+  const prev = progress[card.id];
+  const p = { step: prev ? prev.step : -1 };
+  if (g === 0){
+    p.step = 0;
+    lapsed[card.id] = true;
+    queue.push(card);                          // вернётся в этой же сессии
+  } else if (lapsed[card.id]){
+    p.step = 0;                                // сегодня ошибся — завтра ещё раз
+  } else if (g === 1){
+    p.step = Math.max(0, p.step);
+  } else {
+    p.step = p.step < 0 ? 1 : Math.min(INTERVALS.length - 1, p.step + 1);
+  }
+  p.due = dayStart(Date.now()) + INTERVALS[p.step] * DAY;
+  p.ts = Date.now();
+  progress[card.id] = p;
+  graded++;
+  saveLocal();
+  schedulePush();
+  index++;
+  render();
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => setTab("drill"));
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildQueue(); render(); });
+$("card").addEventListener("click", () => {
+  const c = queue[index];
+  if (c && c.t !== "judge") flip();
+});
+$("reveal").addEventListener("click", e => { e.stopPropagation(); flip(); });
+document.querySelectorAll("[data-judge]").forEach(b => {
+  b.addEventListener("click", () => flip(Number(b.dataset.judge)));
+});
+document.querySelectorAll("[data-grade]").forEach(b => {
+  b.addEventListener("click", () => grade(Number(b.dataset.grade)));
+});
+$("say").addEventListener("click", e => {
+  e.stopPropagation();
+  const c = queue[index];
+  if (c) playClip(c.id, c.a);
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+document.querySelectorAll("[data-say]").forEach(b => {
+  b.addEventListener("click", () => playClip("w-" + b.dataset.say, b.dataset.say, 0.85));
+});
+$("listen").addEventListener("click", () => playClip("anchor", ANCHOR, 0.88));
+
+let x0 = null, y0 = null;
+$("card").addEventListener("touchstart", e => {
+  const t = e.changedTouches[0]; x0 = t.clientX; y0 = t.clientY;
+}, { passive: true });
+$("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - x0, dy = t.clientY - y0;
+  x0 = y0 = null;
+  if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+  if (dx < 0 && index < queue.length - 1){ index++; render(); }
+  else if (dx > 0 && index > 0){ index--; render(); }
+}, { passive: true });
+
+// Клавиатура на компьютере: пробел — ответ; 1/2 — верно/ошибка; 1/2/3 — оценка
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  const c = queue[index];
+  if (!c) return;
+  if (!flipped){
+    if (c.t === "judge"){
+      if (e.key === "1") flip(1);
+      else if (e.key === "2") flip(0);
+    } else if (e.key === " " || e.key === "Enter"){
+      e.preventDefault(); flip();
+    }
+  } else if (e.key === "1" || e.key === "2" || e.key === "3"){
+    grade(Number(e.key) - 1);
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  buildQueue();
+  render();
+  const saved = lsGet(LS_TAB);
+  const started = Object.keys(progress).length > 0;
+  setTab(saved === "rule" || saved === "drill" ? saved : (started ? "drill" : "rule"));
+  connectCloud();
+}
+boot();
+</script>

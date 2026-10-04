@@ -1,0 +1,3686 @@
+<title>Неправильные глаголы</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("irreg",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button,input{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .q.short{font-size:calc(40px*var(--k));line-height:1.22}
+  .ib{display:inline-block}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Глаголы */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .sch{list-style:none;margin:0;padding:0}
+  .sch li{border-top:calc(1px*var(--k)) solid var(--line)}
+  .sch li:first-child{border-top:0}
+  .sch-b{width:100%;min-height:calc(56px*var(--k));display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;column-gap:calc(10px*var(--k));row-gap:calc(1px*var(--k));padding:calc(10px*var(--k)) 0;border:0;background:transparent;text-align:left;cursor:pointer}
+  .sch-k{font-size:calc(15px*var(--k));line-height:1.35;color:var(--soft)}
+  .sch-k b{font-weight:600;color:var(--text);white-space:nowrap}
+  .sch-n{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sch-ex{grid-column:1 / -1;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.3}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(17px*var(--k));line-height:1.45;color:var(--text)}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(19px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+
+  .srch{position:relative}
+  .srch input{width:100%;min-height:calc(52px*var(--k));padding:calc(10px*var(--k)) calc(14px*var(--k)) calc(10px*var(--k)) calc(44px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);color:var(--text);font-size:calc(18px*var(--k));-webkit-appearance:none;appearance:none}
+  .srch input::placeholder{color:var(--muted)}
+  .srch svg{position:absolute;left:calc(14px*var(--k));top:50%;width:calc(20px*var(--k));height:calc(20px*var(--k));transform:translateY(-50%);color:var(--muted);pointer-events:none}
+  .sr-row{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;margin-top:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(6px*var(--k)) calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:var(--surface)}
+  .sr-forms{margin:0;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.3}
+  .sr-ru{margin:calc(2px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.35;color:var(--muted)}
+  .sr-fam{min-height:calc(44px*var(--k));padding:0;border:0;background:transparent;color:var(--blue);font-size:calc(15px*var(--k));line-height:1.3;cursor:pointer;text-align:left}
+  .sr-none{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+
+  .hn{padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .hn:first-child{border-top:0}
+  .hn-k{margin:0;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35}
+  .hn-t{margin:calc(3px*var(--k)) 0 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .tp{padding:calc(6px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .tp:first-child{border-top:0}
+  .tp-r{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:calc(12px*var(--k));align-items:baseline;padding:calc(5px*var(--k)) 0}
+  .tp-f{margin:0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.3}
+  .tp-ru{margin:0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);scroll-margin-top:calc(6px*var(--k))}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .fam-play{align-self:flex-start;min-height:calc(48px*var(--k));display:inline-flex;align-items:center;gap:calc(10px*var(--k));padding:0 calc(18px*var(--k)) 0 calc(14px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--blue);background:transparent;color:var(--blue);font-size:calc(17px*var(--k));cursor:pointer}
+  .fam-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k));flex:0 0 calc(20px*var(--k))}
+  .fam-play[aria-pressed="true"]{background:var(--blue-soft)}
+  .fam-play .ic-stop{display:none}
+  .fam-play[aria-pressed="true"] .ic-stop{display:inline}
+  .fam-play[aria-pressed="true"] .ic-play{display:none}
+  .vt-wrap{margin-left:-44px}
+  .vt{width:100%;border-collapse:collapse}
+  .vt th{padding:0 calc(6px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.03em;line-height:1.25;text-align:left;vertical-align:bottom;color:var(--muted)}
+  .vt th b{display:block;font-size:calc(14px*var(--k))}
+  .vt th span{display:block;font-weight:400;letter-spacing:0}
+  .vt th.st{color:var(--blue)}
+  .vt th.pr{color:var(--accent)}
+  .vt td{padding:calc(6px*var(--k)) calc(6px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);vertical-align:middle;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .vt td small{display:block;margin-top:calc(2px*var(--k));font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .vt td.pl{width:calc(50px*var(--k));padding:calc(4px*var(--k)) 0 calc(4px*var(--k)) calc(4px*var(--k));text-align:right}
+  .vt tr.vn td{border-top:0;padding:0 calc(8px*var(--k)) calc(8px*var(--k));font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .vt tr.on td{background:var(--blue-soft)}
+  .vt tr.on td:first-child{box-shadow:inset calc(3px*var(--k)) 0 0 var(--blue)}
+  .vt-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:inline-grid;place-items:center;cursor:pointer}
+  .vt-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.tab .vt-wrap,body.wide .vt-wrap{margin-left:0}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:sticky;top:0}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Глаголы</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Вторая и третья форма</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать ещё раз">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Глаголы</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Irregular verbs</h1>
+      <p class="r-sub">Неправильные глаголы. Учи не по&nbsp;алфавиту, а&nbsp;<b>семьями</b>: глаголы, которые меняются одинаково, запоминаются вместе. Открой семью, <b>послушай</b> её и&nbsp;повтори вслух&nbsp;— ритм запомнится сам.</p>
+      <div class="algo">
+        <p class="algo-h">Четыре схемы</p>
+        <ol class="sch">
+          <li><button class="sch-b" type="button" data-g="aaa"><span class="sch-k"><b>A — A — A</b> · все три одинаковые</span><span class="sch-n">13 глаголов</span><span class="sch-ex" lang="en">cut — <span class="st">cut</span> — <span class="pr">cut</span></span></button></li>
+          <li><button class="sch-b" type="button" data-g="abb"><span class="sch-k"><b>A — B — B</b> · вторая = третья</span><span class="sch-n">52 глагола</span><span class="sch-ex" lang="en">buy — <span class="st">bought</span> — <span class="pr">bought</span></span></button></li>
+          <li><button class="sch-b" type="button" data-g="aba"><span class="sch-k"><b>A — B — A</b> · третья = первая</span><span class="sch-n">4 глагола</span><span class="sch-ex" lang="en">come — <span class="st">came</span> — <span class="pr">come</span></span></button></li>
+          <li><button class="sch-b" type="button" data-g="abc"><span class="sch-k"><b>A — B — C</b> · все три разные</span><span class="sch-n">47 глаголов</span><span class="sch-ex" lang="en">begin — <span class="st">began</span> — <span class="pr">begun</span></span></button></li>
+        </ol>
+        <p class="algo-m"><span class="st">2-я форма</span>&nbsp;— прошлое: <i lang="en">I <span class="st">saw</span> him yesterday.</i> <span class="pr">3-я</span>&nbsp;— после <i lang="en">have</i> и&nbsp;в&nbsp;пассиве: <i lang="en">I’ve <span class="pr">seen</span> · it was <span class="pr">done</span>.</i></p>
+        <p class="algo-note">После <i lang="en">did</i> и&nbsp;<i lang="en">didn’t</i>&nbsp;— снова первая: <i lang="en">Did you see? I didn’t go.</i></p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl"><label for="vsearch">Найти глагол</label></h2>
+      <div class="srch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+        <input id="vsearch" type="search" placeholder="bring или «приносить»" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+      </div>
+      <div id="sres" aria-live="polite"></div>
+      <h2 class="lbl">Семьи</h2>
+      <div class="topics" id="topics"></div>
+      <h2 class="lbl">Как угадать третью форму</h2>
+      <div class="mx-wrap">
+        <div class="hn"><p class="hn-k">Кончается на <span class="nw">-n</span>?</p><p class="hn-t">Чаще всего это первая + n: take → <span class="pr">taken</span>, give → <span class="pr">given</span>, know → <span class="pr">known</span>, see → <span class="pr">seen</span>.</p></div>
+        <div class="hn"><p class="hn-k">…или вторая + en</p><p class="hn-t">broke → <span class="pr">broken</span>, spoke → <span class="pr">spoken</span>, chose → <span class="pr">chosen</span>, forgot → <span class="pr">forgotten</span>.</p></div>
+        <div class="hn"><p class="hn-k">Короткий, на t или d?</p><p class="hn-t">Часто вообще не меняется: cut, put, hit, set, spread.</p></div>
+        <div class="hn"><p class="hn-k">Звук [ɔːt]</p><p class="hn-t">Пишется <span class="nw">-ought</span>: <span class="pr">bought</span>, <span class="pr">thought</span>, <span class="pr">brought</span>. Если в глаголе есть a — <span class="nw">-aught</span>: catch → <span class="pr">caught</span>, teach → <span class="pr">taught</span>.</p></div>
+        <div class="hn"><p class="hn-k">Долгое [iː]</p><p class="hn-t">Становится коротким [e]: keep → <span class="pr">kept</span>, feel → <span class="pr">felt</span>, meet → <span class="pr">met</span>, bleed → <span class="pr">bled</span>.</p></div>
+      </div>
+      <h2 class="lbl">Ловушки-пары</h2>
+      <div class="mx-wrap">
+        <div class="tp"><div class="tp-r"><p class="tp-f" lang="en">lie — <span class="st">lay</span> — <span class="pr">lain</span></p><p class="tp-ru">лежать, лечь</p></div><div class="tp-r"><p class="tp-f" lang="en">lay — <span class="st">laid</span> — <span class="pr">laid</span></p><p class="tp-ru">класть, положить</p></div><div class="tp-r"><p class="tp-f" lang="en">lie — <span class="st">lied</span> — <span class="pr">lied</span></p><p class="tp-ru">лгать</p></div></div>
+        <div class="tp"><div class="tp-r"><p class="tp-f" lang="en">rise — <span class="st">rose</span> — <span class="pr">risen</span></p><p class="tp-ru">подниматься (само)</p></div><div class="tp-r"><p class="tp-f" lang="en">raise — <span class="st">raised</span> — <span class="pr">raised</span></p><p class="tp-ru">поднимать (что-то)</p></div></div>
+        <div class="tp"><div class="tp-r"><p class="tp-f" lang="en">fall — <span class="st">fell</span> — <span class="pr">fallen</span></p><p class="tp-ru">падать</p></div><div class="tp-r"><p class="tp-f" lang="en">feel — <span class="st">felt</span> — <span class="pr">felt</span></p><p class="tp-ru">чувствовать</p></div></div>
+        <div class="tp"><div class="tp-r"><p class="tp-f" lang="en">find — <span class="st">found</span> — <span class="pr">found</span></p><p class="tp-ru">находить</p></div><div class="tp-r"><p class="tp-f" lang="en">found — <span class="st">founded</span> — <span class="pr">founded</span></p><p class="tp-ru">основывать</p></div></div>
+        <div class="tp"><div class="tp-r"><p class="tp-f" lang="en">sit — <span class="st">sat</span> — <span class="pr">sat</span></p><p class="tp-ru">сидеть</p></div><div class="tp-r"><p class="tp-f" lang="en">set — <span class="st">set</span> — <span class="pr">set</span></p><p class="tp-ru">ставить, устанавливать</p></div></div>
+        <div class="tp"><div class="tp-r"><p class="tp-f" lang="en">leave — <span class="st">left</span> — <span class="pr">left</span></p><p class="tp-ru">уходить, оставлять</p></div><div class="tp-r"><p class="tp-f" lang="en">live — <span class="st">lived</span> — <span class="pr">lived</span></p><p class="tp-ru">жить</p></div></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I have saw him.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I have seen him.</span><span class="err-note">после have — третья форма</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He has went home.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He has gone home.</span><span class="err-note">go — went — gone</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Did you saw the scan?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Did you see the scan?</span><span class="err-note">после did — первая форма</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The CT was did.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The CT was done.</span><span class="err-note">пассив: was + третья форма</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She has came.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She has come.</span><span class="err-note">come — came — come</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He lied down.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He lay down.</span><span class="err-note">лечь — lie — lay — lain</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">His pressure raised.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">His pressure rose.</span><span class="err-note">поднялось само — rise — rose</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I was borned in 1980.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I was born in 1980.</span><span class="err-note">родиться — be born</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Семьи и темы. В правилах: {…} — вторая форма (синий), _…_ — третья (оранжевый), [ ] — транскрипция.
+const MIXED_TOPIC = 21;
+const GROUPS = {"aaa": "A — A — A · не меняются", "abb": "A — B — B · вторая = третья", "aba": "A — B — A · третья = первая", "abc": "A — B — C · все три разные", "sent": "В предложениях"};
+const TOPICS = [
+ {
+  "n": 1,
+  "kind": "fam",
+  "group": "aaa",
+  "title": "Не меняются",
+  "exv": [
+   "cut",
+   "cut",
+   "cut"
+  ],
+  "rule": "Все три формы одинаковые. Почти все такие глаголы короткие и кончаются на t или d: put, cut, hit, set, spread. Read пишется так же, но звучит [riːd] — [red] — [red]."
+ },
+ {
+  "n": 2,
+  "kind": "fam",
+  "group": "abb",
+  "title": "-ought / -aught",
+  "exv": [
+   "buy",
+   "bought",
+   "bought"
+  ],
+  "rule": "Вторая и третья рифмуются: [ɔːt], как в слове «сорт». Пишется -ought: bought, brought, thought, fought, sought. Если в глаголе есть буква a — пишем -aught: catch → caught, teach → taught."
+ },
+ {
+  "n": 3,
+  "kind": "fam",
+  "group": "abb",
+  "title": "d → t",
+  "exv": [
+   "send",
+   "sent",
+   "sent"
+  ],
+  "rule": "Последняя d меняется на t: send → sent, spend → spent, build → built. На слух легко спутать, поэтому говори чётко: I sent it yesterday, а не I send."
+ },
+ {
+  "n": 4,
+  "kind": "fam",
+  "group": "abb",
+  "title": "Долгое [iː] → короткое [e]",
+  "exv": [
+   "keep",
+   "kept",
+   "kept"
+  ],
+  "rule": "Долгое [iː] становится коротким [e], часто с t на конце: keep → kept, sleep → slept, feel → felt, mean → meant. Если глагол кончается на d или t, просто укорачиваем: meet → met, lead → led, bleed → bled. Отдельно: leave → left, flee → fled."
+ },
+ {
+  "n": 5,
+  "kind": "fam",
+  "group": "abb",
+  "title": "+ d: said, made, heard",
+  "exv": [
+   "say",
+   "said",
+   "said"
+  ],
+  "rule": "Прибавляется d. У say, pay, lay пишется -aid: said, paid, laid (не sayed). Said звучит [sed], heard — [hɜːd], не как hear. Make → made, have → had."
+ },
+ {
+  "n": 6,
+  "kind": "fam",
+  "group": "abb",
+  "title": "-old · -ood · -ound",
+  "exv": [
+   "tell",
+   "told",
+   "told"
+  ],
+  "rule": "Три маленькие рифмы: tell, sell → told, sold; stand, understand → stood, understood; find → found."
+ },
+ {
+  "n": 7,
+  "kind": "fam",
+  "group": "abb",
+  "title": "Звук [ʌ]: won, stuck",
+  "exv": [
+   "win",
+   "won",
+   "won"
+  ],
+  "rule": "Во второй и третьей — короткий звук [ʌ], как в слове cup: won [wʌn], stuck, hung, dug, struck, spun."
+ },
+ {
+  "n": 8,
+  "kind": "fam",
+  "group": "abb",
+  "title": "Просто запомнить",
+  "exv": [
+   "get",
+   "got",
+   "got"
+  ],
+  "rule": "Общей рифмы нет — просто запомни пять пар: get — got, lose — lost, sit — sat, hold — held, shoot — shot. Вторая и третья у них одинаковые."
+ },
+ {
+  "n": 9,
+  "kind": "fam",
+  "group": "abb",
+  "title": "Британское -t",
+  "exv": [
+   "learn",
+   "learnt",
+   "learnt"
+  ],
+  "rule": "В британском английском можно и -t, и -ed: learnt или learned, burnt или burned. В американском почти всегда -ed. Оба варианта правильные — выбирай любой.",
+  "late": 0.25
+ },
+ {
+  "n": 10,
+  "kind": "fam",
+  "group": "aba",
+  "title": "Третья = первая",
+  "exv": [
+   "come",
+   "came",
+   "come"
+  ],
+  "rule": "Третья форма совпадает с первой: come — came — come, run — ran — run. Так же все глаголы с -come: become, overcome. Частая ошибка: has came — правильно has come."
+ },
+ {
+  "n": 11,
+  "kind": "fam",
+  "group": "abc",
+  "title": "i — a — u",
+  "exv": [
+   "begin",
+   "began",
+   "begun"
+  ],
+  "rule": "Гласная идёт как «и — а — у»: begin — began — begun, drink — drank — drunk. С a — прошлое (вчера began), с u — после have (have begun)."
+ },
+ {
+  "n": 12,
+  "kind": "fam",
+  "group": "abc",
+  "title": "-ew — -wn",
+  "exv": [
+   "know",
+   "knew",
+   "known"
+  ],
+  "rule": "Вторая — на -ew, третья — первая + n: know — knew — known, grow — grew — grown, draw — drew — drawn. Fly — flew — flown. Show стоит особняком: showed — shown."
+ },
+ {
+  "n": 13,
+  "kind": "fam",
+  "group": "abc",
+  "title": "Вторая + en",
+  "exv": [
+   "break",
+   "broke",
+   "broken"
+  ],
+  "rule": "Во второй — звук «о», а третья — это вторая + en: broke → broken, spoke → spoken, chose → chosen, woke → woken. У forget удваиваем t: forgot → forgotten."
+ },
+ {
+  "n": 14,
+  "kind": "fam",
+  "group": "abc",
+  "title": "[aɪ] — o — i + en",
+  "exv": [
+   "write",
+   "wrote",
+   "written"
+  ],
+  "rule": "Первая со звуком [aɪ], вторая с «о», третья — короткое i + en: write — wrote — written, drive — drove — driven, rise — rose — risen. У hide и bite вторая короче: hid, bit. После короткого i согласную удваиваем: written, ridden, hidden, bitten."
+ },
+ {
+  "n": 15,
+  "kind": "fam",
+  "group": "abc",
+  "title": "Первая + n",
+  "exv": [
+   "take",
+   "took",
+   "taken"
+  ],
+  "rule": "Третья = первая + (e)n: take → taken, give → given, eat → eaten, fall → fallen, see → seen. Вторую просто запоминаем: took, gave, ate, fell, saw."
+ },
+ {
+  "n": 16,
+  "kind": "fam",
+  "group": "abc",
+  "title": "-ear — -ore — -orn",
+  "exv": [
+   "wear",
+   "wore",
+   "worn"
+  ],
+  "rule": "-ear → -ore → -orn: wear — wore — worn, tear — tore — torn. Родиться — be born: I was born in 1985. Blood-borne — передающийся через кровь."
+ },
+ {
+  "n": 17,
+  "kind": "fam",
+  "group": "abc",
+  "title": "Особые",
+  "exv": [
+   "go",
+   "went",
+   "gone"
+  ],
+  "rule": "Их учим наизусть: be — was/were — been, go — went — gone (и undergo так же), do — did — done. Lie (лежать) — lay — lain: не путай с lay — laid (класть). Swell — swelled — swollen: a swollen ankle."
+ },
+ {
+  "n": 18,
+  "kind": "sent",
+  "group": "sent",
+  "title": "V2 или V3",
+  "sub": "I saw · I've seen",
+  "rule": "Вторая форма — прошлое без помощников: I {saw} him yesterday. Третья — после have (I've _seen_) и в пассиве после be (it was _done_). После did и didn't — снова первая: Did you see? I didn't go.",
+  "ex": [
+   {
+    "en": "I {saw} him an hour ago.",
+    "ru": "Я видел его час назад."
+   },
+   {
+    "en": "I've _seen_ this rash before.",
+    "ru": "Я уже видел такую сыпь."
+   },
+   {
+    "en": "The CT was _done_ at 10:40.",
+    "ru": "КТ сделали в 10:40."
+   },
+   {
+    "en": "Did you see the results?",
+    "ru": "Ты видел результаты? — после did первая форма."
+   }
+  ],
+  "late": 0.2
+ },
+ {
+  "n": 19,
+  "kind": "sent",
+  "group": "sent",
+  "title": "Ловушки-пары",
+  "sub": "lie · lay · rise · raise",
+  "rule": "Похожие глаголы с разным смыслом: lie — лежать, lay — класть; rise — подниматься самому, raise — поднимать что-то; fall — падать, feel — чувствовать; find — находить, found — основывать; sit — сидеть, set — ставить.",
+  "ex": [
+   {
+    "en": "He {lay} down on the couch.",
+    "ru": "Он прилёг на кушетку. — lie, лечь"
+   },
+   {
+    "en": "She {laid} the baby on the bed.",
+    "ru": "Она положила ребёнка на кровать. — lay, класть"
+   },
+   {
+    "en": "His temperature {rose} overnight.",
+    "ru": "Температура поднялась за ночь. — rise, сама"
+   },
+   {
+    "en": "We {raised} the head of the bed.",
+    "ru": "Мы подняли изголовье кровати. — raise, что-то"
+   }
+  ],
+  "late": 0.3
+ },
+ {
+  "n": 20,
+  "kind": "sent",
+  "group": "sent",
+  "title": "В отделении",
+  "sub": "lost · bled · swollen",
+  "rule": "Глаголы, без которых не обойтись на работе: lose blood, break a bone, bleed, swell, spread, undergo surgery, withdraw a drug.",
+  "ex": [
+   {
+    "en": "He has _lost_ a lot of blood.",
+    "ru": "Он потерял много крови."
+   },
+   {
+    "en": "She {broke} her hip in a fall.",
+    "ru": "Она сломала шейку бедра при падении."
+   },
+   {
+    "en": "He has _undergone_ three operations.",
+    "ru": "Он перенёс три операции."
+   },
+   {
+    "en": "The drug was _withdrawn_ in 2004.",
+    "ru": "Препарат отозвали в 2004 году."
+   }
+  ],
+  "late": 0.25
+ },
+ {
+  "n": 21,
+  "kind": "sent",
+  "group": "sent",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех семей и тем: формы и предложения вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Глаголы: семья (t), три формы, перевод, заметка, текст для озвучки.
+const VERBS = [{"t": 1, "v": "put", "v2": "put", "v3": "put", "ru": "класть, ставить", "say": "put, put, put."},
+ {"t": 1, "v": "cut", "v2": "cut", "v3": "cut", "ru": "резать", "say": "cut, cut, cut."},
+ {"t": 1, "v": "let", "v2": "let", "v3": "let", "ru": "позволять", "say": "let, let, let."},
+ {"t": 1, "v": "set", "v2": "set", "v3": "set", "ru": "ставить, устанавливать", "note": "set the alarm — поставить будильник", "say": "set, set, set."},
+ {"t": 1, "v": "hit", "v2": "hit", "v3": "hit", "ru": "ударять", "say": "hit, hit, hit."},
+ {"t": 1, "v": "hurt", "v2": "hurt", "v3": "hurt", "ru": "ранить; болеть", "note": "My back hurts — болит спина", "say": "hurt, hurt, hurt."},
+ {"t": 1, "v": "cost", "v2": "cost", "v3": "cost", "ru": "стоить", "note": "costed — только «рассчитали стоимость»", "say": "cost, cost, cost."},
+ {"t": 1, "v": "shut", "v2": "shut", "v3": "shut", "ru": "закрывать", "say": "shut, shut, shut."},
+ {"t": 1, "v": "spread", "v2": "spread", "v3": "spread", "ru": "распространяться", "say": "spread, spread, spread."},
+ {"t": 1, "v": "read", "v2": "read", "v3": "read", "ru": "читать", "note": "звучит [riːd] — [red] — [red]", "say": "reed, red, red."},
+ {"t": 1, "v": "split", "v2": "split", "v3": "split", "ru": "раскалывать, делить", "say": "split, split, split."},
+ {"t": 1, "v": "burst", "v2": "burst", "v3": "burst", "ru": "лопаться, разрываться", "say": "burst, burst, burst."},
+ {"t": 1, "v": "upset", "v2": "upset", "v3": "upset", "ru": "расстраивать", "say": "upset, upset, upset."},
+ {"t": 2, "v": "buy", "v2": "bought", "v3": "bought", "ru": "покупать", "say": "buy, bought, bought."},
+ {"t": 2, "v": "bring", "v2": "brought", "v3": "brought", "ru": "приносить", "say": "bring, brought, brought."},
+ {"t": 2, "v": "think", "v2": "thought", "v3": "thought", "ru": "думать", "say": "think, thought, thought."},
+ {"t": 2, "v": "fight", "v2": "fought", "v3": "fought", "ru": "бороться, драться", "say": "fight, fought, fought."},
+ {"t": 2, "v": "seek", "v2": "sought", "v3": "sought", "ru": "искать", "note": "seek medical help — обратиться к врачу", "say": "seek, sought, sought."},
+ {"t": 2, "v": "catch", "v2": "caught", "v3": "caught", "ru": "ловить; подхватить", "note": "catch a cold — простудиться", "say": "catch, caught, caught."},
+ {"t": 2, "v": "teach", "v2": "taught", "v3": "taught", "ru": "учить, преподавать", "say": "teach, taught, taught."},
+ {"t": 3, "v": "send", "v2": "sent", "v3": "sent", "ru": "отправлять", "say": "send, sent, sent."},
+ {"t": 3, "v": "spend", "v2": "spent", "v3": "spent", "ru": "тратить; проводить (время)", "say": "spend, spent, spent."},
+ {"t": 3, "v": "build", "v2": "built", "v3": "built", "ru": "строить", "say": "build, built, built."},
+ {"t": 3, "v": "lend", "v2": "lent", "v3": "lent", "ru": "давать взаймы", "say": "lend, lent, lent."},
+ {"t": 3, "v": "bend", "v2": "bent", "v3": "bent", "ru": "сгибать", "note": "bend your knee — согните колено", "say": "bend, bent, bent."},
+ {"t": 4, "v": "feel", "v2": "felt", "v3": "felt", "ru": "чувствовать", "say": "feel, felt, felt."},
+ {"t": 4, "v": "keep", "v2": "kept", "v3": "kept", "ru": "хранить; продолжать", "say": "keep, kept, kept."},
+ {"t": 4, "v": "sleep", "v2": "slept", "v3": "slept", "ru": "спать", "say": "sleep, slept, slept."},
+ {"t": 4, "v": "meet", "v2": "met", "v3": "met", "ru": "встречать", "say": "meet, met, met."},
+ {"t": 4, "v": "leave", "v2": "left", "v3": "left", "ru": "уходить; оставлять", "say": "leave, left, left."},
+ {"t": 4, "v": "mean", "v2": "meant", "v3": "meant", "ru": "значить; иметь в виду", "note": "meant звучит [ment]", "say": "mean, meant, meant."},
+ {"t": 4, "v": "lead", "v2": "led", "v3": "led", "ru": "вести; приводить к", "note": "lead to — приводить к", "say": "leed, led, led."},
+ {"t": 4, "v": "feed", "v2": "fed", "v3": "fed", "ru": "кормить", "note": "tube feeding — кормление через зонд", "say": "feed, fed, fed."},
+ {"t": 4, "v": "bleed", "v2": "bled", "v3": "bled", "ru": "кровоточить", "say": "bleed, bled, bled."},
+ {"t": 4, "v": "deal", "v2": "dealt", "v3": "dealt", "ru": "иметь дело с", "note": "deal with — справляться с; dealt [delt]", "say": "deal, dealt, dealt."},
+ {"t": 4, "v": "sweep", "v2": "swept", "v3": "swept", "ru": "подметать", "say": "sweep, swept, swept."},
+ {"t": 4, "v": "flee", "v2": "fled", "v3": "fled", "ru": "бежать, спасаться", "say": "flee, fled, fled."},
+ {"t": 5, "v": "say", "v2": "said", "v3": "said", "ru": "сказать", "note": "said звучит [sed]", "say": "say, said, said."},
+ {"t": 5, "v": "pay", "v2": "paid", "v3": "paid", "ru": "платить", "say": "pay, paid, paid."},
+ {"t": 5, "v": "make", "v2": "made", "v3": "made", "ru": "делать", "say": "make, made, made."},
+ {"t": 5, "v": "have", "v2": "had", "v3": "had", "ru": "иметь", "say": "have, had, had."},
+ {"t": 5, "v": "hear", "v2": "heard", "v3": "heard", "ru": "слышать", "note": "heard звучит [hɜːd]", "say": "hear, heard, heard."},
+ {"t": 5, "v": "lay", "v2": "laid", "v3": "laid", "ru": "класть, положить", "note": "не путай с lie — lay — lain (лежать)", "say": "lay, laid, laid."},
+ {"t": 6, "v": "tell", "v2": "told", "v3": "told", "ru": "сказать (кому-то), рассказать", "say": "tell, told, told."},
+ {"t": 6, "v": "sell", "v2": "sold", "v3": "sold", "ru": "продавать", "say": "sell, sold, sold."},
+ {"t": 6, "v": "stand", "v2": "stood", "v3": "stood", "ru": "стоять", "say": "stand, stood, stood."},
+ {"t": 6, "v": "understand", "v2": "understood", "v3": "understood", "ru": "понимать", "say": "understand, understood, understood."},
+ {"t": 6, "v": "find", "v2": "found", "v3": "found", "ru": "находить", "note": "founded — от found (основывать)", "say": "find, found, found."},
+ {"t": 7, "v": "win", "v2": "won", "v3": "won", "ru": "выигрывать", "note": "won звучит [wʌn]", "say": "win, won, won."},
+ {"t": 7, "v": "stick", "v2": "stuck", "v3": "stuck", "ru": "приклеивать; застревать", "say": "stick, stuck, stuck."},
+ {"t": 7, "v": "hang", "v2": "hung", "v3": "hung", "ru": "вешать, висеть", "note": "hanged — только «казнили через повешение»", "say": "hang, hung, hung.", "alt": ["hanged"]},
+ {"t": 7, "v": "dig", "v2": "dug", "v3": "dug", "ru": "копать", "say": "dig, dug, dug."},
+ {"t": 7, "v": "strike", "v2": "struck", "v3": "struck", "ru": "ударять, поражать", "note": "be struck by a car — быть сбитым машиной", "say": "strike, struck, struck."},
+ {"t": 7, "v": "spin", "v2": "spun", "v3": "spun", "ru": "вращать(ся)", "note": "my head is spinning — голова кружится", "say": "spin, spun, spun."},
+ {"t": 8, "v": "get", "v2": "got", "v3": "got", "ru": "получать; становиться", "note": "в американском: got — gotten", "say": "get, got, got.", "alt": ["gotten"]},
+ {"t": 8, "v": "lose", "v2": "lost", "v3": "lost", "ru": "терять", "note": "lose weight — худеть", "say": "lose, lost, lost."},
+ {"t": 8, "v": "sit", "v2": "sat", "v3": "sat", "ru": "сидеть", "say": "sit, sat, sat."},
+ {"t": 8, "v": "hold", "v2": "held", "v3": "held", "ru": "держать; проводить", "note": "hold a meeting — провести совещание", "say": "hold, held, held."},
+ {"t": 8, "v": "shoot", "v2": "shot", "v3": "shot", "ru": "стрелять", "say": "shoot, shot, shot."},
+ {"t": 9, "v": "learn", "v2": "learnt", "v3": "learnt", "ru": "учить, узнавать", "note": "или learned — learned", "say": "learn, learnt, learnt.", "alt": ["learned"]},
+ {"t": 9, "v": "burn", "v2": "burnt", "v3": "burnt", "ru": "жечь, обжечь", "note": "или burned — burned", "say": "burn, burnt, burnt.", "alt": ["burned"]},
+ {"t": 9, "v": "dream", "v2": "dreamt", "v3": "dreamt", "ru": "видеть сон; мечтать", "note": "или dreamed; dreamt звучит [dremt]", "say": "dream, dreamt, dreamt.", "alt": ["dreamed"]},
+ {"t": 9, "v": "smell", "v2": "smelt", "v3": "smelt", "ru": "пахнуть; нюхать", "note": "или smelled — smelled", "say": "smell, smelt, smelt.", "alt": ["smelled"]},
+ {"t": 9, "v": "spell", "v2": "spelt", "v3": "spelt", "ru": "писать по буквам", "note": "или spelled — spelled", "say": "spell, spelt, spelt.", "alt": ["spelled"]},
+ {"t": 9, "v": "spill", "v2": "spilt", "v3": "spilt", "ru": "проливать", "note": "или spilled — spilled", "say": "spill, spilt, spilt.", "alt": ["spilled"]},
+ {"t": 10, "v": "come", "v2": "came", "v3": "come", "ru": "приходить", "say": "come, came, come."},
+ {"t": 10, "v": "become", "v2": "became", "v3": "become", "ru": "становиться", "say": "become, became, become."},
+ {"t": 10, "v": "run", "v2": "ran", "v3": "run", "ru": "бежать; руководить", "note": "run a clinic — руководить клиникой", "say": "run, ran, run."},
+ {"t": 10, "v": "overcome", "v2": "overcame", "v3": "overcome", "ru": "преодолевать", "say": "overcome, overcame, overcome."},
+ {"t": 11, "v": "begin", "v2": "began", "v3": "begun", "ru": "начинать", "say": "begin, began, begun."},
+ {"t": 11, "v": "drink", "v2": "drank", "v3": "drunk", "ru": "пить", "say": "drink, drank, drunk."},
+ {"t": 11, "v": "ring", "v2": "rang", "v3": "rung", "ru": "звонить", "say": "ring, rang, rung."},
+ {"t": 11, "v": "sing", "v2": "sang", "v3": "sung", "ru": "петь", "say": "sing, sang, sung."},
+ {"t": 11, "v": "sink", "v2": "sank", "v3": "sunk", "ru": "тонуть", "say": "sink, sank, sunk."},
+ {"t": 11, "v": "swim", "v2": "swam", "v3": "swum", "ru": "плавать", "say": "swim, swam, swum."},
+ {"t": 11, "v": "shrink", "v2": "shrank", "v3": "shrunk", "ru": "сжиматься, уменьшаться", "note": "the tumour has shrunk — опухоль уменьшилась", "say": "shrink, shrank, shrunk."},
+ {"t": 12, "v": "know", "v2": "knew", "v3": "known", "ru": "знать", "say": "know, knew, known."},
+ {"t": 12, "v": "grow", "v2": "grew", "v3": "grown", "ru": "расти", "say": "grow, grew, grown."},
+ {"t": 12, "v": "throw", "v2": "threw", "v3": "thrown", "ru": "бросать", "say": "throw, threw, thrown."},
+ {"t": 12, "v": "blow", "v2": "blew", "v3": "blown", "ru": "дуть", "note": "blow your nose — высморкаться", "say": "blow, blew, blown."},
+ {"t": 12, "v": "fly", "v2": "flew", "v3": "flown", "ru": "летать", "say": "fly, flew, flown."},
+ {"t": 12, "v": "draw", "v2": "drew", "v3": "drawn", "ru": "рисовать; брать (кровь)", "note": "draw blood — взять кровь", "say": "draw, drew, drawn."},
+ {"t": 12, "v": "withdraw", "v2": "withdrew", "v3": "withdrawn", "ru": "отзывать, отменять", "note": "the drug was withdrawn — препарат отозвали", "say": "withdraw, withdrew, withdrawn."},
+ {"t": 12, "v": "show", "v2": "showed", "v3": "shown", "ru": "показывать", "note": "можно и showed — showed, но shown обычнее", "say": "show, showed, shown."},
+ {"t": 13, "v": "break", "v2": "broke", "v3": "broken", "ru": "ломать", "say": "break, broke, broken."},
+ {"t": 13, "v": "speak", "v2": "spoke", "v3": "spoken", "ru": "говорить", "say": "speak, spoke, spoken."},
+ {"t": 13, "v": "choose", "v2": "chose", "v3": "chosen", "ru": "выбирать", "note": "chose [tʃəʊz] — с одной o", "say": "choose, chose, chosen."},
+ {"t": 13, "v": "forget", "v2": "forgot", "v3": "forgotten", "ru": "забывать", "say": "forget, forgot, forgotten."},
+ {"t": 13, "v": "wake", "v2": "woke", "v3": "woken", "ru": "будить; просыпаться", "say": "wake, woke, woken."},
+ {"t": 13, "v": "steal", "v2": "stole", "v3": "stolen", "ru": "красть", "say": "steal, stole, stolen."},
+ {"t": 13, "v": "freeze", "v2": "froze", "v3": "frozen", "ru": "замерзать, замораживать", "note": "frozen shoulder — «замороженное» плечо", "say": "freeze, froze, frozen."},
+ {"t": 14, "v": "write", "v2": "wrote", "v3": "written", "ru": "писать", "say": "write, wrote, written."},
+ {"t": 14, "v": "drive", "v2": "drove", "v3": "driven", "ru": "водить (машину)", "say": "drive, drove, driven."},
+ {"t": 14, "v": "ride", "v2": "rode", "v3": "ridden", "ru": "ездить (верхом, на велосипеде)", "say": "ride, rode, ridden."},
+ {"t": 14, "v": "rise", "v2": "rose", "v3": "risen", "ru": "подниматься (само)", "note": "raise — raised — поднимать что-то", "say": "rise, rose, risen."},
+ {"t": 14, "v": "arise", "v2": "arose", "v3": "arisen", "ru": "возникать", "note": "complications arose — возникли осложнения", "say": "arise, arose, arisen."},
+ {"t": 14, "v": "hide", "v2": "hid", "v3": "hidden", "ru": "прятать", "say": "hide, hid, hidden."},
+ {"t": 14, "v": "bite", "v2": "bit", "v3": "bitten", "ru": "кусать", "say": "bite, bit, bitten."},
+ {"t": 15, "v": "take", "v2": "took", "v3": "taken", "ru": "брать", "say": "take, took, taken."},
+ {"t": 15, "v": "give", "v2": "gave", "v3": "given", "ru": "давать", "say": "give, gave, given."},
+ {"t": 15, "v": "see", "v2": "saw", "v3": "seen", "ru": "видеть", "say": "see, saw, seen."},
+ {"t": 15, "v": "eat", "v2": "ate", "v3": "eaten", "ru": "есть", "note": "ate звучит [et] или [eɪt]", "say": "eat, ate, eaten."},
+ {"t": 15, "v": "fall", "v2": "fell", "v3": "fallen", "ru": "падать", "say": "fall, fell, fallen."},
+ {"t": 15, "v": "shake", "v2": "shook", "v3": "shaken", "ru": "трясти", "say": "shake, shook, shaken."},
+ {"t": 15, "v": "forgive", "v2": "forgave", "v3": "forgiven", "ru": "прощать", "say": "forgive, forgave, forgiven."},
+ {"t": 15, "v": "mistake", "v2": "mistook", "v3": "mistaken", "ru": "принять за (ошибочно)", "note": "be mistaken — ошибаться", "say": "mistake, mistook, mistaken."},
+ {"t": 16, "v": "wear", "v2": "wore", "v3": "worn", "ru": "носить (одежду)", "say": "wear, wore, worn."},
+ {"t": 16, "v": "tear", "v2": "tore", "v3": "torn", "ru": "рвать", "note": "a torn ligament — разрыв связки", "say": "tare, tore, torn."},
+ {"t": 16, "v": "swear", "v2": "swore", "v3": "sworn", "ru": "клясться; ругаться", "say": "swear, swore, sworn."},
+ {"t": 16, "v": "bear", "v2": "bore", "v3": "borne", "ru": "выносить, терпеть", "note": "be born — родиться; blood-borne — передаётся с кровью", "say": "bear, bore, borne."},
+ {"t": 17, "v": "be", "v2": "was / were", "v3": "been", "ru": "быть", "note": "was — I, he, she, it · were — you, we, they", "say": "be, was, were, been."},
+ {"t": 17, "v": "go", "v2": "went", "v3": "gone", "ru": "идти, ехать", "note": "been to — был и вернулся; gone — ушёл", "say": "go, went, gone."},
+ {"t": 17, "v": "do", "v2": "did", "v3": "done", "ru": "делать", "say": "do, did, done."},
+ {"t": 17, "v": "lie", "v2": "lay", "v3": "lain", "ru": "лежать", "note": "lie — lied — lied: лгать", "say": "lie, lay, lain."},
+ {"t": 17, "v": "swell", "v2": "swelled", "v3": "swollen", "ru": "опухать", "note": "a swollen ankle — опухшая лодыжка", "say": "swell, swelled, swollen.", "alt": ["swelled"]},
+ {"t": 17, "v": "undergo", "v2": "underwent", "v3": "undergone", "ru": "перенести (операцию)", "note": "undergo surgery — перенести операцию", "say": "undergo, underwent, undergone."}];
+
+// ——— «Вся семья вслух»: секунда, с которой звучит каждый глагол семьи.
+const FAM_MARKS = {"1": [0.15, 2.57, 4.82, 7.35, 9.75, 11.91, 14.49, 17.12, 19.54, 22.13, 24.55, 27.19, 29.88], "2": [0.15, 2.62, 5.19, 7.55, 9.9, 12.37, 15.18], "3": [0.15, 2.73, 5.41, 8.02, 10.61], "4": [0.15, 2.58, 5.18, 7.99, 10.7, 13.4, 15.97, 18.41, 20.74, 23.24, 25.95, 28.66], "5": [0.15, 2.55, 5.16, 7.87, 10.11, 12.62], "6": [0.15, 2.81, 5.34, 7.95, 11.11], "7": [0.15, 2.4, 4.98, 7.34, 9.62, 12.3], "8": [0.15, 2.56, 5.43, 8.1, 10.46], "9": [0.15, 2.68, 5.45, 8.22, 11.04, 13.77], "10": [0.15, 2.82, 5.69, 8.2], "11": [0.15, 2.89, 5.58, 8.06, 10.61, 13.09, 15.91], "12": [0.15, 2.74, 5.31, 7.73, 10.33, 12.91, 15.73, 18.97], "13": [0.15, 2.96, 5.76, 8.9, 11.9, 14.66, 17.49], "14": [0.15, 2.83, 5.52, 8.27, 10.77, 13.6, 15.75], "15": [0.15, 2.69, 5.42, 8.1, 10.54, 13.01, 15.65, 18.62], "16": [0.15, 2.52, 4.96, 7.65], "17": [0.15, 2.99, 5.5, 7.62, 10.2, 13.06]};
+
+// ——— Карточки. opts — варианты, a — правильный, ru — подсказка, say — текст для озвучки.
+const CARDS = [
+ {
+  "id": "v-put",
+  "t": 1,
+  "form": 1,
+  "q": "put — ___",
+  "ru": "класть, ставить",
+  "opts": [
+   "put — put",
+   "putted — putted",
+   "put — putted"
+  ],
+  "a": "put — put",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "put, put, put."
+ },
+ {
+  "id": "v-cut",
+  "t": 1,
+  "form": 1,
+  "q": "cut — ___",
+  "ru": "резать",
+  "opts": [
+   "cut — cut",
+   "cutted — cutted",
+   "cut — cutted"
+  ],
+  "a": "cut — cut",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "cut, cut, cut."
+ },
+ {
+  "id": "v-let",
+  "t": 1,
+  "form": 1,
+  "q": "let — ___",
+  "ru": "позволять",
+  "opts": [
+   "let — let",
+   "letted — letted",
+   "let — letted"
+  ],
+  "a": "let — let",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "let, let, let."
+ },
+ {
+  "id": "v-set",
+  "t": 1,
+  "form": 1,
+  "q": "set — ___",
+  "ru": "ставить, устанавливать",
+  "opts": [
+   "set — set",
+   "sat — sat",
+   "setted — setted"
+  ],
+  "a": "set — set",
+  "why": "Не меняется: все три формы одинаковые. Sat — это sit (сидеть).",
+  "say": "set, set, set."
+ },
+ {
+  "id": "v-hit",
+  "t": 1,
+  "form": 1,
+  "q": "hit — ___",
+  "ru": "ударять",
+  "opts": [
+   "hit — hit",
+   "hitted — hitted",
+   "hit — hitted"
+  ],
+  "a": "hit — hit",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "hit, hit, hit."
+ },
+ {
+  "id": "v-hurt",
+  "t": 1,
+  "form": 1,
+  "q": "hurt — ___",
+  "ru": "ранить; болеть",
+  "opts": [
+   "hurt — hurt",
+   "hurted — hurted",
+   "hurt — hurted"
+  ],
+  "a": "hurt — hurt",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "hurt, hurt, hurt."
+ },
+ {
+  "id": "v-cost",
+  "t": 1,
+  "form": 1,
+  "q": "cost — ___",
+  "ru": "стоить",
+  "opts": [
+   "cost — cost",
+   "costed — costed",
+   "cost — costed"
+  ],
+  "a": "cost — cost",
+  "why": "Не меняется: все три формы одинаковые. Costed — только в смысле «рассчитали стоимость».",
+  "say": "cost, cost, cost."
+ },
+ {
+  "id": "v-shut",
+  "t": 1,
+  "form": 1,
+  "q": "shut — ___",
+  "ru": "закрывать",
+  "opts": [
+   "shut — shut",
+   "shutted — shutted",
+   "shut — shutted"
+  ],
+  "a": "shut — shut",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "shut, shut, shut."
+ },
+ {
+  "id": "v-spread",
+  "t": 1,
+  "form": 1,
+  "q": "spread — ___",
+  "ru": "распространяться",
+  "opts": [
+   "spread — spread",
+   "spreaded — spreaded",
+   "spred — spred"
+  ],
+  "a": "spread — spread",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "spread, spread, spread."
+ },
+ {
+  "id": "v-read",
+  "t": 1,
+  "form": 1,
+  "q": "read — ___",
+  "ru": "читать",
+  "opts": [
+   "read — read",
+   "readed — readed",
+   "red — red"
+  ],
+  "a": "read — read",
+  "why": "Не меняется: все три формы одинаковые. Пишется одинаково, но звучит [riːd] — [red] — [red].",
+  "say": "reed, red, red."
+ },
+ {
+  "id": "v-split",
+  "t": 1,
+  "form": 1,
+  "q": "split — ___",
+  "ru": "раскалывать, делить",
+  "opts": [
+   "split — split",
+   "splitted — splitted",
+   "split — splitted"
+  ],
+  "a": "split — split",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "split, split, split."
+ },
+ {
+  "id": "v-burst",
+  "t": 1,
+  "form": 1,
+  "q": "burst — ___",
+  "ru": "лопаться, разрываться",
+  "opts": [
+   "burst — burst",
+   "bursted — bursted",
+   "burst — bursted"
+  ],
+  "a": "burst — burst",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "burst, burst, burst."
+ },
+ {
+  "id": "v-upset",
+  "t": 1,
+  "form": 1,
+  "q": "upset — ___",
+  "ru": "расстраивать",
+  "opts": [
+   "upset — upset",
+   "upsetted — upsetted",
+   "upset — upsetted"
+  ],
+  "a": "upset — upset",
+  "why": "Не меняется: все три формы одинаковые.",
+  "say": "upset, upset, upset."
+ },
+ {
+  "id": "v-buy",
+  "t": 2,
+  "form": 1,
+  "q": "buy — ___",
+  "ru": "покупать",
+  "opts": [
+   "bought — bought",
+   "brought — brought",
+   "buyed — buyed"
+  ],
+  "a": "bought — bought",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. Не путай с bring — brought (приносить).",
+  "say": "buy, bought, bought."
+ },
+ {
+  "id": "v-bring",
+  "t": 2,
+  "form": 1,
+  "q": "bring — ___",
+  "ru": "приносить",
+  "opts": [
+   "brought — brought",
+   "bought — bought",
+   "brang — brung"
+  ],
+  "a": "brought — brought",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. Bought — это buy (покупать).",
+  "say": "bring, brought, brought."
+ },
+ {
+  "id": "v-think",
+  "t": 2,
+  "form": 1,
+  "q": "think — ___",
+  "ru": "думать",
+  "opts": [
+   "thought — thought",
+   "taught — taught",
+   "thinked — thinked"
+  ],
+  "a": "thought — thought",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. Taught — это teach (учить).",
+  "say": "think, thought, thought."
+ },
+ {
+  "id": "v-fight",
+  "t": 2,
+  "form": 1,
+  "q": "fight — ___",
+  "ru": "бороться, драться",
+  "opts": [
+   "fought — fought",
+   "faught — faught",
+   "fighted — fighted"
+  ],
+  "a": "fought — fought",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. В fight нет буквы a — значит, -ought.",
+  "say": "fight, fought, fought."
+ },
+ {
+  "id": "v-seek",
+  "t": 2,
+  "form": 1,
+  "q": "seek — ___",
+  "ru": "искать",
+  "opts": [
+   "sought — sought",
+   "saught — saught",
+   "seeked — seeked"
+  ],
+  "a": "sought — sought",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. В seek нет буквы a — значит, -ought.",
+  "say": "seek, sought, sought."
+ },
+ {
+  "id": "v-catch",
+  "t": 2,
+  "form": 1,
+  "q": "catch — ___",
+  "ru": "ловить; подхватить",
+  "opts": [
+   "caught — caught",
+   "cought — cought",
+   "catched — catched"
+  ],
+  "a": "caught — caught",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. В catch есть a — значит, -aught.",
+  "say": "catch, caught, caught."
+ },
+ {
+  "id": "v-teach",
+  "t": 2,
+  "form": 1,
+  "q": "teach — ___",
+  "ru": "учить, преподавать",
+  "opts": [
+   "taught — taught",
+   "thought — thought",
+   "teached — teached"
+  ],
+  "a": "taught — taught",
+  "why": "Звук [ɔːt]: bought, brought, thought, fought, sought; если в глаголе есть a — caught, taught. Thought — это think (думать).",
+  "say": "teach, taught, taught."
+ },
+ {
+  "id": "v-send",
+  "t": 3,
+  "form": 1,
+  "q": "send — ___",
+  "ru": "отправлять",
+  "opts": [
+   "sent — sent",
+   "send — sent",
+   "sended — sended"
+  ],
+  "a": "sent — sent",
+  "why": "d меняется на t: sent, spent, built, lent, bent.",
+  "say": "send, sent, sent."
+ },
+ {
+  "id": "v-spend",
+  "t": 3,
+  "form": 1,
+  "q": "spend — ___",
+  "ru": "тратить; проводить (время)",
+  "opts": [
+   "spent — spent",
+   "spend — spent",
+   "spended — spended"
+  ],
+  "a": "spent — spent",
+  "why": "d меняется на t: sent, spent, built, lent, bent.",
+  "say": "spend, spent, spent."
+ },
+ {
+  "id": "v-build",
+  "t": 3,
+  "form": 1,
+  "q": "build — ___",
+  "ru": "строить",
+  "opts": [
+   "built — built",
+   "build — built",
+   "builded — builded"
+  ],
+  "a": "built — built",
+  "why": "d меняется на t: sent, spent, built, lent, bent.",
+  "say": "build, built, built."
+ },
+ {
+  "id": "v-lend",
+  "t": 3,
+  "form": 1,
+  "q": "lend — ___",
+  "ru": "давать взаймы",
+  "opts": [
+   "lent — lent",
+   "lend — lent",
+   "lended — lended"
+  ],
+  "a": "lent — lent",
+  "why": "d меняется на t: sent, spent, built, lent, bent.",
+  "say": "lend, lent, lent."
+ },
+ {
+  "id": "v-bend",
+  "t": 3,
+  "form": 1,
+  "q": "bend — ___",
+  "ru": "сгибать",
+  "opts": [
+   "bent — bent",
+   "bend — bent",
+   "bended — bended"
+  ],
+  "a": "bent — bent",
+  "why": "d меняется на t: sent, spent, built, lent, bent.",
+  "say": "bend, bent, bent."
+ },
+ {
+  "id": "v-feel",
+  "t": 4,
+  "form": 1,
+  "q": "feel — ___",
+  "ru": "чувствовать",
+  "opts": [
+   "felt — felt",
+   "fell — fallen",
+   "feeled — feeled"
+  ],
+  "a": "felt — felt",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled. Fell — fallen — это fall (падать).",
+  "say": "feel, felt, felt."
+ },
+ {
+  "id": "v-keep",
+  "t": 4,
+  "form": 1,
+  "q": "keep — ___",
+  "ru": "хранить; продолжать",
+  "opts": [
+   "kept — kept",
+   "keept — keept",
+   "keeped — keeped"
+  ],
+  "a": "kept — kept",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "keep, kept, kept."
+ },
+ {
+  "id": "v-sleep",
+  "t": 4,
+  "form": 1,
+  "q": "sleep — ___",
+  "ru": "спать",
+  "opts": [
+   "slept — slept",
+   "sleept — sleept",
+   "sleeped — sleeped"
+  ],
+  "a": "slept — slept",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "sleep, slept, slept."
+ },
+ {
+  "id": "v-meet",
+  "t": 4,
+  "form": 1,
+  "q": "meet — ___",
+  "ru": "встречать",
+  "opts": [
+   "met — met",
+   "meeted — meeted",
+   "met — meeted"
+  ],
+  "a": "met — met",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "meet, met, met."
+ },
+ {
+  "id": "v-leave",
+  "t": 4,
+  "form": 1,
+  "q": "leave — ___",
+  "ru": "уходить; оставлять",
+  "opts": [
+   "left — left",
+   "lived — lived",
+   "leaved — leaved"
+  ],
+  "a": "left — left",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled. Lived — это live (жить).",
+  "say": "leave, left, left."
+ },
+ {
+  "id": "v-mean",
+  "t": 4,
+  "form": 1,
+  "q": "mean — ___",
+  "ru": "значить; иметь в виду",
+  "opts": [
+   "meant — meant",
+   "ment — ment",
+   "meaned — meaned"
+  ],
+  "a": "meant — meant",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled. Meant звучит [ment], но пишется через ea.",
+  "say": "mean, meant, meant."
+ },
+ {
+  "id": "v-lead",
+  "t": 4,
+  "form": 1,
+  "q": "lead — ___",
+  "ru": "вести; приводить к",
+  "opts": [
+   "led — led",
+   "lead — lead",
+   "leaded — leaded"
+  ],
+  "a": "led — led",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled. Led звучит так же, как пишется: [led].",
+  "say": "leed, led, led."
+ },
+ {
+  "id": "v-feed",
+  "t": 4,
+  "form": 1,
+  "q": "feed — ___",
+  "ru": "кормить",
+  "opts": [
+   "fed — fed",
+   "feeded — feeded",
+   "fed — feeded"
+  ],
+  "a": "fed — fed",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "feed, fed, fed."
+ },
+ {
+  "id": "v-bleed",
+  "t": 4,
+  "form": 1,
+  "q": "bleed — ___",
+  "ru": "кровоточить",
+  "opts": [
+   "bled — bled",
+   "bleeded — bleeded",
+   "bled — bleeded"
+  ],
+  "a": "bled — bled",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "bleed, bled, bled."
+ },
+ {
+  "id": "v-deal",
+  "t": 4,
+  "form": 1,
+  "q": "deal — ___",
+  "ru": "иметь дело с",
+  "opts": [
+   "dealt — dealt",
+   "delt — delt",
+   "dealed — dealed"
+  ],
+  "a": "dealt — dealt",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "deal, dealt, dealt."
+ },
+ {
+  "id": "v-sweep",
+  "t": 4,
+  "form": 1,
+  "q": "sweep — ___",
+  "ru": "подметать",
+  "opts": [
+   "swept — swept",
+   "sweept — sweept",
+   "sweeped — sweeped"
+  ],
+  "a": "swept — swept",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled.",
+  "say": "sweep, swept, swept."
+ },
+ {
+  "id": "v-flee",
+  "t": 4,
+  "form": 1,
+  "q": "flee — ___",
+  "ru": "бежать, спасаться",
+  "opts": [
+   "fled — fled",
+   "flew — flown",
+   "fleed — fleed"
+  ],
+  "a": "fled — fled",
+  "why": "Долгое [iː] стало коротким [e]: kept, slept, felt, met, led, bled. Flew — flown — это fly (летать).",
+  "say": "flee, fled, fled."
+ },
+ {
+  "id": "v-say",
+  "t": 5,
+  "form": 1,
+  "q": "say — ___",
+  "ru": "сказать",
+  "opts": [
+   "said — said",
+   "sayed — sayed",
+   "said — sayed"
+  ],
+  "a": "said — said",
+  "why": "Прибавляем d: said, paid, laid, made, had, heard.",
+  "say": "say, said, said."
+ },
+ {
+  "id": "v-pay",
+  "t": 5,
+  "form": 1,
+  "q": "pay — ___",
+  "ru": "платить",
+  "opts": [
+   "paid — paid",
+   "payed — payed",
+   "paid — payed"
+  ],
+  "a": "paid — paid",
+  "why": "Прибавляем d: said, paid, laid, made, had, heard.",
+  "say": "pay, paid, paid."
+ },
+ {
+  "id": "v-make",
+  "t": 5,
+  "form": 1,
+  "q": "make — ___",
+  "ru": "делать",
+  "opts": [
+   "made — made",
+   "maked — maked",
+   "made — maked"
+  ],
+  "a": "made — made",
+  "why": "Прибавляем d: said, paid, laid, made, had, heard.",
+  "say": "make, made, made."
+ },
+ {
+  "id": "v-have",
+  "t": 5,
+  "form": 1,
+  "q": "have — ___",
+  "ru": "иметь",
+  "opts": [
+   "had — had",
+   "haved — haved",
+   "had — haved"
+  ],
+  "a": "had — had",
+  "why": "Прибавляем d: said, paid, laid, made, had, heard.",
+  "say": "have, had, had."
+ },
+ {
+  "id": "v-hear",
+  "t": 5,
+  "form": 1,
+  "q": "hear — ___",
+  "ru": "слышать",
+  "opts": [
+   "heard — heard",
+   "heared — heared",
+   "heard — heared"
+  ],
+  "a": "heard — heard",
+  "why": "Прибавляем d: said, paid, laid, made, had, heard.",
+  "say": "hear, heard, heard."
+ },
+ {
+  "id": "v-lay",
+  "t": 5,
+  "form": 1,
+  "q": "lay — ___",
+  "ru": "класть, положить",
+  "opts": [
+   "laid — laid",
+   "lay — lain",
+   "layed — layed"
+  ],
+  "a": "laid — laid",
+  "why": "Прибавляем d: said, paid, laid, made, had, heard. Lay — lain — это lie (лежать).",
+  "say": "lay, laid, laid."
+ },
+ {
+  "id": "v-tell",
+  "t": 6,
+  "form": 1,
+  "q": "tell — ___",
+  "ru": "сказать (кому-то), рассказать",
+  "opts": [
+   "told — told",
+   "telled — telled",
+   "told — telled"
+  ],
+  "a": "told — told",
+  "why": "Рифмы: told, sold · stood, understood · found.",
+  "say": "tell, told, told."
+ },
+ {
+  "id": "v-sell",
+  "t": 6,
+  "form": 1,
+  "q": "sell — ___",
+  "ru": "продавать",
+  "opts": [
+   "sold — sold",
+   "selled — selled",
+   "sold — selled"
+  ],
+  "a": "sold — sold",
+  "why": "Рифмы: told, sold · stood, understood · found.",
+  "say": "sell, sold, sold."
+ },
+ {
+  "id": "v-stand",
+  "t": 6,
+  "form": 1,
+  "q": "stand — ___",
+  "ru": "стоять",
+  "opts": [
+   "stood — stood",
+   "standed — standed",
+   "stood — standed"
+  ],
+  "a": "stood — stood",
+  "why": "Рифмы: told, sold · stood, understood · found.",
+  "say": "stand, stood, stood."
+ },
+ {
+  "id": "v-understand",
+  "t": 6,
+  "form": 1,
+  "q": "understand — ___",
+  "ru": "понимать",
+  "opts": [
+   "understood — understood",
+   "understanded — understanded",
+   "understood — understanded"
+  ],
+  "a": "understood — understood",
+  "why": "Рифмы: told, sold · stood, understood · found.",
+  "say": "understand, understood, understood."
+ },
+ {
+  "id": "v-find",
+  "t": 6,
+  "form": 1,
+  "q": "find — ___",
+  "ru": "находить",
+  "opts": [
+   "found — found",
+   "founded — founded",
+   "finded — finded"
+  ],
+  "a": "found — found",
+  "why": "Рифмы: told, sold · stood, understood · found. Founded — это found (основать).",
+  "say": "find, found, found."
+ },
+ {
+  "id": "v-win",
+  "t": 7,
+  "form": 1,
+  "q": "win — ___",
+  "ru": "выигрывать",
+  "opts": [
+   "won — won",
+   "winned — winned",
+   "won — winned"
+  ],
+  "a": "won — won",
+  "why": "Вторая и третья со звуком [ʌ]: won, stuck, hung, dug, struck, spun.",
+  "say": "win, won, won."
+ },
+ {
+  "id": "v-stick",
+  "t": 7,
+  "form": 1,
+  "q": "stick — ___",
+  "ru": "приклеивать; застревать",
+  "opts": [
+   "stuck — stuck",
+   "stack — stuck",
+   "sticked — sticked"
+  ],
+  "a": "stuck — stuck",
+  "why": "Вторая и третья со звуком [ʌ]: won, stuck, hung, dug, struck, spun.",
+  "say": "stick, stuck, stuck."
+ },
+ {
+  "id": "v-hang",
+  "t": 7,
+  "form": 1,
+  "q": "hang — ___",
+  "ru": "вешать, висеть",
+  "opts": [
+   "hung — hung",
+   "hanged — hanged",
+   "hang — hung"
+  ],
+  "a": "hung — hung",
+  "why": "Вторая и третья со звуком [ʌ]: won, stuck, hung, dug, struck, spun. Hanged — только «казнили через повешение».",
+  "say": "hang, hung, hung."
+ },
+ {
+  "id": "v-dig",
+  "t": 7,
+  "form": 1,
+  "q": "dig — ___",
+  "ru": "копать",
+  "opts": [
+   "dug — dug",
+   "dag — dug",
+   "digged — digged"
+  ],
+  "a": "dug — dug",
+  "why": "Вторая и третья со звуком [ʌ]: won, stuck, hung, dug, struck, spun.",
+  "say": "dig, dug, dug."
+ },
+ {
+  "id": "v-strike",
+  "t": 7,
+  "form": 1,
+  "q": "strike — ___",
+  "ru": "ударять, поражать",
+  "opts": [
+   "struck — struck",
+   "striked — striked",
+   "struck — striked"
+  ],
+  "a": "struck — struck",
+  "why": "Вторая и третья со звуком [ʌ]: won, stuck, hung, dug, struck, spun.",
+  "say": "strike, struck, struck."
+ },
+ {
+  "id": "v-spin",
+  "t": 7,
+  "form": 1,
+  "q": "spin — ___",
+  "ru": "вращать(ся)",
+  "opts": [
+   "spun — spun",
+   "spinned — spinned",
+   "spun — spinned"
+  ],
+  "a": "spun — spun",
+  "why": "Вторая и третья со звуком [ʌ]: won, stuck, hung, dug, struck, spun.",
+  "say": "spin, spun, spun."
+ },
+ {
+  "id": "v-get",
+  "t": 8,
+  "form": 1,
+  "q": "get — ___",
+  "ru": "получать; становиться",
+  "opts": [
+   "got — got",
+   "got — gotten",
+   "getted — getted"
+  ],
+  "a": "got — got",
+  "why": "Вторая = третья: got, lost, sat, held, shot.",
+  "say": "get, got, got.",
+  "also": {
+   "got — gotten": "это американский вариант, в британском — got"
+  }
+ },
+ {
+  "id": "v-lose",
+  "t": 8,
+  "form": 1,
+  "q": "lose — ___",
+  "ru": "терять",
+  "opts": [
+   "lost — lost",
+   "losed — losed",
+   "lost — losed"
+  ],
+  "a": "lost — lost",
+  "why": "Вторая = третья: got, lost, sat, held, shot. Не путай с loose [luːs] — свободный.",
+  "say": "lose, lost, lost."
+ },
+ {
+  "id": "v-sit",
+  "t": 8,
+  "form": 1,
+  "q": "sit — ___",
+  "ru": "сидеть",
+  "opts": [
+   "sat — sat",
+   "set — set",
+   "sitted — sitted"
+  ],
+  "a": "sat — sat",
+  "why": "Вторая = третья: got, lost, sat, held, shot. Set — это «ставить, устанавливать».",
+  "say": "sit, sat, sat."
+ },
+ {
+  "id": "v-hold",
+  "t": 8,
+  "form": 1,
+  "q": "hold — ___",
+  "ru": "держать; проводить",
+  "opts": [
+   "held — held",
+   "holded — holded",
+   "held — holded"
+  ],
+  "a": "held — held",
+  "why": "Вторая = третья: got, lost, sat, held, shot.",
+  "say": "hold, held, held."
+ },
+ {
+  "id": "v-shoot",
+  "t": 8,
+  "form": 1,
+  "q": "shoot — ___",
+  "ru": "стрелять",
+  "opts": [
+   "shot — shot",
+   "shooted — shooted",
+   "shot — shooted"
+  ],
+  "a": "shot — shot",
+  "why": "Вторая = третья: got, lost, sat, held, shot.",
+  "say": "shoot, shot, shot."
+ },
+ {
+  "id": "v-come",
+  "t": 10,
+  "form": 1,
+  "q": "come — ___",
+  "ru": "приходить",
+  "opts": [
+   "came — come",
+   "came — came",
+   "comed — comed"
+  ],
+  "a": "came — come",
+  "why": "Третья = первая: come — came — come, run — ran — run.",
+  "say": "come, came, come."
+ },
+ {
+  "id": "v-become",
+  "t": 10,
+  "form": 1,
+  "q": "become — ___",
+  "ru": "становиться",
+  "opts": [
+   "became — become",
+   "became — became",
+   "becomed — becomed"
+  ],
+  "a": "became — become",
+  "why": "Третья = первая: come — came — come, run — ran — run.",
+  "say": "become, became, become."
+ },
+ {
+  "id": "v-run",
+  "t": 10,
+  "form": 1,
+  "q": "run — ___",
+  "ru": "бежать; руководить",
+  "opts": [
+   "ran — run",
+   "ran — ran",
+   "runned — runned"
+  ],
+  "a": "ran — run",
+  "why": "Третья = первая: come — came — come, run — ran — run.",
+  "say": "run, ran, run."
+ },
+ {
+  "id": "v-overcome",
+  "t": 10,
+  "form": 1,
+  "q": "overcome — ___",
+  "ru": "преодолевать",
+  "opts": [
+   "overcame — overcome",
+   "overcame — overcame",
+   "overcome — overcame"
+  ],
+  "a": "overcame — overcome",
+  "why": "Третья = первая: come — came — come, run — ran — run.",
+  "say": "overcome, overcame, overcome."
+ },
+ {
+  "id": "v-begin",
+  "t": 11,
+  "form": 1,
+  "q": "begin — ___",
+  "ru": "начинать",
+  "opts": [
+   "began — begun",
+   "begun — began",
+   "began — began"
+  ],
+  "a": "began — begun",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "begin, began, begun."
+ },
+ {
+  "id": "v-drink",
+  "t": 11,
+  "form": 1,
+  "q": "drink — ___",
+  "ru": "пить",
+  "opts": [
+   "drank — drunk",
+   "drunk — drank",
+   "drank — drank"
+  ],
+  "a": "drank — drunk",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "drink, drank, drunk."
+ },
+ {
+  "id": "v-ring",
+  "t": 11,
+  "form": 1,
+  "q": "ring — ___",
+  "ru": "звонить",
+  "opts": [
+   "rang — rung",
+   "rung — rang",
+   "rang — rang"
+  ],
+  "a": "rang — rung",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "ring, rang, rung."
+ },
+ {
+  "id": "v-sing",
+  "t": 11,
+  "form": 1,
+  "q": "sing — ___",
+  "ru": "петь",
+  "opts": [
+   "sang — sung",
+   "sung — sang",
+   "sang — sang"
+  ],
+  "a": "sang — sung",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "sing, sang, sung."
+ },
+ {
+  "id": "v-sink",
+  "t": 11,
+  "form": 1,
+  "q": "sink — ___",
+  "ru": "тонуть",
+  "opts": [
+   "sank — sunk",
+   "sunk — sank",
+   "sank — sank"
+  ],
+  "a": "sank — sunk",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "sink, sank, sunk."
+ },
+ {
+  "id": "v-swim",
+  "t": 11,
+  "form": 1,
+  "q": "swim — ___",
+  "ru": "плавать",
+  "opts": [
+   "swam — swum",
+   "swum — swam",
+   "swam — swam"
+  ],
+  "a": "swam — swum",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "swim, swam, swum."
+ },
+ {
+  "id": "v-shrink",
+  "t": 11,
+  "form": 1,
+  "q": "shrink — ___",
+  "ru": "сжиматься, уменьшаться",
+  "opts": [
+   "shrank — shrunk",
+   "shrunk — shrank",
+   "shrank — shrank"
+  ],
+  "a": "shrank — shrunk",
+  "why": "i → a → u: с a — прошлое, с u — после have.",
+  "say": "shrink, shrank, shrunk."
+ },
+ {
+  "id": "v-know",
+  "t": 12,
+  "form": 1,
+  "q": "know — ___",
+  "ru": "знать",
+  "opts": [
+   "knew — known",
+   "knew — knew",
+   "knowed — knowed"
+  ],
+  "a": "knew — known",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "know, knew, known."
+ },
+ {
+  "id": "v-grow",
+  "t": 12,
+  "form": 1,
+  "q": "grow — ___",
+  "ru": "расти",
+  "opts": [
+   "grew — grown",
+   "grew — grew",
+   "growed — growed"
+  ],
+  "a": "grew — grown",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "grow, grew, grown."
+ },
+ {
+  "id": "v-throw",
+  "t": 12,
+  "form": 1,
+  "q": "throw — ___",
+  "ru": "бросать",
+  "opts": [
+   "threw — thrown",
+   "threw — threw",
+   "throwed — throwed"
+  ],
+  "a": "threw — thrown",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "throw, threw, thrown."
+ },
+ {
+  "id": "v-blow",
+  "t": 12,
+  "form": 1,
+  "q": "blow — ___",
+  "ru": "дуть",
+  "opts": [
+   "blew — blown",
+   "blew — blew",
+   "blowed — blowed"
+  ],
+  "a": "blew — blown",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "blow, blew, blown."
+ },
+ {
+  "id": "v-fly",
+  "t": 12,
+  "form": 1,
+  "q": "fly — ___",
+  "ru": "летать",
+  "opts": [
+   "flew — flown",
+   "flew — flew",
+   "flied — flied"
+  ],
+  "a": "flew — flown",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "fly, flew, flown."
+ },
+ {
+  "id": "v-draw",
+  "t": 12,
+  "form": 1,
+  "q": "draw — ___",
+  "ru": "рисовать; брать (кровь)",
+  "opts": [
+   "drew — drawn",
+   "drew — drew",
+   "drawed — drawed"
+  ],
+  "a": "drew — drawn",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "draw, drew, drawn."
+ },
+ {
+  "id": "v-withdraw",
+  "t": 12,
+  "form": 1,
+  "q": "withdraw — ___",
+  "ru": "отзывать, отменять",
+  "opts": [
+   "withdrew — withdrawn",
+   "withdrew — withdrew",
+   "withdrawed — withdrawed"
+  ],
+  "a": "withdrew — withdrawn",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown.",
+  "say": "withdraw, withdrew, withdrawn."
+ },
+ {
+  "id": "v-show",
+  "t": 12,
+  "form": 1,
+  "q": "show — ___",
+  "ru": "показывать",
+  "opts": [
+   "showed — shown",
+   "showed — showed",
+   "shown — showed"
+  ],
+  "a": "showed — shown",
+  "why": "Вторая на -ew, третья = первая + n: knew — known, grew — grown. Show — особняком: вторая правильная, showed.",
+  "say": "show, showed, shown.",
+  "also": {
+   "showed — showed": "так тоже говорят, но shown — обычнее"
+  }
+ },
+ {
+  "id": "v-break",
+  "t": 13,
+  "form": 1,
+  "q": "break — ___",
+  "ru": "ломать",
+  "opts": [
+   "broke — broken",
+   "broke — broke",
+   "breaked — breaked"
+  ],
+  "a": "broke — broken",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "break, broke, broken."
+ },
+ {
+  "id": "v-speak",
+  "t": 13,
+  "form": 1,
+  "q": "speak — ___",
+  "ru": "говорить",
+  "opts": [
+   "spoke — spoken",
+   "spoke — spoke",
+   "speaked — speaked"
+  ],
+  "a": "spoke — spoken",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "speak, spoke, spoken."
+ },
+ {
+  "id": "v-choose",
+  "t": 13,
+  "form": 1,
+  "q": "choose — ___",
+  "ru": "выбирать",
+  "opts": [
+   "chose — chosen",
+   "chose — chose",
+   "choosed — choosed"
+  ],
+  "a": "chose — chosen",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "choose, chose, chosen."
+ },
+ {
+  "id": "v-forget",
+  "t": 13,
+  "form": 1,
+  "q": "forget — ___",
+  "ru": "забывать",
+  "opts": [
+   "forgot — forgotten",
+   "forgot — forgot",
+   "forgotten — forgot"
+  ],
+  "a": "forgot — forgotten",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "forget, forgot, forgotten."
+ },
+ {
+  "id": "v-wake",
+  "t": 13,
+  "form": 1,
+  "q": "wake — ___",
+  "ru": "будить; просыпаться",
+  "opts": [
+   "woke — woken",
+   "woke — woke",
+   "woken — woke"
+  ],
+  "a": "woke — woken",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "wake, woke, woken."
+ },
+ {
+  "id": "v-steal",
+  "t": 13,
+  "form": 1,
+  "q": "steal — ___",
+  "ru": "красть",
+  "opts": [
+   "stole — stolen",
+   "stole — stole",
+   "stealed — stealed"
+  ],
+  "a": "stole — stolen",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "steal, stole, stolen."
+ },
+ {
+  "id": "v-freeze",
+  "t": 13,
+  "form": 1,
+  "q": "freeze — ___",
+  "ru": "замерзать, замораживать",
+  "opts": [
+   "froze — frozen",
+   "froze — froze",
+   "freezed — freezed"
+  ],
+  "a": "froze — frozen",
+  "why": "Вторая с «о», третья = вторая + en: broke → broken, spoke → spoken.",
+  "say": "freeze, froze, frozen."
+ },
+ {
+  "id": "v-write",
+  "t": 14,
+  "form": 1,
+  "q": "write — ___",
+  "ru": "писать",
+  "opts": [
+   "wrote — written",
+   "wrote — writen",
+   "wrote — wrote"
+  ],
+  "a": "wrote — written",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven. После короткого i t удваивается: written.",
+  "say": "write, wrote, written."
+ },
+ {
+  "id": "v-drive",
+  "t": 14,
+  "form": 1,
+  "q": "drive — ___",
+  "ru": "водить (машину)",
+  "opts": [
+   "drove — driven",
+   "drove — drove",
+   "drived — drived"
+  ],
+  "a": "drove — driven",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven.",
+  "say": "drive, drove, driven."
+ },
+ {
+  "id": "v-ride",
+  "t": 14,
+  "form": 1,
+  "q": "ride — ___",
+  "ru": "ездить (верхом, на велосипеде)",
+  "opts": [
+   "rode — ridden",
+   "rode — rode",
+   "rided — rided"
+  ],
+  "a": "rode — ridden",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven.",
+  "say": "ride, rode, ridden."
+ },
+ {
+  "id": "v-rise",
+  "t": 14,
+  "form": 1,
+  "q": "rise — ___",
+  "ru": "подниматься (само)",
+  "opts": [
+   "rose — risen",
+   "raised — raised",
+   "rised — rised"
+  ],
+  "a": "rose — risen",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven. Raised — от raise: поднимать что-то.",
+  "say": "rise, rose, risen."
+ },
+ {
+  "id": "v-arise",
+  "t": 14,
+  "form": 1,
+  "q": "arise — ___",
+  "ru": "возникать",
+  "opts": [
+   "arose — arisen",
+   "arose — arose",
+   "arised — arised"
+  ],
+  "a": "arose — arisen",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven.",
+  "say": "arise, arose, arisen."
+ },
+ {
+  "id": "v-hide",
+  "t": 14,
+  "form": 1,
+  "q": "hide — ___",
+  "ru": "прятать",
+  "opts": [
+   "hid — hidden",
+   "hid — hiden",
+   "hided — hided"
+  ],
+  "a": "hid — hidden",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven. После короткого i d удваивается: hidden.",
+  "say": "hide, hid, hidden."
+ },
+ {
+  "id": "v-bite",
+  "t": 14,
+  "form": 1,
+  "q": "bite — ___",
+  "ru": "кусать",
+  "opts": [
+   "bit — bitten",
+   "bit — bit",
+   "bited — bited"
+  ],
+  "a": "bit — bitten",
+  "why": "[aɪ] → о → короткое i + en: wrote — written, drove — driven.",
+  "say": "bite, bit, bitten."
+ },
+ {
+  "id": "v-take",
+  "t": 15,
+  "form": 1,
+  "q": "take — ___",
+  "ru": "брать",
+  "opts": [
+   "took — taken",
+   "took — took",
+   "taked — taked"
+  ],
+  "a": "took — taken",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "take, took, taken."
+ },
+ {
+  "id": "v-give",
+  "t": 15,
+  "form": 1,
+  "q": "give — ___",
+  "ru": "давать",
+  "opts": [
+   "gave — given",
+   "gave — gave",
+   "given — gave"
+  ],
+  "a": "gave — given",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "give, gave, given."
+ },
+ {
+  "id": "v-see",
+  "t": 15,
+  "form": 1,
+  "q": "see — ___",
+  "ru": "видеть",
+  "opts": [
+   "saw — seen",
+   "seen — saw",
+   "saw — saw"
+  ],
+  "a": "saw — seen",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "see, saw, seen."
+ },
+ {
+  "id": "v-eat",
+  "t": 15,
+  "form": 1,
+  "q": "eat — ___",
+  "ru": "есть",
+  "opts": [
+   "ate — eaten",
+   "ate — ate",
+   "eated — eated"
+  ],
+  "a": "ate — eaten",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "eat, ate, eaten."
+ },
+ {
+  "id": "v-fall",
+  "t": 15,
+  "form": 1,
+  "q": "fall — ___",
+  "ru": "падать",
+  "opts": [
+   "fell — fallen",
+   "felt — felt",
+   "fell — fell"
+  ],
+  "a": "fell — fallen",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen. Felt — это feel (чувствовать).",
+  "say": "fall, fell, fallen."
+ },
+ {
+  "id": "v-shake",
+  "t": 15,
+  "form": 1,
+  "q": "shake — ___",
+  "ru": "трясти",
+  "opts": [
+   "shook — shaken",
+   "shook — shook",
+   "shaked — shaked"
+  ],
+  "a": "shook — shaken",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "shake, shook, shaken."
+ },
+ {
+  "id": "v-forgive",
+  "t": 15,
+  "form": 1,
+  "q": "forgive — ___",
+  "ru": "прощать",
+  "opts": [
+   "forgave — forgiven",
+   "forgave — forgave",
+   "forgived — forgived"
+  ],
+  "a": "forgave — forgiven",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "forgive, forgave, forgiven."
+ },
+ {
+  "id": "v-mistake",
+  "t": 15,
+  "form": 1,
+  "q": "mistake — ___",
+  "ru": "принять за (ошибочно)",
+  "opts": [
+   "mistook — mistaken",
+   "mistook — mistook",
+   "mistaked — mistaked"
+  ],
+  "a": "mistook — mistaken",
+  "why": "Третья = первая + n: taken, given, eaten, fallen, seen.",
+  "say": "mistake, mistook, mistaken."
+ },
+ {
+  "id": "v-wear",
+  "t": 16,
+  "form": 1,
+  "q": "wear — ___",
+  "ru": "носить (одежду)",
+  "opts": [
+   "wore — worn",
+   "wore — wore",
+   "weared — weared"
+  ],
+  "a": "wore — worn",
+  "why": "-ear → -ore → -orn: wore — worn, tore — torn.",
+  "say": "wear, wore, worn."
+ },
+ {
+  "id": "v-tear",
+  "t": 16,
+  "form": 1,
+  "q": "tear — ___",
+  "ru": "рвать",
+  "opts": [
+   "tore — torn",
+   "tore — tore",
+   "torn — tore"
+  ],
+  "a": "tore — torn",
+  "why": "-ear → -ore → -orn: wore — worn, tore — torn.",
+  "say": "tare, tore, torn."
+ },
+ {
+  "id": "v-swear",
+  "t": 16,
+  "form": 1,
+  "q": "swear — ___",
+  "ru": "клясться; ругаться",
+  "opts": [
+   "swore — sworn",
+   "swore — swore",
+   "sweared — sweared"
+  ],
+  "a": "swore — sworn",
+  "why": "-ear → -ore → -orn: wore — worn, tore — torn.",
+  "say": "swear, swore, sworn."
+ },
+ {
+  "id": "v-bear",
+  "t": 16,
+  "form": 1,
+  "q": "bear — ___",
+  "ru": "выносить, терпеть",
+  "opts": [
+   "bore — borne",
+   "bore — bore",
+   "beared — beared"
+  ],
+  "a": "bore — borne",
+  "why": "-ear → -ore → -orn: wore — worn, tore — torn. Родиться — be born: I was born in 1985.",
+  "say": "bear, bore, borne."
+ },
+ {
+  "id": "v-be",
+  "t": 17,
+  "form": 1,
+  "q": "be — ___",
+  "ru": "быть",
+  "opts": [
+   "was / were — been",
+   "was — was",
+   "been — been"
+  ],
+  "a": "was / were — been",
+  "why": "Was — с I, he, she, it; were — с you, we, they.",
+  "say": "be, was, were, been."
+ },
+ {
+  "id": "v-go",
+  "t": 17,
+  "form": 1,
+  "q": "go — ___",
+  "ru": "идти, ехать",
+  "opts": [
+   "went — gone",
+   "went — went",
+   "gone — went"
+  ],
+  "a": "went — gone",
+  "why": "Went — прошлое, gone — после have.",
+  "say": "go, went, gone."
+ },
+ {
+  "id": "v-do",
+  "t": 17,
+  "form": 1,
+  "q": "do — ___",
+  "ru": "делать",
+  "opts": [
+   "did — done",
+   "done — did",
+   "did — did"
+  ],
+  "a": "did — done",
+  "why": "Did — прошлое, done — после have и в пассиве.",
+  "say": "do, did, done."
+ },
+ {
+  "id": "v-lie",
+  "t": 17,
+  "form": 1,
+  "q": "lie — ___",
+  "ru": "лежать",
+  "opts": [
+   "lay — lain",
+   "laid — laid",
+   "lied — lied"
+  ],
+  "a": "lay — lain",
+  "why": "Laid — от lay (класть), lied — «лгал».",
+  "say": "lie, lay, lain."
+ },
+ {
+  "id": "v-swell",
+  "t": 17,
+  "form": 1,
+  "q": "swell — ___",
+  "ru": "опухать",
+  "opts": [
+   "swelled — swollen",
+   "swelled — swelled",
+   "swollen — swelled"
+  ],
+  "a": "swelled — swollen",
+  "why": "«Опухший» — swollen: a swollen ankle.",
+  "say": "swell, swelled, swollen.",
+  "also": {
+   "swelled — swelled": "так тоже можно, но «опухший» — только swollen"
+  }
+ },
+ {
+  "id": "v-undergo",
+  "t": 17,
+  "form": 1,
+  "q": "undergo — ___",
+  "ru": "перенести (операцию)",
+  "opts": [
+   "underwent — undergone",
+   "underwent — underwent",
+   "undergoed — undergoed"
+  ],
+  "a": "underwent — undergone",
+  "why": "Как go — went — gone.",
+  "say": "undergo, underwent, undergone."
+ },
+ {
+  "id": "bt-learn",
+  "t": 9,
+  "q": "I've ___ a lot from this case.",
+  "ru": "Я многому научился на этом случае.",
+  "opts": [
+   "learnt",
+   "learned",
+   "learn"
+  ],
+  "a": "learnt",
+  "also": {
+   "learned": "в британском — оба варианта, в американском — learned"
+  },
+  "why": "learn — learnt — learnt. После have — третья форма, не learn."
+ },
+ {
+  "id": "bt-burn",
+  "t": 9,
+  "q": "He ___ his hand on the kettle.",
+  "ru": "Он обжёг руку о чайник.",
+  "opts": [
+   "burnt",
+   "burned",
+   "burn"
+  ],
+  "a": "burnt",
+  "also": {
+   "burned": "оба варианта правильные"
+  },
+  "why": "burn — burnt — burnt или burned — burned. О прошлом — не burn."
+ },
+ {
+  "id": "bt-dream",
+  "t": 9,
+  "q": "Last night I ___ about the exam.",
+  "ru": "Прошлой ночью мне снился экзамен.",
+  "opts": [
+   "dreamt",
+   "dreamed",
+   "dream"
+  ],
+  "a": "dreamt",
+  "also": {
+   "dreamed": "оба варианта правильные"
+  },
+  "why": "dream — dreamt [dremt] — dreamt, или dreamed."
+ },
+ {
+  "id": "s-seen",
+  "t": 18,
+  "q": "Have you ever ___ a case like this?",
+  "ru": "Вы когда-нибудь видели такой случай?",
+  "opts": [
+   "seen",
+   "saw"
+  ],
+  "a": "seen",
+  "why": "После have — третья форма: have seen."
+ },
+ {
+  "id": "s-saw",
+  "t": 18,
+  "q": "I ___ him in the corridor an hour ago.",
+  "ru": "Я видел его в коридоре час назад.",
+  "opts": [
+   "saw",
+   "seen"
+  ],
+  "a": "saw",
+  "why": "ago — прошлое без have: вторая форма, saw."
+ },
+ {
+  "id": "s-written",
+  "t": 18,
+  "q": "The discharge summary was ___ by the resident.",
+  "ru": "Выписку написал ординатор.",
+  "opts": [
+   "written",
+   "wrote"
+  ],
+  "a": "written",
+  "why": "Пассив: was + третья форма — was written."
+ },
+ {
+  "id": "s-wrote",
+  "t": 18,
+  "q": "She ___ the referral letter yesterday.",
+  "ru": "Она написала направление вчера.",
+  "opts": [
+   "wrote",
+   "written"
+  ],
+  "a": "wrote",
+  "why": "yesterday — прошлое без have: wrote."
+ },
+ {
+  "id": "s-gone",
+  "t": 18,
+  "q": "Dr Smith has already ___ home.",
+  "ru": "Доктор Смит уже ушёл домой.",
+  "opts": [
+   "gone",
+   "went"
+  ],
+  "a": "gone",
+  "why": "has + третья форма: has gone."
+ },
+ {
+  "id": "s-went",
+  "t": 18,
+  "q": "He ___ home at six.",
+  "ru": "Он ушёл домой в шесть.",
+  "opts": [
+   "went",
+   "gone"
+  ],
+  "a": "went",
+  "why": "Точное время в прошлом — вторая форма: went."
+ },
+ {
+  "id": "s-come",
+  "t": 18,
+  "q": "The ambulance has just ___.",
+  "ru": "Скорая только что приехала.",
+  "opts": [
+   "come",
+   "came"
+  ],
+  "a": "come",
+  "why": "has + третья форма. У come третья = первая: come — came — come."
+ },
+ {
+  "id": "s-done",
+  "t": 18,
+  "q": "The CT was ___ at 10:40.",
+  "ru": "КТ сделали в 10:40.",
+  "opts": [
+   "done",
+   "did"
+  ],
+  "a": "done",
+  "why": "Пассив: was + третья форма — was done."
+ },
+ {
+  "id": "s-did",
+  "t": 18,
+  "q": "Who ___ the lumbar puncture?",
+  "ru": "Кто делал люмбальную пункцию?",
+  "opts": [
+   "did",
+   "done"
+  ],
+  "a": "did",
+  "why": "Вопрос о прошлом без have — вторая форма: did."
+ },
+ {
+  "id": "s-fallen",
+  "t": 18,
+  "q": "Two patients have ___ out of bed this week.",
+  "ru": "На этой неделе двое пациентов упали с кровати.",
+  "opts": [
+   "fallen",
+   "fell"
+  ],
+  "a": "fallen",
+  "why": "have + третья форма: have fallen."
+ },
+ {
+  "id": "s-given",
+  "t": 18,
+  "q": "The patient was ___ aspirin in the ambulance.",
+  "ru": "Пациенту дали аспирин в скорой.",
+  "opts": [
+   "given",
+   "gave"
+  ],
+  "a": "given",
+  "why": "Пассив: was + третья форма — was given."
+ },
+ {
+  "id": "s-did-see",
+  "t": 18,
+  "q": "Did you ___ the MRI report?",
+  "ru": "Ты видел заключение МРТ?",
+  "opts": [
+   "see",
+   "saw",
+   "seen"
+  ],
+  "a": "see",
+  "why": "После did — первая форма: did you see. Прошлое уже показывает did."
+ },
+ {
+  "id": "tr-lay",
+  "t": 19,
+  "q": "The patient ___ down on the couch.",
+  "ru": "Пациент прилёг на кушетку.",
+  "opts": [
+   "lay",
+   "laid",
+   "lied"
+  ],
+  "a": "lay",
+  "why": "Лечь — lie — lay — lain. Laid — «положил» (lay — laid — laid)."
+ },
+ {
+  "id": "tr-laid",
+  "t": 19,
+  "q": "The nurse ___ the patient on his side.",
+  "ru": "Медсестра уложила пациента на бок.",
+  "opts": [
+   "laid",
+   "lay",
+   "lied"
+  ],
+  "a": "laid",
+  "why": "Положить кого-то — lay — laid — laid."
+ },
+ {
+  "id": "tr-lain",
+  "t": 19,
+  "q": "He has ___ in bed for three weeks.",
+  "ru": "Он пролежал в постели три недели.",
+  "opts": [
+   "lain",
+   "laid",
+   "lied"
+  ],
+  "a": "lain",
+  "why": "Лежать — lie — lay — lain: has lain."
+ },
+ {
+  "id": "tr-lied",
+  "t": 19,
+  "q": "He ___ about how much he drinks.",
+  "ru": "Он соврал о том, сколько пьёт.",
+  "opts": [
+   "lied",
+   "lay",
+   "laid"
+  ],
+  "a": "lied",
+  "why": "Лгать — правильный глагол: lie — lied — lied."
+ },
+ {
+  "id": "tr-rose",
+  "t": 19,
+  "q": "His temperature ___ to 39.5 overnight.",
+  "ru": "За ночь температура поднялась до 39,5.",
+  "opts": [
+   "rose",
+   "raised",
+   "rised"
+  ],
+  "a": "rose",
+  "why": "Поднимается само — rise — rose — risen."
+ },
+ {
+  "id": "tr-raised",
+  "t": 19,
+  "q": "We ___ the head of the bed.",
+  "ru": "Мы подняли изголовье кровати.",
+  "opts": [
+   "raised",
+   "rose",
+   "risen"
+  ],
+  "a": "raised",
+  "why": "Поднимаем что-то — raise, правильный глагол: raised."
+ },
+ {
+  "id": "tr-fell",
+  "t": 19,
+  "q": "The old man ___ in the bathroom.",
+  "ru": "Пожилой мужчина упал в ванной.",
+  "opts": [
+   "fell",
+   "felt",
+   "fall"
+  ],
+  "a": "fell",
+  "why": "Упасть — fall — fell — fallen. Felt — «почувствовал»."
+ },
+ {
+  "id": "tr-felt",
+  "t": 19,
+  "q": "She ___ dizzy and sat down.",
+  "ru": "У неё закружилась голова, и она села.",
+  "opts": [
+   "felt",
+   "fell",
+   "feeled"
+  ],
+  "a": "felt",
+  "why": "Чувствовать — feel — felt — felt."
+ },
+ {
+  "id": "tr-founded",
+  "t": 19,
+  "q": "The hospital was ___ in 1890.",
+  "ru": "Больница основана в 1890 году.",
+  "opts": [
+   "founded",
+   "found",
+   "finded"
+  ],
+  "a": "founded",
+  "why": "Основать — found — founded — founded, правильный глагол."
+ },
+ {
+  "id": "tr-found",
+  "t": 19,
+  "q": "We ___ a small aneurysm on the scan.",
+  "ru": "На снимке мы нашли небольшую аневризму.",
+  "opts": [
+   "found",
+   "founded",
+   "finded"
+  ],
+  "a": "found",
+  "why": "Найти — find — found — found."
+ },
+ {
+  "id": "tr-sat",
+  "t": 19,
+  "q": "Her husband ___ by the bed all night.",
+  "ru": "Муж просидел у кровати всю ночь.",
+  "opts": [
+   "sat",
+   "set",
+   "sit"
+  ],
+  "a": "sat",
+  "why": "Сидеть — sit — sat — sat."
+ },
+ {
+  "id": "tr-set",
+  "t": 19,
+  "q": "I've ___ the alarm for 6 a.m.",
+  "ru": "Я поставил будильник на 6 утра.",
+  "opts": [
+   "set",
+   "sat",
+   "setted"
+  ],
+  "a": "set",
+  "why": "Поставить, установить — set — set — set, не меняется."
+ },
+ {
+  "id": "w-lost",
+  "t": 20,
+  "q": "He has ___ a lot of blood.",
+  "ru": "Он потерял много крови.",
+  "opts": [
+   "lost",
+   "losed",
+   "lose"
+  ],
+  "a": "lost",
+  "why": "lose — lost — lost."
+ },
+ {
+  "id": "w-broke",
+  "t": 20,
+  "q": "She ___ her hip when she fell.",
+  "ru": "Она сломала шейку бедра, когда упала.",
+  "opts": [
+   "broke",
+   "broken",
+   "breaked"
+  ],
+  "a": "broke",
+  "why": "Прошлое без have — вторая форма: broke. Broken — после have."
+ },
+ {
+  "id": "w-bled",
+  "t": 20,
+  "q": "The wound ___ heavily during the night.",
+  "ru": "Ночью рана сильно кровоточила.",
+  "opts": [
+   "bled",
+   "bleeded",
+   "bleed"
+  ],
+  "a": "bled",
+  "why": "bleed — bled — bled: долгое [iː] стало коротким."
+ },
+ {
+  "id": "w-swollen",
+  "t": 20,
+  "q": "His ankle is badly ___.",
+  "ru": "У него сильно опухла лодыжка.",
+  "opts": [
+   "swollen",
+   "swelled",
+   "swell"
+  ],
+  "a": "swollen",
+  "why": "«Опухший» — swollen: a swollen ankle, the ankle is swollen."
+ },
+ {
+  "id": "w-spread",
+  "t": 20,
+  "q": "The infection has ___ to the bone.",
+  "ru": "Инфекция распространилась на кость.",
+  "opts": [
+   "spread",
+   "spreaded",
+   "spred"
+  ],
+  "a": "spread",
+  "why": "spread не меняется: spread — spread — spread."
+ },
+ {
+  "id": "w-bit",
+  "t": 20,
+  "q": "A dog ___ him on the leg.",
+  "ru": "Собака укусила его за ногу.",
+  "opts": [
+   "bit",
+   "bitten",
+   "bited"
+  ],
+  "a": "bit",
+  "why": "Прошлое без have — bit. Bitten — после have или was: he was bitten."
+ },
+ {
+  "id": "w-undergone",
+  "t": 20,
+  "q": "He has ___ three operations on his knee.",
+  "ru": "Он перенёс три операции на колене.",
+  "opts": [
+   "undergone",
+   "underwent",
+   "undergoed"
+  ],
+  "a": "undergone",
+  "why": "has + третья форма: undergone — как go — went — gone."
+ },
+ {
+  "id": "w-chose",
+  "t": 20,
+  "q": "In the end, she ___ to have the operation.",
+  "ru": "В итоге она решила оперироваться.",
+  "opts": [
+   "chose",
+   "chosen",
+   "choosed"
+  ],
+  "a": "chose",
+  "why": "Прошлое — chose; chosen — после have."
+ },
+ {
+  "id": "w-slept",
+  "t": 20,
+  "q": "He hasn't ___ for two nights because of the pain.",
+  "ru": "Он не спит уже две ночи из-за боли.",
+  "opts": [
+   "slept",
+   "sleeped",
+   "sleep"
+  ],
+  "a": "slept",
+  "why": "has + третья форма: slept."
+ },
+ {
+  "id": "w-showed",
+  "t": 20,
+  "q": "The MRI ___ a small infarct in the pons.",
+  "ru": "МРТ показала небольшой инфаркт в мосту.",
+  "opts": [
+   "showed",
+   "shown",
+   "show"
+  ],
+  "a": "showed",
+  "why": "Прошлое — showed; shown — после have или was."
+ },
+ {
+  "id": "w-struck",
+  "t": 20,
+  "q": "He was ___ by a car on his way home.",
+  "ru": "По дороге домой его сбила машина.",
+  "opts": [
+   "struck",
+   "striked",
+   "strike"
+  ],
+  "a": "struck",
+  "why": "strike — struck — struck; пассив: was struck."
+ },
+ {
+  "id": "w-withdrawn",
+  "t": 20,
+  "q": "The drug was ___ from the market in 2004.",
+  "ru": "Препарат отозвали с рынка в 2004 году.",
+  "opts": [
+   "withdrawn",
+   "withdrew",
+   "withdrawed"
+  ],
+  "a": "withdrawn",
+  "why": "Пассив: was + третья форма — withdrawn, как draw — drew — drawn."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "irreg:state";
+const LS_SPEAK = "irreg:autospeak";
+const LS_TAB = "irreg:tab";
+const LS_OPEN = "irreg:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Irregular"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){
+  const t = TOPIC_BY[n];
+  if (n === MIXED_TOPIC) return "Всё вместе";
+  return (t.kind === "fam" ? "Семья " : "Тема ") + n + " · " + t.title;
+}
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  const post = card.q.slice(i + 3);
+  return { pre: pre, word: start ? cap(word) : word, post: post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[{}|_]/g, ""); }
+// окончания вроде «-ought» и «-en» не отрываются от слова при переносе строки
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→ ").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// {…} — вторая форма (синий), _…_ — третья (оранжевый), |…| — зелёный; квадратные скобки — транскрипция
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /_([^_]+)_|\{([^}]+)\}|\|([^|]+)\|/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(m[1] != null ? el("span", "pr", m[1]) : m[2] != null ? el("span", "st", m[2]) : el("span", "good", m[3]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+// тройка форм: первая обычным цветом, вторая синим, третья оранжевым
+function triple(v){
+  const f = document.createDocumentFragment();
+  f.append(v.v + "\u00a0— ", el("span", "st", v.v2), "\u00a0— ", el("span", "pr", v.v3));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+let famPlaying = null;      // { n, marks } — играет вся семья
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+  if (famPlaying){ famPlaying = null; famUI(); }
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  if (famPlaying){ famPlaying = null; famUI(); }      // без записи подсветка строк не работает
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+function playVerb(v){ playClip("v-" + v.v, v.say, 0.85); }
+
+// ——— Вся семья вслух: одна запись, строка таблицы подсвечивается в такт
+function famRows(n){ return document.querySelectorAll('.vt[data-n="' + n + '"] tr[data-i]'); }
+function famUI(){
+  document.querySelectorAll(".fam-play").forEach(b => {
+    const on = !!famPlaying && famPlaying.n === +b.dataset.n;
+    b.setAttribute("aria-pressed", String(on));
+    b.querySelector(".fp-t").textContent = on ? "Остановить" : "Слушать всю семью";
+  });
+  if (!famPlaying) document.querySelectorAll(".vt tr.on").forEach(r => r.classList.remove("on"));
+}
+function famHighlight(){
+  if (!famPlaying) return;
+  const t = player.currentTime, m = famPlaying.marks;
+  let i = -1;
+  for (let k = 0; k < m.length; k++) if (t >= m[k] - 0.08) i = k;
+  famRows(famPlaying.n).forEach(r => {
+    const on = +r.dataset.i === i;
+    if (on === r.classList.contains("on")) return;
+    r.classList.toggle("on", on);
+    const note = r.nextElementSibling;
+    if (note && note.classList.contains("vn")) note.classList.toggle("on", on);
+    if (on) keepVisible(r);
+  });
+}
+// если подсвеченная строка ушла за нижний край — мягко подкручиваем вкладку
+function keepVisible(row){
+  const rule = $("rule");
+  const r = row.getBoundingClientRect(), box = rule.getBoundingClientRect();
+  if (r.bottom > box.bottom - 16 || r.top < box.top){
+    const y = rule.scrollTop + (r.top - box.top) - box.height * 0.4;
+    try{ rule.scrollTo({ top: y, behavior: "smooth" }); }catch(e){ rule.scrollTop = y; }
+  }
+}
+function playFamily(n){
+  if (famPlaying && famPlaying.n === n){ stopAudio(); return; }
+  const text = VERBS.filter(v => v.t === n).map(v => v.say).join(" ");
+  playClip("fam-" + n, text, 0.85);
+  famPlaying = { n: n, marks: FAM_MARKS[n] || [] };
+  famUI();
+}
+player.addEventListener("timeupdate", famHighlight);
+player.addEventListener("ended", () => { if (famPlaying){ famPlaying = null; famUI(); } });
+
+// ——— Очередь
+// Новые карточки идут вперемешку по семьям: так каждый раз вспоминаешь форму, а не угадываешь по соседям.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // предложения (late) вступают позже: сначала формы
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    b.lang = "en";
+    b.textContent = o;
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = card.form ? "Вторая и третья форма" : topicLabel(card.t);
+  const q = $("q");
+  q.className = card.form ? "q short" : "q";
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.form ? card.q.replace(/\s—\s___/, ": вторая и третья форма?") : card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? topicLabel(topicN).split(" · ")[0] + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.className = "q";
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : topicLabel(topicN).split(" · ")[0] + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  q.append(p.pre, el("span", card.form ? "good ib" : "good", p.word.replace(/ — /g, "\u00a0— ")), p.post);
+  if (card.form) $("kind").textContent = topicLabel(card.t);     // после ответа — к какой семье относится
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", card.a), " · твой ответ: ", el("b", null, opt));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Вкладка «Глаголы»
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+function renderExample(ex){
+  const p = el("p", "ex-en");
+  p.lang = "en";
+  p.append(marked(ex.en));
+  return p;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+const FAM_SVG = '<svg class="ic-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>'
+  + '<svg class="ic-stop" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="2"/></svg>';
+function playButton(cls, label, fn){
+  const b = el("button", cls);
+  b.type = "button";
+  b.setAttribute("aria-label", label);
+  b.innerHTML = PLAY_SVG;
+  b.addEventListener("click", fn);
+  return b;
+}
+function verbTable(n){
+  const wrap = el("div", "vt-wrap");
+  const t = el("table", "vt");
+  t.dataset.n = String(n);
+  const head = el("thead"), hr = el("tr");
+  const cols = [["", "1-я", "и перевод"], ["st", "2-я", "прошлое"], ["pr", "3-я", "have, was"]];
+  cols.forEach(([c, a, b]) => { const th = el("th", c || null); th.scope = "col"; th.append(el("b", null, a), el("span", null, b)); hr.append(th); });
+  const thp = el("th"); thp.append(el("span", "sr", "Прослушать")); hr.append(thp);
+  head.append(hr); t.append(head);
+  const body = el("tbody");
+  VERBS.filter(v => v.t === n).forEach((v, i) => {
+    const tr = el("tr");
+    tr.dataset.i = String(i);
+    const c1 = el("td"); const w = el("span", null, v.v); w.lang = "en"; c1.append(w, el("small", null, v.ru));
+    const c2 = el("td", "st", v.v2); c2.lang = "en";
+    const c3 = el("td", "pr", v.v3); c3.lang = "en";
+    const c4 = el("td", "pl");
+    c4.append(playButton("vt-play", "Прослушать: " + v.v + ", " + v.v2 + ", " + v.v3, () => playVerb(v)));
+    tr.append(c1, c2, c3, c4);
+    body.append(tr);
+    if (v.note){
+      const nr = el("tr", "vn"), td = el("td");
+      td.colSpan = 4;
+      td.append(richText(v.note));
+      nr.append(td);
+      body.append(nr);
+    }
+  });
+  t.append(body);
+  wrap.append(t);
+  return wrap;
+}
+let openTopic = null;
+function openAndShow(n){
+  openTopic = n;
+  lsSet(LS_OPEN, String(n));
+  stopAudio();
+  renderTopics();
+  const head = document.querySelector('.t-head[data-n="' + n + '"]');
+  if (head) scrollRuleTo(head);
+}
+function scrollRuleTo(node){
+  const rule = $("rule");
+  const y = rule.scrollTop + node.getBoundingClientRect().top - rule.getBoundingClientRect().top - 6;
+  let reduce = false;
+  try{ reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
+  try{ rule.scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" }); }catch(e){ rule.scrollTop = y; }
+}
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      const g = el("p", "t-group", GROUPS[group]);
+      g.dataset.g = group;
+      box.append(g);
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.dataset.n = String(t.n);
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    txt.append(el("span", "t-title", t.title));
+    if (t.exv){
+      const s = el("span", "t-sub");
+      s.lang = "en";
+      s.append(triple({ v: t.exv[0], v2: t.exv[1], v3: t.exv[2] }));
+      txt.append(s);
+    } else if (t.sub){
+      const s = el("span", "t-sub", t.sub);
+      s.lang = "en";
+      txt.append(s);
+    }
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(marked(t.rule)); body.append(rule);
+      if (t.kind === "fam"){
+        const fp = el("button", "fam-play");
+        fp.type = "button";
+        fp.dataset.n = String(t.n);
+        fp.setAttribute("aria-pressed", "false");
+        fp.innerHTML = FAM_SVG;
+        fp.append(el("span", "fp-t", "Слушать всю семью"));
+        fp.addEventListener("click", () => playFamily(t.n));
+        body.append(fp, verbTable(t.n));
+      }
+      (t.ex || []).forEach((ex, i) => {
+        const row = el("div", "ex");
+        row.append(renderExample(ex), playButton("ex-play", "Прослушать пример", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9)), el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : t.kind === "fam" ? "Потренировать эту семью" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+  famUI();
+}
+
+// ——— Поиск глагола: по любой форме или по-русски
+function norm(s){ return String(s).toLowerCase().replace(/ё/g, "е").replace(/[’']/g, "").trim(); }
+const VINDEX = VERBS.map(v => ({
+  v: v,
+  forms: [v.v].concat(v.v2.split(" / "), v.v3.split(" / "), v.alt || []).map(norm),
+  ru: norm(v.ru),
+  words: norm(v.ru).split(/[^а-яa-z-]+/).filter(Boolean)
+}));
+function findVerbs(q){
+  q = norm(q);
+  if (!q) return [];
+  const cyr = /[а-я]/.test(q);
+  const res = [];
+  VINDEX.forEach(x => {
+    let s = -1;
+    if (!cyr){
+      if (x.forms[0] === q) s = 0;
+      else if (x.forms.includes(q)) s = 1;
+      else if (x.forms[0].startsWith(q)) s = 2;
+      else if (x.forms.some(f => f.startsWith(q))) s = 3;
+    } else if (q.length >= 2){
+      if (x.words.some(w => w === q)) s = 0;
+      else if (x.words.some(w => w.startsWith(q))) s = 1;
+      else if (q.length >= 4 && x.ru.includes(q)) s = 2;
+    }
+    if (s >= 0) res.push([s, x.v]);
+  });
+  res.sort((a, b) => a[0] - b[0]);
+  return res.slice(0, 6).map(r => r[1]);
+}
+function renderSearch(){
+  const q = $("vsearch").value;
+  const box = $("sres");
+  box.textContent = "";
+  if (!norm(q)) return;
+  const found = findVerbs(q);
+  if (!found.length){
+    const cyr = /[а-яё]/i.test(q);
+    box.append(el("p", "sr-none", cyr ? "Не нашёл. Попробуй другое слово или начало глагола по-английски."
+                                         : "Такого нет среди неправильных. Скорее всего, глагол правильный: прибавь -ed — worked, stopped, studied."));
+    return;
+  }
+  found.forEach(v => {
+    const row = el("div", "sr-row");
+    const left = el("div");
+    const f = el("p", "sr-forms"); f.lang = "en"; f.append(triple(v));
+    const ru = el("p", "sr-ru", v.ru);
+    const fam = el("button", "sr-fam", topicLabel(v.t) + " ›");
+    fam.type = "button";
+    fam.addEventListener("click", () => openAndShow(v.t));
+    left.append(f, ru, fam);
+    row.append(left, playButton("ex-play", "Прослушать: " + v.v + ", " + v.v2 + ", " + v.v3, () => playVerb(v)));
+    box.append(row);
+  });
+}
+$("vsearch").addEventListener("input", renderSearch);
+$("vsearch").addEventListener("keydown", e => { if (e.key === "Enter"){ e.preventDefault(); try{ e.target.blur(); }catch(_){} } });
+
+// ——— Схемы: нажатие ведёт к семьям этой схемы
+document.querySelectorAll(".sch-b").forEach(b => b.addEventListener("click", () => {
+  const g = document.querySelector('.t-group[data-g="' + b.dataset.g + '"]');
+  if (g) scrollRuleTo(g);
+}));
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button, input")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

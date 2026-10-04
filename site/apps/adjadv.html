@@ -1,0 +1,2023 @@
+<title>Прилагательные и наречия</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("adjadv",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:calc(1px*var(--k)) solid var(--line)}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Adjective or adverb?</h1>
+      <p class="r-sub">Прилагательное или наречие. Главный вопрос&nbsp;— <b>какой?</b> или <b>как?</b> Всё остальное&nbsp;— четыре группы исключений, они собраны в&nbsp;памятке.</p>
+      <div class="algo">
+        <p class="algo-h">Проверка за секунду</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Какой? Описывает существительное</p><p class="s-f" lang="en"><i>a</i> <span class="st">careful</span> <i>doctor</i></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Как? Описывает действие</p><p class="s-f" lang="en"><i>examines</i> <span class="pr">carefully</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">После be, look, feel, sound, seem, get&nbsp;— прилагательное</p><p class="s-f" lang="en"><i>You look</i> <span class="st">tired</span></p></div></li>
+        </ol>
+        <p class="algo-m">Наречие&nbsp;= прилагательное + -ly: <b class="st" lang="en">careful</b> → <b class="pr" lang="en">carefully</b></p>
+        <p class="algo-note">Особое слово: <i lang="en">good</i> → <i lang="en">well</i>. A good doctor, но she works well.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Памятка: четыре группы исключений</h2>
+      <p class="legend"><span class="st">Синим</span>&nbsp;— прилагательное (какой?), <span class="pr">оранжевым</span>&nbsp;— наречие (как?).</p>
+      <div class="mm">
+        <p class="mm-h"><span class="mm-n">1</span>На -ly, но это прилагательные</p>
+        <div class="mm-grid"><p class="mm-w"><span class="st" lang="en">elderly</span><small>пожилой</small></p><p class="mm-w"><span class="st" lang="en">friendly</span><small>дружелюбный</small></p><p class="mm-w"><span class="st" lang="en">likely</span><small>вероятный</small></p><p class="mm-w"><span class="st" lang="en">lovely</span><small>милый, чудесный</small></p><p class="mm-w"><span class="st" lang="en">lonely</span><small>одинокий</small></p><p class="mm-w"><span class="st" lang="en">silly</span><small>глупый</small></p><p class="mm-w"><span class="st" lang="en">ugly</span><small>некрасивый</small></p></div>
+        <p class="mm-note">Наречий из них нет. «Как?» — in a friendly way.</p>
+      </div>
+      <div class="mm">
+        <p class="mm-h"><span class="mm-n">2</span>Одна форма — и «какой?», и «как?»</p>
+        <div class="mm-grid"><p class="mm-w"><span lang="en">deep</span><small>глубокий · глубоко</small></p><p class="mm-w"><span lang="en">early</span><small>ранний · рано</small></p><p class="mm-w"><span lang="en">fast</span><small>быстрый · быстро</small></p><p class="mm-w"><span lang="en">hard</span><small>трудный · усердно</small></p><p class="mm-w"><span lang="en">high</span><small>высокий · высоко</small></p><p class="mm-w"><span lang="en">late</span><small>поздний · поздно</small></p><p class="mm-w"><span lang="en">long</span><small>долгий · долго</small></p><p class="mm-w"><span lang="en">low</span><small>низкий · низко</small></p><p class="mm-w"><span lang="en">near</span><small>близкий · близко</small></p><p class="mm-w"><span lang="en">right</span><small>верный · верно</small></p><p class="mm-w"><span lang="en">straight</span><small>прямой · прямо</small></p><p class="mm-w"><span lang="en">wrong</span><small>неверный · неверно</small></p><p class="mm-w"><span lang="en">daily</span><small>ежедневный · ежедневно</small></p></div>
+        <p class="mm-note">Fastly — такого слова нет. Сравнение тоже без more: faster, harder, earlier.</p>
+      </div>
+      <div class="mm">
+        <p class="mm-h"><span class="mm-n">3</span>С -ly — другое слово</p>
+        <div class="mm-pair"><p><span lang="en">hard</span><small>усердно, сильно</small></p><p><span class="pr" lang="en">hardly</span><small>почти не</small></p><button class="mm-play" type="button" data-key="mp-1" data-text="hard, hardly." aria-label="Прослушать: hard, hardly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">late</span><small>поздно</small></p><p><span class="pr" lang="en">lately</span><small>в последнее время</small></p><button class="mm-play" type="button" data-key="mp-2" data-text="late, lately." aria-label="Прослушать: late, lately"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">near</span><small>близко</small></p><p><span class="pr" lang="en">nearly</span><small>почти</small></p><button class="mm-play" type="button" data-key="mp-3" data-text="near, nearly." aria-label="Прослушать: near, nearly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">great</span><small>отлично</small></p><p><span class="pr" lang="en">greatly</span><small>значительно</small></p><button class="mm-play" type="button" data-key="mp-4" data-text="great, greatly." aria-label="Прослушать: great, greatly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">high</span><small>высоко</small></p><p><span class="pr" lang="en">highly</span><small>весьма, очень</small></p><button class="mm-play" type="button" data-key="mp-5" data-text="high, highly." aria-label="Прослушать: high, highly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">deep</span><small>глубоко</small></p><p><span class="pr" lang="en">deeply</span><small>глубоко (о чувствах)</small></p><button class="mm-play" type="button" data-key="mp-6" data-text="deep, deeply." aria-label="Прослушать: deep, deeply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">close</span><small>близко</small></p><p><span class="pr" lang="en">closely</span><small>внимательно</small></p><button class="mm-play" type="button" data-key="mp-7" data-text="close, closely." aria-label="Прослушать: close, closely"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">short</span><small>коротко</small></p><p><span class="pr" lang="en">shortly</span><small>скоро</small></p><button class="mm-play" type="button" data-key="mp-8" data-text="short, shortly." aria-label="Прослушать: short, shortly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="mm-pair"><p><span lang="en">most</span><small>больше всего</small></p><p><span class="pr" lang="en">mostly</span><small>в основном</small></p><button class="mm-play" type="button" data-key="mp-9" data-text="most, mostly." aria-label="Прослушать: most, mostly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <div class="mm">
+        <p class="mm-h"><span class="mm-n">4</span>В разговоре можно без -ly</p>
+        <div class="mm-grid"><p class="mm-w"><span class="pr" lang="en">cheap</span><small>дёшево</small></p><p class="mm-w"><span class="pr" lang="en">loud</span><small>громко</small></p><p class="mm-w"><span class="pr" lang="en">quick</span><small>быстро</small></p><p class="mm-w"><span class="pr" lang="en">slow</span><small>медленно</small></p></div>
+        <p class="mm-note">Come quick! Go slow. В письме и нейтрально — quickly, slowly, loudly, cheaply.</p>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He works very hardly.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He works very hard.</span><span class="err-note">hardly — «почти не»</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He drives fastly.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He drives fast.</span><span class="err-note">fastly не бывает</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She smiled friendly.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She smiled in a friendly way.</span><span class="err-note">friendly — прилагательное</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He speaks English good.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He speaks English well.</span><span class="err-note">как? — well</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I feel badly.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I feel bad.</span><span class="err-note">feel + прилагательное</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It sounds strangely.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It sounds strange.</span><span class="err-note">sound + прилагательное</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I came lately.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I came late.</span><span class="err-note">lately — «в последнее время»</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It&#x27;s near impossible.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It&#x27;s nearly impossible.</span><span class="err-note">почти — nearly</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The drug great reduces the risk.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The drug greatly reduces the risk.</span><span class="err-note">значительно — greatly</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы: правило и примеры. {…} — прилагательное (синий), _…_ — наречие (оранжевый).
+const MIXED_TOPIC = 13;
+const TOPICS = [
+ {
+  "n": 1,
+  "title": "Какой? или как?",
+  "sub": "careful — carefully",
+  "rule": "Какой? — прилагательное, оно описывает существительное: a careful surgeon. Как? — наречие, оно описывает действие: she operates carefully. Наречие обычно = прилагательное + -ly.",
+  "ex": [
+   {
+    "en": "She's a {careful} surgeon.",
+    "ru": "Она аккуратный хирург. — какой?"
+   },
+   {
+    "en": "She operates _carefully_.",
+    "ru": "Она аккуратно оперирует. — как?"
+   },
+   {
+    "en": "He was _badly_ injured.",
+    "ru": "Он сильно пострадал."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "title": "На -ly, но прилагательные",
+  "sub": "elderly, friendly, likely…",
+  "rule": "Эти слова кончаются на -ly, но это прилагательные: elderly, friendly, likely, lovely, lonely, silly, ugly. Наречий из них не делают. Нужно «как?» — in a friendly way. Likely как наречие — только в most likely и very likely, обычно говорят probably.",
+  "ex": [
+   {
+    "en": "An {elderly} man was admitted.",
+    "ru": "Поступил пожилой мужчина."
+   },
+   {
+    "en": "The nurses are very {friendly}.",
+    "ru": "Медсёстры очень дружелюбные."
+   },
+   {
+    "en": "She smiled _in a friendly way_.",
+    "ru": "Она дружелюбно улыбнулась."
+   },
+   {
+    "en": "It's {likely} that he'll need surgery.",
+    "ru": "Вероятно, ему понадобится операция."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "title": "Одна форма: fast, hard, early",
+  "sub": "a fast test — works fast",
+  "rule": "Одна форма — и «какой?», и «как?»: deep, early, fast, hard, high, late, long, low, near, right, straight, wrong, а ещё daily, weekly. Fastly не бывает. Сравнение тоже без more: faster, harder, earlier. У некоторых из них есть форма на -ly, но с другим значением — это следующие темы.",
+  "ex": [
+   {
+    "en": "She's a {hard} worker — she works _hard_.",
+    "ru": "Она трудяга — много работает."
+   },
+   {
+    "en": "It was an {early} sign, and we caught it _early_.",
+    "ru": "Это был ранний признак, и мы заметили его рано."
+   },
+   {
+    "en": "Take it twice _daily_.",
+    "ru": "Принимайте два раза в день."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "title": "hard — hardly",
+  "sub": "усердно — почти не",
+  "rule": "hard — усердно, сильно: work hard, hit hard. hardly — почти не: I can hardly hear you. Hardly уже отрицание, not с ним не ставим.",
+  "ex": [
+   {
+    "en": "She works _hard_.",
+    "ru": "Она много работает."
+   },
+   {
+    "en": "I can _hardly_ hear you.",
+    "ru": "Я тебя почти не слышу."
+   },
+   {
+    "en": "He _hardly_ slept last night.",
+    "ru": "Он почти не спал ночью."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "title": "late — lately",
+  "sub": "поздно — в последнее время",
+  "rule": "late — поздно: come late, work late. lately — в последнее время: Have you been sleeping well lately? С lately обычно Present Perfect.",
+  "ex": [
+   {
+    "en": "He came _late_.",
+    "ru": "Он пришёл поздно."
+   },
+   {
+    "en": "I often work _late_.",
+    "ru": "Я часто работаю допоздна."
+   },
+   {
+    "en": "Have you been sleeping well _lately_?",
+    "ru": "Вы хорошо спите в последнее время?"
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "title": "near — nearly",
+  "sub": "близко — почти",
+  "rule": "near — близко, рядом: near the hospital, near here. nearly — почти: nearly all, nearly ten o'clock. He nearly died — «он чуть не умер».",
+  "ex": [
+   {
+    "en": "Is there a pharmacy _near_ here?",
+    "ru": "Здесь поблизости есть аптека?"
+   },
+   {
+    "en": "_Nearly_ all the patients recovered.",
+    "ru": "Почти все пациенты поправились."
+   },
+   {
+    "en": "He _nearly_ died.",
+    "ru": "Он чуть не умер."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "title": "greatly, highly, deeply",
+  "sub": "значительно, весьма, глубоко",
+  "rule": "great — отлично (в разговоре): It works great. greatly — значительно: greatly reduces the risk. high — высоко, highly — весьма: highly effective. deep — глубоко в прямом смысле: a deep wound, deeply — о чувствах: deeply sorry.",
+  "ex": [
+   {
+    "en": "It works _great_.",
+    "ru": "Работает отлично. — разговорное"
+   },
+   {
+    "en": "The risk is _greatly_ reduced.",
+    "ru": "Риск значительно снижается."
+   },
+   {
+    "en": "This drug is _highly_ effective.",
+    "ru": "Препарат высокоэффективен."
+   },
+   {
+    "en": "I'm _deeply_ sorry.",
+    "ru": "Глубоко сожалею."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "title": "closely, shortly, mostly",
+  "sub": "внимательно, скоро, в основном",
+  "rule": "close — близко: stand close. closely — внимательно, тщательно: monitor closely. short — коротко: cut short. shortly — скоро: The doctor will see you shortly. most — больше всего, mostly — в основном.",
+  "ex": [
+   {
+    "en": "Monitor him _closely_.",
+    "ru": "Внимательно наблюдайте за ним."
+   },
+   {
+    "en": "The doctor will see you _shortly_.",
+    "ru": "Врач скоро вас примет."
+   },
+   {
+    "en": "Our patients are _mostly_ elderly.",
+    "ru": "Наши пациенты в основном пожилые."
+   },
+   {
+    "en": "What worries you _most_?",
+    "ru": "Что вас больше всего беспокоит?"
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "title": "cheap, loud, quick, slow",
+  "sub": "в разговоре — без -ly",
+  "rule": "cheap, loud, quick, slow в разговоре бывают наречиями без -ly: Come quick! Go slow. Buy it cheap. В письме и в нейтральной речи — с -ly: quickly, slowly, loudly, cheaply. Перед глаголом — только с -ly. В сравнении короткая форма обычна: louder, quicker, slower.",
+  "ex": [
+   {
+    "en": "Come _quick_! He's fallen.",
+    "ru": "Скорее сюда! Он упал. — разговорное"
+   },
+   {
+    "en": "Please drive _slowly_.",
+    "ru": "Пожалуйста, езжайте медленно. — нейтрально"
+   },
+   {
+    "en": "Could you speak _louder_?",
+    "ru": "Можете говорить громче?"
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "title": "good или well",
+  "sub": "a good doctor — works well",
+  "rule": "good — прилагательное: a good doctor. well — наречие: she works well, he speaks English well. Well — ещё и «здоров»: I'm not well today. Feel good — хорошее самочувствие и настроение, feel well — здоров.",
+  "ex": [
+   {
+    "en": "She's a {good} doctor.",
+    "ru": "Она хороший врач."
+   },
+   {
+    "en": "She works _well_ under pressure.",
+    "ru": "Она хорошо работает в стрессе."
+   },
+   {
+    "en": "I'm not {well} today.",
+    "ru": "Мне сегодня нездоровится. — well = здоров"
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "title": "look, feel, sound + прилагательное",
+  "sub": "You look tired",
+  "rule": "После be, look, seem, feel, sound, smell, taste, get, become, stay — прилагательное, а не наречие: You look tired. It sounds strange. По-русски здесь часто наречие («звучит странно»), по-английски — прилагательное. Но если look — действие «посмотреть», нужно наречие: He looked angrily at me.",
+  "ex": [
+   {
+    "en": "You look {tired}.",
+    "ru": "Ты выглядишь уставшим."
+   },
+   {
+    "en": "That sounds {strange}.",
+    "ru": "Звучит странно. — по-английски прилагательное"
+   },
+   {
+    "en": "He looked _angrily_ at me.",
+    "ru": "Он сердито посмотрел на меня. — look здесь действие"
+   }
+  ]
+ },
+ {
+  "n": 12,
+  "title": "Как пишется -ly",
+  "sub": "easily, gently, basically",
+  "rule": "Обычно просто + ly: slow → slowly, careful → carefully (два l). y → ily: easy → easily. le → ly: gentle → gently. ic → ically: basic → basically (исключение: public → publicly). true → truly, full → fully.",
+  "ex": [
+   {
+    "en": "easy → _easily_ · happy → _happily_",
+    "ru": "-y → -ily"
+   },
+   {
+    "en": "gentle → _gently_ · simple → _simply_",
+    "ru": "-le → -ly"
+   },
+   {
+    "en": "basic → _basically_ · dramatic → _dramatically_",
+    "ru": "-ic → -ically (но public → publicly)"
+   },
+   {
+    "en": "careful → _carefully_ · true → _truly_",
+    "ru": "careful + ly — два l; true → truly без e"
+   }
+  ]
+ },
+ {
+  "n": 13,
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, ru — перевод (подсказка), also — тоже верные варианты.
+const CARDS = [
+ {
+  "id": "b1-careful",
+  "t": 1,
+  "q": "She is a very ___ surgeon.",
+  "ru": "Она очень аккуратный хирург.",
+  "opts": [
+   "careful",
+   "carefully"
+  ],
+  "a": "careful",
+  "why": "Какой хирург? — прилагательное careful."
+ },
+ {
+  "id": "b1-carefully",
+  "t": 1,
+  "q": "She examined the wound ___.",
+  "ru": "Она внимательно осмотрела рану.",
+  "opts": [
+   "carefully",
+   "careful"
+  ],
+  "a": "carefully",
+  "why": "Как осмотрела? — наречие carefully."
+ },
+ {
+  "id": "b1-quick",
+  "t": 1,
+  "q": "We need a ___ decision.",
+  "ru": "Нам нужно быстрое решение.",
+  "opts": [
+   "quick",
+   "quickly"
+  ],
+  "a": "quick",
+  "why": "Какое решение? — quick."
+ },
+ {
+  "id": "b1-rapidly",
+  "t": 1,
+  "q": "His speech improved ___ after the stroke.",
+  "ru": "После инсульта его речь быстро восстановилась.",
+  "opts": [
+   "rapidly",
+   "rapid"
+  ],
+  "a": "rapidly",
+  "why": "Как восстановилась? — наречие rapidly. Rapid — «быстрый»: a rapid improvement."
+ },
+ {
+  "id": "b1-badly",
+  "t": 1,
+  "q": "He was ___ injured in the accident.",
+  "ru": "Он сильно пострадал в аварии.",
+  "opts": [
+   "badly",
+   "bad"
+  ],
+  "a": "badly",
+  "why": "Как пострадал? — badly: сильно, тяжело."
+ },
+ {
+  "id": "b1-patiently",
+  "t": 1,
+  "q": "She explained the procedure ___.",
+  "ru": "Она терпеливо объяснила процедуру.",
+  "opts": [
+   "patiently",
+   "patient"
+  ],
+  "a": "patiently",
+  "why": "Как объяснила? — patiently."
+ },
+ {
+  "id": "ly-friendly",
+  "t": 2,
+  "q": "He's a very ___ nurse — the patients love him.",
+  "ru": "Он очень дружелюбный медбрат — пациенты его любят.",
+  "opts": [
+   "friendly",
+   "friendlily",
+   "friend"
+  ],
+  "a": "friendly",
+  "why": "friendly — прилагательное, хоть и на -ly."
+ },
+ {
+  "id": "ly-way",
+  "t": 2,
+  "q": "She smiled at the child ___.",
+  "ru": "Она дружелюбно улыбнулась ребёнку.",
+  "opts": [
+   "in a friendly way",
+   "friendly",
+   "friendlily"
+  ],
+  "a": "in a friendly way",
+  "why": "Наречия от friendly нет — говорят in a friendly way."
+ },
+ {
+  "id": "ly-likely",
+  "t": 2,
+  "q": "It's ___ that he'll need surgery.",
+  "ru": "Вероятно, ему понадобится операция.",
+  "opts": [
+   "likely",
+   "probably",
+   "likelily"
+  ],
+  "a": "likely",
+  "why": "It's likely that… — здесь likely прилагательное: «вероятно, что…». It's probably — ошибка."
+ },
+ {
+  "id": "ly-probably",
+  "t": 2,
+  "q": "He'll ___ be discharged tomorrow.",
+  "ru": "Его, вероятно, выпишут завтра.",
+  "opts": [
+   "probably",
+   "likely",
+   "likelily"
+  ],
+  "a": "probably",
+  "why": "«Вероятно» перед глаголом — probably.",
+  "also": {
+   "likely": "так говорят в американском; в британском — probably или most likely"
+  }
+ },
+ {
+  "id": "ly-silly",
+  "t": 2,
+  "q": "That was ___ of me.",
+  "ru": "Глупо с моей стороны.",
+  "opts": [
+   "silly",
+   "sillily",
+   "a silly"
+  ],
+  "a": "silly",
+  "why": "silly — прилагательное: It was silly of me."
+ },
+ {
+  "id": "ly-lonely",
+  "t": 2,
+  "q": "Many ___ elderly people need support.",
+  "ru": "Многим одиноким пожилым людям нужна поддержка.",
+  "opts": [
+   "lonely",
+   "alone",
+   "lonelily"
+  ],
+  "a": "lonely",
+  "why": "Перед существительным — lonely, «одинокий». Alone — «один», перед существительным его не ставят. Elderly — тоже прилагательное."
+ },
+ {
+  "id": "sf-fast",
+  "t": 3,
+  "q": "He drives too ___.",
+  "ru": "Он ездит слишком быстро.",
+  "opts": [
+   "fast",
+   "fastly"
+  ],
+  "a": "fast",
+  "why": "fast — одна форма: a fast car, drive fast. Fastly — такого слова нет."
+ },
+ {
+  "id": "sf-early",
+  "t": 3,
+  "q": "The ambulance arrived ___.",
+  "ru": "Скорая приехала рано.",
+  "opts": [
+   "early",
+   "earlily"
+  ],
+  "a": "early",
+  "why": "early — одна форма: an early sign, arrive early."
+ },
+ {
+  "id": "sf-straight",
+  "t": 3,
+  "q": "Sit up ___, please.",
+  "ru": "Сядьте, пожалуйста, прямо.",
+  "opts": [
+   "straight",
+   "straightly"
+  ],
+  "a": "straight",
+  "why": "straight — одна форма: a straight line, sit up straight."
+ },
+ {
+  "id": "sf-wrong",
+  "t": 3,
+  "q": "Something went ___ during the procedure.",
+  "ru": "Во время процедуры что-то пошло не так.",
+  "opts": [
+   "wrong",
+   "wrongly"
+  ],
+  "a": "wrong",
+  "why": "go wrong — «пойти не так»: здесь wrong без -ly."
+ },
+ {
+  "id": "sf-daily",
+  "t": 3,
+  "q": "Take this tablet twice ___.",
+  "ru": "Принимайте эту таблетку два раза в день.",
+  "opts": [
+   "daily",
+   "dayly",
+   "in day"
+  ],
+  "a": "daily",
+  "why": "daily — и «ежедневный», и «ежедневно»: a daily dose, twice daily."
+ },
+ {
+  "id": "sf-long",
+  "t": 3,
+  "q": "Have you been waiting ___?",
+  "ru": "Вы давно ждёте?",
+  "opts": [
+   "long",
+   "longly"
+  ],
+  "a": "long",
+  "why": "long — и «длинный», и «долго»: Have you been waiting long?"
+ },
+ {
+  "id": "sf-faster",
+  "t": 3,
+  "q": "Could you walk a bit ___?",
+  "ru": "Можешь идти чуть быстрее?",
+  "opts": [
+   "faster",
+   "more fast",
+   "more fastly"
+  ],
+  "a": "faster",
+  "why": "Сравнение без more: faster, harder, earlier, later."
+ },
+ {
+  "id": "hh-works",
+  "t": 4,
+  "q": "She works very ___.",
+  "ru": "Она очень много и усердно работает.",
+  "opts": [
+   "hard",
+   "hardly"
+  ],
+  "a": "hard",
+  "why": "Усердно — hard. Hardly — «почти не»."
+ },
+ {
+  "id": "hh-hear",
+  "t": 4,
+  "q": "I can ___ hear you — the line is bad.",
+  "ru": "Я тебя почти не слышу — плохая связь.",
+  "opts": [
+   "hardly",
+   "hard"
+  ],
+  "a": "hardly",
+  "why": "Почти не — hardly."
+ },
+ {
+  "id": "hh-slept",
+  "t": 4,
+  "q": "I ___ slept last night.",
+  "ru": "Я почти не спал прошлой ночью.",
+  "opts": [
+   "hardly",
+   "hard"
+  ],
+  "a": "hardly",
+  "why": "hardly = почти не: hardly slept."
+ },
+ {
+  "id": "hh-hit",
+  "t": 4,
+  "q": "He hit his head ___ on the floor.",
+  "ru": "Он сильно ударился головой об пол.",
+  "opts": [
+   "hard",
+   "hardly"
+  ],
+  "a": "hard",
+  "why": "Сильно — hard. Hit hardly — «еле задел»."
+ },
+ {
+  "id": "hh-any",
+  "t": 4,
+  "q": "There's ___ any improvement.",
+  "ru": "Улучшения почти нет.",
+  "opts": [
+   "hardly",
+   "hard",
+   "not hardly"
+  ],
+  "a": "hardly",
+  "why": "hardly any — почти никакого."
+ },
+ {
+  "id": "hh-surprising",
+  "t": 4,
+  "q": "It's ___ surprising that he's tired after a night shift.",
+  "ru": "Неудивительно, что он устал после ночной смены.",
+  "opts": [
+   "hardly",
+   "hard"
+  ],
+  "a": "hardly",
+  "why": "hardly surprising — «вряд ли удивительно», то есть неудивительно."
+ },
+ {
+  "id": "ll-came",
+  "t": 5,
+  "q": "He came to the clinic ___.",
+  "ru": "Он пришёл в поликлинику поздно.",
+  "opts": [
+   "late",
+   "lately"
+  ],
+  "a": "late",
+  "why": "Поздно — late."
+ },
+ {
+  "id": "ll-lately",
+  "t": 5,
+  "q": "Have you been sleeping well ___?",
+  "ru": "Вы хорошо спите в последнее время?",
+  "opts": [
+   "lately",
+   "late"
+  ],
+  "a": "lately",
+  "why": "В последнее время — lately, обычно с Present Perfect."
+ },
+ {
+  "id": "ll-fridays",
+  "t": 5,
+  "q": "I often work ___ on Fridays.",
+  "ru": "По пятницам я часто работаю допоздна.",
+  "opts": [
+   "late",
+   "lately"
+  ],
+  "a": "late",
+  "why": "Допоздна — late."
+ },
+ {
+  "id": "ll-feeling",
+  "t": 5,
+  "q": "He hasn't been feeling well ___.",
+  "ru": "В последнее время ему нездоровится.",
+  "opts": [
+   "lately",
+   "late"
+  ],
+  "a": "lately",
+  "why": "lately — «в последнее время»."
+ },
+ {
+  "id": "ll-toolate",
+  "t": 5,
+  "q": "It's too ___ to start thrombolysis.",
+  "ru": "Начинать тромболизис уже слишком поздно.",
+  "opts": [
+   "late",
+   "lately"
+  ],
+  "a": "late",
+  "why": "Поздно — late: too late."
+ },
+ {
+  "id": "nn-all",
+  "t": 6,
+  "q": "___ all the patients recovered.",
+  "ru": "Почти все пациенты поправились.",
+  "opts": [
+   "Nearly",
+   "Near"
+  ],
+  "a": "Nearly",
+  "why": "Почти — nearly."
+ },
+ {
+  "id": "nn-pharmacy",
+  "t": 6,
+  "q": "Is there a pharmacy ___ here?",
+  "ru": "Здесь поблизости есть аптека?",
+  "opts": [
+   "near",
+   "nearly"
+  ],
+  "a": "near",
+  "why": "Рядом, поблизости — near."
+ },
+ {
+  "id": "nn-died",
+  "t": 6,
+  "q": "He ___ died during the operation.",
+  "ru": "Он чуть не умер во время операции.",
+  "opts": [
+   "nearly",
+   "near"
+  ],
+  "a": "nearly",
+  "why": "Чуть не — nearly: he nearly died."
+ },
+ {
+  "id": "nn-live",
+  "t": 6,
+  "q": "I live ___ the hospital.",
+  "ru": "Я живу рядом с больницей.",
+  "opts": [
+   "near",
+   "nearly"
+  ],
+  "a": "near",
+  "why": "Рядом с — near."
+ },
+ {
+  "id": "nn-ten",
+  "t": 6,
+  "q": "It's ___ ten o'clock.",
+  "ru": "Уже почти десять.",
+  "opts": [
+   "nearly",
+   "near"
+  ],
+  "a": "nearly",
+  "why": "Почти, около — nearly."
+ },
+ {
+  "id": "gr-greatly",
+  "t": 7,
+  "q": "Early treatment ___ reduces the risk of disability.",
+  "ru": "Раннее лечение значительно снижает риск инвалидности.",
+  "opts": [
+   "greatly",
+   "great"
+  ],
+  "a": "greatly",
+  "why": "Значительно — greatly."
+ },
+ {
+  "id": "gr-great",
+  "t": 7,
+  "q": "The new scanner works ___.",
+  "ru": "Новый томограф работает отлично.",
+  "opts": [
+   "great",
+   "greatly"
+  ],
+  "a": "great",
+  "why": "Отлично (в разговоре) — great. Greatly — «значительно»."
+ },
+ {
+  "id": "hi-highly",
+  "t": 7,
+  "q": "This drug is ___ effective.",
+  "ru": "Этот препарат высокоэффективен.",
+  "opts": [
+   "highly",
+   "high"
+  ],
+  "a": "highly",
+  "why": "Очень, весьма — highly: highly effective."
+ },
+ {
+  "id": "hi-high",
+  "t": 7,
+  "q": "Lift your arm up ___.",
+  "ru": "Поднимите руку высоко.",
+  "opts": [
+   "high",
+   "highly"
+  ],
+  "a": "high",
+  "why": "Высоко — high. Highly — «весьма, очень»."
+ },
+ {
+  "id": "de-deeply",
+  "t": 7,
+  "q": "I'm ___ sorry for your loss.",
+  "ru": "Глубоко соболезную вашей утрате.",
+  "opts": [
+   "deeply",
+   "deep"
+  ],
+  "a": "deeply",
+  "why": "О чувствах — deeply: deeply sorry."
+ },
+ {
+  "id": "de-deep",
+  "t": 7,
+  "q": "Take a ___ breath.",
+  "ru": "Сделайте глубокий вдох.",
+  "opts": [
+   "deep",
+   "deeply"
+  ],
+  "a": "deep",
+  "why": "Какой вдох? — прилагательное deep."
+ },
+ {
+  "id": "cl-closely",
+  "t": 8,
+  "q": "The patient must be monitored ___.",
+  "ru": "За пациентом нужно внимательно наблюдать.",
+  "opts": [
+   "closely",
+   "close"
+  ],
+  "a": "closely",
+  "why": "Внимательно, тщательно — closely."
+ },
+ {
+  "id": "cl-close",
+  "t": 8,
+  "q": "Don't stand too ___ to the patient.",
+  "ru": "Не стойте слишком близко к пациенту.",
+  "opts": [
+   "close",
+   "closely"
+  ],
+  "a": "close",
+  "why": "Близко — close. Closely — «внимательно»."
+ },
+ {
+  "id": "sh-shortly",
+  "t": 8,
+  "q": "The doctor will see you ___.",
+  "ru": "Врач скоро вас примет.",
+  "opts": [
+   "shortly",
+   "short"
+  ],
+  "a": "shortly",
+  "why": "Скоро — shortly. Short — «коротко»."
+ },
+ {
+  "id": "sh-short",
+  "t": 8,
+  "q": "The meeting was cut ___.",
+  "ru": "Совещание прервали раньше времени.",
+  "opts": [
+   "short",
+   "shortly"
+  ],
+  "a": "short",
+  "why": "cut short — прервать. Shortly — «скоро»."
+ },
+ {
+  "id": "mo-mostly",
+  "t": 8,
+  "q": "Our patients are ___ over seventy.",
+  "ru": "Наши пациенты в основном старше семидесяти.",
+  "opts": [
+   "mostly",
+   "most"
+  ],
+  "a": "mostly",
+  "why": "В основном — mostly. Most — «больше всего», «большинство»."
+ },
+ {
+  "id": "mo-most",
+  "t": 8,
+  "q": "What worries you ___?",
+  "ru": "Что вас больше всего беспокоит?",
+  "opts": [
+   "most",
+   "mostly"
+  ],
+  "a": "most",
+  "why": "Больше всего — most. Mostly — «в основном»."
+ },
+ {
+  "id": "cq-slowly",
+  "t": 9,
+  "q": "Please drive ___ near the hospital.",
+  "ru": "Пожалуйста, езжайте медленно возле больницы.",
+  "opts": [
+   "slowly",
+   "slow"
+  ],
+  "a": "slowly",
+  "why": "Нейтрально — slowly.",
+  "also": {
+   "slow": "в разговоре так говорят, но нейтрально — slowly"
+  }
+ },
+ {
+  "id": "cq-louder",
+  "t": 9,
+  "q": "Could you speak a bit ___?",
+  "ru": "Можете говорить чуть громче?",
+  "opts": [
+   "louder",
+   "more loudly",
+   "loud"
+  ],
+  "a": "louder",
+  "why": "В сравнении короткая форма обычна: louder, quicker, slower.",
+  "also": {
+   "more loudly": "это правильно, но louder обычнее"
+  }
+ },
+ {
+  "id": "cq-quickly",
+  "t": 9,
+  "q": "The nurse ___ called the doctor.",
+  "ru": "Медсестра быстро позвала врача.",
+  "opts": [
+   "quickly",
+   "quick"
+  ],
+  "a": "quickly",
+  "why": "Перед глаголом — только quickly. Quick без -ly — разговорное и только после глагола: Come quick!"
+ },
+ {
+  "id": "cq-cheaply",
+  "t": 9,
+  "q": "The clinic was built very ___.",
+  "ru": "Поликлинику построили очень дёшево.",
+  "opts": [
+   "cheaply",
+   "cheap"
+  ],
+  "a": "cheaply",
+  "why": "Нейтрально — cheaply. Cheap как наречие — разговорное и в основном в buy it cheap, get it cheap."
+ },
+ {
+  "id": "cq-quick",
+  "t": 9,
+  "q": "Come ___! He's not breathing!",
+  "ru": "Скорее сюда! Он не дышит!",
+  "opts": [
+   "quick",
+   "quickly"
+  ],
+  "a": "quick",
+  "why": "В спешке, в разговоре — Come quick!",
+  "also": {
+   "quickly": "это нейтральный вариант"
+  }
+ },
+ {
+  "id": "gw-speaks",
+  "t": 10,
+  "q": "He speaks English very ___.",
+  "ru": "Он очень хорошо говорит по-английски.",
+  "opts": [
+   "well",
+   "good"
+  ],
+  "a": "well",
+  "why": "Как говорит? — наречие well. Good — прилагательное."
+ },
+ {
+  "id": "gw-doctor",
+  "t": 10,
+  "q": "She's a very ___ doctor.",
+  "ru": "Она очень хороший врач.",
+  "opts": [
+   "good",
+   "well"
+  ],
+  "a": "good",
+  "why": "Какой врач? — good."
+ },
+ {
+  "id": "gw-unwell",
+  "t": 10,
+  "q": "I'm not ___ today — I've got a temperature.",
+  "ru": "Мне сегодня нездоровится — температура.",
+  "opts": [
+   "well",
+   "good"
+  ],
+  "a": "well",
+  "why": "О здоровье — well: I'm not well = мне нездоровится."
+ },
+ {
+  "id": "gw-went",
+  "t": 10,
+  "q": "The operation went ___.",
+  "ru": "Операция прошла хорошо.",
+  "opts": [
+   "well",
+   "good"
+  ],
+  "a": "well",
+  "why": "Как прошла? — well."
+ },
+ {
+  "id": "gw-sounds",
+  "t": 10,
+  "q": "That sounds ___!",
+  "ru": "Звучит отлично!",
+  "opts": [
+   "good",
+   "well"
+  ],
+  "a": "good",
+  "why": "После sound — прилагательное: sounds good."
+ },
+ {
+  "id": "gw-recovering",
+  "t": 10,
+  "q": "The patient is recovering ___.",
+  "ru": "Пациент хорошо восстанавливается.",
+  "opts": [
+   "well",
+   "good"
+  ],
+  "a": "well",
+  "why": "Как восстанавливается? — well."
+ },
+ {
+  "id": "lk-tired",
+  "t": 11,
+  "q": "You look ___. Did you sleep at all?",
+  "ru": "Ты выглядишь уставшим. Ты вообще спал?",
+  "opts": [
+   "tired",
+   "tiredly"
+  ],
+  "a": "tired",
+  "why": "look «выглядеть» + прилагательное: look tired."
+ },
+ {
+  "id": "lk-bad",
+  "t": 11,
+  "q": "I feel ___ about forgetting her birthday.",
+  "ru": "Мне неловко, что я забыл про её день рождения.",
+  "opts": [
+   "bad",
+   "badly"
+  ],
+  "a": "bad",
+  "why": "feel + прилагательное: feel bad. Feel badly — ошибка."
+ },
+ {
+  "id": "lk-strange",
+  "t": 11,
+  "q": "His story sounds a bit ___.",
+  "ru": "Его рассказ звучит немного странно.",
+  "opts": [
+   "strange",
+   "strangely"
+  ],
+  "a": "strange",
+  "why": "sound + прилагательное: sounds strange. По-русски «странно», но по-английски это не наречие."
+ },
+ {
+  "id": "lk-smells",
+  "t": 11,
+  "q": "The wound smells ___ — it may be infected.",
+  "ru": "Рана плохо пахнет — возможно, инфекция.",
+  "opts": [
+   "bad",
+   "badly"
+  ],
+  "a": "bad",
+  "why": "smell + прилагательное: smells bad."
+ },
+ {
+  "id": "lk-angrily",
+  "t": 11,
+  "q": "He looked ___ at the nurse.",
+  "ru": "Он сердито посмотрел на медсестру.",
+  "opts": [
+   "angrily",
+   "angry"
+  ],
+  "a": "angrily",
+  "why": "Здесь look — действие «посмотрел»: как посмотрел? angrily. Сравни: He looked angry — выглядел сердитым."
+ },
+ {
+  "id": "lk-calm",
+  "t": 11,
+  "q": "Try to stay ___.",
+  "ru": "Постарайтесь сохранять спокойствие.",
+  "opts": [
+   "calm",
+   "calmly"
+  ],
+  "a": "calm",
+  "why": "stay «оставаться» + прилагательное: stay calm."
+ },
+ {
+  "id": "lk-worse",
+  "t": 11,
+  "q": "His condition got ___ overnight.",
+  "ru": "За ночь его состояние ухудшилось.",
+  "opts": [
+   "worse",
+   "badly",
+   "worsely"
+  ],
+  "a": "worse",
+  "why": "get «становиться» + прилагательное: got worse."
+ },
+ {
+  "id": "sp-easily",
+  "t": 12,
+  "q": "He can walk ___ now.",
+  "ru": "Теперь он легко ходит.",
+  "opts": [
+   "easily",
+   "easyly",
+   "easy"
+  ],
+  "a": "easily",
+  "why": "-y → -ily: easy → easily."
+ },
+ {
+  "id": "sp-gently",
+  "t": 12,
+  "q": "Press ___ on the abdomen.",
+  "ru": "Мягко надавите на живот.",
+  "opts": [
+   "gently",
+   "gentlely",
+   "gentle"
+  ],
+  "a": "gently",
+  "why": "-le → -ly: gentle → gently."
+ },
+ {
+  "id": "sp-basically",
+  "t": 12,
+  "q": "___, it's a viral infection.",
+  "ru": "По сути, это вирусная инфекция.",
+  "opts": [
+   "Basically",
+   "Basicly",
+   "Basic"
+  ],
+  "a": "Basically",
+  "why": "-ic → -ically: basic → basically."
+ },
+ {
+  "id": "sp-carefully",
+  "t": 12,
+  "q": "Read the instructions ___.",
+  "ru": "Внимательно прочитайте инструкцию.",
+  "opts": [
+   "carefully",
+   "carefuly",
+   "carefull"
+  ],
+  "a": "carefully",
+  "why": "careful + ly = carefully, с двумя l."
+ },
+ {
+  "id": "sp-truly",
+  "t": 12,
+  "q": "I'm ___ sorry.",
+  "ru": "Мне искренне жаль.",
+  "opts": [
+   "truly",
+   "truely",
+   "true"
+  ],
+  "a": "truly",
+  "why": "true → truly: e выпадает."
+ },
+ {
+  "id": "sp-possibly",
+  "t": 12,
+  "q": "Could you ___ come a bit earlier tomorrow?",
+  "ru": "Вы не могли бы завтра прийти чуть раньше?",
+  "opts": [
+   "possibly",
+   "possiblely",
+   "possible"
+  ],
+  "a": "possibly",
+  "why": "-le → -ly: possible → possibly."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "adjadv:state";
+const LS_SPEAK = "adjadv:autospeak";
+const LS_TAB = "adjadv:tab";
+const LS_OPEN = "adjadv:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "adj / adv"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  return { pre: card.q.slice(0, i), word: start ? cap(word) : word, post: card.q.slice(i + 3) };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[{}|_]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// {…} — прилагательное (синий), _…_ — наречие (оранжевый), |…| — зелёный
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /_([^_]+)_|\{([^}]+)\}|\|([^|]+)\|/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(m[1] != null ? el("span", "pr", m[1]) : m[2] != null ? el("span", "st", m[2]) : el("span", "good", m[3]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Памятка: прослушать пару (hard — hardly…)
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: каждый раз решаешь заново — какой? или как?
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 11 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    b.lang = "en";
+    b.textContent = o;
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  q.append(p.pre, el("span", "good", p.word), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", card.a), " · твой ответ: ", el("b", null, opt));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  TOPICS.forEach(t => {
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

@@ -1,0 +1,1855 @@
+<title>Сравнения</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("cmp",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .mt tbody th small{display:block;margin-top:calc(3px*var(--k));font-family:var(--sans);font-size:calc(12px*var(--k));line-height:1.2;color:var(--muted)}
+  .mt.wx col.rh{width:calc(78px*var(--k))}
+  .mt.wx td .f{font-size:calc(18px*var(--k))}
+  .mt td i{display:block;font-family:var(--serif);font-style:normal;font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .mt td small{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mt td small i{display:inline;font-size:calc(13px*var(--k));color:var(--soft)}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ct{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .ct col.sit{width:46%}
+  .ct th{padding:calc(11px*var(--k)) calc(10px*var(--k)) calc(11px*var(--k)) 0;text-align:left;vertical-align:top;font-size:calc(15px*var(--k));font-weight:600;line-height:1.35;color:var(--text);border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct td{padding:calc(11px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .ct tr:first-child th,.ct tr:first-child td{border-top:0}
+  .ct .f{display:block;font-family:var(--serif);font-size:calc(21px*var(--k));line-height:1.2}
+  .ct .e{display:block;margin-top:calc(2px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .vt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(4px*var(--k))}
+  .vt col.v{width:40%}
+  .vt th{padding:calc(10px*var(--k)) calc(10px*var(--k)) calc(10px*var(--k)) 0;text-align:left;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt td{padding:calc(10px*var(--k)) 0;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .vt tr:first-child th,.vt tr:first-child td{border-top:0}
+  .vt .w{display:block;font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));line-height:1.15;color:var(--accent)}
+  .vt .w.st{color:var(--blue)}
+  .vt .w.hl{color:var(--text)}
+  .vt tr.pb th,.vt tr.pb td{border-top:0;padding-top:0}
+  .vt .w.good{color:var(--yes-text)}
+  .wd-w{margin:0;line-height:1.3}
+  .wd-w .ph{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(21px*var(--k))}
+  .wd-ru{font-size:calc(15px*var(--k));color:var(--muted)}
+  .wd-p{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35;color:var(--soft)}
+  .vt .p{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--blue)}
+  .vt .e{display:block;font-family:var(--serif);font-size:calc(16px*var(--k));line-height:1.3;color:var(--text)}
+  .vt .r{display:block;margin-top:calc(2px*var(--k));font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Comparisons</h1>
+      <p class="r-sub">Сравнивают тремя способами: <b>больше</b>&nbsp;— <i lang="en" class="nw">‑er / more … than</i>, <b>так же</b>&nbsp;— <i lang="en">as … as</i>, <b>самый</b>&nbsp;— <i lang="en">the -est / the most</i>.</p>
+      <div class="algo">
+        <p class="algo-h">Как образовать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Один слог</p><p class="s-f" lang="en"><span class="nw">tall →</span> <span class="nw"><span class="pr">taller</span></span> <span class="nw">→ <span class="pr">the&nbsp;tallest</span></span><br><span class="nw">big →</span> <span class="nw"><span class="pr">bigger</span></span> <i>(удвоение)</i></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Два слога на&nbsp;-y</p><p class="s-f" lang="en"><span class="nw">easy →</span> <span class="nw"><span class="pr">easier</span></span> <span class="nw">→ <span class="pr">the&nbsp;easiest</span></span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Два слога и&nbsp;длиннее</p><p class="s-f" lang="en"><span class="nw">careful →</span> <span class="nw"><span class="pr">more&nbsp;careful</span></span> <span class="nw">→ <span class="pr">the&nbsp;most&nbsp;careful</span></span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Неправильные&nbsp;— запомнить</p><p class="s-f" lang="en"><span class="nw">good →</span> <span class="nw"><span class="pr">better</span></span> <span class="nw">→ <span class="pr">the&nbsp;best</span></span><br><span class="nw">bad →</span> <span class="nw"><span class="pr">worse</span></span> <span class="nw">→ <span class="pr">the&nbsp;worst</span></span><br><span class="nw">far →</span> <span class="nw"><span class="pr">further</span></span> <span class="nw">→ <span class="pr">the&nbsp;furthest</span></span><br><span class="nw">little →</span> <span class="nw"><span class="pr">less</span></span> <span class="nw">→ <span class="pr">the&nbsp;least</span></span></p></div></li>
+        </ol>
+        <p class="algo-m">Короткое слово растёт само&nbsp;— <b class="pr" lang="en">‑er</b>, длинному нужна подпорка&nbsp;— <b class="pr" lang="en">more</b>.</p>
+        <p class="algo-note">Вместе нельзя: <i lang="en">more better, more easier</i>&nbsp;— ошибки. Самый&nbsp;— всегда с&nbsp;<i lang="en">the</i>.</p>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как сравнить</p>
+        <table class="vt">
+          <colgroup><col class="v"><col></colgroup>
+          <tbody>
+            <tr><th scope="row"><span class="w pr" lang="en">than</span><span class="p">больше, меньше</span></th><td><span class="e" lang="en">older than me</span><span class="r">старше меня</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">as&nbsp;…&nbsp;as</span><span class="p">так же</span></th><td><span class="e" lang="en">as good as</span><span class="r">такой же хороший</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">not as&nbsp;…&nbsp;as</span><span class="p">не такой</span></th><td><span class="e" lang="en">not as easy as</span><span class="r">не такой простой</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">the …, the …</span><span class="p">чем…, тем…</span></th><td><span class="e" lang="en">the sooner, the better</span><span class="r">чем скорее, тем лучше</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">much, far +&nbsp;‑er</span><span class="p">намного</span></th><td><span class="e" lang="en">much better</span><span class="r">намного лучше</span></td></tr>
+            <tr><th scope="row"><span class="w pr" lang="en">twice as&nbsp;…&nbsp;as</span><span class="p">в два раза</span></th><td><span class="e" lang="en">twice as likely</span><span class="r">в два раза вероятнее</span></td></tr>
+          </tbody>
+        </table>
+        <p class="algo-note">С&nbsp;<i lang="en">‑er</i> не&nbsp;ставят <i lang="en">very</i>: намного лучше&nbsp;— <i lang="en">much better</i>. В&nbsp;два раза&nbsp;— <i lang="en">twice</i>, а&nbsp;не two times.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">He&#x27;s <span class="pr">taller than</span> me.</p><p class="cp-ru">выше меня</p><p class="cp-en" lang="en">He&#x27;s <span class="pr">as tall as</span> me.</p><p class="cp-ru">такого же роста</p><p class="cp-en" lang="en">He&#x27;s <span class="pr">not as tall as</span> me.</p><p class="cp-ru">ниже меня</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="He&#x27;s taller than me. He&#x27;s as tall as me. He&#x27;s not as tall as me." aria-label="Прослушать: He&#x27;s taller than me. / He&#x27;s as tall as me. / He&#x27;s not as tall as me."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">She&#x27;s <span class="pr">much better</span>.</p><p class="cp-ru">намного лучше</p><p class="cp-en" lang="en">She&#x27;s <span class="pr">a bit better</span>.</p><p class="cp-ru">немного лучше</p><p class="cp-en" lang="en">She&#x27;s <span class="pr">even better</span>.</p><p class="cp-ru">ещё лучше</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="She&#x27;s much better. She&#x27;s a bit better. She&#x27;s even better." aria-label="Прослушать: She&#x27;s much better. / She&#x27;s a bit better. / She&#x27;s even better."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">There were <span class="pr">fewer</span> complications.</p><p class="cp-ru">меньше осложнений&nbsp;— исчисляемые</p><p class="cp-en" lang="en">There was <span class="pr">less</span> bleeding.</p><p class="cp-ru">меньше кровотечений&nbsp;— неисчисляемое</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="There were fewer complications. There was less bleeding." aria-label="Прослушать: There were fewer complications. / There was less bleeding."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The hospital is <span class="pr">further</span> away.</p><p class="cp-ru">дальше&nbsp;— расстояние</p><p class="cp-en" lang="en">We need <span class="pr">further</span> tests.</p><p class="cp-ru">дополнительные анализы</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="The hospital is further away. We need further tests." aria-label="Прослушать: The hospital is further away. / We need further tests."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Smokers are <span class="pr">twice as likely</span> to have a stroke.</p><p class="cp-ru">в два раза чаще</p><p class="cp-en" lang="en">Non-smokers are <span class="pr">half as likely</span> to have a stroke.</p><p class="cp-ru">в два раза реже</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="Smokers are twice as likely to have a stroke. Non-smokers are half as likely to have a stroke." aria-label="Прослушать: Smokers are twice as likely to have a stroke. / Non-smokers are half as likely to have a stroke."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">more better</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">better</span><span class="err-note">better&nbsp;— уже сравнительная</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">more easy</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">easier</span><span class="err-note">короткие на -y&nbsp;— -ier</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">very better</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">much better</span><span class="err-note">с -er&nbsp;— much, far, a lot</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">taller then me</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">taller than me</span><span class="err-note">чем&nbsp;— than, не then</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the same like</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the same as</span><span class="err-note">такой же, как&nbsp;— the same as</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the most good</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the best</span><span class="err-note">good&nbsp;— better&nbsp;— the best</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">less patients</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">fewer patients</span><span class="err-note">исчисляемые&nbsp;— fewer</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">the best doctor of the hospital</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">the best doctor in the hospital</span><span class="err-note">место, коллектив&nbsp;— in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">two times more expensive</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">twice as expensive</span><span class="err-note">в два раза&nbsp;— twice as … as</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">similar with</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">similar to</span><span class="err-note">похожий на&nbsp;— similar to</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — форма в фокусе (оранжевый).
+const MIXED_TOPIC = 9;
+const GROUPS = {"form": "Как образовать", "compare": "Как сравнить", "research": "В статьях", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "form",
+  "title": "-er или more",
+  "sub": "как образовать сравнительную",
+  "rule": "Один слог — -er: tall → taller, cheap → cheaper. Короткий гласный + согласный — согласная удваивается: big → bigger, hot → hotter. Два слога на -y — -ier: easy → easier, early → earlier. Остальные двусложные и длинные — more: more careful, more effective, more important. Вместе нельзя: more better, more easier — ошибки.",
+  "ex": [
+   {
+    "en": "Generic drugs are [cheaper] than brand-name ones.",
+    "ru": "Дженерики дешевле оригинальных препаратов."
+   },
+   {
+    "en": "The new form is [easier] to fill in.",
+    "ru": "Новую форму проще заполнять."
+   },
+   {
+    "en": "This drug is [more effective].",
+    "ru": "Этот препарат эффективнее."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "form",
+  "title": "Неправильные: good, bad, far",
+  "sub": "better, worse, further, less",
+  "rule": "good → better → the best; bad → worse → the worst; far → further → the furthest (о расстоянии ещё farther); much, many → more → the most; little → less → the least. further значит ещё и «дополнительный»: further tests, further information.",
+  "ex": [
+   {
+    "en": "She's feeling [better] today.",
+    "ru": "Сегодня ей лучше."
+   },
+   {
+    "en": "The pain is [worse] at night.",
+    "ru": "Ночью боль сильнее."
+   },
+   {
+    "en": "We need [further] tests.",
+    "ru": "Нужны дополнительные анализы."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "form",
+  "title": "Самый: the -est, the most",
+  "sub": "превосходная степень",
+  "rule": "Один слог — the -est: the biggest, the fastest; на -y — the -iest: the easiest; длинные — the most: the most effective. Всегда с the. «Один из самых» — one of the most + множественное число: one of the most common causes. Место, коллектив — in: the best hospital in the city; из нескольких — of: the youngest of the three. Наименее — the least: the least invasive.",
+  "ex": [
+   {
+    "en": "Stroke is [one of the most common] causes of disability.",
+    "ru": "Инсульт — одна из самых частых причин инвалидности."
+   },
+   {
+    "en": "It's [the biggest] hospital in the city.",
+    "ru": "Это самая большая больница в городе."
+   },
+   {
+    "en": "Start with [the least invasive] option.",
+    "ru": "Начните с наименее инвазивного варианта."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "compare",
+  "title": "than, as … as, not as … as",
+  "sub": "больше, так же, не такой",
+  "rule": "Больше или меньше — -er или more + than: He's taller than me. Так же — as … as, прилагательное в обычной форме: as good as, as effective as. Не такой — not as … as: The new app isn't as easy as the old one. После than в разговоре — me, him: older than me; официально — than I am. Пишется than, а не then. Такой же — the same as, не the same like.",
+  "ex": [
+   {
+    "en": "The patient is [older than] he looks.",
+    "ru": "Пациент старше, чем выглядит."
+   },
+   {
+    "en": "The generic is [as effective as] the original.",
+    "ru": "Дженерик так же эффективен, как оригинал."
+   },
+   {
+    "en": "The new app [isn't as easy as] the old one.",
+    "ru": "Новым приложением пользоваться не так удобно, как старым."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "compare",
+  "title": "Насколько: much, slightly, even",
+  "sub": "намного, немного, ещё",
+  "rule": "Насколько больше — слово перед -er или more. Намного — much, far, a lot, в статьях significantly: much better, far more effective, significantly lower. Немного — a bit, a little, slightly: slightly higher. Ещё — even: even worse. Very с -er не ставят: very better — ошибка.",
+  "ex": [
+   {
+    "en": "She's [much better] today.",
+    "ru": "Сегодня ей намного лучше."
+   },
+   {
+    "en": "Mortality was [slightly higher] in the older group.",
+    "ru": "В старшей группе смертность была немного выше."
+   },
+   {
+    "en": "The traffic is [even worse] than yesterday.",
+    "ru": "Пробки ещё хуже, чем вчера."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "compare",
+  "title": "Во сколько раз",
+  "sub": "twice as, three times higher, half",
+  "rule": "В два раза — twice as … as: Smokers are twice as likely to have a stroke. Одним словом twice, а не two times. В три раза и больше — three times as … as или three times higher than. Вдвое меньше — half as … as или half the size; twice less — калька. В статьях: a twofold increase — двукратное увеличение.",
+  "ex": [
+   {
+    "en": "Smokers are [twice as likely] to have a stroke.",
+    "ru": "У курильщиков инсульт случается в два раза чаще."
+   },
+   {
+    "en": "The risk was [three times higher] in smokers.",
+    "ru": "У курильщиков риск был в три раза выше."
+   },
+   {
+    "en": "The new pump is [half the size] of the old one.",
+    "ru": "Новая помпа вдвое меньше старой."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "compare",
+  "title": "Чем…, тем…",
+  "sub": "the earlier, the better · more and more",
+  "rule": "Чем…, тем… — the + сравнительная, the + сравнительная: The earlier we treat, the better the outcome. Коротко: the sooner, the better — чем скорее, тем лучше. Всё больше и больше — more and more, всё лучше — better and better: Her speech is getting better and better.",
+  "ex": [
+   {
+    "en": "[The earlier] we treat, [the better] the outcome.",
+    "ru": "Чем раньше лечим, тем лучше исход."
+   },
+   {
+    "en": "Call me back — [the sooner, the better].",
+    "ru": "Перезвоните — чем скорее, тем лучше."
+   },
+   {
+    "en": "Her speech is getting [better and better].",
+    "ru": "Её речь становится всё лучше и лучше."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "research",
+  "title": "Язык статей",
+  "sub": "compared with, fewer, less, similar to",
+  "rule": "По сравнению с — compared with (или compared to): lower compared with placebo. Меньше исчисляемого — fewer: fewer patients, fewer complications; неисчисляемого — less: less bleeding, less time. Похожий на — similar to, не similar with. Отличаться от — different from. Лучше, чем ожидалось — better than expected.",
+  "ex": [
+   {
+    "en": "Mortality was lower [compared with] placebo.",
+    "ru": "Смертность была ниже по сравнению с плацебо."
+   },
+   {
+    "en": "There were [fewer] complications in the surgical group.",
+    "ru": "В хирургической группе было меньше осложнений."
+   },
+   {
+    "en": "Our results are [similar to] those of earlier studies.",
+    "ru": "Наши результаты похожи на результаты прежних исследований."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "c1-cheap",
+  "t": 1,
+  "q": "Generic drugs are ___ than brand-name ones.",
+  "ru": "Дженерики дешевле оригинальных препаратов.",
+  "opts": [
+   "cheaper",
+   "more cheap",
+   "more cheaper"
+  ],
+  "a": "cheaper",
+  "why": "Один слог — -er: cheap → cheaper."
+ },
+ {
+  "id": "c1-big",
+  "t": 1,
+  "q": "The infarct is ___ than it was yesterday.",
+  "ru": "Инфаркт больше, чем был вчера.",
+  "opts": [
+   "bigger",
+   "biger",
+   "more big"
+  ],
+  "a": "bigger",
+  "why": "Короткий гласный + согласный — удвоение: big → bigger."
+ },
+ {
+  "id": "c1-easy",
+  "t": 1,
+  "q": "The new form is much ___ to fill in.",
+  "ru": "Новую форму заполнять гораздо проще.",
+  "opts": [
+   "easier",
+   "more easy",
+   "easyer"
+  ],
+  "a": "easier",
+  "why": "На -y — -ier: easy → easier."
+ },
+ {
+  "id": "c1-early",
+  "t": 1,
+  "q": "We need to start treatment ___.",
+  "ru": "Лечение нужно начинать раньше.",
+  "opts": [
+   "earlier",
+   "more early",
+   "more earlier"
+  ],
+  "a": "earlier",
+  "why": "early → earlier."
+ },
+ {
+  "id": "c1-effective",
+  "t": 1,
+  "q": "For large vessel occlusion, thrombectomy is ___ than thrombolysis alone.",
+  "ru": "При окклюзии крупной артерии тромбэктомия эффективнее, чем один тромболизис.",
+  "opts": [
+   "more effective",
+   "effectiver",
+   "most effective"
+  ],
+  "a": "more effective",
+  "why": "Длинное слово — more: more effective."
+ },
+ {
+  "id": "c1-careful",
+  "t": 1,
+  "q": "You need to be ___ with the dose in elderly patients.",
+  "ru": "С дозой у пожилых пациентов нужно быть осторожнее.",
+  "opts": [
+   "more careful",
+   "carefuller",
+   "more carefully"
+  ],
+  "a": "more careful",
+  "why": "Два слога не на -y — more: more careful."
+ },
+ {
+  "id": "c1-important",
+  "t": 1,
+  "q": "In stroke care, nothing is ___ than time.",
+  "ru": "В лечении инсульта нет ничего важнее времени.",
+  "opts": [
+   "more important",
+   "importanter",
+   "most important"
+  ],
+  "a": "more important",
+  "why": "Длинное слово — more important."
+ },
+ {
+  "id": "c2-better",
+  "t": 2,
+  "q": "She's feeling much ___ today.",
+  "ru": "Сегодня ей намного лучше.",
+  "opts": [
+   "better",
+   "more good",
+   "gooder"
+  ],
+  "a": "better",
+  "why": "good → better → the best."
+ },
+ {
+  "id": "c2-worse",
+  "t": 2,
+  "q": "The headache is ___ in the morning.",
+  "ru": "По утрам головная боль сильнее.",
+  "opts": [
+   "worse",
+   "badder",
+   "more bad"
+  ],
+  "a": "worse",
+  "why": "bad → worse → the worst."
+ },
+ {
+  "id": "c2-worst",
+  "t": 2,
+  "q": "This is the ___ flu season in ten years.",
+  "ru": "Это худший сезон гриппа за десять лет.",
+  "opts": [
+   "worst",
+   "baddest",
+   "most bad"
+  ],
+  "a": "worst",
+  "why": "Самый плохой — the worst."
+ },
+ {
+  "id": "c2-best",
+  "t": 2,
+  "q": "What's the ___ way to prevent a second stroke?",
+  "ru": "Как лучше всего предотвратить повторный инсульт?",
+  "opts": [
+   "best",
+   "most good",
+   "better"
+  ],
+  "a": "best",
+  "why": "Самый хороший — the best."
+ },
+ {
+  "id": "c2-further",
+  "t": 2,
+  "q": "We need ___ tests to confirm the diagnosis.",
+  "ru": "Для подтверждения диагноза нужны дополнительные анализы.",
+  "opts": [
+   "further",
+   "farther",
+   "more far"
+  ],
+  "a": "further",
+  "why": "Дополнительный — further: further tests."
+ },
+ {
+  "id": "c2-less",
+  "t": 2,
+  "q": "Try to eat ___ salt.",
+  "ru": "Старайтесь есть меньше соли.",
+  "opts": [
+   "less",
+   "fewer",
+   "littler"
+  ],
+  "a": "less",
+  "why": "little → less; соль неисчисляемая — less."
+ },
+ {
+  "id": "c2-least",
+  "t": 2,
+  "q": "This is the ___ expensive option.",
+  "ru": "Это самый дешёвый вариант.",
+  "opts": [
+   "least",
+   "less",
+   "most little"
+  ],
+  "a": "least",
+  "why": "Наименее — the least."
+ },
+ {
+  "id": "c3-causes",
+  "t": 3,
+  "q": "Stroke is one of the most common ___ of disability.",
+  "ru": "Инсульт — одна из самых частых причин инвалидности.",
+  "opts": [
+   "causes",
+   "cause",
+   "causing"
+  ],
+  "a": "causes",
+  "why": "One of the most + множественное число."
+ },
+ {
+  "id": "c3-the",
+  "t": 3,
+  "q": "This is ___ best hospital in the region.",
+  "ru": "Это лучшая больница в регионе.",
+  "opts": [
+   "the",
+   "a",
+   ""
+  ],
+  "a": "the",
+  "why": "Превосходная степень — всегда с the."
+ },
+ {
+  "id": "c3-in",
+  "t": 3,
+  "q": "She's the best nurse ___ the department.",
+  "ru": "Она лучшая медсестра в отделении.",
+  "opts": [
+   "in",
+   "of",
+   "from"
+  ],
+  "a": "in",
+  "why": "Место, коллектив — in."
+ },
+ {
+  "id": "c3-of",
+  "t": 3,
+  "q": "She's the youngest ___ the three sisters.",
+  "ru": "Она самая младшая из трёх сестёр.",
+  "opts": [
+   "of",
+   "in",
+   "from"
+  ],
+  "a": "of",
+  "why": "Из нескольких — of."
+ },
+ {
+  "id": "c3-biggest",
+  "t": 3,
+  "q": "It's the ___ hospital in the city.",
+  "ru": "Это самая большая больница в городе.",
+  "opts": [
+   "biggest",
+   "bigest",
+   "most big"
+  ],
+  "a": "biggest",
+  "why": "big → bigger → the biggest."
+ },
+ {
+  "id": "c3-most",
+  "t": 3,
+  "q": "This is the ___ important thing to remember.",
+  "ru": "Это самое важное, что нужно запомнить.",
+  "opts": [
+   "most",
+   "more",
+   "best"
+  ],
+  "a": "most",
+  "why": "Длинное слово — the most important."
+ },
+ {
+  "id": "c3-least",
+  "t": 3,
+  "q": "Choose the ___ invasive option first.",
+  "ru": "Сначала выберите наименее инвазивный вариант.",
+  "opts": [
+   "least",
+   "less",
+   "most little"
+  ],
+  "a": "least",
+  "why": "Наименее — the least."
+ },
+ {
+  "id": "c4-than",
+  "t": 4,
+  "q": "The patient is older ___ he looks.",
+  "ru": "Пациент старше, чем выглядит.",
+  "opts": [
+   "than",
+   "then",
+   "as"
+  ],
+  "a": "than",
+  "why": "Чем — than. Then — «потом»."
+ },
+ {
+  "id": "c4-as",
+  "t": 4,
+  "q": "The generic is as effective ___ the original.",
+  "ru": "Дженерик так же эффективен, как оригинал.",
+  "opts": [
+   "as",
+   "than",
+   "like"
+  ],
+  "a": "as",
+  "why": "Так же, как — as … as."
+ },
+ {
+  "id": "c4-as-form",
+  "t": 4,
+  "q": "This year's results are as ___ as last year's.",
+  "ru": "В этом году результаты такие же хорошие, как в прошлом.",
+  "opts": [
+   "good",
+   "better",
+   "best"
+  ],
+  "a": "good",
+  "why": "В as … as — обычная форма: as good as."
+ },
+ {
+  "id": "c4-not-as",
+  "t": 4,
+  "q": "The new app isn't ___ easy to use as the old one.",
+  "ru": "Новым приложением пользоваться не так удобно, как старым.",
+  "opts": [
+   "as",
+   "more",
+   "than"
+  ],
+  "a": "as",
+  "why": "Не такой, как — not as … as."
+ },
+ {
+  "id": "c4-me",
+  "t": 4,
+  "q": "My brother is two years older than ___.",
+  "ru": "Мой брат на два года старше меня.",
+  "opts": [
+   "me",
+   "my",
+   "mine"
+  ],
+  "a": "me",
+  "why": "После than в разговоре — me; официально — than I am."
+ },
+ {
+  "id": "c4-same",
+  "t": 4,
+  "q": "My results are the same ___ yours.",
+  "ru": "Мои результаты такие же, как у вас.",
+  "opts": [
+   "as",
+   "like",
+   "than"
+  ],
+  "a": "as",
+  "why": "Такой же, как — the same as."
+ },
+ {
+  "id": "c4-morning",
+  "t": 4,
+  "q": "Blood pressure is often higher in the morning ___ in the evening.",
+  "ru": "Давление утром часто выше, чем вечером.",
+  "opts": [
+   "than",
+   "then",
+   "that"
+  ],
+  "a": "than",
+  "why": "Чем — than."
+ },
+ {
+  "id": "c5-much",
+  "t": 5,
+  "q": "She's ___ better than yesterday.",
+  "ru": "Ей гораздо лучше, чем вчера.",
+  "opts": [
+   "much",
+   "very",
+   "more"
+  ],
+  "a": "much",
+  "why": "Намного лучше — much better. Very better — ошибка."
+ },
+ {
+  "id": "c5-far",
+  "t": 5,
+  "q": "For large vessel occlusion, thrombectomy is ___ more effective.",
+  "ru": "При окклюзии крупной артерии тромбэктомия гораздо эффективнее.",
+  "opts": [
+   "far",
+   "very",
+   "too"
+  ],
+  "a": "far",
+  "why": "Намного — far more effective."
+ },
+ {
+  "id": "c5-slightly",
+  "t": 5,
+  "q": "Mortality was ___ higher in the older group.",
+  "ru": "В старшей группе смертность была немного выше.",
+  "opts": [
+   "slightly",
+   "very",
+   "few"
+  ],
+  "a": "slightly",
+  "why": "Немного — slightly higher."
+ },
+ {
+  "id": "c5-even",
+  "t": 5,
+  "q": "The traffic is ___ worse than yesterday.",
+  "ru": "Пробки ещё хуже, чем вчера.",
+  "opts": [
+   "even",
+   "very",
+   "more"
+  ],
+  "a": "even",
+  "why": "Ещё хуже — even worse."
+ },
+ {
+  "id": "c5-significantly",
+  "t": 5,
+  "q": "Blood pressure was ___ lower in the treatment group.",
+  "ru": "В группе лечения давление было значительно ниже.",
+  "opts": [
+   "significantly",
+   "very",
+   "most"
+  ],
+  "a": "significantly",
+  "why": "Значительно — significantly lower."
+ },
+ {
+  "id": "c5-bit",
+  "t": 5,
+  "q": "Could you speak a ___ more slowly, please?",
+  "ru": "Не могли бы вы говорить чуть медленнее?",
+  "opts": [
+   "bit",
+   "few",
+   "very"
+  ],
+  "a": "bit",
+  "why": "Чуть-чуть — a bit."
+ },
+ {
+  "id": "c5-lot",
+  "t": 5,
+  "q": "The new ward is a ___ bigger than the old one.",
+  "ru": "Новое отделение намного больше старого.",
+  "opts": [
+   "lot",
+   "many",
+   "very"
+  ],
+  "a": "lot",
+  "why": "Намного — a lot bigger."
+ },
+ {
+  "id": "c6-twice",
+  "t": 6,
+  "q": "Smokers are ___ as likely to have a stroke.",
+  "ru": "У курильщиков инсульт случается в два раза чаще.",
+  "opts": [
+   "twice",
+   "two times",
+   "double"
+  ],
+  "a": "twice",
+  "why": "В два раза — twice as … as."
+ },
+ {
+  "id": "c6-as",
+  "t": 6,
+  "q": "Men are twice as likely ___ women to have this condition.",
+  "ru": "У мужчин это заболевание встречается в два раза чаще, чем у женщин.",
+  "opts": [
+   "as",
+   "than",
+   "that"
+  ],
+  "a": "as",
+  "why": "twice as likely as."
+ },
+ {
+  "id": "c6-three",
+  "t": 6,
+  "q": "The new drug is three times ___ expensive as the old one.",
+  "ru": "Новый препарат в три раза дороже старого.",
+  "opts": [
+   "as",
+   "more",
+   "so"
+  ],
+  "a": "as",
+  "why": "three times as expensive as."
+ },
+ {
+  "id": "c6-higher",
+  "t": 6,
+  "q": "The risk was three times ___ in smokers.",
+  "ru": "У курильщиков риск был в три раза выше.",
+  "opts": [
+   "higher",
+   "high",
+   "highest"
+  ],
+  "a": "higher",
+  "why": "three times higher."
+ },
+ {
+  "id": "c6-half",
+  "t": 6,
+  "q": "The new pump is ___ the size of the old one.",
+  "ru": "Новая помпа вдвое меньше старой.",
+  "opts": [
+   "half",
+   "twice less",
+   "two times less"
+  ],
+  "a": "half",
+  "why": "Вдвое меньше — half the size. Twice less — калька."
+ },
+ {
+  "id": "c6-twofold",
+  "t": 6,
+  "q": "The study showed a ___ increase in risk.",
+  "ru": "Исследование показало двукратное увеличение риска.",
+  "opts": [
+   "twofold",
+   "twice",
+   "two times"
+  ],
+  "a": "twofold",
+  "why": "Двукратное — twofold."
+ },
+ {
+  "id": "c7-earlier",
+  "t": 7,
+  "q": "The ___ we treat, the better the outcome.",
+  "ru": "Чем раньше мы лечим, тем лучше исход.",
+  "opts": [
+   "earlier",
+   "early",
+   "earliest"
+  ],
+  "a": "earlier",
+  "why": "the + сравнительная: the earlier."
+ },
+ {
+  "id": "c7-the",
+  "t": 7,
+  "q": "The earlier we treat, ___ better the outcome.",
+  "ru": "Чем раньше лечим, тем лучше исход.",
+  "opts": [
+   "the",
+   "so",
+   "more"
+  ],
+  "a": "the",
+  "why": "Чем…, тем… — the …, the …"
+ },
+ {
+  "id": "c7-sooner",
+  "t": 7,
+  "q": "Call me back — the sooner, the ___.",
+  "ru": "Перезвоните — чем скорее, тем лучше.",
+  "opts": [
+   "better",
+   "good",
+   "best"
+  ],
+  "a": "better",
+  "why": "Чем скорее, тем лучше — the sooner, the better."
+ },
+ {
+  "id": "c7-more",
+  "t": 7,
+  "q": "The ___ you practise, the easier it gets.",
+  "ru": "Чем больше практикуешься, тем проще.",
+  "opts": [
+   "more",
+   "most",
+   "much"
+  ],
+  "a": "more",
+  "why": "Чем больше — the more."
+ },
+ {
+  "id": "c7-and",
+  "t": 7,
+  "q": "Life is getting more and ___ expensive.",
+  "ru": "Жизнь становится всё дороже.",
+  "opts": [
+   "more",
+   "most",
+   "much"
+  ],
+  "a": "more",
+  "why": "Всё больше и больше — more and more."
+ },
+ {
+  "id": "c7-speech",
+  "t": 7,
+  "q": "Her speech is getting better and ___ every day.",
+  "ru": "Её речь с каждым днём всё лучше.",
+  "opts": [
+   "better",
+   "best",
+   "good"
+  ],
+  "a": "better",
+  "why": "Всё лучше — better and better."
+ },
+ {
+  "id": "c8-compared",
+  "t": 8,
+  "q": "Mortality was lower ___ with placebo.",
+  "ru": "Смертность была ниже по сравнению с плацебо.",
+  "opts": [
+   "compared",
+   "comparing",
+   "comparison"
+  ],
+  "a": "compared",
+  "why": "По сравнению с — compared with."
+ },
+ {
+  "id": "c8-fewer",
+  "t": 8,
+  "q": "There were ___ complications in the surgical group.",
+  "ru": "В хирургической группе было меньше осложнений.",
+  "opts": [
+   "fewer",
+   "less",
+   "little"
+  ],
+  "a": "fewer",
+  "why": "Исчисляемые — fewer."
+ },
+ {
+  "id": "c8-less",
+  "t": 8,
+  "q": "The new drug caused ___ bleeding.",
+  "ru": "Новый препарат вызывал меньше кровотечений.",
+  "opts": [
+   "less",
+   "fewer",
+   "littler"
+  ],
+  "a": "less",
+  "why": "Неисчисляемое — less: less bleeding."
+ },
+ {
+  "id": "c8-similar",
+  "t": 8,
+  "q": "Our results are similar ___ those of earlier studies.",
+  "ru": "Наши результаты похожи на результаты прежних исследований.",
+  "opts": [
+   "to",
+   "with",
+   "as"
+  ],
+  "a": "to",
+  "why": "Похожий на — similar to."
+ },
+ {
+  "id": "c8-different",
+  "t": 8,
+  "q": "This case is very different ___ the others.",
+  "ru": "Этот случай сильно отличается от остальных.",
+  "opts": [
+   "from",
+   "of",
+   "with"
+  ],
+  "a": "from",
+  "why": "Отличаться от — different from."
+ },
+ {
+  "id": "c8-patients",
+  "t": 8,
+  "q": "___ patients smoke these days than twenty years ago.",
+  "ru": "Сейчас курит меньше пациентов, чем двадцать лет назад.",
+  "opts": [
+   "fewer",
+   "less",
+   "little"
+  ],
+  "a": "fewer",
+  "why": "Пациенты исчисляемые — fewer."
+ },
+ {
+  "id": "c8-expected",
+  "t": 8,
+  "q": "The response to treatment was better ___ expected.",
+  "ru": "Ответ на лечение был лучше, чем ожидалось.",
+  "opts": [
+   "than",
+   "as",
+   "that"
+  ],
+  "a": "than",
+  "why": "Лучше, чем ожидалось — better than expected."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "cmp:state";
+const LS_SPEAK = "cmp:autospeak";
+const LS_TAB = "cmp:tab";
+const LS_OPEN = "cmp:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "Сравнения"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\|\w\]/g, "]").replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// [текст|x] — форма в фокусе: без метки used to — оранжевый, |b be used to — зелёный, |g get used to — синий, |w would и |p пассив — подчёркнуты
+const MARK_CLS = { b: "good", g: "st", w: "hl", p: "hl" };
+function modalCls(t){ const i = t.lastIndexOf("|"); return i > 0 ? (MARK_CLS[t.slice(i + 1)] || "pr") : "pr"; }
+function markText(t){ const i = t.lastIndexOf("|"); return i > 0 ? t.slice(0, i) : t; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), markText(m[1])));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: формы, than и as, «насколько», «во сколько раз» и язык статей чередуются.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

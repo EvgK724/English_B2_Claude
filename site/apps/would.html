@@ -1,0 +1,1848 @@
+<title>Would</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("would",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Would</h1>
+      <p class="r-sub">Одно из самых занятых слов английского. Чаще всего это русское «бы», вежливость и&nbsp;will, перенесённое в&nbsp;прошлое. Вот все <b>семь его работ</b>.</p>
+      <div class="algo">
+        <p class="algo-h">Семь работ would</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Вежливость</p><p class="s-f" lang="en"><span class="pr">Would</span> <i>you…?</i> <span class="sep">·</span> <i>I</i><span class="pr">’d</span>&nbsp;<i>like…</i></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Воображаемое: «бы»</p><p class="s-f" lang="en"><i>If I had time, I</i> <span class="pr">would</span>&nbsp;<i>go</i></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Прошлое, которого не было</p><p class="s-f" lang="en"><i>I</i> <span class="pr">would have</span>&nbsp;<i>come</i></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Будущее в прошлом: will → would</p><p class="s-f" lang="en"><i>He said he</i> <span class="pr">would</span>&nbsp;<i>call</i></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Привычки в прошлом, «бывало»</p><p class="s-f" lang="en"><i>We</i> <span class="pr">would</span>&nbsp;<i>go fishing</i></p></div></li>
+          <li><span class="sn">6</span><div><p class="s-t">Отказ, «ни в какую»</p><p class="s-f" lang="en"><i>The car</i> <span class="pr">wouldn’t</span>&nbsp;<i>start</i></p></div></li>
+          <li><span class="sn">7</span><div><p class="s-t">Хочу, чтобы другой изменился</p><p class="s-f" lang="en"><i>I wish you</i> <span class="pr">would</span>&nbsp;<i>stop</i></p></div></li>
+        </ol>
+        <p class="algo-m">После <b class="pr" lang="en">if</b> would не&nbsp;ставят: <i lang="en">If I&nbsp;had time</i>, не&nbsp;<i lang="en">If I&nbsp;would have</i>.</p>
+        <p class="algo-note"><i lang="en">’d</i>&nbsp;— это would или had: <i lang="en">I’d&nbsp;go</i>&nbsp;— would, <i lang="en">I’d&nbsp;gone</i>&nbsp;— had.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Как звучит</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="pw"><span class="pw-w pr" lang="en">would</span> <span class="ipa">/wʊd/</span> <span class="pw-ru">l не читается, как в could и should</span></p><p class="snd-ex" lang="en">I would go.</p></div><button class="ex-play mm-play" type="button" data-key="sd-1" data-text="Would. I would go." aria-label="Прослушать: would"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w pr" lang="en">I&#x27;d</span> <span class="ipa">/aɪd/</span> <span class="pw-ru">сокращение: I would или I had</span></p><p class="snd-ex" lang="en">I&#x27;d like a coffee.</p></div><button class="ex-play mm-play" type="button" data-key="sd-2" data-text="I&#x27;d. I&#x27;d like a coffee." aria-label="Прослушать: I&#x27;d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w pr" lang="en">wouldn&#x27;t</span> <span class="ipa">/ˈwʊdnt/</span> <span class="pw-ru">would not</span></p><p class="snd-ex" lang="en">He wouldn&#x27;t listen.</p></div><button class="ex-play mm-play" type="button" data-key="sd-3" data-text="Wouldn&#x27;t. He wouldn&#x27;t listen." aria-label="Прослушать: wouldn&#x27;t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w pr" lang="en">would have</span> <span class="ipa">/ˈwʊd əv/</span> <span class="pw-ru">в речи сливается: [ˈwʊdəv]</span></p><p class="snd-ex" lang="en">I would have called.</p></div><button class="ex-play mm-play" type="button" data-key="sd-4" data-text="Would have. I would have called." aria-label="Прослушать: would have"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="pw"><span class="pw-w pr" lang="en">wouldn&#x27;t have</span> <span class="ipa">/ˈwʊdnt əv/</span> <span class="pw-ru">не… бы&nbsp;— о прошлом</span></p><p class="snd-ex" lang="en">I wouldn&#x27;t have known.</p></div><button class="ex-play mm-play" type="button" data-key="sd-5" data-text="Wouldn&#x27;t have. I wouldn&#x27;t have known." aria-label="Прослушать: wouldn&#x27;t have"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">If I would have time, I would help.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">If I had time, I would help.</span><span class="err-note">после if&nbsp;— без would</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I would like that you come.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I would like you to come.</span><span class="err-note">would like + кто-то + to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Would you like some tea? — Yes, I like.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Would you like some tea? — Yes, please.</span><span class="err-note">like&nbsp;— «нравится»</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Would you mind to wait?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Would you mind waiting?</span><span class="err-note">mind + -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;d rather to stay.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;d rather stay.</span><span class="err-note">rather&nbsp;— без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I would of called.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I would have called.</span><span class="err-note">would have, не would of</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">As a child, I would have a dog.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">As a child, I used to have a dog.</span><span class="err-note">состояние&nbsp;— used to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I wish I would be taller.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I wish I were taller.</span><span class="err-note">о себе&nbsp;— без would</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He said he will come, but he didn&#x27;t.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He said he would come, but he didn&#x27;t.</span><span class="err-note">will в прошлом&nbsp;— would</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">You would better go.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">You had better go.</span><span class="err-note">&#x27;d better = had better</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — would в фокусе (оранжевый).
+const MIXED_TOPIC = 11;
+const GROUPS = {"polite": "Вежливость", "imagine": "Воображаемое: «бы»", "past": "Прошлое", "wish": "Желания и сокращения", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "polite",
+  "title": "Просьбы и предложения",
+  "sub": "Would you…? · I'd like…",
+  "rule": "Would you…? — вежливая просьба, мягче, чем Can you…: Would you open the window, please? Would you like…? — предложение: Would you like some tea? Would you like to sit down? I'd like = I would like — вежливое «хотел бы»: I'd like a coffee, please. Отвечают: Yes, please или No, thank you. I like — это «мне нравится», а не «хочу».",
+  "ex": [
+   {
+    "en": "[Would] you like some tea?",
+    "ru": "Хотите чаю?"
+   },
+   {
+    "en": "[I'd like] to make an appointment.",
+    "ru": "Я хотел бы записаться на приём."
+   },
+   {
+    "en": "[Would] you open the door, please?",
+    "ru": "Не могли бы вы открыть дверь?"
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "polite",
+  "title": "Would you mind…?",
+  "sub": "вы не против…?",
+  "rule": "Would you mind + -ing? — очень вежливая просьба: Would you mind waiting? Отрицание — not + -ing: Would you mind not talking so loudly? Would you mind if I + прошедшее — просишь разрешения: Would you mind if I opened the window? С Do you mind if I — настоящее: Do you mind if I sit here? Ответ «пожалуйста» — No, not at all: mind — «возражать».",
+  "ex": [
+   {
+    "en": "[Would you mind] waiting a moment?",
+    "ru": "Не могли бы вы минутку подождать?"
+   },
+   {
+    "en": "[Would you mind if] I opened the window?",
+    "ru": "Вы не против, если я открою окно?"
+   },
+   {
+    "en": "[No], not at all.",
+    "ru": "Конечно, пожалуйста (дословно: «нет, не возражаю»)."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "polite",
+  "title": "I'd rather, I'd prefer",
+  "sub": "лучше бы · мягкое мнение",
+  "rule": "I'd rather + глагол без to — «я бы лучше»: I'd rather stay at home. I'd rather walk than take the bus. Отказ — I'd rather not. Про другого человека — прошедшее: I'd rather you didn't smoke here. I'd prefer + to + глагол: I'd prefer to wait. Осторожное мнение — I would say…, I would think…: I would say it's a migraine.",
+  "ex": [
+   {
+    "en": "[I'd rather] stay at home.",
+    "ru": "Я бы лучше остался дома."
+   },
+   {
+    "en": "[I'd prefer] to wait.",
+    "ru": "Я бы предпочёл подождать."
+   },
+   {
+    "en": "[I would say] it's a migraine.",
+    "ru": "Я бы сказал, что это мигрень."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "imagine",
+  "title": "Воображаемое: «бы»",
+  "sub": "If I had…, I would…",
+  "rule": "would + глагол — «бы» о воображаемом сейчас или в будущем: What would you do? It would be better to leave early. В условии с if — прошедшее, would — во второй части: If I had more time, I would learn Spanish. Совет: If I were you, I would… Would после if — ошибка.",
+  "ex": [
+   {
+    "en": "If I had more time, I [would] learn Spanish.",
+    "ru": "Будь у меня больше времени, я бы выучил испанский."
+   },
+   {
+    "en": "If I were you, I['d] see a doctor.",
+    "ru": "На твоём месте я бы сходил к врачу."
+   },
+   {
+    "en": "What [would] you do?",
+    "ru": "Что бы ты сделал?"
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "imagine",
+  "title": "Прошлое, которого не было",
+  "sub": "would have + третья форма",
+  "rule": "would have + третья форма — «бы» о прошлом, которое не случилось: I would have called, but I didn't have your number. If I had known, I would have come. В части с if — had + третья форма. You would have loved it — «тебе бы понравилось». В речи have звучит [əv], но писать would of — ошибка.",
+  "ex": [
+   {
+    "en": "If I had known, I [would have] come.",
+    "ru": "Если бы я знал, я бы пришёл."
+   },
+   {
+    "en": "You [would have] loved it.",
+    "ru": "Тебе бы понравилось."
+   },
+   {
+    "en": "I [would have] called, but I didn't have your number.",
+    "ru": "Я бы позвонил, но у меня не было твоего номера."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "past",
+  "title": "Будущее в прошлом",
+  "sub": "will → would",
+  "rule": "Рассказываешь о прошлом — will становится would: He says he will call → He said he would call. I knew she would be late. I thought it would rain. won't → wouldn't: She promised she wouldn't be late again.",
+  "ex": [
+   {
+    "en": "He said he [would] call.",
+    "ru": "Он сказал, что позвонит."
+   },
+   {
+    "en": "I knew she [would] be late.",
+    "ru": "Я знал, что она опоздает."
+   },
+   {
+    "en": "I thought it [would] rain.",
+    "ru": "Я думал, что пойдёт дождь."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "past",
+  "title": "Привычки в прошлом",
+  "sub": "«бывало» · would или used to",
+  "rule": "would — повторяющиеся действия в прошлом, «бывало»: Every summer we would go to the sea. Как used to, но только для действий. Состояние — только used to: I used to have a dog, My father used to be a surgeon. I would have a dog — ошибка.",
+  "ex": [
+   {
+    "en": "Every summer we [would] go to the sea.",
+    "ru": "Каждое лето мы ездили на море."
+   },
+   {
+    "en": "My grandfather [would] tell us stories.",
+    "ru": "Дедушка, бывало, рассказывал нам истории."
+   },
+   {
+    "en": "I [used to] have a dog.",
+    "ru": "Раньше у меня была собака."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "past",
+  "title": "Отказ: wouldn't",
+  "sub": "не хотел — и всё",
+  "rule": "wouldn't — отказ в прошлом, «ни в какую»: He wouldn't listen. The patient wouldn't take his tablets. Так говорят и о вещах: The car wouldn't start, the door wouldn't open. Отказ сейчас — won't: My son won't eat vegetables.",
+  "ex": [
+   {
+    "en": "The car [wouldn't] start.",
+    "ru": "Машина никак не заводилась."
+   },
+   {
+    "en": "He [wouldn't] listen.",
+    "ru": "Он ни в какую не слушал."
+   },
+   {
+    "en": "She [wouldn't] tell me.",
+    "ru": "Она так и не сказала мне."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "wish",
+  "title": "wish + would",
+  "sub": "хоть бы ты… · если бы только",
+  "rule": "I wish + кто-то + would — хочу, чтобы другой человек или обстоятельства изменились, часто с раздражением: I wish you would stop smoking. I wish it would stop raining. I wish you wouldn't interrupt me. О себе would не ставят: I wish I could speak English fluently, I wish I had more time. If only he would listen! — «если бы только».",
+  "ex": [
+   {
+    "en": "I wish you [would] stop smoking.",
+    "ru": "Хорошо бы ты бросил курить."
+   },
+   {
+    "en": "I wish it [would] stop raining.",
+    "ru": "Хоть бы дождь перестал."
+   },
+   {
+    "en": "If only he [would] listen!",
+    "ru": "Если бы только он послушал!"
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "wish",
+  "title": "'d — would или had?",
+  "sub": "I'd go · I'd gone · I'd better",
+  "rule": "'d — это would или had. Смотри, что дальше. I'd + глагол — would: I'd call you. I'd + третья форма — had: She'd already gone. I'd have + третья форма — would have. I'd better + глагол без to — had better, «лучше бы»: You'd better see a doctor. I'd rather — would rather.",
+  "ex": [
+   {
+    "en": "[I'd] like a coffee.",
+    "ru": "Мне кофе, пожалуйста. (I would)"
+   },
+   {
+    "en": "[She'd] already left.",
+    "ru": "Она уже ушла. (she had)"
+   },
+   {
+    "en": "[You'd] better go.",
+    "ru": "Тебе лучше пойти. (you had)"
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "w1-water",
+  "t": 1,
+  "q": "___ you like some water?",
+  "ru": "Хотите воды?",
+  "opts": [
+   "Would",
+   "Do",
+   "Will"
+  ],
+  "a": "Would",
+  "why": "Предложение — Would you like…?"
+ },
+ {
+  "id": "w1-appt",
+  "t": 1,
+  "q": "I ___ like to make an appointment, please.",
+  "ru": "Я хотел бы записаться на приём.",
+  "opts": [
+   "would",
+   "will",
+   "am"
+  ],
+  "a": "would",
+  "why": "Вежливое «хотел бы» — I would like, коротко I'd like."
+ },
+ {
+  "id": "w1-sit",
+  "t": 1,
+  "q": "Would you like ___ down?",
+  "ru": "Не хотите присесть?",
+  "opts": [
+   "to sit",
+   "sitting",
+   "sit"
+  ],
+  "a": "to sit",
+  "why": "Would you like + to + глагол."
+ },
+ {
+  "id": "w1-window",
+  "t": 1,
+  "q": "___ you open the window, please?",
+  "ru": "Не могли бы вы открыть окно?",
+  "opts": [
+   "Would",
+   "Do",
+   "Are"
+  ],
+  "a": "Would",
+  "why": "Вежливая просьба — Would you…?"
+ },
+ {
+  "id": "w1-yes",
+  "t": 1,
+  "q": "Would you like some tea? — Yes, ___.",
+  "ru": "Хотите чаю? — Да, пожалуйста.",
+  "opts": [
+   "please",
+   "I like",
+   "I want"
+  ],
+  "a": "please",
+  "why": "На предложение отвечают Yes, please. Yes, I like — ошибка: like — «нравится»."
+ },
+ {
+  "id": "w1-cup",
+  "t": 1,
+  "q": "I ___ a cup of tea, please.",
+  "ru": "Мне чашку чая, пожалуйста.",
+  "opts": [
+   "would like",
+   "like"
+  ],
+  "a": "would like",
+  "why": "Хочу сейчас, вежливо, — I'd like. I like — «мне нравится вообще»."
+ },
+ {
+  "id": "w2-wait",
+  "t": 2,
+  "q": "Would you mind ___ here for a moment?",
+  "ru": "Не могли бы вы подождать здесь минутку?",
+  "opts": [
+   "waiting",
+   "to wait",
+   "wait"
+  ],
+  "a": "waiting",
+  "why": "Would you mind + -ing."
+ },
+ {
+  "id": "w2-shirt",
+  "t": 2,
+  "q": "Would you mind ___ your shirt? I need to listen to your chest.",
+  "ru": "Не могли бы вы снять рубашку? Мне нужно послушать лёгкие.",
+  "opts": [
+   "taking off",
+   "to take off",
+   "take off"
+  ],
+  "a": "taking off",
+  "why": "Would you mind + -ing: taking off."
+ },
+ {
+  "id": "w2-notalk",
+  "t": 2,
+  "q": "Would you mind ___ so loudly? The patients are asleep.",
+  "ru": "Не могли бы вы не разговаривать так громко? Пациенты спят.",
+  "opts": [
+   "not talking",
+   "not to talk",
+   "don't talk"
+  ],
+  "a": "not talking",
+  "why": "Отрицание — Would you mind not + -ing."
+ },
+ {
+  "id": "w2-if",
+  "t": 2,
+  "q": "Would you mind if I ___ the window?",
+  "ru": "Вы не против, если я открою окно?",
+  "opts": [
+   "opened",
+   "open",
+   "will open"
+  ],
+  "a": "opened",
+  "why": "Would you mind if I + прошедшее. С Do you mind if I — настоящее: open."
+ },
+ {
+  "id": "w2-do",
+  "t": 2,
+  "q": "Do you mind if I ___ here?",
+  "ru": "Не возражаете, если я здесь сяду?",
+  "opts": [
+   "sit",
+   "sat",
+   "would sit"
+  ],
+  "a": "sit",
+  "why": "Do you mind if I + настоящее. С Would you mind if I — прошедшее: sat."
+ },
+ {
+  "id": "w2-no",
+  "t": 2,
+  "q": "Would you mind closing the door? — ___, not at all.",
+  "ru": "Не закроете дверь? — Конечно, без проблем.",
+  "opts": [
+   "No",
+   "Yes"
+  ],
+  "a": "No",
+  "why": "mind — «возражать»: No, not at all — «нет, не возражаю», то есть «конечно»."
+ },
+ {
+  "id": "w3-stay",
+  "t": 3,
+  "q": "I'd rather ___ at home tonight.",
+  "ru": "Я бы лучше остался сегодня дома.",
+  "opts": [
+   "stay",
+   "to stay",
+   "staying"
+  ],
+  "a": "stay",
+  "why": "I'd rather + глагол без to."
+ },
+ {
+  "id": "w3-prefer",
+  "t": 3,
+  "q": "I'd prefer ___ for the results.",
+  "ru": "Я бы предпочёл дождаться результатов.",
+  "opts": [
+   "to wait",
+   "wait",
+   "waiting"
+  ],
+  "a": "to wait",
+  "why": "I'd prefer + to + глагол."
+ },
+ {
+  "id": "w3-you",
+  "t": 3,
+  "q": "I'd rather you ___ smoke in the car.",
+  "ru": "Я бы предпочёл, чтобы ты не курил в машине.",
+  "opts": [
+   "didn't",
+   "don't",
+   "won't"
+  ],
+  "a": "didn't",
+  "why": "I'd rather + другой человек + прошедшее: I'd rather you didn't."
+ },
+ {
+  "id": "w3-not",
+  "t": 3,
+  "q": "Shall we go out tonight? — I'd rather ___.",
+  "ru": "Сходим куда-нибудь вечером? — Пожалуй, нет.",
+  "opts": [
+   "not",
+   "not to",
+   "don't"
+  ],
+  "a": "not",
+  "why": "Вежливый отказ — I'd rather not."
+ },
+ {
+  "id": "w3-than",
+  "t": 3,
+  "q": "I'd rather walk ___ take the bus.",
+  "ru": "Я лучше пройдусь, чем поеду на автобусе.",
+  "opts": [
+   "than",
+   "to",
+   "that"
+  ],
+  "a": "than",
+  "why": "I'd rather A than B."
+ },
+ {
+  "id": "w3-say",
+  "t": 3,
+  "q": "It's hard to be sure, but I ___ it's a migraine.",
+  "ru": "Трудно сказать наверняка, но я бы сказал, что это мигрень.",
+  "opts": [
+   "would say",
+   "will say",
+   "say"
+  ],
+  "a": "would say",
+  "why": "Осторожное мнение — I would say…"
+ },
+ {
+  "id": "w4-time",
+  "t": 4,
+  "q": "If I ___ more time, I would learn Spanish.",
+  "ru": "Будь у меня больше времени, я бы выучил испанский.",
+  "opts": [
+   "had",
+   "would have",
+   "have"
+  ],
+  "a": "had",
+  "why": "В части с if — прошедшее. Would — только во второй части."
+ },
+ {
+  "id": "w4-you",
+  "t": 4,
+  "q": "If I were you, I ___ see a doctor.",
+  "ru": "На твоём месте я бы сходил к врачу.",
+  "opts": [
+   "would",
+   "will",
+   "am"
+  ],
+  "a": "would",
+  "why": "Совет: If I were you, I would…"
+ },
+ {
+  "id": "w4-million",
+  "t": 4,
+  "q": "What ___ you do if you won a million?",
+  "ru": "Что бы ты сделал, если бы выиграл миллион?",
+  "opts": [
+   "would",
+   "will",
+   "do"
+  ],
+  "a": "would",
+  "why": "Воображаемое — would: What would you do?"
+ },
+ {
+  "id": "w4-took",
+  "t": 4,
+  "q": "If he ___ his tablets, he wouldn't feel so bad.",
+  "ru": "Если бы он принимал таблетки, ему не было бы так плохо.",
+  "opts": [
+   "took",
+   "would take",
+   "takes"
+  ],
+  "a": "took",
+  "why": "В части с if — прошедшее: took."
+ },
+ {
+  "id": "w4-were",
+  "t": 4,
+  "q": "If I ___ you, I'd take a few days off.",
+  "ru": "На твоём месте я бы взял пару выходных.",
+  "opts": [
+   "were",
+   "would be",
+   "am"
+  ],
+  "a": "were",
+  "why": "«На твоём месте» — If I were you. Would после if не ставят."
+ },
+ {
+  "id": "w4-better",
+  "t": 4,
+  "q": "It would be better ___ early.",
+  "ru": "Лучше было бы выехать пораньше.",
+  "opts": [
+   "to leave",
+   "leave",
+   "leaving"
+  ],
+  "a": "to leave",
+  "why": "It would be better / nice + to + глагол."
+ },
+ {
+  "id": "w5-known",
+  "t": 5,
+  "q": "If I had known, I ___ earlier.",
+  "ru": "Если бы я знал, я бы пришёл раньше.",
+  "opts": [
+   "would have come",
+   "would come",
+   "had come"
+  ],
+  "a": "would have come",
+  "why": "О прошлом — would have + третья форма."
+ },
+ {
+  "id": "w5-arrived",
+  "t": 5,
+  "q": "If we ___ earlier, we could have given thrombolysis.",
+  "ru": "Если бы мы приехали раньше, можно было бы провести тромболизис.",
+  "opts": [
+   "had arrived",
+   "would have arrived",
+   "arrived"
+  ],
+  "a": "had arrived",
+  "why": "В части с if о прошлом — had + третья форма."
+ },
+ {
+  "id": "w5-number",
+  "t": 5,
+  "q": "I ___ you, but I didn't have your number.",
+  "ru": "Я бы тебе позвонил, но у меня не было твоего номера.",
+  "opts": [
+   "would have called",
+   "would call",
+   "will call"
+  ],
+  "a": "would have called",
+  "why": "Не случилось в прошлом — would have + третья форма."
+ },
+ {
+  "id": "w5-loved",
+  "t": 5,
+  "q": "You ___ loved the concert — it was amazing!",
+  "ru": "Тебе бы понравился концерт — он был потрясающим!",
+  "opts": [
+   "would have",
+   "would",
+   "will have"
+  ],
+  "a": "would have",
+  "why": "«Тебе бы понравилось» — you would have loved."
+ },
+ {
+  "id": "w5-survived",
+  "t": 5,
+  "q": "He would have ___ if the ambulance had come sooner.",
+  "ru": "Он бы выжил, если бы скорая приехала раньше.",
+  "opts": [
+   "survived",
+   "survive",
+   "survives"
+  ],
+  "a": "survived",
+  "why": "would have + третья форма: survived."
+ },
+ {
+  "id": "w5-of",
+  "t": 5,
+  "q": "I would ___ told you, but I forgot.",
+  "ru": "Я бы тебе сказал, но забыл.",
+  "opts": [
+   "have",
+   "of",
+   "had"
+  ],
+  "a": "have",
+  "why": "would have, не would of: в речи have звучит [əv], отсюда ошибка."
+ },
+ {
+  "id": "w6-call",
+  "t": 6,
+  "q": "He said he ___ call me back, but he never did.",
+  "ru": "Он сказал, что перезвонит, но так и не перезвонил.",
+  "opts": [
+   "would",
+   "will"
+  ],
+  "a": "would",
+  "why": "will в рассказе о прошлом — would."
+ },
+ {
+  "id": "w6-late",
+  "t": 6,
+  "q": "I knew she ___ be late — she always is.",
+  "ru": "Я знал, что она опоздает, — она всегда опаздывает.",
+  "opts": [
+   "would",
+   "will"
+  ],
+  "a": "would",
+  "why": "После knew, thought, said — would."
+ },
+ {
+  "id": "w6-results",
+  "t": 6,
+  "q": "Last week the doctor said the results ___ be ready by Friday, but they weren't.",
+  "ru": "На прошлой неделе врач сказал, что результаты будут готовы к пятнице, но их не было.",
+  "opts": [
+   "would",
+   "will"
+  ],
+  "a": "would",
+  "why": "Будущее, увиденное из прошлого, — would."
+ },
+ {
+  "id": "w6-promise",
+  "t": 6,
+  "q": "She promised she ___ be late again, but she was late today.",
+  "ru": "Она обещала, что больше не будет опаздывать, но сегодня опять опоздала.",
+  "opts": [
+   "wouldn't",
+   "won't",
+   "didn't"
+  ],
+  "a": "wouldn't",
+  "why": "won't в рассказе о прошлом — wouldn't."
+ },
+ {
+  "id": "w6-rain",
+  "t": 6,
+  "q": "I thought it ___ rain, so I took an umbrella.",
+  "ru": "Я думал, что пойдёт дождь, поэтому взял зонт.",
+  "opts": [
+   "would",
+   "will"
+  ],
+  "a": "would",
+  "why": "I thought it would… — будущее из прошлого."
+ },
+ {
+  "id": "w7-fishing",
+  "t": 7,
+  "q": "When I was a child, my grandfather ___ take me fishing every Sunday.",
+  "ru": "Когда я был маленьким, дедушка каждое воскресенье брал меня на рыбалку.",
+  "opts": [
+   "would",
+   "will",
+   "was"
+  ],
+  "a": "would",
+  "why": "Повторяющееся действие в прошлом — would (или used to)."
+ },
+ {
+  "id": "w7-hair",
+  "t": 7,
+  "q": "I ___ have long hair when I was at university.",
+  "ru": "В университете у меня были длинные волосы.",
+  "opts": [
+   "used to",
+   "would"
+  ],
+  "a": "used to",
+  "why": "Состояние — только used to. Would — только для действий."
+ },
+ {
+  "id": "w7-read",
+  "t": 7,
+  "q": "Every evening after work, she ___ read to her children.",
+  "ru": "Каждый вечер после работы она читала детям.",
+  "opts": [
+   "would",
+   "will",
+   "was"
+  ],
+  "a": "would",
+  "why": "Привычное действие в прошлом — would."
+ },
+ {
+  "id": "w7-surgeon",
+  "t": 7,
+  "q": "My father ___ be a surgeon.",
+  "ru": "Мой отец раньше был хирургом.",
+  "opts": [
+   "used to",
+   "would"
+  ],
+  "a": "used to",
+  "why": "Профессия, состояние — used to."
+ },
+ {
+  "id": "w7-wait",
+  "t": 7,
+  "q": "Before the new hospital opened, patients ___ wait for hours.",
+  "ru": "До открытия новой больницы пациентам, бывало, приходилось ждать часами.",
+  "opts": [
+   "would",
+   "will",
+   "are"
+  ],
+  "a": "would",
+  "why": "«Бывало» — would + глагол."
+ },
+ {
+  "id": "w8-car",
+  "t": 8,
+  "q": "The car ___ start this morning.",
+  "ru": "Сегодня утром машина никак не заводилась.",
+  "opts": [
+   "wouldn't",
+   "won't",
+   "didn't want"
+  ],
+  "a": "wouldn't",
+  "why": "Отказ в прошлом, даже у вещей, — wouldn't."
+ },
+ {
+  "id": "w8-listen",
+  "t": 8,
+  "q": "I told him to rest, but he ___ listen.",
+  "ru": "Я говорил ему отдыхать, но он ни в какую не слушал.",
+  "opts": [
+   "wouldn't",
+   "won't",
+   "doesn't"
+  ],
+  "a": "wouldn't",
+  "why": "Не хотел, и всё, — wouldn't."
+ },
+ {
+  "id": "w8-tablets",
+  "t": 8,
+  "q": "The patient ___ take his tablets, so we called his daughter.",
+  "ru": "Пациент отказывался принимать таблетки, и мы позвонили его дочери.",
+  "opts": [
+   "wouldn't",
+   "won't",
+   "doesn't"
+  ],
+  "a": "wouldn't",
+  "why": "Отказывался — wouldn't."
+ },
+ {
+  "id": "w8-veg",
+  "t": 8,
+  "q": "My son ___ eat vegetables — he just refuses.",
+  "ru": "Мой сын не ест овощи — отказывается, и всё.",
+  "opts": [
+   "won't",
+   "wouldn't"
+  ],
+  "a": "won't",
+  "why": "Отказ сейчас — won't, в прошлом — wouldn't."
+ },
+ {
+  "id": "w8-tell",
+  "t": 8,
+  "q": "She ___ tell me what had happened, so I asked her husband.",
+  "ru": "Она так и не сказала мне, что случилось, и я спросил её мужа.",
+  "opts": [
+   "wouldn't",
+   "won't"
+  ],
+  "a": "wouldn't",
+  "why": "Отказ в прошлом — wouldn't."
+ },
+ {
+  "id": "w9-smoking",
+  "t": 9,
+  "q": "I wish you ___ smoking.",
+  "ru": "Хорошо бы ты бросил курить.",
+  "opts": [
+   "would stop",
+   "stop",
+   "will stop"
+  ],
+  "a": "would stop",
+  "why": "Хочу, чтобы другой изменился, — wish + would."
+ },
+ {
+  "id": "w9-rain",
+  "t": 9,
+  "q": "I wish it ___ raining — I want to go for a walk.",
+  "ru": "Хоть бы дождь перестал — хочу погулять.",
+  "opts": [
+   "would stop",
+   "stops",
+   "will stop"
+  ],
+  "a": "would stop",
+  "why": "wish + would — и о том, что от нас не зависит."
+ },
+ {
+  "id": "w9-could",
+  "t": 9,
+  "q": "I wish I ___ speak English fluently.",
+  "ru": "Жаль, что я не говорю по-английски свободно.",
+  "opts": [
+   "could",
+   "would",
+   "will"
+  ],
+  "a": "could",
+  "why": "О себе — wish + could, не would."
+ },
+ {
+  "id": "w9-had",
+  "t": 9,
+  "q": "I wish I ___ more free time.",
+  "ru": "Жаль, что у меня мало свободного времени.",
+  "opts": [
+   "had",
+   "would have",
+   "have"
+  ],
+  "a": "had",
+  "why": "О том, что есть сейчас, — wish + прошедшее: had."
+ },
+ {
+  "id": "w9-only",
+  "t": 9,
+  "q": "If only he ___ listen to me!",
+  "ru": "Если бы только он меня послушал!",
+  "opts": [
+   "would",
+   "will",
+   "does"
+  ],
+  "a": "would",
+  "why": "Сильное желание, чтобы кто-то изменился, — If only… would."
+ },
+ {
+  "id": "w9-interrupt",
+  "t": 9,
+  "q": "I wish you ___ interrupt me all the time.",
+  "ru": "Перестань, пожалуйста, всё время меня перебивать.",
+  "opts": [
+   "wouldn't",
+   "don't",
+   "won't"
+  ],
+  "a": "wouldn't",
+  "why": "Раздражение — I wish you wouldn't…"
+ },
+ {
+  "id": "w10-call",
+  "t": 10,
+  "q": "I'd ___ you if I had your number.",
+  "ru": "Я бы тебе позвонил, если бы у меня был твой номер.",
+  "opts": [
+   "call",
+   "called"
+  ],
+  "a": "call",
+  "why": "'d + глагол — would: I'd call."
+ },
+ {
+  "id": "w10-gone",
+  "t": 10,
+  "q": "By the time I arrived, she'd already ___ home.",
+  "ru": "Когда я пришёл, она уже ушла домой.",
+  "opts": [
+   "gone",
+   "go"
+  ],
+  "a": "gone",
+  "why": "'d + третья форма — had: she'd gone."
+ },
+ {
+  "id": "w10-better",
+  "t": 10,
+  "q": "You'd ___ see a doctor about that pain.",
+  "ru": "Тебе лучше показаться врачу с этой болью.",
+  "opts": [
+   "better",
+   "rather"
+  ],
+  "a": "better",
+  "why": "Совет «лучше бы» — you'd better = you had better."
+ },
+ {
+  "id": "w10-tomorrow",
+  "t": 10,
+  "q": "She promised she'd ___ me tomorrow.",
+  "ru": "Она пообещала, что позвонит мне завтра.",
+  "opts": [
+   "call",
+   "called"
+  ],
+  "a": "call",
+  "why": "'d + глагол — would: she would call."
+ },
+ {
+  "id": "w10-seen",
+  "t": 10,
+  "q": "I'd never ___ such a big hospital before.",
+  "ru": "Я никогда раньше не видел такой большой больницы.",
+  "opts": [
+   "seen",
+   "see"
+  ],
+  "a": "seen",
+  "why": "'d + третья форма — had: I had never seen."
+ },
+ {
+  "id": "w10-go",
+  "t": 10,
+  "q": "You'd better ___ now, or you'll miss the bus.",
+  "ru": "Тебе лучше выйти сейчас, а то опоздаешь на автобус.",
+  "opts": [
+   "go",
+   "to go",
+   "going"
+  ],
+  "a": "go",
+  "why": "had better + глагол без to."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "would:state";
+const LS_SPEAK = "would:autospeak";
+const LS_TAB = "would:tab";
+const LS_OPEN = "would:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "would"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — слово в фокусе (оранжевый)
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", "pr", m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Как звучит: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: значения would чередуются — выбирать приходится по смыслу.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>
