@@ -1,0 +1,17 @@
+{
+  "name": "Английский B2 — 46 тренажёров",
+  "short_name": "Английский",
+  "description": "Тренажёры английского B1–B2: правила, карточки с интервальным повторением, озвучка.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0e1113",
+  "theme_color": "#0e1113",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

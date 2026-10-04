@@ -77,6 +77,19 @@
   .empty{margin:0;padding:calc(18px*var(--k)) calc(4px*var(--k));font-size:calc(17px*var(--k));color:var(--soft)}
   .foot{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.5;color:var(--muted);text-wrap:pretty}
 
+  /* ——— Перенос прогресса (вне claude.ai облака нет: прогресс живёт на устройстве) */
+  .sync{position:relative;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(16px*var(--k));border-radius:calc(20px*var(--k));border:calc(1px*var(--k)) solid var(--line);background:var(--surface)}
+  .sync-txt{margin:0;font-size:calc(16px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .sync-row{display:flex;flex-wrap:wrap;gap:calc(8px*var(--k))}
+  .sbtn{flex:1 1 calc(200px*var(--k));min-height:calc(50px*var(--k));padding:0 calc(16px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--bg);color:var(--text);font-size:calc(17px*var(--k));cursor:pointer}
+  .sbtn.main{border-color:transparent;background:var(--accent);color:var(--on-accent);font-weight:600}
+  .sbtn:active{background:var(--raise)}
+  .sbtn.main:active{background:var(--accent);opacity:.85}
+  .sbtn:focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  .sync-msg{margin:0;font-size:calc(15px*var(--k));line-height:1.4;color:var(--blue)}
+  .sync-msg:empty{display:none}
+  .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);opacity:0;pointer-events:none}
+
   /* ——— Открытая тема */
   .course{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;background:var(--bg);transform:translateX(100%);visibility:hidden;transition:transform .22s ease,visibility 0s linear .22s}
   .course.open{transform:none;visibility:visible;transition:transform .22s ease,visibility 0s}
@@ -128,6 +141,16 @@
       </div>
       <div id="groups"></div>
       <p class="empty" id="empty" hidden>Ничего не нашлось. Попробуйте иначе: would, into, make или «предлоги».</p>
+      <section class="sync" id="sync" aria-labelledby="syncT" hidden>
+        <h2 class="lbl" id="syncT">Прогресс</h2>
+        <p class="sync-txt">Прогресс хранится на&nbsp;этом устройстве. Чтобы продолжить на&nbsp;iPad или iPhone, сохраните файл прогресса и&nbsp;откройте его на&nbsp;другом устройстве: через AirDrop, «Файлы» или почту.</p>
+        <div class="sync-row">
+          <button class="sbtn main" id="exp" type="button">Сохранить прогресс</button>
+          <button class="sbtn" id="imp" type="button">Загрузить прогресс</button>
+          <input type="file" id="impFile" class="vh" accept=".json,application/json" tabindex="-1" aria-hidden="true">
+        </div>
+        <p class="sync-msg" id="syncMsg" role="status" aria-live="polite"></p>
+      </section>
       <p class="foot" id="foot">Прогресс общий для iPhone и iPad. Озвучка — голос Microsoft Ryan, в «Фразах из Breaking Bad» — Andrew.</p>
     </div>
   </main>
@@ -155,6 +178,10 @@ const CAT = /*__CATALOG__*/;
 const PACKS = /*__PACKS__*/;
 // Самые большие пакеты лежат в хранилище файлов приложения (в одну версию страницы все записи не помещаются)
 const ASSET_PACKS = /*__ASSETS__*/;
+// Версии файлов по содержимому (a — тренажёры, p — пакеты звука): обновлённый файл не застрянет в офлайн-кэше
+const VER = /*__VER__*/;
+const appUrl = key => "apps/" + key + ".html" + (VER.a[key] ? "?v=" + VER.a[key] : "");
+const packUrl = key => ASSET_PACKS[key] ? ASSET_PACKS[key].u : "packs/" + key + ".mp3" + (VER.p[key] ? "?v=" + VER.p[key] : "");
 
 const APPS = {}; CAT.apps.forEach(a => { APPS[a.key] = a; });
 const GROUP_TITLE = {}; CAT.groups.forEach(g => { GROUP_TITLE[g[0]] = g[1]; });
@@ -257,7 +284,7 @@ const AE = {
   pack(app){
     let p = this.packs.get(app);
     if (p){ this.packs.delete(app); this.packs.set(app, p); return p; }
-    p = fetch(ASSET_PACKS[app] ? ASSET_PACKS[app].u : ("packs/" + app + ".mp3")).then(r => { if (!r.ok) throw new Error("pack " + r.status); return r.arrayBuffer(); });
+    p = fetch(packUrl(app)).then(r => { if (!r.ok) throw new Error("pack " + r.status); return r.arrayBuffer(); });
     p.then(b => { if (this.packs.get(app) === p) this.ready.set(app, b); }, () => { if (this.packs.get(app) === p) this.packs.delete(app); });
     this.packs.set(app, p);
     while (this.packs.size > 8){
@@ -713,7 +740,7 @@ let curKey = null, loadedKey = null, decksP = null;
 function getHtml(key){
   let p = htmlCache.get(key);
   if (!p){
-    p = fetch("apps/" + key + ".html").then(r => { if (!r.ok) throw new Error("html " + r.status); return r.text(); });
+    p = fetch(appUrl(key)).then(r => { if (!r.ok) throw new Error("html " + r.status); return r.text(); });
     p.catch(() => htmlCache.delete(key));
     htmlCache.set(key, p);
   }
@@ -802,7 +829,7 @@ async function selfTest(){
     document.addEventListener("securitypolicyviolation", onv); if (w) w.document.addEventListener("securitypolicyviolation", onv);
     r.mBlob = await probeMedia(URL.createObjectURL(new Blob([bytes], { type: "audio/mpeg" })), mdoc);
     r.mData = await probeMedia("data:audio/mpeg;base64," + b64enc(bytes), mdoc);
-    r.mFile = await probeMedia(ASSET_PACKS[key] ? ASSET_PACKS[key].u : ("packs/" + key + ".mp3"), mdoc);
+    r.mFile = await probeMedia(packUrl(key), mdoc);
     const big = Object.keys(ASSET_PACKS)[0];
     if (big){ try{ const ab2 = await AE.pack(big); r.assetPack = big + " " + ab2.byteLength; const b2 = await AE.bytes(big, Object.keys(PACKS[big])[0]); r.assetClip = await probeMedia(URL.createObjectURL(new Blob([b2], { type: "audio/mpeg" })), mdoc); }catch(e){ r.assetPack = big + " ERR " + e; } }
     r.ctx = AE.ctx ? AE.ctx.state : null;
@@ -816,8 +843,76 @@ async function selfTest(){
   return r;
 }
 
+// ——— Перенос прогресса файлом: вне claude.ai облачной базы нет, у каждого устройства свой localStorage
+function syncMsg(t){ $("syncMsg").textContent = t || ""; }
+function progressFile(){
+  const apps = {}; let n = 0;
+  CAT.apps.forEach(a => {
+    const p = localProgress(a), k = Object.keys(p).length;
+    if (k){ apps[a.ls] = { progress: p }; n += k; }
+  });
+  const name = "english-progress-" + todayStr() + ".json";
+  const text = JSON.stringify({ app: "english-b2", v: 1, at: new Date().toISOString(), apps: apps });
+  return { n: n, file: new File([text], name, { type: "application/json" }) };
+}
+function saveProgress(){
+  const { n, file } = progressFile();
+  if (!n){ syncMsg("Сохранять пока нечего: ответьте хотя\u00a0бы на\u00a0одну карточку."); return; }
+  const done = () => syncMsg("Сохранено карточек: " + fmt(n) + ". На\u00a0другом устройстве нажмите «Загрузить прогресс» и\u00a0выберите этот файл.");
+  // iPhone и iPad: меню «Поделиться» (AirDrop, «Сохранить в Файлы», почта). Вызов — прямо в касании, без await до него.
+  if (navigator.canShare && navigator.share){
+    let ok = false; try{ ok = navigator.canShare({ files: [file] }); }catch(e){}
+    if (ok){
+      navigator.share({ files: [file], title: "Прогресс: английский" }).then(done, e => { if (!e || e.name !== "AbortError") downloadFile(file, done); });
+      return;
+    }
+  }
+  downloadFile(file, done);
+}
+function downloadFile(file, done){
+  const a = document.createElement("a"), u = URL.createObjectURL(file);
+  a.href = u; a.download = file.name; a.hidden = true;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 10000);
+  done();
+}
+async function loadProgress(f){
+  let d;
+  try{ d = JSON.parse(await f.text()); }catch(e){ d = null; }
+  if (!d || d.app !== "english-b2" || !d.apps || typeof d.apps !== "object"){ syncMsg("Это не\u00a0файл прогресса. Выберите файл english-progress-….json."); return; }
+  let added = 0, newer = 0;
+  CAT.apps.forEach(a => {
+    const inc = d.apps[a.ls] && d.apps[a.ls].progress;
+    if (!inc || typeof inc !== "object") return;
+    let s = null; try{ s = JSON.parse(lsGet(a.ls) || "null"); }catch(e){}
+    if (!s || typeof s !== "object") s = {};
+    const cur = (s.progress && typeof s.progress === "object") ? s.progress : {};
+    Object.keys(inc).forEach(id => {
+      const x = inc[id], y = cur[id];
+      if (!x || typeof x !== "object") return;
+      if (!y){ cur[id] = x; added++; }
+      else if ((x.ts || 0) > (y.ts || 0)){ cur[id] = x; newer++; }      // свежий ответ побеждает, как при слиянии с облаком
+    });
+    s.progress = cur;
+    lsSet(a.ls, JSON.stringify(s));
+  });
+  loadedKey = null;                                                     // открытая раньше тема перечитает прогресс
+  renderAll();
+  syncMsg(added || newer ? "Загружено: новых карточек " + fmt(added) + ", обновлено " + fmt(newer) + "." : "Здесь уже всё есть: новее в\u00a0файле ничего нет.");
+}
+$("exp").addEventListener("click", saveProgress);
+$("imp").addEventListener("click", () => $("impFile").click());
+$("impFile").addEventListener("change", e => { const f = e.target.files && e.target.files[0]; e.target.value = ""; if (f) loadProgress(f); });
+
 // ——— Старт
 function start(data){
+  if (!RT()){
+    $("sync").hidden = false;
+    $("foot").textContent = "Озвучка\u00a0— голос Microsoft Ryan, в\u00a0«Фразах из\u00a0Breaking Bad»\u00a0— Andrew. Без интернета открываются все темы, а\u00a0звук\u00a0— в\u00a0темах, которые уже открывали.";
+    if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")){
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  }
   computeAll();
   renderGroups();
   renderAll();
