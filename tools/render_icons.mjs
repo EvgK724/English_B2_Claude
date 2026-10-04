@@ -1,6 +1,7 @@
-// Иконки приложения для экрана «Домой»: та же плитка, что tools/reference/render_icon.py
-// (веер карточек, Aa, english), но каждая — сразу в своём размере, плюс maskable с полями для Android.
-//   npm i playwright @fontsource/dm-serif-display     (в любой папке; Chromium — из Playwright)
+// Иконки приложения для экрана «Домой» в духе want-you-to (test01): Eng / lish / B2 янтарным, бирюзовым и сиреневым
+// со свечением и три цветные черты. Шрифт — Bricolage Grotesque из site/fonts. Каждая иконка рисуется сразу
+// в своём размере, плюс maskable с полями для круглой маски Android. Прежняя плитка — tools/reference/render_icon.py.
+//   npm i playwright        (в любой папке; Chromium — из Playwright или CHROMIUM=<путь к chrome>)
 //   node tools/render_icons.mjs [путь к node_modules]
 import { createRequire } from 'node:module';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -11,7 +12,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NM = process.argv[2] || join(process.cwd(), 'node_modules');
 const require = createRequire(join(NM, 'x.js'));
 const { chromium } = require('playwright');
-const font = readFileSync(join(NM, '@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2')).toString('base64');
+const font = readFileSync(join(ROOT, 'site/fonts/bricolage-grotesque-latin-wght-normal.woff2')).toString('base64');
 
 const OUT = [
   ['site/apple-touch-icon.png', 180, 1],
@@ -23,40 +24,40 @@ const OUT = [
 ];
 
 const draw = async ([b64, size, scale]) => {
-  if (!window.__dmsd) {
+  if (!window.__brico) {
     const buf = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0)).buffer;
-    const face = new FontFace('DMSD', buf); await face.load(); document.fonts.add(face);
-    window.__dmsd = true;
+    const face = new FontFace('Brico', buf, { weight: '200 800' }); await face.load(); document.fonts.add(face);
+    window.__brico = true;
   }
   const S = 1024, c = document.createElement('canvas'); c.width = c.height = size;
   const x = c.getContext('2d');
-  x.fillStyle = '#0e1113'; x.fillRect(0, 0, size, size);
   x.scale(size / S, size / S);
-  x.translate(S / 2, S / 2); x.scale(scale, scale); x.translate(-S / 2, -S / 2);
-  const W = 540, H = 660, R = 64, rad = (d) => d * Math.PI / 180;
-  const card = (cx, cy, rot, fill, stroke, shadow) => {
-    x.save(); x.translate(cx, cy); x.rotate(rad(rot));
-    x.shadowColor = 'rgba(0,0,0,.5)'; x.shadowBlur = shadow * size / S; x.shadowOffsetY = shadow * 0.4 * size / S;
-    x.beginPath(); x.roundRect(-W / 2, -H / 2, W, H, R); x.fillStyle = fill; x.fill();
-    x.shadowColor = 'transparent'; x.shadowBlur = 0; x.shadowOffsetY = 0;
-    x.lineWidth = 4; x.strokeStyle = stroke; x.stroke();
-    return () => x.restore();
+  x.fillStyle = '#0b0d12'; x.fillRect(0, 0, S, S);
+  const glow = (cx, cy, r, rgb, a) => {
+    const g = x.createRadialGradient(cx, cy, 0, cx, cy, r);
+    g.addColorStop(0, `rgba(${rgb},${a})`); g.addColorStop(1, `rgba(${rgb},0)`);
+    x.fillStyle = g; x.fillRect(0, 0, S, S);
   };
-  card(430, 540, -11, '#13181b', '#232a2e', 36)();
-  card(600, 530, 9, '#161c1f', '#283034', 40)();
-  const done = card(512, 520, -1.5, '#1b2125', '#313a3f', 48);
-  x.textBaseline = 'alphabetic'; x.textAlign = 'left';
-  x.fillStyle = '#7cc0dd'; x.font = '64px DMSD'; x.fillText('english', -W / 2 + 48, -H / 2 + 104);
-  let fs = 360; x.font = fs + 'px DMSD';
-  while (x.measureText('Aa').width > W - 120) { fs -= 6; x.font = fs + 'px DMSD'; }
-  const mA = x.measureText('A'), mAa = x.measureText('Aa');
-  const left = -mAa.width / 2, base = 150;
-  x.fillStyle = '#ececea'; x.fillText('A', left, base);
-  x.fillStyle = '#d97757'; x.fillText('a', left + mA.width, base);
-  const bw = W - 96, by = H / 2 - 78;
-  x.fillStyle = '#2a3236'; x.beginPath(); x.roundRect(-bw / 2, by, bw, 12, 6); x.fill();
-  x.fillStyle = '#d97757'; x.beginPath(); x.roundRect(-bw / 2, by, bw * 0.62, 12, 6); x.fill();
-  done();
+  glow(-80, -60, 760, '242,183,102', 0.16);
+  glow(1110, 40, 640, '169,178,255', 0.12);
+  glow(1080, 1120, 760, '95,208,191', 0.12);
+  x.translate(S / 2, S / 2); x.scale(scale, scale); x.translate(-S / 2, -S / 2);
+  const rows = [['Eng', '242,183,102'], ['lish', '95,208,191'], ['B2', '169,178,255']];
+  const left = 178;
+  x.font = '800 236px Brico'; x.textBaseline = 'alphabetic';
+  rows.forEach(([t, rgb], i) => {
+    const y = 318 + i * 228;
+    x.save();
+    x.shadowColor = `rgba(${rgb},.5)`; x.shadowBlur = 46 * size / S;
+    x.fillStyle = `rgb(${rgb})`; x.fillText(t, left, y);
+    x.restore();
+  });
+  rows.forEach(([, rgb], i) => {
+    x.save();
+    x.shadowColor = `rgba(${rgb},.6)`; x.shadowBlur = 24 * size / S;
+    x.fillStyle = `rgb(${rgb})`; x.beginPath(); x.roundRect(left + 6 + i * 158, 838, 128, 22, 11); x.fill();
+    x.restore();
+  });
   return c.toDataURL('image/png');
 };
 

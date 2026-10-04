@@ -1,0 +1,107 @@
+/* Оформление «Английского B2» в духе приложения want-you-to (репозиторий test01):
+   полуночный фон со свечением по углам, янтарный, бирюзовый и сиреневый акценты,
+   Bricolage Grotesque для английского и заголовков, Golos Text для русского, Gentium Book Plus для транскрипции.
+   Подключается и в оболочке, и в каждом тренажёре (через HEAD в tools/shell.html) — поверх их собственных стилей,
+   поэтому сами тренажёры не правятся. Правила для тренажёров — под .app (в оболочке этого класса нет). */
+
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/bricolage-grotesque-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Golos Text";font-style:normal;font-display:swap;font-weight:400 900;src:url(fonts/golos-text-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Golos Text";font-style:normal;font-display:swap;font-weight:400 900;src:url(fonts/golos-text-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Golos Text";font-style:normal;font-display:swap;font-weight:400 900;src:url(fonts/golos-text-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Gentium Book Plus";font-style:normal;font-display:swap;font-weight:400;src:url(fonts/gentium-book-plus-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Gentium Book Plus";font-style:normal;font-display:swap;font-weight:400;src:url(fonts/gentium-book-plus-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Gentium Book Plus";font-style:normal;font-display:swap;font-weight:400;src:url(fonts/gentium-book-plus-greek-400-normal.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+
+/* ——— Цвета и шрифты: :root:root перекрывает :root тренажёра */
+:root:root{
+  color-scheme:dark;
+  --bg:#0b0d12;
+  --surface:#151821;
+  --raise:#1c202b;
+  --panel-3:#242938;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --text:#ece8e1;
+  --soft:#cdccd0;
+  --muted:#a3a8b5;
+  --faint:#6e7486;
+  --v-rgb:242,183,102;                   /* янтарный */
+  --o-rgb:95,208,191;                    /* бирюзовый */
+  --i-rgb:169,178,255;                   /* сиреневый */
+  --v:rgb(var(--v-rgb));
+  --o:rgb(var(--o-rgb));
+  --i:rgb(var(--i-rgb));
+  --accent:#f2b766;
+  --accent-soft:rgba(242,183,102,.12);
+  --on-accent:#1a1408;
+  --blue:#5fd0bf;
+  --blue-soft:rgba(95,208,191,.11);
+  --blue-line:rgba(95,208,191,.45);
+  --yes:#4fae78;
+  --yes-text:#7dd197;
+  --yes-soft:rgba(125,209,151,.12);
+  --no:#d0605a;
+  --no-text:#f07468;
+  --no-soft:rgba(240,116,104,.11);
+  --no-line:rgba(240,116,104,.45);
+  --almost:#b58a3c;
+  --almost-text:#f2c98a;
+  --serif:"Bricolage Grotesque","Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sans:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ipa:"Gentium Book Plus","Charis SIL","Doulos SIL","Times New Roman",serif;
+  --panel-grad:linear-gradient(165deg,rgba(38,43,59,.95),rgba(19,22,30,.96));
+  --shadow:0 1px 0 rgba(255,255,255,.05) inset,0 28px 56px -28px rgba(0,0,0,.85);
+  --cream:linear-gradient(180deg,#f6f0e6,#dcd3c3);
+  --glow:
+    radial-gradient(900px 520px at -12% -8%,rgba(var(--v-rgb),.11),transparent 62%),
+    radial-gradient(760px 520px at 112% 4%,rgba(var(--i-rgb),.09),transparent 60%),
+    radial-gradient(900px 640px at 100% 112%,rgba(var(--o-rgb),.09),transparent 62%);
+}
+:root body{background-color:var(--bg);background-image:var(--glow);-webkit-font-smoothing:antialiased}
+
+/* ——— Тренажёры */
+:root .app .tabs{padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));background:rgba(24,27,37,.92);box-shadow:var(--shadow)}
+:root .app .tab{border-radius:calc(15px*var(--k));color:var(--faint);font-weight:600}
+:root .app .tab[aria-selected="true"]{background:rgba(var(--o-rgb),.13);color:var(--text)}
+:root .app .icon{border-radius:50%;border-color:var(--line-2);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.1),rgba(255,255,255,.02));color:var(--muted)}
+:root .app .icon[aria-pressed="true"]{color:var(--o);border-color:rgba(var(--o-rgb),.6)}
+:root .app .bar-fill{background:linear-gradient(90deg,var(--v),var(--o))}
+
+:root .app .card,:root .app .algo{border-color:var(--line);background:var(--panel-grad);box-shadow:var(--shadow)}
+:root .app .card{border-radius:calc(26px*var(--k))}
+:root .app .algo{border-radius:calc(22px*var(--k))}
+:root .app .kind{border-color:rgba(var(--o-rgb),.4);background:rgba(var(--o-rgb),.1);color:var(--o);font-weight:600}
+:root .app .q{font-weight:600;letter-spacing:-.012em}
+:root .app .gap{border-bottom-color:var(--i)}
+:root .app .opt{border-radius:calc(16px*var(--k));border-color:var(--line);background:rgba(255,255,255,.04);font-weight:600;letter-spacing:-.01em}
+:root .app .opt:active{background:rgba(255,255,255,.08)}
+:root .app .verdict b,:root .app .algo li b{font-weight:650}
+:root .app .zero{border-color:rgba(var(--o-rgb),.55)}
+
+:root .app .big{border-radius:calc(18px*var(--k));border-color:var(--line-2);background:var(--raise);font-weight:600}
+:root .app .primary{border-color:transparent;background:var(--cream);color:#14161c;font-weight:650;box-shadow:0 12px 30px -14px rgba(var(--v-rgb),.55)}
+:root .app .say,:root .app .ex-play{border-radius:50%;border-color:var(--line-2);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.1),rgba(255,255,255,.02));color:var(--text)}
+:root .app .say:active,:root .app .ex-play:active{color:var(--o);border-color:rgba(var(--o-rgb),.6)}
+:root .app .t-train{border-radius:calc(16px*var(--k));border-color:rgba(var(--v-rgb),.45);background:rgba(var(--v-rgb),.07);color:var(--v);font-weight:600}
+
+:root .app .r-title{font-weight:750;letter-spacing:-.02em}
+:root .app .hero-term,:root .app .q-term,:root .app .det-term,:root .app .ph-term,:root .app .wb-w{font-weight:650;letter-spacing:-.015em}
+:root .app .d-title,:root .app .done-t{font-weight:750;letter-spacing:-.02em}
+:root .app .lbl,:root .app .algo-h{display:flex;align-items:center;gap:calc(10px*var(--k));color:var(--muted);letter-spacing:.1em}
+:root .app .lbl::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line-2),transparent)}
+:root .app .t-n,:root .app .algo li::before{color:var(--o)}
+:root .app .ipa,:root .app .w-ipa{font-family:var(--ipa)}
+
+/* жёстко заданные цвета в отдельных тренажёрах */
+:root .app .cell.l0,:root .app .sw-learn{background:rgba(var(--v-rgb),.3)}
+:root .app .cell.l1{background:rgba(var(--v-rgb),.55)}
+:root .app .cell.l2{background:rgba(var(--v-rgb),.8)}
+:root .app .tl .bar{fill:rgba(var(--v-rgb),.25)}
+:root .app .play-big:active{background:rgba(var(--v-rgb),.28)}
+:root .app .fm.on{background:rgba(var(--o-rgb),.08)}
+:root .app .chips.yes span{border-color:rgba(125,209,151,.6)}
+:root .app .chips.no span{border-color:rgba(240,116,104,.55)}
+:root .app .chip.slang{border-color:rgba(var(--v-rgb),.5)}
+
+:root .app :focus-visible{outline-color:var(--o)}

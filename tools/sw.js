@@ -27,7 +27,7 @@ self.addEventListener("activate", (e) => {
     // старые версии тренажёров; пакеты звука чистятся при загрузке новой версии (см. putVersioned)
     for (const r of await c.keys()) {
       const u = new URL(r.url);
-      if (u.pathname.endsWith(".html") && u.searchParams.has("v") && !KEEP.has(r.url)) await c.delete(r);
+      if (/\.(html|css)$/.test(u.pathname) && u.searchParams.has("v") && !KEEP.has(r.url)) await c.delete(r);
     }
     await self.clients.claim();
   })());
@@ -74,6 +74,18 @@ self.addEventListener("fetch", (e) => {
       if (hit) return hit;
       const res = await fetch(req);
       if (res.ok) await putVersioned(c, req, res.clone());
+      return res;
+    }));
+    return;
+  }
+
+  // шрифты не меняются: сначала кэш
+  if (path.startsWith("fonts/")) {
+    e.respondWith(caches.open(CACHE).then(async (c) => {
+      const hit = await c.match(req);
+      if (hit) return hit;
+      const res = await fetch(req);
+      if (res.ok) await c.put(req, res.clone());
       return res;
     }));
     return;

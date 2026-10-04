@@ -2,7 +2,7 @@
 // Оболочка (index.html) — сначала сеть, потом кэш: в ней версии всех остальных файлов.
 // Тренажёры и пакеты звука адресуются с ?v=<хэш>: они не меняются, поэтому — сначала кэш.
 // Тренажёры кэшируются заранее при установке, звук — при первом открытии темы (все пакеты — около 70 МБ).
-const VERSION = "62b8c902aba0";
+const VERSION = "e57c8ad6c828";
 const CACHE = "eng-b2";
 const PRECACHE = [
  "manifest.webmanifest",
@@ -10,6 +10,15 @@ const PRECACHE = [
  "favicon.png",
  "icon-192.png",
  "icon-512.png",
+ "fonts/bricolage-grotesque-latin-ext-wght-normal.woff2",
+ "fonts/bricolage-grotesque-latin-wght-normal.woff2",
+ "fonts/gentium-book-plus-greek-400-normal.woff2",
+ "fonts/gentium-book-plus-latin-400-normal.woff2",
+ "fonts/gentium-book-plus-latin-ext-400-normal.woff2",
+ "fonts/golos-text-cyrillic-wght-normal.woff2",
+ "fonts/golos-text-latin-ext-wght-normal.woff2",
+ "fonts/golos-text-latin-wght-normal.woff2",
+ "theme.css?v=e3aba0a4",
  "apps/top10.html?v=11ab0c51",
  "apps/artikli.html?v=c988ea95",
  "apps/bez-a-an.html?v=13d936d4",
@@ -79,7 +88,7 @@ self.addEventListener("activate", (e) => {
     // старые версии тренажёров; пакеты звука чистятся при загрузке новой версии (см. putVersioned)
     for (const r of await c.keys()) {
       const u = new URL(r.url);
-      if (u.pathname.endsWith(".html") && u.searchParams.has("v") && !KEEP.has(r.url)) await c.delete(r);
+      if (/\.(html|css)$/.test(u.pathname) && u.searchParams.has("v") && !KEEP.has(r.url)) await c.delete(r);
     }
     await self.clients.claim();
   })());
@@ -126,6 +135,18 @@ self.addEventListener("fetch", (e) => {
       if (hit) return hit;
       const res = await fetch(req);
       if (res.ok) await putVersioned(c, req, res.clone());
+      return res;
+    }));
+    return;
+  }
+
+  // шрифты не меняются: сначала кэш
+  if (path.startsWith("fonts/")) {
+    e.respondWith(caches.open(CACHE).then(async (c) => {
+      const hit = await c.match(req);
+      if (hit) return hit;
+      const res = await fetch(req);
+      if (res.ok) await c.put(req, res.clone());
       return res;
     }));
     return;
