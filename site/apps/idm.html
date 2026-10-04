@@ -1014,7 +1014,7 @@ function renderDone(){
 // ——— Правила
 function learnedIn(n){
   const cards = CARDS.filter(c => c.t === n);
-  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  const done = cards.filter(c => progress[c.id]).length;      // засчитывается после первой тренировки
   return done + "/" + cards.length;
 }
 const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
@@ -1053,7 +1053,7 @@ function renderTopics(){
       if (cards.length){
         const list = el("div", "abl");
         cards.forEach(c => {
-          const row = el("div", "abl-row" + (progress[c.id] && progress[c.id].step >= 1 ? " known" : ""));
+          const row = el("div", "abl-row" + (progress[c.id] ? " known" : ""));
           const txt = el("p", "abl-t");
           const a = el("span", "abl-a", c.ab); a.lang = "en";
           const f = el("span", "abl-f"); f.lang = "en"; f.append(marked(c.full));

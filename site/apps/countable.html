@@ -873,7 +873,7 @@ function next(){
 // ——— Правила
 function learnedIn(n){
   const cards = CARDS.filter(c => c.t === n);
-  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  const done = cards.filter(c => progress[c.id]).length;      // засчитывается после первой тренировки
   return done + "/" + cards.length;
 }
 function renderExample(ex){

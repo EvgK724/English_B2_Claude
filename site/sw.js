@@ -2,7 +2,7 @@
 // Оболочка (index.html) — сначала сеть, потом кэш: в ней версии всех остальных файлов.
 // Тренажёры и пакеты звука адресуются с ?v=<хэш>: они не меняются, поэтому — сначала кэш.
 // Тренажёры кэшируются заранее при установке, звук — при первом открытии темы (все пакеты — около 70 МБ).
-const VERSION = "a9344c3154d9";
+const VERSION = "a02ac674f3dc";
 const CACHE = "eng-b2";
 const PRECACHE = [
  "manifest.webmanifest",
@@ -19,52 +19,52 @@ const PRECACHE = [
  "fonts/golos-text-latin-ext-wght-normal.woff2",
  "fonts/golos-text-latin-wght-normal.woff2",
  "theme.css?v=ebb078f8",
- "apps/top10.html?v=11ab0c51",
- "apps/artikli.html?v=c988ea95",
+ "apps/top10.html?v=1aa8de0d",
+ "apps/artikli.html?v=deb0583e",
  "apps/bez-a-an.html?v=13d936d4",
- "apps/countable.html?v=10b69bd7",
- "apps/tenses.html?v=83c94c05",
- "apps/irreg.html?v=5c0920da",
- "apps/passive.html?v=c68bbd97",
- "apps/gonebeen.html?v=008bbb50",
- "apps/stative.html?v=c72dce7b",
- "apps/usedto.html?v=f0281b30",
- "apps/would.html?v=e6f5b9fe",
- "apps/cond.html?v=4d14268f",
- "apps/hsd.html?v=d07f9603",
- "apps/modal.html?v=578ba99c",
- "apps/can.html?v=9456eec2",
- "apps/manage.html?v=4c2b7bf3",
- "apps/toing.html?v=f579978a",
- "apps/vm.html?v=495ffff1",
- "apps/prepi.html?v=00c36c1c",
- "apps/kogo.html?v=a6dcf5ca",
- "apps/preps.html?v=8cedaaa6",
- "apps/into.html?v=d66ec53a",
- "apps/tofor.html?v=da652296",
- "apps/adjprep.html?v=30b0fe20",
- "apps/makedo.html?v=3d62b518",
- "apps/htp.html?v=0baab8d6",
- "apps/go.html?v=c4c50474",
- "apps/life.html?v=fdc24a39",
- "apps/twotoo.html?v=bfb0e6a3",
- "apps/thereit.html?v=428aad9f",
- "apps/pron.html?v=b104b5f7",
- "apps/adjadv.html?v=497620ac",
- "apps/cmp.html?v=c72b803a",
- "apps/similar.html?v=d498b48f",
- "apps/pairs.html?v=ef8ab088",
- "apps/syn.html?v=c87140c1",
- "apps/q.html?v=f50e42cf",
- "apps/rel.html?v=851a89b9",
- "apps/link.html?v=4a5fd737",
- "apps/rep.html?v=6a7adf23",
- "apps/num.html?v=59b55b65",
+ "apps/countable.html?v=948fe5a8",
+ "apps/tenses.html?v=06bb60b9",
+ "apps/irreg.html?v=7b9b4602",
+ "apps/passive.html?v=1356d7fe",
+ "apps/gonebeen.html?v=e13ef7a3",
+ "apps/stative.html?v=d392e2cf",
+ "apps/usedto.html?v=153a52e9",
+ "apps/would.html?v=272d520b",
+ "apps/cond.html?v=e59d8fc2",
+ "apps/hsd.html?v=2ef0b1b9",
+ "apps/modal.html?v=2941b7dd",
+ "apps/can.html?v=46b82668",
+ "apps/manage.html?v=bd51b222",
+ "apps/toing.html?v=894b64b2",
+ "apps/vm.html?v=dd306dec",
+ "apps/prepi.html?v=92f9013e",
+ "apps/kogo.html?v=c06491da",
+ "apps/preps.html?v=32099f1f",
+ "apps/into.html?v=ca3498e4",
+ "apps/tofor.html?v=894b5654",
+ "apps/adjprep.html?v=ebb7c64f",
+ "apps/makedo.html?v=c54afc59",
+ "apps/htp.html?v=3adf6222",
+ "apps/go.html?v=89e8ae09",
+ "apps/life.html?v=c302d33d",
+ "apps/twotoo.html?v=04bd63e5",
+ "apps/thereit.html?v=af0c44c8",
+ "apps/pron.html?v=289753ee",
+ "apps/adjadv.html?v=b2f8fd51",
+ "apps/cmp.html?v=7294d0ad",
+ "apps/similar.html?v=c892f079",
+ "apps/pairs.html?v=fe918641",
+ "apps/syn.html?v=8881450d",
+ "apps/q.html?v=ab982380",
+ "apps/rel.html?v=1fd616be",
+ "apps/link.html?v=fd959e34",
+ "apps/rep.html?v=7e2d348f",
+ "apps/num.html?v=88346ab5",
  "apps/phrasal.html?v=aaba675a",
  "apps/bbapp.html?v=bf7e026d",
- "apps/idm.html?v=81fca3f0",
- "apps/wthr.html?v=b424b8d0",
- "apps/abbr.html?v=96f02a76"
+ "apps/idm.html?v=8885f190",
+ "apps/wthr.html?v=ae67e6b4",
+ "apps/abbr.html?v=b61e5fb8"
 ];
 
 const SCOPE = new URL("./", self.location).href;
@@ -108,7 +108,7 @@ function shellFirst(req) {
   return caches.open(CACHE).then(async (c) => {
     const cached = await c.match(abs("./"));
     const net = fetch(req, { cache: "no-cache" }).then((res) => {
-      if (res.ok) c.put(abs("./"), res.clone());
+      if (res.ok) c.put(abs("./"), res.clone()).catch(() => {});
       return res;
     });
     if (!cached) return net;
@@ -134,7 +134,8 @@ self.addEventListener("fetch", (e) => {
       const hit = await c.match(req);
       if (hit) return hit;
       const res = await fetch(req);
-      if (res.ok) await putVersioned(c, req, res.clone());
+      // в кэш — в фоне и без ошибок наружу: даже если кэш не сохранился, тема откроется и запись прозвучит
+      if (res.ok) e.waitUntil(putVersioned(c, req, res.clone()).catch(() => {}));
       return res;
     }));
     return;
@@ -146,7 +147,7 @@ self.addEventListener("fetch", (e) => {
       const hit = await c.match(req);
       if (hit) return hit;
       const res = await fetch(req);
-      if (res.ok) await c.put(req, res.clone());
+      if (res.ok) e.waitUntil(c.put(req, res.clone()).catch(() => {}));
       return res;
     }));
     return;
@@ -155,7 +156,7 @@ self.addEventListener("fetch", (e) => {
   // иконки, манифест и прочее: сеть, без сети — кэш
   e.respondWith(caches.open(CACHE).then((c) =>
     fetch(req).then((res) => {
-      if (res.ok) c.put(req, res.clone());
+      if (res.ok) c.put(req, res.clone()).catch(() => {});
       return res;
     }).catch(() => c.match(req).then((hit) => hit || Response.error()))
   ));

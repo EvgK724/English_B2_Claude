@@ -198,7 +198,7 @@ const PACKS = {"top10":{"a1-best":[0,10800,0.048],"a1-day":[10800,14112,0.048],"
 // Самые большие пакеты лежат в хранилище файлов приложения (в одну версию страницы все записи не помещаются)
 const ASSET_PACKS = {};
 // Версии файлов по содержимому (a — тренажёры, p — пакеты звука): обновлённый файл не застрянет в офлайн-кэше
-const VER = {"a":{"top10":"11ab0c51","artikli":"c988ea95","bez-a-an":"13d936d4","countable":"10b69bd7","tenses":"83c94c05","irreg":"5c0920da","passive":"c68bbd97","gonebeen":"008bbb50","stative":"c72dce7b","usedto":"f0281b30","would":"e6f5b9fe","cond":"4d14268f","hsd":"d07f9603","modal":"578ba99c","can":"9456eec2","manage":"4c2b7bf3","toing":"f579978a","vm":"495ffff1","prepi":"00c36c1c","kogo":"a6dcf5ca","preps":"8cedaaa6","into":"d66ec53a","tofor":"da652296","adjprep":"30b0fe20","makedo":"3d62b518","htp":"0baab8d6","go":"c4c50474","life":"fdc24a39","twotoo":"bfb0e6a3","thereit":"428aad9f","pron":"b104b5f7","adjadv":"497620ac","cmp":"c72b803a","similar":"d498b48f","pairs":"ef8ab088","syn":"c87140c1","q":"f50e42cf","rel":"851a89b9","link":"4a5fd737","rep":"6a7adf23","num":"59b55b65","phrasal":"aaba675a","bbapp":"bf7e026d","idm":"81fca3f0","wthr":"b424b8d0","abbr":"96f02a76"},"p":{"top10":"37bd3ad7","artikli":"6d5c84a8","bez-a-an":"d1b7a8ab","countable":"0c41bc9e","tenses":"01470cf9","irreg":"f6d88794","passive":"6c57c85c","gonebeen":"d5753a94","stative":"0961543d","usedto":"72bfe14d","would":"22fa5dc5","cond":"cbcbe743","hsd":"52137de3","modal":"dca8d93e","can":"0ee78c02","manage":"91162c85","toing":"d005ef5a","vm":"c5e00f1e","prepi":"4c9b8e5a","kogo":"0bc78ff2","preps":"8d5c22c6","into":"d08d3bee","tofor":"f69bedae","adjprep":"dbba09f4","makedo":"c51dcaad","htp":"7ccab2e0","go":"47700cbe","life":"ed2bcbf2","twotoo":"6ba1c7d5","thereit":"08cf3ebb","pron":"23449855","adjadv":"dd2521d8","cmp":"230b945c","similar":"ab611289","pairs":"3e10c0f6","syn":"ed26320d","q":"2068819c","rel":"acbc11d3","link":"3ba193bc","rep":"50516c51","num":"0d92b06f","phrasal":"2dc2332e","bbapp":"9af72559","idm":"a9eb99d5","wthr":"6f9ef9eb","abbr":"94af3a9d"},"t":"ebb078f8"};
+const VER = {"a":{"top10":"1aa8de0d","artikli":"deb0583e","bez-a-an":"13d936d4","countable":"948fe5a8","tenses":"06bb60b9","irreg":"7b9b4602","passive":"1356d7fe","gonebeen":"e13ef7a3","stative":"d392e2cf","usedto":"153a52e9","would":"272d520b","cond":"e59d8fc2","hsd":"2ef0b1b9","modal":"2941b7dd","can":"46b82668","manage":"bd51b222","toing":"894b64b2","vm":"dd306dec","prepi":"92f9013e","kogo":"c06491da","preps":"32099f1f","into":"ca3498e4","tofor":"894b5654","adjprep":"ebb7c64f","makedo":"c54afc59","htp":"3adf6222","go":"89e8ae09","life":"c302d33d","twotoo":"04bd63e5","thereit":"af0c44c8","pron":"289753ee","adjadv":"b2f8fd51","cmp":"7294d0ad","similar":"c892f079","pairs":"fe918641","syn":"8881450d","q":"ab982380","rel":"1fd616be","link":"fd959e34","rep":"7e2d348f","num":"88346ab5","phrasal":"aaba675a","bbapp":"bf7e026d","idm":"8885f190","wthr":"ae67e6b4","abbr":"b61e5fb8"},"p":{"top10":"37bd3ad7","artikli":"6d5c84a8","bez-a-an":"d1b7a8ab","countable":"0c41bc9e","tenses":"01470cf9","irreg":"f6d88794","passive":"6c57c85c","gonebeen":"d5753a94","stative":"0961543d","usedto":"72bfe14d","would":"22fa5dc5","cond":"cbcbe743","hsd":"52137de3","modal":"dca8d93e","can":"0ee78c02","manage":"91162c85","toing":"d005ef5a","vm":"c5e00f1e","prepi":"4c9b8e5a","kogo":"0bc78ff2","preps":"8d5c22c6","into":"d08d3bee","tofor":"f69bedae","adjprep":"dbba09f4","makedo":"c51dcaad","htp":"7ccab2e0","go":"47700cbe","life":"ed2bcbf2","twotoo":"6ba1c7d5","thereit":"08cf3ebb","pron":"23449855","adjadv":"dd2521d8","cmp":"230b945c","similar":"ab611289","pairs":"3e10c0f6","syn":"ed26320d","q":"2068819c","rel":"acbc11d3","link":"3ba193bc","rep":"50516c51","num":"0d92b06f","phrasal":"2dc2332e","bbapp":"9af72559","idm":"a9eb99d5","wthr":"6f9ef9eb","abbr":"94af3a9d"},"t":"ebb078f8"};
 const appUrl = key => "apps/" + key + ".html" + (VER.a[key] ? "?v=" + VER.a[key] : "");
 const packUrl = key => ASSET_PACKS[key] ? ASSET_PACKS[key].u : "packs/" + key + ".mp3" + (VER.p[key] ? "?v=" + VER.p[key] : "");
 const themeUrl = () => "theme.css" + (VER.t ? "?v=" + VER.t : "");
@@ -594,7 +594,7 @@ function statsOf(a){
     const x = p[id]; if (!x) return;
     seen++;
     if (typeof x.due === "number" && x.due <= now) due++;
-    if ((x.step | 0) >= 1) known++;
+    known++;                                         // как в тренажёрах: карточка засчитывается после первой тренировки
   });
   return { total: ids.length, seen: seen, due: due, known: known };
 }
@@ -703,7 +703,7 @@ function renderToday(){
     const a = APPS[last], s = STATS[last];
     const card = el("button", "tcard"); card.type = "button";
     card.append(el("p", "lbl", "Продолжить"), el("p", "term", a.title));
-    card.append(el("p", "ru", s.due ? s.due + " " + plural(s.due, "карточка", "карточки", "карточек") + " к повторению" : "изучено " + s.known + " из " + s.total));
+    card.append(el("p", "ru", s.due ? s.due + " " + plural(s.due, "карточка", "карточки", "карточек") + " к повторению" : "пройдено " + s.known + " из " + s.total));
     box.append(openBtn(card, last));
   }
 }
@@ -714,7 +714,7 @@ function tileFoot(t, a){
   t.due.hidden = !s.due; t.due.textContent = String(s.due);
   t.fill.style.width = (s.total ? Math.round(100 * s.known / s.total) : 0) + "%";
   t.cnt.textContent = s.seen ? s.known + " из " + s.total : s.total + " " + plural(s.total, "карточка", "карточки", "карточек");
-  t.btn.setAttribute("aria-label", a.title + ". " + a.desc + ". " + (s.due ? s.due + " к повторению, " : "") + "изучено " + s.known + " из " + s.total);
+  t.btn.setAttribute("aria-label", a.title + ". " + a.desc + ". " + (s.due ? s.due + " к повторению, " : "") + "пройдено " + s.known + " из " + s.total);
 }
 function renderGroups(){
   const box = $("groups"); box.textContent = "";

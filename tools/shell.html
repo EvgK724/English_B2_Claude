@@ -580,7 +580,7 @@ function statsOf(a){
     const x = p[id]; if (!x) return;
     seen++;
     if (typeof x.due === "number" && x.due <= now) due++;
-    if ((x.step | 0) >= 1) known++;
+    known++;                                         // как в тренажёрах: карточка засчитывается после первой тренировки
   });
   return { total: ids.length, seen: seen, due: due, known: known };
 }
@@ -689,7 +689,7 @@ function renderToday(){
     const a = APPS[last], s = STATS[last];
     const card = el("button", "tcard"); card.type = "button";
     card.append(el("p", "lbl", "Продолжить"), el("p", "term", a.title));
-    card.append(el("p", "ru", s.due ? s.due + " " + plural(s.due, "карточка", "карточки", "карточек") + " к повторению" : "изучено " + s.known + " из " + s.total));
+    card.append(el("p", "ru", s.due ? s.due + " " + plural(s.due, "карточка", "карточки", "карточек") + " к повторению" : "пройдено " + s.known + " из " + s.total));
     box.append(openBtn(card, last));
   }
 }
@@ -700,7 +700,7 @@ function tileFoot(t, a){
   t.due.hidden = !s.due; t.due.textContent = String(s.due);
   t.fill.style.width = (s.total ? Math.round(100 * s.known / s.total) : 0) + "%";
   t.cnt.textContent = s.seen ? s.known + " из " + s.total : s.total + " " + plural(s.total, "карточка", "карточки", "карточек");
-  t.btn.setAttribute("aria-label", a.title + ". " + a.desc + ". " + (s.due ? s.due + " к повторению, " : "") + "изучено " + s.known + " из " + s.total);
+  t.btn.setAttribute("aria-label", a.title + ". " + a.desc + ". " + (s.due ? s.due + " к повторению, " : "") + "пройдено " + s.known + " из " + s.total);
 }
 function renderGroups(){
   const box = $("groups"); box.textContent = "";

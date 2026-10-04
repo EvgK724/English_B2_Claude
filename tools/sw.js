@@ -47,7 +47,7 @@ function shellFirst(req) {
   return caches.open(CACHE).then(async (c) => {
     const cached = await c.match(abs("./"));
     const net = fetch(req, { cache: "no-cache" }).then((res) => {
-      if (res.ok) c.put(abs("./"), res.clone());
+      if (res.ok) c.put(abs("./"), res.clone()).catch(() => {});
       return res;
     });
     if (!cached) return net;
@@ -73,7 +73,8 @@ self.addEventListener("fetch", (e) => {
       const hit = await c.match(req);
       if (hit) return hit;
       const res = await fetch(req);
-      if (res.ok) await putVersioned(c, req, res.clone());
+      // в кэш — в фоне и без ошибок наружу: даже если кэш не сохранился, тема откроется и запись прозвучит
+      if (res.ok) e.waitUntil(putVersioned(c, req, res.clone()).catch(() => {}));
       return res;
     }));
     return;
@@ -85,7 +86,7 @@ self.addEventListener("fetch", (e) => {
       const hit = await c.match(req);
       if (hit) return hit;
       const res = await fetch(req);
-      if (res.ok) await c.put(req, res.clone());
+      if (res.ok) e.waitUntil(c.put(req, res.clone()).catch(() => {}));
       return res;
     }));
     return;
@@ -94,7 +95,7 @@ self.addEventListener("fetch", (e) => {
   // иконки, манифест и прочее: сеть, без сети — кэш
   e.respondWith(caches.open(CACHE).then((c) =>
     fetch(req).then((res) => {
-      if (res.ok) c.put(req, res.clone());
+      if (res.ok) c.put(req, res.clone()).catch(() => {});
       return res;
     }).catch(() => c.match(req).then((hit) => hit || Response.error()))
   ));
