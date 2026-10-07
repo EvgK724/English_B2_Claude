@@ -1,0 +1,2169 @@
+<title>Have to, must и похожие</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("oblig",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Have to, must и&nbsp;похожие</h1>
+      <p class="r-sub">По-русски почти всё это&nbsp;— «должен» и&nbsp;«надо». По-английски выбор зависит от&nbsp;того, <b>кто решил</b>, <b>когда</b> и&nbsp;<b>насколько официально</b>. Темы идут от&nbsp;B1 к&nbsp;B2.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Утверждение</th><th scope="col">Отрицание</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">must</th></tr><tr><td><b class="h">обязательно</b>решил сам; правила на письме</td><td><span class="f pr" lang="en">mustn&#x27;t</span><b>нельзя!</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="st" lang="en">have to</th></tr><tr><td><b class="h">надо</b>так требуют обстоятельства</td><td><span class="f st" lang="en">don&#x27;t&nbsp;have&nbsp;to</span><b>не обязательно</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="hl" lang="en">need to</th></tr><tr><td><b class="h">нужно</b>для дела, для результата</td><td><span class="f hl" lang="en">don&#x27;t&nbsp;need&nbsp;to <span class="sep">·</span> needn&#x27;t</span><b>не нужно</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="st" lang="en">have got to</th></tr><tr><td><b class="h">надо</b>разговорное, только настоящее</td><td><span class="f st" lang="en">haven&#x27;t&nbsp;got&nbsp;to</span><b>не обязательно</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="hl" lang="en">be supposed to</th></tr><tr><td><b class="h">положено</b>по плану, правилам, договорённости</td><td><span class="f hl" lang="en">not&nbsp;supposed&nbsp;to</span><b>не положено</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="good" lang="en">had better</th></tr><tr><td><b class="h">лучше бы</b>а&nbsp;то будут проблемы</td><td><span class="f good" lang="en">had&nbsp;better&nbsp;not</span><b>лучше не надо</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="hl" lang="en">be forced to</th></tr><tr><td><b class="h">вынужден</b>против воли</td><td><span class="f hl" lang="en">wasn&#x27;t&nbsp;forced&nbsp;to</span><b>не вынуждали</b></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="hl" lang="en">be required to</th></tr><tr><td><b class="h">обязан</b>официально: закон, протокол</td><td><span class="f hl" lang="en">not&nbsp;required&nbsp;to</span><b>не обязан</b></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Прошлое, будущее, «пришлось&nbsp;бы»? У&nbsp;must таких форм нет</p><p class="s-f" lang="en"><span class="st">had&nbsp;to</span> <span class="sep">·</span> <span class="st">will&nbsp;have&nbsp;to</span> <span class="sep">·</span> <span class="st">would&nbsp;have&nbsp;to</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Отрицание: запрещено или просто не&nbsp;нужно?</p><p class="s-f" lang="en"><span class="pr">mustn't</span> <span class="sep">·</span> <span class="st">don't&nbsp;have&nbsp;to</span> <span class="sep">·</span> <span class="hl">needn't</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Так задумано, а&nbsp;могло не&nbsp;случиться?</p><p class="s-f" lang="en"><span class="hl">be&nbsp;supposed&nbsp;to</span> <span class="sep">·</span> <span class="hl">was&nbsp;supposed&nbsp;to</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Предупреждение «а&nbsp;то будет плохо»?</p><p class="s-f" lang="en"><span class="good">had&nbsp;better</span> <span class="sep">·</span> <span class="good">had&nbsp;better&nbsp;not</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Против воли, под давлением?</p><p class="s-f" lang="en"><span class="hl">be&nbsp;forced&nbsp;to</span> <span class="sep">·</span> <span class="hl">be&nbsp;made&nbsp;to</span></p></div></li>
+          <li><span class="sn">6</span><div><p class="s-t">Официальный текст, протокол, закон?</p><p class="s-f" lang="en"><span class="hl">be&nbsp;required&nbsp;to</span> <span class="sep">·</span> <span class="hl">be&nbsp;obliged&nbsp;to</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr" lang="en">must</b>&nbsp;— сам себе приказал, <b class="st" lang="en">have&nbsp;to</b>&nbsp;— жизнь заставила, <b class="hl" lang="en">supposed&nbsp;to</b>&nbsp;— так задумано, <b class="hl" lang="en">forced&nbsp;to</b>&nbsp;— припёрли к&nbsp;стенке, <b class="good" lang="en">had&nbsp;better</b>&nbsp;— а&nbsp;то хуже будет.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">You <span class="pr">mustn&#x27;t</span> wear anything metal in the scanner.</p><p class="cp-ru">нельзя</p><p class="cp-en" lang="en">You <span class="hl">don&#x27;t need to</span> fast before the MRI.</p><p class="cp-ru">не нужно</p><p class="cp-en" lang="en">You&#x27;re <span class="hl">not supposed to</span> move during the scan.</p><p class="cp-ru">не положено</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="You mustn&#x27;t wear anything metal in the scanner. You don&#x27;t need to fast before the MRI. You&#x27;re not supposed to move during the scan." aria-label="Прослушать: You mustn&#x27;t wear anything metal in the scanner. / You don&#x27;t need to fast before the MRI. / You&#x27;re not supposed to move during the scan."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He <span class="pr">must have</span> left early.</p><p class="cp-ru">наверное, ушёл</p><p class="cp-en" lang="en">He <span class="st">had to</span> leave early.</p><p class="cp-ru">пришлось уйти</p><p class="cp-en" lang="en">He <span class="hl">was supposed to</span> stay until nine.</p><p class="cp-ru">должен был остаться&nbsp;— по плану</p><p class="cp-en" lang="en">He <span class="good">should have</span> stayed until nine.</p><p class="cp-ru">надо было остаться&nbsp;— упрёк</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="He must have left early. He had to leave early. He was supposed to stay until nine. He should have stayed until nine." aria-label="Прослушать: He must have left early. / He had to leave early. / He was supposed to stay until nine. / He should have stayed until nine."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">I <span class="hl">didn&#x27;t need to</span> wait — I had an appointment.</p><p class="cp-ru">не нужно было, и&nbsp;не ждал</p><p class="cp-en" lang="en">I <span class="hl">needn&#x27;t have</span> waited — the results were already online.</p><p class="cp-ru">ждал, но зря</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="I didn&#x27;t need to wait — I had an appointment. I needn&#x27;t have waited — the results were already online." aria-label="Прослушать: I didn&#x27;t need to wait — I had an appointment. / I needn&#x27;t have waited — the results were already online."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">They <span class="hl">made</span> him wait four hours.</p><p class="cp-ru">заставили&nbsp;— make без to</p><p class="cp-en" lang="en">He <span class="hl">was made to</span> wait four hours.</p><p class="cp-ru">его заставили&nbsp;— в&nbsp;пассиве с&nbsp;to</p><p class="cp-en" lang="en">He <span class="hl">had no choice but to</span> wait.</p><p class="cp-ru">ему ничего не оставалось</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="They made him wait four hours. He was made to wait four hours. He had no choice but to wait." aria-label="Прослушать: They made him wait four hours. / He was made to wait four hours. / He had no choice but to wait."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">You <span class="good">should</span> rest more.</p><p class="cp-ru">совет</p><p class="cp-en" lang="en">You<span class="good">&#x27;d better</span> rest, or the headache will come back.</p><p class="cp-ru">предупреждение</p><p class="cp-en" lang="en">You&#x27;re <span class="hl">supposed to</span> rest — doctor&#x27;s orders.</p><p class="cp-ru">так велено</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="You should rest more. You&#x27;d better rest, or the headache will come back. You&#x27;re supposed to rest — doctor&#x27;s orders." aria-label="Прослушать: You should rest more. / You&#x27;d better rest, or the headache will come back. / You&#x27;re supposed to rest — doctor&#x27;s orders."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">You had better to call him.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">You had better call him.</span><span class="err-note">после had better&nbsp;— без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">You&#x27;d better not to tell her.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">You&#x27;d better not tell her.</span><span class="err-note">had better not&nbsp;— тоже без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">They made us to wait.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">They made us wait.</span><span class="err-note">make кого-то&nbsp;— без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We were made wait.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We were made to wait.</span><span class="err-note">в&nbsp;пассиве&nbsp;— с&nbsp;to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Yesterday I&#x27;ve got to stay late.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Yesterday I had to stay late.</span><span class="err-note">have got to&nbsp;— только настоящее</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">You don&#x27;t need bring anything.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">You don&#x27;t need to bring anything.</span><span class="err-note">don&#x27;t need&nbsp;— с&nbsp;to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">You needn&#x27;t to come.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">You needn&#x27;t come.</span><span class="err-note">needn&#x27;t&nbsp;— без to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He is suppose to come at nine.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He is supposed to come at nine.</span><span class="err-note">supposed&nbsp;— с&nbsp;-d, хоть его и&nbsp;не слышно</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Staff are prohibited to use phones.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Staff are prohibited from using phones.</span><span class="err-note">prohibited from + -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He must leave early yesterday.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He had to leave early yesterday.</span><span class="err-note">пришлось в&nbsp;прошлом&nbsp;— had to</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — ключевой глагол (must — оранжевый, have to — синий, should и had better — зелёный).
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 13;
+const GROUPS = {"b1": "B1 — опора", "b1p": "B1+ — живая речь", "b2": "B2 — точность и регистр", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "must или have to",
+  "sub": "кто решает · нельзя или не нужно",
+  "rule": "Спроси себя, кто решил. Решил сам или так написано в правилах — must: I must call the lab. Visitors must sign in. Требуют обстоятельства: график, работа, болезнь — have to: My shift starts at eight, so I have to get up at six. В речи have to встречается намного чаще. В отрицании смысл расходится: mustn't — нельзя, don't have to — не обязательно.",
+  "ex": [
+   {
+    "en": "Visitors [must] sign in at reception.",
+    "ru": "Посетители обязаны отметиться на стойке регистрации."
+   },
+   {
+    "en": "My shift starts at eight, so I [have to] get up at six.",
+    "ru": "Смена в восемь, так что мне приходится вставать в шесть."
+   },
+   {
+    "en": "You [don't have to] wear a tie — the dress code is casual.",
+    "ru": "Галстук не обязателен — дресс-код свободный."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "have to во всех временах",
+  "sub": "had to · has had to · would have to",
+  "rule": "have to — обычный глагол, поэтому у него есть все времена и формы, а у must их нет. Пришлось — had to; уже пришлось — has had to; придётся — will have to; пришлось бы — would have to; раньше приходилось — used to have to; после like, hate, avoid — having to. Вопрос и отрицание — через do: Did you have to wait? We didn't have to pay.",
+  "ex": [
+   {
+    "en": "The anaesthetist was ill, so we [had to] postpone the operation.",
+    "ru": "Анестезиолог заболел, и нам пришлось перенести операцию."
+   },
+   {
+    "en": "The ward [has had to] close twice this winter.",
+    "ru": "Этой зимой отделение уже дважды приходилось закрывать."
+   },
+   {
+    "en": "If the scan were positive, we [would have to] start treatment at once.",
+    "ru": "Будь снимок положительным, лечение пришлось бы начинать сразу."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "need to и needn't",
+  "sub": "нужно · не нужно · needs changing",
+  "rule": "need to — нужно, это необходимо для дела: You need to drink more water. Не нужно — don't need to, а в британском ещё needn't, без to: You needn't worry. Вопрос — Do I need to…? Need + -ing имеет пассивный смысл: The dressing needs changing — повязку нужно менять, то же, что needs to be changed.",
+  "ex": [
+   {
+    "en": "You [need to] drink at least two litres of water a day.",
+    "ru": "Вам нужно пить не меньше двух литров воды в день."
+   },
+   {
+    "en": "You [don't need to] fast before this blood test.",
+    "ru": "Перед этим анализом голодать не нужно."
+   },
+   {
+    "en": "The dressing [needs] changing every day.",
+    "ru": "Повязку нужно менять каждый день."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1p",
+  "title": "have got to и gotta",
+  "sub": "разговорное «надо» · только настоящее",
+  "late": 0.2,
+  "rule": "have got to — разговорное «надо», особенно в британском: I've got to go. Работает только в настоящем: прошлое — had to, будущее — will have to. Вопрос — Have you got to…?, отрицание — haven't got to, то есть не обязательно. В быстрой речи и переписке — gotta: Gotta run! В документах и письмах коллегам по делу — have to.",
+  "ex": [
+   {
+    "en": "Sorry, I've [got to] go — my shift starts in ten minutes.",
+    "ru": "Извини, мне пора — смена через десять минут."
+   },
+   {
+    "en": "[Have] we [got to] fill in all these forms?",
+    "ru": "Нам обязательно заполнять все эти бланки?"
+   },
+   {
+    "en": "[Gotta] run — talk later!",
+    "ru": "Бегу, потом поговорим!"
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "be supposed to",
+  "sub": "положено · должен был, но…",
+  "late": 0.2,
+  "rule": "be supposed to — «положено, так задумано»: так велели, договорились, так в правилах или в графике. You're supposed to take it after meals. В прошлом — was supposed to: «должен был, но не вышло». The results were supposed to come back yesterday. Not supposed to — «не положено», мягче mustn't и часто о правиле, которое нарушают. В британском то же — be meant to.",
+  "ex": [
+   {
+    "en": "You're [supposed to] take these tablets after meals.",
+    "ru": "Эти таблетки положено принимать после еды."
+   },
+   {
+    "en": "The results [were supposed to] come back yesterday.",
+    "ru": "Результаты должны были прийти вчера (но не пришли)."
+   },
+   {
+    "en": "Visitors [aren't supposed to] use their phones in the ICU.",
+    "ru": "Посетителям не положено пользоваться телефонами в реанимации."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "had better и ought to",
+  "sub": "лучше бы, а то… · стоило бы",
+  "late": 0.25,
+  "rule": "had better (’d better) + глагол без to — «лучше бы, а то будут проблемы»: это предупреждение, а не мягкий совет. You'd better call the family. Отрицание — had better not. Хотя had, речь о сейчас и о будущем. ought to — то же, что should, чуть весомее: You ought to get that mole checked. Мягкий совет — should; had better звучит почти как приказ.",
+  "ex": [
+   {
+    "en": "He's deteriorating — you['d better] call the family.",
+    "ru": "Ему хуже — лучше позвоните родственникам, не откладывайте."
+   },
+   {
+    "en": "We['d better not] start without the anaesthetist.",
+    "ru": "Лучше не начинать без анестезиолога."
+   },
+   {
+    "en": "You [ought to] get that mole checked.",
+    "ru": "Вам стоило бы показать эту родинку врачу."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "be forced to",
+  "sub": "вынужден · no choice but to",
+  "late": 0.45,
+  "rule": "be forced to — «вынужден»: давят обстоятельства или люди, по своей воле не стал бы. The hospital was forced to cancel planned operations. Ничего не оставалось, кроме как… — have no choice but to + глагол: We had no choice but to intubate. Формально и о моральном долге — feel compelled to. Обычное «пришлось» без драмы — по-прежнему had to.",
+  "ex": [
+   {
+    "en": "The hospital [was forced to] cancel all planned operations.",
+    "ru": "Больница была вынуждена отменить все плановые операции."
+   },
+   {
+    "en": "We [had no choice but to] intubate him.",
+    "ru": "Нам ничего не оставалось, кроме как его интубировать."
+   },
+   {
+    "en": "The authors felt [compelled to] withdraw the paper.",
+    "ru": "Авторы сочли себя обязанными отозвать статью."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "make, force, get",
+  "sub": "заставить · уговорить · was made to",
+  "late": 0.45,
+  "rule": "Заставить — make + кого-то + глагол без to: They made him wait. В пассиве to возвращается: He was made to wait. force и get — всегда с to: force someone to do — заставить силой или правилами, get someone to do — уговорить, добиться. Make без to работает и в значении «вызывать»: The exam made me feel like a student again.",
+  "ex": [
+   {
+    "en": "They [made] him wait four hours in A&E.",
+    "ru": "Его заставили прождать четыре часа в приёмном."
+   },
+   {
+    "en": "He [was made to] wait four hours.",
+    "ru": "Его заставили ждать четыре часа."
+   },
+   {
+    "en": "We finally [got] him [to] stop smoking.",
+    "ru": "В итоге мы уговорили его бросить курить."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "b2",
+  "title": "be required to, be obliged to",
+  "sub": "протоколы, правила, статьи",
+  "late": 0.5,
+  "rule": "В официальных текстах вместо have to — be required to: All staff are required to complete the training. По закону или по долгу — be obliged to: Doctors are obliged to report certain infections. Не обязаны — are not required to, это то же, что don't have to, а не запрет. Прилагательные «обязательный» — mandatory, compulsory: Written consent is mandatory. Активный залог — require: The protocol requires two readings.",
+  "ex": [
+   {
+    "en": "All staff [are required to] complete annual safety training.",
+    "ru": "Все сотрудники обязаны ежегодно проходить обучение по безопасности."
+   },
+   {
+    "en": "Doctors [are obliged to] report certain infectious diseases.",
+    "ru": "Врачи обязаны сообщать о некоторых инфекционных болезнях."
+   },
+   {
+    "en": "Participants [are not required to] give a reason for leaving the study.",
+    "ru": "Участники не обязаны объяснять, почему выходят из исследования."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "b2",
+  "title": "didn't need to или needn't have",
+  "sub": "не пришлось · сделал зря",
+  "late": 0.55,
+  "rule": "Два вопроса: сделал или нет? Не нужно было и не делал — didn't need to или didn't have to: I didn't need to queue — I had an appointment. Сделал, а оказалось, что зря, — needn't have + третья форма: You needn't have come in — we could have talked by phone. Вежливое «ну зачем же» на подарок — You needn't have! или You shouldn't have!",
+  "ex": [
+   {
+    "en": "I [didn't need to] queue — I had an appointment.",
+    "ru": "В очереди стоять не пришлось — у меня была запись."
+   },
+   {
+    "en": "You [needn't have] come in — we could have talked by phone.",
+    "ru": "Зря вы приезжали — можно было поговорить по телефону."
+   },
+   {
+    "en": "We [needn't have] ordered a CT — the diagnosis was clear.",
+    "ru": "Зря назначили КТ — диагноз был ясен."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "group": "b2",
+  "title": "Запрет: от мягкого к строгому",
+  "sub": "not supposed to · can't · not allowed · prohibited",
+  "late": 0.55,
+  "rule": "Шкала строгости. not supposed to — не положено, но бывает. can't — нельзя по правилам, так чаще всего говорят: You can't park here. not allowed to — запрещено: Visitors aren't allowed to bring food. mustn't — категорично, от говорящего: You mustn't drive yet. be prohibited from + -ing, is not permitted — официальный язык объявлений и приказов.",
+  "ex": [
+   {
+    "en": "You [can't] park here — this space is for ambulances.",
+    "ru": "Здесь парковаться нельзя — это место для скорых."
+   },
+   {
+    "en": "Visitors [aren't allowed to] bring food into the ward.",
+    "ru": "Посетителям нельзя приносить еду в отделение."
+   },
+   {
+    "en": "Staff [are prohibited from] sharing patient data online.",
+    "ru": "Сотрудникам запрещено публиковать данные пациентов в интернете."
+   }
+  ]
+ },
+ {
+  "n": 12,
+  "group": "b2",
+  "title": "«Должен был»: четыре перевода",
+  "sub": "must have · had to · was supposed to · should have",
+  "late": 0.6,
+  "rule": "Русское «должен был» переводят четырьмя способами — спроси, что имеется в виду. Наверное, сделал — must have done: He must have left early. Пришлось — had to: He had to leave early. Должен был по плану, но не сделал — was supposed to: He was supposed to present the case. Надо было, а он не сделал, упрёк — should have done: He should have stayed.",
+  "ex": [
+   {
+    "en": "His coat is gone — he [must have] left early.",
+    "ru": "Пальто нет — наверное, он рано ушёл."
+   },
+   {
+    "en": "He [was supposed to] present the case, but he didn't turn up.",
+    "ru": "Он должен был докладывать случай, но не пришёл."
+   },
+   {
+    "en": "He [should have] stayed until the handover.",
+    "ru": "Ему надо было остаться до передачи смены."
+   }
+  ]
+ },
+ {
+  "n": 13,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "o1-shift",
+  "t": 1,
+  "q": "My shift starts at eight, so I ___ get up at six.",
+  "ru": "Смена начинается в восемь, так что мне приходится вставать в шесть.",
+  "opts": [
+   "have to",
+   "must to",
+   "has to"
+  ],
+  "a": "have to",
+  "why": "Так требует график — have to. Must to — ошибка, has to — для he и she."
+ },
+ {
+  "id": "o1-sign",
+  "t": 1,
+  "q": "Notice in the ward: Visitors ___ sign in at reception.",
+  "ru": "Объявление в отделении: посетители обязаны отметиться на стойке регистрации.",
+  "opts": [
+   "must",
+   "must to",
+   "have"
+  ],
+  "a": "must",
+  "why": "Письменные правила и объявления — must, после него глагол без to."
+ },
+ {
+  "id": "o1-bp",
+  "t": 1,
+  "q": "He ___ check his blood pressure twice a day.",
+  "ru": "Ему приходится мерить давление два раза в день.",
+  "opts": [
+   "has to",
+   "have to",
+   "must to"
+  ],
+  "a": "has to",
+  "why": "Он — has to."
+ },
+ {
+  "id": "o1-masks",
+  "t": 1,
+  "q": "___ we have to wear masks in the corridor?",
+  "ru": "Нам обязательно носить маски в коридоре?",
+  "opts": [
+   "Do",
+   "Must",
+   "Have"
+  ],
+  "a": "Do",
+  "why": "Вопрос с have to — через do: Do we have to…? Have we to…? — устарело."
+ },
+ {
+  "id": "o1-gloves",
+  "t": 1,
+  "q": "You ___ touch the sterile field without gloves.",
+  "ru": "Нельзя касаться стерильного поля без перчаток.",
+  "opts": [
+   "mustn't",
+   "don't have to"
+  ],
+  "a": "mustn't",
+  "why": "Нельзя, запрет — mustn't."
+ },
+ {
+  "id": "o1-tie",
+  "t": 1,
+  "q": "You ___ wear a tie — the dress code is casual.",
+  "ru": "Галстук носить не обязательно — дресс-код свободный.",
+  "opts": [
+   "don't have to",
+   "mustn't"
+  ],
+  "a": "don't have to",
+  "why": "Не обязательно, можно не делать — don't have to."
+ },
+ {
+  "id": "o2-postpone",
+  "t": 2,
+  "q": "The anaesthetist was ill, so we ___ postpone the operation.",
+  "ru": "Анестезиолог заболел, и нам пришлось перенести операцию.",
+  "opts": [
+   "had to",
+   "must",
+   "have to"
+  ],
+  "a": "had to",
+  "why": "Пришлось в прошлом — had to: у must прошедшего нет."
+ },
+ {
+  "id": "o2-close",
+  "t": 2,
+  "q": "The ward ___ close twice this winter because of flu.",
+  "ru": "Этой зимой отделение уже дважды приходилось закрывать из-за гриппа.",
+  "opts": [
+   "has had to",
+   "has must",
+   "had to have"
+  ],
+  "a": "has had to",
+  "why": "Уже пришлось, итог к сегодняшнему дню — Present Perfect: has had to."
+ },
+ {
+  "id": "o2-would",
+  "t": 2,
+  "q": "If the scan were positive, we ___ start treatment at once.",
+  "ru": "Будь снимок положительным, лечение пришлось бы начинать сразу.",
+  "opts": [
+   "would have to",
+   "would must",
+   "will have to"
+  ],
+  "a": "would have to",
+  "why": "Пришлось бы — would have to. Will have to — «придётся», без «бы»."
+ },
+ {
+  "id": "o2-having",
+  "t": 2,
+  "q": "Nobody likes ___ give bad news to families.",
+  "ru": "Никому не нравится, когда приходится сообщать родственникам плохие новости.",
+  "opts": [
+   "having to",
+   "must",
+   "to must"
+  ],
+  "a": "having to",
+  "why": "После like, hate, avoid — форма на -ing: having to. У must такой формы нет."
+ },
+ {
+  "id": "o2-intern",
+  "t": 2,
+  "q": "When I was an intern, I ___ work every other weekend.",
+  "ru": "Когда я был интерном, мне приходилось работать через выходные.",
+  "opts": [
+   "used to have to",
+   "used to must",
+   "had got to"
+  ],
+  "a": "used to have to",
+  "why": "Раньше приходилось — used to have to: must так не умеет."
+ },
+ {
+  "id": "o2-january",
+  "t": 2,
+  "q": "From January, all residents ___ log their procedures online.",
+  "ru": "С января всем ординаторам придётся вносить свои процедуры в электронный журнал.",
+  "opts": [
+   "will have to",
+   "will must",
+   "must to"
+  ],
+  "a": "will have to",
+  "why": "Придётся — will have to."
+ },
+ {
+  "id": "o3-water",
+  "t": 3,
+  "q": "You ___ drink at least two litres of water a day.",
+  "ru": "Вам нужно пить не меньше двух литров воды в день.",
+  "opts": [
+   "need to",
+   "need",
+   "needn't"
+  ],
+  "a": "need to",
+  "why": "В утверждении — need to + глагол. Без to need ставят только в needn't и в книжном вопросе Need I…?"
+ },
+ {
+  "id": "o3-fast",
+  "t": 3,
+  "q": "You ___ fast before this blood test — eat as usual.",
+  "ru": "Перед этим анализом голодать не нужно — ешьте как обычно.",
+  "opts": [
+   "don't need to",
+   "mustn't",
+   "need not to"
+  ],
+  "a": "don't need to",
+  "why": "Не нужно — don't need to. Mustn't — запрет, need not to — ошибка: needn't без to."
+ },
+ {
+  "id": "o3-worry",
+  "t": 3,
+  "q": "You ___ worry — the scan is completely normal.",
+  "ru": "Не волнуйтесь — снимок совершенно нормальный.",
+  "opts": [
+   "needn't",
+   "needn't to",
+   "don't need"
+  ],
+  "a": "needn't",
+  "why": "needn't + глагол без to. Don't need без to перед глаголом не ставят."
+ },
+ {
+  "id": "o3-scans",
+  "t": 3,
+  "q": "Do I ___ bring my old scans to the appointment?",
+  "ru": "Мне нужно брать с собой старые снимки на приём?",
+  "opts": [
+   "need to",
+   "need",
+   "must"
+  ],
+  "a": "need to",
+  "why": "Вопрос — Do I need to…? Do I must — так не говорят."
+ },
+ {
+  "id": "o3-dressing",
+  "t": 3,
+  "q": "The dressing needs ___ every day.",
+  "ru": "Повязку нужно менять каждый день.",
+  "opts": [
+   "changing",
+   "to change",
+   "change"
+  ],
+  "a": "changing",
+  "why": "need + -ing — пассивный смысл: needs changing = needs to be changed. Needs to change — повязка сама должна измениться."
+ },
+ {
+  "id": "o3-checked",
+  "t": 3,
+  "q": "The results need ___ checked by a second radiologist.",
+  "ru": "Результаты должен перепроверить второй рентгенолог.",
+  "opts": [
+   "to be",
+   "being",
+   "be"
+  ],
+  "a": "to be",
+  "why": "Пассив после need — to be + третья форма: need to be checked."
+ },
+ {
+  "id": "o4-go",
+  "t": 4,
+  "q": "Sorry, I've ___ go — my shift starts in ten minutes.",
+  "ru": "Извини, мне пора — смена начинается через десять минут.",
+  "opts": [
+   "got to",
+   "got",
+   "to"
+  ],
+  "a": "got to",
+  "why": "Разговорное «надо» — I've got to go."
+ },
+ {
+  "id": "o4-see",
+  "t": 4,
+  "q": "You've got ___ this scan — it's incredible.",
+  "ru": "Тебе обязательно надо посмотреть этот снимок — он невероятный.",
+  "opts": [
+   "to see",
+   "see",
+   "seeing"
+  ],
+  "a": "to see",
+  "why": "have got to + глагол: You've got to see."
+ },
+ {
+  "id": "o4-night",
+  "t": 4,
+  "q": "Last night I ___ stay until the patient was stable.",
+  "ru": "Вчера вечером мне пришлось остаться, пока пациент не стабилизировался.",
+  "opts": [
+   "had to",
+   "had got to",
+   "'ve got to"
+  ],
+  "a": "had to",
+  "why": "have got to бывает только в настоящем. Пришлось — had to."
+ },
+ {
+  "id": "o4-forms",
+  "t": 4,
+  "q": "___ we got to fill in all these forms?",
+  "ru": "Нам обязательно заполнять все эти бланки?",
+  "opts": [
+   "Have",
+   "Do",
+   "Are"
+  ],
+  "a": "Have",
+  "why": "Вопрос с got — Have we got to…? Без got — Do we have to…?"
+ },
+ {
+  "id": "o4-sunday",
+  "t": 4,
+  "q": "You ___ got to come in on Sunday — the ward is covered.",
+  "ru": "В воскресенье приходить не обязательно — дежурный в отделении есть.",
+  "opts": [
+   "haven't",
+   "don't",
+   "mustn't"
+  ],
+  "a": "haven't",
+  "why": "haven't got to = don't have to: не обязательно."
+ },
+ {
+  "id": "o4-gotta",
+  "t": 4,
+  "q": "___ run — talk later!",
+  "ru": "Бегу, потом поговорим! (сообщение коллеге)",
+  "opts": [
+   "Gotta",
+   "Must to",
+   "Got"
+  ],
+  "a": "Gotta",
+  "why": "gotta — have got to в быстрой речи и переписке. В документах — have to."
+ },
+ {
+  "id": "o5-meals",
+  "t": 5,
+  "q": "You're ___ take these tablets after meals, not on an empty stomach.",
+  "ru": "Эти таблетки положено принимать после еды, а не натощак.",
+  "opts": [
+   "supposed to",
+   "suppose to",
+   "supposed"
+  ],
+  "a": "supposed to",
+  "why": "be supposed to + глагол. Suppose to — ошибка на слух: -d не слышно, но пишется."
+ },
+ {
+  "id": "o5-results",
+  "t": 5,
+  "q": "The results ___ come back yesterday, but the lab lost the sample.",
+  "ru": "Результаты должны были прийти вчера, но лаборатория потеряла образец.",
+  "opts": [
+   "were supposed to",
+   "must have",
+   "had to"
+  ],
+  "a": "were supposed to",
+  "why": "Должны были по плану, но не вышло — was или were supposed to. Had to — «пришлось», must have — «наверное»."
+ },
+ {
+  "id": "o5-phones",
+  "t": 5,
+  "q": "Visitors ___ use their phones in the ICU, but some still do.",
+  "ru": "Посетителям не положено пользоваться телефонами в реанимации, но некоторые всё равно пользуются.",
+  "opts": [
+   "aren't supposed to",
+   "don't have to",
+   "needn't"
+  ],
+  "a": "aren't supposed to",
+  "why": "Не положено, а правило нарушают — not supposed to. Don't have to и needn't — «не обязательно»."
+ },
+ {
+  "id": "o5-rota",
+  "t": 5,
+  "q": "Who ___ be on call tonight? The rota is blank.",
+  "ru": "Кто сегодня ночью должен дежурить? В графике пусто.",
+  "opts": [
+   "is supposed to",
+   "supposes to",
+   "should have"
+  ],
+  "a": "is supposed to",
+  "why": "Кто должен по графику — is supposed to. Supposes to — ошибка: нужен пассив be supposed to."
+ },
+ {
+  "id": "o5-meant",
+  "t": 5,
+  "q": "This drug is ___ to be taken with food.",
+  "ru": "Этот препарат полагается принимать с едой.",
+  "opts": [
+   "meant",
+   "mean",
+   "meaning"
+  ],
+  "a": "meant",
+  "why": "be meant to = be supposed to, чаще в британском: так задумано."
+ },
+ {
+  "id": "o5-round",
+  "t": 5,
+  "q": "It's 9:30. The ward round ___ start at nine — where is everyone?",
+  "ru": "Уже 9:30. Обход должен был начаться в девять — где все?",
+  "opts": [
+   "was supposed to",
+   "must",
+   "is supposed"
+  ],
+  "a": "was supposed to",
+  "why": "Должен был начаться, но не начался — was supposed to."
+ },
+ {
+  "id": "o6-call",
+  "t": 6,
+  "q": "He's deteriorating — you'd better ___ the family.",
+  "ru": "Ему хуже — лучше позвоните родственникам.",
+  "opts": [
+   "call",
+   "to call",
+   "calling"
+  ],
+  "a": "call",
+  "why": "had better + глагол без to."
+ },
+ {
+  "id": "o6-not",
+  "t": 6,
+  "q": "We'd better ___ start without the anaesthetist.",
+  "ru": "Лучше не начинать без анестезиолога.",
+  "opts": [
+   "not",
+   "not to",
+   "don't"
+  ],
+  "a": "not",
+  "why": "Отрицание — had better not + глагол без to."
+ },
+ {
+  "id": "o6-dose",
+  "t": 6,
+  "q": "You ___ better check the dose again — it looks too high.",
+  "ru": "Лучше перепроверь дозу — она кажется слишком большой.",
+  "opts": [
+   "had",
+   "would",
+   "should"
+  ],
+  "a": "had",
+  "why": "Только had better (’d better). Would better — ошибка."
+ },
+ {
+  "id": "o6-mole",
+  "t": 6,
+  "q": "You ought ___ that mole checked.",
+  "ru": "Вам стоило бы показать эту родинку врачу.",
+  "opts": [
+   "to get",
+   "get",
+   "getting"
+  ],
+  "a": "to get",
+  "why": "ought to + глагол: в отличие от should, с to."
+ },
+ {
+  "id": "o6-warn",
+  "t": 6,
+  "q": "You ___ take your anticoagulant every day, or you could have another stroke.",
+  "ru": "Принимайте антикоагулянт каждый день, иначе может случиться повторный инсульт.",
+  "opts": [
+   "had better",
+   "would rather",
+   "ought"
+  ],
+  "a": "had better",
+  "why": "Предупреждение «а то будет плохо» — had better. Would rather — «предпочёл бы», ought без to не ставят."
+ },
+ {
+  "id": "o6-advice",
+  "t": 6,
+  "q": "It's only a suggestion, but I think you ___ apply for the fellowship.",
+  "ru": "Это просто совет, но, по-моему, тебе стоит подать заявку на стажировку.",
+  "opts": [
+   "should",
+   "had better",
+   "must"
+  ],
+  "a": "should",
+  "why": "Мягкий совет — should. Had better звучит как предупреждение, must — как приказ."
+ },
+ {
+  "id": "o7-cancel",
+  "t": 7,
+  "q": "Because of the flu outbreak, the hospital ___ cancel all planned operations.",
+  "ru": "Из-за вспышки гриппа больница была вынуждена отменить все плановые операции.",
+  "opts": [
+   "was forced to",
+   "forced to",
+   "was forced"
+  ],
+  "a": "was forced to",
+  "why": "Был вынужден — was forced to + глагол."
+ },
+ {
+  "id": "o7-intubate",
+  "t": 7,
+  "q": "His saturation kept falling, so we had no choice but ___ him.",
+  "ru": "Сатурация продолжала падать, и нам ничего не оставалось, кроме как его интубировать.",
+  "opts": [
+   "to intubate",
+   "intubate",
+   "intubating"
+  ],
+  "a": "to intubate",
+  "why": "have no choice but to + глагол."
+ },
+ {
+  "id": "o7-shifts",
+  "t": 7,
+  "q": "Many nurses ___ work double shifts this year.",
+  "ru": "В этом году многие медсёстры были вынуждены работать в две смены.",
+  "opts": [
+   "have been forced to",
+   "have forced to",
+   "are forcing to"
+  ],
+  "a": "have been forced to",
+  "why": "Их вынудили — пассив: have been forced to. Have forced — они сами кого-то заставили."
+ },
+ {
+  "id": "o7-retire",
+  "t": 7,
+  "q": "After the injury, she was forced ___ early.",
+  "ru": "После травмы ей пришлось рано уйти на пенсию.",
+  "opts": [
+   "to retire",
+   "retiring",
+   "retire"
+  ],
+  "a": "to retire",
+  "why": "be forced to + глагол."
+ },
+ {
+  "id": "o7-road",
+  "t": 7,
+  "q": "The road was closed, so the ambulance ___ take a longer route.",
+  "ru": "Дорогу перекрыли, и скорой пришлось ехать в объезд.",
+  "opts": [
+   "had to",
+   "must",
+   "was forced"
+  ],
+  "a": "had to",
+  "why": "Обычное «пришлось» — had to. Was forced без to нельзя, у must нет прошедшего."
+ },
+ {
+  "id": "o7-paper",
+  "t": 7,
+  "q": "The authors felt ___ to withdraw the paper after the errors were found.",
+  "ru": "Когда нашлись ошибки, авторы сочли себя обязанными отозвать статью.",
+  "opts": [
+   "compelled",
+   "forcing",
+   "made"
+  ],
+  "a": "compelled",
+  "why": "feel compelled to — «считать себя обязанным, не мочь иначе»: формально, часто о моральном долге."
+ },
+ {
+  "id": "o8-wait",
+  "t": 8,
+  "q": "They made him ___ four hours in A&E.",
+  "ru": "Его заставили прождать четыре часа в приёмном.",
+  "opts": [
+   "wait",
+   "to wait",
+   "waiting"
+  ],
+  "a": "wait",
+  "why": "make + кого-то + глагол без to."
+ },
+ {
+  "id": "o8-passive",
+  "t": 8,
+  "q": "He was made ___ four hours in A&E.",
+  "ru": "Его заставили ждать четыре часа в приёмном.",
+  "opts": [
+   "to wait",
+   "wait",
+   "waiting"
+  ],
+  "a": "to wait",
+  "why": "В пассиве to возвращается: be made to do."
+ },
+ {
+  "id": "o8-stop",
+  "t": 8,
+  "q": "We finally got him ___ smoking.",
+  "ru": "В итоге мы уговорили его бросить курить.",
+  "opts": [
+   "to stop",
+   "stop",
+   "stopping"
+  ],
+  "a": "to stop",
+  "why": "get + кого-то + to do — уговорить, добиться. В отличие от make, с to."
+ },
+ {
+  "id": "o8-trial",
+  "t": 8,
+  "q": "Nobody can force you ___ part in the trial.",
+  "ru": "Никто не может заставить вас участвовать в исследовании.",
+  "opts": [
+   "to take",
+   "take",
+   "taking"
+  ],
+  "a": "to take",
+  "why": "force + кого-то + to do — с to."
+ },
+ {
+  "id": "o8-protocol",
+  "t": 8,
+  "q": "The new protocol ___ us double-check every high-risk drug.",
+  "ru": "Новый протокол заставляет нас перепроверять каждый препарат высокого риска.",
+  "opts": [
+   "makes",
+   "forces",
+   "gets"
+  ],
+  "a": "makes",
+  "why": "Без to после us — только make. Force и get требуют to."
+ },
+ {
+  "id": "o8-feel",
+  "t": 8,
+  "q": "The exam made me ___ like a student again.",
+  "ru": "Из-за экзамена я снова почувствовал себя студентом.",
+  "opts": [
+   "feel",
+   "to feel",
+   "feeling"
+  ],
+  "a": "feel",
+  "why": "make + кого-то + глагол без to — и «заставить», и «вызвать»."
+ },
+ {
+  "id": "o9-training",
+  "t": 9,
+  "q": "All staff ___ complete annual fire-safety training.",
+  "ru": "Все сотрудники обязаны ежегодно проходить обучение пожарной безопасности.",
+  "opts": [
+   "are required to",
+   "require to",
+   "are required"
+  ],
+  "a": "are required to",
+  "why": "Требуется по правилам — be required to + глагол."
+ },
+ {
+  "id": "o9-report",
+  "t": 9,
+  "q": "By law, doctors are obliged ___ certain infectious diseases.",
+  "ru": "По закону врачи обязаны сообщать о некоторых инфекционных заболеваниях.",
+  "opts": [
+   "to report",
+   "reporting",
+   "report"
+  ],
+  "a": "to report",
+  "why": "be obliged to + глагол."
+ },
+ {
+  "id": "o9-consent",
+  "t": 9,
+  "q": "Written consent is ___ before any research procedure.",
+  "ru": "Письменное согласие обязательно перед любой процедурой исследования.",
+  "opts": [
+   "mandatory",
+   "obliged",
+   "required to"
+  ],
+  "a": "mandatory",
+  "why": "Обязательный — mandatory или compulsory; можно и is required, но без to. Obliged говорят о людях: we are obliged to…"
+ },
+ {
+  "id": "o9-reason",
+  "t": 9,
+  "q": "Participants ___ give a reason for leaving the study.",
+  "ru": "Участники не обязаны объяснять, почему выходят из исследования.",
+  "opts": [
+   "are not required to",
+   "must not",
+   "are required not to"
+  ],
+  "a": "are not required to",
+  "why": "Не обязаны — not required to, как don't have to. Must not и required not to — запрет."
+ },
+ {
+  "id": "o9-requires",
+  "t": 9,
+  "q": "The protocol ___ two independent readings of every scan.",
+  "ru": "Протокол требует двух независимых прочтений каждого снимка.",
+  "opts": [
+   "requires",
+   "is required",
+   "obliges"
+  ],
+  "a": "requires",
+  "why": "Активный залог: the protocol requires something. Is required — когда подлежащее тот, от кого требуют."
+ },
+ {
+  "id": "o9-duty",
+  "t": 9,
+  "q": "Hospitals have a legal ___ to protect patient data.",
+  "ru": "У больниц есть юридическая обязанность защищать данные пациентов.",
+  "opts": [
+   "obligation",
+   "obliged",
+   "must"
+  ],
+  "a": "obligation",
+  "why": "Существительное — obligation to do: have an obligation to, have a duty to."
+ },
+ {
+  "id": "o10-queue",
+  "t": 10,
+  "q": "I ___ queue — I had an appointment, so I went straight in.",
+  "ru": "В очереди стоять не пришлось — у меня была запись, и я сразу прошёл.",
+  "opts": [
+   "didn't need to",
+   "needn't have",
+   "mustn't"
+  ],
+  "a": "didn't need to",
+  "why": "Не нужно было — и не делал: didn't need to."
+ },
+ {
+  "id": "o10-came",
+  "t": 10,
+  "q": "You ___ come in — we could have discussed it by phone.",
+  "ru": "Зря вы приезжали — можно было всё обсудить по телефону.",
+  "opts": [
+   "needn't have",
+   "didn't need to",
+   "mustn't have"
+  ],
+  "a": "needn't have",
+  "why": "Сделал, но зря — needn't have + третья форма.",
+  "also": {
+   "didn't need to": "в речи так тоже скажут: didn't need to не уточняет, сделал ли; needn't have прямо говорит — сделал, но зря"
+  }
+ },
+ {
+  "id": "o10-ct",
+  "t": 10,
+  "q": "We needn't have ___ a CT — the diagnosis was obvious clinically.",
+  "ru": "Зря назначили КТ — диагноз был очевиден клинически.",
+  "opts": [
+   "ordered",
+   "order",
+   "to order"
+  ],
+  "a": "ordered",
+  "why": "needn't have + третья форма: ordered."
+ },
+ {
+  "id": "o10-lift",
+  "t": 10,
+  "q": "My colleague gave me a lift, so I ___ take a taxi.",
+  "ru": "Коллега меня подвёз, так что такси брать не пришлось.",
+  "opts": [
+   "didn't have to",
+   "needn't have",
+   "hadn't to"
+  ],
+  "a": "didn't have to",
+  "why": "Не пришлось и не делал — didn't have to."
+ },
+ {
+  "id": "o10-exam",
+  "t": 10,
+  "q": "I was so nervous about the exam, but I ___ worried — it was easy.",
+  "ru": "Я так волновался перед экзаменом, а зря — он был лёгким.",
+  "opts": [
+   "needn't have",
+   "didn't need to",
+   "mustn't have"
+  ],
+  "a": "needn't have",
+  "why": "Волновался, но зря — needn't have worried."
+ },
+ {
+  "id": "o10-gift",
+  "t": 10,
+  "q": "Thank you so much — but you ___ brought anything!",
+  "ru": "Огромное спасибо — но не стоило ничего приносить!",
+  "opts": [
+   "needn't have",
+   "shouldn't have",
+   "didn't need"
+  ],
+  "a": "needn't have",
+  "why": "Вежливое «ну зачем же» — You needn't have!",
+  "also": {
+   "shouldn't have": "тоже так говорят: You shouldn't have! — «ну зачем же, не стоило»"
+  }
+ },
+ {
+  "id": "o11-park",
+  "t": 11,
+  "q": "You ___ park here — this space is for ambulances.",
+  "ru": "Здесь парковаться нельзя — это место для скорых.",
+  "opts": [
+   "can't",
+   "don't have to",
+   "needn't"
+  ],
+  "a": "can't",
+  "why": "Нельзя по правилам в разговоре — чаще всего can't. Don't have to и needn't — «не обязательно»."
+ },
+ {
+  "id": "o11-food",
+  "t": 11,
+  "q": "Visitors ___ bring food into the ward.",
+  "ru": "Посетителям нельзя приносить еду в отделение.",
+  "opts": [
+   "aren't allowed to",
+   "don't allow to",
+   "aren't allowed"
+  ],
+  "a": "aren't allowed to",
+  "why": "Запрещено правилами — be not allowed to + глагол."
+ },
+ {
+  "id": "o11-sharing",
+  "t": 11,
+  "q": "Staff are prohibited ___ patient data on social media.",
+  "ru": "Сотрудникам запрещено публиковать данные пациентов в соцсетях.",
+  "opts": [
+   "from sharing",
+   "to share",
+   "sharing"
+  ],
+  "a": "from sharing",
+  "why": "be prohibited from + -ing — официальный язык."
+ },
+ {
+  "id": "o11-eeg",
+  "t": 11,
+  "q": "You ___ drive until we have the EEG results — that's final.",
+  "ru": "Водить машину нельзя, пока нет результатов ЭЭГ, — это не обсуждается.",
+  "opts": [
+   "mustn't",
+   "aren't supposed to",
+   "don't need to"
+  ],
+  "a": "mustn't",
+  "why": "Категоричный запрет от говорящего — mustn't. Not supposed to мягче: «не положено»."
+ },
+ {
+  "id": "o11-talk",
+  "t": 11,
+  "q": "We're not supposed ___ about it, but the new scanner arrives next week.",
+  "ru": "Вообще-то нам не положено об этом говорить, но новый томограф привезут на следующей неделе.",
+  "opts": [
+   "to talk",
+   "talking",
+   "talk"
+  ],
+  "a": "to talk",
+  "why": "not supposed to + глагол."
+ },
+ {
+  "id": "o11-smoking",
+  "t": 11,
+  "q": "Smoking is not ___ anywhere on hospital grounds.",
+  "ru": "Курение запрещено на всей территории больницы.",
+  "opts": [
+   "permitted",
+   "allowed to",
+   "prohibited"
+  ],
+  "a": "permitted",
+  "why": "Объявления: Smoking is not permitted или not allowed — без to, глагола дальше нет. Not prohibited — «не запрещено», смысл обратный."
+ },
+ {
+  "id": "o12-coat",
+  "t": 12,
+  "q": "His coat is gone — he ___ left early.",
+  "ru": "Пальто нет — наверное, он рано ушёл.",
+  "opts": [
+   "must have",
+   "had to",
+   "should have"
+  ],
+  "a": "must have",
+  "why": "Догадка о прошлом — must have + третья форма."
+ },
+ {
+  "id": "o12-daughter",
+  "t": 12,
+  "q": "He ___ leave early — his daughter was taken ill.",
+  "ru": "Ему пришлось уйти пораньше — заболела дочь.",
+  "opts": [
+   "had to",
+   "must have",
+   "was supposed to"
+  ],
+  "a": "had to",
+  "why": "Пришлось — had to."
+ },
+ {
+  "id": "o12-handover",
+  "t": 12,
+  "q": "He ___ stayed until the handover — now nobody knows what happened at night.",
+  "ru": "Ему надо было остаться до передачи смены — теперь никто не знает, что было ночью.",
+  "opts": [
+   "should have",
+   "must have",
+   "had to"
+  ],
+  "a": "should have",
+  "why": "Надо было, а он не сделал, — should have + третья форма."
+ },
+ {
+  "id": "o12-case",
+  "t": 12,
+  "q": "He ___ present the case at the meeting, but he didn't turn up.",
+  "ru": "Он должен был докладывать случай на совещании, но не пришёл.",
+  "opts": [
+   "was supposed to",
+   "must have",
+   "should"
+  ],
+  "a": "was supposed to",
+  "why": "Должен был по плану, но не сделал — was supposed to."
+ },
+ {
+  "id": "o12-inr",
+  "t": 12,
+  "q": "The patient ___ taken too much warfarin — his INR is 9.",
+  "ru": "Пациент, должно быть, принял слишком много варфарина — МНО 9.",
+  "opts": [
+   "must have",
+   "had to",
+   "should have"
+  ],
+  "a": "must have",
+  "why": "Наверняка принял — догадка: must have taken."
+ },
+ {
+  "id": "o12-night",
+  "t": 12,
+  "q": "They ___ operate at night — there was no time to wait until morning.",
+  "ru": "Им пришлось оперировать ночью — ждать до утра было нельзя.",
+  "opts": [
+   "had to",
+   "must have",
+   "were supposed to"
+  ],
+  "a": "had to",
+  "why": "Пришлось из-за обстоятельств — had to."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "oblig:state";
+const LS_SPEAK = "oblig:autospeak";
+const LS_TAB = "oblig:tab";
+const LS_OPEN = "oblig:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "have to"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — ключевой глагол: must — оранжевый, have (got) to — синий, should, ought to, had better — зелёный, остальные подчёркнуты
+function modalCls(t){
+  t = t.toLowerCase();
+  if (/should|better|ought/.test(t)) return "good";
+  if (t.includes("must")) return "pr";
+  if (/^ha(ve|s|d)$/.test(t) || /\bha(ve|s|d|ving) to\b|got to|gotta/.test(t)) return "st";
+  return "hl";
+}
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>
