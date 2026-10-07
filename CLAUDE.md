@@ -67,9 +67,10 @@ python3 -m http.server 8000
   из `sources/` — `python3 oblig/mk_template.py` (шаблон из `modal/template.html`), `python3 oblig/clips.py`,
   `python3 oblig/tts.py` (записи голосом Ryan через edge-tts), `python3 oblig/build.py` (пишет `site/apps/oblig.html`,
   `site/packs/oblig.mp3`, запись в `tools/packs.json` и `tools/catalog.json`), затем `python3 tools/mk_shell.py`;
-  проверка — `python3 oblig/test.py`. Содержание — `sources/oblig/content.py`. Записей Ryan у него пока нет:
-  в среде, где его собирали, сервис озвучки speech.platform.bing.com был закрыт, поэтому пакет пустой и фразы читает
-  голос устройства. Где сервис доступен, `oblig/tts.py` → `oblig/build.py` → `tools/mk_shell.py` добавят записи.
+  проверка — `python3 oblig/test.py`. Содержание — `sources/oblig/content.py`. Записи (голос Ryan) нужны
+  доступ к speech.platform.bing.com; исходные mp3 в репозиторий не кладутся — только пакет `site/packs/oblig.mp3`.
+  Новая или изменённая фраза: `oblig/clips.py` → `oblig/tts.py` (дописывает недостающие) → `oblig/build.py` → `tools/mk_shell.py`;
+  без записи фразу читает голос устройства.
 
 ## Правила оформления
 
