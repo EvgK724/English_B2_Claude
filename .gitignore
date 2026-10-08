@@ -7,3 +7,8 @@ sources/oblig/clips.json
 sources/oblig/index.html
 sources/oblig/preview.html
 sources/oblig/*.png
+sources/havea/audio/
+sources/havea/clips.json
+sources/havea/index.html
+sources/havea/preview.html
+sources/havea/*.png
