@@ -12,3 +12,8 @@ sources/havea/clips.json
 sources/havea/index.html
 sources/havea/preview.html
 sources/havea/*.png
+sources/incr/audio/
+sources/incr/clips.json
+sources/incr/index.html
+sources/incr/preview.html
+sources/incr/*.png

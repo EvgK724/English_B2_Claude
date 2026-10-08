@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-48 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+49 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается из этого репозитория (ветка `main`, папка `/`),
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     48 тренажёров, каждый — самостоятельная страница
+  apps/<ключ>.html     49 тренажёров, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -75,6 +75,10 @@ python3 -m http.server 8000
   `python3 havea/mk_template.py`, `havea/clips.py`, `havea/tts.py`, `havea/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 havea/test.py`. Стоит в каталоге сразу после «Have, take, pay» (htp) и не повторяет его:
   там — отдельные сочетания, здесь — сама конструкция «глагол + a + существительное».
+- **«Increase by и increase to» (incr)** — так же, из `sources/incr/` (шаблон из `oblig/template.html`):
+  `python3 incr/mk_template.py`, `incr/clips.py`, `incr/tts.py`, `incr/build.py`, затем `python3 tools/mk_shell.py`;
+  проверка — `python3 incr/test.py`. Стоит сразу после «Цифр» (num): там по одной-две карточки на by, to и increase in,
+  здесь — вся система предлогов изменения, rise/raise, тренды, проценты и пункты, кратность, пороги, сравнение.
 
 ## Правила оформления
 

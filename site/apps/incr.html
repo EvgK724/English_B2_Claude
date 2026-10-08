@@ -1,0 +1,1962 @@
+<title>Increase by и increase to</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("incr",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Increase by и&nbsp;increase to</h1>
+      <p class="r-sub">По-русски «на» и&nbsp;«до» не&nbsp;спутать, а&nbsp;по-английски их&nbsp;путают постоянно: <b lang="en">by</b>&nbsp;— на&nbsp;сколько, <b lang="en">to</b>&nbsp;— до&nbsp;какого значения. Дальше&nbsp;— предлоги после существительных, глаголы, тренды, проценты и&nbsp;пункты, как в&nbsp;статьях. Темы идут от&nbsp;B1 к&nbsp;B2.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Вопрос</th><th scope="col">Пример</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">by</th></tr><tr><td><b class="h">на сколько?</b>разница между было и&nbsp;стало</td><td><span class="f pr" lang="en">rose&nbsp;by&nbsp;10%</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="st" lang="en">to</th></tr><tr><td><b class="h">до какого значения?</b>что стало</td><td><span class="f st" lang="en">rose&nbsp;to&nbsp;30%</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="st" lang="en">from … to</th></tr><tr><td><b class="h">с&nbsp;какого до какого?</b>оба значения</td><td><span class="f st" lang="en">rose&nbsp;from&nbsp;20%&nbsp;to&nbsp;30%</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="good" lang="en">of</th></tr><tr><td><b class="h">на сколько</b>после существительного</td><td><span class="f good" lang="en">a&nbsp;rise&nbsp;of&nbsp;10%</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="good" lang="en">in</th></tr><tr><td><b class="h">чего</b>после существительного</td><td><span class="f good" lang="en">a&nbsp;rise&nbsp;in&nbsp;mortality</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="hl" lang="en">at</th></tr><tr><td><b class="h">на каком уровне</b>значение в&nbsp;точке</td><td><span class="f hl" lang="en">peaked&nbsp;at&nbsp;40% <span class="sep">·</span> stood&nbsp;at&nbsp;12%</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Называете разницу, «на&nbsp;сколько»?</p><p class="s-f" lang="en"><span class="pr">by&nbsp;10%</span> <span class="sep">·</span> <span class="good">a&nbsp;rise&nbsp;of&nbsp;10%</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Называете итог, «до&nbsp;какого значения»?</p><p class="s-f" lang="en"><span class="st">to&nbsp;30%</span> <span class="sep">·</span> <span class="st">from&nbsp;20%&nbsp;to&nbsp;30%</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">После существительного: рост чего?</p><p class="s-f" lang="en"><span class="good">an increase in mortality</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Уровень в&nbsp;точке: пик, плато, при поступлении?</p><p class="s-f" lang="en"><span class="hl">peaked&nbsp;at</span> <span class="sep">·</span> <span class="hl">stood&nbsp;at</span> <span class="sep">·</span> <span class="hl">remained&nbsp;at</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Меняется сам процент?</p><p class="s-f" lang="en"><span class="hl">percentage points</span> <span class="sep">·</span> <span class="good">a relative increase of 50%</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr" lang="en">by</b>&nbsp;— на&nbsp;сколько шагнул, <b class="st" lang="en">to</b>&nbsp;— куда пришёл, <b class="hl" lang="en">at</b>&nbsp;— где стоит, <b class="good" lang="en">in</b>&nbsp;— в&nbsp;чём, <b class="good" lang="en">of</b>&nbsp;— сколько.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">Mortality fell <span class="pr">by 10%</span>.</p><p class="cp-ru">на 10%&nbsp;— разница</p><p class="cp-en" lang="en">Mortality fell <span class="st">to 10%</span>.</p><p class="cp-ru">до 10%&nbsp;— столько стало</p><p class="cp-en" lang="en">Mortality fell <span class="st">from 20% to 10%</span>.</p><p class="cp-ru">с&nbsp;20 до 10%&nbsp;— оба значения</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="Mortality fell by 10%. Mortality fell to 10%. Mortality fell from 20% to 10%." aria-label="Прослушать: Mortality fell by 10%. / Mortality fell to 10%. / Mortality fell from 20% to 10%."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Prices <span class="hl">rose</span> by 5%.</p><p class="cp-ru">выросли сами</p><p class="cp-en" lang="en">The shop <span class="hl">raised</span> prices by 5%.</p><p class="cp-ru">кто-то поднял</p><p class="cp-en" lang="en">Prices <span class="hl">increased</span>. The shop <span class="hl">increased</span> prices.</p><p class="cp-ru">increase&nbsp;— и&nbsp;так, и&nbsp;так</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="Prices rose by 5%. The shop raised prices by 5%. Prices increased. The shop increased prices." aria-label="Прослушать: Prices rose by 5%. / The shop raised prices by 5%. / Prices increased. The shop increased prices."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The rate rose <span class="pr">by 10 percentage points</span>, from 20% to 30%.</p><p class="cp-ru">абсолютный рост&nbsp;— в&nbsp;пунктах</p><p class="cp-en" lang="en">The rate rose <span class="pr">by 50%</span>, from 20% to 30%.</p><p class="cp-ru">относительный рост&nbsp;— в&nbsp;процентах</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="The rate rose by 10 percentage points, from 20% to 30%. The rate rose by 50%, from 20% to 30%." aria-label="Прослушать: The rate rose by 10 percentage points, from 20% to 30%. / The rate rose by 50%, from 20% to 30%."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The number <span class="hl">doubled</span>.</p><p class="cp-ru">вдвое больше</p><p class="cp-en" lang="en">The number rose <span class="pr">by 100%</span>.</p><p class="cp-ru">тоже вдвое</p><p class="cp-en" lang="en">The number rose <span class="pr">by 200%</span>.</p><p class="cp-ru">втрое, а&nbsp;не вдвое</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="The number doubled. The number rose by 100%. The number rose by 200%." aria-label="Прослушать: The number doubled. / The number rose by 100%. / The number rose by 200%."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Blood pressure <span class="hl">peaked at</span> 210 mmHg.</p><p class="cp-ru">максимум&nbsp;— 210</p><p class="cp-en" lang="en">It reached a peak <span class="good">of</span> 210 mmHg.</p><p class="cp-ru">существительное&nbsp;— of</p><p class="cp-en" lang="en">On admission it <span class="hl">stood at</span> 180 mmHg.</p><p class="cp-ru">было 180&nbsp;— значение в&nbsp;момент</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="Blood pressure peaked at 210 mmHg. It reached a peak of 210 mmHg. On admission it stood at 180 mmHg." aria-label="Прослушать: Blood pressure peaked at 210 mmHg. / It reached a peak of 210 mmHg. / On admission it stood at 180 mmHg."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Mortality decreased on 10%.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Mortality decreased by 10%.</span><span class="err-note">на сколько&nbsp;— by</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We increased the dose till 80 mg.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We increased the dose to 80 mg.</span><span class="err-note">до какого значения&nbsp;— to</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Prices raised by 5%.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Prices rose by 5%.</span><span class="err-note">растут сами&nbsp;— rise</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We rose the dose.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We raised the dose.</span><span class="err-note">поднять что-то&nbsp;— raise</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">an increase of mortality</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">an increase in mortality</span><span class="err-note">рост чего&nbsp;— in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">a rise on 5%</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">a rise of 5%</span><span class="err-note">на сколько после существительного&nbsp;— of</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It increased in two times.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It doubled.</span><span class="err-note">«в&nbsp;два раза»&nbsp;— doubled, twofold</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It exceeded over 180.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It exceeded 180.</span><span class="err-note">exceed&nbsp;— без предлога</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It rose by 10% (from 20% to 30%).</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It rose by 10 percentage points.</span><span class="err-note">разница процентов&nbsp;— в&nbsp;пунктах</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">BP stood on 160.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">BP stood at 160.</span><span class="err-note">значение в&nbsp;точке&nbsp;— at</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. […] — предлог в фокусе (by — оранжевый, to и from — синий, in и of — зелёный).
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 11;
+const GROUPS = {"b1": "B1 — на сколько и до скольких", "b1p": "B1+ — описать изменение", "b2": "B2 — точность, как в статьях", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "by или to",
+  "sub": "на сколько · до какого значения",
+  "rule": "Один вопрос к себе: я называю разницу или итог? Разница, «на сколько» — by: Her pressure fell by 30 mmHg. Итог, «до какого значения» — to: Her pressure fell to 150 mmHg. Предлог on здесь — калька с русского «на», till и until — только о времени. Глаголы любые: rise, fall, increase, reduce, go up, drop.",
+  "ex": [
+   {
+    "en": "Her systolic pressure fell [by 30 mmHg].",
+    "ru": "Её систолическое давление снизилось на 30 мм рт. ст."
+   },
+   {
+    "en": "Her systolic pressure fell [to 150 mmHg].",
+    "ru": "Её систолическое давление снизилось до 150 мм рт. ст."
+   },
+   {
+    "en": "We increased the dose of atorvastatin [to 80 mg].",
+    "ru": "Мы увеличили дозу аторвастатина до 80 мг."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "from … to и by … to вместе",
+  "sub": "с какого до какого",
+  "rule": "С какого до какого — from … to: Door-to-needle time fell from 75 to 40 minutes. Можно сказать всё сразу — сначала разницу, потом итог: Sodium fell by 10 mmol/L to 125 mmol/L; или разницу и оба значения: Admissions rose by 12%, from 850 to 950. Колебалось в пределах — between … and. Since — «с тех пор», о времени, а не о числах.",
+  "ex": [
+   {
+    "en": "Door-to-needle time fell [from 75 to 40] minutes.",
+    "ru": "Время «от двери до иглы» сократилось с 75 до 40 минут."
+   },
+   {
+    "en": "Admissions rose [by 12%, from 850 to 950].",
+    "ru": "Госпитализаций стало больше на 12% — с 850 до 950."
+   },
+   {
+    "en": "Sodium fell [by 10 mmol/L to 125] mmol/L.",
+    "ru": "Натрий снизился на 10 ммоль/л — до 125 ммоль/л."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "rise, raise или increase",
+  "sub": "растёт само · кто-то поднял",
+  "rule": "Растёт само — rise (rose, risen), снижается само — fall (fell, fallen). Кто-то поднял — raise (raised), кто-то снизил — reduce или lower. increase, decrease и drop бывают и так, и так: The number increased; we increased the number. Пассив — только от переходных: The dose was raised, а was risen не бывает. Arise — «возникнуть» о проблеме, не о числах.",
+  "ex": [
+   {
+    "en": "Her temperature [rose] to 39 °C overnight.",
+    "ru": "За ночь температура поднялась до 39 °C."
+   },
+   {
+    "en": "We [raised] the head of the bed to 30 degrees.",
+    "ru": "Мы подняли головной конец кровати до 30 градусов."
+   },
+   {
+    "en": "The cardiologist [reduced] the dose of bisoprolol.",
+    "ru": "Кардиолог снизил дозу бисопролола."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1p",
+  "title": "an increase in … of … to",
+  "sub": "предлоги после существительного",
+  "late": 0.2,
+  "rule": "После существительного (an increase, a rise, a fall, a reduction, a drop) предлоги другие. Рост чего — in: a rise in glucose. На сколько — of: a reduction of 25%. До какого значения — по-прежнему to: a rise to 14 mmol/L. Всё вместе: a rise in glucose of 5 mmol/L. Число можно поставить вперёд: a 25% reduction in recurrent stroke. Существительное от grow — growth.",
+  "ex": [
+   {
+    "en": "We saw a 20% increase [in] demand for MRI.",
+    "ru": "Спрос на МРТ вырос на 20%."
+   },
+   {
+    "en": "The study showed a reduction [of] 25% in recurrent stroke.",
+    "ru": "Исследование показало снижение повторных инсультов на 25%."
+   },
+   {
+    "en": "Steroids caused a rise in glucose [to] 14 mmol/L.",
+    "ru": "На фоне стероидов глюкоза поднялась до 14 ммоль/л."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "a sharp rise, rose sharply",
+  "sub": "как именно изменилось",
+  "late": 0.2,
+  "rule": "Характер изменения: после глагола — наречие, перед существительным — прилагательное. rose sharply → a sharp rise, fell slightly → a slight fall, declined steadily → a steady decline, improved gradually → a gradual improvement. После be — прилагательное: The improvement was gradual. В статьях significantly значит «статистически значимо» (p < 0.05); если p нет, пишут markedly или considerably.",
+  "ex": [
+   {
+    "en": "Admissions rose [sharply] during the heatwave.",
+    "ru": "Во время жары число госпитализаций резко выросло."
+   },
+   {
+    "en": "There was a [sharp] rise in admissions during the heatwave.",
+    "ru": "Во время жары число госпитализаций резко выросло."
+   },
+   {
+    "en": "We've seen a [steady] decline in smoking rates.",
+    "ru": "Доля курящих неуклонно снижается."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "peaked at, stood at, levelled off",
+  "sub": "значение в точке — at",
+  "late": 0.25,
+  "rule": "Не изменение, а уровень в какой-то момент — at. peak at — достичь максимума: Troponin peaked at 2,400 ng/L. stand at — быть на уровне (отчёты): On admission his pressure stood at 210/120. remain at, stabilise at — держаться на уровне. Но существительное — of: reached a peak of 120. Выйти на плато — level off (брит. levelled, амер. leveled).",
+  "ex": [
+   {
+    "en": "Troponin [peaked at] 2,400 ng/L on day two.",
+    "ru": "Тропонин достиг максимума — 2400 нг/л — на второй день."
+   },
+   {
+    "en": "On admission, his blood pressure [stood at] 210/120.",
+    "ru": "При поступлении давление было 210/120."
+   },
+   {
+    "en": "Cases reached a peak [of] 120 in February.",
+    "ru": "Пик пришёлся на февраль — 120 случаев."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "per cent или percentage points",
+  "sub": "абсолютный и относительный рост",
+  "late": 0.45,
+  "rule": "Если меняется сам процент, разницу меряют в процентных пунктах: с 40% до 60% — рост на 20 percentage points. В процентах это относительный рост: 20 из 40 — плюс 50%. Отсюда два снижения риска в статьях: абсолютное (ARR) — в пунктах, относительное (RRR) — в процентах. С 10% до 8%: ARR — 2 пункта, RRR — 20%. Per cent без -s; доля как существительное — a percentage of.",
+  "ex": [
+   {
+    "en": "Adherence rose from 40% to 60%, an increase of [20 percentage points].",
+    "ru": "Приверженность выросла с 40 до 60% — на 20 процентных пунктов."
+   },
+   {
+    "en": "That is a relative increase [of 50%].",
+    "ru": "Относительный рост — 50%."
+   },
+   {
+    "en": "Recurrence fell from 10% to 8%, a relative risk reduction [of 20%].",
+    "ru": "Повторные события снизились с 10 до 8% — относительное снижение риска на 20%."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "doubled, threefold, by 200%",
+  "sub": "во сколько раз",
+  "late": 0.45,
+  "rule": "«В два раза» — doubled, «вдвое меньше» — halved, «втрое» — tripled. Increased twice — это «дважды», а in two times — калька. Книжно: a twofold increase, increased threefold, by a factor of four. Ловушка с процентами: плюс 100% — вдвое больше, плюс 200% — втрое: с 60 до 180 — tripled, или increased by 200%.",
+  "ex": [
+   {
+    "en": "The number of thrombectomies [doubled], from 60 to 120 a year.",
+    "ru": "Число тромбэктомий выросло вдвое — с 60 до 120 в год."
+   },
+   {
+    "en": "Smoking is associated with a [twofold] increase in risk.",
+    "ru": "Курение связано с двукратным ростом риска."
+   },
+   {
+    "en": "From 60 to 180 is an increase [of 200%].",
+    "ru": "С 60 до 180 — это рост на 200%, то есть втрое."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "b2",
+  "title": "exceed, fall below, rise above",
+  "sub": "пороги и диапазоны",
+  "late": 0.5,
+  "rule": "Порог: exceed — превысить, без предлога: if blood pressure exceeds 185/110. С предлогом — rise above, be above, be over. Опуститься ниже — fall below, drop below. Не ниже — at or above, не выше — at or below. В пределах — between 2 and 3. reach — тоже без предлога: reached 40 °C, а не reached to.",
+  "ex": [
+   {
+    "en": "Do not start thrombolysis if blood pressure [exceeds] 185/110.",
+    "ru": "Не начинайте тромболизис, если давление выше 185/110."
+   },
+   {
+    "en": "If saturation falls [below] 92%, give oxygen.",
+    "ru": "Если сатурация падает ниже 92%, дайте кислород."
+   },
+   {
+    "en": "Keep the INR [between] 2 [and] 3.",
+    "ru": "Держите МНО в пределах от 2 до 3."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "b2",
+  "title": "from baseline, compared with",
+  "sub": "сравнение в статьях",
+  "late": 0.55,
+  "rule": "Изменение от исходного уровня — from baseline: fell by 12 mmHg from baseline. По сравнению с — compared with (или compared to): lower compared with placebo. Сравнение двух чисел — versus: 4% versus 7%. С прошлым годом — over: up 8% over the previous year. Than — только после сравнительной степени: 30% higher than. В пересчёте на — relative to.",
+  "ex": [
+   {
+    "en": "Systolic pressure fell by 12 mmHg [from baseline].",
+    "ru": "Систолическое давление снизилось на 12 мм рт. ст. от исходного."
+   },
+   {
+    "en": "Mortality was lower [compared with] the control group.",
+    "ru": "Смертность была ниже, чем в контрольной группе."
+   },
+   {
+    "en": "Recurrence was 4% in the treatment arm [versus] 7% with placebo.",
+    "ru": "Повторные события — 4% в группе лечения против 7% на плацебо."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка).
+const CARDS = [
+ {
+  "id": "i1-by",
+  "t": 1,
+  "q": "After treatment, her systolic pressure fell ___ 30 mmHg — from 180 to 150.",
+  "ru": "После лечения её систолическое давление снизилось на 30 мм рт. ст. — со 180 до 150.",
+  "opts": [
+   "by",
+   "to",
+   "on"
+  ],
+  "a": "by",
+  "why": "На сколько, разница — by. On — калька с русского «на»."
+ },
+ {
+  "id": "i1-to",
+  "t": 1,
+  "q": "After treatment, her systolic pressure fell ___ 150 mmHg.",
+  "ru": "После лечения её систолическое давление снизилось до 150 мм рт. ст.",
+  "opts": [
+   "to",
+   "by",
+   "till"
+  ],
+  "a": "to",
+  "why": "До какого значения — to. Till — только о времени, не о числах."
+ },
+ {
+  "id": "i1-list",
+  "t": 1,
+  "q": "The waiting list has grown ___ 15% this year.",
+  "ru": "Очередь за год выросла на 15%.",
+  "opts": [
+   "by",
+   "on",
+   "at"
+  ],
+  "a": "by",
+  "why": "На сколько — by."
+ },
+ {
+  "id": "i1-dose",
+  "t": 1,
+  "q": "We increased the dose of atorvastatin ___ 80 mg.",
+  "ru": "Мы увеличили дозу аторвастатина до 80 мг.",
+  "opts": [
+   "to",
+   "by",
+   "up"
+  ],
+  "a": "to",
+  "why": "Стало 80 мг — to. By 80 mg — «на 80 мг»: к прежней дозе добавили бы ещё 80."
+ },
+ {
+  "id": "i1-weight",
+  "t": 1,
+  "q": "His weight went down ___ 6 kg in three months.",
+  "ru": "За три месяца он похудел на 6 кг.",
+  "opts": [
+   "by",
+   "to",
+   "for"
+  ],
+  "a": "by",
+  "why": "Разница — by: went down by 6 kg."
+ },
+ {
+  "id": "i1-ef",
+  "t": 1,
+  "q": "His ejection fraction improved ___ 45%.",
+  "ru": "Фракция выброса улучшилась до 45%.",
+  "opts": [
+   "to",
+   "on",
+   "till"
+  ],
+  "a": "to",
+  "why": "Итоговое значение — to."
+ },
+ {
+  "id": "i2-dtn",
+  "t": 2,
+  "q": "Door-to-needle time fell ___ 75 to 40 minutes.",
+  "ru": "Время «от двери до иглы» сократилось с 75 до 40 минут.",
+  "opts": [
+   "from",
+   "since",
+   "of"
+  ],
+  "a": "from",
+  "why": "С какого до какого — from … to. Since — «с тех пор», о времени."
+ },
+ {
+  "id": "i2-adm",
+  "t": 2,
+  "q": "Admissions rose by 12%, ___ 850 to 950.",
+  "ru": "Госпитализаций стало больше на 12% — с 850 до 950.",
+  "opts": [
+   "from",
+   "since",
+   "of"
+  ],
+  "a": "from",
+  "why": "Разница и оба значения: by 12%, from 850 to 950."
+ },
+ {
+  "id": "i2-na",
+  "t": 2,
+  "q": "Sodium fell by 10 mmol/L ___ 125 mmol/L.",
+  "ru": "Натрий снизился на 10 ммоль/л — до 125 ммоль/л.",
+  "opts": [
+   "to",
+   "by",
+   "from"
+  ],
+  "a": "to",
+  "why": "Сначала на сколько (by), потом до какого (to): fell by 10 to 125."
+ },
+ {
+  "id": "i2-between",
+  "t": 2,
+  "q": "Systolic pressure varied ___ 140 and 190 mmHg.",
+  "ru": "Систолическое давление колебалось от 140 до 190.",
+  "opts": [
+   "between",
+   "from",
+   "among"
+  ],
+  "a": "between",
+  "why": "В пределах — between … and. Можно и from … to: varied from 140 to 190, но не from … and."
+ },
+ {
+  "id": "i2-share",
+  "t": 2,
+  "q": "The proportion treated within an hour went up ___ 30% in 2023 to 55% in 2025.",
+  "ru": "Доля пролеченных в течение часа выросла с 30% в 2023 году до 55% в 2025-м.",
+  "opts": [
+   "from",
+   "since",
+   "at"
+  ],
+  "a": "from",
+  "why": "С какого до какого — from … to, даже если между ними стоят годы."
+ },
+ {
+  "id": "i2-beds",
+  "t": 2,
+  "q": "The ward was expanded from 30 beds ___ 45.",
+  "ru": "Отделение расширили с 30 коек до 45.",
+  "opts": [
+   "to",
+   "till",
+   "up"
+  ],
+  "a": "to",
+  "why": "from … to. Till — о времени."
+ },
+ {
+  "id": "i3-temp",
+  "t": 3,
+  "q": "Her temperature ___ to 39 °C overnight.",
+  "ru": "За ночь температура поднялась до 39 °C.",
+  "opts": [
+   "rose",
+   "raised",
+   "arose"
+  ],
+  "a": "rose",
+  "why": "Поднялась сама — rise (rose, risen). Raise — поднять что-то, arise — возникнуть (о проблеме)."
+ },
+ {
+  "id": "i3-bed",
+  "t": 3,
+  "q": "We ___ the head of the bed to 30 degrees.",
+  "ru": "Мы подняли головной конец кровати до 30 градусов.",
+  "opts": [
+   "raised",
+   "rose",
+   "risen"
+  ],
+  "a": "raised",
+  "why": "Подняли что-то — raise (raised)."
+ },
+ {
+  "id": "i3-bisoprolol",
+  "t": 3,
+  "q": "The cardiologist ___ the dose of bisoprolol.",
+  "ru": "Кардиолог снизил дозу бисопролола.",
+  "opts": [
+   "reduced",
+   "fell",
+   "lowered down"
+  ],
+  "a": "reduced",
+  "why": "Снизить что-то — reduce или lower (без down). Fell — снизилось само."
+ },
+ {
+  "id": "i3-hr",
+  "t": 3,
+  "q": "His heart rate ___ to 48 after the beta-blocker.",
+  "ru": "После бета-блокатора пульс снизился до 48.",
+  "opts": [
+   "fell",
+   "lowered",
+   "reduced"
+  ],
+  "a": "fell",
+  "why": "Снизился сам — fall (fell, fallen). Lower и reduce требуют дополнения: кто-то снизил что-то."
+ },
+ {
+  "id": "i3-number",
+  "t": 3,
+  "q": "The number of thrombectomies ___ last year.",
+  "ru": "В прошлом году число тромбэктомий выросло.",
+  "opts": [
+   "increased",
+   "raised",
+   "arose"
+  ],
+  "a": "increased",
+  "why": "increase — и сам растёт, и кто-то увеличивает: the number increased; we increased the number."
+ },
+ {
+  "id": "i3-inr",
+  "t": 3,
+  "q": "The target INR was ___ to 3.0.",
+  "ru": "Целевое МНО повысили до 3,0.",
+  "opts": [
+   "raised",
+   "risen",
+   "rose"
+  ],
+  "a": "raised",
+  "why": "Пассив — только от raise: was raised. Was risen не бывает."
+ },
+ {
+  "id": "i4-mri",
+  "t": 4,
+  "q": "We saw a 20% increase ___ demand for MRI.",
+  "ru": "Спрос на МРТ вырос на 20%.",
+  "opts": [
+   "in",
+   "of",
+   "on"
+  ],
+  "a": "in",
+  "why": "Рост чего — an increase in."
+ },
+ {
+  "id": "i4-of",
+  "t": 4,
+  "q": "The study showed a reduction ___ 25% in recurrent stroke.",
+  "ru": "Исследование показало снижение повторных инсультов на 25%.",
+  "opts": [
+   "of",
+   "in",
+   "on"
+  ],
+  "a": "of",
+  "why": "На сколько после существительного — of: a reduction of 25%. By — после глагола: reduced by 25%."
+ },
+ {
+  "id": "i4-to",
+  "t": 4,
+  "q": "Steroids caused a rise in glucose ___ 14 mmol/L.",
+  "ru": "На фоне стероидов глюкоза поднялась до 14 ммоль/л.",
+  "opts": [
+   "to",
+   "at",
+   "on"
+  ],
+  "a": "to",
+  "why": "До какого значения — to, и после существительного тоже: a rise to 14."
+ },
+ {
+  "id": "i4-drop",
+  "t": 4,
+  "q": "Orthostatic hypotension is a drop ___ blood pressure on standing.",
+  "ru": "Ортостатическая гипотензия — падение давления при вставании.",
+  "opts": [
+   "in",
+   "of",
+   "at"
+  ],
+  "a": "in",
+  "why": "Падение чего — a drop in blood pressure."
+ },
+ {
+  "id": "i4-fall",
+  "t": 4,
+  "q": "There was a ___ of 20 mmHg in her systolic pressure.",
+  "ru": "Её систолическое давление снизилось на 20 мм рт. ст.",
+  "opts": [
+   "fall",
+   "fell",
+   "fallen"
+  ],
+  "a": "fall",
+  "why": "Существительное — a fall, как глагол без окончаний: a fall of 20 mmHg."
+ },
+ {
+  "id": "i4-growth",
+  "t": 4,
+  "q": "The data show steady ___ in obesity rates.",
+  "ru": "Данные показывают неуклонный рост ожирения.",
+  "opts": [
+   "growth",
+   "grow",
+   "grown"
+  ],
+  "a": "growth",
+  "why": "Существительное от grow — growth: growth in obesity rates."
+ },
+ {
+  "id": "i5-sharply",
+  "t": 5,
+  "q": "Admissions rose ___ during the heatwave.",
+  "ru": "Во время жары число госпитализаций резко выросло.",
+  "opts": [
+   "sharply",
+   "sharp",
+   "sharpen"
+  ],
+  "a": "sharply",
+  "why": "После глагола — наречие: rose sharply."
+ },
+ {
+  "id": "i5-sharp",
+  "t": 5,
+  "q": "There was a ___ rise in admissions during the heatwave.",
+  "ru": "Во время жары госпитализаций стало резко больше.",
+  "opts": [
+   "sharp",
+   "sharply",
+   "sharpen"
+  ],
+  "a": "sharp",
+  "why": "Перед существительным — прилагательное: a sharp rise."
+ },
+ {
+  "id": "i5-steady",
+  "t": 5,
+  "q": "We've seen a ___ decline in smoking rates over the decade.",
+  "ru": "За десятилетие доля курящих неуклонно снижалась.",
+  "opts": [
+   "steady",
+   "steadily",
+   "steadied"
+  ],
+  "a": "steady",
+  "why": "a steady decline — прилагательное перед существительным."
+ },
+ {
+  "id": "i5-slightly",
+  "t": 5,
+  "q": "Her creatinine increased ___, from 88 to 95.",
+  "ru": "Креатинин у неё немного вырос — с 88 до 95.",
+  "opts": [
+   "slightly",
+   "slight",
+   "slighter"
+  ],
+  "a": "slightly",
+  "why": "После глагола — наречие: increased slightly."
+ },
+ {
+  "id": "i5-sig",
+  "t": 5,
+  "q": "Mortality fell ___ in the intervention group (p < 0.01).",
+  "ru": "В группе вмешательства смертность статистически значимо снизилась (p < 0,01).",
+  "opts": [
+   "significantly",
+   "significant",
+   "signify"
+  ],
+  "a": "significantly",
+  "why": "В статье significantly — статистически значимо, p < 0.05. Без p лучше markedly или considerably."
+ },
+ {
+  "id": "i5-gradual",
+  "t": 5,
+  "q": "The improvement was ___ rather than sudden.",
+  "ru": "Улучшение было постепенным, а не внезапным.",
+  "opts": [
+   "gradual",
+   "gradually",
+   "graduate"
+  ],
+  "a": "gradual",
+  "why": "После be — прилагательное: was gradual."
+ },
+ {
+  "id": "i6-trop",
+  "t": 6,
+  "q": "Troponin peaked ___ 2,400 ng/L on day two.",
+  "ru": "Тропонин достиг максимума — 2400 нг/л — на второй день.",
+  "opts": [
+   "at",
+   "to",
+   "by"
+  ],
+  "a": "at",
+  "why": "Максимум, значение в точке — peak at."
+ },
+ {
+  "id": "i6-stood",
+  "t": 6,
+  "q": "On admission, his blood pressure stood ___ 210/120.",
+  "ru": "При поступлении давление было 210/120.",
+  "opts": [
+   "at",
+   "on",
+   "in"
+  ],
+  "a": "at",
+  "why": "Каким было значение в момент — stand at (книжно, в отчётах)."
+ },
+ {
+  "id": "i6-remained",
+  "t": 6,
+  "q": "Mortality remained ___ 8% throughout the study.",
+  "ru": "Смертность всё исследование держалась на уровне 8%.",
+  "opts": [
+   "at",
+   "on",
+   "by"
+  ],
+  "a": "at",
+  "why": "Держалась на уровне — remain at."
+ },
+ {
+  "id": "i6-peak-of",
+  "t": 6,
+  "q": "The number of cases reached a peak ___ 120 in February.",
+  "ru": "Пик пришёлся на февраль — 120 случаев.",
+  "opts": [
+   "of",
+   "at",
+   "to"
+  ],
+  "a": "of",
+  "why": "Существительное — a peak of 120. Глагол — peaked at 120."
+ },
+ {
+  "id": "i6-level",
+  "t": 6,
+  "q": "After the initial drop, the curve ___ off.",
+  "ru": "После первоначального снижения кривая вышла на плато.",
+  "opts": [
+   "levelled",
+   "stood",
+   "peaked"
+  ],
+  "a": "levelled",
+  "why": "Выйти на плато — level off (брит. levelled, амер. leveled)."
+ },
+ {
+  "id": "i6-sat",
+  "t": 6,
+  "q": "Her saturation stabilised ___ 94% on two litres of oxygen.",
+  "ru": "На двух литрах кислорода сатурация стабилизировалась на 94%.",
+  "opts": [
+   "at",
+   "to",
+   "on"
+  ],
+  "a": "at",
+  "why": "Стабилизировалась на уровне — stabilise at."
+ },
+ {
+  "id": "i7-points",
+  "t": 7,
+  "q": "Adherence rose from 40% to 60% — an increase of 20 ___.",
+  "ru": "Приверженность выросла с 40 до 60% — на 20 процентных пунктов.",
+  "opts": [
+   "percentage points",
+   "per cent",
+   "percents"
+  ],
+  "a": "percentage points",
+  "why": "Разница между двумя процентами — в процентных пунктах."
+ },
+ {
+  "id": "i7-relative",
+  "t": 7,
+  "q": "Adherence rose from 40% to 60%, which is a relative increase of ___.",
+  "ru": "Приверженность выросла с 40 до 60% — относительный рост составил…",
+  "opts": [
+   "50%",
+   "20%",
+   "60%"
+  ],
+  "a": "50%",
+  "why": "Относительно исходных 40% рост на 20 пунктов — это плюс 50%: 20 / 40 = 0.5."
+ },
+ {
+  "id": "i7-rrr",
+  "t": 7,
+  "q": "Recurrence fell from 10% to 8%: an absolute reduction of 2 points and a ___ risk reduction of 20%.",
+  "ru": "Повторные события снизились с 10 до 8%: абсолютное снижение — 2 пункта, относительное — 20%.",
+  "opts": [
+   "relative",
+   "absolute",
+   "total"
+  ],
+  "a": "relative",
+  "why": "Относительное снижение риска (RRR) — 2 из 10, то есть 20%. Абсолютное (ARR) — 2 процентных пункта."
+ },
+ {
+  "id": "i7-smoking",
+  "t": 7,
+  "q": "Smoking rates fell by three ___ points, from 25% to 22%.",
+  "ru": "Доля курящих снизилась на три процентных пункта — с 25 до 22%.",
+  "opts": [
+   "percentage",
+   "percent",
+   "per cent"
+  ],
+  "a": "percentage",
+  "why": "Процентный пункт — percentage point."
+ },
+ {
+  "id": "i7-percent",
+  "t": 7,
+  "q": "Forty ___ of the patients were women.",
+  "ru": "Сорок процентов пациентов — женщины.",
+  "opts": [
+   "per cent",
+   "percents",
+   "percentage"
+  ],
+  "a": "per cent",
+  "why": "После числа — per cent (брит.) или percent (амер.), без -s."
+ },
+ {
+  "id": "i7-percentage",
+  "t": 7,
+  "q": "A large ___ of patients arrived outside the treatment window.",
+  "ru": "Значительная доля пациентов поступила вне терапевтического окна.",
+  "opts": [
+   "percentage",
+   "per cent",
+   "percent"
+  ],
+  "a": "percentage",
+  "why": "Доля без числа — a percentage of. С числом — per cent: 40 per cent."
+ },
+ {
+  "id": "i8-doubled",
+  "t": 8,
+  "q": "The number of thrombectomies ___ — from 60 to 120 a year.",
+  "ru": "Число тромбэктомий выросло вдвое — с 60 до 120 в год.",
+  "opts": [
+   "doubled",
+   "increased twice",
+   "increased in two times"
+  ],
+  "a": "doubled",
+  "why": "В два раза больше — doubled. Increased twice — «увеличилось дважды», in two times — калька."
+ },
+ {
+  "id": "i8-tripled",
+  "t": 8,
+  "q": "From 60 to 180 a year: the number ___.",
+  "ru": "С 60 до 180 в год: число выросло втрое.",
+  "opts": [
+   "tripled",
+   "doubled",
+   "rose by 300%"
+  ],
+  "a": "tripled",
+  "why": "60 → 180 — втрое: tripled, или rose by 200%. Плюс 300% дало бы 240."
+ },
+ {
+  "id": "i8-fold",
+  "t": 8,
+  "q": "Smoking is associated with a two___ increase in risk.",
+  "ru": "Курение связано с двукратным ростом риска.",
+  "opts": [
+   "fold",
+   "times",
+   "double"
+  ],
+  "a": "fold",
+  "why": "Двукратный — twofold: a twofold increase."
+ },
+ {
+  "id": "i8-factor",
+  "t": 8,
+  "q": "The risk increased by a ___ of four.",
+  "ru": "Риск вырос в четыре раза.",
+  "opts": [
+   "factor",
+   "fold",
+   "time"
+  ],
+  "a": "factor",
+  "why": "В четыре раза — by a factor of four (книжно)."
+ },
+ {
+  "id": "i8-halved",
+  "t": 8,
+  "q": "Waiting times were ___ — from eight weeks to four.",
+  "ru": "Время ожидания сократили вдвое — с восьми недель до четырёх.",
+  "opts": [
+   "halved",
+   "decreased twice",
+   "reduced in two times"
+  ],
+  "a": "halved",
+  "why": "Вдвое меньше — halved. Decreased twice — «снизили дважды»."
+ },
+ {
+  "id": "i8-100",
+  "t": 8,
+  "q": "If a number increases by 100%, it ___.",
+  "ru": "Если число выросло на 100%, оно…",
+  "opts": [
+   "doubles",
+   "triples",
+   "stays the same"
+  ],
+  "a": "doubles",
+  "why": "Плюс 100% — удвоение. Ловушка: плюс 200% — утроение."
+ },
+ {
+  "id": "i9-exceeds",
+  "t": 9,
+  "q": "Do not start thrombolysis if blood pressure ___ 185/110.",
+  "ru": "Не начинайте тромболизис, если давление выше 185/110.",
+  "opts": [
+   "exceeds",
+   "exceeds over",
+   "exceeds above"
+  ],
+  "a": "exceeds",
+  "why": "exceed — без предлога. С предлогом — is above, is over, is higher than."
+ },
+ {
+  "id": "i9-below",
+  "t": 9,
+  "q": "If saturation falls ___ 92%, give oxygen.",
+  "ru": "Если сатурация падает ниже 92%, дайте кислород.",
+  "opts": [
+   "below",
+   "lower",
+   "under of"
+  ],
+  "a": "below",
+  "why": "Опуститься ниже уровня — fall below."
+ },
+ {
+  "id": "i9-above",
+  "t": 9,
+  "q": "Treat if glucose rises ___ 10 mmol/L.",
+  "ru": "Лечите, если глюкоза поднимается выше 10 ммоль/л.",
+  "opts": [
+   "above",
+   "higher",
+   "over of"
+  ],
+  "a": "above",
+  "why": "Подняться выше уровня — rise above."
+ },
+ {
+  "id": "i9-inr",
+  "t": 9,
+  "q": "Keep the INR ___ 2 and 3.",
+  "ru": "Держите МНО в пределах от 2 до 3.",
+  "opts": [
+   "between",
+   "from",
+   "within"
+  ],
+  "a": "between",
+  "why": "В пределах — between 2 and 3. Within ставят со словом range: within the range of 2 to 3."
+ },
+ {
+  "id": "i9-at-or",
+  "t": 9,
+  "q": "Readings at or ___ 140/90 count as raised.",
+  "ru": "Показатели 140/90 и выше считаются повышенными.",
+  "opts": [
+   "above",
+   "over than",
+   "upper"
+  ],
+  "a": "above",
+  "why": "Не ниже — at or above, не выше — at or below."
+ },
+ {
+  "id": "i9-reached",
+  "t": 9,
+  "q": "His temperature ___ 40 °C.",
+  "ru": "Температура у него дошла до 40 °C.",
+  "opts": [
+   "reached",
+   "reached to",
+   "achieved to"
+  ],
+  "a": "reached",
+  "why": "reach — без предлога: reached 40 °C."
+ },
+ {
+  "id": "i10-baseline",
+  "t": 10,
+  "q": "Systolic pressure fell by 12 mmHg ___ baseline.",
+  "ru": "Систолическое давление снизилось на 12 мм рт. ст. от исходного.",
+  "opts": [
+   "from",
+   "of",
+   "since"
+  ],
+  "a": "from",
+  "why": "Изменение от исходного уровня — from baseline."
+ },
+ {
+  "id": "i10-compared",
+  "t": 10,
+  "q": "Mortality was lower in the thrombectomy group ___ with the control group.",
+  "ru": "В группе тромбэктомии смертность была ниже, чем в контрольной.",
+  "opts": [
+   "compared",
+   "comparing",
+   "comparison"
+  ],
+  "a": "compared",
+  "why": "По сравнению с — compared with (или compared to)."
+ },
+ {
+  "id": "i10-than",
+  "t": 10,
+  "q": "The risk was 30% higher in smokers ___ in non-smokers.",
+  "ru": "У курящих риск был на 30% выше, чем у некурящих.",
+  "opts": [
+   "than",
+   "that",
+   "as"
+  ],
+  "a": "than",
+  "why": "После сравнительной степени — than: higher than."
+ },
+ {
+  "id": "i10-relative",
+  "t": 10,
+  "q": "The benefit was modest ___ to the cost.",
+  "ru": "Польза была скромной в сравнении с затратами.",
+  "opts": [
+   "relative",
+   "relatively",
+   "related"
+  ],
+  "a": "relative",
+  "why": "relative to — по отношению к, в сравнении с."
+ },
+ {
+  "id": "i10-over",
+  "t": 10,
+  "q": "Admissions increased by 8% ___ the previous year.",
+  "ru": "Госпитализаций стало на 8% больше, чем в прошлом году.",
+  "opts": [
+   "over",
+   "than",
+   "of"
+  ],
+  "a": "over",
+  "why": "По сравнению с прошлым периодом — over the previous year (или compared with). Than — только после сравнительной степени."
+ },
+ {
+  "id": "i10-versus",
+  "t": 10,
+  "q": "Recurrence was 4% in the treatment arm ___ 7% with placebo.",
+  "ru": "Повторные события — 4% в группе лечения против 7% на плацебо.",
+  "opts": [
+   "versus",
+   "than",
+   "from"
+  ],
+  "a": "versus",
+  "why": "Сравнение двух чисел — versus (vs): 4% versus 7%."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "incr:state";
+const LS_SPEAK = "incr:autospeak";
+const LS_TAB = "incr:tab";
+const LS_OPEN = "incr:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "increase by"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/[\[\]]/g, ""); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — предлог в фокусе: by — оранжевый, to и from — синий, in и of — зелёный, остальные подчёркнуты
+function modalCls(t){
+  t = t.toLowerCase();
+  if (/\bby\b/.test(t)) return "pr";
+  if (/\b(to|from)\b/.test(t)) return "st";
+  if (/\b(in|of)\b/.test(t)) return "good";
+  return "hl";
+}
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]]+)\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", modalCls(m[1]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ru ? card.ru : "Выбери вариант";
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+}
+
+function renderDone(){
+  show("kind", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>
