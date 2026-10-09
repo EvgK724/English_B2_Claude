@@ -17,3 +17,13 @@ sources/incr/clips.json
 sources/incr/index.html
 sources/incr/preview.html
 sources/incr/*.png
+sources/sounds/audio/
+sources/sounds/clips.json
+sources/sounds/index.html
+sources/sounds/preview.html
+sources/sounds/*.png
+sources/nverb/audio/
+sources/nverb/clips.json
+sources/nverb/index.html
+sources/nverb/preview.html
+sources/nverb/*.png

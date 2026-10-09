@@ -1,0 +1,1951 @@
+<title>Three, tree, sheep</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("sounds",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Three, tree, sheep</h1>
+      <p class="r-sub">Слова, которые различаются одним звуком. Русскому уху эти звуки кажутся одинаковыми, а&nbsp;англичанин слышит другое слово: <b lang="en">three</b>&nbsp;— три, <b lang="en">tree</b>&nbsp;— дерево. Здесь два вида карточек: по&nbsp;смыслу и&nbsp;на&nbsp;слух. Слушайте, повторяйте вслух.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Как произнести</th><th scope="col">Пары</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[θ] three</th></tr><tr><td><b class="h">язык между зубами</b>выдох без голоса</td><td><span class="f st" lang="en">three <span class="sep">·</span> tree <span class="sep">·</span> free <span class="sep">·</span> think <span class="sep">·</span> sink</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[ð] they</th></tr><tr><td><b class="h">то же, но с&nbsp;голосом</b>не [z] и&nbsp;не [d]</td><td><span class="f st" lang="en">they <span class="sep">·</span> day <span class="sep">·</span> breathe <span class="sep">·</span> breeze</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[iː] sheep · [ɪ] ship</th></tr><tr><td><b class="h">долгий с&nbsp;улыбкой</b>короткий, ближе к&nbsp;«ы»</td><td><span class="f st" lang="en">sheep <span class="sep">·</span> ship <span class="sep">·</span> leave <span class="sep">·</span> live</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[æ] bad · [e] bed</th></tr><tr><td><b class="h">рот широко, «э» с&nbsp;«а»</b>обычное «э»</td><td><span class="f st" lang="en">bad <span class="sep">·</span> bed <span class="sep">·</span> man <span class="sep">·</span> men</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[ɔː] walk · [ɜː] work</th></tr><tr><td><b class="h">долгое круглое «о»</b>«ё» без губ</td><td><span class="f st" lang="en">walk <span class="sep">·</span> work <span class="sep">·</span> ward <span class="sep">·</span> word</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[w] wet · [v] vet</th></tr><tr><td><b class="h">губы трубочкой</b>зубы на губе</td><td><span class="f st" lang="en">wet <span class="sep">·</span> vet <span class="sep">·</span> west <span class="sep">·</span> vest</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[h] hill</th></tr><tr><td><b class="h">лёгкий выдох, не русское «х»</b></td><td><span class="f st" lang="en">hill <span class="sep">·</span> ill <span class="sep">·</span> hear <span class="sep">·</span> ear</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">bag · back</th></tr><tr><td><b class="h">звонкий конец не оглушать</b>гласная длиннее</td><td><span class="f st" lang="en">bag <span class="sep">·</span> back <span class="sep">·</span> eyes <span class="sep">·</span> ice</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">[ŋ] thing</th></tr><tr><td><b class="h">звук в&nbsp;нос, без «г» на конце</b></td><td><span class="f st" lang="en">thing <span class="sep">·</span> thin <span class="sep">·</span> wing <span class="sep">·</span> win</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как услышать разницу</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Сначала гласная: долгая или короткая?</p><p class="s-f" lang="en"><span class="pr">sheep</span> <span class="sep">·</span> <span class="st">ship</span> <span class="sep">·</span> <span class="pr">leave</span> <span class="sep">·</span> <span class="st">live</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Рот открыт широко или как для «э»?</p><p class="s-f" lang="en"><span class="pr">bad</span> <span class="sep">·</span> <span class="st">bed</span> <span class="sep">·</span> <span class="pr">man</span> <span class="sep">·</span> <span class="st">men</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Язык между зубами?</p><p class="s-f" lang="en"><span class="pr">three</span> <span class="sep">·</span> <span class="st">tree</span> <span class="sep">·</span> <span class="pr">think</span> <span class="sep">·</span> <span class="st">sink</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Губы трубочкой или зубы на губе? Есть лёгкий выдох?</p><p class="s-f" lang="en"><span class="pr">wet</span> <span class="sep">·</span> <span class="st">vet</span> <span class="sep">·</span> <span class="pr">hill</span> <span class="sep">·</span> <span class="st">ill</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Конец звонкий — гласная перед ним длиннее?</p><p class="s-f" lang="en"><span class="pr">bag</span> <span class="sep">·</span> <span class="st">back</span> <span class="sep">·</span> <span class="pr">eyes</span> <span class="sep">·</span> <span class="st">ice</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr" lang="en">Three trees</b>&nbsp;— сначала язык между зубами, потом за&nbsp;зубами. <b class="st" lang="en">Sheep on a&nbsp;ship</b>&nbsp;— сначала долго с&nbsp;улыбкой, потом коротко.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">I can see <span class="pr">three</span> <span class="st">trees</span>.</p><p class="cp-ru">три&nbsp;— дерева</p><p class="cp-en" lang="en">Feel <span class="good">free</span> to ask.</p><p class="cp-ru">спрашивайте, не стесняйтесь</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="I can see three trees. Feel free to ask." aria-label="Прослушать: I can see three trees. / Feel free to ask."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The <span class="pr">sheep</span> are on the <span class="st">ship</span>.</p><p class="cp-ru">овцы&nbsp;— на корабле</p><p class="cp-en" lang="en">You can <span class="pr">leave</span> — you don&#x27;t <span class="st">live</span> here.</p><p class="cp-ru">уходить&nbsp;— жить</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="The sheep are on the ship. You can leave — you don&#x27;t live here." aria-label="Прослушать: The sheep are on the ship. / You can leave — you don&#x27;t live here."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">I <span class="pr">think</span> it will <span class="st">sink</span>.</p><p class="cp-ru">думаю&nbsp;— утонет</p><p class="cp-en" lang="en"><span class="pr">Breathe</span> in — feel the <span class="st">breeze</span>.</p><p class="cp-ru">дышите&nbsp;— ветерок</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="I think it will sink. Breathe in — feel the breeze." aria-label="Прослушать: I think it will sink. / Breathe in — feel the breeze."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He <span class="pr">walks</span> to <span class="st">work</span>.</p><p class="cp-ru">ходит пешком&nbsp;— на работу</p><p class="cp-en" lang="en">Which <span class="pr">ward</span>? Say the <span class="st">word</span>.</p><p class="cp-ru">палата&nbsp;— слово</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="He walks to work. Which ward? Say the word." aria-label="Прослушать: He walks to work. / Which ward? Say the word."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The <span class="pr">man</span> in <span class="st">bed</span> three feels <span class="pr">bad</span>.</p><p class="cp-ru">мужчина&nbsp;— кровать&nbsp;— плохо</p><p class="cp-en" lang="en">He&#x27;s <span class="pr">ill</span> — don&#x27;t let him climb the <span class="st">hill</span>.</p><p class="cp-ru">болен&nbsp;— холм</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="The man in bed three feels bad. He&#x27;s ill — don&#x27;t let him climb the hill." aria-label="Прослушать: The man in bed three feels bad. / He&#x27;s ill — don&#x27;t let him climb the hill."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I sink so.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I think so.</span><span class="err-note">думаю&nbsp;— think, язык между зубами</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Tree tablets a day.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Three tablets a day.</span><span class="err-note">три&nbsp;— three [θ]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Breeze in slowly.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Breathe in slowly.</span><span class="err-note">дышите&nbsp;— breathe [ð]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I live hospital tomorrow.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I leave hospital tomorrow.</span><span class="err-note">выписаться&nbsp;— leave, долгий [iː]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Three man came in.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Three men came in.</span><span class="err-note">мужчины&nbsp;— men [e]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I walk in a hospital.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I work in a hospital.</span><span class="err-note">работать&nbsp;— work [ɜː]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Don&#x27;t get the dressing vet.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Don&#x27;t get the dressing wet.</span><span class="err-note">мокрый&nbsp;— wet [w]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He&#x27;s hill.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He&#x27;s ill.</span><span class="err-note">болен&nbsp;— ill, без [h]</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;ve got bag pain.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ve got back pain.</span><span class="err-note">спина&nbsp;— back</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">One more thin.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">One more thing.</span><span class="err-note">вещь&nbsp;— thing [ŋ]</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 11;
+const GROUPS = {"b1": "B1 — согласные, которых нет в русском", "b1p": "B1+ — гласные: долгие, короткие, открытые", "b2": "B2 — концы слов", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "three, tree, free",
+  "sub": "глухой th [θ]",
+  "rule": "th в three, think, thank, mouth, health — глухой [θ]: кончик языка между зубами или у края верхних зубов, выдох без голоса. Русскоговорящие ставят вместо него [t], [s] или [f] — и выходит другое слово: three — tree — free, think — sink, thank — tank, mouth — mouse, thin — tin. Тренируйте медленно: язык между зубами, потом подуть.",
+  "ex": [
+   {
+    "en": "I can see [three|a] [trees|b].",
+    "ru": "Я вижу три дерева."
+   },
+   {
+    "en": "I [think|a] it will [sink|b].",
+    "ru": "Думаю, оно утонет."
+   },
+   {
+    "en": "Open your [mouth|a] — it's not a [mouse|b].",
+    "ru": "Откройте рот — это не мышь."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "they, day, breathe",
+  "sub": "звонкий th [ð]",
+  "rule": "th в the, this, they, then, mother, breathe, clothing — звонкий [ð]: язык так же между зубами, но с голосом. Русскоговорящие заменяют его на [z] или [d]: they — day, then — den, breathe — breeze, clothing — closing. Положение языка то же, что в three, — просто добавьте голос.",
+  "ex": [
+   {
+    "en": "[They|a] came the next [day|b].",
+    "ru": "Они пришли на следующий день."
+   },
+   {
+    "en": "[Breathe|a] in — feel the [breeze|b].",
+    "ru": "Вдохните — почувствуйте ветерок."
+   },
+   {
+    "en": "[Clothing|a] shops are [closing|b] early today.",
+    "ru": "Магазины одежды сегодня закрываются рано."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "w и v, h и без h",
+  "sub": "wet · vet · hill · ill",
+  "rule": "[w] — губы трубочкой, зубы не участвуют, как короткое «у»: wet, west, wine, worse. [v] — верхние зубы на нижней губе: vet, vest, vine, verse. Русскоговорящие говорят [v] в обоих случаях. [h] — лёгкий выдох, как на холодное стекло, без хрипа русского «х». Пропустите его — получится другое слово: hill — ill, hear — ear, hair — air. В hour, honest, heir h не читается.",
+  "ex": [
+   {
+    "en": "Don't get it [wet|a] — take the dog to the [vet|b].",
+    "ru": "Не мочите — отведите собаку к ветеринару."
+   },
+   {
+    "en": "He's [ill|a] — don't let him climb the [hill|b].",
+    "ru": "Он болен — не пускайте его на холм."
+   },
+   {
+    "en": "Can you [hear|a] me in your left [ear|b]?",
+    "ru": "Вы слышите меня левым ухом?"
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1p",
+  "title": "sheep или ship",
+  "sub": "долгий [iː] и короткий [ɪ]",
+  "late": 0.2,
+  "rule": "[iː] — долгий и напряжённый, губы в улыбке: sheep, leave, feel, seat, heel, peel. [ɪ] — короткий и расслабленный, между русскими «и» и «ы»: ship, live, fill, sit, hill, pill. Русское «и» где-то посередине, поэтому пары сливаются: leave — live, peel — pill. Осторожно: sheet, beach, piece с коротким звуком превращаются в грубые слова — тяните [iː].",
+  "ex": [
+   {
+    "en": "The [sheep|a] are on the [ship|b].",
+    "ru": "Овцы на корабле."
+   },
+   {
+    "en": "You can [leave|a] tomorrow — you don't [live|b] here.",
+    "ru": "Завтра можете выписываться — вы же здесь не живёте."
+   },
+   {
+    "en": "Don't [peel|a] the [pill|b].",
+    "ru": "Не счищайте оболочку с таблетки."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "bad или bed, man или men",
+  "sub": "открытое [æ] и [e]",
+  "late": 0.2,
+  "rule": "[æ] — рот открыт широко, нижняя челюсть вниз, звук между «а» и «э»: bad, man, sad, had, pan. [e] — обычное русское «э»: bed, men, said, head, pen. Русскоговорящие говорят «э» в обоих — и man (один) звучит как men (несколько), bad — как bed. Проверьте себя: на [æ] под подбородок должен помещаться палец.",
+  "ex": [
+   {
+    "en": "The [man|a] in [bed|b] three feels [bad|a].",
+    "ru": "Мужчине на третьей кровати плохо."
+   },
+   {
+    "en": "Three [men|b] and one [man|a].",
+    "ru": "Трое мужчин и ещё один."
+   },
+   {
+    "en": "She [said|b] she felt [sad|a].",
+    "ru": "Она сказала, что ей грустно."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "cat, cut, cart",
+  "sub": "[æ], [ʌ] и [ɑː]",
+  "late": 0.25,
+  "rule": "Три «а». [æ] — широко, «э-а»: cat, hat, cap, match. [ʌ] — короткое русское «а», рот открыт средне: cut, hut, cup, much. [ɑː] — долгое глубокое «а», как у врача «скажите а-а»: cart, heart, carp, march; r в британском не читается. Перепутаете — и вместо heart rate выйдет hat rate.",
+  "ex": [
+   {
+    "en": "His [heart|c] rate is 110.",
+    "ru": "Пульс у него 110."
+   },
+   {
+    "en": "He [cut|b] his finger on the [cat|a] food tin.",
+    "ru": "Он порезал палец о банку кошачьего корма."
+   },
+   {
+    "en": "Would you like a [cup|b] of tea?",
+    "ru": "Хотите чашку чая?"
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b1p",
+  "title": "walk или work",
+  "sub": "[ɔː] и [ɜː]",
+  "late": 0.25,
+  "rule": "[ɔː] — долгое округлённое «о»: walk, ward, born, short, law. [ɜː] — «ё» без округления губ, язык посередине, как в задумчивом «э-э»: work, word, burn, shirt, turn. Русскоговорящие говорят «уо» в обоих: walk — work, ward — word. В больнице это особенно заметно: ward — палата, word — слово; born — рождён, burn — ожог.",
+  "ex": [
+   {
+    "en": "He [walks|a] to [work|b].",
+    "ru": "Он ходит на работу пешком."
+   },
+   {
+    "en": "Which [ward|a]? Say the [word|b].",
+    "ru": "Какая палата? Назовите."
+   },
+   {
+    "en": "I was [born|a] here, but the old house [burned|b] down.",
+    "ru": "Я здесь родился, но старый дом сгорел."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "bag или back",
+  "sub": "звонкий конец не оглушать",
+  "late": 0.45,
+  "rule": "По-русски звонкий в конце оглушается: «дуб» — «дуп». По-английски нельзя: bag — back, leave — leaf, prize — price, eyes — ice, cab — cap. Главный признак звонкого конца даже не сам звук, а гласная перед ним: перед звонким она заметно длиннее. bag — протяжно, back — коротко и резко.",
+  "ex": [
+   {
+    "en": "Put the [bag|a] behind your [back|b].",
+    "ru": "Положите сумку за спину."
+   },
+   {
+    "en": "Close your [eyes|a] — I'll put some [ice|b] on it.",
+    "ru": "Закройте глаза — я приложу лёд."
+   },
+   {
+    "en": "The [prize|a] is worth the [price|b].",
+    "ru": "Приз стоит своей цены."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "b2",
+  "title": "thing или thin",
+  "sub": "[ŋ] — звук в нос",
+  "late": 0.5,
+  "rule": "[ŋ] — задняя часть языка прижата к нёбу, звук идёт в нос, как в «гонг» без «г». Это не [n] и не «нг»: [g] в конце не добавляйте — sing, а не «синг». В окончании -ing тоже [ŋ]: walking, bleeding. Если сказать [n], выйдет другое слово: thing — thin, wing — win, rang — ran, tongue — ton.",
+  "ex": [
+   {
+    "en": "One more [thing|a] — you look very [thin|b].",
+    "ru": "И ещё — вы очень худой."
+   },
+   {
+    "en": "Stick out your [tongue|a], please.",
+    "ru": "Покажите язык, пожалуйста."
+   },
+   {
+    "en": "The phone [rang|a] as I [ran|b] in.",
+    "ru": "Телефон зазвонил, когда я вбежал."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "b2",
+  "title": "Всё на слух",
+  "sub": "Say ___ again",
+  "late": 0.6,
+  "rule": "Тема только на слух: Ryan произносит Say … again, а вы выбираете, какое слово прозвучало. Сначала слушайте гласную: долгая или короткая, открытая или нет; потом начало и конец слова: th или t, w или v, h или нет, звонкий конец или глухой. Если трудно — нажмите «Послушать ещё раз» и повторите вслух.",
+  "ex": [
+   {
+    "en": "Say [sheep|a] again. Say [ship|b] again.",
+    "ru": "Скажите sheep ещё раз. Скажите ship ещё раз."
+   },
+   {
+    "en": "Say [walk|a] again. Say [work|b] again.",
+    "ru": "Скажите walk ещё раз. Скажите work ещё раз."
+   },
+   {
+    "en": "Say [three|a] again. Say [tree|b] again.",
+    "ru": "Скажите three ещё раз. Скажите tree ещё раз."
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// ear — на слух: звучит Say <слово> again, перевод скрыт до ответа.
+const CARDS = [
+ {
+  "id": "s1-three",
+  "t": 1,
+  "q": "Take one tablet ___ times a day.",
+  "ru": "Принимайте по одной таблетке три раза в день.",
+  "opts": [
+   "three",
+   "tree",
+   "free"
+  ],
+  "a": "three",
+  "why": "three /θriː/ — три: язык между зубами. tree /triː/ — дерево, free /friː/ — бесплатный, свободный."
+ },
+ {
+  "id": "s1-free",
+  "t": 1,
+  "q": "The consultation is ___ for pensioners.",
+  "ru": "Для пенсионеров консультация бесплатная.",
+  "opts": [
+   "free",
+   "three",
+   "tree"
+  ],
+  "a": "free",
+  "why": "free /friː/ — бесплатный. Скажете [θ] вместо [f] — получится three."
+ },
+ {
+  "id": "s1-think",
+  "t": 1,
+  "q": "What do you ___ about his scan?",
+  "ru": "Что вы думаете о его снимке?",
+  "opts": [
+   "think",
+   "sink",
+   "thing"
+  ],
+  "a": "think",
+  "why": "think /θɪŋk/ — думать. sink /sɪŋk/ — раковина, тонуть; thing /θɪŋ/ — вещь."
+ },
+ {
+  "id": "s1-mouth",
+  "t": 1,
+  "q": "Open your ___ and say ah.",
+  "ru": "Откройте рот и скажите «а».",
+  "opts": [
+   "mouth",
+   "mouse",
+   "mouths"
+  ],
+  "a": "mouth",
+  "why": "mouth /maʊθ/ — рот, на конце [θ]. mouse /maʊs/ — мышь."
+ },
+ {
+  "id": "s1-ear-tree",
+  "t": 1,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "three",
+   "tree",
+   "free"
+  ],
+  "a": "tree",
+  "why": "Прозвучало tree /triː/ — дерево: [t], язык за зубами. three /θriː/ — язык между зубами, free /friː/ — губа и зубы.",
+  "ear": 1
+ },
+ {
+  "id": "s1-ear-thank",
+  "t": 1,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "thank",
+   "tank",
+   "sank"
+  ],
+  "a": "thank",
+  "why": "Прозвучало thank /θæŋk/ — благодарить: язык между зубами. tank /tæŋk/ — бак, sank /sæŋk/ — утонул.",
+  "ear": 1
+ },
+ {
+  "id": "s2-they",
+  "t": 2,
+  "q": "___ arrived at the hospital at midnight.",
+  "ru": "Они приехали в больницу в полночь.",
+  "opts": [
+   "They",
+   "Day"
+  ],
+  "a": "They",
+  "why": "they /ðeɪ/ — они: звонкий th. day /deɪ/ — день."
+ },
+ {
+  "id": "s2-breathe",
+  "t": 2,
+  "q": "___ in slowly through your nose.",
+  "ru": "Медленно вдохните через нос.",
+  "opts": [
+   "Breathe",
+   "Breeze"
+  ],
+  "a": "Breathe",
+  "why": "breathe /briːð/ — дышать, звонкий th. breeze /briːz/ — ветерок."
+ },
+ {
+  "id": "s2-then",
+  "t": 2,
+  "q": "Take the first tablet now and ___ another one at night.",
+  "ru": "Первую таблетку примите сейчас, а потом ещё одну на ночь.",
+  "opts": [
+   "then",
+   "den",
+   "than"
+  ],
+  "a": "then",
+  "why": "then /ðen/ — потом. den /den/ — логово, than /ðæn/ — чем (в сравнениях)."
+ },
+ {
+  "id": "s2-clothing",
+  "t": 2,
+  "q": "Remove any ___ with metal before the MRI.",
+  "ru": "Перед МРТ снимите одежду с металлом.",
+  "opts": [
+   "clothing",
+   "closing"
+  ],
+  "a": "clothing",
+  "why": "clothing /ˈkləʊðɪŋ/ — одежда, звонкий th. closing /ˈkləʊzɪŋ/ — закрытие."
+ },
+ {
+  "id": "s2-ear-day",
+  "t": 2,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "they",
+   "day"
+  ],
+  "a": "day",
+  "why": "Прозвучало day /deɪ/ — день: [d], язык за зубами. they /ðeɪ/ — язык между зубами, с голосом.",
+  "ear": 1
+ },
+ {
+  "id": "s2-ear-breeze",
+  "t": 2,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "breathe",
+   "breeze"
+  ],
+  "a": "breeze",
+  "why": "Прозвучало breeze /briːz/ — ветерок: [z]. breathe /briːð/ — язык между зубами.",
+  "ear": 1
+ },
+ {
+  "id": "s3-wet",
+  "t": 3,
+  "q": "Keep the dressing dry — don't let it get ___.",
+  "ru": "Повязка должна оставаться сухой — не мочите её.",
+  "opts": [
+   "wet",
+   "vet"
+  ],
+  "a": "wet",
+  "why": "wet /wet/ — мокрый: губы трубочкой. vet /vet/ — ветеринар: зубы на губе."
+ },
+ {
+  "id": "s3-worse",
+  "t": 3,
+  "q": "His speech is getting ___.",
+  "ru": "Речь у него становится хуже.",
+  "opts": [
+   "worse",
+   "verse"
+  ],
+  "a": "worse",
+  "why": "worse /wɜːs/ — хуже. verse /vɜːs/ — стих."
+ },
+ {
+  "id": "s3-ill",
+  "t": 3,
+  "q": "He's been ___ for a week.",
+  "ru": "Он болеет уже неделю.",
+  "opts": [
+   "ill",
+   "hill"
+  ],
+  "a": "ill",
+  "why": "ill /ɪl/ — больной, без [h]. hill /hɪl/ — холм."
+ },
+ {
+  "id": "s3-hour",
+  "t": 3,
+  "q": "Come back in an ___.",
+  "ru": "Приходите через час.",
+  "opts": [
+   "hour",
+   "our"
+  ],
+  "a": "hour",
+  "why": "hour /ˈaʊə/ — час: h не читается, поэтому an hour. our — наш, звучит так же."
+ },
+ {
+  "id": "s3-ear-vest",
+  "t": 3,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "west",
+   "vest"
+  ],
+  "a": "vest",
+  "why": "Прозвучало vest /vest/ — майка, жилет: зубы на губе. west /west/ — запад: губы трубочкой.",
+  "ear": 1
+ },
+ {
+  "id": "s3-ear-eat",
+  "t": 3,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "heat",
+   "eat"
+  ],
+  "a": "eat",
+  "why": "Прозвучало eat /iːt/ — есть, без [h]. heat /hiːt/ — жара: лёгкий выдох в начале.",
+  "ear": 1
+ },
+ {
+  "id": "s4-pill",
+  "t": 4,
+  "q": "Take this ___ with a glass of water.",
+  "ru": "Примите эту таблетку, запив стаканом воды.",
+  "opts": [
+   "pill",
+   "peel"
+  ],
+  "a": "pill",
+  "why": "pill /pɪl/ — таблетка, короткий звук. peel /piːl/ — кожура, чистить, долгий."
+ },
+ {
+  "id": "s4-leave",
+  "t": 4,
+  "q": "You can ___ hospital tomorrow.",
+  "ru": "Завтра можете выписываться.",
+  "opts": [
+   "leave",
+   "live"
+  ],
+  "a": "leave",
+  "why": "leave /liːv/ — уйти, выписаться, долгий. live /lɪv/ — жить, короткий."
+ },
+ {
+  "id": "s4-heel",
+  "t": 4,
+  "q": "The pain is in my ___ when I walk.",
+  "ru": "При ходьбе болит пятка.",
+  "opts": [
+   "heel",
+   "hill"
+  ],
+  "a": "heel",
+  "why": "heel /hiːl/ — пятка, долгий. hill /hɪl/ — холм, короткий."
+ },
+ {
+  "id": "s4-seat",
+  "t": 4,
+  "q": "Please take a ___.",
+  "ru": "Присаживайтесь, пожалуйста.",
+  "opts": [
+   "seat",
+   "sit"
+  ],
+  "a": "seat",
+  "why": "seat /siːt/ — место, сиденье: take a seat. sit /sɪt/ — сидеть."
+ },
+ {
+  "id": "s4-ear-ship",
+  "t": 4,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "sheep",
+   "ship"
+  ],
+  "a": "ship",
+  "why": "Прозвучало ship /ʃɪp/ — корабль: короткий, расслабленный. sheep /ʃiːp/ — овца: долгий, с улыбкой.",
+  "ear": 1
+ },
+ {
+  "id": "s4-ear-feel",
+  "t": 4,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "feel",
+   "fill"
+  ],
+  "a": "feel",
+  "why": "Прозвучало feel /fiːl/ — чувствовать: долгий. fill /fɪl/ — наполнить: короткий.",
+  "ear": 1
+ },
+ {
+  "id": "s5-men",
+  "t": 5,
+  "q": "Three ___ were admitted after the accident.",
+  "ru": "После аварии госпитализировали троих мужчин.",
+  "opts": [
+   "men",
+   "man"
+  ],
+  "a": "men",
+  "why": "men /men/ — мужчины, как «э». man /mæn/ — мужчина, рот шире."
+ },
+ {
+  "id": "s5-bed",
+  "t": 5,
+  "q": "He's been in ___ for three days.",
+  "ru": "Он лежит уже три дня.",
+  "opts": [
+   "bed",
+   "bad"
+  ],
+  "a": "bed",
+  "why": "bed /bed/ — кровать. bad /bæd/ — плохой, рот шире."
+ },
+ {
+  "id": "s5-bad",
+  "t": 5,
+  "q": "I've got a ___ headache.",
+  "ru": "У меня сильно болит голова.",
+  "opts": [
+   "bad",
+   "bed"
+  ],
+  "a": "bad",
+  "why": "bad /bæd/ — плохой, сильный (о боли): рот открыт широко."
+ },
+ {
+  "id": "s5-pen",
+  "t": 5,
+  "q": "Can I borrow your ___ to sign the form?",
+  "ru": "Можно вашу ручку — подписать бланк?",
+  "opts": [
+   "pen",
+   "pan"
+  ],
+  "a": "pen",
+  "why": "pen /pen/ — ручка. pan /pæn/ — сковорода."
+ },
+ {
+  "id": "s5-ear-man",
+  "t": 5,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "man",
+   "men"
+  ],
+  "a": "man",
+  "why": "Прозвучало man /mæn/ — мужчина: рот широко, «э» с «а». men /men/ — обычное «э».",
+  "ear": 1
+ },
+ {
+  "id": "s5-ear-said",
+  "t": 5,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "sad",
+   "said"
+  ],
+  "a": "said",
+  "why": "Прозвучало said /sed/ — сказал: обычное «э». sad /sæd/ — грустный: рот шире.",
+  "ear": 1
+ },
+ {
+  "id": "s6-heart",
+  "t": 6,
+  "q": "His ___ rate is 110.",
+  "ru": "Пульс у него 110.",
+  "opts": [
+   "heart",
+   "hut",
+   "hat"
+  ],
+  "a": "heart",
+  "why": "heart /hɑːt/ — сердце: долгое глубокое «а». hut /hʌt/ — хижина, hat /hæt/ — шляпа."
+ },
+ {
+  "id": "s6-cut",
+  "t": 6,
+  "q": "He ___ his finger on a broken glass.",
+  "ru": "Он порезал палец о разбитый стакан.",
+  "opts": [
+   "cut",
+   "cat",
+   "cart"
+  ],
+  "a": "cut",
+  "why": "cut /kʌt/ — порезать: короткое «а». cat /kæt/ — кошка, cart /kɑːt/ — тележка."
+ },
+ {
+  "id": "s6-cup",
+  "t": 6,
+  "q": "Would you like a ___ of tea?",
+  "ru": "Хотите чашку чая?",
+  "opts": [
+   "cup",
+   "cap",
+   "carp"
+  ],
+  "a": "cup",
+  "why": "cup /kʌp/ — чашка. cap /kæp/ — кепка, колпачок, carp /kɑːp/ — карп."
+ },
+ {
+  "id": "s6-much",
+  "t": 6,
+  "q": "How ___ does it hurt?",
+  "ru": "Насколько сильно болит?",
+  "opts": [
+   "much",
+   "match",
+   "march"
+  ],
+  "a": "much",
+  "why": "much /mʌtʃ/ — много. match /mætʃ/ — спичка, матч, march /mɑːtʃ/ — марш."
+ },
+ {
+  "id": "s6-ear-hat",
+  "t": 6,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "hat",
+   "hut",
+   "heart"
+  ],
+  "a": "hat",
+  "why": "Прозвучало hat /hæt/ — шляпа: широко, «э-а». hut /hʌt/ — короткое «а», heart /hɑːt/ — долгое.",
+  "ear": 1
+ },
+ {
+  "id": "s6-ear-cart",
+  "t": 6,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "cat",
+   "cut",
+   "cart"
+  ],
+  "a": "cart",
+  "why": "Прозвучало cart /kɑːt/ — тележка: долгое глубокое «а». cat /kæt/ — широкое «э-а», cut /kʌt/ — короткое «а».",
+  "ear": 1
+ },
+ {
+  "id": "s7-ward",
+  "t": 7,
+  "q": "He was moved to the stroke ___ this morning.",
+  "ru": "Утром его перевели в инсультное отделение.",
+  "opts": [
+   "ward",
+   "word"
+  ],
+  "a": "ward",
+  "why": "ward /wɔːd/ — палата, отделение: круглое «о». word /wɜːd/ — слово."
+ },
+ {
+  "id": "s7-work",
+  "t": 7,
+  "q": "I go to ___ by bus.",
+  "ru": "На работу я езжу на автобусе.",
+  "opts": [
+   "work",
+   "walk"
+  ],
+  "a": "work",
+  "why": "work /wɜːk/ — работа: «ё» без губ. walk /wɔːk/ — ходить пешком."
+ },
+ {
+  "id": "s7-burn",
+  "t": 7,
+  "q": "She has a ___ on her hand from the kettle.",
+  "ru": "У неё ожог на руке от чайника.",
+  "opts": [
+   "burn",
+   "born"
+  ],
+  "a": "burn",
+  "why": "burn /bɜːn/ — ожог. born /bɔːn/ — рождён."
+ },
+ {
+  "id": "s7-born",
+  "t": 7,
+  "q": "He was ___ in 1958.",
+  "ru": "Он родился в 1958 году.",
+  "opts": [
+   "born",
+   "burn"
+  ],
+  "a": "born",
+  "why": "born /bɔːn/ — рождён: круглое «о»."
+ },
+ {
+  "id": "s7-ear-walk",
+  "t": 7,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "walk",
+   "work"
+  ],
+  "a": "walk",
+  "why": "Прозвучало walk /wɔːk/ — ходить: круглое долгое «о», l не читается. work /wɜːk/ — «ё» без губ.",
+  "ear": 1
+ },
+ {
+  "id": "s7-ear-word",
+  "t": 7,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "ward",
+   "word"
+  ],
+  "a": "word",
+  "why": "Прозвучало word /wɜːd/ — слово: «ё» без губ. ward /wɔːd/ — круглое «о».",
+  "ear": 1
+ },
+ {
+  "id": "s8-back",
+  "t": 8,
+  "q": "I've had ___ pain for a month.",
+  "ru": "Спина болит уже месяц.",
+  "opts": [
+   "back",
+   "bag"
+  ],
+  "a": "back",
+  "why": "back /bæk/ — спина: коротко и резко. bag /bæɡ/ — сумка: гласная длиннее, [g] звонкий."
+ },
+ {
+  "id": "s8-bag",
+  "t": 8,
+  "q": "Put your phone in your ___.",
+  "ru": "Положите телефон в сумку.",
+  "opts": [
+   "bag",
+   "back"
+  ],
+  "a": "bag",
+  "why": "bag /bæɡ/ — сумка: не оглушайте [g], тяните гласную."
+ },
+ {
+  "id": "s8-eyes",
+  "t": 8,
+  "q": "Close your ___.",
+  "ru": "Закройте глаза.",
+  "opts": [
+   "eyes",
+   "ice"
+  ],
+  "a": "eyes",
+  "why": "eyes /aɪz/ — глаза: звонкий [z]. ice /aɪs/ — лёд."
+ },
+ {
+  "id": "s8-cab",
+  "t": 8,
+  "q": "We'll call you a ___ to take you home.",
+  "ru": "Мы вызовем вам такси домой.",
+  "opts": [
+   "cab",
+   "cap"
+  ],
+  "a": "cab",
+  "why": "cab /kæb/ — такси: звонкий [b]. cap /kæp/ — кепка, колпачок."
+ },
+ {
+  "id": "s8-ear-leaf",
+  "t": 8,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "leave",
+   "leaf"
+  ],
+  "a": "leaf",
+  "why": "Прозвучало leaf /liːf/ — лист: глухой [f], гласная короче. leave /liːv/ — звонкий [v], гласная длиннее.",
+  "ear": 1
+ },
+ {
+  "id": "s8-ear-prize",
+  "t": 8,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "prize",
+   "price"
+  ],
+  "a": "prize",
+  "why": "Прозвучало prize /praɪz/ — приз: звонкий [z], гласная длиннее. price /praɪs/ — цена.",
+  "ear": 1
+ },
+ {
+  "id": "s9-thing",
+  "t": 9,
+  "q": "There's one more ___ I need to ask.",
+  "ru": "Мне нужно спросить ещё одну вещь.",
+  "opts": [
+   "thing",
+   "thin"
+  ],
+  "a": "thing",
+  "why": "thing /θɪŋ/ — вещь: [ŋ] в нос. thin /θɪn/ — худой, тонкий."
+ },
+ {
+  "id": "s9-thin",
+  "t": 9,
+  "q": "She's very ___ — she's lost 10 kg.",
+  "ru": "Она очень худая — похудела на 10 кг.",
+  "opts": [
+   "thin",
+   "thing"
+  ],
+  "a": "thin",
+  "why": "thin /θɪn/ — худой: обычное [n]."
+ },
+ {
+  "id": "s9-tongue",
+  "t": 9,
+  "q": "Stick out your ___, please.",
+  "ru": "Покажите язык, пожалуйста.",
+  "opts": [
+   "tongue",
+   "ton"
+  ],
+  "a": "tongue",
+  "why": "tongue /tʌŋ/ — язык: на конце [ŋ], ue не читается. ton /tʌn/ — тонна."
+ },
+ {
+  "id": "s9-rang",
+  "t": 9,
+  "q": "The phone ___ in the middle of the night.",
+  "ru": "Посреди ночи зазвонил телефон.",
+  "opts": [
+   "rang",
+   "ran"
+  ],
+  "a": "rang",
+  "why": "rang /ræŋ/ — зазвонил. ran /ræn/ — бежал."
+ },
+ {
+  "id": "s9-ear-win",
+  "t": 9,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "wing",
+   "win"
+  ],
+  "a": "win",
+  "why": "Прозвучало win /wɪn/ — победить: [n]. wing /wɪŋ/ — крыло, крыло больницы: [ŋ] в нос.",
+  "ear": 1
+ },
+ {
+  "id": "s9-ear-sung",
+  "t": 9,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "sun",
+   "sung"
+  ],
+  "a": "sung",
+  "why": "Прозвучало sung /sʌŋ/ — спет: [ŋ] в нос. sun /sʌn/ — солнце: [n].",
+  "ear": 1
+ },
+ {
+  "id": "s10-sheep",
+  "t": 10,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "sheep",
+   "ship"
+  ],
+  "a": "sheep",
+  "why": "Прозвучало sheep /ʃiːp/ — овца: долгий звук с улыбкой.",
+  "ear": 1
+ },
+ {
+  "id": "s10-think",
+  "t": 10,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "think",
+   "sink"
+  ],
+  "a": "sink",
+  "why": "Прозвучало sink /sɪŋk/ — раковина, тонуть: [s]. think /θɪŋk/ — язык между зубами.",
+  "ear": 1
+ },
+ {
+  "id": "s10-work",
+  "t": 10,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "walk",
+   "work"
+  ],
+  "a": "work",
+  "why": "Прозвучало work /wɜːk/ — работа: «ё» без губ.",
+  "ear": 1
+ },
+ {
+  "id": "s10-bad",
+  "t": 10,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "bad",
+   "bed"
+  ],
+  "a": "bad",
+  "why": "Прозвучало bad /bæd/ — плохой: рот открыт широко.",
+  "ear": 1
+ },
+ {
+  "id": "s10-wet",
+  "t": 10,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "wet",
+   "vet"
+  ],
+  "a": "wet",
+  "why": "Прозвучало wet /wet/ — мокрый: губы трубочкой, зубы не касаются губы.",
+  "ear": 1
+ },
+ {
+  "id": "s10-hill",
+  "t": 10,
+  "q": "Say ___ again.",
+  "ru": "",
+  "opts": [
+   "hill",
+   "ill"
+  ],
+  "a": "hill",
+  "why": "Прозвучало hill /hɪl/ — холм: лёгкий выдох в начале.",
+  "ear": 1
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "sounds:state";
+const LS_SPEAK = "sounds:autospeak";
+const LS_TAB = "sounds:tab";
+const LS_OPEN = "sounds:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "sounds"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>
