@@ -1,0 +1,1868 @@
+<title>Косвенные вопросы</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("indq",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title">Косвенные вопросы</h1>
+      <p class="r-sub">Вопрос внутри предложения уже не вопрос: порядок как в&nbsp;утверждении. <b lang="en">Where is the lab?</b> → <b lang="en">Could you tell me where the lab is?</b> В&nbsp;примерах <b class="pr">вопросительное слово</b> оранжевое, <b class="st">подлежащее и&nbsp;глагол</b> синие.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Что меняется</th><th scope="col">Косвенный</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">Where is the lab?</th></tr><tr><td><b class="h">be</b>в&nbsp;конец, после подлежащего</td><td><span class="f st" lang="en">…&nbsp;where&nbsp;the&nbsp;lab&nbsp;is</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">When did it start?</th></tr><tr><td><b class="h">do, does, did исчезают</b>время переходит в&nbsp;глагол</td><td><span class="f st" lang="en">…&nbsp;when&nbsp;it&nbsp;started</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">Does he smoke?</th></tr><tr><td><b class="h">«да или нет»</b>if или whether</td><td><span class="f st" lang="en">…&nbsp;if&nbsp;he&nbsp;smokes</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">Where can I park?</th></tr><tr><td><b class="h">can, should, have</b>после подлежащего</td><td><span class="f st" lang="en">…&nbsp;where&nbsp;I&nbsp;can&nbsp;park</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">Who called?</th></tr><tr><td><b class="h">вопрос к&nbsp;подлежащему</b>порядок не меняется</td><td><span class="f st" lang="en">…&nbsp;who&nbsp;called</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как построить</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Уберите do, does, did — время перейдёт в глагол</p><p class="s-f" lang="en"><span class="hl">did&nbsp;it&nbsp;start</span> → <span class="st">it&nbsp;started</span> <span class="sep">·</span> <span class="hl">does&nbsp;he&nbsp;take</span> → <span class="st">he&nbsp;takes</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Подлежащее вперёд, is, can, have — после него</p><p class="s-f" lang="en"><span class="hl">is&nbsp;the&nbsp;lab</span> → <span class="st">the&nbsp;lab&nbsp;is</span> <span class="sep">·</span> <span class="hl">can&nbsp;I&nbsp;park</span> → <span class="st">I&nbsp;can&nbsp;park</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Вопрос «да или нет»? Добавьте if или whether</p><p class="s-f" lang="en"><span class="pr">Do you know if he smokes?</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Знак вопроса — только если вопросом начинается всё предложение</p><p class="s-f" lang="en"><span class="pr">Do&nbsp;you&nbsp;know&nbsp;…?</span> <span class="sep">·</span> <span class="st">I&nbsp;wonder&nbsp;…&nbsp;.</span></p></div></li>
+        </ol>
+        <p class="algo-m">Спросили один раз&nbsp;— в&nbsp;начале: <b class="pr" lang="en">Could you tell me</b>. Второй раз переворачивать не&nbsp;нужно: <b class="st" lang="en">where the lab is</b>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en"><span class="hl">Where is the lab</span>?</p><p class="cp-ru">прямой вопрос</p><p class="cp-en" lang="en">Could you tell me <span class="pr">where</span> <span class="st">the lab is</span>?</p><p class="cp-ru">косвенный&nbsp;— be в&nbsp;конце</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="Where is the lab? Could you tell me where the lab is?" aria-label="Прослушать: Where is the lab? / Could you tell me where the lab is?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="hl">When did it start</span>?</p><p class="cp-ru">прямой&nbsp;— с&nbsp;did</p><p class="cp-en" lang="en">Do you remember <span class="pr">when</span> <span class="st">it started</span>?</p><p class="cp-ru">косвенный&nbsp;— без did, время в&nbsp;глаголе</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="When did it start? Do you remember when it started?" aria-label="Прослушать: When did it start? / Do you remember when it started?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="hl">Does he smoke</span>?</p><p class="cp-ru">прямой</p><p class="cp-en" lang="en">Do you know <span class="pr">if</span> <span class="st">he smokes</span>?</p><p class="cp-ru">косвенный&nbsp;— if, и&nbsp;-s возвращается</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="Does he smoke? Do you know if he smokes?" aria-label="Прослушать: Does he smoke? / Do you know if he smokes?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Do you know <span class="pr">who</span> <span class="st">his consultant is</span>?</p><p class="cp-ru">who&nbsp;— не подлежащее: is в&nbsp;конце</p><p class="cp-en" lang="en">Do you know <span class="pr">who</span> <span class="st">is on call</span>?</p><p class="cp-ru">who&nbsp;— подлежащее: порядок не меняется</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="Do you know who his consultant is? Do you know who is on call?" aria-label="Прослушать: Do you know who his consultant is? / Do you know who is on call?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Do you know <span class="pr">where</span> <span class="st">he is</span>?</p><p class="cp-ru">начало&nbsp;— вопрос, в&nbsp;конце ?</p><p class="cp-en" lang="en">I wonder <span class="pr">where</span> <span class="st">he is</span>.</p><p class="cp-ru">начало&nbsp;— утверждение, в&nbsp;конце точка</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="Do you know where he is? I wonder where he is." aria-label="Прослушать: Do you know where he is? / I wonder where he is."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Could you tell me where is the lab?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Could you tell me where the lab is?</span><span class="err-note">be&nbsp;— после подлежащего</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Do you know when did it start?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Do you know when it started?</span><span class="err-note">did исчезает, время&nbsp;— в&nbsp;глаголе</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Do you know does he smoke?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Do you know if he smokes?</span><span class="err-note">«ли»&nbsp;— if или whether</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Can you tell me what does he take?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Can you tell me what he takes?</span><span class="err-note">does исчезает, -s остаётся</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Do you know where can I park?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Do you know where I can park?</span><span class="err-note">can&nbsp;— после подлежащего</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Can you tell me what did happen?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Can you tell me what happened?</span><span class="err-note">вопрос к&nbsp;подлежащему&nbsp;— без did</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I wonder where is he?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I wonder where he is.</span><span class="err-note">I wonder&nbsp;— прямой порядок и&nbsp;точка</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I asked her where did she live.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I asked her where she lived.</span><span class="err-note">в&nbsp;пересказе&nbsp;— тоже прямой порядок</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It depends on if he agrees.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It depends on whether he agrees.</span><span class="err-note">после предлога&nbsp;— whether</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I don&#x27;t know what do I tell him.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I don&#x27;t know what to tell him.</span><span class="err-note">что сказать&nbsp;— what to</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. [слово|a] — вопросительное слово, if, whether; [слова|b] — подлежащее и глагол.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 10;
+const GROUPS = {"b1": "B1 — прямой порядок", "b1p": "B1+ — модальные, подлежащее, начала", "b2": "B2 — пересказ, статьи, whether", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "where the lab is",
+  "sub": "be уходит в конец",
+  "rule": "Когда вопрос стоит внутри другого предложения (Could you tell me…, Do you know…, I'm not sure…), он перестаёт быть вопросом: порядок как в утверждении. Сначала подлежащее, потом is или are: Where is the lab? → Could you tell me where the lab is? What time is it? → Do you know what time it is? Сказать where is the lab после Could you tell me — самая частая ошибка русскоговорящих.",
+  "ex": [
+   {
+    "en": "Could you tell me [where|a] [the lab is|b]?",
+    "ru": "Подскажите, где лаборатория?"
+   },
+   {
+    "en": "Do you know [what time|a] [it is|b]?",
+    "ru": "Вы не знаете, который час?"
+   },
+   {
+    "en": "Can you remind me [what|a] [the new resident's name is|b]?",
+    "ru": "Напомните, как зовут нового ординатора?"
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "when it started",
+  "sub": "do, does, did исчезают",
+  "rule": "do, does, did в косвенном вопросе не нужны — время переходит в глагол. did it start → it started; does he take → he takes (окончание -s возвращается); do you smoke → you smoke. When did it start? → Do you remember when it started? What does he take? → Do you know what he takes? Did и does, оставленные внутри, сразу выдают иностранца.",
+  "ex": [
+   {
+    "en": "Do you remember [when|a] [it started|b]?",
+    "ru": "Вы помните, когда это началось?"
+   },
+   {
+    "en": "Do you know [what|a] [he takes|b] for his blood pressure?",
+    "ru": "Вы знаете, что он принимает от давления?"
+   },
+   {
+    "en": "Can you describe [how|a] [you fell|b]?",
+    "ru": "Опишите, как вы упали."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "if и whether",
+  "sub": "вопрос «да или нет» внутри",
+  "rule": "Если в прямом вопросе нет вопросительного слова (Does he smoke? Is she allergic?), внутри ставят if или whether — это русское «ли»: Do you know if he smokes? Could you check whether she is allergic? Порядок прямой, do и does исчезают. Будущее после if в таком вопросе остаётся: Do you know if he will come? — здесь if значит «ли», а не «если».",
+  "ex": [
+   {
+    "en": "Do you know [if|a] [he smokes|b]?",
+    "ru": "Вы не знаете, курит ли он?"
+   },
+   {
+    "en": "Could you check [whether|a] [she is|b] allergic to penicillin?",
+    "ru": "Проверьте, нет ли у неё аллергии на пенициллин."
+   },
+   {
+    "en": "Do you know [if|a] [he will come|b] tomorrow?",
+    "ru": "Не знаете, придёт ли он завтра?"
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1p",
+  "title": "where I can park",
+  "sub": "can, should, have — после подлежащего",
+  "late": 0.2,
+  "rule": "can, could, should, will и have в Present Perfect в прямом вопросе стоят перед подлежащим, а в косвенном — после него. Where can I park? → Could you tell me where I can park? How long have you had it? → Can you tell me how long you have had it? What should I do? → I'm not sure what I should do. Глагол остаётся в той же форме, меняется только порядок.",
+  "ex": [
+   {
+    "en": "Could you tell me [where|a] [I can park|b]?",
+    "ru": "Подскажите, где можно припарковаться?"
+   },
+   {
+    "en": "Can you tell me [how long|a] [you have had|b] this headache?",
+    "ru": "Сколько времени у вас эта головная боль?"
+   },
+   {
+    "en": "I'm not sure [what|a] [I should do|b] next.",
+    "ru": "Не знаю, что мне делать дальше."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "who called, what happened",
+  "sub": "вопрос к подлежащему не меняется",
+  "late": 0.2,
+  "rule": "Если who, what или which — само подлежащее (кто вызвал? что случилось?), порядок и так прямой, и в косвенном вопросе ничего не меняется: Who called? → Do you know who called? What happened? → Can you tell me what happened? Did сюда не добавляют. Сравните: Who is on call? (кто дежурит — who подлежащее) → who is on call; Who is his consultant? (кто его врач — подлежащее consultant) → who his consultant is.",
+  "ex": [
+   {
+    "en": "Can you tell me [what|a] [happened|b]?",
+    "ru": "Расскажите, что случилось."
+   },
+   {
+    "en": "Do you know [who|a] [is on call|b] tonight?",
+    "ru": "Не знаете, кто сегодня дежурит?"
+   },
+   {
+    "en": "Do you know [who|a] [his consultant is|b]?",
+    "ru": "Не знаете, кто его лечащий врач?"
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "I wonder, I'm not sure",
+  "sub": "начала и знак вопроса",
+  "late": 0.25,
+  "rule": "Косвенный вопрос начинают по-разному: Could you tell me, Do you know, Have you got any idea, I wonder, I'm not sure, I'd like to know, I don't know. Знак вопроса ставят, только если вопрос — всё предложение: Do you know where he is? Если начало — утверждение, в конце точка: I wonder where he is. «Не знаю, что делать, куда идти» — what to do, where to go: вопросительное слово + to.",
+  "ex": [
+   {
+    "en": "I wonder [where|a] [he is|b].",
+    "ru": "Интересно, где он."
+   },
+   {
+    "en": "Have you got any idea [how much|a] [it costs|b]?",
+    "ru": "Не представляете, сколько это стоит?"
+   },
+   {
+    "en": "I don't know [what|a] [to tell him|b].",
+    "ru": "Не знаю, что ему сказать."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "asked where she lived",
+  "sub": "косвенный вопрос в пересказе",
+  "late": 0.45,
+  "rule": "В пересказе после asked и wanted to know — тот же прямой порядок, плюс сдвиг времени: Where do you live? → I asked her where she lived. When can I go home? → He asked when he could go home. Is the scan normal? → She wanted to know whether the scan was normal. Что случилось раньше — Past Perfect: What happened? → The police asked what had happened.",
+  "ex": [
+   {
+    "en": "The patient asked [when|a] [he could go|b] home.",
+    "ru": "Пациент спросил, когда сможет поехать домой."
+   },
+   {
+    "en": "She wanted to know [whether|a] [the scan was|b] normal.",
+    "ru": "Она хотела знать, нормальный ли снимок."
+   },
+   {
+    "en": "The police asked [what|a] [had happened|b].",
+    "ru": "Полиция спросила, что произошло."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "It remains unclear whether…",
+  "sub": "косвенный вопрос в статье",
+  "late": 0.5,
+  "rule": "В научном тексте косвенный вопрос бывает подлежащим или дополнением: It remains unclear whether thrombolysis benefits these patients. Where the clot is determines the treatment. What he told us changed the diagnosis. We do not fully understand why some patients recover faster. The question is how quickly we can transfer him. Порядок везде прямой.",
+  "ex": [
+   {
+    "en": "It remains unclear [whether|a] [thrombolysis benefits|b] these patients.",
+    "ru": "Остаётся неясным, помогает ли этим пациентам тромболизис."
+   },
+   {
+    "en": "[Where|a] [the clot is|b] determines the treatment.",
+    "ru": "От того, где тромб, зависит лечение."
+   },
+   {
+    "en": "We do not fully understand [why|a] [some patients recover|b] faster.",
+    "ru": "Мы не до конца понимаем, почему одни пациенты восстанавливаются быстрее."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "b2",
+  "title": "whether или if",
+  "sub": "когда только whether",
+  "late": 0.55,
+  "rule": "В разговоре «ли» чаще передают через if. Но только whether ставят: после предлога (It depends on whether he agrees), перед to + глагол (We need to decide whether to operate), в начале предложения (Whether he will recover is unclear) и в паре whether or not. А «если» в условии — только if: If he comes, call me.",
+  "ex": [
+   {
+    "en": "It depends on [whether|a] [he agrees|b].",
+    "ru": "Зависит от того, согласится ли он."
+   },
+   {
+    "en": "We need to decide [whether|a] [to operate|b].",
+    "ru": "Нужно решить, оперировать ли."
+   },
+   {
+    "en": "[Whether|a] [he will recover|b] fully is still unclear.",
+    "ru": "Восстановится ли он полностью, пока неясно."
+   }
+  ]
+ },
+ {
+  "n": 10,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// say — что произносить вместо предложения с ответом (ударение REcord и reCORD, вопросы о звуке).
+const CARDS = [
+ {
+  "id": "d1-lab",
+  "t": 1,
+  "q": "Could you tell me ___?",
+  "ru": "Подскажите, где лаборатория?",
+  "opts": [
+   "where the lab is",
+   "where is the lab",
+   "where does the lab"
+  ],
+  "a": "where the lab is",
+  "why": "Косвенный вопрос — прямой порядок: подлежащее, потом is."
+ },
+ {
+  "id": "d1-time",
+  "t": 1,
+  "q": "Do you know ___?",
+  "ru": "Вы не знаете, который час?",
+  "opts": [
+   "what time it is",
+   "what time is it",
+   "what time it"
+  ],
+  "a": "what time it is",
+  "why": "Прямой порядок: what time it is."
+ },
+ {
+  "id": "d1-name",
+  "t": 1,
+  "q": "Can you remind me ___?",
+  "ru": "Напомните, как зовут нового ординатора?",
+  "opts": [
+   "what the new resident's name is",
+   "what is the new resident's name",
+   "what does the new resident's name"
+  ],
+  "a": "what the new resident's name is",
+  "why": "Подлежащее — the new resident's name, is — после него."
+ },
+ {
+  "id": "d1-bp",
+  "t": 1,
+  "q": "Could you tell me ___ now?",
+  "ru": "Какое у него сейчас давление?",
+  "opts": [
+   "what his blood pressure is",
+   "what is his blood pressure",
+   "what his blood pressure"
+  ],
+  "a": "what his blood pressure is",
+  "why": "Прямой порядок, is в конце: what his blood pressure is."
+ },
+ {
+  "id": "d1-letter",
+  "t": 1,
+  "q": "I'm not sure ___.",
+  "ru": "Не знаю, где его выписка.",
+  "opts": [
+   "where his discharge letter is",
+   "where is his discharge letter",
+   "where his discharge letter"
+  ],
+  "a": "where his discharge letter is",
+  "why": "После I'm not sure — прямой порядок: where his discharge letter is."
+ },
+ {
+  "id": "d1-problem",
+  "t": 1,
+  "q": "Can you explain ___?",
+  "ru": "Объясните, в чём проблема?",
+  "opts": [
+   "what the problem is",
+   "what is the problem",
+   "what problem is"
+  ],
+  "a": "what the problem is",
+  "why": "Надёжно — what the problem is. С is и коротким словом в разговоре слышно и what is the problem, но учите прямой порядок."
+ },
+ {
+  "id": "d2-cigs",
+  "t": 2,
+  "q": "Can you tell me ___?",
+  "ru": "Скажите, сколько сигарет вы выкуриваете в день?",
+  "opts": [
+   "how many cigarettes you smoke a day",
+   "how many cigarettes do you smoke a day",
+   "how many cigarettes you do smoke a day"
+  ],
+  "a": "how many cigarettes you smoke a day",
+  "why": "do исчезает: how many cigarettes you smoke."
+ },
+ {
+  "id": "d2-takes",
+  "t": 2,
+  "q": "Do you know ___?",
+  "ru": "Вы знаете, что он принимает?",
+  "opts": [
+   "what he takes",
+   "what does he take",
+   "what he take"
+  ],
+  "a": "what he takes",
+  "why": "does исчезает, а -s переходит на глагол: what he takes."
+ },
+ {
+  "id": "d2-works",
+  "t": 2,
+  "q": "Could you tell me ___?",
+  "ru": "Подскажите, где работает ваша дочь?",
+  "opts": [
+   "where your daughter works",
+   "where does your daughter work",
+   "where your daughter work"
+  ],
+  "a": "where your daughter works",
+  "why": "does исчезает, -s на глаголе: where your daughter works."
+ },
+ {
+  "id": "d2-fell",
+  "t": 2,
+  "q": "Can you describe ___?",
+  "ru": "Опишите, как вы упали.",
+  "opts": [
+   "how you fell",
+   "how did you fall",
+   "how you did fall"
+  ],
+  "a": "how you fell",
+  "why": "did исчезает, глагол в прошедшем: how you fell."
+ },
+ {
+  "id": "d2-bed",
+  "t": 2,
+  "q": "I'd like to know ___ last night.",
+  "ru": "Хотелось бы знать, во сколько вы легли спать вчера.",
+  "opts": [
+   "what time you went to bed",
+   "what time did you go to bed",
+   "what time you go to bed"
+  ],
+  "a": "what time you went to bed",
+  "why": "Прошедшее переходит в глагол: you went."
+ },
+ {
+  "id": "d2-means",
+  "t": 2,
+  "q": "Could you explain ___?",
+  "ru": "Объясните, что значит этот результат.",
+  "opts": [
+   "what this result means",
+   "what does this result mean",
+   "what this result mean"
+  ],
+  "a": "what this result means",
+  "why": "does исчезает, -s на глаголе: means."
+ },
+ {
+  "id": "d3-smokes",
+  "t": 3,
+  "q": "Do you know ___?",
+  "ru": "Вы не знаете, курит ли он?",
+  "opts": [
+   "if he smokes",
+   "does he smoke",
+   "he smokes"
+  ],
+  "a": "if he smokes",
+  "why": "Вопрос «да или нет» внутри — if или whether + прямой порядок."
+ },
+ {
+  "id": "d3-allergic",
+  "t": 3,
+  "q": "Could you check ___ allergic to penicillin?",
+  "ru": "Проверьте, нет ли у неё аллергии на пенициллин.",
+  "opts": [
+   "whether she is",
+   "is she",
+   "whether is she"
+  ],
+  "a": "whether she is",
+  "why": "«Ли» — whether или if, порядок прямой: whether she is."
+ },
+ {
+  "id": "d3-fell",
+  "t": 3,
+  "q": "Can you remember ___?",
+  "ru": "Вы помните, падали ли вы?",
+  "opts": [
+   "if you fell",
+   "did you fall",
+   "if did you fall"
+  ],
+  "a": "if you fell",
+  "why": "if + прямой порядок, did исчезает: if you fell."
+ },
+ {
+  "id": "d3-ask",
+  "t": 3,
+  "q": "Ask the nurse ___ the scan is ready.",
+  "ru": "Спросите медсестру, готов ли снимок.",
+  "opts": [
+   "if",
+   "that",
+   "is"
+  ],
+  "a": "if",
+  "why": "«Ли» — if (или whether)."
+ },
+ {
+  "id": "d3-ever",
+  "t": 3,
+  "q": "The doctor wants to know ___ a stroke before.",
+  "ru": "Врач хочет знать, был ли у вас раньше инсульт.",
+  "opts": [
+   "if you have ever had",
+   "have you ever had",
+   "if have you ever had"
+  ],
+  "a": "if you have ever had",
+  "why": "if + подлежащее + have: if you have ever had."
+ },
+ {
+  "id": "d3-will",
+  "t": 3,
+  "q": "Do you know ___?",
+  "ru": "Не знаете, придёт ли он завтра?",
+  "opts": [
+   "if he will come tomorrow",
+   "will he come tomorrow",
+   "if he comes tomorrow"
+  ],
+  "a": "if he will come tomorrow",
+  "why": "Здесь if значит «ли», поэтому будущее остаётся: if he will come. Без will — только в условии: If he comes, call me."
+ },
+ {
+  "id": "d4-park",
+  "t": 4,
+  "q": "Could you tell me ___?",
+  "ru": "Подскажите, где можно припарковаться?",
+  "opts": [
+   "where I can park",
+   "where can I park",
+   "where I park can"
+  ],
+  "a": "where I can park",
+  "why": "can — после подлежащего: where I can park."
+ },
+ {
+  "id": "d4-should",
+  "t": 4,
+  "q": "I'm not sure ___ next.",
+  "ru": "Не знаю, что мне делать дальше.",
+  "opts": [
+   "what I should do",
+   "what should I do",
+   "what I do should"
+  ],
+  "a": "what I should do",
+  "why": "should — после подлежащего: what I should do."
+ },
+ {
+  "id": "d4-long",
+  "t": 4,
+  "q": "Can you tell me ___ this headache?",
+  "ru": "Сколько времени у вас эта головная боль?",
+  "opts": [
+   "how long you have had",
+   "how long have you had",
+   "how long you had have"
+  ],
+  "a": "how long you have had",
+  "why": "have — после подлежащего: how long you have had."
+ },
+ {
+  "id": "d4-been",
+  "t": 4,
+  "q": "Do you know ___ waiting?",
+  "ru": "Не знаете, сколько он уже ждёт?",
+  "opts": [
+   "how long he has been",
+   "how long has he been",
+   "how long he been"
+  ],
+  "a": "how long he has been",
+  "why": "has — после подлежащего: how long he has been waiting."
+ },
+ {
+  "id": "d4-appt",
+  "t": 4,
+  "q": "Could you tell me ___ get an appointment?",
+  "ru": "Подскажите, когда я смогу записаться на приём?",
+  "opts": [
+   "when I can",
+   "when can I",
+   "when I do can"
+  ],
+  "a": "when I can",
+  "why": "can — после подлежащего: when I can get."
+ },
+ {
+  "id": "d4-results",
+  "t": 4,
+  "q": "Do you know ___ the results?",
+  "ru": "Не знаете, когда будут результаты?",
+  "opts": [
+   "when we will get",
+   "when will we get",
+   "when we get will"
+  ],
+  "a": "when we will get",
+  "why": "will — после подлежащего: when we will get."
+ },
+ {
+  "id": "d5-happened",
+  "t": 5,
+  "q": "Can you tell me ___?",
+  "ru": "Расскажите, что случилось.",
+  "opts": [
+   "what happened",
+   "what did happen",
+   "what it happened"
+  ],
+  "a": "what happened",
+  "why": "what — подлежащее (что случилось?): порядок не меняется, did не нужен."
+ },
+ {
+  "id": "d5-called",
+  "t": 5,
+  "q": "Do you know ___ the ambulance?",
+  "ru": "Не знаете, кто вызвал скорую?",
+  "opts": [
+   "who called",
+   "who did call",
+   "who did he call"
+  ],
+  "a": "who called",
+  "why": "who — подлежащее (кто вызвал?): who called."
+ },
+ {
+  "id": "d5-oncall",
+  "t": 5,
+  "q": "Do you know ___ tonight?",
+  "ru": "Не знаете, кто сегодня дежурит?",
+  "opts": [
+   "who is on call",
+   "who on call is",
+   "who does on call"
+  ],
+  "a": "who is on call",
+  "why": "who — подлежащее (кто дежурит?): порядок не меняется — who is on call."
+ },
+ {
+  "id": "d5-consultant",
+  "t": 5,
+  "q": "Do you know ___?",
+  "ru": "Не знаете, кто его лечащий врач?",
+  "opts": [
+   "who his consultant is",
+   "who does his consultant",
+   "who his consultant"
+  ],
+  "a": "who his consultant is",
+  "why": "Подлежащее — his consultant, is после него. В разговоре услышите и who is his consultant — с be так тоже говорят, но надёжнее прямой порядок."
+ },
+ {
+  "id": "d5-caused",
+  "t": 5,
+  "q": "We still don't know ___ the bleed.",
+  "ru": "Мы до сих пор не знаем, что вызвало кровоизлияние.",
+  "opts": [
+   "what caused",
+   "what did cause",
+   "what it caused"
+  ],
+  "a": "what caused",
+  "why": "what — подлежащее (что вызвало?): what caused."
+ },
+ {
+  "id": "d5-which",
+  "t": 5,
+  "q": "Could you tell me ___ best?",
+  "ru": "Подскажите, какое лечение помогает лучше всего?",
+  "opts": [
+   "which treatment works",
+   "which treatment does work",
+   "which does treatment work"
+  ],
+  "a": "which treatment works",
+  "why": "which treatment — подлежащее: which treatment works."
+ },
+ {
+  "id": "d6-wonder",
+  "t": 6,
+  "q": "I wonder ___",
+  "ru": "Интересно, где он.",
+  "opts": [
+   "where he is.",
+   "where is he?",
+   "where he is?"
+  ],
+  "a": "where he is.",
+  "why": "I wonder — утверждение: прямой порядок и точка."
+ },
+ {
+  "id": "d6-idea",
+  "t": 6,
+  "q": "Have you got any idea ___?",
+  "ru": "Не представляете, сколько это стоит?",
+  "opts": [
+   "how much it costs",
+   "how much does it cost",
+   "how much it does cost"
+  ],
+  "a": "how much it costs",
+  "why": "Прямой порядок, does исчезает: how much it costs."
+ },
+ {
+  "id": "d6-mark",
+  "t": 6,
+  "q": "Do you know where he is___",
+  "ru": "Вы не знаете, где он?",
+  "opts": [
+   "?",
+   "."
+  ],
+  "a": "?",
+  "why": "Начало — вопрос (Do you know…), значит в конце знак вопроса."
+ },
+ {
+  "id": "d6-dose",
+  "t": 6,
+  "q": "I'm not sure ___.",
+  "ru": "Не уверен, какую дозу он принимает.",
+  "opts": [
+   "what dose he takes",
+   "what dose does he take",
+   "what dose he take"
+  ],
+  "a": "what dose he takes",
+  "why": "Прямой порядок, -s на глаголе: what dose he takes."
+ },
+ {
+  "id": "d6-transfer",
+  "t": 6,
+  "q": "I'd like to know ___.",
+  "ru": "Хотел бы знать, почему его не перевели раньше.",
+  "opts": [
+   "why he wasn't transferred earlier",
+   "why wasn't he transferred earlier",
+   "why he not was transferred earlier"
+  ],
+  "a": "why he wasn't transferred earlier",
+  "why": "Прямой порядок и в пассиве: why he wasn't transferred."
+ },
+ {
+  "id": "d6-to",
+  "t": 6,
+  "q": "I don't know ___.",
+  "ru": "Не знаю, что ему сказать.",
+  "opts": [
+   "what to tell him",
+   "what tell him",
+   "what do I tell him"
+  ],
+  "a": "what to tell him",
+  "why": "«Что сказать, куда идти» — вопросительное слово + to: what to tell him."
+ },
+ {
+  "id": "d7-home",
+  "t": 7,
+  "q": "The patient asked when ___ home.",
+  "ru": "Пациент спросил, когда сможет поехать домой.",
+  "opts": [
+   "he could go",
+   "could he go",
+   "he can going"
+  ],
+  "a": "he could go",
+  "why": "Пересказ: прямой порядок и сдвиг — can → could: when he could go."
+ },
+ {
+  "id": "d7-normal",
+  "t": 7,
+  "q": "She wanted to know ___ normal.",
+  "ru": "Она хотела знать, нормальный ли снимок.",
+  "opts": [
+   "whether the scan was",
+   "was the scan",
+   "whether was the scan"
+  ],
+  "a": "whether the scan was",
+  "why": "«Ли» — whether, порядок прямой, is → was."
+ },
+ {
+  "id": "d7-lived",
+  "t": 7,
+  "q": "I asked her ___.",
+  "ru": "Я спросил, где она живёт.",
+  "opts": [
+   "where she lived",
+   "where did she live",
+   "where she did live"
+  ],
+  "a": "where she lived",
+  "why": "Прямой порядок, did исчезает, время сдвигается: where she lived."
+ },
+ {
+  "id": "d7-taking",
+  "t": 7,
+  "q": "The GP asked ___ any other medication.",
+  "ru": "Терапевт спросил, принимает ли он другие препараты.",
+  "opts": [
+   "if he was taking",
+   "was he taking",
+   "if was he taking"
+  ],
+  "a": "if he was taking",
+  "why": "if + прямой порядок: if he was taking."
+ },
+ {
+  "id": "d7-police",
+  "t": 7,
+  "q": "The police asked me ___.",
+  "ru": "Полиция спросила меня, что произошло.",
+  "opts": [
+   "what had happened",
+   "what had it happened",
+   "what did happen"
+  ],
+  "a": "what had happened",
+  "why": "what — подлежащее; что случилось раньше — Past Perfect: what had happened."
+ },
+ {
+  "id": "d7-waited",
+  "t": 7,
+  "q": "His wife asked why ___ so long.",
+  "ru": "Жена спросила, почему так долго ждали.",
+  "opts": [
+   "they had waited",
+   "had they waited",
+   "did they wait"
+  ],
+  "a": "they had waited",
+  "why": "Прямой порядок и Past Perfect: why they had waited."
+ },
+ {
+  "id": "d8-unclear",
+  "t": 8,
+  "q": "It remains unclear ___ thrombolysis benefits these patients.",
+  "ru": "Остаётся неясным, помогает ли этим пациентам тромболизис.",
+  "opts": [
+   "whether",
+   "that",
+   "does"
+  ],
+  "a": "whether",
+  "why": "«Ли» в научном тексте — whether."
+ },
+ {
+  "id": "d8-what",
+  "t": 8,
+  "q": "___ he told us changed the diagnosis.",
+  "ru": "То, что он рассказал, изменило диагноз.",
+  "opts": [
+   "What",
+   "That what",
+   "Which"
+  ],
+  "a": "What",
+  "why": "What he told us — «то, что он рассказал»: подлежащее предложения."
+ },
+ {
+  "id": "d8-where",
+  "t": 8,
+  "q": "___ the clot is determines the treatment.",
+  "ru": "От того, где тромб, зависит лечение.",
+  "opts": [
+   "Where",
+   "Where is",
+   "Where does"
+  ],
+  "a": "Where",
+  "why": "Where the clot is — подлежащее; порядок прямой."
+ },
+ {
+  "id": "d8-why",
+  "t": 8,
+  "q": "We do not fully understand ___ some patients recover faster.",
+  "ru": "Мы не до конца понимаем, почему одни пациенты восстанавливаются быстрее.",
+  "opts": [
+   "why",
+   "why do",
+   "why are"
+  ],
+  "a": "why",
+  "why": "Прямой порядок без do: why some patients recover."
+ },
+ {
+  "id": "d8-question",
+  "t": 8,
+  "q": "The question is how ___.",
+  "ru": "Вопрос в том, как быстро мы сможем его перевести.",
+  "opts": [
+   "quickly we can transfer him",
+   "quickly can we transfer him",
+   "quickly we transfer can him"
+  ],
+  "a": "quickly we can transfer him",
+  "why": "После The question is — прямой порядок: how quickly we can."
+ },
+ {
+  "id": "d8-how",
+  "t": 8,
+  "q": "This study looks at ___ stroke care has changed.",
+  "ru": "В исследовании рассматривается, как изменилась помощь при инсульте.",
+  "opts": [
+   "how",
+   "how has",
+   "how did"
+  ],
+  "a": "how",
+  "why": "Прямой порядок: how stroke care has changed."
+ },
+ {
+  "id": "d9-depends",
+  "t": 9,
+  "q": "It depends on ___ he agrees.",
+  "ru": "Зависит от того, согласится ли он.",
+  "opts": [
+   "whether",
+   "if",
+   "that"
+  ],
+  "a": "whether",
+  "why": "После предлога — только whether: depends on whether."
+ },
+ {
+  "id": "d9-decide",
+  "t": 9,
+  "q": "We need to decide ___ to operate.",
+  "ru": "Нужно решить, оперировать ли.",
+  "opts": [
+   "whether",
+   "if",
+   "that"
+  ],
+  "a": "whether",
+  "why": "Перед to + глагол — только whether: whether to operate."
+ },
+ {
+  "id": "d9-ornot",
+  "t": 9,
+  "q": "Let me know ___ or not you can come.",
+  "ru": "Дайте знать, сможете ли вы прийти.",
+  "opts": [
+   "whether",
+   "if",
+   "that"
+  ],
+  "a": "whether",
+  "why": "whether or not — устойчивая пара. If or not подряд не ставят."
+ },
+ {
+  "id": "d9-start",
+  "t": 9,
+  "q": "___ he will recover fully is still unclear.",
+  "ru": "Восстановится ли он полностью, пока неясно.",
+  "opts": [
+   "Whether",
+   "If",
+   "That"
+  ],
+  "a": "Whether",
+  "why": "В начале предложения «ли» — только whether."
+ },
+ {
+  "id": "d9-ask",
+  "t": 9,
+  "q": "Ask him ___ he has any allergies.",
+  "ru": "Спросите, есть ли у него аллергия.",
+  "opts": [
+   "if",
+   "that",
+   "does"
+  ],
+  "a": "if",
+  "why": "В разговоре — чаще if; whether тоже верно."
+ },
+ {
+  "id": "d9-cond",
+  "t": 9,
+  "q": "___ he comes, call me.",
+  "ru": "Если он придёт, позвоните мне.",
+  "opts": [
+   "If",
+   "Whether",
+   "Does"
+  ],
+  "a": "If",
+  "why": "«Если» в условии — только if. Whether — «ли»."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "indq:state";
+const LS_SPEAK = "indq:autospeak";
+const LS_TAB = "indq:tab";
+const LS_OPEN = "indq:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "questions"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

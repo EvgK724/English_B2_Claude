@@ -27,3 +27,8 @@ sources/nverb/clips.json
 sources/nverb/index.html
 sources/nverb/preview.html
 sources/nverb/*.png
+sources/indq/audio/
+sources/indq/clips.json
+sources/indq/index.html
+sources/indq/preview.html
+sources/indq/*.png
