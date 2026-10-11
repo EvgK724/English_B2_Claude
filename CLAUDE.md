@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-53 тренажёра английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+54 тренажёра английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается из этого репозитория (ветка `main`, папка `/`),
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     53 тренажёра, каждый — самостоятельная страница
+  apps/<ключ>.html     54 тренажёра, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -95,6 +95,10 @@ python3 -m http.server 8000
   `python3 during/mk_template.py`, `during/clips.py`, `during/tts.py`, `during/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 during/test.py`. «В течение»: for, during, over, throughout, within и рядом in (через), while,
   формулы статей. Стоит сразу после «Предлогов at, on, in» (preps): там время в точке, здесь — отрезок.
+- **«Инфинитив без to» (bare)** — так же, из `sources/bare/` (шаблон из `sounds/template.html`):
+  `python3 bare/mk_template.py`, `bare/clips.py`, `bare/tts.py`, `bare/build.py`, затем `python3 tools/mk_shell.py`;
+  проверка — `python3 bare/test.py`. Модальные, do/does/did, make и let, had better, would rather, why not, help,
+  see и hear, пассив (was made to), All I did was ask. Стоит сразу после «To или -ing» (toing).
 
 ## Правила оформления
 

@@ -37,3 +37,8 @@ sources/during/clips.json
 sources/during/index.html
 sources/during/preview.html
 sources/during/*.png
+sources/bare/audio/
+sources/bare/clips.json
+sources/bare/index.html
+sources/bare/preview.html
+sources/bare/*.png
