@@ -32,3 +32,8 @@ sources/indq/clips.json
 sources/indq/index.html
 sources/indq/preview.html
 sources/indq/*.png
+sources/during/audio/
+sources/during/clips.json
+sources/during/index.html
+sources/during/preview.html
+sources/during/*.png

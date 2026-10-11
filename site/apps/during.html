@@ -1,0 +1,1771 @@
+<title>For, during, within</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("during",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">For, during, within</h1>
+      <p class="r-sub">По-русски всё это&nbsp;— «в&nbsp;течение». По-английски слово зависит от&nbsp;вопроса: <b lang="en">for</b>&nbsp;— сколько, <b lang="en">during</b>&nbsp;— когда, <b lang="en">within</b>&nbsp;— не&nbsp;позднее, <b lang="en">throughout</b>&nbsp;— всё время, <b lang="en">over</b>&nbsp;— за период.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Смысл</th><th scope="col">Примеры</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">for</th></tr><tr><td><b class="h">сколько?</b>длительность отрезка</td><td><span class="f st" lang="en">for two hours <span class="sep">·</span> for&nbsp;a&nbsp;year</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">during</th></tr><tr><td><b class="h">когда? во время чего?</b>событие или период</td><td><span class="f st" lang="en">during the meeting <span class="sep">·</span> during the night</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">within</th></tr><tr><td><b class="h">не позднее</b>уложиться в&nbsp;срок</td><td><span class="f st" lang="en">within 24 hours <span class="sep">·</span> within 4.5 hours of onset</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">throughout</th></tr><tr><td><b class="h">на протяжении всего</b>от начала до конца</td><td><span class="f st" lang="en">throughout the day <span class="sep">·</span> throughout the study</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">over</th></tr><tr><td><b class="h">за период</b>изменение, тренд</td><td><span class="f st" lang="en">over the past five years <span class="sep">·</span> over the weekend</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">in</th></tr><tr><td><b class="h">через</b>в&nbsp;конце срока</td><td><span class="f st" lang="en">in ten minutes <span class="sep">·</span> in&nbsp;a&nbsp;week</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">while</th></tr><tr><td><b class="h">пока</b>дальше подлежащее и&nbsp;глагол</td><td><span class="f st" lang="en">while he was asleep <span class="sep">·</span> while driving</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Спрашиваете «сколько?» — for</p><p class="s-f" lang="en"><span class="pr">for&nbsp;two&nbsp;hours</span> <span class="sep">·</span> <span class="pr">for&nbsp;a&nbsp;week</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">«Когда, во время чего?» — during, дальше существительное</p><p class="s-f" lang="en"><span class="st">during&nbsp;the&nbsp;night</span> <span class="sep">·</span> <span class="st">during&nbsp;surgery</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Уложиться в срок — within; «через» — in</p><p class="s-f" lang="en"><span class="good">within&nbsp;24&nbsp;hours</span> <span class="sep">·</span> <span class="hl">in&nbsp;ten&nbsp;minutes</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Всё время, от начала до конца — throughout; за период, с изменением — over</p><p class="s-f" lang="en"><span class="good">throughout the night</span> <span class="sep">·</span> <span class="hl">over the past year</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Дальше подлежащее и глагол — while</p><p class="s-f" lang="en"><span class="hl">while he was asleep</span> <span class="sep">·</span> <span class="hl">while&nbsp;driving</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr" lang="en">for</b>&nbsp;— сколько, <b class="st" lang="en">during</b>&nbsp;— когда, <b class="good" lang="en">within</b>&nbsp;— успеть, <b class="good" lang="en">throughout</b>&nbsp;— без перерыва, <b class="hl" lang="en">over</b>&nbsp;— что изменилось.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна ситуация&nbsp;— разный смысл</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">I slept <span class="pr">for eight hours</span>.</p><p class="cp-ru">сколько&nbsp;— восемь часов</p><p class="cp-en" lang="en">I woke up twice <span class="st">during the night</span>.</p><p class="cp-ru">когда&nbsp;— ночью</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="I slept for eight hours. I woke up twice during the night." aria-label="Прослушать: I slept for eight hours. / I woke up twice during the night."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">The doctor will see you <span class="hl">in ten minutes</span>.</p><p class="cp-ru">через десять минут</p><p class="cp-en" lang="en">The doctor will see you <span class="good">within ten minutes</span>.</p><p class="cp-ru">не позже чем через десять минут</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="The doctor will see you in ten minutes. The doctor will see you within ten minutes." aria-label="Прослушать: The doctor will see you in ten minutes. / The doctor will see you within ten minutes."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He woke up once <span class="st">during the night</span>.</p><p class="cp-ru">в&nbsp;какой-то момент ночи</p><p class="cp-en" lang="en">He was stable <span class="good">throughout the night</span>.</p><p class="cp-ru">всю ночь, без перерыва</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="He woke up once during the night. He was stable throughout the night." aria-label="Прослушать: He woke up once during the night. / He was stable throughout the night."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He had a seizure <span class="st">during the drive</span>.</p><p class="cp-ru">during + существительное</p><p class="cp-en" lang="en">He had a seizure <span class="hl">while he was driving</span>.</p><p class="cp-ru">while + подлежащее и&nbsp;глагол</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="He had a seizure during the drive. He had a seizure while he was driving." aria-label="Прослушать: He had a seizure during the drive. / He had a seizure while he was driving."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">Admissions have risen <span class="hl">over the past five years</span>.</p><p class="cp-ru">за пять лет&nbsp;— тренд</p><p class="cp-en" lang="en">She has worked here <span class="pr">for five years</span>.</p><p class="cp-ru">сколько&nbsp;— пять лет</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="Admissions have risen over the past five years. She has worked here for five years." aria-label="Прослушать: Admissions have risen over the past five years. / She has worked here for five years."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Take it during seven days.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Take it for seven days.</span><span class="err-note">сколько&nbsp;— for</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">His phone rang for the meeting.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">His phone rang during the meeting.</span><span class="err-note">во время чего&nbsp;— during</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He fell during he was sleeping.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He fell while he was sleeping.</span><span class="err-note">с&nbsp;подлежащим и&nbsp;глаголом&nbsp;— while</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">while the operation</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">during the operation</span><span class="err-note">с&nbsp;существительным&nbsp;— during</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;ll call you after ten minutes.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ll call you in ten minutes.</span><span class="err-note">через десять минут&nbsp;— in</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The results will be ready during two days.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The results will be ready within two days.</span><span class="err-note">уложиться в&nbsp;срок&nbsp;— within</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He was stable during all the night.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He was stable throughout the night.</span><span class="err-note">всю ночь&nbsp;— throughout или all night</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">within 4.5 hours from onset</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">within 4.5 hours of onset</span><span class="err-note">within … of</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He&#x27;ll be back for an hour.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He&#x27;ll be back in an hour.</span><span class="err-note">вернётся через час&nbsp;— in</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. [for|a] — оранжевый, [during|b] — синий, [within, throughout|c] — зелёный, [over, in, while] — подчёркнуто.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 9;
+const GROUPS = {"b1": "B1 — for и during", "b1p": "B1+ — within, throughout, over", "b2": "B2 — while и язык статей", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "for — сколько длится",
+  "sub": "for two hours · for a year",
+  "rule": "Сколько длится — for + отрезок времени: for two hours, for a week, for ten years, for ages. Это ответ на вопрос How long? Русское «в течение двух часов», «два часа», «неделю» — for two hours, for a week. During two hours — ошибка. С Present Perfect рядом с for бывает since — с какого момента: for ten years, но since 2015 (подробно — во «Временах английского»).",
+  "ex": [
+   {
+    "en": "Take the antibiotics [for seven days|a].",
+    "ru": "Принимайте антибиотики семь дней."
+   },
+   {
+    "en": "He was unconscious [for a few minutes|a].",
+    "ru": "Он был без сознания несколько минут."
+   },
+   {
+    "en": "She has worked here [for ten years|a].",
+    "ru": "Она работает здесь десять лет."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "during — во время чего",
+  "sub": "during the meeting · during the night",
+  "rule": "during + существительное — во время события или в течение периода: during the meeting, during the night, during surgery, during pregnancy, during his stay. Отвечает на вопрос «когда?», а не «сколько?». С числом during не ставят: during two hours — ошибка, нужно for two hours.",
+  "ex": [
+   {
+    "en": "His phone rang [during the meeting|b].",
+    "ru": "Во время совещания у него зазвонил телефон."
+   },
+   {
+    "en": "His blood pressure dropped [during surgery|b].",
+    "ru": "Во время операции давление упало."
+   },
+   {
+    "en": "Warfarin is avoided [during pregnancy|b].",
+    "ru": "Во время беременности варфарин не назначают."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "for или during",
+  "sub": "сколько — или когда",
+  "rule": "Два вопроса к себе: «сколько?» — for, «когда, во время чего?» — during. Часто они стоят в одном предложении: I slept for eight hours during the night. He was in hospital for two weeks during the winter. Не путайте с in: in the morning — утром, как часть дня; during the morning — в какой-то момент утра.",
+  "ex": [
+   {
+    "en": "I slept [for eight hours|a] [during the night|b].",
+    "ru": "Ночью я проспал восемь часов."
+   },
+   {
+    "en": "He was in hospital [for two weeks|a] [during the winter|b].",
+    "ru": "Зимой он две недели лежал в больнице."
+   },
+   {
+    "en": "She felt sick [for an hour|a] [during the flight|b].",
+    "ru": "Во время полёта её час мутило."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1p",
+  "title": "within — не позднее",
+  "sub": "within 24 hours · in ten minutes",
+  "late": 0.2,
+  "rule": "within + срок — «в течение, не позднее»: действие уложится в этот срок. within 24 hours, within 4.5 hours of symptom onset — обратите внимание на of. А in + срок — «через»: in ten minutes значит примерно через десять минут, в конце срока. «Через десять минут» — in ten minutes, а не after ten minutes. Ещё within — «в пределах»: within normal limits.",
+  "ex": [
+   {
+    "en": "Thrombolysis is given [within 4.5 hours of onset|c].",
+    "ru": "Тромболизис проводят в течение 4,5 часа от начала симптомов."
+   },
+   {
+    "en": "You will receive a reply [within 48 hours|c].",
+    "ru": "Ответ придёт в течение 48 часов."
+   },
+   {
+    "en": "The doctor will see you [in ten minutes].",
+    "ru": "Врач примет вас через десять минут."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "throughout — всё время",
+  "sub": "throughout the night · throughout the hospital",
+  "late": 0.2,
+  "rule": "throughout — на протяжении всего, от начала до конца, без перерыва: throughout the night, throughout the treatment, throughout the year. during — в какой-то момент периода, throughout — весь период целиком: He woke up once during the night, но He was stable throughout the night. Ещё throughout — «по всему»: throughout the hospital, throughout the country.",
+  "ex": [
+   {
+    "en": "The medicine should be taken [throughout the treatment|c].",
+    "ru": "Лекарство нужно принимать на протяжении всего лечения."
+   },
+   {
+    "en": "He was stable [throughout the night|c].",
+    "ru": "Всю ночь он был стабилен."
+   },
+   {
+    "en": "Hand gel is available [throughout the hospital|c].",
+    "ru": "Антисептик для рук есть по всей больнице."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "over — за период",
+  "sub": "over the past five years",
+  "late": 0.25,
+  "rule": "over + период — «за, в течение»: что изменилось или произошло за этот отрезок. Особенно с Present Perfect и в статьях: over the past five years, over the last decade. О будущем — over the next few days. Ещё over the weekend — за выходные, over the years — с годами. Хорошо сочетается с трендами: Admissions have risen over the past decade.",
+  "ex": [
+   {
+    "en": "Stroke admissions have risen [over the past five years].",
+    "ru": "За последние пять лет госпитализаций с инсультом стало больше."
+   },
+   {
+    "en": "His speech improved gradually [over the next few days].",
+    "ru": "За следующие несколько дней речь постепенно улучшилась."
+   },
+   {
+    "en": "I'll read your thesis [over the weekend].",
+    "ru": "Я прочитаю твою диссертацию за выходные."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "while или during",
+  "sub": "while he was driving · during the drive",
+  "late": 0.45,
+  "rule": "Оба — «во время, пока». during + существительное: during the drive, during sleep. while + подлежащее и глагол: while he was driving; или while + -ing: while driving. Частая ошибка — during he was sleeping. Ещё while — «тогда как», противопоставление: Some patients recover quickly, while others need months.",
+  "ex": [
+   {
+    "en": "He had a seizure [while he was driving].",
+    "ru": "У него случился приступ за рулём."
+   },
+   {
+    "en": "He had a seizure [during the drive|b].",
+    "ru": "У него случился приступ во время поездки."
+   },
+   {
+    "en": "Never use your phone [while driving].",
+    "ru": "Не пользуйтесь телефоном за рулём."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "«В течение» в статьях",
+  "sub": "over a 12-month period · throughout follow-up",
+  "late": 0.5,
+  "rule": "В статьях каждое «в течение» — своим словом. Период наблюдения — over a 12-month period или during follow-up. Всё время наблюдения — throughout follow-up. Уложиться в срок — within 24 hours of admission. Пока длится исследование — for the duration of the study (формально). В ходе — in the course of (книжно). Во время госпитализации — during hospitalisation.",
+  "ex": [
+   {
+    "en": "Patients were followed up [over a 12-month period].",
+    "ru": "Пациентов наблюдали в течение 12 месяцев."
+   },
+   {
+    "en": "[Throughout follow-up|c], no major bleeding occurred.",
+    "ru": "За всё время наблюдения больших кровотечений не было."
+   },
+   {
+    "en": "Treatment started [within 24 hours of admission|c].",
+    "ru": "Лечение начали в течение 24 часов от поступления."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// say — что произносить вместо предложения с ответом (ударение REcord и reCORD, вопросы о звуке).
+const CARDS = [
+ {
+  "id": "w1-days",
+  "t": 1,
+  "q": "Take the antibiotics ___ seven days.",
+  "ru": "Принимайте антибиотики семь дней.",
+  "opts": [
+   "for",
+   "during",
+   "within"
+  ],
+  "a": "for",
+  "why": "Сколько — for. During seven days — ошибка."
+ },
+ {
+  "id": "w1-hours",
+  "t": 1,
+  "q": "The headache lasted ___ about two hours.",
+  "ru": "Головная боль длилась около двух часов.",
+  "opts": [
+   "for",
+   "during",
+   "while"
+  ],
+  "a": "for",
+  "why": "Сколько длилась — for."
+ },
+ {
+  "id": "w1-years",
+  "t": 1,
+  "q": "She has worked here ___ ten years.",
+  "ru": "Она работает здесь десять лет.",
+  "opts": [
+   "for",
+   "during",
+   "since"
+  ],
+  "a": "for",
+  "why": "Отрезок — for ten years. Since — с какого момента: since 2015."
+ },
+ {
+  "id": "w1-minutes",
+  "t": 1,
+  "q": "He was unconscious ___ a few minutes.",
+  "ru": "Он был без сознания несколько минут.",
+  "opts": [
+   "for",
+   "during",
+   "over"
+  ],
+  "a": "for",
+  "why": "Сколько — for a few minutes."
+ },
+ {
+  "id": "w1-ages",
+  "t": 1,
+  "q": "I haven't seen him ___ ages.",
+  "ru": "Я его сто лет не видел.",
+  "opts": [
+   "for",
+   "during",
+   "within"
+  ],
+  "a": "for",
+  "why": "Очень долго — for ages (разг.)."
+ },
+ {
+  "id": "w1-week",
+  "t": 1,
+  "q": "Keep the dressing on ___ a week.",
+  "ru": "Не снимайте повязку неделю.",
+  "opts": [
+   "for",
+   "during",
+   "throughout"
+  ],
+  "a": "for",
+  "why": "Сколько — for a week."
+ },
+ {
+  "id": "w2-meeting",
+  "t": 2,
+  "q": "His phone rang ___ the meeting.",
+  "ru": "Во время совещания у него зазвонил телефон.",
+  "opts": [
+   "during",
+   "for",
+   "while"
+  ],
+  "a": "during",
+  "why": "Во время события — during the meeting. While — дальше нужны подлежащее и глагол."
+ },
+ {
+  "id": "w2-night",
+  "t": 2,
+  "q": "She woke up three times ___ the night.",
+  "ru": "Ночью она просыпалась три раза.",
+  "opts": [
+   "during",
+   "for",
+   "within"
+  ],
+  "a": "during",
+  "why": "Когда — during the night."
+ },
+ {
+  "id": "w2-surgery",
+  "t": 2,
+  "q": "His blood pressure dropped ___ surgery.",
+  "ru": "Во время операции у него упало давление.",
+  "opts": [
+   "during",
+   "for",
+   "over"
+  ],
+  "a": "during",
+  "why": "Во время — during surgery."
+ },
+ {
+  "id": "w2-pregnancy",
+  "t": 2,
+  "q": "Warfarin is avoided ___ pregnancy.",
+  "ru": "Во время беременности варфарин не назначают.",
+  "opts": [
+   "during",
+   "for",
+   "while"
+  ],
+  "a": "during",
+  "why": "Период — during pregnancy."
+ },
+ {
+  "id": "w2-twohours",
+  "t": 2,
+  "q": "The patient was monitored ___ two hours.",
+  "ru": "Пациента наблюдали два часа.",
+  "opts": [
+   "for",
+   "during",
+   "while"
+  ],
+  "a": "for",
+  "why": "С числом, «сколько» — for. During two hours — ошибка."
+ },
+ {
+  "id": "w2-stay",
+  "t": 2,
+  "q": "He had a fall ___ his stay in hospital.",
+  "ru": "Во время пребывания в больнице он упал.",
+  "opts": [
+   "during",
+   "for",
+   "within"
+  ],
+  "a": "during",
+  "why": "Во время — during his stay."
+ },
+ {
+  "id": "w3-night",
+  "t": 3,
+  "q": "I slept for eight hours ___ the night.",
+  "ru": "Ночью я проспал восемь часов.",
+  "opts": [
+   "during",
+   "for",
+   "while"
+  ],
+  "a": "during",
+  "why": "Когда — during the night; сколько — for eight hours."
+ },
+ {
+  "id": "w3-eight",
+  "t": 3,
+  "q": "I slept ___ eight hours during the night.",
+  "ru": "Ночью я проспал восемь часов.",
+  "opts": [
+   "for",
+   "during",
+   "while"
+  ],
+  "a": "for",
+  "why": "Сколько — for eight hours."
+ },
+ {
+  "id": "w3-winter",
+  "t": 3,
+  "q": "He was in hospital for two weeks ___ the winter.",
+  "ru": "Зимой он две недели лежал в больнице.",
+  "opts": [
+   "during",
+   "for",
+   "within"
+  ],
+  "a": "during",
+  "why": "Когда — during the winter."
+ },
+ {
+  "id": "w3-howlong",
+  "t": 3,
+  "q": "How long did the seizure last? — ___ about three minutes.",
+  "ru": "Сколько длился приступ? — Около трёх минут.",
+  "opts": [
+   "For",
+   "During",
+   "Within"
+  ],
+  "a": "For",
+  "why": "На How long? отвечают for."
+ },
+ {
+  "id": "w3-when",
+  "t": 3,
+  "q": "When did the seizure start? — ___ breakfast.",
+  "ru": "Когда начался приступ? — Во время завтрака.",
+  "opts": [
+   "During",
+   "For",
+   "While"
+  ],
+  "a": "During",
+  "why": "На «когда?» — during + существительное."
+ },
+ {
+  "id": "w3-flight",
+  "t": 3,
+  "q": "She felt sick ___ an hour during the flight.",
+  "ru": "Во время полёта её час мутило.",
+  "opts": [
+   "for",
+   "during",
+   "over"
+  ],
+  "a": "for",
+  "why": "Сколько — for an hour; когда — during the flight."
+ },
+ {
+  "id": "w4-onset",
+  "t": 4,
+  "q": "Thrombolysis is given ___ 4.5 hours of symptom onset.",
+  "ru": "Тромболизис проводят в течение 4,5 часа от начала симптомов.",
+  "opts": [
+   "within",
+   "during",
+   "for"
+  ],
+  "a": "within",
+  "why": "Уложиться в срок — within … of."
+ },
+ {
+  "id": "w4-reply",
+  "t": 4,
+  "q": "You will receive a reply ___ 48 hours.",
+  "ru": "Ответ придёт в течение 48 часов.",
+  "opts": [
+   "within",
+   "during",
+   "for"
+  ],
+  "a": "within",
+  "why": "Не позднее — within 48 hours."
+ },
+ {
+  "id": "w4-in",
+  "t": 4,
+  "q": "The doctor will see you ___ ten minutes.",
+  "ru": "Врач примет вас через десять минут.",
+  "opts": [
+   "in",
+   "after",
+   "during"
+  ],
+  "a": "in",
+  "why": "Через — in ten minutes. After ten minutes — калька с «через»."
+ },
+ {
+  "id": "w4-limits",
+  "t": 4,
+  "q": "His blood tests are ___ normal limits.",
+  "ru": "Анализы крови у него в пределах нормы.",
+  "opts": [
+   "within",
+   "during",
+   "throughout"
+  ],
+  "a": "within",
+  "why": "В пределах нормы — within normal limits."
+ },
+ {
+  "id": "w4-of",
+  "t": 4,
+  "q": "Treatment should start within an hour ___ arrival.",
+  "ru": "Лечение должно начаться в течение часа от поступления.",
+  "opts": [
+   "of",
+   "at",
+   "since"
+  ],
+  "a": "of",
+  "why": "within … of: within an hour of arrival."
+ },
+ {
+  "id": "w4-days",
+  "t": 4,
+  "q": "Most patients feel better ___ a few days.",
+  "ru": "Большинству пациентов становится лучше в течение нескольких дней.",
+  "opts": [
+   "within",
+   "during",
+   "while"
+  ],
+  "a": "within",
+  "why": "Не позднее чем через несколько дней — within a few days."
+ },
+ {
+  "id": "w5-night",
+  "t": 5,
+  "q": "He slept well ___ the night and never woke up.",
+  "ru": "Он хорошо спал всю ночь и ни разу не проснулся.",
+  "opts": [
+   "throughout",
+   "during",
+   "within"
+  ],
+  "a": "throughout",
+  "why": "Всю ночь, без перерыва — throughout. During — в какой-то момент ночи."
+ },
+ {
+  "id": "w5-treatment",
+  "t": 5,
+  "q": "The medicine should be taken ___ the treatment.",
+  "ru": "Лекарство нужно принимать на протяжении всего лечения.",
+  "opts": [
+   "throughout",
+   "within",
+   "for"
+  ],
+  "a": "throughout",
+  "why": "На протяжении всего — throughout."
+ },
+ {
+  "id": "w5-hospital",
+  "t": 5,
+  "q": "Hand gel is available ___ the hospital.",
+  "ru": "Антисептик для рук есть по всей больнице.",
+  "opts": [
+   "throughout",
+   "during",
+   "over"
+  ],
+  "a": "throughout",
+  "why": "По всему месту — throughout the hospital."
+ },
+ {
+  "id": "w5-once",
+  "t": 5,
+  "q": "He woke up once ___ the night.",
+  "ru": "Ночью он проснулся один раз.",
+  "opts": [
+   "during",
+   "throughout",
+   "within"
+  ],
+  "a": "during",
+  "why": "Один раз в какой-то момент — during. Throughout — всё время."
+ },
+ {
+  "id": "w5-year",
+  "t": 5,
+  "q": "The clinic is open ___ the year.",
+  "ru": "Клиника работает круглый год.",
+  "opts": [
+   "throughout",
+   "during",
+   "within"
+  ],
+  "a": "throughout",
+  "why": "Круглый год — throughout the year или all year round."
+ },
+ {
+  "id": "w5-life",
+  "t": 5,
+  "q": "She stayed active ___ her life.",
+  "ru": "Она всю жизнь оставалась активной.",
+  "opts": [
+   "throughout",
+   "during",
+   "within"
+  ],
+  "a": "throughout",
+  "why": "Всю жизнь — throughout her life (или all her life)."
+ },
+ {
+  "id": "w6-past",
+  "t": 6,
+  "q": "Stroke admissions have risen ___ the past five years.",
+  "ru": "За последние пять лет госпитализаций с инсультом стало больше.",
+  "opts": [
+   "over",
+   "within",
+   "since"
+  ],
+  "a": "over",
+  "why": "За период, тренд — over the past five years."
+ },
+ {
+  "id": "w6-next",
+  "t": 6,
+  "q": "His speech improved gradually ___ the next few days.",
+  "ru": "За следующие несколько дней речь постепенно улучшилась.",
+  "opts": [
+   "over",
+   "while",
+   "since"
+  ],
+  "a": "over",
+  "why": "Постепенно за период — over the next few days."
+ },
+ {
+  "id": "w6-weekend",
+  "t": 6,
+  "q": "I'll read your thesis ___ the weekend.",
+  "ru": "Я прочитаю твою диссертацию за выходные.",
+  "opts": [
+   "over",
+   "for",
+   "while"
+  ],
+  "a": "over",
+  "why": "За выходные — over the weekend."
+ },
+ {
+  "id": "w6-decade",
+  "t": 6,
+  "q": "Mortality has fallen by a third ___ the last decade.",
+  "ru": "За последнее десятилетие смертность снизилась на треть.",
+  "opts": [
+   "over",
+   "within",
+   "since"
+  ],
+  "a": "over",
+  "why": "За десятилетие — over the last decade."
+ },
+ {
+  "id": "w6-period",
+  "t": 6,
+  "q": "Patients were followed up ___ a 12-month period.",
+  "ru": "Пациентов наблюдали в течение 12 месяцев.",
+  "opts": [
+   "over",
+   "while",
+   "since"
+  ],
+  "a": "over",
+  "why": "Период наблюдения — over a 12-month period."
+ },
+ {
+  "id": "w6-years",
+  "t": 6,
+  "q": "___ the years, she became an expert in stroke care.",
+  "ru": "С годами она стала экспертом по инсульту.",
+  "opts": [
+   "Over",
+   "For",
+   "Within"
+  ],
+  "a": "Over",
+  "why": "С годами — over the years."
+ },
+ {
+  "id": "w7-was",
+  "t": 7,
+  "q": "The patient fell ___ he was walking to the toilet.",
+  "ru": "Пациент упал, когда шёл в туалет.",
+  "opts": [
+   "while",
+   "during",
+   "for"
+  ],
+  "a": "while",
+  "why": "Дальше подлежащее и глагол — while."
+ },
+ {
+  "id": "w7-night",
+  "t": 7,
+  "q": "The patient fell ___ the night.",
+  "ru": "Пациент упал ночью.",
+  "opts": [
+   "during",
+   "while",
+   "for"
+  ],
+  "a": "during",
+  "why": "Дальше существительное — during."
+ },
+ {
+  "id": "w7-driving",
+  "t": 7,
+  "q": "Never use your phone ___ driving.",
+  "ru": "Не пользуйтесь телефоном за рулём.",
+  "opts": [
+   "while",
+   "during",
+   "for"
+  ],
+  "a": "while",
+  "why": "while + -ing: while driving."
+ },
+ {
+  "id": "w7-sleep",
+  "t": 7,
+  "q": "His oxygen levels dropped ___ sleep.",
+  "ru": "Во сне у него падала сатурация.",
+  "opts": [
+   "during",
+   "while",
+   "for"
+  ],
+  "a": "during",
+  "why": "Существительное sleep — during sleep."
+ },
+ {
+  "id": "w7-contrast",
+  "t": 7,
+  "q": "Some patients recover fully, ___ others need long rehabilitation.",
+  "ru": "Одни пациенты восстанавливаются полностью, а другим нужна долгая реабилитация.",
+  "opts": [
+   "while",
+   "during",
+   "for"
+  ],
+  "a": "while",
+  "why": "while — «тогда как», противопоставление."
+ },
+ {
+  "id": "w7-op",
+  "t": 7,
+  "q": "The surgeon was called away ___ the operation.",
+  "ru": "Хирурга вызвали прямо во время операции.",
+  "opts": [
+   "during",
+   "while",
+   "for"
+  ],
+  "a": "during",
+  "why": "Существительное — during the operation."
+ },
+ {
+  "id": "w8-duration",
+  "t": 8,
+  "q": "Participants took the drug for the ___ of the study.",
+  "ru": "Участники принимали препарат всё время исследования.",
+  "opts": [
+   "duration",
+   "during",
+   "period"
+  ],
+  "a": "duration",
+  "why": "Пока длится — for the duration of (формально)."
+ },
+ {
+  "id": "w8-course",
+  "t": 8,
+  "q": "In the ___ of the trial, three patients withdrew.",
+  "ru": "В ходе исследования три пациента выбыли.",
+  "opts": [
+   "course",
+   "during",
+   "time"
+  ],
+  "a": "course",
+  "why": "В ходе — in the course of (книжно)."
+ },
+ {
+  "id": "w8-followup",
+  "t": 8,
+  "q": "No major bleeding occurred ___ follow-up.",
+  "ru": "За всё время наблюдения больших кровотечений не было.",
+  "opts": [
+   "throughout",
+   "within",
+   "for"
+  ],
+  "a": "throughout",
+  "why": "За всё время наблюдения — throughout follow-up."
+ },
+ {
+  "id": "w8-admission",
+  "t": 8,
+  "q": "Antiplatelet therapy was started within 24 hours ___ admission.",
+  "ru": "Антиагреганты начали в течение 24 часов от поступления.",
+  "opts": [
+   "of",
+   "at",
+   "during"
+  ],
+  "a": "of",
+  "why": "within … of: within 24 hours of admission."
+ },
+ {
+  "id": "w8-hosp",
+  "t": 8,
+  "q": "Pneumonia developed in 8% of patients ___ hospitalisation.",
+  "ru": "Пневмония развилась у 8% пациентов во время госпитализации.",
+  "opts": [
+   "during",
+   "for",
+   "while"
+  ],
+  "a": "during",
+  "why": "Во время госпитализации — during hospitalisation."
+ },
+ {
+  "id": "w8-period",
+  "t": 8,
+  "q": "Data were collected ___ a two-year period.",
+  "ru": "Данные собирали в течение двух лет.",
+  "opts": [
+   "over",
+   "while",
+   "since"
+  ],
+  "a": "over",
+  "why": "Период сбора данных — over a two-year period."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "during:state";
+const LS_SPEAK = "during:autospeak";
+const LS_TAB = "during:tab";
+const LS_OPEN = "during:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "during"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>
