@@ -101,9 +101,10 @@ python3 -m http.server 8000
   see и hear, пассив (was made to), All I did was ask. Стоит сразу после «To или -ing» (toing).
 - **«I know the feeling» (encour)** — фразы урока Speaking Focus (being encouraging, showing you have things in common),
   все 15 с фото урока: вставить слово, что ответить в ситуации, вспомнить фразу по-русски. Собирается так же,
-  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Записей Ryan пока нет:
-  12 октября 2026 сервис Microsoft отклонял синтез edge-tts (403, в том числе у ежедневных задач), фразы читает голос
-  устройства. Когда сервис заработает: `python3 encour/tts.py` → `encour/build.py` → `tools/mk_shell.py`.
+  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Голос — Daniel (bm_daniel)
+  открытой модели Kokoro, записывается локально: `python3 encour/tts_kokoro.py` (модель с GitHub, см. шапку скрипта).
+  Ryan не вышел: 12 октября 2026 сервис Microsoft отклонял синтез edge-tts (403, в том числе у ежедневных задач),
+  пользователь выбрал Daniel.
 
 ## Правила оформления
 

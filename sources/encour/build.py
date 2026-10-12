@@ -2,7 +2,8 @@
 # Запуск из sources/:
 #   python3 encour/mk_template.py      # шаблон из sounds/template.html
 #   python3 encour/clips.py            # список записей → encour/clips.json
-#   python3 encour/tts.py              # записи голосом Ryan → encour/audio/ (нужен доступ к speech.platform.bing.com;
+#   python3 encour/tts_kokoro.py       # записи голосом Daniel (Kokoro, локально) → encour/audio/; encour/tts.py — Ryan, если edge-tts снова заработает
+#                                     # (старая пометка про Ryan: нужен доступ к speech.platform.bing.com;
 #                                     #   без записей фразы читает голос устройства, пакет пустой)
 #   python3 encour/build.py            # site/apps/encour.html, site/packs/encour.mp3, tools/packs.json, tools/catalog.json
 #   cd .. && python3 tools/mk_shell.py
@@ -121,7 +122,7 @@ entry = {"key": KEY, "title": "I know the feeling", "group": "vocab",
          "en": "being encouraging showing you have things in common speaking it might work out fine never give up hope "
                "you never know good luck it's not your fault I know the feeling the same thing happened to me "
                "поддержать посочувствовать фразы",
-         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Ryan", "size": len(app.encode())}
+         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Daniel", "size": len(app.encode())}
 apps = [a for a in cat["apps"] if a["key"] != KEY]
 pos = next(i for i, a in enumerate(apps) if a["key"] == "idm") + 1
 cat["apps"] = apps[:pos] + [entry] + apps[pos:]
