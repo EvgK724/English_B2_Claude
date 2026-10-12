@@ -42,3 +42,8 @@ sources/bare/clips.json
 sources/bare/index.html
 sources/bare/preview.html
 sources/bare/*.png
+sources/encour/audio/
+sources/encour/clips.json
+sources/encour/index.html
+sources/encour/preview.html
+sources/encour/*.png

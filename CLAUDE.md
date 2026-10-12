@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-54 тренажёра английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+55 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается из этого репозитория (ветка `main`, папка `/`),
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     54 тренажёра, каждый — самостоятельная страница
+  apps/<ключ>.html     55 тренажёров, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -99,6 +99,11 @@ python3 -m http.server 8000
   `python3 bare/mk_template.py`, `bare/clips.py`, `bare/tts.py`, `bare/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 bare/test.py`. Модальные, do/does/did, make и let, had better, would rather, why not, help,
   see и hear, пассив (was made to), All I did was ask. Стоит сразу после «To или -ing» (toing).
+- **«I know the feeling» (encour)** — фразы урока Speaking Focus (being encouraging, showing you have things in common),
+  все 15 с фото урока: вставить слово, что ответить в ситуации, вспомнить фразу по-русски. Собирается так же,
+  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Записей Ryan пока нет:
+  12 октября 2026 сервис Microsoft отклонял синтез edge-tts (403, в том числе у ежедневных задач), фразы читает голос
+  устройства. Когда сервис заработает: `python3 encour/tts.py` → `encour/build.py` → `tools/mk_shell.py`.
 
 ## Правила оформления
 

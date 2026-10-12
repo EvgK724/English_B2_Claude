@@ -1,0 +1,1668 @@
+<title>I know the feeling</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("encour",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">I know the feeling</h1>
+      <p class="r-sub">Фразы урока, которые нужно знать наизусть: как <b class="pr">поддержать</b> собеседника и&nbsp;как показать, что <b class="st">у&nbsp;вас было так&nbsp;же</b>. Слушайте и&nbsp;повторяйте вслух целиком&nbsp;— фразы запоминаются кусками, вместе с&nbsp;интонацией.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Смысл</th><th scope="col">Фразы</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr">Подбодрить</th></tr><tr><td><b class="h">может, всё наладится</b>надежда</td><td><span class="f st" lang="en">It might work out fine <span class="sep">·</span> You never know <span class="sep">·</span> Never give up hope</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr">Успокоить</th></tr><tr><td><b class="h">не переживай</b>уверенность</td><td><span class="f st" lang="en">I&#x27;m sure it&#x27;ll be fine <span class="sep">·</span> Don&#x27;t&nbsp;worry <span class="sep">·</span> Good&nbsp;luck</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr">Снять вину</th></tr><tr><td><b class="h">ты не виноват</b>просто не повезло</td><td><span class="f st" lang="en">It&#x27;s not your fault <span class="sep">·</span> You&#x27;re just unlucky <span class="sep">·</span> It&#x27;s never easy</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr">У меня так же</th></tr><tr><td><b class="h">общий опыт</b>коротко</td><td><span class="f st" lang="en">I know the feeling <span class="sep">·</span> It was the same with me <span class="sep">·</span> The same thing happened to me</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr">И у меня было</th></tr><tr><td><b class="h">свой похожий случай</b></td><td><span class="f st" lang="en">I&#x27;ve just had a similar experience <span class="sep">·</span> That&#x27;s just like when I lost my phone</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать фразу</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Боится, что не&nbsp;получится?</p><p class="s-f" lang="en"><span class="pr">It might work out fine</span> <span class="sep">·</span> <span class="pr">I'm sure it'll be fine</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Сейчас начнётся экзамен, собеседование?</p><p class="s-f" lang="en"><span class="pr">Good&nbsp;luck!</span> <span class="sep">·</span> <span class="pr">Don't&nbsp;worry</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Винит себя или уже не&nbsp;повезло?</p><p class="s-f" lang="en"><span class="pr">It's not your fault</span> <span class="sep">·</span> <span class="pr">You're just unlucky</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Устал, тяжело?</p><p class="s-f" lang="en"><span class="pr">It's&nbsp;never&nbsp;easy</span> <span class="sep">·</span> <span class="pr">Never give up hope</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">У&nbsp;вас было так&nbsp;же?</p><p class="s-f" lang="en"><span class="st">I know the feeling</span> <span class="sep">·</span> <span class="st">That's just like when I lost my phone</span></p></div></li>
+        </ol>
+        <p class="algo-m">Сначала посочувствуй&nbsp;— <b class="st" lang="en">I&nbsp;know the feeling</b>, потом подбодри&nbsp;— <b class="pr" lang="en">It might work out fine</b>.</p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Мини-диалоги</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">— I failed my driving test again.</p><p class="cp-ru">Я&nbsp;опять не сдал на права.</p><p class="cp-en" lang="en">— <span class="pr">Don&#x27;t worry</span>. <span class="pr">It&#x27;s never easy</span>.</p><p class="cp-ru">Не переживай. Это всегда непросто.</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="— I failed my driving test again. — Don&#x27;t worry. It&#x27;s never easy." aria-label="Прослушать: — I failed my driving test again. / — Don&#x27;t worry. It&#x27;s never easy."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— I get my results tomorrow. I&#x27;m so nervous.</p><p class="cp-ru">Завтра будут результаты. Я&nbsp;так волнуюсь.</p><p class="cp-en" lang="en">— <span class="pr">I&#x27;m sure it&#x27;ll be fine</span>. <span class="pr">Good luck</span>!</p><p class="cp-ru">Уверен, всё будет хорошо. Удачи!</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="— I get my results tomorrow. I&#x27;m so nervous. — I&#x27;m sure it&#x27;ll be fine. Good luck!" aria-label="Прослушать: — I get my results tomorrow. I&#x27;m so nervous. / — I&#x27;m sure it&#x27;ll be fine. Good luck!"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— I got lost on the way here.</p><p class="cp-ru">Я&nbsp;заблудился по дороге сюда.</p><p class="cp-en" lang="en">— <span class="st">I know the feeling</span>. <span class="st">It was just like that when</span> I was looking for the cafe.</p><p class="cp-ru">Знакомое чувство. У&nbsp;меня было так же, когда я&nbsp;искал кафе.</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="— I got lost on the way here. — I know the feeling. It was just like that when I was looking for the cafe." aria-label="Прослушать: — I got lost on the way here. / — I know the feeling. It was just like that when I was looking for the cafe."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— The project was cancelled. I feel it&#x27;s my fault.</p><p class="cp-ru">Проект закрыли. Мне кажется, это я&nbsp;виноват.</p><p class="cp-en" lang="en">— <span class="pr">It&#x27;s not your fault</span>. <span class="pr">We&#x27;re just unlucky</span>.</p><p class="cp-ru">Ты не виноват. Нам просто не повезло.</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="— The project was cancelled. I feel it&#x27;s my fault. — It&#x27;s not your fault. We&#x27;re just unlucky." aria-label="Прослушать: — The project was cancelled. I feel it&#x27;s my fault. / — It&#x27;s not your fault. We&#x27;re just unlucky."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— My phone died in the middle of a call.</p><p class="cp-ru">Телефон сел посреди разговора.</p><p class="cp-en" lang="en">— <span class="st">That&#x27;s just like when</span> I lost my phone.</p><p class="cp-ru">Прямо как когда я&nbsp;потерял телефон.</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="— My phone died in the middle of a call. — That&#x27;s just like when I lost my phone." aria-label="Прослушать: — My phone died in the middle of a call. / — That&#x27;s just like when I lost my phone."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It might work fine.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It might work out fine.</span><span class="err-note">наладиться&nbsp;— work out</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Never give up the hope.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Never give up hope.</span><span class="err-note">hope&nbsp;— без the</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;m sure it will fine.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;m sure it&#x27;ll be fine.</span><span class="err-note">будет&nbsp;— will be</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I know this feeling.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I know the feeling.</span><span class="err-note">устойчиво&nbsp;— the feeling</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It was the same like me.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It was the same with me.</span><span class="err-note">the same with me</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The same thing happened with me.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The same thing happened to me.</span><span class="err-note">happen to someone</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It&#x27;s not your guilt.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It&#x27;s not your fault.</span><span class="err-note">вина&nbsp;— fault</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I had just a similar experience.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ve just had a similar experience.</span><span class="err-note">just&nbsp;— между have и&nbsp;had</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">That&#x27;s like when I have lost my phone.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">That&#x27;s just like when I lost my phone.</span><span class="err-note">история&nbsp;— Past Simple</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Good lucky!</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Good luck!</span><span class="err-note">удача&nbsp;— luck</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и фразы. [фраза|a] — поддержать, [фраза|b] — общий опыт.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 7;
+const GROUPS = {"enc": "Being encouraging — поддержать", "com": "Things in common — у меня так же", "use": "Применить", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "enc",
+  "title": "It might work out fine",
+  "sub": "подбодрить: всё может наладиться",
+  "rule": "Когда человек боится, что не получится. It might work out fine — может, всё ещё наладится: work out — сложиться, наладиться; без out смысл теряется. You never know — кто знает, всякое бывает. Never give up hope — никогда не теряй надежды, hope без the. I'm sure it'll be fine — уверен, всё будет хорошо: it'll = it will, после него be. Сверх урока: пациенту исход лучше не обещать — вместо I'm sure it'll be fine скажите Let's wait for the results или We'll do everything we can.",
+  "ex": [
+   {
+    "en": "[It might work out fine|a].",
+    "ru": "Может, всё ещё наладится."
+   },
+   {
+    "en": "[Never give up hope|a].",
+    "ru": "Никогда не теряй надежды."
+   },
+   {
+    "en": "[You never know|a].",
+    "ru": "Кто знает, всякое бывает."
+   },
+   {
+    "en": "[I'm sure it'll be fine|a].",
+    "ru": "Уверен, всё будет хорошо."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "enc",
+  "title": "It's not your fault",
+  "sub": "успокоить и снять вину",
+  "rule": "Когда что-то уже пошло не так. Don't worry — не переживай. Good luck — удачи (перед событием, не после неудачи). It's not your fault — ты не виноват: fault — вина за случившееся, guilt — чувство вины. You're just unlucky / We're just unlucky — тебе (нам) просто не повезло; о прошлом — You were just unlucky. It's never easy — это всегда непросто: признать, что тяжело, — тоже поддержка.",
+  "ex": [
+   {
+    "en": "[Don't worry|a].",
+    "ru": "Не переживай."
+   },
+   {
+    "en": "[Good luck|a].",
+    "ru": "Удачи."
+   },
+   {
+    "en": "[It's not your fault|a].",
+    "ru": "Ты не виноват."
+   },
+   {
+    "en": "[You're just unlucky|a].",
+    "ru": "Тебе просто не повезло."
+   },
+   {
+    "en": "[We're just unlucky|a].",
+    "ru": "Нам просто не повезло."
+   },
+   {
+    "en": "[It's never easy|a].",
+    "ru": "Это всегда непросто."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "com",
+  "title": "I know the feeling",
+  "sub": "у меня так же — коротко",
+  "rule": "Показать, что вы понимаете, потому что было то же самое. I know the feeling — знакомое чувство: the, а не this. It was the same with me — у меня было так же: the same with, не the same like. The same thing happened to me — со мной случилось то же самое: happen to someone. I've just had a similar experience — у меня только что было похожее: just — между have и had; similar — похожий, the same — тот же самый.",
+  "ex": [
+   {
+    "en": "[I know the feeling|b].",
+    "ru": "Знакомое чувство."
+   },
+   {
+    "en": "[It was the same with me|b].",
+    "ru": "У меня было так же."
+   },
+   {
+    "en": "[The same thing happened to me|b].",
+    "ru": "Со мной случилось то же самое."
+   },
+   {
+    "en": "[I've just had a similar experience|b].",
+    "ru": "У меня только что было похожее."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "com",
+  "title": "That's just like when…",
+  "sub": "свой похожий случай",
+  "late": 0.2,
+  "rule": "Чтобы рассказать свою похожую историю. That's just like when + прошедшее: That's just like when I lost my phone — прямо как когда я потерял телефон. It was just like that when + прошедшее: It was just like that when I was looking for the cafe — у меня было так же, когда я искал кафе. После when — Past Simple или Past Continuous, а не Present Perfect: when I lost, не when I have lost.",
+  "ex": [
+   {
+    "en": "[That's just like when|b] I lost my phone.",
+    "ru": "Прямо как когда я потерял телефон."
+   },
+   {
+    "en": "[It was just like that when|b] I was looking for the cafe.",
+    "ru": "У меня было так же, когда я искал кафе."
+   },
+   {
+    "en": "[That's just like when|b] I missed my train last year.",
+    "ru": "Прямо как когда я в прошлом году опоздал на поезд."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "use",
+  "title": "Что ответить",
+  "sub": "ситуация — фраза",
+  "late": 0.3,
+  "rule": "Выбирайте по ситуации. Боится, что не получится, — It might work out fine, I'm sure it'll be fine, You never know. Сейчас начнётся — Good luck. Винит себя — It's not your fault, You're just unlucky. Устал, тяжело — It's never easy, Never give up hope. Рассказал историю, а у вас было похоже, — I know the feeling, The same thing happened to me, That's just like when…",
+  "ex": [
+   {
+    "en": "— I'm so nervous about my exam. — [I'm sure it'll be fine|a].",
+    "ru": "— Я так волнуюсь перед экзаменом. — Уверен, всё будет хорошо."
+   },
+   {
+    "en": "— I got lost on the way here. — [I know the feeling|b].",
+    "ru": "— Я заблудился по дороге сюда. — Знакомое чувство."
+   },
+   {
+    "en": "— I feel it's my fault. — [It's not your fault|a].",
+    "ru": "— Мне кажется, это я виноват. — Ты не виноват."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "use",
+  "title": "Как сказать по-английски",
+  "sub": "вспомнить фразу по-русски",
+  "late": 0.35,
+  "rule": "Последний шаг — вспомнить фразу целиком по русскому смыслу. Читайте перевод, выбирайте точную формулировку и повторяйте вслух за Ryan: фразы запоминаются кусками, целиком, вместе с интонацией. Ловушки — мелочи: work out, а не work; the feeling, а не this feeling; happened to me, а не with me; it'll be, а не it will.",
+  "ex": [
+   {
+    "en": "[It might work out fine|a].",
+    "ru": "Может, всё ещё наладится."
+   },
+   {
+    "en": "[The same thing happened to me|b].",
+    "ru": "Со мной случилось то же самое."
+   },
+   {
+    "en": "[It's not your fault|a].",
+    "ru": "Ты не виноват."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// say — что произносить вместо предложения с ответом (ударение REcord и reCORD, вопросы о звуке).
+const CARDS = [
+ {
+  "id": "e1-out",
+  "t": 1,
+  "q": "It might work ___ fine.",
+  "ru": "Может, всё ещё наладится.",
+  "opts": [
+   "out",
+   "up",
+   "on"
+  ],
+  "a": "out",
+  "why": "work out — сложиться, наладиться."
+ },
+ {
+  "id": "e1-up",
+  "t": 1,
+  "q": "Never give ___ hope.",
+  "ru": "Никогда не теряй надежды.",
+  "opts": [
+   "up",
+   "out",
+   "in"
+  ],
+  "a": "up",
+  "why": "give up — бросить, оставить: give up hope."
+ },
+ {
+  "id": "e1-hope",
+  "t": 1,
+  "q": "Never give up ___.",
+  "ru": "Никогда не теряй надежды.",
+  "opts": [
+   "hope",
+   "the hope",
+   "hopes"
+  ],
+  "a": "hope",
+  "why": "hope — без the: give up hope."
+ },
+ {
+  "id": "e1-know",
+  "t": 1,
+  "q": "You never ___.",
+  "ru": "Кто знает, всякое бывает.",
+  "opts": [
+   "know",
+   "knew",
+   "known"
+  ],
+  "a": "know",
+  "why": "You never know — устойчивая фраза: кто знает."
+ },
+ {
+  "id": "e1-be",
+  "t": 1,
+  "q": "I'm sure it'll ___ fine.",
+  "ru": "Уверен, всё будет хорошо.",
+  "opts": [
+   "be",
+   "is",
+   "being"
+  ],
+  "a": "be",
+  "why": "it'll = it will, после will — be."
+ },
+ {
+  "id": "e1-might",
+  "t": 1,
+  "q": "It ___ work out fine.",
+  "ru": "Может, всё ещё наладится.",
+  "opts": [
+   "might",
+   "mustn't",
+   "has"
+  ],
+  "a": "might",
+  "why": "might — может быть: It might work out fine."
+ },
+ {
+  "id": "e2-fault",
+  "t": 2,
+  "q": "It's not your ___.",
+  "ru": "Ты не виноват.",
+  "opts": [
+   "fault",
+   "guilt",
+   "blame"
+  ],
+  "a": "fault",
+  "why": "Вина за случившееся — fault. guilt — чувство вины."
+ },
+ {
+  "id": "e2-unlucky",
+  "t": 2,
+  "q": "You're just ___.",
+  "ru": "Тебе просто не повезло.",
+  "opts": [
+   "unlucky",
+   "unhappy",
+   "unsuccessful"
+  ],
+  "a": "unlucky",
+  "why": "Не повезло — unlucky."
+ },
+ {
+  "id": "e2-easy",
+  "t": 2,
+  "q": "It's never ___.",
+  "ru": "Это всегда непросто.",
+  "opts": [
+   "easy",
+   "easily",
+   "simply"
+  ],
+  "a": "easy",
+  "why": "После be — прилагательное: never easy."
+ },
+ {
+  "id": "e2-luck",
+  "t": 2,
+  "q": "Good ___!",
+  "ru": "Удачи!",
+  "opts": [
+   "luck",
+   "lucky",
+   "luckily"
+  ],
+  "a": "luck",
+  "why": "Удача — luck (существительное). Lucky — везучий."
+ },
+ {
+  "id": "e2-worry",
+  "t": 2,
+  "q": "Don't ___.",
+  "ru": "Не переживай.",
+  "opts": [
+   "worry",
+   "worried",
+   "worrying"
+  ],
+  "a": "worry",
+  "why": "Don't + глагол в начальной форме: Don't worry."
+ },
+ {
+  "id": "e2-were",
+  "t": 2,
+  "q": "We're just ___ — the rain ruined everything.",
+  "ru": "Нам просто не повезло — дождь всё испортил.",
+  "opts": [
+   "unlucky",
+   "no lucky",
+   "unluck"
+  ],
+  "a": "unlucky",
+  "why": "We're just unlucky — нам просто не повезло."
+ },
+ {
+  "id": "e3-to",
+  "t": 3,
+  "q": "The same thing happened ___ me.",
+  "ru": "Со мной случилось то же самое.",
+  "opts": [
+   "to",
+   "with",
+   "for"
+  ],
+  "a": "to",
+  "why": "Случиться с кем-то — happen to someone."
+ },
+ {
+  "id": "e3-with",
+  "t": 3,
+  "q": "It was the same ___ me.",
+  "ru": "У меня было так же.",
+  "opts": [
+   "with",
+   "to",
+   "like"
+  ],
+  "a": "with",
+  "why": "the same with me — у меня так же."
+ },
+ {
+  "id": "e3-feeling",
+  "t": 3,
+  "q": "I know the ___.",
+  "ru": "Знакомое чувство.",
+  "opts": [
+   "feeling",
+   "feel",
+   "sense"
+  ],
+  "a": "feeling",
+  "why": "I know the feeling — устойчиво, с the."
+ },
+ {
+  "id": "e3-similar",
+  "t": 3,
+  "q": "I've just had a ___ experience.",
+  "ru": "У меня только что было похожее.",
+  "opts": [
+   "similar",
+   "same",
+   "like"
+  ],
+  "a": "similar",
+  "why": "a similar experience — похожий опыт. The same — с the: the same experience."
+ },
+ {
+  "id": "e3-had",
+  "t": 3,
+  "q": "I've just ___ a similar experience.",
+  "ru": "У меня только что было похожее.",
+  "opts": [
+   "had",
+   "have",
+   "having"
+  ],
+  "a": "had",
+  "why": "Present Perfect: I've just had — just между have и had."
+ },
+ {
+  "id": "e3-thing",
+  "t": 3,
+  "q": "The same ___ happened to me.",
+  "ru": "Со мной случилось то же самое.",
+  "opts": [
+   "thing",
+   "things",
+   "think"
+  ],
+  "a": "thing",
+  "why": "The same thing — то же самое."
+ },
+ {
+  "id": "e4-like",
+  "t": 4,
+  "q": "That's just ___ when I lost my phone.",
+  "ru": "Прямо как когда я потерял телефон.",
+  "opts": [
+   "like",
+   "as",
+   "so"
+  ],
+  "a": "like",
+  "why": "Прямо как когда — just like when."
+ },
+ {
+  "id": "e4-lost",
+  "t": 4,
+  "q": "That's just like when I ___ my phone.",
+  "ru": "Прямо как когда я потерял телефон.",
+  "opts": [
+   "lost",
+   "have lost",
+   "lose"
+  ],
+  "a": "lost",
+  "why": "История из прошлого — Past Simple: when I lost."
+ },
+ {
+  "id": "e4-was",
+  "t": 4,
+  "q": "It was just like that when I ___ looking for the cafe.",
+  "ru": "У меня было так же, когда я искал кафе.",
+  "opts": [
+   "was",
+   "am",
+   "have been"
+  ],
+  "a": "was",
+  "why": "Фон истории — Past Continuous: I was looking."
+ },
+ {
+  "id": "e4-that",
+  "t": 4,
+  "q": "It was just like ___ when I was looking for the cafe.",
+  "ru": "У меня было так же, когда я искал кафе.",
+  "opts": [
+   "that",
+   "this",
+   "it"
+  ],
+  "a": "that",
+  "why": "It was just like that when… — у меня было так же, когда…"
+ },
+ {
+  "id": "e4-just",
+  "t": 4,
+  "q": "That's ___ like when I missed my train.",
+  "ru": "Прямо как когда я опоздал на поезд.",
+  "opts": [
+   "just",
+   "only",
+   "even"
+  ],
+  "a": "just",
+  "why": "just like — прямо как."
+ },
+ {
+  "id": "e4-when",
+  "t": 4,
+  "q": "It was just like that ___ I started my first job.",
+  "ru": "У меня было так же, когда я вышел на первую работу.",
+  "opts": [
+   "when",
+   "what",
+   "where"
+  ],
+  "a": "when",
+  "why": "Когда — when."
+ },
+ {
+  "id": "e5-exam",
+  "t": 5,
+  "q": "— I'm so nervous about my exam tomorrow. — ___",
+  "ru": "— Я так волнуюсь перед завтрашним экзаменом. Что ответить?",
+  "opts": [
+   "I'm sure it'll be fine.",
+   "It's not your fault.",
+   "You're just unlucky."
+  ],
+  "a": "I'm sure it'll be fine.",
+  "why": "Боится заранее — успокоить: I'm sure it'll be fine."
+ },
+ {
+  "id": "e5-blame",
+  "t": 5,
+  "q": "— The patient fell, and I feel it's my fault. — ___",
+  "ru": "— Пациент упал, и мне кажется, это я виноват. Что ответить?",
+  "opts": [
+   "It's not your fault.",
+   "Good luck.",
+   "I'm sure it'll be fine."
+  ],
+  "a": "It's not your fault.",
+  "why": "Винит себя — снять вину: It's not your fault."
+ },
+ {
+  "id": "e5-lost",
+  "t": 5,
+  "q": "— I got lost on the way here. — ___ It was just like that when I was looking for the cafe.",
+  "ru": "— Я заблудился по дороге сюда. Что ответить?",
+  "opts": [
+   "I know the feeling.",
+   "Good luck.",
+   "Never give up hope."
+  ],
+  "a": "I know the feeling.",
+  "why": "У вас было так же — I know the feeling."
+ },
+ {
+  "id": "e5-rain",
+  "t": 5,
+  "q": "— It rained every day of our holiday. — Oh no! ___",
+  "ru": "— Весь отпуск шёл дождь. Что ответить?",
+  "opts": [
+   "You were just unlucky.",
+   "It might work out fine.",
+   "Good luck."
+  ],
+  "a": "You were just unlucky.",
+  "why": "О прошлом — You were just unlucky: вам просто не повезло."
+ },
+ {
+  "id": "e5-hard",
+  "t": 5,
+  "q": "— Rehab is so slow. I'm tired of it. — ___ But you're making progress.",
+  "ru": "— Реабилитация идёт так медленно. Я устал. Что ответить?",
+  "opts": [
+   "It's never easy.",
+   "It's not your fault.",
+   "The same thing happened to me."
+  ],
+  "a": "It's never easy.",
+  "why": "Тяжело — признать это: It's never easy."
+ },
+ {
+  "id": "e5-job",
+  "t": 5,
+  "q": "— I don't think they'll offer me the job. — ___ They might call tomorrow.",
+  "ru": "— Не думаю, что мне предложат эту работу. Что ответить?",
+  "opts": [
+   "You never know.",
+   "It was the same with me.",
+   "Good luck."
+  ],
+  "a": "You never know.",
+  "why": "Сомневается — оставить надежду: You never know."
+ },
+ {
+  "id": "e5-interview",
+  "t": 5,
+  "q": "— I've got an interview in ten minutes! — ___",
+  "ru": "— У меня собеседование через десять минут! Что ответить?",
+  "opts": [
+   "Good luck!",
+   "You're just unlucky.",
+   "It's never easy."
+  ],
+  "a": "Good luck!",
+  "why": "Перед событием — Good luck!"
+ },
+ {
+  "id": "e5-flight",
+  "t": 5,
+  "q": "— My flight was cancelled and I slept at the airport. — ___ Mine was cancelled last month.",
+  "ru": "— Мой рейс отменили, и я ночевал в аэропорту. Что ответить?",
+  "opts": [
+   "The same thing happened to me.",
+   "Don't worry.",
+   "Never give up hope."
+  ],
+  "a": "The same thing happened to me.",
+  "why": "У вас было то же самое — The same thing happened to me."
+ },
+ {
+  "id": "e6-feeling",
+  "t": 6,
+  "q": "___",
+  "ru": "Знакомое чувство.",
+  "opts": [
+   "I know the feeling.",
+   "I know this feel.",
+   "I know the sense."
+  ],
+  "a": "I know the feeling.",
+  "why": "I know the feeling — с the."
+ },
+ {
+  "id": "e6-same",
+  "t": 6,
+  "q": "___",
+  "ru": "У меня было так же.",
+  "opts": [
+   "It was the same with me.",
+   "It was the same like me.",
+   "It was same with me."
+  ],
+  "a": "It was the same with me.",
+  "why": "the same with me — и the, и with."
+ },
+ {
+  "id": "e6-happened",
+  "t": 6,
+  "q": "___",
+  "ru": "Со мной случилось то же самое.",
+  "opts": [
+   "The same thing happened to me.",
+   "The same thing happened with me.",
+   "Same thing happened at me."
+  ],
+  "a": "The same thing happened to me.",
+  "why": "happen to someone."
+ },
+ {
+  "id": "e6-fault",
+  "t": 6,
+  "q": "___",
+  "ru": "Ты не виноват.",
+  "opts": [
+   "It's not your fault.",
+   "It's not your guilt.",
+   "It's no your fault."
+  ],
+  "a": "It's not your fault.",
+  "why": "Вина — fault; отрицание — not."
+ },
+ {
+  "id": "e6-workout",
+  "t": 6,
+  "q": "___",
+  "ru": "Может, всё ещё наладится.",
+  "opts": [
+   "It might work out fine.",
+   "It might work fine.",
+   "It might works out fine."
+  ],
+  "a": "It might work out fine.",
+  "why": "work out — наладиться; после might — без -s."
+ },
+ {
+  "id": "e6-easy",
+  "t": 6,
+  "q": "___",
+  "ru": "Это всегда непросто.",
+  "opts": [
+   "It's never easy.",
+   "It's always not easy.",
+   "It's never easily."
+  ],
+  "a": "It's never easy.",
+  "why": "Всегда непросто — never easy."
+ },
+ {
+  "id": "e6-hope",
+  "t": 6,
+  "q": "___",
+  "ru": "Никогда не теряй надежды.",
+  "opts": [
+   "Never give up hope.",
+   "Never give up the hope.",
+   "Don't never give up hope."
+  ],
+  "a": "Never give up hope.",
+  "why": "hope без the; never — само отрицание, don't не нужен."
+ },
+ {
+  "id": "e6-know",
+  "t": 6,
+  "q": "___",
+  "ru": "Кто знает, всякое бывает.",
+  "opts": [
+   "You never know.",
+   "You don't never know.",
+   "Nobody never knows."
+  ],
+  "a": "You never know.",
+  "why": "never — уже отрицание: You never know."
+ },
+ {
+  "id": "e6-sure",
+  "t": 6,
+  "q": "___",
+  "ru": "Уверен, всё будет хорошо.",
+  "opts": [
+   "I'm sure it'll be fine.",
+   "I'm sure it will fine.",
+   "I sure it'll be fine."
+  ],
+  "a": "I'm sure it'll be fine.",
+  "why": "I'm sure — с am; будет — will be."
+ },
+ {
+  "id": "e6-like",
+  "t": 6,
+  "q": "___",
+  "ru": "Прямо как когда я потерял телефон.",
+  "opts": [
+   "That's just like when I lost my phone.",
+   "That's just as when I lost my phone.",
+   "That's just like when I have lost my phone."
+  ],
+  "a": "That's just like when I lost my phone.",
+  "why": "just like when + Past Simple."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "encour:state";
+const LS_SPEAK = "encour:autospeak";
+const LS_TAB = "encour:tab";
+const LS_OPEN = "encour:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "feeling"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>
