@@ -48,3 +48,8 @@ sources/encour/index.html
 sources/encour/preview.html
 sources/encour/*.png
 sources/encour/kokoro/
+sources/vnoun/audio/
+sources/vnoun/clips.json
+sources/vnoun/index.html
+sources/vnoun/preview.html
+sources/vnoun/*.png

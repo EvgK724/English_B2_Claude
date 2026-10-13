@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-55 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+56 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается из этого репозитория (ветка `main`, папка `/`),
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     55 тренажёров, каждый — самостоятельная страница
+  apps/<ключ>.html     56 тренажёров, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -86,6 +86,13 @@ python3 -m http.server 8000
   `[слово|a]`, `|b`, `|c` (оранжевый, синий, зелёный). nverb собирается из шаблона sounds; `say` нужно для ударений
   REcord и reCORD. Оба стоят сразу после «Пар слов» (pairs) и не повторяют его: там ловушки по смыслу, здесь — по звучанию
   и по паре «существительное — глагол».
+- **«Recycle → recycling» (vnoun)** — существительное из глагола: пары с карточек урока (recycle → recycling, waste → waste,
+  destroy → destruction, exist → existence, solve → solution, reduce → reduction, support → support, suffer → suffering)
+  и похожие по суффиксам: -ing, -ion, -ence/-ance, -ment, -al, -ure, -y, -th, ловушки написания (maintenance, pronunciation).
+  Собирается так же, из `sources/vnoun/` (шаблон из `sounds/template.html`): `python3 vnoun/mk_template.py`, `vnoun/clips.py`,
+  `vnoun/tts_kokoro.py` (голос Daniel, модель Kokoro — та же папка `encour/kokoro/`), `vnoun/build.py`, затем `python3 tools/mk_shell.py`;
+  проверка — `python3 vnoun/test.py`. Стоит сразу после «Advice и advise» (nverb): там пары, которые различаются буквой,
+  звуком или ударением, здесь — вся система суффиксов. На карточке урока опечатка existance — в тренажёре это ловушка.
 - **«Косвенные вопросы» (indq)** — так же, из `sources/indq/` (шаблон из `sounds/template.html`):
   `python3 indq/mk_template.py`, `indq/clips.py`, `indq/tts.py`, `indq/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 indq/test.py`. Стоит сразу после «Вопросов» (q): там и в «Пересказе» (rep) — по теме на основу,
