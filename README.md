@@ -2,7 +2,9 @@
 
 56 тренажёров английского B1–B2 в одном приложении для iPhone и iPad: каталог по группам,
 «Сегодня к повторению», поиск, карточки с интервальным повторением, озвучка голосом Microsoft Ryan
-(в «Фразах из Breaking Bad» — Andrew). Оформление — как у want-you-to из репозитория test01.
+(в «Фразах из Breaking Bad» — Andrew; в «I know the feeling» и «Recycle → recycling» — открытая модель
+[Kyutai Pocket TTS](https://github.com/kyutai-labs/pocket-tts), CC BY 4.0, с голосами из набора
+[VCTK](https://datashare.ed.ac.uk/handle/10283/3443), CSTR, University of Edinburgh, CC BY 4.0). Оформление — как у want-you-to из репозитория test01.
 Каждый день ежедневные задачи Claude добавляют фразовый глагол дня и две фразы из Breaking Bad — сюда и в версию на claude.ai.
 
 Ссылка (GitHub Pages): https://evgk724.github.io/English_B2_Claude/site/

@@ -2,7 +2,8 @@
 # Запуск из sources/:
 #   python3 vnoun/mk_template.py      # шаблон из sounds/template.html
 #   python3 vnoun/clips.py            # список записей → vnoun/clips.json
-#   python3 vnoun/tts_kokoro.py       # записи голосом Daniel (Kokoro, локально) → vnoun/audio/ (Ryan через edge-tts недоступен;
+#   python3 tts_kyutai.py vnoun       # записи голосом Kyutai Pocket TTS (VCTK p274) → vnoun/audio/ (Ryan через edge-tts недоступен;
+#                                     #   vnoun/tts_kokoro.py — прежний Daniel (Kokoro);
 #                                     #   без записей фразы читает голос устройства, пакет пустой)
 #   python3 vnoun/build.py            # site/apps/vnoun.html, site/packs/vnoun.mp3, tools/packs.json, tools/catalog.json
 #   cd .. && python3 tools/mk_shell.py
@@ -121,11 +122,11 @@ entry = {"key": KEY, "title": "Recycle → recycling", "group": "words",
                "pollution protection prevention emission consumption production resistance difference development management "
                "assessment argument arrival survival failure exposure injury growth maintenance pronunciation explanation repetition "
                "word formation suffix noun verb словообразование суффикс существительное глагол экология окружающая среда",
-         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Daniel", "size": len(app.encode())}
+         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Kyutai p274", "size": len(app.encode())}
 apps = [a for a in cat["apps"] if a["key"] != KEY]
 pos = next(i for i, a in enumerate(apps) if a["key"] == "nverb") + 1
 cat["apps"] = apps[:pos] + [entry] + apps[pos:]
 (TOOLS / "catalog.json").write_text(json.dumps(cat, ensure_ascii=False))
 print("ok", len(app), "bytes;", len(TOPICS), "topics;", len(CARDS), "cards; записей", len(have), "из", len(need), ";", len(buf), "bytes of audio")
 if len(have) < len(need):
-    print("без записей — голос устройства:", len(need) - len(have), "фраз; записать: python3 vnoun/tts_kokoro.py, затем снова vnoun/build.py")
+    print("без записей — голос устройства:", len(need) - len(have), "фраз; записать: python3 tts_kyutai.py vnoun, затем снова vnoun/build.py")

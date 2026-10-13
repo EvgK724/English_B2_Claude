@@ -90,7 +90,7 @@ python3 -m http.server 8000
   destroy → destruction, exist → existence, solve → solution, reduce → reduction, support → support, suffer → suffering)
   и похожие по суффиксам: -ing, -ion, -ence/-ance, -ment, -al, -ure, -y, -th, ловушки написания (maintenance, pronunciation).
   Собирается так же, из `sources/vnoun/` (шаблон из `sounds/template.html`): `python3 vnoun/mk_template.py`, `vnoun/clips.py`,
-  `vnoun/tts_kokoro.py` (голос Daniel, модель Kokoro — та же папка `encour/kokoro/`), `vnoun/build.py`, затем `python3 tools/mk_shell.py`;
+  `python3 tts_kyutai.py vnoun` (см. «Голос новых тренажёров»), `vnoun/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 vnoun/test.py`. Стоит сразу после «Advice и advise» (nverb): там пары, которые различаются буквой,
   звуком или ударением, здесь — вся система суффиксов. На карточке урока опечатка existance — в тренажёре это ловушка.
 - **«Косвенные вопросы» (indq)** — так же, из `sources/indq/` (шаблон из `sounds/template.html`):
@@ -108,10 +108,17 @@ python3 -m http.server 8000
   see и hear, пассив (was made to), All I did was ask. Стоит сразу после «To или -ing» (toing).
 - **«I know the feeling» (encour)** — фразы урока Speaking Focus (being encouraging, showing you have things in common),
   все 15 с фото урока: вставить слово, что ответить в ситуации, вспомнить фразу по-русски. Собирается так же,
-  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Голос — Daniel (bm_daniel)
-  открытой модели Kokoro, записывается локально: `python3 encour/tts_kokoro.py` (модель с GitHub, см. шапку скрипта).
-  Ryan не вышел: 12 октября 2026 сервис Microsoft отклонял синтез edge-tts (403, в том числе у ежедневных задач),
-  пользователь выбрал Daniel.
+  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Озвучка — `python3 tts_kyutai.py encour`
+  (см. «Голос новых тренажёров» ниже); в мини-диалогах «— …? — …» две реплики говорят два голоса.
+- **Голос новых тренажёров.** Ryan (edge-tts) с 12 октября 2026 недоступен: Microsoft отклоняет синтез (403), а свежая
+  edge-tts 7.3.0 обходит новую защиту Microsoft — её не ставим. Azure пользователю недоступен (карта). 53 тренажёра остаются
+  с записями Ryan. Новые (сейчас encour и vnoun) озвучиваются открытой моделью Kyutai Pocket TTS (CC BY 4.0, английская версия
+  апреля 2026, ONNX-экспорт KevinAHM/pocket-tts-onnx, без PyTorch) локально: голос VCTK p274 (CSTR, University of Edinburgh,
+  CC BY 4.0), в мини-диалогах ответ — p273. Пользователь выбрал их на слух 13 октября 2026 (№8 и №7 из образцов).
+  Скрипт — `sources/tts_kyutai.py <ключ>`: файлы модели в `sources/kyutai/` (в git не попадают, откуда скачать — в шапке
+  скрипта; нужен доступ к huggingface.co), каждая запись проверяется распознаванием (Whisper base.en) и темпом и
+  переписывается, пока все слова не на месте; что не удалось — печатает, послушать. Январская версия модели (ONNX для
+  sherpa-onnx) портила начало фраз — её не брать. Прежний Daniel (Kokoro) — `encour/tts_kokoro.py`, `vnoun/tts_kokoro.py`.
 
 ## Правила оформления
 
