@@ -1,0 +1,1769 @@
+<title>Like и look like</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("like",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Like и&nbsp;look like</h1>
+      <p class="r-sub">Три вопроса, которые путают: <b lang="en">What's she like?</b>&nbsp;— какая она, <b lang="en">What does she look like?</b>&nbsp;— как выглядит, <b lang="en">What does she like?</b>&nbsp;— что любит. В&nbsp;примерах <b class="pr">like «как, похож»</b> оранжевый, <b class="st">like «нравится»</b> синий, <b class="good">прилагательное или as</b> зелёный.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Правило</th><th scope="col">Примеры</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">What&#x27;s she like?</th></tr><tr><td><b class="h">характер, впечатление</b>be … like</td><td><span class="f st" lang="en">What&#x27;s she like? <span class="sep">·</span> What was the trip like?</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">What does she look like?</th></tr><tr><td><b class="h">внешность, сходство</b>look like</td><td><span class="f st" lang="en">looks like her mum <span class="sep">·</span> looks like a bruise</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">What does she like?</th></tr><tr><td><b class="h">вкусы</b>like-глагол</td><td><span class="f st" lang="en">likes&nbsp;jazz <span class="sep">·</span> likes swimming</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">look tired · look like a doctor</th></tr><tr><td><b class="h">без like</b>прилагательное, с&nbsp;like&nbsp;— существительное</td><td><span class="f st" lang="en">sounds&nbsp;great <span class="sep">·</span> sounds like a plan</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">I&#x27;d like · I like</th></tr><tr><td><b class="h">хочу сейчас</b>would like, люблю вообще&nbsp;— like</td><td><span class="f st" lang="en">I&#x27;d like a coffee <span class="sep">·</span> I like coffee</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">feel like doing</th></tr><tr><td><b class="h">хочется</b>feel like + -ing</td><td><span class="f st" lang="en">don&#x27;t feel like cooking <span class="sep">·</span> feel like a walk</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">as a nurse · like a nurse</th></tr><tr><td><b class="h">роль, профессия</b>as, сходство&nbsp;— like</td><td><span class="f st" lang="en">works as a nurse <span class="sep">·</span> talks like a doctor</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">as if · such as · likely</th></tr><tr><td><b class="h">как будто, например, вероятно</b></td><td><span class="f st" lang="en">as if he knew <span class="sep">·</span> such as aspirin <span class="sep">·</span> likely to recover</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Спрашиваете о характере или впечатлении?</p><p class="s-f" lang="en"><span class="pr">What's&nbsp;she&nbsp;like?</span> <span class="sep">·</span> <span class="pr">What was it like?</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">О внешности, о сходстве?</p><p class="s-f" lang="en"><span class="pr">What does she look like?</span> <span class="sep">·</span> <span class="pr">looks like her mum</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">После look, sound, feel — прилагательное без like; перед существительным — like</p><p class="s-f" lang="en"><span class="good">looks&nbsp;tired</span> <span class="sep">·</span> <span class="pr">looks like a doctor</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Хотите сейчас?</p><p class="s-f" lang="en"><span class="st">I'd like a coffee</span> <span class="sep">·</span> <span class="pr">I feel like a walk</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Роль, профессия — as; просто похоже — like</p><p class="s-f" lang="en"><span class="good">works&nbsp;as&nbsp;a&nbsp;nurse</span> <span class="sep">·</span> <span class="pr">talks like a doctor</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr" lang="en">like</b>&nbsp;— характер, <b class="pr" lang="en">look like</b>&nbsp;— внешность, <b class="st" lang="en">like</b>-глагол&nbsp;— вкусы: <i lang="en">What's she like? · What does she look like? · What does she like?</i></p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Мини-диалоги</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">— What&#x27;s your new boss <span class="pr">like</span>?</p><p class="cp-ru">Какой у&nbsp;тебя новый начальник?&nbsp;— характер</p><p class="cp-en" lang="en">— She&#x27;s strict but fair.</p><p class="cp-ru">Строгая, но справедливая.</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="— What&#x27;s your new boss like? — She&#x27;s strict but fair." aria-label="Прослушать: — What&#x27;s your new boss like? / — She&#x27;s strict but fair."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— What does she <span class="pr">look like</span>?</p><p class="cp-ru">Как она выглядит?&nbsp;— внешность</p><p class="cp-en" lang="en">— She&#x27;s tall, with short dark hair.</p><p class="cp-ru">Высокая, с&nbsp;короткими тёмными волосами.</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="— What does she look like? — She&#x27;s tall, with short dark hair." aria-label="Прослушать: — What does she look like? / — She&#x27;s tall, with short dark hair."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— What does she <span class="st">like</span>?</p><p class="cp-ru">Что она любит?&nbsp;— вкусы</p><p class="cp-en" lang="en">— She <span class="st">likes</span> jazz and long walks.</p><p class="cp-ru">Любит джаз и&nbsp;долгие прогулки.</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="— What does she like? — She likes jazz and long walks." aria-label="Прослушать: — What does she like? / — She likes jazz and long walks."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— <span class="st">Would you like</span> some tea?</p><p class="cp-ru">Хотите чаю?&nbsp;— предложение сейчас</p><p class="cp-en" lang="en">— Yes, please. I&#x27;d love some.</p><p class="cp-ru">Да, с&nbsp;удовольствием.</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="— Would you like some tea? — Yes, please. I&#x27;d love some." aria-label="Прослушать: — Would you like some tea? / — Yes, please. I&#x27;d love some."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— What&#x27;s the pain <span class="pr">like</span>?</p><p class="cp-ru">Какая боль?&nbsp;— просьба описать</p><p class="cp-en" lang="en">— It <span class="pr">feels like</span> a tight band around my head.</p><p class="cp-ru">Как будто голову стянули обручем.</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="— What&#x27;s the pain like? — It feels like a tight band around my head." aria-label="Прослушать: — What&#x27;s the pain like? / — It feels like a tight band around my head."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">How does she look like?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">What does she look like?</span><span class="err-note">внешность&nbsp;— What … look like</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">What is he look like?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">What does he look like?</span><span class="err-note">look&nbsp;— глагол, нужен does</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">You look like tired.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">You look tired.</span><span class="err-note">после look&nbsp;— прилагательное без like</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It sounds a good idea.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It sounds like a good idea.</span><span class="err-note">перед существительным&nbsp;— like</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I like a coffee, please.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;d like a coffee, please.</span><span class="err-note">просьба сейчас&nbsp;— would like</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I don&#x27;t feel like to go out.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I don&#x27;t feel like going out.</span><span class="err-note">feel like + -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">She works like a nurse.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">She works as a nurse.</span><span class="err-note">профессия, роль&nbsp;— as</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">How was the weather like?</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">What was the weather like?</span><span class="err-note">What … like? или How was …?</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It looks like as if it&#x27;ll rain.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It looks like it&#x27;s going to rain.</span><span class="err-note">like или as if&nbsp;— не вместе</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He is likely recover.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He is likely to recover.</span><span class="err-note">be likely to do</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. [слово|a] — существительное, [слово|b] — глагол, [слово|c] — прилагательное.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 9;
+const GROUPS = {"b1": "B1 — What's it like, look like, would like", "b1p": "B1+ — feel like, like или as", "b2": "B2 — as if, such as, likely", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "What's she like?",
+  "sub": "характер и впечатление",
+  "rule": "What + be + … + like? — просьба описать: какой он, как там. Отвечают прилагательными, без like: What's your new boss like? — She's strict but fair. What was the conference like? — Interesting, but far too long. What's the weather like? — Cold and windy. Частая ошибка — How is she like? Нужно либо What's she like? (какая она), либо How is she? (как она себя чувствует). How was the trip? и What was the trip like? — почти одно и то же.",
+  "ex": [
+   {
+    "en": "— What's your new boss [like|a]? — She's strict but fair.",
+    "ru": "— Какой у тебя новый начальник? — Строгая, но справедливая."
+   },
+   {
+    "en": "— What was the conference [like|a]? — Interesting, but far too long.",
+    "ru": "— Как прошла конференция? — Интересно, но слишком долго."
+   },
+   {
+    "en": "— How is your mother? — Much better, thanks.",
+    "ru": "— Как мама? — Гораздо лучше, спасибо."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "What does she look like?",
+  "sub": "внешность и сходство",
+  "rule": "Look like — «выглядит как, похож на», после него существительное. What does she look like? — вопрос о внешности: She's tall, with dark hair. She looks like her mother — похожа на маму. The rash looks like an allergic reaction — сыпь похожа на аллергию. В вопросе нужен does, а look — без -s: What does he look like? How does he look like — ошибка; How does he look? — как он выглядит (усталым, хорошо). Похож характером — be like: He's like his father.",
+  "ex": [
+   {
+    "en": "— What does your brother [look like|a]? — He's tall and thin, with glasses.",
+    "ru": "— Как выглядит твой брат? — Высокий, худой, в очках."
+   },
+   {
+    "en": "She [looks like|a] her mother, but she's [like|a] her father.",
+    "ru": "Внешне она в маму, а характером в папу."
+   },
+   {
+    "en": "The rash [looks like|a] an allergic reaction.",
+    "ru": "Сыпь похожа на аллергическую реакцию."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "look tired или look like a doctor",
+  "sub": "прилагательное — без like",
+  "rule": "После look, sound, feel, taste, smell ставят прилагательное — без like: You look tired. That sounds great. I feel sick. Перед существительным нужен like: You look like a doctor. That sounds like a plan. It feels like a cramp. Ошибки: look like tired, it sounds a good idea. На приёме: What does the pain feel like? — It feels sharp. / It feels like pressure.",
+  "ex": [
+   {
+    "en": "That [sounds great|c] — it [sounds like|a] a plan.",
+    "ru": "Звучит отлично — договорились."
+   },
+   {
+    "en": "The pain [feels sharp|c], like a knife.",
+    "ru": "Боль острая, как ножом."
+   },
+   {
+    "en": "This milk [smells sour|c] — it [smells like|a] cheese.",
+    "ru": "Молоко кисло пахнет — как сыр."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1",
+  "title": "I'd like или I like",
+  "sub": "хочу сейчас или люблю вообще",
+  "rule": "I like — люблю, нравится вообще: I like coffee, I like working with people. I'd like (= I would like) — хочу сейчас, вежливая просьба: I'd like a coffee, please. I'd like to make an appointment. Предложение — Would you like…?: Would you like some tea? Would you like to sit down? Do you like…? — вопрос о вкусах. После would like — to do; I'd like you to… — я хочу, чтобы вы…",
+  "ex": [
+   {
+    "en": "I [like|b] coffee, but right now I'd [like|b] a glass of water.",
+    "ru": "Я люблю кофе, но сейчас хочу стакан воды."
+   },
+   {
+    "en": "— [Would you like|b] to sit down? — Yes, thank you.",
+    "ru": "— Не хотите присесть? — Да, спасибо."
+   },
+   {
+    "en": "I'd [like|b] to make an appointment with Dr Smith.",
+    "ru": "Я бы хотел записаться к доктору Смиту."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "like doing и feel like doing",
+  "sub": "любить делать и хотеться",
+  "late": 0.2,
+  "rule": "Like + -ing — нравится занятие: I like swimming. Like + to do — привычка, «считаю правильным»: I like to check the results myself. Разница небольшая, обе формы верны. Feel like + -ing или существительное — хочется: I don't feel like cooking tonight. Do you feel like a walk? Feel like to do — ошибка. Would like — всегда + to do: Would you like to come?",
+  "ex": [
+   {
+    "en": "I [like|b] swimming, but I don't [feel like|a] going today.",
+    "ru": "Я люблю плавать, но сегодня не хочется."
+   },
+   {
+    "en": "I [like|b] to check the results myself.",
+    "ru": "Я предпочитаю сам проверять результаты."
+   },
+   {
+    "en": "— Do you [feel like|a] a walk? — Not really, I'm exhausted.",
+    "ru": "— Хочешь прогуляться? — Не особо, я вымотан."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "like или as",
+  "sub": "похоже или в роли",
+  "late": 0.25,
+  "rule": "Like + существительное — сходство, «как, подобно»: He sings like a professional (но он не профессионал). As + существительное — роль, профессия, функция: She works as a nurse. We use this room as an office. As your doctor, I… — я и есть ваш врач; Like a doctor, he checked my pulse — он не врач. Устойчиво: as usual, as I said, as you know; like I said — разговорное.",
+  "ex": [
+   {
+    "en": "She works [as|c] a nurse, but she talks [like|a] a doctor.",
+    "ru": "Она работает медсестрой, а говорит как врач."
+   },
+   {
+    "en": "[As|c] your doctor, I strongly advise you to stop smoking.",
+    "ru": "Как ваш врач, настоятельно советую бросить курить."
+   },
+   {
+    "en": "He treats the clinic [like|a] his own home.",
+    "ru": "Он обращается с клиникой как со своим домом."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "It looks like it's going to rain",
+  "sub": "like и as if + предложение",
+  "late": 0.45,
+  "rule": "Look like, seem like, sound like + целое предложение — «похоже, что; как будто»: It looks like it's going to rain. It sounds like you need a break. Это разговорный стиль; в письме и аккуратной речи — as if или as though: It looks as if the patient has fallen asleep. Нереальное «как будто» — прошедшее: He talks as if he knew everything (на самом деле не знает); She acts as if she were the boss. Like и as if вместе — ошибка.",
+  "ex": [
+   {
+    "en": "It [looks like|a] it's going to rain.",
+    "ru": "Похоже, сейчас пойдёт дождь."
+   },
+   {
+    "en": "It [sounds like|a] you need a break.",
+    "ru": "Похоже, тебе нужен отдых."
+   },
+   {
+    "en": "He talks [as if|a] he knew everything.",
+    "ru": "Он говорит так, будто всё знает."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "such as, flu-like, likely, alike",
+  "sub": "слова с like",
+  "late": 0.5,
+  "rule": "Such as — «например, такие как» перед списком: drugs such as aspirin and clopidogrel; в статьях — such as, в разговоре — like. -like — «похожий на»: flu-like symptoms, lifelike. Likely — вероятный: He is likely to recover — скорее всего поправится. Alike — одинаковые, после глагола: The twins look alike. Unlike — в отличие от: Unlike aspirin, paracetamol doesn't thin the blood. Dislike — не любить: I dislike flying.",
+  "ex": [
+   {
+    "en": "Avoid painkillers [such as|c] ibuprofen.",
+    "ru": "Избегайте обезболивающих вроде ибупрофена."
+   },
+   {
+    "en": "He has [flu-like|c] symptoms.",
+    "ru": "У него гриппоподобные симптомы."
+   },
+   {
+    "en": "[Unlike|a] aspirin, paracetamol doesn't thin the blood.",
+    "ru": "В отличие от аспирина, парацетамол не разжижает кровь."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// say — что произносить вместо предложения с ответом (если нужно).
+const CARDS = [
+ {
+  "id": "l1-boss",
+  "t": 1,
+  "q": "What's your new boss ___?",
+  "ru": "Какой у тебя новый начальник?",
+  "opts": [
+   "like",
+   "look like",
+   "likes"
+  ],
+  "a": "like",
+  "why": "Характер — What's … like? Look like — о внешности."
+ },
+ {
+  "id": "l1-how",
+  "t": 1,
+  "q": "___ was the conference like?",
+  "ru": "Как прошла конференция?",
+  "opts": [
+   "What",
+   "How"
+  ],
+  "a": "What",
+  "why": "What … like? How … like — ошибка. Можно и без like: How was the conference?"
+ },
+ {
+  "id": "l1-weather",
+  "t": 1,
+  "q": "What's the weather ___ in Yekaterinburg in winter?",
+  "ru": "Какая погода в Екатеринбурге зимой?",
+  "opts": [
+   "like",
+   "look like",
+   "as"
+  ],
+  "a": "like",
+  "why": "Описание — What's the weather like?"
+ },
+ {
+  "id": "l1-answer",
+  "t": 1,
+  "q": "— What's she like? — ___",
+  "ru": "— Какая она?",
+  "opts": [
+   "She's very kind.",
+   "She likes music.",
+   "She looks like her mum."
+  ],
+  "a": "She's very kind.",
+  "why": "What's she like? — о характере: kind, quiet, funny. She likes music — ответ на What does she like?"
+ },
+ {
+  "id": "l1-howis",
+  "t": 1,
+  "q": "— ___ is your mother? — Much better, thanks.",
+  "ru": "— Как мама? — Гораздо лучше, спасибо.",
+  "opts": [
+   "How",
+   "What"
+  ],
+  "a": "How",
+  "why": "О самочувствии — How is she? What is she like? — о характере."
+ },
+ {
+  "id": "l1-nights",
+  "t": 1,
+  "q": "What's it ___ working night shifts?",
+  "ru": "Каково это — работать в ночные смены?",
+  "opts": [
+   "like",
+   "look like",
+   "as"
+  ],
+  "a": "like",
+  "why": "What's it like + -ing — каково это: What's it like working nights?"
+ },
+ {
+  "id": "l2-appearance",
+  "t": 2,
+  "q": "— What does he ___? — He's tall, with short grey hair.",
+  "ru": "— Как он выглядит? — Высокий, с короткими седыми волосами.",
+  "opts": [
+   "look like",
+   "like",
+   "looks like"
+  ],
+  "a": "look like",
+  "why": "Внешность — What does he look like? После does — look без -s."
+ },
+ {
+  "id": "l2-mother",
+  "t": 2,
+  "q": "She ___ her mother — the same eyes and the same smile.",
+  "ru": "Она похожа на маму: те же глаза, та же улыбка.",
+  "opts": [
+   "looks like",
+   "is like",
+   "likes"
+  ],
+  "a": "looks like",
+  "why": "Внешнее сходство — look like. Be like — похожи характером."
+ },
+ {
+  "id": "l2-what",
+  "t": 2,
+  "q": "___ does she look like?",
+  "ru": "Как она выглядит?",
+  "opts": [
+   "What",
+   "How"
+  ],
+  "a": "What",
+  "why": "What does she look like? How does she look like — ошибка; How does she look? — как она выглядит (усталой, хорошо)."
+ },
+ {
+  "id": "l2-rash",
+  "t": 2,
+  "q": "This rash ___ an allergic reaction.",
+  "ru": "Эта сыпь похожа на аллергическую реакцию.",
+  "opts": [
+   "looks like",
+   "looks",
+   "is looking"
+  ],
+  "a": "looks like",
+  "why": "Перед существительным — looks like."
+ },
+ {
+  "id": "l2-father",
+  "t": 2,
+  "q": "He's very calm — he's ___ his father.",
+  "ru": "Он очень спокойный — весь в отца.",
+  "opts": [
+   "like",
+   "look like",
+   "likes"
+  ],
+  "a": "like",
+  "why": "Характер — be like: he's like his father. Look like — внешне."
+ },
+ {
+  "id": "l2-flat",
+  "t": 2,
+  "q": "— What does your new flat look like? — ___",
+  "ru": "— Как выглядит твоя новая квартира?",
+  "opts": [
+   "It's small but bright.",
+   "I like it a lot.",
+   "It's like I said."
+  ],
+  "a": "It's small but bright.",
+  "why": "Look like — как выглядит: маленькая, но светлая. I like it — ответ на Do you like it?"
+ },
+ {
+  "id": "l3-tired",
+  "t": 3,
+  "q": "You look ___. Did you sleep at all?",
+  "ru": "Ты выглядишь усталым. Ты вообще спал?",
+  "opts": [
+   "tired",
+   "like tired",
+   "tiredly"
+  ],
+  "a": "tired",
+  "why": "После look — прилагательное, без like."
+ },
+ {
+  "id": "l3-plan",
+  "t": 3,
+  "q": "Meet at eight? That ___ a plan.",
+  "ru": "Встречаемся в восемь? Договорились.",
+  "opts": [
+   "sounds like",
+   "sounds",
+   "sounds as"
+  ],
+  "a": "sounds like",
+  "why": "Перед существительным — sounds like: That sounds like a plan — договорились."
+ },
+ {
+  "id": "l3-great",
+  "t": 3,
+  "q": "Your new job sounds ___!",
+  "ru": "Твоя новая работа — звучит здорово!",
+  "opts": [
+   "great",
+   "like great",
+   "greatly"
+  ],
+  "a": "great",
+  "why": "Sound + прилагательное: sounds great."
+ },
+ {
+  "id": "l3-pain",
+  "t": 3,
+  "q": "— What does the pain feel like? — It ___ a tight band.",
+  "ru": "— На что похожа боль? — Как будто стягивает обручем.",
+  "opts": [
+   "feels like",
+   "feels",
+   "is feeling like"
+  ],
+  "a": "feels like",
+  "why": "Перед существительным — feels like."
+ },
+ {
+  "id": "l3-sick",
+  "t": 3,
+  "q": "I feel ___ — I think I ate something bad.",
+  "ru": "Меня тошнит — наверное, съел что-то не то.",
+  "opts": [
+   "sick",
+   "like sick",
+   "sickly"
+  ],
+  "a": "sick",
+  "why": "Feel + прилагательное: feel sick — тошнит. Sickly — болезненный, хилый."
+ },
+ {
+  "id": "l3-smell",
+  "t": 3,
+  "q": "This room ___ a hospital.",
+  "ru": "В этой комнате пахнет больницей.",
+  "opts": [
+   "smells like",
+   "smells",
+   "smells as"
+  ],
+  "a": "smells like",
+  "why": "Перед существительным — smells like."
+ },
+ {
+  "id": "l4-coffee",
+  "t": 4,
+  "q": "___ a black coffee, please.",
+  "ru": "Мне чёрный кофе, пожалуйста.",
+  "opts": [
+   "I'd like",
+   "I like",
+   "I'm liking"
+  ],
+  "a": "I'd like",
+  "why": "Просьба сейчас — I'd like. I like coffee — люблю кофе вообще."
+ },
+ {
+  "id": "l4-jazz",
+  "t": 4,
+  "q": "I ___ jazz, but I can't stand rap.",
+  "ru": "Джаз я люблю, а рэп терпеть не могу.",
+  "opts": [
+   "like",
+   "would like",
+   "am liking"
+  ],
+  "a": "like",
+  "why": "Вкусы вообще — like. Would like — хочу сейчас; like в -ing о вкусах не ставят."
+ },
+ {
+  "id": "l4-offer",
+  "t": 4,
+  "q": "___ some more tea?",
+  "ru": "Хотите ещё чаю?",
+  "opts": [
+   "Would you like",
+   "Do you like",
+   "Are you liking"
+  ],
+  "a": "Would you like",
+  "why": "Предложение — Would you like…? Do you like tea? — любите ли вы чай."
+ },
+ {
+  "id": "l4-appointment",
+  "t": 4,
+  "q": "I'd like ___ an appointment for Monday.",
+  "ru": "Я бы хотел записаться на понедельник.",
+  "opts": [
+   "to make",
+   "making",
+   "make"
+  ],
+  "a": "to make",
+  "why": "Would like + to do."
+ },
+ {
+  "id": "l4-job",
+  "t": 4,
+  "q": "— ___ your new job? — Yes, I love it.",
+  "ru": "— Тебе нравится новая работа? — Да, очень.",
+  "opts": [
+   "Do you like",
+   "Would you like",
+   "Are you like"
+  ],
+  "a": "Do you like",
+  "why": "О вкусах и впечатлениях — Do you like…?"
+ },
+ {
+  "id": "l4-you-to",
+  "t": 4,
+  "q": "I'd like you ___ these results with the patient.",
+  "ru": "Я хочу, чтобы вы обсудили эти результаты с пациентом.",
+  "opts": [
+   "to discuss",
+   "discuss",
+   "discussing"
+  ],
+  "a": "to discuss",
+  "why": "Would like + кто-то + to do: I'd like you to discuss."
+ },
+ {
+  "id": "l5-cook",
+  "t": 5,
+  "q": "I don't feel like ___ tonight — let's order a pizza.",
+  "ru": "Мне сегодня не хочется готовить — закажем пиццу.",
+  "opts": [
+   "cooking",
+   "to cook",
+   "cook"
+  ],
+  "a": "cooking",
+  "why": "Feel like + -ing. Feel like to cook — ошибка."
+ },
+ {
+  "id": "l5-walk",
+  "t": 5,
+  "q": "Do you feel like ___ after dinner?",
+  "ru": "Хочешь прогуляться после ужина?",
+  "opts": [
+   "a walk",
+   "to walk",
+   "walk"
+  ],
+  "a": "a walk",
+  "why": "Feel like + существительное: feel like a walk, a coffee."
+ },
+ {
+  "id": "l5-swim",
+  "t": 5,
+  "q": "I really like ___ in the sea.",
+  "ru": "Я очень люблю плавать в море.",
+  "opts": [
+   "swimming",
+   "swim",
+   "to swimming"
+  ],
+  "a": "swimming",
+  "why": "Like + -ing — нравится занятие."
+ },
+ {
+  "id": "l5-habit",
+  "t": 5,
+  "q": "I like ___ the results myself before I call the patient.",
+  "ru": "Я предпочитаю сам проверять результаты, прежде чем звонить пациенту.",
+  "opts": [
+   "to check",
+   "check",
+   "checked"
+  ],
+  "a": "to check",
+  "why": "Like + to do — привычка, «так правильно». Like checking — тоже верно."
+ },
+ {
+  "id": "l5-come",
+  "t": 5,
+  "q": "Would you like ___ with us on Saturday?",
+  "ru": "Хотите пойти с нами в субботу?",
+  "opts": [
+   "to come",
+   "coming",
+   "come"
+  ],
+  "a": "to come",
+  "why": "Would like — всегда + to do."
+ },
+ {
+  "id": "l5-cry",
+  "t": 5,
+  "q": "When she heard the news, she felt like ___.",
+  "ru": "Услышав новость, она чуть не расплакалась.",
+  "opts": [
+   "crying",
+   "to cry",
+   "cry"
+  ],
+  "a": "crying",
+  "why": "Feel like doing — хочется: felt like crying — хотелось плакать."
+ },
+ {
+  "id": "l6-nurse",
+  "t": 6,
+  "q": "My sister works ___ a nurse in a children's hospital.",
+  "ru": "Сестра работает медсестрой в детской больнице.",
+  "opts": [
+   "as",
+   "like"
+  ],
+  "a": "as",
+  "why": "Профессия, роль — as."
+ },
+ {
+  "id": "l6-sing",
+  "t": 6,
+  "q": "He sings ___ a professional, but he's actually a surgeon.",
+  "ru": "Он поёт как профессионал, хотя на самом деле хирург.",
+  "opts": [
+   "like",
+   "as"
+  ],
+  "a": "like",
+  "why": "Сходство — like: поёт как профессионал, но им не является."
+ },
+ {
+  "id": "l6-doctor",
+  "t": 6,
+  "q": "___ your doctor, I must warn you about the side effects.",
+  "ru": "Как ваш врач, я должен предупредить о побочных эффектах.",
+  "opts": [
+   "As",
+   "Like"
+  ],
+  "a": "As",
+  "why": "В роли — as: я и есть ваш врач."
+ },
+ {
+  "id": "l6-usual",
+  "t": 6,
+  "q": "___ usual, the train was late.",
+  "ru": "Как обычно, поезд опоздал.",
+  "opts": [
+   "As",
+   "Like"
+  ],
+  "a": "As",
+  "why": "As usual — устойчивое сочетание."
+ },
+ {
+  "id": "l6-said",
+  "t": 6,
+  "q": "___ I said yesterday, the scan was normal.",
+  "ru": "Как я и говорил вчера, снимок в норме.",
+  "opts": [
+   "As",
+   "Like"
+  ],
+  "a": "As",
+  "why": "As I said — нейтрально, в докладе и письме.",
+  "also": {
+   "Like": "тоже говорят, но разговорно; в докладе и письме — As"
+  }
+ },
+ {
+  "id": "l6-office",
+  "t": 6,
+  "q": "We use this room ___ an office.",
+  "ru": "Эта комната у нас вместо кабинета.",
+  "opts": [
+   "as",
+   "like"
+  ],
+  "a": "as",
+  "why": "Функция — as: use something as — использовать в качестве."
+ },
+ {
+  "id": "l7-rain",
+  "t": 7,
+  "q": "Take an umbrella — it looks ___ it's going to rain.",
+  "ru": "Возьми зонт — похоже, будет дождь.",
+  "opts": [
+   "like",
+   "as",
+   "like as"
+  ],
+  "a": "like",
+  "why": "Look like + предложение — похоже, что (разговорное). Нейтрально — it looks as if."
+ },
+ {
+  "id": "l7-break",
+  "t": 7,
+  "q": "You've been working for twelve hours. It sounds ___ you need a break.",
+  "ru": "Ты работаешь двенадцать часов подряд. Похоже, тебе нужен отдых.",
+  "opts": [
+   "like",
+   "as",
+   "that"
+  ],
+  "a": "like",
+  "why": "Sound like + предложение — похоже, что."
+ },
+ {
+  "id": "l7-asif",
+  "t": 7,
+  "q": "He talks ___ he knew everything about medicine.",
+  "ru": "Он говорит так, будто всё знает о медицине.",
+  "opts": [
+   "as if",
+   "like as",
+   "as like"
+  ],
+  "a": "as if",
+  "why": "As if — как будто; прошедшее knew — на самом деле не знает."
+ },
+ {
+  "id": "l7-were",
+  "t": 7,
+  "q": "She acts as if she ___ the head of department.",
+  "ru": "Она ведёт себя так, будто она заведующая.",
+  "opts": [
+   "were",
+   "was",
+   "be"
+  ],
+  "a": "were",
+  "why": "Нереальное «как будто» — прошедшее: as if she were.",
+  "also": {
+   "was": "тоже верно, разговорнее; were — книжнее"
+  }
+ },
+ {
+  "id": "l7-seems",
+  "t": 7,
+  "q": "It seems ___ only yesterday that we started medical school.",
+  "ru": "Кажется, только вчера мы поступили в медицинский.",
+  "opts": [
+   "like",
+   "as",
+   "that like"
+  ],
+  "a": "like",
+  "why": "It seems like yesterday — как будто вчера. Можно и It seems as if…"
+ },
+ {
+  "id": "l7-though",
+  "t": 7,
+  "q": "It looks as ___ the patient has fallen asleep.",
+  "ru": "Похоже, пациент уснул.",
+  "opts": [
+   "though",
+   "like",
+   "if like"
+  ],
+  "a": "though",
+  "why": "As though = as if; нейтрально и в письме."
+ },
+ {
+  "id": "l8-suchas",
+  "t": 8,
+  "q": "Avoid NSAIDs ___ ibuprofen and naproxen.",
+  "ru": "Избегайте НПВС, таких как ибупрофен и напроксен.",
+  "opts": [
+   "such as",
+   "as",
+   "alike"
+  ],
+  "a": "such as",
+  "why": "Примеры перед списком — such as. В разговоре — like."
+ },
+ {
+  "id": "l8-flu",
+  "t": 8,
+  "q": "She developed ___ symptoms after the vaccine.",
+  "ru": "После прививки у неё появились гриппоподобные симптомы.",
+  "opts": [
+   "flu-like",
+   "flu-alike",
+   "likely flu"
+  ],
+  "a": "flu-like",
+  "why": "-like — «похожий на»: flu-like symptoms."
+ },
+ {
+  "id": "l8-likely",
+  "t": 8,
+  "q": "With treatment, he is ___ to make a full recovery.",
+  "ru": "При лечении он, скорее всего, полностью поправится.",
+  "opts": [
+   "likely",
+   "alike",
+   "like"
+  ],
+  "a": "likely",
+  "why": "Be likely to do — скорее всего."
+ },
+ {
+  "id": "l8-alike",
+  "t": 8,
+  "q": "The two scans look ___ — I can't see any difference.",
+  "ru": "Два снимка одинаковые — разницы не вижу.",
+  "opts": [
+   "alike",
+   "like",
+   "likely"
+  ],
+  "a": "alike",
+  "why": "Alike — одинаковые, после глагола: look alike. Look like — перед существительным."
+ },
+ {
+  "id": "l8-unlike",
+  "t": 8,
+  "q": "___ aspirin, paracetamol doesn't affect bleeding.",
+  "ru": "В отличие от аспирина, парацетамол не влияет на кровотечение.",
+  "opts": [
+   "Unlike",
+   "Dislike",
+   "Not like"
+  ],
+  "a": "Unlike",
+  "why": "В отличие от — unlike."
+ },
+ {
+  "id": "l8-dislike",
+  "t": 8,
+  "q": "Many patients ___ taking pills every day.",
+  "ru": "Многие пациенты не любят каждый день пить таблетки.",
+  "opts": [
+   "dislike",
+   "unlike",
+   "unliked"
+  ],
+  "a": "dislike",
+  "why": "Не любить — dislike + -ing."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "like:state";
+const LS_SPEAK = "like:autospeak";
+const LS_TAB = "like:tab";
+const LS_OPEN = "like:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "like"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

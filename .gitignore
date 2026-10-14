@@ -54,3 +54,8 @@ sources/vnoun/index.html
 sources/vnoun/preview.html
 sources/vnoun/*.png
 sources/kyutai/
+sources/like/audio/
+sources/like/clips.json
+sources/like/index.html
+sources/like/preview.html
+sources/like/*.png

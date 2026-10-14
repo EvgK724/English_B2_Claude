@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-56 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+57 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается из этого репозитория (ветка `main`, папка `/`),
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     56 тренажёров, каждый — самостоятельная страница
+  apps/<ключ>.html     57 тренажёров, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -93,6 +93,11 @@ python3 -m http.server 8000
   `python3 tts_kyutai.py vnoun` (см. «Голос новых тренажёров»), `vnoun/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 vnoun/test.py`. Стоит сразу после «Advice и advise» (nverb): там пары, которые различаются буквой,
   звуком или ударением, здесь — вся система суффиксов. На карточке урока опечатка existance — в тренажёре это ловушка.
+- **«Like и look like» (like)** — What's she like? (какая), What does she look like? (как выглядит), What does she like?
+  (что любит); look tired и look like a doctor; I'd like и I like; like doing и feel like doing; like или as; like и as if
+  + предложение; such as, flu-like, likely, alike, unlike. Собирается так же, из `sources/like/` (шаблон из `sounds/template.html`):
+  `python3 like/mk_template.py`, `like/clips.py`, `python3 tts_kyutai.py like`, `like/build.py`, затем `python3 tools/mk_shell.py`;
+  проверка — `python3 like/test.py`. Стоит сразу после «Похожих слов» (similar); мини-диалоги озвучены двумя голосами.
 - **«Косвенные вопросы» (indq)** — так же, из `sources/indq/` (шаблон из `sounds/template.html`):
   `python3 indq/mk_template.py`, `indq/clips.py`, `indq/tts.py`, `indq/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 indq/test.py`. Стоит сразу после «Вопросов» (q): там и в «Пересказе» (rep) — по теме на основу,
@@ -112,7 +117,7 @@ python3 -m http.server 8000
   (см. «Голос новых тренажёров» ниже); в мини-диалогах «— …? — …» две реплики говорят два голоса.
 - **Голос новых тренажёров.** Ryan (edge-tts) с 12 октября 2026 недоступен: Microsoft отклоняет синтез (403), а свежая
   edge-tts 7.3.0 обходит новую защиту Microsoft — её не ставим. Azure пользователю недоступен (карта). 53 тренажёра остаются
-  с записями Ryan. Новые (сейчас encour и vnoun) озвучиваются открытой моделью Kyutai Pocket TTS (CC BY 4.0, английская версия
+  с записями Ryan. Новые (сейчас encour, vnoun и like) озвучиваются открытой моделью Kyutai Pocket TTS (CC BY 4.0, английская версия
   апреля 2026, ONNX-экспорт KevinAHM/pocket-tts-onnx, без PyTorch) локально: голос VCTK p274 (CSTR, University of Edinburgh,
   CC BY 4.0), в мини-диалогах ответ — p273. Пользователь выбрал их на слух 13 октября 2026 (№8 и №7 из образцов).
   Скрипт — `sources/tts_kyutai.py <ключ>`: файлы модели в `sources/kyutai/` (в git не попадают, откуда скачать — в шапке
