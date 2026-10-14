@@ -1,0 +1,1885 @@
+{
+  "date": "2026-10-14",
+  "voice": "en-GB-RyanNeural",
+  "client": "edge-tts 7.3.1",
+  "apps": {
+    "encour": {
+      "new_recordings": 70,
+      "pack_sha256": "6401465f052cbff5316852224d25068068b3c464afd81f8b6120601361b761db",
+      "clips": {
+        "cp-1": {
+          "text": "— I failed my driving test again. — Don't worry. It's never easy.",
+          "rate": "-10%",
+          "source_sha256": "5083865fd962a208fee3dd368e421c71a46ffdd9558b0335e907df68360a93c9",
+          "packed_sha256": "acf29f6faaed5a1c4031233f6b90cd140811a9ae47dca535ff37a15f9c961de8"
+        },
+        "cp-2": {
+          "text": "— I get my results tomorrow. I'm so nervous. — I'm sure it'll be fine. Good luck!",
+          "rate": "-10%",
+          "source_sha256": "6053604e9b0fca2b8f13c415139a0169d6bfff0343ecf2a440fabe5cad3a0b22",
+          "packed_sha256": "c6016d4e54b0010a9870eb15f4128e63b5a723d41d5e00b2d81f6e4ec04a9f84"
+        },
+        "cp-3": {
+          "text": "— I got lost on the way here. — I know the feeling. It was just like that when I was looking for the cafe.",
+          "rate": "-10%",
+          "source_sha256": "21d61db77bd5506b3210f35b24d8a7ade99a6f6c209fbd814f5dd67123f6c0fd",
+          "packed_sha256": "c073af417718cc623f8f15df40755b7c22785709cff8eebd58bd67160e87cdb4"
+        },
+        "cp-4": {
+          "text": "— The project was cancelled. I feel it's my fault. — It's not your fault. We're just unlucky.",
+          "rate": "-10%",
+          "source_sha256": "f42eca2c09e4b0542c32b14600e341df3df1e2266e5a3eaa7d4f4fe9c3779f90",
+          "packed_sha256": "724548d0f3acc3feffe9fa9f68ba36b74bb246d8a97a1b2d429388dc40f7628d"
+        },
+        "cp-5": {
+          "text": "— My phone died in the middle of a call. — That's just like when I lost my phone.",
+          "rate": "-10%",
+          "source_sha256": "a5c649fb9c222480f7a899850c0f11d7bad1f91761ec4f90f1d1ce825d29093b",
+          "packed_sha256": "a1ed2e4d234521c06b51dd8c5ee4c14b5ab86f7ecda7cb3360349c9a2c158e7a"
+        },
+        "e1-be": {
+          "text": "I'm sure it'll be fine.",
+          "rate": "-5%",
+          "source_sha256": "884c800b56023f0860ff68a63de72375aeb2d79161c991e929cf2024b657c88b",
+          "packed_sha256": "6d9bfce0c7c6f051fdded068dfca73139723a47e6d25d6eed02bf2d4fde05ac3"
+        },
+        "e1-hope": {
+          "text": "Never give up hope.",
+          "rate": "-5%",
+          "source_sha256": "39b281474eec578478c5222a752da24f0e579219262d55eabd5c0ac5d41da02f",
+          "packed_sha256": "2a5866551de20cacd48e57d8c8b06b8e238dfeaef714d4372101ed0358b9e94f"
+        },
+        "e1-know": {
+          "text": "You never know.",
+          "rate": "-5%",
+          "source_sha256": "36642a8e5d5b05c5b814fd411bbc725bba37ee466a136d50a2bea454a92689e1",
+          "packed_sha256": "2066aaff5ad2bbe4ed84e6cc10c13cf95e8fe367672a6b6cf3c9dcee07323330"
+        },
+        "e1-might": {
+          "text": "It might work out fine.",
+          "rate": "-5%",
+          "source_sha256": "57f0644c0e7222ecd48432518c7eddd9d41dabb6f00d6f03535885c7350a7fb0",
+          "packed_sha256": "9af03330189e82fd9fb15db941d111469e6471d6270b9b3019d596a6aaad4fbe"
+        },
+        "e1-out": {
+          "text": "It might work out fine.",
+          "rate": "-5%",
+          "source_sha256": "783aa8a54161b3a7c874d5e1e2ba5abd2227784d1885ef8905c3b09cc661f5d2",
+          "packed_sha256": "5f357875f8570ddcd8f0bab6c0b770de89af294880a9e1b49c45020d9890b281"
+        },
+        "e1-up": {
+          "text": "Never give up hope.",
+          "rate": "-5%",
+          "source_sha256": "3152930da6adc7170ab2ff6dacd67162c136984fc5836ee8c6a6b26d29814174",
+          "packed_sha256": "b415c72743709e9c50440c09bd4ef24d37b13b5e547dd547fccf4107d036d01f"
+        },
+        "e2-easy": {
+          "text": "It's never easy.",
+          "rate": "-5%",
+          "source_sha256": "9916f27ded6e723aab52874e578bfc658fa89071b8b8f86001cd6d410cad7953",
+          "packed_sha256": "6a06ced35452bb0111acd491fde4c0938541a2c93c40eda88928711630b0aa32"
+        },
+        "e2-fault": {
+          "text": "It's not your fault.",
+          "rate": "-5%",
+          "source_sha256": "a23499ff0b00773e097bc552bf913b38d9eea0ca843b3c1f3ab32270dd17f78b",
+          "packed_sha256": "f4a46eef935e6bc29cb6147b96553aa73c887b4d1a0edb3a9b2310bf52d49bbf"
+        },
+        "e2-luck": {
+          "text": "Good luck!",
+          "rate": "-5%",
+          "source_sha256": "62e48485abc46d48efe3c01c580c8ca607e1b98085fbb7aa17ad18f8472ee423",
+          "packed_sha256": "5875e3eff7eb2a87c4f67d67dad87883d5927ed740309dd607edb94e72980e18"
+        },
+        "e2-unlucky": {
+          "text": "You're just unlucky.",
+          "rate": "-5%",
+          "source_sha256": "38f9ab8b55ff11677815bb7dd637b655c2fa61aa9febebbd38522b45fb92c040",
+          "packed_sha256": "ce309d8a18aabd7e342d425cbb9cc68ce11f0cf5e25fffc065febdf4ba94b7fa"
+        },
+        "e2-were": {
+          "text": "We're just unlucky — the rain ruined everything.",
+          "rate": "-5%",
+          "source_sha256": "eca804ab31c18b14956513cad2e0697251afb32998f678558c4928837f72e89e",
+          "packed_sha256": "72006f9557de8c90c098ce3e7641a5690da640a2d1ebab1a6a43d001d3ac90b6"
+        },
+        "e2-worry": {
+          "text": "Don't worry.",
+          "rate": "-5%",
+          "source_sha256": "c205a14c64824a4fb4ad788ac6514d95e6f2520fa39039b26b87446b54b5c91c",
+          "packed_sha256": "a30449f66224e5dbbaa38359641c1b0c938f2a30559bfc1b5b5817353f098e33"
+        },
+        "e3-feeling": {
+          "text": "I know the feeling.",
+          "rate": "-5%",
+          "source_sha256": "61dc805126464ed2d487d65cac43018566e7f0830bde1dd618d23da0a7e10261",
+          "packed_sha256": "cb9dd2575b4dfd5c771e50a9cbe6c77a60f08e3237e5d3f15eb1d4835117e258"
+        },
+        "e3-had": {
+          "text": "I've just had a similar experience.",
+          "rate": "-5%",
+          "source_sha256": "abeb26620ba17b0e713852b5cefc7186cbcc43b48b8203dc9e93f904f17e6e87",
+          "packed_sha256": "37865e7126876474947a7497e59693ce2335e20afcce015d5c2fc605df81d247"
+        },
+        "e3-similar": {
+          "text": "I've just had a similar experience.",
+          "rate": "-5%",
+          "source_sha256": "105c26ee245570a75cd8bd361fa670709504a6d7681511aac8e6c7443d0ef314",
+          "packed_sha256": "d69f0f4e6b9dfc144da9377bf38c2497811362acac2ab0690e8826713247f299"
+        },
+        "e3-thing": {
+          "text": "The same thing happened to me.",
+          "rate": "-5%",
+          "source_sha256": "b55caa3e968a2722ed21d5f0aa8b0a37a49e9cc301fea52b946884dd45203421",
+          "packed_sha256": "f98b1376489bc75922bc162ba3c90ca92724e5bde43a0911ae1552d0dd28803e"
+        },
+        "e3-to": {
+          "text": "The same thing happened to me.",
+          "rate": "-5%",
+          "source_sha256": "331514af3b8c0e3836fefb1c1a8e46127aab77aa21a3998064a15e4cab027f65",
+          "packed_sha256": "bd2d9755d913035604d7cfd7db920859a8c68d0451323e88513ab9751ef767a5"
+        },
+        "e3-with": {
+          "text": "It was the same with me.",
+          "rate": "-5%",
+          "source_sha256": "f358061dce62ba0a4c34904a47679074953499cfe6a7dbb8a42110163b3f16d5",
+          "packed_sha256": "c29391eea964f02149670e0cdc5848e36cb4549cf3422426b769dd8a40a18362"
+        },
+        "e4-just": {
+          "text": "That's just like when I missed my train.",
+          "rate": "-5%",
+          "source_sha256": "78286bfad35603ddc5a14a15ed49cbc571be3f69f59b0fdd332f3fb22475243c",
+          "packed_sha256": "667158095e8417cd1ec02b70d20a60962cb7b443c77e7b8adc2bc519445b5a6d"
+        },
+        "e4-like": {
+          "text": "That's just like when I lost my phone.",
+          "rate": "-5%",
+          "source_sha256": "0258cbe4acb5f21e9307a0102850015a475c47acd61c4c0cfafba61950f8094c",
+          "packed_sha256": "5d72d83dd0c4ac39e573540cf2b797bf72f722e38d1882388c1d4a71c2d5591d"
+        },
+        "e4-lost": {
+          "text": "That's just like when I lost my phone.",
+          "rate": "-5%",
+          "source_sha256": "42797ac9ff537fbc73600f6d2cbe5bef3d9d18935703363a2742d81c65086a63",
+          "packed_sha256": "014cab904839701206e9ca0e0ecb8af5918fa83a9251d053cfcde8ef4dd94c2c"
+        },
+        "e4-that": {
+          "text": "It was just like that when I was looking for the cafe.",
+          "rate": "-5%",
+          "source_sha256": "4c5387311d8f4341aa446d2912dd8b52485165bb28eeed712c51b71730386e53",
+          "packed_sha256": "d8e2f3b7b44dcb34ddcf85ad8ce5987d7a0487f3c5846df4ed603b33b8399d8c"
+        },
+        "e4-was": {
+          "text": "It was just like that when I was looking for the cafe.",
+          "rate": "-5%",
+          "source_sha256": "70279122ebefe80c4a66ac56a7652a7350a7e8f740580b653beef90be4f630af",
+          "packed_sha256": "e3e0115c6c8477ca2ff19c415e4803ca812f2a2420faa06c7e36a36e90c6b6e1"
+        },
+        "e4-when": {
+          "text": "It was just like that when I started my first job.",
+          "rate": "-5%",
+          "source_sha256": "745e6d2c4fa4fac4713f29ea431344e9c91b958571b07a2272f8310383032549",
+          "packed_sha256": "4c289588bac54cccd7deb2725b72225cfb903c54f72853394241e9a3a61bb395"
+        },
+        "e5-blame": {
+          "text": "— The patient fell, and I feel it's my fault. — It's not your fault.",
+          "rate": "-5%",
+          "source_sha256": "b4afd346e01b430b7c79bd2a3e1a4441581a13ed9fc07926b0f7ec491ede7444",
+          "packed_sha256": "d0eea7c65bc02151da9f2c75c1d9cd1b5f3e4db2a02195d6584106b11016068a"
+        },
+        "e5-exam": {
+          "text": "— I'm so nervous about my exam tomorrow. — I'm sure it'll be fine.",
+          "rate": "-5%",
+          "source_sha256": "2e802d05c393dbe861e6e91133f205dab4156452a9a0e908341bf79a101739ff",
+          "packed_sha256": "74f742c6e711a093b708832c41c2cda1749471c4c43cb1a6fbbd455af9c00f0e"
+        },
+        "e5-flight": {
+          "text": "— My flight was cancelled and I slept at the airport. — The same thing happened to me. Mine was cancelled last month.",
+          "rate": "-5%",
+          "source_sha256": "185206993fc532961ac2185cb50b4be3c6f53c1b1be31a60d68f48bdedb7d797",
+          "packed_sha256": "2f66e84ab51df331253132138595c1746eb9579cb08cc06ad9a9eeb2dabf61d6"
+        },
+        "e5-hard": {
+          "text": "— Rehab is so slow. I'm tired of it. — It's never easy. But you're making progress.",
+          "rate": "-5%",
+          "source_sha256": "b94404bc8443dc2561a3d9425e253a78f9d33be5e678fee6e02637e036e543d0",
+          "packed_sha256": "e712022c8cee064453510198a859beb9425d35ccec20cde6156f01fe8801c2ca"
+        },
+        "e5-interview": {
+          "text": "— I've got an interview in ten minutes! — Good luck!",
+          "rate": "-5%",
+          "source_sha256": "1c0a33197e6d057bf65cc2765ba3b0f9e3702795c6fbc0290356ea9169c19e94",
+          "packed_sha256": "94ec64ecb38bf74e26482c6d18767f514625b538dee5da5896a506bcae8a45c4"
+        },
+        "e5-job": {
+          "text": "— I don't think they'll offer me the job. — You never know. They might call tomorrow.",
+          "rate": "-5%",
+          "source_sha256": "d54a2a08546ef0f7de72997994c7f6ecf8377a8c62ef9df60d1fa00de6f76caa",
+          "packed_sha256": "e1578fb0cf7fbcfa02eaf255100c197b576d35a95648b092bb081207be9850c8"
+        },
+        "e5-lost": {
+          "text": "— I got lost on the way here. — I know the feeling. It was just like that when I was looking for the cafe.",
+          "rate": "-5%",
+          "source_sha256": "b3f1e04bc27fda2309f6230958a81fda2148f2f2a0363b324b961ae6cac9e391",
+          "packed_sha256": "f302f7df4026ef5ab00677131dd286b0a715abe6727d84460c1d012802b4bb30"
+        },
+        "e5-rain": {
+          "text": "— It rained every day of our holiday. — Oh no! You were just unlucky.",
+          "rate": "-5%",
+          "source_sha256": "0660cccb6e45083e8a9c1c43ac57745a0fdd051f50485a2b4f60f814f3a3b491",
+          "packed_sha256": "3803455b8bc9065bbea1b24bd3f5d30a2227515c90bfb46d427ae999c6f4816f"
+        },
+        "e6-easy": {
+          "text": "It's never easy.",
+          "rate": "-5%",
+          "source_sha256": "07e5ababe53815306890901f19785666e5fab331056dca435e009704a22459b3",
+          "packed_sha256": "0e7d4b289df40c5376c080aa5968ecb1ae5e0914b43912a94a82de58c757503b"
+        },
+        "e6-fault": {
+          "text": "It's not your fault.",
+          "rate": "-5%",
+          "source_sha256": "5c08813ff21e043d482db2a6482127eaf81c2bf5e56a38f419c92e1de684e5fc",
+          "packed_sha256": "65cc840855039926bdc26ac074607d6c90592b18fcebceaa5092759694093be0"
+        },
+        "e6-feeling": {
+          "text": "I know the feeling.",
+          "rate": "-5%",
+          "source_sha256": "14a93b3069aaa1535f5b693e4cb16eac12c45fd16c420e415f4719d8619a6fa9",
+          "packed_sha256": "d8aa953303568328d3a722eb7713ef4f6c7c2efee79c5cfdd89d4998b327de6c"
+        },
+        "e6-happened": {
+          "text": "The same thing happened to me.",
+          "rate": "-5%",
+          "source_sha256": "7798262475f30a60e15c1e41ba4a45109644f3772052599f4504b40c0b9c00f5",
+          "packed_sha256": "7be79677a8b75b8a47e716a938539d5ad44cda67efbe790208d8129d44f8328b"
+        },
+        "e6-hope": {
+          "text": "Never give up hope.",
+          "rate": "-5%",
+          "source_sha256": "9443ad23a214284d04766ceee42af562dc6f69270fb3410d995299fb90609ef6",
+          "packed_sha256": "d49b8b0c498bb9297da95f90c75fafd3b1f54bcced009d3127095fe3eabab5c4"
+        },
+        "e6-know": {
+          "text": "You never know.",
+          "rate": "-5%",
+          "source_sha256": "6ac36392d1beed85591a90a14f0a87c7516862554e1853fd411ad82281390a48",
+          "packed_sha256": "36f5e7a6bc283b67eea344c5ecb96e4109c16eb30af11b3a7edb12ee85314032"
+        },
+        "e6-like": {
+          "text": "That's just like when I lost my phone.",
+          "rate": "-5%",
+          "source_sha256": "6c5229d90532936494cb1235dbe5897959543ef29793e9f4160ea8ef6ae8500c",
+          "packed_sha256": "2d0735c787f1c496036fba5d7e6f2b2d5dfa37ac1a112e69666c1fb29d86302b"
+        },
+        "e6-same": {
+          "text": "It was the same with me.",
+          "rate": "-5%",
+          "source_sha256": "ba0b3357db640f9272555012bd262093ca695594772b7c73276ffb89dbccb86a",
+          "packed_sha256": "39b7d92731f419c7ad2f1a97ed97aa4e4a8a2c0175ab43ac69d8e69eda0a9bdc"
+        },
+        "e6-sure": {
+          "text": "I'm sure it'll be fine.",
+          "rate": "-5%",
+          "source_sha256": "9274f21f9540d773e104923cca6948a18fab49692da1e0954df82c7c23c224a2",
+          "packed_sha256": "b3da13604b88cef5c4576a6c6ff16fe9761a717719f7cd7e9d731bb1911ae331"
+        },
+        "e6-workout": {
+          "text": "It might work out fine.",
+          "rate": "-5%",
+          "source_sha256": "5b56452e2891fb2e8c7ab0fd96149e8efaa72b33537d0c729f2632a7ac15ca33",
+          "packed_sha256": "b0485c46ddee99b6dcd722b0a8b0172698d99ac32a763ce3fe9a57707aa683b8"
+        },
+        "r1-1": {
+          "text": "It might work out fine.",
+          "rate": "-5%",
+          "source_sha256": "067d2ff8be4fc865974f72f6db2d588451353cf881943ef4d6d5dcf72f139ecd",
+          "packed_sha256": "2c7f6408b4ad68f9753cd51bc21df9ef2abd5d21be1d70ad69754f088b479c0e"
+        },
+        "r1-2": {
+          "text": "Never give up hope.",
+          "rate": "-5%",
+          "source_sha256": "95bdb4e99d21bc6cc9fa568c3e539d2b49523eb3d03be9fa80aeb1bbfa4c84a9",
+          "packed_sha256": "db4074402cb95e8ec31b28257dbf1db709a2f5f84ebbdb04b1eb6bb35482b12f"
+        },
+        "r1-3": {
+          "text": "You never know.",
+          "rate": "-5%",
+          "source_sha256": "d0f1187bf142c7a52b5e413a45aba8c902b86cba0ea2d62ad2863aa5422efb82",
+          "packed_sha256": "8d105fddecd9894da49d81efcb9cc529fbb5835793993b7f8a595b7eb9bf1cb9"
+        },
+        "r1-4": {
+          "text": "I'm sure it'll be fine.",
+          "rate": "-5%",
+          "source_sha256": "54ca128280ac19bbef2157195dd04c4ad8d2cf5f3e88335a1bb8e1ec82f9249a",
+          "packed_sha256": "f04e14c05983ac98534e701d0c5dd463a63dc14ebcd0677d82307bdb619c4839"
+        },
+        "r2-1": {
+          "text": "Don't worry.",
+          "rate": "-5%",
+          "source_sha256": "2a3ef561c52eeaba134b67405fcc9d9c7f3d8f6462335665bfdb248f32204377",
+          "packed_sha256": "8cf0f1675b47bcb8e8cd7d0f24b30da519e41a0a4e1d8a847771923eef3965d3"
+        },
+        "r2-2": {
+          "text": "Good luck.",
+          "rate": "-5%",
+          "source_sha256": "27830c87905e39d74ee82e3a9bb0fbd63195ed8547c9af06f0e89df1d484d9b6",
+          "packed_sha256": "516062ee5b095a342f31e6a5f731e5367a27fd251af645180a220a971f304a6a"
+        },
+        "r2-3": {
+          "text": "It's not your fault.",
+          "rate": "-5%",
+          "source_sha256": "f966044193ce6da0a1f913cd6d6dc4f89c9a69c5eaf4d46a46bf7e7c55de8490",
+          "packed_sha256": "6892b275e7538ba923687bb8b4c0a959d8ba6615bde1313406766d9a3d0eda62"
+        },
+        "r2-4": {
+          "text": "You're just unlucky.",
+          "rate": "-5%",
+          "source_sha256": "c52786513bb79c4a1b254b2dfe3f895b9b2fe469b8d5a8d156915e43c465004b",
+          "packed_sha256": "485348b7230bc2b1d422b72936cd44016435181d9b2518295ad7c64cce5d4ba8"
+        },
+        "r2-5": {
+          "text": "We're just unlucky.",
+          "rate": "-5%",
+          "source_sha256": "bd74d1681fab3572eedca42056d060f2d1dc55b86f5acde785297a92f686146c",
+          "packed_sha256": "bd83f0a1b2f81a3acc0e69fbfc4ad0506fb54e9c29d582ee86a5e2a5655b3d23"
+        },
+        "r2-6": {
+          "text": "It's never easy.",
+          "rate": "-5%",
+          "source_sha256": "e66b126c4d506cd523ce5d1894c29044332c8c87c05bdb896996dee456902ba6",
+          "packed_sha256": "b1af132701963d17740efff2014936c9af6639b71b73deceaf10e05b0fd4df39"
+        },
+        "r3-1": {
+          "text": "I know the feeling.",
+          "rate": "-5%",
+          "source_sha256": "628de8c989027c65c590b2c1bcc02b75376a225cb0f23f3338fb95ae34b92267",
+          "packed_sha256": "9b921327517fc5c2cea14e12b4f7acd2d8e1bb166c386bd9ae1c998c7648e08d"
+        },
+        "r3-2": {
+          "text": "It was the same with me.",
+          "rate": "-5%",
+          "source_sha256": "c5c3c3a2a8456db006e0b44fa50a8f95a0452219a27dd90f8fef57b542ee0b75",
+          "packed_sha256": "0d66a48472e8d5b4917fc8421ac44e26ac5c581f5fcfd9b447cee6ec4308aec6"
+        },
+        "r3-3": {
+          "text": "The same thing happened to me.",
+          "rate": "-5%",
+          "source_sha256": "484016ba61a34f22b058c2ce0eddbf468512acdcd512c39acaee0e7d8413df03",
+          "packed_sha256": "32d12cb8f0caa47f6d2866efeda22cd5211dd6e3837dfbb293e52ee099b2561d"
+        },
+        "r3-4": {
+          "text": "I've just had a similar experience.",
+          "rate": "-5%",
+          "source_sha256": "88e2b98129d0e0a89cd620a612e08589260acc07349a382a978009626b5e1b74",
+          "packed_sha256": "c90fba6678f0689b2911b82218b50919774bb458822a72d39052c45f3506c786"
+        },
+        "r4-1": {
+          "text": "That's just like when I lost my phone.",
+          "rate": "-5%",
+          "source_sha256": "6b6e4b861aa151e933d9bd0b784525f19d192580085e56f077b9674527ff6270",
+          "packed_sha256": "0316eaab8c22d2e7a02070aa48ca38d090b775c746bb6bfe45cbd640d5eb627c"
+        },
+        "r4-2": {
+          "text": "It was just like that when I was looking for the cafe.",
+          "rate": "-5%",
+          "source_sha256": "174470704c7b3236238165d4b1ead998f357e828d93ae88731f4c598e992b4b6",
+          "packed_sha256": "336d65e463a4d08351cd9c0c8774d0421c2d35c3ecd0664abf844cf4cdf2159f"
+        },
+        "r4-3": {
+          "text": "That's just like when I missed my train last year.",
+          "rate": "-5%",
+          "source_sha256": "1e0190fe496d5884e6966431bf60d1c5846d9fa54537b4c50d12808b7f2883e3",
+          "packed_sha256": "931f7a6465157d1f7103073289e1beca73c925012811fd6fc474fb6441d2dd89"
+        },
+        "r5-1": {
+          "text": "— I'm so nervous about my exam. — I'm sure it'll be fine.",
+          "rate": "-5%",
+          "source_sha256": "c6835f6501a88b5ec6c4544b0e9db36cd4c6c765e645635b4231e5614eaff238",
+          "packed_sha256": "1f88fc4053d9ad4f971dc96f0bf9f5a8a28319bcedc99980dd016d3a798020b2"
+        },
+        "r5-2": {
+          "text": "— I got lost on the way here. — I know the feeling.",
+          "rate": "-5%",
+          "source_sha256": "81dcd511ff86180eb1b0ebc99786f8cb4c4238994fa167d5628f97e787be5976",
+          "packed_sha256": "127c1743db2237ac91caeebe1df3fbb3c2fb049cae47ff7c6823773cd16e2bde"
+        },
+        "r5-3": {
+          "text": "— I feel it's my fault. — It's not your fault.",
+          "rate": "-5%",
+          "source_sha256": "c34ee1f296501648ccb2aff3613effeccb49d2bb5581823a5b3b3542b4f55ad1",
+          "packed_sha256": "9c4f8f1198b610b13a84f977975fbdfb04fba3a2ae4d288a539bda03841892b2"
+        },
+        "r6-1": {
+          "text": "It might work out fine.",
+          "rate": "-5%",
+          "source_sha256": "4cf729ec29c89d74dff193520874fde3bd3db42a0c8ecec575680b4817b1347b",
+          "packed_sha256": "6bb179d6b03459d8c4faca48e6582dc00560e01cb430117bad5af8e6936936a9"
+        },
+        "r6-2": {
+          "text": "The same thing happened to me.",
+          "rate": "-5%",
+          "source_sha256": "f56379b5272f83b90a677226a6e681428dc35def9656d7473a1b390ed4863f00",
+          "packed_sha256": "724f2cc4a272a498b0121043c7c5d33caef33976f891316efa7d270260e12c58"
+        },
+        "r6-3": {
+          "text": "It's not your fault.",
+          "rate": "-5%",
+          "source_sha256": "62595205ada0cf9b81a64845e0ef732f772e7c63a2238ffc94ebdf86dd7f2091",
+          "packed_sha256": "44edcb6af8379e07c6e9b7dd798d651a4e9fc45d50b49734128b2afedb7d23cf"
+        }
+      }
+    },
+    "vnoun": {
+      "new_recordings": 80,
+      "pack_sha256": "7a2af86e35cf2ad262e4506cbeaaeddee08d7ba6c0cf89f3fb93bb2d2a455e9b",
+      "clips": {
+        "cp-1": {
+          "text": "We recycle paper and glass. Recycling saves energy.",
+          "rate": "-10%",
+          "source_sha256": "f55c21a5e1e5cee7eeb7be5ffce4edd67669d80d9a7b36576663e6fff687efd5",
+          "packed_sha256": "3d5440a020fa78ee8640b0a9939479575d4c5406dd14d3d045d0f3b869db728f"
+        },
+        "cp-2": {
+          "text": "Don't waste water. Hospitals produce tonnes of waste.",
+          "rate": "-10%",
+          "source_sha256": "29a194c8c670bb1de7f6891c7ceeef09ccb1e284bdc89667af9508e89737df41",
+          "packed_sha256": "480f4cf4e5e39a518a7462fd1959d13c91917a78cafcd70faee1d87df52aa2de"
+        },
+        "cp-3": {
+          "text": "Fires destroy the rainforest. The destruction is visible from space.",
+          "rate": "-10%",
+          "source_sha256": "1c6fe583276f32c63307f016865a167b7a4173b84e61cabd59e9a985236eeee0",
+          "packed_sha256": "7ff5788453491c1d1d5752c30d90d1f6a846f6f57ae172e346050a99a31ee05c"
+        },
+        "cp-4": {
+          "text": "Do these species still exist? Their existence is under threat.",
+          "rate": "-10%",
+          "source_sha256": "e4633803492d21c5becc1ea04706a7e58c494ca6ea57a38922f73b51c265b3e9",
+          "packed_sha256": "62c4e727e6cf85ab702065eb5d6a49d5c8c262088c0909fadbe2c911ac27ef90"
+        },
+        "cp-5": {
+          "text": "Can we solve this problem? There's no easy solution.",
+          "rate": "-10%",
+          "source_sha256": "8dde90ce39f93f836aba5767c4a0f55ff8aeabbabf4a4e0ca6e85ce0aba4f0dd",
+          "packed_sha256": "55d6d58a8558f3a4184857c78a1c7270bdbc23eed6f47de6e06b0a4995905c7b"
+        },
+        "cp-6": {
+          "text": "Statins reduce the risk. We saw a 25% reduction in strokes.",
+          "rate": "-10%",
+          "source_sha256": "3df50df2f954e31d7a4aadd7568880e803da375bce5453ec3dd0e8eda3dc6d1f",
+          "packed_sha256": "df8549cc7ea304e8ff8bb6631333d4ca15c1b6a23f44ea329417366ba6175828"
+        },
+        "cp-7": {
+          "text": "Our volunteers support the project. Thank you for your support.",
+          "rate": "-10%",
+          "source_sha256": "6058d963e8c2f3daf2f7bce1e245d156fc57dc4a3b30bb7c740fdb48375a9f62",
+          "packed_sha256": "39e49763482ffbabc8c011e40ea20d5f79c3d63a96680a849bce1d085a9c5b53"
+        },
+        "cp-8": {
+          "text": "Many patients suffer in silence. We can ease their suffering.",
+          "rate": "-10%",
+          "source_sha256": "867e71bad0dfb4c91f5d05ed55724da7710b107e901d8cbb9f8e987eea821182",
+          "packed_sha256": "b3057b5dd884f0c51c17f122826ada7f855da5df65bd885d3180d7160c78caa6"
+        },
+        "n1-damage": {
+          "text": "Smoking causes serious damage to blood vessels.",
+          "rate": "-5%",
+          "source_sha256": "d72cd2e0e4f872834e10426c4a9ec43d48a9ae483afb3bf82887def79211fe9a",
+          "packed_sha256": "2eda2a23ad0bf878020cb269797667034230671d400b12fe557418e7b8597e8a"
+        },
+        "n1-harm": {
+          "text": "The drug did more harm than good.",
+          "rate": "-5%",
+          "source_sha256": "143970714305e8a7b3e803f6498a70a31260b1f599929a013f6fce00125987ae",
+          "packed_sha256": "1938b6ed0bd04ebd60f9fa0f66369e9c172e2f8e903a5cf8c9e533cde4c31e68"
+        },
+        "n1-support": {
+          "text": "Thank you for your support.",
+          "rate": "-5%",
+          "source_sha256": "ab76f5fd1374289deee9f7604ec7fb601d39ef70002f646b84abd1bdedc4fee8",
+          "packed_sha256": "4e65c3368e5c9f160de6636a996be419f3f5d209c5cdab2e6b859bccf5274cac"
+        },
+        "n1-support-a": {
+          "text": "The project needs more financial support.",
+          "rate": "-5%",
+          "source_sha256": "1a7697cf7e472689bca92c1932a3a58946b9cbd43e92c8f1cad07c41397476a3",
+          "packed_sha256": "ee18ecaf4b6cb46ddee2568b4765c61af4ae433ec2089f9f1048728f2544d99f"
+        },
+        "n1-waste": {
+          "text": "Hospitals produce tonnes of plastic waste every year.",
+          "rate": "-5%",
+          "source_sha256": "363bd6e84e7479f05b582bd56f2f9e6add9b745e0f24c3f40f2f41f6b290440e",
+          "packed_sha256": "029ccad2203bdc4d1c94c94fc42c0691e64998c6a8b828f5ff45a3186280562c"
+        },
+        "n1-waste-time": {
+          "text": "Arguing about it is a waste of time.",
+          "rate": "-5%",
+          "source_sha256": "2dc4e76c878b76a34bf07da431d67bc67bad9eeaf323c49fb3b486922feab92f",
+          "packed_sha256": "c658be377a55d5ac3a2e6ffe86f3e3058407b047c131c0db6535b09122d33cf6"
+        },
+        "n2-findings": {
+          "text": "The findings of the study were published last month.",
+          "rate": "-5%",
+          "source_sha256": "64c8ba96f95664d614478797d0c6c6b15b9da32bc35327baaca2bc9dc0061e49",
+          "packed_sha256": "bca30ca2917811403f36acb4a03f5cf2b2c94b31272fb8f5708ba8b4d492de14"
+        },
+        "n2-recycled": {
+          "text": "Most of this packaging can be recycled.",
+          "rate": "-5%",
+          "source_sha256": "7da30b79acf6884e2350094c3efa28266d7ab2977a350fcb4e3404e593563c42",
+          "packed_sha256": "4d197450d0baa9eb1abcf9a1378536a8f0dc9fb1fa1c376c2b571fdb1c43a3ab"
+        },
+        "n2-recycling": {
+          "text": "Plastic recycling saves energy and raw materials.",
+          "rate": "-5%",
+          "source_sha256": "95078a8f8154354d49e373f1cbd903106faeb5887c3dd4d9c13da0833cea3c3d",
+          "packed_sha256": "8e19282e2b702e1f1a3deff95884c567458b9bb6da670c2999a777a1f1042886"
+        },
+        "n2-screening": {
+          "text": "Breast cancer screening starts at 40.",
+          "rate": "-5%",
+          "source_sha256": "6f85026287363cdf94dc1e1c1ac93aa7a545d138d578f5ffcc63a3d1993e0f04",
+          "packed_sha256": "e2e1ddd6fb580fb39035caa14fec157f99bb97ca4908f56d14b3a7988629b6ee"
+        },
+        "n2-suffer": {
+          "text": "Many patients suffer from chronic pain.",
+          "rate": "-5%",
+          "source_sha256": "10a9440a01f40cd0a9760717ceff3696c4bf1c639a780e4031a31942c83a53aa",
+          "packed_sha256": "e380b2edc51137b0fb24537839cdb426f0904c4c700e2a4db31cb7bbc2d8fd3a"
+        },
+        "n2-suffering": {
+          "text": "Palliative care aims to relieve suffering.",
+          "rate": "-5%",
+          "source_sha256": "c0b286f118e7c299f4ae5c3b1601500afbc4faf615efbc98066f9fa33252d9dd",
+          "packed_sha256": "da2cddca15e9e77391d09af56a637845c2b278e5faa778811de068937f4c58b6"
+        },
+        "n3-conservation": {
+          "text": "The charity works in wildlife conservation.",
+          "rate": "-5%",
+          "source_sha256": "e0bc8f5bde156c36a5f3134e1aaad012d4fb19a196f6305eab2b94d417fe4f96",
+          "packed_sha256": "f320b1a36c8ff7b858d228f7586df90169e76edeb0dcb6df52ebcf12cb7f53ab"
+        },
+        "n3-emissions": {
+          "text": "The city wants to cut carbon emissions by half.",
+          "rate": "-5%",
+          "source_sha256": "9b2805c6bde008f9c987ba53b303963aab02b787f157dc77b4568ec74c3fc2e3",
+          "packed_sha256": "9290537396fd1ab667fb57a382f3d1d52749c5a33d9324ad249627634c8b3f04"
+        },
+        "n3-pollutant": {
+          "text": "PM2.5 is the most dangerous air pollutant.",
+          "rate": "-5%",
+          "source_sha256": "7a891181fb7b9b7aff4a9efda5bf6747cfce39e2b67cd9cde2fd263768f26492",
+          "packed_sha256": "71b39a366c1a4e3fa22207dc7fedc3cebdc7e6f2123313b2f7c4cf0d93960983"
+        },
+        "n3-pollution": {
+          "text": "Air pollution increases the risk of stroke.",
+          "rate": "-5%",
+          "source_sha256": "f63156d5956cf0074fc7e700cb2ab46a4e7c97dbd44affbbeb789b8ffaa4db18",
+          "packed_sha256": "d510a640fca2f15212682d1c45639479bec8e4a6a8e493c7a66886246119952c"
+        },
+        "n3-prevention": {
+          "text": "Prevention is better than cure.",
+          "rate": "-5%",
+          "source_sha256": "b25c62dcb19b8d8a20020e4035be664d29ddd9e6487384d589a0c5087844ba75",
+          "packed_sha256": "139cde5f5f18428edc0d7dd3db1fd3d1ca06146e383fdcf551ee061c2e8c7583"
+        },
+        "n3-protection": {
+          "text": "Sunscreen gives some protection against UV.",
+          "rate": "-5%",
+          "source_sha256": "f609a3d2deda9b1ba32e05b540b35eb635f2825413ca1cef57245c465cb2341f",
+          "packed_sha256": "74b098267b3a92df7922933cf6d4683eb29240a241d4caf1c0b2367ee552e461"
+        },
+        "n4-consumption": {
+          "text": "High salt consumption raises blood pressure.",
+          "rate": "-5%",
+          "source_sha256": "d8b81f68f4707c47c4f428e3b1e5a6bbd93e4b30ad86a0992a0431ef59b62e37",
+          "packed_sha256": "87657344a6191812158e88783481ea562b18ebbba0ddc363758bfe494c87872b"
+        },
+        "n4-destruction": {
+          "text": "The fires caused massive destruction of the rainforest.",
+          "rate": "-5%",
+          "source_sha256": "b1fabc6decfbd0add601fb5a7f1c13d18dcd8aad69b6ce4a419e18ac439180a3",
+          "packed_sha256": "05adbd3940d82a604388ef006256e591ad49549075ec659e4e0f1452ebe622c6"
+        },
+        "n4-production": {
+          "text": "Production of plastic has doubled since 2000.",
+          "rate": "-5%",
+          "source_sha256": "291d0875815eb5c7384eaced6405700adf2819fb3b01f9525d51c9112f39a940",
+          "packed_sha256": "8e14960451e4fd6dbaf2a1d0669cb73fe631c43a618f516a7099bb91a2023073"
+        },
+        "n4-reduce": {
+          "text": "Statins reduce the risk of a second stroke.",
+          "rate": "-5%",
+          "source_sha256": "6f933f59256c70efaa30e9eb879c745c31fa8875860322e8a4f00f289f839758",
+          "packed_sha256": "79e29ef85117067136bba411af91aa411385baa3703a091a6cd4b3966d8b07d8"
+        },
+        "n4-reduction": {
+          "text": "We saw a 20% reduction in hospital admissions.",
+          "rate": "-5%",
+          "source_sha256": "341f0c51f7075e23ca7cb58270509329ebf38297a8b2ca1f468e4ad6183afbd4",
+          "packed_sha256": "6bd85b53d30c5d1717153209a197b4d095f79d4f47cf648ef18309154aab1df5"
+        },
+        "n4-solution": {
+          "text": "There's no simple solution to this problem.",
+          "rate": "-5%",
+          "source_sha256": "a52fbf9d16edec708702659b90a524c0cae734ed552ba5c64da6a9710833653f",
+          "packed_sha256": "ea0a59cb157e54fb036a73065f03547a71e2aca2e625dd79c5d3e88ed55970ed"
+        },
+        "n5-adherence": {
+          "text": "Poor adherence to treatment often leads to relapse.",
+          "rate": "-5%",
+          "source_sha256": "6dbb4a8034f67639797846f5609d6165a4e1469e007aa95f2edbd386938e2e02",
+          "packed_sha256": "0a2435671f5061ffecd389e7b501fd67e4995968840724521ba31a828b7099c9"
+        },
+        "n5-appearance": {
+          "text": "The sudden appearance of new symptoms needs urgent review.",
+          "rate": "-5%",
+          "source_sha256": "323d826a940baec2c2b7103b73f560422fb764c3421ae6be066b311fb0e668e4",
+          "packed_sha256": "a1604a74d168a643beb52a6a84f6ef48c557a2b94dfd998ebd217ee31f37f5e0"
+        },
+        "n5-difference": {
+          "text": "There was no significant difference between the groups.",
+          "rate": "-5%",
+          "source_sha256": "5e4ad2278e79e535fa1789b475e5ccc51d939fbda58572157d8a33ea3714550e",
+          "packed_sha256": "04d1e95dac9f516f4848ecd4457c588dd5e85749be6fa60ccf6d37e80e3f1462"
+        },
+        "n5-existence": {
+          "text": "Scientists doubt the existence of life on Mars.",
+          "rate": "-5%",
+          "source_sha256": "48a07680bfb82ea880b7b5085b353d66779b75417736ba16fc93ea5cf9c14d67",
+          "packed_sha256": "2756e01e6ddc3ec1d55b1963408ae40ee13c620af263f9da3c8b02c86e7afad5"
+        },
+        "n5-occurrence": {
+          "text": "The occurrence of side effects was low.",
+          "rate": "-5%",
+          "source_sha256": "c57d76812b04741692034e25b43c8535b4b74e4186592a34ce7f0763df01803a",
+          "packed_sha256": "4d7198809975951f680a67c2b8b8cdf1ef1320676fb88ccf2219ee53389d410c"
+        },
+        "n5-resistance": {
+          "text": "Antibiotic resistance is a growing problem.",
+          "rate": "-5%",
+          "source_sha256": "b150c4260e8c3e9f70480553dc95e6a4381328978f27afc0bf0925b3da828182",
+          "packed_sha256": "9ec9b4f9fb286d5c865a1500052749a4b7e377283f51e0bd94b9ca2c6e1dc09f"
+        },
+        "n6-argument": {
+          "text": "There's a strong argument for banning plastic bags.",
+          "rate": "-5%",
+          "source_sha256": "247f8ff7e05b4518022be1a576c2bf63947e3af0345fc41247e55f50d0a9753e",
+          "packed_sha256": "060aa55a81c50a2f759b164f6063c8c746746002278cb9dbb98ab49648514abe"
+        },
+        "n6-assessment": {
+          "text": "A full risk assessment is needed before discharge.",
+          "rate": "-5%",
+          "source_sha256": "969df6e668cb9e62d9ea67d9287e44a0f21ff2f01e68cd59606ef665fac56358",
+          "packed_sha256": "53a09ee53fddab02dfa335293d6eccb67d34a6ee622b2deff027e6e6a1695c68"
+        },
+        "n6-development": {
+          "text": "Sustainable development means meeting today's needs without harming the future.",
+          "rate": "-5%",
+          "source_sha256": "d45b89af684def0bf2354a93300c8bab44b8df03a4b030b56e20969ecc6dfeec",
+          "packed_sha256": "05bdbf74a8ad6aa430295361aefebed7a0ef0dcf6f586c101d3152e0430de524"
+        },
+        "n6-impairment": {
+          "text": "He has mild cognitive impairment.",
+          "rate": "-5%",
+          "source_sha256": "9c75cd8402c56ed1e3a4e9096a1add54a6633f1fe28f293f6944dd80cb673ad6",
+          "packed_sha256": "e70ced6ac2063a849a1e7c9d641e10655be6ed6b0681792178a27197e20d518d"
+        },
+        "n6-management": {
+          "text": "Pain management is part of every ward round.",
+          "rate": "-5%",
+          "source_sha256": "818e49a047a71743aa95103bf293727065c4a7f2004e08e512e99d891d106878",
+          "packed_sha256": "c3a6e17b46a09cf74659aca2162a533a32ca743ee4b5edbffffa8a5b40411a74"
+        },
+        "n6-replacement": {
+          "text": "She's on the waiting list for a hip replacement.",
+          "rate": "-5%",
+          "source_sha256": "b6e90327930267fe3a06aac35d8abd8467f5165c960b14969c5488d5d6cb28f0",
+          "packed_sha256": "082260ed9816bddee87fc8852dc0d2f63d9ca854bea725ba5d4a7e6c494ad7c3"
+        },
+        "n7-arrival": {
+          "text": "Estimated time of arrival: 10:40.",
+          "rate": "-5%",
+          "source_sha256": "e8312caa59a53799e3b47a409d9802388b03e1186e0c7dc37aad872eca33af4d",
+          "packed_sha256": "3774c84fc237369bd1197a1301dbcdb783ee81052f7c551c6b98d2f5303a2a61"
+        },
+        "n7-exposure": {
+          "text": "Long-term exposure to noise damages hearing.",
+          "rate": "-5%",
+          "source_sha256": "6ea83ea3fb2db91c520d5302c828ddaade7e3f4f641211ae25cb775f4ddb41b9",
+          "packed_sha256": "8e40f099443458cb13fc7abb9cb308309ce94ff81e072979351ab687979a32f9"
+        },
+        "n7-failure": {
+          "text": "He was admitted with acute heart failure.",
+          "rate": "-5%",
+          "source_sha256": "dba077f52fc29203a5130c97ca34cac1b356ad664390b8e941b09f2f30fc3267",
+          "packed_sha256": "37f76eb35a968f7bb780ec2b7f16941602ce3b5827cd1c02fd1e5c15ac4ee1eb"
+        },
+        "n7-growth": {
+          "text": "Population growth puts pressure on water supplies.",
+          "rate": "-5%",
+          "source_sha256": "86d684248faa70717b274b33ead22aa6f4772bed63c99d6c754103c45c357ba1",
+          "packed_sha256": "7245c575b20fe784b171baeda7b6b36d104da5c27d83bf95b250aa9d73dba018"
+        },
+        "n7-injury": {
+          "text": "He suffered a serious head injury.",
+          "rate": "-5%",
+          "source_sha256": "9781e6cd4827d4f96c34e4a11f7c7c2725a1901234ad28e0aaf22443e8c6d966",
+          "packed_sha256": "b93e90dbc7f8f9ae16a26742c8e508286d937ff1c487cb9669eea617e7589467"
+        },
+        "n7-survival": {
+          "text": "The five-year survival rate is about 90%.",
+          "rate": "-5%",
+          "source_sha256": "2b3d5b5bf551b9ce9e79a37063e66b3d4ee10100dec758a4bd0172e89accf02a",
+          "packed_sha256": "bd04a876f40dde369824241f2bbebd08360fc1210f23aba39a8771dc93fef8ef"
+        },
+        "n8-comparison": {
+          "text": "In comparison with last year, admissions fell.",
+          "rate": "-5%",
+          "source_sha256": "e9819c90db600a5a47dbd03eaa99aca5026c109e6a5e5e619021579604a96d77",
+          "packed_sha256": "592fc7d375bc81d1380ddab25f520827ae6e63e1cc84381401bd5c19e16e252b"
+        },
+        "n8-explanation": {
+          "text": "The doctor gave a clear explanation of the risks.",
+          "rate": "-5%",
+          "source_sha256": "0a85c7544de54bcade06772d314ad8bb72dcad40dfaf76af96535c0d0cbc49a1",
+          "packed_sha256": "c06cc186c0b531466f8e6d569f3beb9a838b0961dc47ac615848ccde9db956a4"
+        },
+        "n8-maintenance": {
+          "text": "The ventilator needs regular maintenance.",
+          "rate": "-5%",
+          "source_sha256": "5a24da6589516fb32f1d71d1c8dfc138fb2bf381b2129831f11b4fa3b5db4732",
+          "packed_sha256": "ac5e8e57f8c25dae08c1bed2e8a0e645fdc76ec1f9077450d3680a675ab050e0"
+        },
+        "n8-procedure": {
+          "text": "The procedure takes about an hour.",
+          "rate": "-5%",
+          "source_sha256": "bea88636916ec82ffc16abd52b920d7e152735c4aec116d7df8a67dfacdb7061",
+          "packed_sha256": "df46a768a9b65e7d214797e7258f7052808ad88cf5d8a2c3602b17b4e2322718"
+        },
+        "n8-pronunciation": {
+          "text": "Her pronunciation is very clear.",
+          "rate": "-5%",
+          "source_sha256": "ffedff02e9a3d278345464b0289f55a0f9884bd6deccda36155abb23b35d6e82",
+          "packed_sha256": "3a8fb271f2a5a1b821070c0269d2ca157ad61448f66b0f7c01fea5feba07698f"
+        },
+        "n8-repetition": {
+          "text": "Spaced repetition helps you remember new words.",
+          "rate": "-5%",
+          "source_sha256": "4432d0614e62cbb1fed7cd6dbc993b9be7bdcc0e2447f77edd9047cca46c5cf3",
+          "packed_sha256": "55e0a8bd22e5a543842e7664ed569171007543738bb5f508d9c52173e526a89a"
+        },
+        "r1-1": {
+          "text": "Don't waste water — we produce too much waste already.",
+          "rate": "-5%",
+          "source_sha256": "84299cc82acdcb230232a404e07c761f8c7c277831b5d274ead01be59ecd3306",
+          "packed_sha256": "8cd48951c3c26110bb8899a028bbc39ccc5e6d88ac241f7b676477edc83be897"
+        },
+        "r1-2": {
+          "text": "Thank you for your support. We'll support you all the way.",
+          "rate": "-5%",
+          "source_sha256": "c4962de6df7d183527a38481e91ba0a6272cfc93e301355f4cd9358109a3f42d",
+          "packed_sha256": "370ca5a79d467146b986369528750c432134ba628b473625bb0721e25defcf67"
+        },
+        "r1-3": {
+          "text": "Smoking damages blood vessels, and the damage can be permanent.",
+          "rate": "-5%",
+          "source_sha256": "efa3c7da9503d88ded9fd3f1a1bf324ad4130e428872e718abe3517039ea818b",
+          "packed_sha256": "ec588bf8f591c16bc4587e558096bc7058f9808c5ed06486747b075c702aa9be"
+        },
+        "r2-1": {
+          "text": "We recycle paper, and recycling saves trees.",
+          "rate": "-5%",
+          "source_sha256": "65634201ce35816310c253a49ea2c0d7b4bc5802e6ed67172b7461ef0dea93d7",
+          "packed_sha256": "d4bb7b019413067772a8485d9689535e7f74e162d167b0d8c8afd37495d9d9ee"
+        },
+        "r2-2": {
+          "text": "Many patients suffer in silence; we can ease their suffering.",
+          "rate": "-5%",
+          "source_sha256": "69671012561cbcec9926c22aeff7d7bd66f3d6a7f728e365c68ab6d0fdc8501b",
+          "packed_sha256": "a5f9f1603bbdd02eb71c7bcf52c12a42f84ff077e8019b18250fcf1d657c89ea"
+        },
+        "r2-3": {
+          "text": "The findings support early screening.",
+          "rate": "-5%",
+          "source_sha256": "2173c9b7c4b15c79035bec8fb65c9d65efad9a05256cf06aeb4329e564e560db",
+          "packed_sha256": "114a1b1d2316827ca9d0aafb36da8498db4796d07e12a485c67ccdc8cd905403"
+        },
+        "r3-1": {
+          "text": "Factories pollute rivers, and pollution kills fish.",
+          "rate": "-5%",
+          "source_sha256": "7817942b06ec544b7998416b085201887508d9dee4fb0716a78ee0d59437329a",
+          "packed_sha256": "a4ee5ab52966a15210dc2f5557c9451c18f833acb4057985add75bf5bb371273"
+        },
+        "r3-2": {
+          "text": "Prevention is better than cure.",
+          "rate": "-5%",
+          "source_sha256": "b1327c2f3e3c69947c898723afd76c88a4ba864184da2a6550942d704ced309e",
+          "packed_sha256": "d93f4d6554264a7cf418d90a2b8033dd6b905efb4393f021edb7a668c4d4e22d"
+        },
+        "r3-3": {
+          "text": "Cars emit CO₂, so we must cut emissions.",
+          "rate": "-5%",
+          "source_sha256": "60c84c7cd6d06f62c27bb219592f3d37f4c01f6f49fda982460331e317360914",
+          "packed_sha256": "f477c16ae75d64e2a25708a61a6d9a7c46baabd726690130bf2c81b98daeec75"
+        },
+        "r4-1": {
+          "text": "Can we solve it? There's no easy solution.",
+          "rate": "-5%",
+          "source_sha256": "3103259773545f9c7d15c2d8c212b9c3a718cb80fe0534349eb92c21338246f2",
+          "packed_sha256": "7a8f05a0a9f29afc83200a97284fa842be5d3c292befa5c76dc3f3b8544c9d3f"
+        },
+        "r4-2": {
+          "text": "Fires destroy forests; the destruction is visible from space.",
+          "rate": "-5%",
+          "source_sha256": "560c4de4908fd25d461e79f1985e2455250d97eac0ed59cfed6db1c188b8da80",
+          "packed_sha256": "4fc90c3c1dd8888dd497b3cc0a1b2ba3fa066da9f3ce5cf25353ca6bc9cb65c2"
+        },
+        "r4-3": {
+          "text": "Statins reduce the risk: a 25% reduction in strokes.",
+          "rate": "-5%",
+          "source_sha256": "df44d52d22960c237e685dd73a6df1fe460d51501e4d21db1f46f290c87d38ff",
+          "packed_sha256": "86751e5dc01b524d4886230d8114487679a26351c8c3784937b2d003fd9160ff"
+        },
+        "r5-1": {
+          "text": "Do these species still exist? Their existence is under threat.",
+          "rate": "-5%",
+          "source_sha256": "0e394e122a80411e03eaca67878f7e42d9835ae5b622e417c6aecdd7b22ca4a2",
+          "packed_sha256": "3e7a81203906fa7543d65dc90040077efe5df0c36582e55a6851e2a32f87dfb0"
+        },
+        "r5-2": {
+          "text": "Bacteria resist the drug — this is antibiotic resistance.",
+          "rate": "-5%",
+          "source_sha256": "e19f73a514333facb5f6e03884df71e7a9be31df88ff5053025db4cab3086e6c",
+          "packed_sha256": "9deaba21a541e02409a7a6f5803198d95f5cf6863a45e8f6c448904e300c7bf8"
+        },
+        "r5-3": {
+          "text": "The groups differ in age, but there's no difference in outcome.",
+          "rate": "-5%",
+          "source_sha256": "423e2eebc4bb609186650f68b0b473e12ee9986a83a7d2c6203c319f6b2638eb",
+          "packed_sha256": "07f67ba0da4121f981ed392799001867a658770e87926cbf5c7967fb737433a2"
+        },
+        "r6-1": {
+          "text": "Children develop fast, so early development matters.",
+          "rate": "-5%",
+          "source_sha256": "0f306de7e491c01285c7fc9381f62bcd827c4f366183823c2e503a65f2e25ad1",
+          "packed_sha256": "2d167c1092260d0c16f41446c4ce43c1b7da4f8642bab45127027a7603b3509e"
+        },
+        "r6-2": {
+          "text": "We assess every patient — a full risk assessment.",
+          "rate": "-5%",
+          "source_sha256": "82c2e9bcada051979a20ad7f8a35311fb940497a7b2f8184471d372af30cba16",
+          "packed_sha256": "2991d052d69c4a253185bd1bb72611e4f81603a4a04f76b38ba5b7bac1c2fd75"
+        },
+        "r6-3": {
+          "text": "They argue that plastic bags should be banned — a strong argument.",
+          "rate": "-5%",
+          "source_sha256": "fa2d5057039a432cf9a05e12428b676bdc4a57377b1c893482e1cade5bfefac7",
+          "packed_sha256": "2dac1819898b8c95b00338fe07ee39702a0bb44407f6d668429f1aa8d8ae7fc3"
+        },
+        "r7-1": {
+          "text": "Fewer patients survive without treatment: the survival rate is 40%.",
+          "rate": "-5%",
+          "source_sha256": "37f44860952f6c5fe2ee31e1e7c0b24cb0eab630e84f437d3f5a9a2bc40101cd",
+          "packed_sha256": "4241cda207ca2bb6bd20e0c1a21261e882c9398948759dc868de67978800e91e"
+        },
+        "r7-2": {
+          "text": "His kidneys failed — acute renal failure.",
+          "rate": "-5%",
+          "source_sha256": "6ff43254f8dd31f79803ff540b1885ca0fe61ae5e8fd53eaedd9201bd55e0653",
+          "packed_sha256": "9b886435f3d6e6cbd866a2b3ca01923b73556989f57c0565639af55bc3650ab3"
+        },
+        "r7-3": {
+          "text": "Don't expose the scar to the sun: exposure makes it darker.",
+          "rate": "-5%",
+          "source_sha256": "9ac2281817e705f51eb8d0954adf299c1725ba554b4a57514c2bb6976b61b235",
+          "packed_sha256": "132025f5b2fcff2a0a348c337ba884959d97afa39542f5ee5c31cf4ef26b07ac"
+        },
+        "r8-1": {
+          "text": "We maintain the equipment; maintenance is done monthly.",
+          "rate": "-5%",
+          "source_sha256": "6f37e86a507966df441875f613fda7f5264ad6cb510f1afd9356473a9885e887",
+          "packed_sha256": "65874d2021f01c077a00a09e7450d30c4e4c6c4d874e5078e674b332417eb212"
+        },
+        "r8-2": {
+          "text": "How do you pronounce it? Check the pronunciation.",
+          "rate": "-5%",
+          "source_sha256": "81c30c863d36b1412e5df0125cd51a8d89def883417612e8c75423b651b703a5",
+          "packed_sha256": "d1d2cca97e749988f073bb08ab581e7b5dcb19bb4026c4d4c030370fadf3468e"
+        },
+        "r8-3": {
+          "text": "Can you explain the risks? I need a clear explanation.",
+          "rate": "-5%",
+          "source_sha256": "d0af351ad8daa1aeca51e5ee05c5fa70ea7bc083c7bb57fb0f5c31fdcd582d6f",
+          "packed_sha256": "3fa7887870af6878b176be2f1a95f8285d79d38d565724026a6adf23f349bb9c"
+        }
+      }
+    },
+    "like": {
+      "new_recordings": 77,
+      "pack_sha256": "380cb2b946e9bac3bfaedc0b0e22e654ae07b54fd4459849cc55df255f2dd246",
+      "clips": {
+        "cp-1": {
+          "text": "— What's your new boss like? — She's strict but fair.",
+          "rate": "-10%",
+          "source_sha256": "c84ba2a5dfb0986ed5809e8003c99d71f7fe228b900f2ce64f292b525bf6d1c9",
+          "packed_sha256": "be3341ffc933653e1c008ac787a92d278a98aae7bb237f8e5908569bbc8dfee9"
+        },
+        "cp-2": {
+          "text": "— What does she look like? — She's tall, with short dark hair.",
+          "rate": "-10%",
+          "source_sha256": "4b9269a9603000a9d9fb41f0a7f9ddac8b075d914e2e4c69a5e0cff1484a3e74",
+          "packed_sha256": "e1bbce32e8def0c9d3cc4fae21fc8e2562e50a47fbad82a99a64c89ffc9e239e"
+        },
+        "cp-3": {
+          "text": "— What does she like? — She likes jazz and long walks.",
+          "rate": "-10%",
+          "source_sha256": "67122d386c294a8d4a305d996b418d2be54c6fcb148af88f48ae36c1df901133",
+          "packed_sha256": "7598fd21939a31ecaa023f225632cc5ed3e5964323cb0780750f890caba7b7b4"
+        },
+        "cp-4": {
+          "text": "— Would you like some tea? — Yes, please. I'd love some.",
+          "rate": "-10%",
+          "source_sha256": "d01f72223e1f995ec97270901aea3c8abce09bb6ea73b3e6c3ed4bded584d9de",
+          "packed_sha256": "c5358ed41c12f053cab1b04616cb93fe5e7d4948217d73afa87373cda5fa7929"
+        },
+        "cp-5": {
+          "text": "— What's the pain like? — It feels like a tight band around my head.",
+          "rate": "-10%",
+          "source_sha256": "c07154fb246d024854194616f879675114d1865eeb32d1595224b1f017f60976",
+          "packed_sha256": "56d262f11f631f955c53b5f02999c011b1ff45009fe494685d284fecb490f15e"
+        },
+        "l1-answer": {
+          "text": "— What's she like? — She's very kind.",
+          "rate": "-5%",
+          "source_sha256": "01d7e4f43feea165dfb31ab86cef15f28dfe067dce8ac2f559129d1667652dbc",
+          "packed_sha256": "77d9994fc9a9656d1b469e2628dff5ff7d0e44b63e389a5adec70d5fa940e33f"
+        },
+        "l1-boss": {
+          "text": "What's your new boss like?",
+          "rate": "-5%",
+          "source_sha256": "439b146dc03706d094b1619720423c7631bc3bb1867c2cc2441f18c6b9c1b43f",
+          "packed_sha256": "c4f7b9e648205b27e41b26dabc520cc972e4047b8e3183883844a07c5e068c61"
+        },
+        "l1-how": {
+          "text": "What was the conference like?",
+          "rate": "-5%",
+          "source_sha256": "38b046851f63e86df7f69af4cd856491d10794c85751b81fe0377ae0e61621d5",
+          "packed_sha256": "e6f73b2b161edcf3631ca8bc46ec8020b7c7d46d61c3afa30a903631b4b2b75d"
+        },
+        "l1-howis": {
+          "text": "— How is your mother? — Much better, thanks.",
+          "rate": "-5%",
+          "source_sha256": "e94ed8a16481d130187a88a67b393faee5aa421d0169b502c33d3cc357ff9cfe",
+          "packed_sha256": "5958a55f2a7ef42251fefa1a5ac95e6289759c64490dce9497ebcb0705d3416b"
+        },
+        "l1-nights": {
+          "text": "What's it like working night shifts?",
+          "rate": "-5%",
+          "source_sha256": "9084bcafeb8619af58fc007aac6b60f9af6f4da84308ca55f5b450c050e318a4",
+          "packed_sha256": "5ebbed0228cddcc45b8dd89c9c56917581594fdcbfa16675191f423643408878"
+        },
+        "l1-weather": {
+          "text": "What's the weather like in Yekaterinburg in winter?",
+          "rate": "-5%",
+          "source_sha256": "26df40a0546899d9d43f369bb4abe090a20cb4d6cbf2bd2e9436f7bf931ca01d",
+          "packed_sha256": "2c644f1e04c404b39925ae73316ad6d2a9dff6f98ef6351b8a3b8125327a88fb"
+        },
+        "l2-appearance": {
+          "text": "— What does he look like? — He's tall, with short grey hair.",
+          "rate": "-5%",
+          "source_sha256": "dae46a31cc4ccac05c6a7aa3344d116e3f13a5db2a8df4c1e5492463db642626",
+          "packed_sha256": "b8b4d11fc6cf6e7b39e83e53d0bf91dc4aa511fdf9bc25c137fdf31c405e0ef3"
+        },
+        "l2-father": {
+          "text": "He's very calm — he's like his father.",
+          "rate": "-5%",
+          "source_sha256": "f042c0191b9eb749e3bb67d4dd720f09627a20ea09e64f624567ba08bffaeae0",
+          "packed_sha256": "636e9f98c9f191201a553c83c8c537634ecdc1a9bb1454e18b95f3548fc323db"
+        },
+        "l2-flat": {
+          "text": "— What does your new flat look like? — It's small but bright.",
+          "rate": "-5%",
+          "source_sha256": "334e45c1fe69d7dbd7e49b2d2fff1f710a330b2dcc4458a701e4ef47b40cd27a",
+          "packed_sha256": "3b711b5a9bda1c5569000fc695a0586983be51f24ecbcf59d1c619790ec25c7d"
+        },
+        "l2-mother": {
+          "text": "She looks like her mother — the same eyes and the same smile.",
+          "rate": "-5%",
+          "source_sha256": "64675bb6a935fc6ad18a4ede229c12ad89f49fa2cb1979f42be2d051861b8a78",
+          "packed_sha256": "db0015f3628d665c27fe1879bc4a9e1908c088148d4b88d51b5b1448a86dca34"
+        },
+        "l2-rash": {
+          "text": "This rash looks like an allergic reaction.",
+          "rate": "-5%",
+          "source_sha256": "af837f926870c0da922201eecbb9056a04eec7e3fe2a941dbc08ebe0e495e588",
+          "packed_sha256": "0a2ad5f89cacafa7acea767c7f1109bdf75321013bd27e67c13127f1ee7491fd"
+        },
+        "l2-what": {
+          "text": "What does she look like?",
+          "rate": "-5%",
+          "source_sha256": "ce67c6458071902560bc65bf9cbebc991df8a5dadf73bde52e3922b016c167e3",
+          "packed_sha256": "3188e8309ce3568a2685324a658feea4c6dbd0cdb3426eae574d3a97ae091bf7"
+        },
+        "l3-great": {
+          "text": "Your new job sounds great!",
+          "rate": "-5%",
+          "source_sha256": "1cc89720e8e43eae5d2762c730ea607fa8b85094916862f6c1eee30ff5ee9136",
+          "packed_sha256": "4a07f8f24c103b79cf2d4c851cbf3a2f30c2800d86e7d6b6a08931231278e693"
+        },
+        "l3-pain": {
+          "text": "— What does the pain feel like? — It feels like a tight band.",
+          "rate": "-5%",
+          "source_sha256": "4dfd6fa7af22344ac6456f8f0dcdb411226a86f9fb00ed5a2322bb349aa649f6",
+          "packed_sha256": "ff99fd94d15bad80e0919e95f2c8ef5eab3deb32bf066b08d3f5b6a9118fbc85"
+        },
+        "l3-plan": {
+          "text": "Meet at eight? That sounds like a plan.",
+          "rate": "-5%",
+          "source_sha256": "8ddba968a6eccdc746ed73e9d522a8fdb1301441ce4b8b3127a62437926910cc",
+          "packed_sha256": "f2a635c1b5c62ae83515fa6b2851d3068683f5b1eb6c02604d84cd2ac82f5b14"
+        },
+        "l3-sick": {
+          "text": "I feel sick — I think I ate something bad.",
+          "rate": "-5%",
+          "source_sha256": "d3d0287df4cf170c561f114f01104db85c8f3354209732a710d017ef0fc1f76c",
+          "packed_sha256": "453b735cdd836aa3d21afe87d47698d2129cdaded2114c0baa7c538af300f74d"
+        },
+        "l3-smell": {
+          "text": "This room smells like a hospital.",
+          "rate": "-5%",
+          "source_sha256": "95851847cec301f1383fab7010e98656e5d8ac9f46a1b20e312a52f7ed35ff56",
+          "packed_sha256": "cb2179fce1ebc5d26d6dafbcaafa6162058634eb2fa5ea24790cad7d8a915da7"
+        },
+        "l3-tired": {
+          "text": "You look tired. Did you sleep at all?",
+          "rate": "-5%",
+          "source_sha256": "52bd61bc44204da48c9dfcec88943d6db1e58148422f63308b58f21af0222d49",
+          "packed_sha256": "bee1af5144391055953e2d28d529c69ebefc0d85c324694d4632fbe4460d27cb"
+        },
+        "l4-appointment": {
+          "text": "I'd like to make an appointment for Monday.",
+          "rate": "-5%",
+          "source_sha256": "43e17a2f74559d0f1f667b7164f02e56de967498b53bec23450d492befb01466",
+          "packed_sha256": "0b403f68bc6f27d0c645ececba2ad783d4e4ac2c800a41bf0f7a73cd68da3213"
+        },
+        "l4-coffee": {
+          "text": "I'd like a black coffee, please.",
+          "rate": "-5%",
+          "source_sha256": "f979405198ff284c1875338a592fd7abc9e587fca7306f90d46628ff87117741",
+          "packed_sha256": "10df768ec7f6467b17230e83b4714ad88365b317873fdcb0059739a42cee02ff"
+        },
+        "l4-jazz": {
+          "text": "I like jazz, but I can't stand rap.",
+          "rate": "-5%",
+          "source_sha256": "45e8a3a1ffd9ecd55f77051970d736d74c89756b73c04b78d752eb50dad012bd",
+          "packed_sha256": "f33719ec964a1d0b6c67f25f67e01ea07b5d40f07b4173b00488847b53568195"
+        },
+        "l4-job": {
+          "text": "— Do you like your new job? — Yes, I love it.",
+          "rate": "-5%",
+          "source_sha256": "81fa0e1c0af805bb1d5e75d67183c69e490d79d08ebc7763ca7c25ac60f16f98",
+          "packed_sha256": "78415c3266ac04db9eefebf1443768341bbaec9be3da0f034e848b9a34f9051c"
+        },
+        "l4-offer": {
+          "text": "Would you like some more tea?",
+          "rate": "-5%",
+          "source_sha256": "772850ab45e8393f405cede35708b0459387fb8b78404cc09d3d90d9c476c6e2",
+          "packed_sha256": "80591113c7aef9003a452f0ffcafa5edf4b4433dc970b1b4eab7958501a67c60"
+        },
+        "l4-you-to": {
+          "text": "I'd like you to discuss these results with the patient.",
+          "rate": "-5%",
+          "source_sha256": "6b49caa8410fa4979bd3bf59a1279debc8f10675536827d0b6f8aced5f3755f9",
+          "packed_sha256": "cdec742a36ef4977e454be47236ebc35c8a90a24a0ab352aae385b6f13694dd7"
+        },
+        "l5-come": {
+          "text": "Would you like to come with us on Saturday?",
+          "rate": "-5%",
+          "source_sha256": "89115522c13c7270f7cb661d9cc4ba862212a6af7b74f0bca65776f754122b61",
+          "packed_sha256": "6715bc8bdab8a54bab6a3b72ad3f16f560b342c138a2b0be6915fe9bae5a881e"
+        },
+        "l5-cook": {
+          "text": "I don't feel like cooking tonight — let's order a pizza.",
+          "rate": "-5%",
+          "source_sha256": "526336d49644799fd8cdb131def3410c68f62b78febf1cf2e3612b351551c152",
+          "packed_sha256": "a241c644e8c2620289dc8c07fd1cad399e43116e26aba89ddf13a4a71290fa30"
+        },
+        "l5-cry": {
+          "text": "When she heard the news, she felt like crying.",
+          "rate": "-5%",
+          "source_sha256": "aba95dae1a0f091608a35253750b2f6250c132e7bfa0d8e9bdcea78d7a01ff3d",
+          "packed_sha256": "9fef1131e5003d2ad956923fb6de8ea39b676c83ece95bbd699bdc80791802ce"
+        },
+        "l5-habit": {
+          "text": "I like to check the results myself before I call the patient.",
+          "rate": "-5%",
+          "source_sha256": "8f4e78ae23244ae5dc7f4f963fdca2f6d2c6d2c4ad78f6d586ee679f06afbf65",
+          "packed_sha256": "f152f4dd19f8e9e21644498fcd05c2b5930c982a40c5d0eb6dce5fcb0f1430bb"
+        },
+        "l5-swim": {
+          "text": "I really like swimming in the sea.",
+          "rate": "-5%",
+          "source_sha256": "08aaf37fee37765fbd4dea8000741dffb9cb895556ecc75dfadaef472a337dd1",
+          "packed_sha256": "bd5b7b29fbebc372d6e60b72bf3c7ea2f531cfe6f9eb51025ab095827eecee29"
+        },
+        "l5-walk": {
+          "text": "Do you feel like a walk after dinner?",
+          "rate": "-5%",
+          "source_sha256": "fe0d9274c67dc7d59e76a3fe77df12c1b0ab1edd1e6bae1013f0d4487ab6f9a0",
+          "packed_sha256": "63ea3b4f19dccdf082df5ca4080f87e430d8c3a5bffde67b3effef1ce6606151"
+        },
+        "l6-doctor": {
+          "text": "As your doctor, I must warn you about the side effects.",
+          "rate": "-5%",
+          "source_sha256": "2dbe65c68b110d20dab130e730c59c27dd136d54d20d4f2bef41341cd8f95e04",
+          "packed_sha256": "0063401b4f3093c83a8b2b302e581082790bdd95dee0f70cd1aac2dc8dde9c53"
+        },
+        "l6-nurse": {
+          "text": "My sister works as a nurse in a children's hospital.",
+          "rate": "-5%",
+          "source_sha256": "7ef7e9195b4d951ab648591ee35e9b962a2aca59be8e3d446393ac849a7f35f6",
+          "packed_sha256": "aaf7a2383623dbf63a0453d50d83ce2f5d3450145e88c29ce1b8634c3b6c9c3b"
+        },
+        "l6-office": {
+          "text": "We use this room as an office.",
+          "rate": "-5%",
+          "source_sha256": "a69d853819e99491d58f03a35f9a640720e7a9e2d95d4ba7aca6d63e94cf284e",
+          "packed_sha256": "27c19d43a145dcecc71a6c6bac6f8d398d7ae54cfa227d09e7288628dccec6db"
+        },
+        "l6-said": {
+          "text": "As I said yesterday, the scan was normal.",
+          "rate": "-5%",
+          "source_sha256": "bbae4cbd6cc04f56263a62308f48de5b64af29bd4271a58612ee3ba993159407",
+          "packed_sha256": "d599da07a9c946151702dd1d2a9518ada3a40e4344b8b9041a0308f37b675a51"
+        },
+        "l6-sing": {
+          "text": "He sings like a professional, but he's actually a surgeon.",
+          "rate": "-5%",
+          "source_sha256": "60c25d8ef5bc83e4456ac4d7a99bd80f02084d54eb5b3a6ab42759321b0f37cd",
+          "packed_sha256": "bf9cb027875d08df6ab8530a3350aa6eed15692c40915c215918d362ff87bfce"
+        },
+        "l6-usual": {
+          "text": "As usual, the train was late.",
+          "rate": "-5%",
+          "source_sha256": "265d313ddb932cb8884551e2cb86e7e0f2ec332f9dbe3c3d07acaac7764aad77",
+          "packed_sha256": "2f15e47725cb497816c4d610124b47709c4d3dcbd1264bc66fbf67c0f5e68d90"
+        },
+        "l7-asif": {
+          "text": "He talks as if he knew everything about medicine.",
+          "rate": "-5%",
+          "source_sha256": "6cebc99f7b6dda8e9114b303237491fe7f89b63563ac9b0752b8c3bd45e98aac",
+          "packed_sha256": "c80e7f2406e45375944983a53ff1f6ba3a0c82e262a35ea8309b067fbbbf7491"
+        },
+        "l7-break": {
+          "text": "You've been working for twelve hours. It sounds like you need a break.",
+          "rate": "-5%",
+          "source_sha256": "dc4169177520b92f3a3e0fb0626bdefaac8dd888940d704ae075ce73431b3e36",
+          "packed_sha256": "1b43768bfc58bfb2069e46d87f468e1bffa7af4ccdeba5d64e433725aa53e9c9"
+        },
+        "l7-rain": {
+          "text": "Take an umbrella — it looks like it's going to rain.",
+          "rate": "-5%",
+          "source_sha256": "e419b72c9316f99920d7ca5b8441abd0c9afba31b16f1860b8005975f4f62fff",
+          "packed_sha256": "6bd7bc01472e5a1eec3bbbd2049ebbbf1e020c17bea3ad95f7cb099255c475ab"
+        },
+        "l7-seems": {
+          "text": "It seems like only yesterday that we started medical school.",
+          "rate": "-5%",
+          "source_sha256": "1cf7662bec12194692def91492d53067b8152a51cf5a4d64c928eec758cdbdde",
+          "packed_sha256": "a8be05ee0751d84e8d2769374056f97bc133b8036485591b7adc987cd8a17605"
+        },
+        "l7-though": {
+          "text": "It looks as though the patient has fallen asleep.",
+          "rate": "-5%",
+          "source_sha256": "6d47c9bdcf14035fae24449ea976f9fa2636f6c32645711dce9ab9860f91d874",
+          "packed_sha256": "54e79d8d3562c5ba3622496c0d36451a5be3b9304de06517f3604d27b985e1e3"
+        },
+        "l7-were": {
+          "text": "She acts as if she were the head of department.",
+          "rate": "-5%",
+          "source_sha256": "f37b2395e8590bf7f3b4093235546c77dcf62c9bb70edd01d1c47448f7387fd4",
+          "packed_sha256": "e902ea8b6f5bc492099473e105b17a356b50bf3ade3e7835e34a0241bb3e7c7c"
+        },
+        "l8-alike": {
+          "text": "The two scans look alike — I can't see any difference.",
+          "rate": "-5%",
+          "source_sha256": "36645979242ddd6a50edb2b5f36fbced0212bacaa95057e4f6aa0e8bdd133d73",
+          "packed_sha256": "dcb13f29a8ec7715e56a78b6dd362d53df820d76fce2f0aa0c8910b89a41ec58"
+        },
+        "l8-dislike": {
+          "text": "Many patients dislike taking pills every day.",
+          "rate": "-5%",
+          "source_sha256": "2f45b4a11ae72ae46740136dd9bc7398e411f2a5f001f0b7f93339f0a8963588",
+          "packed_sha256": "7a0ed6d33a41c01e6e44212a68112f69f55077aa46c1a8ce690f3bbbeb0ab79f"
+        },
+        "l8-flu": {
+          "text": "She developed flu-like symptoms after the vaccine.",
+          "rate": "-5%",
+          "source_sha256": "168373078eb5ee4a808d237d3037e43f77a16747c5e16e52d2e609e9f5d5bbcd",
+          "packed_sha256": "c2978320da96337c65cee1bf11ea9fc5904e22cfc65cf866107751862c1c3cbd"
+        },
+        "l8-likely": {
+          "text": "With treatment, he is likely to make a full recovery.",
+          "rate": "-5%",
+          "source_sha256": "101593f106fae96b5d70e1bda7230662c8e95d565d7eda5a20c08248a41993ec",
+          "packed_sha256": "6e891d2993e4e7550a0c539be42437dda2cd63aeac036a5dea3c6e7bed793d44"
+        },
+        "l8-suchas": {
+          "text": "Avoid NSAIDs such as ibuprofen and naproxen.",
+          "rate": "-5%",
+          "source_sha256": "6028a0314c4a7ba2057b8ef2a7dbbb5b8eaf6fcd60a0370c5b8b30c4fde1cc33",
+          "packed_sha256": "d76eda1774dfa19b2d26c08c30fbc4e320dc327c446c4c46ac498c86647733d7"
+        },
+        "l8-unlike": {
+          "text": "Unlike aspirin, paracetamol doesn't affect bleeding.",
+          "rate": "-5%",
+          "source_sha256": "91546480d06253ae3e01ad16d62231b359a99de05bd9910e4103baf2e68d7026",
+          "packed_sha256": "65d1b71c00e758ba871a54a90143393829bffc7c769379605e7a9ee8be263f0b"
+        },
+        "r1-1": {
+          "text": "— What's your new boss like? — She's strict but fair.",
+          "rate": "-5%",
+          "source_sha256": "6e0c41c55330e226fc2a0ae0c0a78558473a19cc94cce83d8ec2e78333365ddb",
+          "packed_sha256": "81d2800f2706b30b1adf594ce1617adf58c1b3185080c6eb15e1fe5cef9d8812"
+        },
+        "r1-2": {
+          "text": "— What was the conference like? — Interesting, but far too long.",
+          "rate": "-5%",
+          "source_sha256": "6401a93597401c5487159ea8a3dabdc3bcf41821d23d622e345e7ffeadb569e4",
+          "packed_sha256": "f4f935dae6b83bfe56a221008e85edbb68e7f50bc0cecb4ef785b12bced3ccfe"
+        },
+        "r1-3": {
+          "text": "— How is your mother? — Much better, thanks.",
+          "rate": "-5%",
+          "source_sha256": "8b4ba1b089ba9697d2be8aec797fd4616b62c5dfe9364dbb9d11592b584afc2b",
+          "packed_sha256": "c661de8422f8a043beca4955ec0ea0985f633be1f4a086ff75a6f59c353f1907"
+        },
+        "r2-1": {
+          "text": "— What does your brother look like? — He's tall and thin, with glasses.",
+          "rate": "-5%",
+          "source_sha256": "e6406833e9a141370a061ee65b2d8715a89d11b70e3b877d153a8fac7fc81f2d",
+          "packed_sha256": "4e95b7f8c545562ed749195199222fc0d4bf07135969f680ab308daad13f61cb"
+        },
+        "r2-2": {
+          "text": "She looks like her mother, but she's like her father.",
+          "rate": "-5%",
+          "source_sha256": "513ffa93339d948b655e6cd78bf413bbf8549aab092f1df27f00d46c0dbf94d2",
+          "packed_sha256": "b06440159de8ded45a5d2330ad6624d31c91a355c5f7fb23a955c88e8baa1c7c"
+        },
+        "r2-3": {
+          "text": "The rash looks like an allergic reaction.",
+          "rate": "-5%",
+          "source_sha256": "59f3da55a7beb88840787bf2dbfd35d5a0eaeeb01bd70b278d057149cb1d6cc7",
+          "packed_sha256": "06712945d69c6aaf4b564ff6e166eaa8cb43f195a68de783f25fbd774f7b10d5"
+        },
+        "r3-1": {
+          "text": "That sounds great — it sounds like a plan.",
+          "rate": "-5%",
+          "source_sha256": "041948ff31800104287d6ca5e7fc569e34acb234a529d137568393c847607215",
+          "packed_sha256": "6a67741433a597c4ed085ec5d54d6a5ebc7f90a0e59dedac36c537753a54f027"
+        },
+        "r3-2": {
+          "text": "The pain feels sharp, like a knife.",
+          "rate": "-5%",
+          "source_sha256": "7acbff79543463b62f11220f351746626260a5d19c127c9985d7677c83670540",
+          "packed_sha256": "7ff71db8bd22c75759333376559c9bec89d90672d66d7280076f487881975a21"
+        },
+        "r3-3": {
+          "text": "This milk smells sour — it smells like cheese.",
+          "rate": "-5%",
+          "source_sha256": "60599f7855cdde4f3b1bf595f2949324adf9d8de92638c36e4ac480724e345dd",
+          "packed_sha256": "ea29698c22c859feabf9cd20d3ea81f429a585711cd32f527501385df111fade"
+        },
+        "r4-1": {
+          "text": "I like coffee, but right now I'd like a glass of water.",
+          "rate": "-5%",
+          "source_sha256": "f1a47a9307bc593a5da0f8392158d83129fc3f047042fb2a69cc5882889681b6",
+          "packed_sha256": "1e4770fad6783743c0634e5b4a7366520e5db796fa34dc6c1dc16ccb18ec1bd8"
+        },
+        "r4-2": {
+          "text": "— Would you like to sit down? — Yes, thank you.",
+          "rate": "-5%",
+          "source_sha256": "22ed96658596c891fe0d06d5a4973b6f9d410cfc160a1f3444e1f820a9d1cbea",
+          "packed_sha256": "405efac21a8b0087f37e60a6eebe331cf609d348ea47a2cbe5f3a528a35debca"
+        },
+        "r4-3": {
+          "text": "I'd like to make an appointment with Dr Smith.",
+          "rate": "-5%",
+          "source_sha256": "bad1e24aeff089659a474a1badc2a31e0d5eba8d05950a82343c5855b7407514",
+          "packed_sha256": "77a4f75d0e8d6eda0b5b20ae3605d8d301bfa03dba0a7d7e6cb09d7698567b99"
+        },
+        "r5-1": {
+          "text": "I like swimming, but I don't feel like going today.",
+          "rate": "-5%",
+          "source_sha256": "1fa0731872c0bebe5732690e01717f494b4686a39aef8e78db4ed3c789fc4f5d",
+          "packed_sha256": "db08839e2e4db67d345c175bdfa6b46574a078e636ee58bb0c72aff681160010"
+        },
+        "r5-2": {
+          "text": "I like to check the results myself.",
+          "rate": "-5%",
+          "source_sha256": "1944444eeab17a4ac19331f4184b69cce6762b978f7db4d80d95605ca7b94c44",
+          "packed_sha256": "271d958f95c36a5138aae64eeea003195cfd546499cb63e56a9b1840ce24d67d"
+        },
+        "r5-3": {
+          "text": "— Do you feel like a walk? — Not really, I'm exhausted.",
+          "rate": "-5%",
+          "source_sha256": "a13f620a5d10aa23893cc66ffb53ab9d5cc3e554670c669679a822d4759f948c",
+          "packed_sha256": "72cabe4bb5134b6ac59edc78bf23ba0dbc51a2ac799ae61add3ef57d97acd270"
+        },
+        "r6-1": {
+          "text": "She works as a nurse, but she talks like a doctor.",
+          "rate": "-5%",
+          "source_sha256": "ec7815d444e8b4ddecfe94a7cd38ee41c5b43b8541b823d3e3adb4d2f37d8e16",
+          "packed_sha256": "ab8a650942ffba64b51cff8da11d73770b4badfbabe6d5c3924f5ad3b2172c79"
+        },
+        "r6-2": {
+          "text": "As your doctor, I strongly advise you to stop smoking.",
+          "rate": "-5%",
+          "source_sha256": "d478292e862befe1e8ce085a90794df9426b5880430c89face15677d777cd756",
+          "packed_sha256": "1aece615a846a0035980bc23c8999a740e4b28f283cab914f6aa830b764f7881"
+        },
+        "r6-3": {
+          "text": "He treats the clinic like his own home.",
+          "rate": "-5%",
+          "source_sha256": "3bce3fee57231ce92e9dc0f57b02ea2d99ca1e9d5df6dbf22410215a96bc716d",
+          "packed_sha256": "e592b9f2873ccbc2e6d14a0ce3c5447649b2c538fbb8371ee08d2f5c3b5540b7"
+        },
+        "r7-1": {
+          "text": "It looks like it's going to rain.",
+          "rate": "-5%",
+          "source_sha256": "88b138444aac48d0bfd70a42443208cd36ab20984ff34924b118be5c2ef7e4bf",
+          "packed_sha256": "a41faf245fa0226a5d57aca17297397ec5b2ee21e20971a4d8e3646ed951fb69"
+        },
+        "r7-2": {
+          "text": "It sounds like you need a break.",
+          "rate": "-5%",
+          "source_sha256": "9cef4cd113542b4370164ba7ea40e8e3ab6beeceec0e669f82ccca96ccb46dfa",
+          "packed_sha256": "c72023586b1ad8c2c7cb71cc7ef245c9d9eef2880f5091201857416abc06916f"
+        },
+        "r7-3": {
+          "text": "He talks as if he knew everything.",
+          "rate": "-5%",
+          "source_sha256": "7e76245937e78cc8226f86ac3f12bcd526069255bf515e4c402e5f1c3af6aa8f",
+          "packed_sha256": "fc7ff8eb78cfb120b2e8630fc184567412b8409a0de93ee6a15efad67e3103aa"
+        },
+        "r8-1": {
+          "text": "Avoid painkillers such as ibuprofen.",
+          "rate": "-5%",
+          "source_sha256": "a9ddd7e5195fc63d43b90d1527faea5f66350ca03b5dc8fe12fe0b0421b2a310",
+          "packed_sha256": "c607aacd88a38c889269fe2bd2f907f75a5837e064cc59433edb56545985f992"
+        },
+        "r8-2": {
+          "text": "He has flu-like symptoms.",
+          "rate": "-5%",
+          "source_sha256": "4715e2e8fc6dc6a330abd246842e7acc01f417b31d377ebff8201525d34924f4",
+          "packed_sha256": "476d2ba875de997846ac445a943f9c1f507fd36262c2bb272f48e94f26238851"
+        },
+        "r8-3": {
+          "text": "Unlike aspirin, paracetamol doesn't thin the blood.",
+          "rate": "-5%",
+          "source_sha256": "6fe6f181796b5c9f35320c485158610372ae860ccf228934396e5a6ce717cb9a",
+          "packed_sha256": "226fa093c47b3a7eeda138ed2e2a70359a7582e40523d07af0aa6c1f968637d0"
+        }
+      }
+    },
+    "without": {
+      "new_recordings": 77,
+      "pack_sha256": "03ab397350b5e0831194d465c4422a90abf82892bc9c92f31acb3d3555253ae9",
+      "clips": {
+        "cp-1": {
+          "text": "— Can you do without the car this week? — Sure, I'll take the bus.",
+          "rate": "-10%",
+          "source_sha256": "41a1d82ac955dbdd7029dfa63e01399b3e52e1b7110e5958a9c7b8c997c7a2c3",
+          "packed_sha256": "135844a7f0528e1e107b6bc047c5e3d7b1a5d5f5d2c9cb8c3b0881bcee1c1e91"
+        },
+        "cp-2": {
+          "text": "— How are you getting by on your pension? — It's tight, but we make do.",
+          "rate": "-10%",
+          "source_sha256": "7602365b6216c347219cf14428c534af497c0f7e55d903ab840325185d3d964f",
+          "packed_sha256": "dcbe5ee2301a4b5455673340c3b512f29b3f22ab62e6d5091063bca72c4eaea1"
+        },
+        "cp-3": {
+          "text": "— You look shattered. — I could do with a holiday.",
+          "rate": "-10%",
+          "source_sha256": "983332e70791ad6a6be5b5964f7857923b701edf24e501976dbe504fa03624b0",
+          "packed_sha256": "e7e70f3cd54a014afa101eaa12f8e09cfd195e7421f9febd3023db30f65b6224"
+        },
+        "cp-4": {
+          "text": "— Did he eat anything? — No, he went without food all day.",
+          "rate": "-10%",
+          "source_sha256": "2eb902bb18cdac8adf12c232148a00ac8fdcd194d3f636aa6eb3fe5b3968a481",
+          "packed_sha256": "d75f7faf460fd96f13e857a9b434e182fd76c062b29554aaf96b4d88cda470fa"
+        },
+        "cp-5": {
+          "text": "— Is the cough anything to do with the new tablets? — No, it has nothing to do with them.",
+          "rate": "-10%",
+          "source_sha256": "943fa78c595ade0cf19480433241dca61656d49f2859030e645484c516f3fa58",
+          "packed_sha256": "a0f948ad5c253de9fae6747434f0f11e1b85ce39b0c756839b4dd0f47e1d6754"
+        },
+        "r1-1": {
+          "text": "There are a great number of things that we can do without.",
+          "rate": "-5%",
+          "source_sha256": "070e32a5b8f296ca633d444cfbf2a2423b411856ae90a003c5dff4cb216406f9",
+          "packed_sha256": "ee014dfcf2935dad0ee1415cbf793c0292946ef21a498c3c9301bff540ebd0fe"
+        },
+        "r1-2": {
+          "text": "Can people do without money?",
+          "rate": "-5%",
+          "source_sha256": "7018ed83d0cce86c5474de9455809cead3081d9e1e66184f71f9b042a28cc286",
+          "packed_sha256": "862b15224cd55e2c1e7226ce9da4a7746e43017a87260122322d02ae873caabd"
+        },
+        "r1-3": {
+          "text": "We've run out of milk, so we'll have to do without.",
+          "rate": "-5%",
+          "source_sha256": "74a9c15a2008c1f82be6957f58ce0826d9d1f35e50435e1dfe7a0ef73bdeac15",
+          "packed_sha256": "91095d1b4b984139b555e583528567a329260177d63b79e667bcfd24476427ff"
+        },
+        "r2-1": {
+          "text": "He went without sleep for two days.",
+          "rate": "-5%",
+          "source_sha256": "32a9c2f09197025aa09370137d33fe1e11863678d18f8e4c028ccf5dc346d5d7",
+          "packed_sha256": "59415de149380d1d6bf21323447b67aa4dc6b48000139496f35f032cc833b9a6"
+        },
+        "r2-2": {
+          "text": "Many families go without heating in winter.",
+          "rate": "-5%",
+          "source_sha256": "82d10fe2e4150e4389768ece7f3d244038823eaa824b45795d833cac0a3620e6",
+          "packed_sha256": "b1fe75da193d1d0bf48a5ec12ea7621b42fb125158df54c006dc89568154f2b0"
+        },
+        "r2-3": {
+          "text": "If there isn't enough food, the parents go without.",
+          "rate": "-5%",
+          "source_sha256": "df8b0f7e91e901a1bb5a0d3f8ebda98a0a1c7e913d0df974fa10b1a6a62d130b",
+          "packed_sha256": "fb3158bca073c48943b29df4779ca02ecf9ae7d70a45dae9a4d620b007b382be"
+        },
+        "r3-1": {
+          "text": "I can't live without music.",
+          "rate": "-5%",
+          "source_sha256": "5d4d14c738db7287546f938c5cb55f4212cef59b1aed73489f893edd4c1d869e",
+          "packed_sha256": "4cf2dc046836fe1da76c347939c361857e6e0e668359d65191f547d64e1e8c1e"
+        },
+        "r3-2": {
+          "text": "— Can you manage without the walker? — Yes, I think so.",
+          "rate": "-5%",
+          "source_sha256": "a0b9bf3596aa61864d7a1a06ff771ba34f90563dbc6046673b43b54ad5af864c",
+          "packed_sha256": "ae682155115eb7131e06d2d55815ebc92c4e617a6c87e51296eaae3920d002e2"
+        },
+        "r3-3": {
+          "text": "How do they cope without electricity?",
+          "rate": "-5%",
+          "source_sha256": "5324eea41c862387de9f5e241a1e00a441cf1f95dc8f07d3b9b523211e1282d0",
+          "packed_sha256": "b51912b8cf43cad7be772a937021cf0ecc530c73643a92f41a2bca3f76441d12"
+        },
+        "r4-1": {
+          "text": "There was no splint, so we made do with a rolled-up magazine.",
+          "rate": "-5%",
+          "source_sha256": "9c15aa77c84bed1185d669ac6f3305706dfc4b059951dc0b261b65de7c4e62d2",
+          "packed_sha256": "00ec05f75df663b34a7f88b2bc7841c088597091a77934782183e164c60f002e"
+        },
+        "r4-2": {
+          "text": "It's not ideal, but we'll make do.",
+          "rate": "-5%",
+          "source_sha256": "48f5ecf6bae1fdc9d61af4eff899ce00f7585713073b9189001e3f99a29469c4",
+          "packed_sha256": "6e414114fa07f8e934ffcf71225aa6b26239640cc6a019040c55b5c3d286b3c0"
+        },
+        "r4-3": {
+          "text": "We had to make do without a proper kitchen for a month.",
+          "rate": "-5%",
+          "source_sha256": "6e9d05f8912e8a2a35615fccb5fea2c86137d7aad472030d7a78613f274c4784",
+          "packed_sha256": "12a393f290da8ecf76b2be4fe82348eced90046df38f5727e91fce1e8554e9db"
+        },
+        "r5-1": {
+          "text": "It's hard to get by on a nurse's salary.",
+          "rate": "-5%",
+          "source_sha256": "ff42823955af6b8c5fed963e73427e5df9479612cc1795efc64426a05a7c2994",
+          "packed_sha256": "64320d205900dd0c8e3bb32ab98f9838e452f1097ace03c9583cd6a213ab96a9"
+        },
+        "r5-2": {
+          "text": "I can get by in Spanish, but I'm not fluent.",
+          "rate": "-5%",
+          "source_sha256": "944e876dd8861643a711c09df71ee549cc475dd268c0a274947411bffd9d3e10",
+          "packed_sha256": "450ba6519bb7e0969d7d1589ffc8bde58d5a343cda9947d54353fc8ac2c354c7"
+        },
+        "r5-3": {
+          "text": "We get by with one car.",
+          "rate": "-5%",
+          "source_sha256": "48455efe6d98cf63338380f20959cddc47251f89e9b51e47a83a35694782ecc7",
+          "packed_sha256": "ccce84c48eb2d45fa48b52d493ab3c2b48bfbcbcf7a2c495d22cb7fa4809826f"
+        },
+        "r6-1": {
+          "text": "I could do with a coffee.",
+          "rate": "-5%",
+          "source_sha256": "ecca261fdf83d8fa04826b9295da7864baa29ff08a7e536eae2880cb7a358f96",
+          "packed_sha256": "f775daf7ac01c71d9c3a97fd3c6bbf58f1d37a1f05b36d59b8344c7842ae00e4"
+        },
+        "r6-2": {
+          "text": "The ward could do with two more nurses.",
+          "rate": "-5%",
+          "source_sha256": "c94bbaf31fa48dc7957afea7556f4c68be1e8a49c6d3996e1634560a19a28fda",
+          "packed_sha256": "1dc0a14a0a25fb09df6e39933ef185abcf790c62c6ecc5b4c0625920b163cb70"
+        },
+        "r6-3": {
+          "text": "We can do without the meeting, but we could do with more time.",
+          "rate": "-5%",
+          "source_sha256": "046caf3499762f52d1fbef32f72d1ef46cc9fd8b994f0aa702e0f3a3d37185c9",
+          "packed_sha256": "e9b8a89d14d8575d8a5e42456eb87e6be6d0e6f5d04250f5749c57db554ae9d7"
+        },
+        "r7-1": {
+          "text": "The hospital did away with paper records in 2020.",
+          "rate": "-5%",
+          "source_sha256": "6260761731b2cfd440aaaa5adef73f2f40a52dc4f8ecd417b0c8b967e87b20cc",
+          "packed_sha256": "89771c412442f20491c502a5642a5a62547d55fcb12cb321cd03ffb7e9e825cd"
+        },
+        "r7-2": {
+          "text": "Let's dispense with the formalities.",
+          "rate": "-5%",
+          "source_sha256": "947a7f258ad0d00f499ce6018cd4d7e48fc851e1f0147494482d364127582946",
+          "packed_sha256": "05f8c291994031e086eb6b8683c0f61c29e249e7a60d1ed0292cf81c95708e11"
+        },
+        "r7-3": {
+          "text": "We should get rid of this old equipment.",
+          "rate": "-5%",
+          "source_sha256": "339192037a36fedeb98e126e2c40a36e059e077e9b042d9c230662ac852f650d",
+          "packed_sha256": "5da500f36a423a85e216373f1824778c7a8753e8a67f74736f2c4f24815dd108"
+        },
+        "r8-1": {
+          "text": "Your headaches probably have something to do with your blood pressure.",
+          "rate": "-5%",
+          "source_sha256": "65d27ea271b050214eb16711bb3e1ae73c45e3ea3b0a2e1e1d135562ede701dc",
+          "packed_sha256": "30cefafb1e22a804e36f58b60910c685cf78f8f3e74ddcc6e475d862589471ca"
+        },
+        "r8-2": {
+          "text": "It has nothing to do with age.",
+          "rate": "-5%",
+          "source_sha256": "47875aaf8dfde24d321934fbb218b1e25ac8197253c8c89ffb336161d0a9ddb1",
+          "packed_sha256": "2d4413743be181e00417047c3d2d1de34b9dfc3a5d57c2e1154a721935823702"
+        },
+        "r8-3": {
+          "text": "What does that have to do with me?",
+          "rate": "-5%",
+          "source_sha256": "5bed5fcb64dc3053f67c012e12733244360a08716a1ae58dfe8d74483c9b2392",
+          "packed_sha256": "81c4013b9f41876b6ba5f71997fa23a63e83019892897a481cb4163c53c8b66c"
+        },
+        "w1-car": {
+          "text": "Living in the city centre, we can easily do without a car.",
+          "rate": "-5%",
+          "source_sha256": "86e1299b73ddeb7cdcabb87d3a4f8123399745f2fd0c5bc2b061f8b05eaf9282",
+          "packed_sha256": "25c1175b67a6a8887e6bc1e260f110ee22f6b8b11e3a039be8d74e4c6e2863a7"
+        },
+        "w1-coffee": {
+          "text": "I can't do without my morning coffee.",
+          "rate": "-5%",
+          "source_sha256": "11fd40274ecf9c532b1271e5c9da11a2755235f567cdfd0c17e20b609e03797b",
+          "packed_sha256": "43c5ebca3bc3787331a0c6502fb51abf4fdc8f116d20a6b73eb90fd21d396fc3"
+        },
+        "w1-end": {
+          "text": "There's no sugar left, so you'll have to do without.",
+          "rate": "-5%",
+          "source_sha256": "522d9835b8cf8766e8e8b5574125658033a392533a8fcd5408ce8de36c91ffa9",
+          "packed_sha256": "275b5861e3e88d972db2459b01694fe567a5d75592cde640dfa3d328b437780b"
+        },
+        "w1-interpreter": {
+          "text": "We can't do without an interpreter — the patient speaks only Arabic.",
+          "rate": "-5%",
+          "source_sha256": "8f0cc8b0d29283873619236b08497bab612d331f11d97d93fa29ec5202b1b9a4",
+          "packed_sha256": "e69b26702572d8ffc31596fb85c990f8341fae3cb67a3acbb90adf80117f5ad0"
+        },
+        "w1-money": {
+          "text": "Can people do without money?",
+          "rate": "-5%",
+          "source_sha256": "f789a690b0f9fd8e49b7e464d642e669978af72c9a84ddbb853537e5265ae354",
+          "packed_sha256": "a853705311940818a7617b258b93fb2fad4eddb6a5ceda918a11b5028e1751e4"
+        },
+        "w1-things": {
+          "text": "There are many things that we can do without.",
+          "rate": "-5%",
+          "source_sha256": "56943f3981be94f6585d1418994a2ab6e1729cf9d4bfefd8b84dbb615ac72782",
+          "packed_sha256": "af12f313a5f086d0af5dbad3a914e0564ca7395bac3baddd77e08006d4e3e54b"
+        },
+        "w2-food": {
+          "text": "No one should have to go without food.",
+          "rate": "-5%",
+          "source_sha256": "44a0bc9e2ac934237b203057b55764bd2631fb61db173f0f29a78106e9cd64ca",
+          "packed_sha256": "7e6a7a92b3092a24a12617c63b6e36e29a4b83f739830ce57936c13d35cd6150"
+        },
+        "w2-meds": {
+          "text": "Some patients go without their medication because they can't afford it.",
+          "rate": "-5%",
+          "source_sha256": "e0ea67f8724b2f6a72ae63b975122f3228cb7de6431e554590eb9f8cc61d2d78",
+          "packed_sha256": "42c262e8e07ad42347427834f64cdbd991d0f4d41e4567098ce688866fed5566"
+        },
+        "w2-parents": {
+          "text": "When money was short, the parents went without so the children could eat.",
+          "rate": "-5%",
+          "source_sha256": "5073fa5d453727f5f3832c88de38d354033980f9999cb096b72c570f39341bf2",
+          "packed_sha256": "96cc6c5becf3298361d42d35aad6cd90fb182e08c7e6421a9d813f70fc0cd020"
+        },
+        "w2-sleep": {
+          "text": "During the exams she went without sleep for two nights.",
+          "rate": "-5%",
+          "source_sha256": "3b109ed4db824be52c288daefdde1cf014803748a4a19662bd0a3653bac560bd",
+          "packed_sha256": "684269a1a11aee0e8a08f117a6ad78634361ac2a615108f254414067e88d66f5"
+        },
+        "w2-tv": {
+          "text": "We never watch it anyway — we can easily do without a TV.",
+          "rate": "-5%",
+          "source_sha256": "6459f2dbf63a013095f78d1d95223867cad14aa206678b54407a58ed315c8518",
+          "packed_sha256": "5005764b04d99d7e1795f3b4780a000ae44dd6d867f8053b3533bba84189ff78"
+        },
+        "w2-water": {
+          "text": "After the flood, the village went without clean water for a week.",
+          "rate": "-5%",
+          "source_sha256": "be9f67799779ba917ca1d34a103f11b740c206479ea0ff25e6549fc2895235fa",
+          "packed_sha256": "3e860d29f95a63fdce3908da5d4edad4783e7f7771a8acf7282b90e16ee5dad0"
+        },
+        "w3-air": {
+          "text": "How do people cope without air conditioning in this heat?",
+          "rate": "-5%",
+          "source_sha256": "047c1f65509e3477aa54a588dced7c1d129b91274feb618dfc7b285ad9f6cc44",
+          "packed_sha256": "203fedade73b830d6401654bb0f2d687fe9159e2a46e4b72c1e3280a1a75f500"
+        },
+        "w3-help": {
+          "text": "He's 92 but still manages without any help at home.",
+          "rate": "-5%",
+          "source_sha256": "662890556e6ac4abece3c11bf8234b3114f7f3a49e38e741b4d8e035b930a997",
+          "packed_sha256": "d66ac5aac5f88b95696f89b86ceb29e7f1749dd463906595e1cb4e667b9cb6bc"
+        },
+        "w3-music": {
+          "text": "I can't live without music — it's on all day.",
+          "rate": "-5%",
+          "source_sha256": "54e2dd04c13c3744fa8b9a123f8af6905136d99c1af414c799a00f6ef646622d",
+          "packed_sha256": "7e85cb9f9d0691dc0e3ecb9d6b90f18b5c7e21fce788d23d8ec6027203300144"
+        },
+        "w3-nights": {
+          "text": "She's finding it hard to cope with the night shifts.",
+          "rate": "-5%",
+          "source_sha256": "2f34c09c08f4c6c7872dff4d4ab68b672065262fbd3fb81b64a7c50ccb78c4b8",
+          "packed_sha256": "5b078fa5c9684f9bef6662afc42a9e5488304e2e824e0bde0bfce7bb1313ff75"
+        },
+        "w3-stick": {
+          "text": "Can you manage without the stick, or do you still need it?",
+          "rate": "-5%",
+          "source_sha256": "882c6518ad973f1ec43ba417bff7960bd553bc472cb11c6cad3bc2a708b0bc11",
+          "packed_sha256": "35bd88972090666c966f782747c702d927edf339c321f52a5ac927e12324cf4e"
+        },
+        "w3-survive": {
+          "text": "They survive on less than ten dollars a day.",
+          "rate": "-5%",
+          "source_sha256": "8f0b98e15cda2682d8c535b19d8fbd5f84ad7dfcd17380163fc040a6ddd8d79e",
+          "packed_sha256": "d319cddd3febc9b18fe4cceaa6af6b768f0d6c2657b3ea1c473acd3210d40c75"
+        },
+        "w4-chair": {
+          "text": "We've only got one wheelchair, so we'll have to make do.",
+          "rate": "-5%",
+          "source_sha256": "8ba974163607f168024d0d7c974d59b79dce3d059ebe2c9dabdc78b65d9f6222",
+          "packed_sha256": "c03ea3340fb1e72bb7a768246e950b47d5dbe77ed4555c300e0171b1e1b404b8"
+        },
+        "w4-ideal": {
+          "text": "It's not ideal, but we'll make do.",
+          "rate": "-5%",
+          "source_sha256": "d09c9bb6df53df48da23632b647bb16b711b49528db992f85c2ba54708a612b4",
+          "packed_sha256": "71b24fc2361895c5752c16a4d17709045569a6ecd164c70357cb0149c92566f9"
+        },
+        "w4-kitchen": {
+          "text": "During the renovation we had to make do without a proper kitchen.",
+          "rate": "-5%",
+          "source_sha256": "67ca603e00d05bba70a63d9254597d2cb3efb40b17cf47b3b3a3e3cd3932a70b",
+          "packed_sha256": "2db71a1fd3c6131fb8c0175be59b591337be237a99e116c740e081aabddc7f65"
+        },
+        "w4-makeit": {
+          "text": "Hurry up — we'll never make it to the station on time!",
+          "rate": "-5%",
+          "source_sha256": "6a15495cc93841b272e06acb53e35e1d4615e8f435d5bc268fd40e5afc8efb97",
+          "packed_sha256": "f1339c9b9770a0cde27154b2eb3ca906b20caaa761ef6c09d199b4661074bcbf"
+        },
+        "w4-old": {
+          "text": "We can't afford a new ultrasound machine, so we'll have to make do with the old one.",
+          "rate": "-5%",
+          "source_sha256": "952466d7f9a8bb5e279fc434b31328c77b17d1b4693e90554f7ad165dc834f86",
+          "packed_sha256": "509181331c302e5beea418a7d0d06367497c5ea1e1d2d08e9f71ed6f444324f1"
+        },
+        "w4-splint": {
+          "text": "There was no splint, so we made do with a rolled-up magazine.",
+          "rate": "-5%",
+          "source_sha256": "4263d60e32de5911915375bcd6c5bec9ba84808ed7787b5689878d3ceb7e3013",
+          "packed_sha256": "7b103afb19963d0978270178bce76359ecfbb34d27f66a02834aed5dc5825d27"
+        },
+        "w5-grant": {
+          "text": "Students often struggle to get by on their grants.",
+          "rate": "-5%",
+          "source_sha256": "bdc38f49d210c974129dfe30a658adccd754bd42615994b401841cceb9a523bd",
+          "packed_sha256": "35107e6a257f7c943db7665d74852df2d1021c23f98e1571ebc12956e1e11676"
+        },
+        "w5-managing": {
+          "text": "— How are you managing since the operation? — We're getting by, thanks.",
+          "rate": "-5%",
+          "source_sha256": "fe09f9efcfaf11feacb317825dcbbe00279e947d1996ab70bfe62cc71c282e34",
+          "packed_sha256": "8b3fea84137e91992aa5fdf6e6838dc9c224bd4e97c5b20410da40c988b03a1d"
+        },
+        "w5-month": {
+          "text": "How do they get by on a thousand pounds a month?",
+          "rate": "-5%",
+          "source_sha256": "a577b10e9774dae616ae02c65535eb56da602338ff18a375060e0f2cfe79190f",
+          "packed_sha256": "27ca839b25dcc3f0a06d8c2e43a15dd262d57b9cb8dd22e7fcc1cfe4dbc57f9a"
+        },
+        "w5-onecar": {
+          "text": "We don't need a second car — we get by with one.",
+          "rate": "-5%",
+          "source_sha256": "474dbdcd515231a946557ab5bacff78bdd7a4e8a0d780d96f30ef90fd8700ac1",
+          "packed_sha256": "2a01e6c6cee327a216718cfc866a7cad95eff9e23a7e751ce9a890065a2a1561"
+        },
+        "w5-pension": {
+          "text": "My grandmother just gets by on her pension.",
+          "rate": "-5%",
+          "source_sha256": "1ba9d5be5ec1ff5c7518fc0f64e8f1ea94f0953887dae449adee0613184021dd",
+          "packed_sha256": "6f3d82ccaa4d1663ab7b57f2b5bad17d9047eb78eb9a66a66c4f1eac6f966432"
+        },
+        "w5-spanish": {
+          "text": "I'm not fluent, but I can get by in Spanish.",
+          "rate": "-5%",
+          "source_sha256": "fcbbd65163bd4bdc836dbc8b81de9366dd601c4aad49149f58bf51b0bc2f7a4e",
+          "packed_sha256": "4a644311470ca496b0ecc91682c3ada58187beb96ad710134a063e315e9f3b18"
+        },
+        "w6-coffee": {
+          "text": "I'm exhausted — I could do with a strong coffee.",
+          "rate": "-5%",
+          "source_sha256": "5da14d5c4059cbe49bf5b653cfc4531e8e98dc1affcf5fe97cd7118140eb99c7",
+          "packed_sha256": "72560d74aaf246bff189817792701554ca2567954c9c6748b4902f932379f095"
+        },
+        "w6-help": {
+          "text": "— Could you do with some help with that? — Yes, please.",
+          "rate": "-5%",
+          "source_sha256": "be066a900ef9b3acb64f4c67bb9dd064703d29fb5e275ca91ac290da99208b44",
+          "packed_sha256": "6b297165be00cdaaf181dcf550fac2eaad2419c250408231071f5c3117fd646a"
+        },
+        "w6-paint": {
+          "text": "This room could do with a coat of paint.",
+          "rate": "-5%",
+          "source_sha256": "562944abb4d351ae53352d7df2defdc596f3315c01a392c9e8502ebc10a0c31a",
+          "packed_sha256": "e430aed5327a0474edb79772c55a172776bf2cb880597acac24e18b130ef1d67"
+        },
+        "w6-paperwork": {
+          "text": "We can do without the extra paperwork — it only slows us down.",
+          "rate": "-5%",
+          "source_sha256": "c6edf49e358542b28b9a34ae4236ea4f92187d304061323884ce6a83ff2cd883",
+          "packed_sha256": "44548593b29f899a1c5ea0195c47ab1c64f6429ca5c42cfd576d9899218653ce"
+        },
+        "w6-rest": {
+          "text": "You look tired. You could do with a few days off.",
+          "rate": "-5%",
+          "source_sha256": "7521bba065e93a4ec85a34b9c72fd6b0b8621086396655416d9cfb18dd7e08eb",
+          "packed_sha256": "aefdcff0eca324d90cfe6d5662af6c9992f0390d3d95e70e203bd22e491557ff"
+        },
+        "w6-ward": {
+          "text": "The ward could do with two more nurses.",
+          "rate": "-5%",
+          "source_sha256": "ab51344137082da92c4fb1c5dd907ba6389283d423519ecb7866e8473db596d6",
+          "packed_sha256": "d6f1df59f51cbbbb24d1f0f44d20c15fa9d5c83ddcabf87e3a405db97fa06443"
+        },
+        "w7-formal": {
+          "text": "Let's dispense with the formalities and start the meeting.",
+          "rate": "-5%",
+          "source_sha256": "aa63509838b56b283a644715dfda28bc90a7ff250e3cfa95bd5425d5bf43af48",
+          "packed_sha256": "d38421563455090f31bbdc50b25078d1ae91d846247b74a298a15ec659f8e07a"
+        },
+        "w7-lift": {
+          "text": "We'll do without the lift until the repairs are finished.",
+          "rate": "-5%",
+          "source_sha256": "d7a46c6e2976ea8f0f615b868ffd24a42c97b7cce2247e1f99ef9e9f9d4a126e",
+          "packed_sha256": "b4c9b3916d9f7d2fec6e1e4a9473eda70933b8845de49526a17f9f1848bf41ad"
+        },
+        "w7-need": {
+          "text": "The new test may dispense with the need for a biopsy.",
+          "rate": "-5%",
+          "source_sha256": "04f4168b03cdd19cb0ffea1707c038702f1be04fb714fd42eb60f0d568b6960d",
+          "packed_sha256": "96667ba8200831e0ef20e3cbac48f4557edd9837d08d90cb9d4290d2a111390a"
+        },
+        "w7-paper": {
+          "text": "In 2020 the hospital did away with paper records.",
+          "rate": "-5%",
+          "source_sha256": "e8bd449be974169c488c6b46d38d8f14c7d140ab92b38e5d347c1f53472fafbe",
+          "packed_sha256": "5198b8d531d66ddc786f0b173740501cab7b27d5516c57e784b7a1a2911ca75f"
+        },
+        "w7-rid": {
+          "text": "We need to get rid of this broken equipment.",
+          "rate": "-5%",
+          "source_sha256": "1a0ca71e088f8f1f167fa191a41567a6a769867eb0b13ee5c76c6291253d401c",
+          "packed_sha256": "1e3fd686f363a7b1e9bf8c5b37b09b87f65fe8fd8c8c4aec043879d1f8fe7f60"
+        },
+        "w7-rule": {
+          "text": "Many staff want to do away with the old dress code.",
+          "rate": "-5%",
+          "source_sha256": "67683902acac73b32484ef43d632a55b7e0bc1d2e54a27a3cf8328e80a9b7e8d",
+          "packed_sha256": "1bf5805abaac8ab78f0e327d83c9f302dcd2c05ce52fbaaec81ac8abbb681985"
+        },
+        "w8-age": {
+          "text": "At forty, memory problems usually have nothing to do with age.",
+          "rate": "-5%",
+          "source_sha256": "23dab40f09c4aaf2cd4e041282a862ca5e8be247f9a2ad6241cc974b97b9afd4",
+          "packed_sha256": "efb922d937abb78995e50a1f57c84bf83f288fb342384a1e836c54ce81fecb33"
+        },
+        "w8-bp": {
+          "text": "Your headaches probably have something to do with your blood pressure.",
+          "rate": "-5%",
+          "source_sha256": "08c45e585e3fdcdda136cf4bbe0ee0198d8ca09d971af36231879bcd6529e422",
+          "packed_sha256": "f55b51e07fb29a3b2ca60b944134900141b69ef9c5cfcd9c2eb141eb5d69d21b"
+        },
+        "w8-haveto": {
+          "text": "Sorry, I can't stay — I have to do the discharge papers.",
+          "rate": "-5%",
+          "source_sha256": "078e71d71110c9cb4001457433a8dc7ff402ef5b659d5ce00ef7c13bc679997e",
+          "packed_sha256": "5e28560072c5ac75700ebf99f8a4b46b0e2b00495e3c33af3595facbe9eb2e2f"
+        },
+        "w8-lot": {
+          "text": "Recovery has a lot to do with motivation.",
+          "rate": "-5%",
+          "source_sha256": "b5c88a4f492c5215450eb3cbb4398e8182011386e2a8ebeedb81b114c4db7fc1",
+          "packed_sha256": "f3f8fb671f5921c2be1bb9da7fea9b4b3a5d8bca2555d7badc656474d4b3af3c"
+        },
+        "w8-me": {
+          "text": "What does that have to do with me?",
+          "rate": "-5%",
+          "source_sha256": "dda48ab565b9290227672b0a9dcbdd402aad40a5527b74ce7237af2eef3773df",
+          "packed_sha256": "7bdac98a22509e6f8f81eb5a2aaeb7bb51445067b229265a0ab58ea00d3e0351"
+        },
+        "w8-rash": {
+          "text": "Does the rash have anything to do with the new drug?",
+          "rate": "-5%",
+          "source_sha256": "a6d73d8f4049cf178d4a8a74758a227d2b299ef95771c24fa7e0ab9579695ca9",
+          "packed_sha256": "a63bee46a5208226cd120029252396421ff2600e492c6c01793948369f94ce0d"
+        }
+      }
+    },
+    "phrasal": {
+      "new_recordings": 4,
+      "pack_sha256": "ee9079d9ca51e06c6af6daee9f435ca9ee5147fd281f8c6d3663f2947330718a",
+      "clips": {
+        "hand-over-t": {
+          "text": "hand over",
+          "rate": "-5%",
+          "source_sha256": "16fa14d3da9cff5d0f58d151e65322e84797a9aa1fc68ed8f7eb9750b3abbef2",
+          "packed_sha256": "9789957d0ca6797d53e260cb52dea2d282d123c49bb7afe5aec51b330e60a47a"
+        },
+        "hand-over-x": {
+          "text": "Before he handed over to the night team, the registrar documented that thrombolysis had been given at 02:15 and that the patient's NIHSS score had already fallen by four points.",
+          "rate": "-5%",
+          "source_sha256": "0d4eb1fb70ec7f441083fd7e9f9db638f508c1462546360fb7375c553159ed0e",
+          "packed_sha256": "770f5fbdffe9f4f1bae5076b37303c481ea4976c40a8fa43a2010cd5fec897af"
+        },
+        "put-on-t": {
+          "text": "put on",
+          "rate": "-5%",
+          "source_sha256": "b97795719225e5a474b929ec49c303fcbe4ea213cc49809fed47ae05b5c340f3",
+          "packed_sha256": "5dd99bbf52ebf25b5ad546b0e09c758b645d76f0f5c70eac5eb9c1e13f3e9b14"
+        },
+        "put-on-x": {
+          "text": "Once the cardiologist had confirmed atrial fibrillation, the patient was put on apixaban rather than aspirin, and the stroke team arranged follow-up in six weeks.",
+          "rate": "-5%",
+          "source_sha256": "061c37114d6f084684c300a8c9c7149842483bc5d8bc46be28d908b8c0eece44",
+          "packed_sha256": "46140fa6be5ccfb7212bad8d5796526233b864ab217e2ef73bf46fa05a48e183"
+        }
+      }
+    }
+  }
+}

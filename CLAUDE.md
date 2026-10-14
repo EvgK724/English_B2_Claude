@@ -90,19 +90,19 @@ python3 -m http.server 8000
   destroy → destruction, exist → existence, solve → solution, reduce → reduction, support → support, suffer → suffering)
   и похожие по суффиксам: -ing, -ion, -ence/-ance, -ment, -al, -ure, -y, -th, ловушки написания (maintenance, pronunciation).
   Собирается так же, из `sources/vnoun/` (шаблон из `sounds/template.html`): `python3 vnoun/mk_template.py`, `vnoun/clips.py`,
-  `python3 tts_kyutai.py vnoun` (см. «Голос новых тренажёров»), `vnoun/build.py`, затем `python3 tools/mk_shell.py`;
+  `python3 vnoun/tts.py` (см. «Голос новых тренажёров»), `vnoun/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 vnoun/test.py`. Стоит сразу после «Advice и advise» (nverb): там пары, которые различаются буквой,
   звуком или ударением, здесь — вся система суффиксов. На карточке урока опечатка existance — в тренажёре это ловушка.
 - **«Like и look like» (like)** — What's she like? (какая), What does she look like? (как выглядит), What does she like?
   (что любит); look tired и look like a doctor; I'd like и I like; like doing и feel like doing; like или as; like и as if
   + предложение; such as, flu-like, likely, alike, unlike. Собирается так же, из `sources/like/` (шаблон из `sounds/template.html`):
-  `python3 like/mk_template.py`, `like/clips.py`, `python3 tts_kyutai.py like`, `like/build.py`, затем `python3 tools/mk_shell.py`;
-  проверка — `python3 like/test.py`. Стоит сразу после «Похожих слов» (similar); мини-диалоги озвучены двумя голосами.
+  `python3 like/mk_template.py`, `like/clips.py`, `python3 like/tts.py`, `like/build.py`, затем `python3 tools/mk_shell.py`;
+  проверка — `python3 like/test.py`. Стоит сразу после «Похожих слов» (similar); мини-диалоги озвучены Ryan.
 - **«Do without и похожие» (without)** — с карточки урока Vocabulary Focus: do without (There are a great number of things
   that we can do without. Can people do without money?) и похожее: go without, manage without, cope without, can't live without,
   survive on, make do (with), get by (on, in), could do with, do away with, dispense with, get rid of, have to do with.
   Собирается так же, из `sources/without/` (шаблон из `sounds/template.html`): `python3 without/mk_template.py`, `without/clips.py`,
-  `python3 tts_kyutai.py without`, `without/build.py`, затем `python3 tools/mk_shell.py`; проверка — `python3 without/test.py`.
+  `python3 without/tts.py`, `without/build.py`, затем `python3 tools/mk_shell.py`; проверка — `python3 without/test.py`.
   Стоит сразу после «Фразовых глаголов» (phrasal); не повторяет «Manage to и похожие» (manage): там справиться с делом.
 - **«Косвенные вопросы» (indq)** — так же, из `sources/indq/` (шаблон из `sounds/template.html`):
   `python3 indq/mk_template.py`, `indq/clips.py`, `indq/tts.py`, `indq/build.py`, затем `python3 tools/mk_shell.py`;
@@ -119,17 +119,25 @@ python3 -m http.server 8000
   see и hear, пассив (was made to), All I did was ask. Стоит сразу после «To или -ing» (toing).
 - **«I know the feeling» (encour)** — фразы урока Speaking Focus (being encouraging, showing you have things in common),
   все 15 с фото урока: вставить слово, что ответить в ситуации, вспомнить фразу по-русски. Собирается так же,
-  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Озвучка — `python3 tts_kyutai.py encour`
-  (см. «Голос новых тренажёров» ниже); в мини-диалогах «— …? — …» две реплики говорят два голоса.
-- **Голос новых тренажёров.** Ryan (edge-tts) с 12 октября 2026 недоступен: Microsoft отклоняет синтез (403), а свежая
-  edge-tts 7.3.0 обходит новую защиту Microsoft — её не ставим. Azure пользователю недоступен (карта). 53 тренажёра остаются
-  с записями Ryan. Новые (сейчас encour, vnoun, like и without) озвучиваются открытой моделью Kyutai Pocket TTS (CC BY 4.0, английская версия
-  апреля 2026, ONNX-экспорт KevinAHM/pocket-tts-onnx, без PyTorch) локально: голос VCTK p274 (CSTR, University of Edinburgh,
-  CC BY 4.0), в мини-диалогах ответ — p273. Пользователь выбрал их на слух 13 октября 2026 (№8 и №7 из образцов).
-  Скрипт — `sources/tts_kyutai.py <ключ>`: файлы модели в `sources/kyutai/` (в git не попадают, откуда скачать — в шапке
-  скрипта; нужен доступ к huggingface.co), каждая запись проверяется распознаванием (Whisper base.en) и темпом и
-  переписывается, пока все слова не на месте; что не удалось — печатает, послушать. Январская версия модели (ONNX для
-  sherpa-onnx) портила начало фраз — её не брать. Прежний Daniel (Kokoro) — `encour/tts_kokoro.py`, `vnoun/tts_kokoro.py`.
+  из `sources/encour/` (шаблон из `sounds/template.html`); стоит сразу после «Идиом» (idm). Озвучка — `python3 encour/tts.py`
+  (см. «Голос новых тренажёров» ниже); в мини-диалогах «— …? — …» обе реплики читает Ryan.
+- **Голос новых тренажёров.** По запросу пользователя от 14 октября 2026 все разделы озвучиваются
+  **Microsoft Ryan (`en-GB-RyanNeural`)**, кроме **Breaking Bad: прежнюю озвучку Andrew оставить без изменений**.
+  Рабочая проверенная версия клиента — `edge-tts==7.3.1` (зависимость в `tools/requirements-audio.txt`).
+  Старое сообщение о недоступности Ryan больше не актуально: 14 октября новые записи успешно созданы и декодированы.
+  Для encour, vnoun, like и without после `clips.py` выполнить из корня репозитория:
+  `python3 tools/ryan_tts.py encour vnoun like without`, затем обычные `build.py` и `tools/mk_shell.py`.
+  Нужен ffmpeg. Генератор сохраняет `*.ryan.json` с голосом, текстом, темпом и SHA-256 каждой записи;
+  существующий MP3 используется повторно только при совпадении этих данных. Сборщики этих четырёх разделов
+  останавливаются, если запись отсутствует или принадлежит другому голосу. Не подставлять Kyutai, Kokoro
+  или голос устройства вместо отсутствующего Ryan при подготовке публикации. Старые скрипты других моделей
+  оставлены в sources для истории, в текущей сборке они не используются.
+  Для отдельных новых слов: JSON-массив `{ "key": "id", "text": "English phrase", "rate": "-5%" }`,
+  затем `python3 tools/ryan_tts.py --clips /путь/clips.json --out /путь/audio`.
+  В phrasal обе записи (`<id>-t` и `<id>-x`) должны быть добавлены в пакет и индекс, а карточка — иметь `au: 1`.
+  Новые карточки нельзя считать озвученными по наличию кнопки или браузерному синтезу: проверять записи и
+  их воспроизведение на опубликованном сайте. После любого изменения MP3 пересобирать оболочку,
+  чтобы изменился хэш пакета и установленное приложение получило новую озвучку.
 
 ## Правила оформления
 

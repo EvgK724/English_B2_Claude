@@ -2,10 +2,7 @@
 # Запуск из sources/:
 #   python3 encour/mk_template.py      # шаблон из sounds/template.html
 #   python3 encour/clips.py            # список записей → encour/clips.json
-#   python3 tts_kyutai.py encour      # записи голосами Kyutai Pocket TTS (VCTK p274, в диалогах второй — p273) → encour/audio/;
-#                                     #   encour/tts_kokoro.py — прежний Daniel (Kokoro), encour/tts.py — Ryan, если edge-tts снова заработает
-#                                     # (старая пометка про Ryan: нужен доступ к speech.platform.bing.com;
-#                                     #   без записей фразы читает голос устройства, пакет пустой)
+#   python3 encour/tts.py              # проверенные записи Microsoft Ryan; edge-tts 7.3.1
 #   python3 encour/build.py            # site/apps/encour.html, site/packs/encour.mp3, tools/packs.json, tools/catalog.json
 #   cd .. && python3 tools/mk_shell.py
 # encour/index.html и encour/preview.html — та же страница без моста, для локальной проверки (encour/test.py).
@@ -86,10 +83,13 @@ assert out.count('db.doc("data/users/" + uid + "/progress")') == 1
 
 # записи: все ключи страницы должны быть озвучены
 clips = json.loads((here / "clips.json").read_text())
+sys.path.insert(0, str(TOOLS.resolve()))
+from ryan_manifest import require_clips
+require_clips(clips, here / "audio")
 need = set(re.findall(r'data-key="([^"]+)"', out)) | {c["id"] for c in CARDS} | {f"r{t['n']}-{i + 1}" for t in TOPICS for i in range(len(t["ex"]))}
 assert need == {c["key"] for c in clips}, sorted(need ^ {c["key"] for c in clips})
-# записей может не быть (нет доступа к сервису озвучки) — тогда эти фразы читает голос устройства (TTS_LANG en-GB)
-have = [k for k in sorted(need) if (here / "audio" / f"{k}.mp3").exists() and (here / "audio" / f"{k}.mp3").stat().st_size > 1024]
+# Все записи должны совпадать с текстом и голосом Ryan; иначе сборка остановится выше.
+have = sorted(need)
 
 (here / "index.html").write_text(out)
 # preview — с тем же <head>, что оболочка даёт тренажёру (базовые стили и theme.css), чтобы выглядело как в приложении
@@ -123,11 +123,9 @@ entry = {"key": KEY, "title": "I know the feeling", "group": "vocab",
          "en": "being encouraging showing you have things in common speaking it might work out fine never give up hope "
                "you never know good luck it's not your fault I know the feeling the same thing happened to me "
                "поддержать посочувствовать фразы",
-         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Kyutai p274", "size": len(app.encode())}
+         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Ryan", "size": len(app.encode())}
 apps = [a for a in cat["apps"] if a["key"] != KEY]
 pos = next(i for i, a in enumerate(apps) if a["key"] == "idm") + 1
 cat["apps"] = apps[:pos] + [entry] + apps[pos:]
 (TOOLS / "catalog.json").write_text(json.dumps(cat, ensure_ascii=False))
 print("ok", len(app), "bytes;", len(TOPICS), "topics;", len(CARDS), "cards; записей", len(have), "из", len(need), ";", len(buf), "bytes of audio")
-if len(have) < len(need):
-    print("без записей — голос устройства:", len(need) - len(have), "фраз; записать: python3 tts_kyutai.py encour, затем снова encour/build.py")

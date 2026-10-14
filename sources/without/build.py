@@ -2,7 +2,7 @@
 # Запуск из sources/:
 #   python3 without/mk_template.py      # шаблон из sounds/template.html
 #   python3 without/clips.py            # список записей → without/clips.json
-#   python3 tts_kyutai.py without        # записи голосами Kyutai Pocket TTS (VCTK p274, в диалогах ответ — p273) → without/audio/
+#   python3 without/tts.py              # проверенные записи Microsoft Ryan; edge-tts 7.3.1
 #   python3 without/build.py            # site/apps/without.html, site/packs/without.mp3, tools/packs.json, tools/catalog.json
 #   cd .. && python3 tools/mk_shell.py
 # without/index.html и without/preview.html — та же страница без моста, для локальной проверки (without/test.py).
@@ -83,10 +83,13 @@ assert out.count('db.doc("data/users/" + uid + "/progress")') == 1
 
 # записи: все ключи страницы должны быть озвучены
 clips = json.loads((here / "clips.json").read_text())
+sys.path.insert(0, str(TOOLS.resolve()))
+from ryan_manifest import require_clips
+require_clips(clips, here / "audio")
 need = set(re.findall(r'data-key="([^"]+)"', out)) | {c["id"] for c in CARDS} | {f"r{t['n']}-{i + 1}" for t in TOPICS for i in range(len(t["ex"]))}
 assert need == {c["key"] for c in clips}, sorted(need ^ {c["key"] for c in clips})
-# записей может не быть (нет доступа к сервису озвучки) — тогда эти фразы читает голос устройства (TTS_LANG en-GB)
-have = [k for k in sorted(need) if (here / "audio" / f"{k}.mp3").exists() and (here / "audio" / f"{k}.mp3").stat().st_size > 1024]
+# Все записи должны совпадать с текстом и голосом Ryan; иначе сборка остановится выше.
+have = sorted(need)
 
 (here / "index.html").write_text(out)
 # preview — с тем же <head>, что оболочка даёт тренажёру (базовые стили и theme.css), чтобы выглядело как в приложении
@@ -119,11 +122,9 @@ entry = {"key": KEY, "title": "Do without и похожие", "group": "vocab",
          "ids": [c["id"] for c in CARDS], "ls": f"{KEY}:state",
          "en": "do without go without manage without cope without can't live without survive on make do get by could do with "
                "do away with dispense with get rid of have to do with nothing to do with обойтись без обходиться не помешало бы отменить связано",
-         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Kyutai p274", "size": len(app.encode())}
+         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Ryan", "size": len(app.encode())}
 apps = [a for a in cat["apps"] if a["key"] != KEY]
 pos = next(i for i, a in enumerate(apps) if a["key"] == "phrasal") + 1
 cat["apps"] = apps[:pos] + [entry] + apps[pos:]
 (TOOLS / "catalog.json").write_text(json.dumps(cat, ensure_ascii=False))
 print("ok", len(app), "bytes;", len(TOPICS), "topics;", len(CARDS), "cards; записей", len(have), "из", len(need), ";", len(buf), "bytes of audio")
-if len(have) < len(need):
-    print("без записей — голос устройства:", len(need) - len(have), "фраз; записать: python3 tts_kyutai.py without, затем снова without/build.py")
