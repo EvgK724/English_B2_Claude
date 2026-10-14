@@ -1,0 +1,1775 @@
+<title>Do without и похожие</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("without",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Do without и&nbsp;похожие</h1>
+      <p class="r-sub">Как сказать «обойтись без»: <b lang="en">do without</b>&nbsp;— справиться без чего-то, <b lang="en">go without</b>&nbsp;— остаться без нужного, <b lang="en">make do</b>&nbsp;— обойтись тем, что есть, <b lang="en">get by</b>&nbsp;— свести концы с&nbsp;концами. И&nbsp;рядом фразы с&nbsp;do, которые с&nbsp;ними путают. В&nbsp;примерах <b class="pr">обойтись без</b> оранжевое, <b class="st">нужно, хочется</b> синее, <b class="good">другие фразы с&nbsp;do</b> зелёное.</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Правило</th><th scope="col">Примеры</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">do without</th></tr><tr><td><b class="h">обойтись без</b>и&nbsp;справиться</td><td><span class="f st" lang="en">can do without a car <span class="sep">·</span> we&#x27;ll have to do without</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">go without</th></tr><tr><td><b class="h">остаться без нужного</b>лишения</td><td><span class="f st" lang="en">go without sleep <span class="sep">·</span> go without food</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">manage without · can&#x27;t live without</th></tr><tr><td><b class="h">справиться без · жить не могу без</b></td><td><span class="f st" lang="en">manage without help <span class="sep">·</span> can&#x27;t live without music</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">make do (with)</th></tr><tr><td><b class="h">обойтись тем, что есть</b></td><td><span class="f st" lang="en">make do with a scarf <span class="sep">·</span> we&#x27;ll make do</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">get by (on, in)</th></tr><tr><td><b class="h">свести концы с&nbsp;концами, объясниться</b></td><td><span class="f st" lang="en">get by on a pension <span class="sep">·</span> get by in Spanish</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">could do with</th></tr><tr><td><b class="h">не помешало бы</b>наоборот, нужно</td><td><span class="f st" lang="en">could do with a coffee</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">do away with · dispense with</th></tr><tr><td><b class="h">убрать насовсем, отменить</b></td><td><span class="f st" lang="en">did away with paper records</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" class="pr" lang="en">have to do with</th></tr><tr><td><b class="h">связано с; nothing to do with</b>ни при чём</td><td><span class="f st" lang="en">has nothing to do with age</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Спокойно обходитесь без чего-то?</p><p class="s-f" lang="en"><span class="pr">do&nbsp;without</span> <span class="sep">·</span> <span class="pr">manage&nbsp;without</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Остались без нужного, тяжело?</p><p class="s-f" lang="en"><span class="pr">go&nbsp;without&nbsp;sleep</span> <span class="sep">·</span> <span class="pr">go&nbsp;without&nbsp;food</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Обходитесь тем, что есть? Денег впритык?</p><p class="s-f" lang="en"><span class="pr">make&nbsp;do&nbsp;with</span> <span class="sep">·</span> <span class="pr">get&nbsp;by&nbsp;on</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Наоборот, хочется, нужно?</p><p class="s-f" lang="en"><span class="st">could&nbsp;do&nbsp;with</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">Убрать насовсем? Связано с чем-то?</p><p class="s-f" lang="en"><span class="good">do&nbsp;away&nbsp;with</span> <span class="sep">·</span> <span class="good">have&nbsp;to&nbsp;do&nbsp;with</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="st" lang="en">with</b>&nbsp;— нужно, <b class="pr" lang="en">without</b>&nbsp;— можно и&nbsp;без: <i lang="en">I could do with a coffee, but I can do without the cake.</i></p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Мини-диалоги</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">— Can you <span class="pr">do without</span> the car this week?</p><p class="cp-ru">Обойдёшься без машины на этой неделе?</p><p class="cp-en" lang="en">— Sure, I&#x27;ll take the bus.</p><p class="cp-ru">Конечно, поеду на автобусе.</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="— Can you do without the car this week? — Sure, I&#x27;ll take the bus." aria-label="Прослушать: — Can you do without the car this week? / — Sure, I&#x27;ll take the bus."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— How are you <span class="pr">getting by</span> on your pension?</p><p class="cp-ru">Как вы живёте на пенсию?</p><p class="cp-en" lang="en">— It&#x27;s tight, but we <span class="pr">make do</span>.</p><p class="cp-ru">Впритык, но как-то обходимся.</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="— How are you getting by on your pension? — It&#x27;s tight, but we make do." aria-label="Прослушать: — How are you getting by on your pension? / — It&#x27;s tight, but we make do."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— You look shattered.</p><p class="cp-ru">Ты выглядишь вымотанным.</p><p class="cp-en" lang="en">— I <span class="st">could do with</span> a holiday.</p><p class="cp-ru">Отпуск бы мне не помешал.</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="— You look shattered. — I could do with a holiday." aria-label="Прослушать: — You look shattered. / — I could do with a holiday."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— Did he eat anything?</p><p class="cp-ru">Он что-нибудь ел?</p><p class="cp-en" lang="en">— No, he <span class="pr">went without</span> food all day.</p><p class="cp-ru">Нет, весь день ничего не ел.</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="— Did he eat anything? — No, he went without food all day." aria-label="Прослушать: — Did he eat anything? / — No, he went without food all day."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">— Is the cough anything <span class="good">to do with</span> the new tablets?</p><p class="cp-ru">Кашель не из-за новых таблеток?</p><p class="cp-en" lang="en">— No, it <span class="good">has nothing to do with</span> them.</p><p class="cp-ru">Нет, они тут ни при чём.</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="— Is the cough anything to do with the new tablets? — No, it has nothing to do with them." aria-label="Прослушать: — Is the cough anything to do with the new tablets? / — No, it has nothing to do with them."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We can do without of sugar.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We can do without sugar.</span><span class="err-note">без of: do without + существительное</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We can do with no car.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We can do without a car.</span><span class="err-note">обойтись без&nbsp;— do without</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">There are many things we can do without them.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">There are many things we can do without.</span><span class="err-note">дополнение уже есть&nbsp;— things</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I could do without a coffee.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I could do with a coffee.</span><span class="err-note">хочется&nbsp;— could do with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We&#x27;ll make it with what we have.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We&#x27;ll make do with what we have.</span><span class="err-note">обойтись тем, что есть&nbsp;— make do</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It&#x27;s hard to get by with a small salary.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It&#x27;s hard to get by on a small salary.</span><span class="err-note">деньги&nbsp;— get by on</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">They did away paper records.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">They did away with paper records.</span><span class="err-note">do away with&nbsp;— с&nbsp;with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Let&#x27;s dispense the formalities.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Let&#x27;s dispense with the formalities.</span><span class="err-note">dispense with&nbsp;— с&nbsp;with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It has nothing with age.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It has nothing to do with age.</span><span class="err-note">have nothing to do with</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He went without to sleep.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He went without sleep.</span><span class="err-note">go without + существительное</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. [слово|a] — существительное, [слово|b] — глагол, [слово|c] — прилагательное.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 9;
+const GROUPS = {"b1": "B1 — do without, go without, can't live without", "b1p": "B1+ — make do, get by, could do with", "b2": "B2 — do away with, dispense with, have to do with", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "do without",
+  "sub": "обойтись без — и справиться",
+  "rule": "Do without something — обойтись без чего-то и при этом справиться: We can do without a car. Без дополнения do without ставят в конце: There's no milk, so we'll have to do without. С can — «можно и без этого»: There are a great number of things that we can do without (пример из урока: дополнение things уже есть, them не нужно). Can't do without — «без этого никак»: I can't do without my phone. После without — сразу существительное, без of.",
+  "ex": [
+   {
+    "en": "There are a great number of things that we can [do without|a].",
+    "ru": "Есть очень много вещей, без которых можно обойтись."
+   },
+   {
+    "en": "Can people [do without|a] money?",
+    "ru": "Могут ли люди обходиться без денег?"
+   },
+   {
+    "en": "We've run out of milk, so we'll have to [do without|a].",
+    "ru": "Молоко кончилось — придётся обойтись без него."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "go without",
+  "sub": "остаться без нужного",
+  "rule": "Go without — остаться без нужного, обычно вынужденно и тяжело: go without food, go without sleep. Do without — спокойно обойтись: We can do without a TV. Go without — лишения: Many families go without heating in winter. Часто с for + время: He went without sleep for two days. Без дополнения тоже в конце: If there isn't enough food, the parents go without.",
+  "ex": [
+   {
+    "en": "He [went without|a] sleep for two days.",
+    "ru": "Он два дня не спал."
+   },
+   {
+    "en": "Many families [go without|a] heating in winter.",
+    "ru": "Многие семьи зимой сидят без отопления."
+   },
+   {
+    "en": "If there isn't enough food, the parents [go without|a].",
+    "ru": "Если еды не хватает, родители остаются голодными."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "manage without, can't live without",
+  "sub": "справиться без, жить не могу без",
+  "rule": "Manage without — справиться без помощи или вещи: Can you manage without the stick? Cope without — выдержать без: How do they cope without electricity? А cope with — справляться с трудностью: cope with night shifts. Can't live without — «жить не могу без» (с чувством): I can't live without music. Survive on — прожить на: survive on very little money. Сравни: can't do without — без этого никак по делу, can't live without — очень люблю.",
+  "ex": [
+   {
+    "en": "I [can't live without|a] music.",
+    "ru": "Я не могу жить без музыки."
+   },
+   {
+    "en": "— Can you [manage without|a] the walker? — Yes, I think so.",
+    "ru": "— Справитесь без ходунков? — Да, думаю, да."
+   },
+   {
+    "en": "How do they [cope without|a] electricity?",
+    "ru": "Как они обходятся без электричества?"
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1p",
+  "title": "make do",
+  "sub": "обойтись тем, что есть",
+  "late": 0.2,
+  "rule": "Make do — обойтись тем, что есть, хотя хотелось бы лучшего. Make do with + то, чем заменяем: There was no bandage, so we made do with a scarf. Make do without + то, чего нет: make do without a proper kitchen. Без дополнения: It's not ideal, but we'll make do. Не путать с make it — успеть, добраться, получиться: We'll never make it on time.",
+  "ex": [
+   {
+    "en": "There was no splint, so we [made do with|a] a rolled-up magazine.",
+    "ru": "Шины не было — обошлись свёрнутым журналом."
+   },
+   {
+    "en": "It's not ideal, but we'll [make do|a].",
+    "ru": "Не идеально, но обойдёмся."
+   },
+   {
+    "en": "We had to [make do without|a] a proper kitchen for a month.",
+    "ru": "Месяц пришлось обходиться без нормальной кухни."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "get by",
+  "sub": "свести концы с концами",
+  "late": 0.2,
+  "rule": "Get by — справляться с трудом, хватает впритык. Get by on + деньги: It's hard to get by on a nurse's salary. Get by in + язык — объясниться на минимальном уровне: I can get by in Spanish. Get by with — обойтись чем-то: We get by with one car. Близко к make do, но get by — о жизни и деньгах в целом: How are you getting by? — Как справляетесь?",
+  "ex": [
+   {
+    "en": "It's hard to [get by|a] on a nurse's salary.",
+    "ru": "На зарплату медсестры прожить трудно."
+   },
+   {
+    "en": "I can [get by|a] in Spanish, but I'm not fluent.",
+    "ru": "По-испански я объяснюсь, но свободно не говорю."
+   },
+   {
+    "en": "We [get by|a] with one car.",
+    "ru": "Нам хватает одной машины."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "could do with",
+  "sub": "не помешало бы",
+  "late": 0.25,
+  "rule": "Could do with — «не помешало бы, хочется»: I could do with a coffee. The ward could do with more nurses. Это противоположность do without: can do without — можно и без этого, could do with — нужно. Мягче, чем need: You could do with some rest. Предложить помощь: Could you do with some help? — Вам помочь? После could do with — существительное: a coffee, some help, a coat of paint.",
+  "ex": [
+   {
+    "en": "I [could do with|b] a coffee.",
+    "ru": "Кофе бы сейчас не помешал."
+   },
+   {
+    "en": "The ward [could do with|b] two more nurses.",
+    "ru": "Отделению не помешали бы ещё две медсестры."
+   },
+   {
+    "en": "We can [do without|a] the meeting, but we [could do with|b] more time.",
+    "ru": "Без совещания обойдёмся, а вот времени бы побольше."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "do away with, dispense with",
+  "sub": "убрать насовсем, отменить",
+  "late": 0.45,
+  "rule": "Do away with — избавиться, отменить насовсем (правило, систему, вещь): The hospital did away with paper records. Dispense with — обойтись без, отказаться (книжно): Let's dispense with the formalities — давайте без формальностей; dispense with the need for a biopsy — избавить от необходимости в биопсии. Get rid of — разговорное «избавиться»: get rid of old equipment. Do without — временно, do away with — насовсем.",
+  "ex": [
+   {
+    "en": "The hospital [did away with|c] paper records in 2020.",
+    "ru": "В 2020 году больница отказалась от бумажных карт."
+   },
+   {
+    "en": "Let's [dispense with|c] the formalities.",
+    "ru": "Давайте без формальностей."
+   },
+   {
+    "en": "We should [get rid of|c] this old equipment.",
+    "ru": "Пора избавиться от этого старого оборудования."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "have to do with",
+  "sub": "связано с, ни при чём",
+  "late": 0.5,
+  "rule": "Have something to do with — быть связанным с: Your headaches have something to do with your blood pressure. Have nothing to do with — не иметь отношения: It has nothing to do with age. Have a lot to do with — во многом зависит. В вопросе — anything: Does it have anything to do with the new drug? What does that have to do with me? — А я тут при чём? Не путать с have to do — «надо сделать»: I have to do the paperwork.",
+  "ex": [
+   {
+    "en": "Your headaches probably [have something to do with|c] your blood pressure.",
+    "ru": "Головные боли, скорее всего, связаны с давлением."
+   },
+   {
+    "en": "It [has nothing to do with|c] age.",
+    "ru": "Возраст тут ни при чём."
+   },
+   {
+    "en": "What does that [have to do with|c] me?",
+    "ru": "А я тут при чём?"
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// say — что произносить вместо предложения с ответом (если нужно).
+const CARDS = [
+ {
+  "id": "w1-money",
+  "t": 1,
+  "q": "Can people ___ money?",
+  "ru": "Могут ли люди обходиться без денег?",
+  "opts": [
+   "do without",
+   "do with",
+   "go with"
+  ],
+  "a": "do without",
+  "why": "Обойтись без — do without + существительное."
+ },
+ {
+  "id": "w1-end",
+  "t": 1,
+  "q": "There's no sugar left, so you'll have to ___.",
+  "ru": "Сахар кончился — придётся обойтись без него.",
+  "opts": [
+   "do without",
+   "do with",
+   "do away"
+  ],
+  "a": "do without",
+  "why": "Без дополнения do without ставят в конце фразы."
+ },
+ {
+  "id": "w1-coffee",
+  "t": 1,
+  "q": "I can't ___ my morning coffee.",
+  "ru": "Не могу без утреннего кофе.",
+  "opts": [
+   "do without",
+   "do with",
+   "do away with"
+  ],
+  "a": "do without",
+  "why": "Can't do without — без этого никак."
+ },
+ {
+  "id": "w1-things",
+  "t": 1,
+  "q": "There are many things that we can ___.",
+  "ru": "Есть много вещей, без которых можно обойтись.",
+  "opts": [
+   "do without",
+   "do without them",
+   "do with"
+  ],
+  "a": "do without",
+  "why": "Дополнение уже есть — things; do without them — лишнее them."
+ },
+ {
+  "id": "w1-car",
+  "t": 1,
+  "q": "Living in the city centre, we can easily ___ a car.",
+  "ru": "Мы живём в центре и легко обходимся без машины.",
+  "opts": [
+   "do without",
+   "do with",
+   "go with"
+  ],
+  "a": "do without",
+  "why": "Спокойно обходиться без — do without."
+ },
+ {
+  "id": "w1-interpreter",
+  "t": 1,
+  "q": "We can't ___ an interpreter — the patient speaks only Arabic.",
+  "ru": "Без переводчика не обойтись: пациент говорит только по-арабски.",
+  "opts": [
+   "do without",
+   "do with",
+   "deal without"
+  ],
+  "a": "do without",
+  "why": "Can't do without — без этого никак, нужно."
+ },
+ {
+  "id": "w2-sleep",
+  "t": 2,
+  "q": "During the exams she ___ sleep for two nights.",
+  "ru": "Во время сессии она две ночи не спала.",
+  "opts": [
+   "went without",
+   "did away with",
+   "made do"
+  ],
+  "a": "went without",
+  "why": "Остаться без сна — go without: went without sleep."
+ },
+ {
+  "id": "w2-food",
+  "t": 2,
+  "q": "No one should have to ___ food.",
+  "ru": "Никто не должен голодать.",
+  "opts": [
+   "go without",
+   "do away with",
+   "make do"
+  ],
+  "a": "go without",
+  "why": "Остаться без нужного — go without."
+ },
+ {
+  "id": "w2-meds",
+  "t": 2,
+  "q": "Some patients ___ their medication because they can't afford it.",
+  "ru": "Некоторые пациенты не принимают лекарства, потому что не могут их купить.",
+  "opts": [
+   "go without",
+   "do away with",
+   "get by"
+  ],
+  "a": "go without",
+  "why": "Вынужденно остаться без — go without."
+ },
+ {
+  "id": "w2-tv",
+  "t": 2,
+  "q": "We never watch it anyway — we can easily ___ a TV.",
+  "ru": "Мы его всё равно не смотрим — легко обойдёмся без телевизора.",
+  "opts": [
+   "do without",
+   "go without"
+  ],
+  "a": "do without",
+  "why": "Спокойно, без лишений — do without.",
+  "also": {
+   "go without": "тоже скажут, но go without — о лишениях; спокойное «обойдёмся» — do without"
+  }
+ },
+ {
+  "id": "w2-parents",
+  "t": 2,
+  "q": "When money was short, the parents ___ so the children could eat.",
+  "ru": "Когда денег не хватало, родители недоедали, чтобы накормить детей.",
+  "opts": [
+   "went without",
+   "did away",
+   "got by with"
+  ],
+  "a": "went without",
+  "why": "Без дополнения в конце: the parents went without."
+ },
+ {
+  "id": "w2-water",
+  "t": 2,
+  "q": "After the flood, the village went ___ clean water for a week.",
+  "ru": "После наводнения деревня неделю сидела без чистой воды.",
+  "opts": [
+   "without",
+   "with",
+   "out"
+  ],
+  "a": "without",
+  "why": "Go without + существительное."
+ },
+ {
+  "id": "w3-music",
+  "t": 3,
+  "q": "I ___ music — it's on all day.",
+  "ru": "Жить не могу без музыки — она играет весь день.",
+  "opts": [
+   "can't live without",
+   "can't live with",
+   "live without"
+  ],
+  "a": "can't live without",
+  "why": "Can't live without — «жить не могу без»."
+ },
+ {
+  "id": "w3-stick",
+  "t": 3,
+  "q": "Can you ___ the stick, or do you still need it?",
+  "ru": "Справитесь без трости или она ещё нужна?",
+  "opts": [
+   "manage without",
+   "manage out",
+   "manage off"
+  ],
+  "a": "manage without",
+  "why": "Справиться без — manage without."
+ },
+ {
+  "id": "w3-air",
+  "t": 3,
+  "q": "How do people ___ air conditioning in this heat?",
+  "ru": "Как люди обходятся без кондиционера в такую жару?",
+  "opts": [
+   "cope without",
+   "cope with",
+   "cope no"
+  ],
+  "a": "cope without",
+  "why": "Cope without — выдержать без. Cope with — справляться с трудностью."
+ },
+ {
+  "id": "w3-nights",
+  "t": 3,
+  "q": "She's finding it hard to ___ the night shifts.",
+  "ru": "Ей тяжело даются ночные смены.",
+  "opts": [
+   "cope with",
+   "cope without",
+   "do without"
+  ],
+  "a": "cope with",
+  "why": "Справляться с трудностью — cope with."
+ },
+ {
+  "id": "w3-survive",
+  "t": 3,
+  "q": "They ___ less than ten dollars a day.",
+  "ru": "Они живут меньше чем на десять долларов в день.",
+  "opts": [
+   "survive on",
+   "survive with",
+   "survive without"
+  ],
+  "a": "survive on",
+  "why": "Прожить на сумму — survive on."
+ },
+ {
+  "id": "w3-help",
+  "t": 3,
+  "q": "He's 92 but still ___ any help at home.",
+  "ru": "Ему 92, но он до сих пор справляется дома без посторонней помощи.",
+  "opts": [
+   "manages without",
+   "goes with",
+   "does with"
+  ],
+  "a": "manages without",
+  "why": "Справляться без — manages without."
+ },
+ {
+  "id": "w4-splint",
+  "t": 4,
+  "q": "There was no splint, so we made ___ a rolled-up magazine.",
+  "ru": "Шины не было — обошлись свёрнутым журналом.",
+  "opts": [
+   "do with",
+   "do without",
+   "it with"
+  ],
+  "a": "do with",
+  "why": "Make do with — обойтись тем, что есть."
+ },
+ {
+  "id": "w4-ideal",
+  "t": 4,
+  "q": "It's not ideal, but we'll make ___.",
+  "ru": "Не идеально, но обойдёмся.",
+  "opts": [
+   "do",
+   "done",
+   "doing"
+  ],
+  "a": "do",
+  "why": "Без дополнения — we'll make do."
+ },
+ {
+  "id": "w4-kitchen",
+  "t": 4,
+  "q": "During the renovation we had to make do ___ a proper kitchen.",
+  "ru": "Пока шёл ремонт, приходилось обходиться без нормальной кухни.",
+  "opts": [
+   "without",
+   "with",
+   "of"
+  ],
+  "a": "without",
+  "why": "Make do without + то, чего нет."
+ },
+ {
+  "id": "w4-old",
+  "t": 4,
+  "q": "We can't afford a new ultrasound machine, so we'll have to ___ the old one.",
+  "ru": "Новый аппарат УЗИ нам не по карману — придётся обходиться старым.",
+  "opts": [
+   "make do with",
+   "make do without",
+   "make with"
+  ],
+  "a": "make do with",
+  "why": "Make do with + то, чем пользуемся вместо лучшего."
+ },
+ {
+  "id": "w4-makeit",
+  "t": 4,
+  "q": "Hurry up — we'll never ___ to the station on time!",
+  "ru": "Поторопись — ни за что не успеем на вокзал!",
+  "opts": [
+   "make it",
+   "make do",
+   "do it"
+  ],
+  "a": "make it",
+  "why": "Успеть, добраться — make it. Make do — обойтись тем, что есть."
+ },
+ {
+  "id": "w4-chair",
+  "t": 4,
+  "q": "We've only got one wheelchair, so we'll have to ___.",
+  "ru": "Кресло-каталка у нас одно — придётся как-то обойтись.",
+  "opts": [
+   "make do",
+   "make it",
+   "do away"
+  ],
+  "a": "make do",
+  "why": "Обойтись тем, что есть — make do."
+ },
+ {
+  "id": "w5-grant",
+  "t": 5,
+  "q": "Students often struggle to get ___ on their grants.",
+  "ru": "Студентам часто трудно прожить на стипендию.",
+  "opts": [
+   "by",
+   "through",
+   "over"
+  ],
+  "a": "by",
+  "why": "Свести концы с концами — get by."
+ },
+ {
+  "id": "w5-month",
+  "t": 5,
+  "q": "How do they get by ___ a thousand pounds a month?",
+  "ru": "Как они живут на тысячу фунтов в месяц?",
+  "opts": [
+   "on",
+   "with",
+   "by"
+  ],
+  "a": "on",
+  "why": "Get by on + сумма."
+ },
+ {
+  "id": "w5-spanish",
+  "t": 5,
+  "q": "I'm not fluent, but I can get by ___ Spanish.",
+  "ru": "Свободно не говорю, но по-испански объяснюсь.",
+  "opts": [
+   "in",
+   "on",
+   "with"
+  ],
+  "a": "in",
+  "why": "Объясниться на языке — get by in."
+ },
+ {
+  "id": "w5-onecar",
+  "t": 5,
+  "q": "We don't need a second car — we get by ___ one.",
+  "ru": "Вторая машина нам не нужна — хватает одной.",
+  "opts": [
+   "with",
+   "on",
+   "without"
+  ],
+  "a": "with",
+  "why": "Обходиться чем-то — get by with."
+ },
+ {
+  "id": "w5-pension",
+  "t": 5,
+  "q": "My grandmother just ___ on her pension.",
+  "ru": "Бабушка еле сводит концы с концами на пенсию.",
+  "opts": [
+   "gets by",
+   "gets over",
+   "gets through"
+  ],
+  "a": "gets by",
+  "why": "Get by on — прожить на. Get over — пережить, оправиться."
+ },
+ {
+  "id": "w5-managing",
+  "t": 5,
+  "q": "— How are you managing since the operation? — We're getting ___, thanks.",
+  "ru": "— Как вы справляетесь после операции? — Потихоньку, спасибо.",
+  "opts": [
+   "by",
+   "away",
+   "off"
+  ],
+  "a": "by",
+  "why": "We're getting by — справляемся потихоньку."
+ },
+ {
+  "id": "w6-coffee",
+  "t": 6,
+  "q": "I'm exhausted — I could ___ a strong coffee.",
+  "ru": "Я вымотан — крепкий кофе бы не помешал.",
+  "opts": [
+   "do with",
+   "do without",
+   "make do"
+  ],
+  "a": "do with",
+  "why": "Хочется, не помешало бы — could do with."
+ },
+ {
+  "id": "w6-ward",
+  "t": 6,
+  "q": "The ward could do ___ two more nurses.",
+  "ru": "Отделению не помешали бы ещё две медсестры.",
+  "opts": [
+   "with",
+   "without",
+   "by"
+  ],
+  "a": "with",
+  "why": "Нужно — could do with."
+ },
+ {
+  "id": "w6-rest",
+  "t": 6,
+  "q": "You look tired. You could ___ a few days off.",
+  "ru": "Ты выглядишь усталым. Пара выходных тебе бы не помешала.",
+  "opts": [
+   "do with",
+   "go without",
+   "get by"
+  ],
+  "a": "do with",
+  "why": "Мягкое «тебе нужно» — you could do with."
+ },
+ {
+  "id": "w6-paperwork",
+  "t": 6,
+  "q": "We can ___ the extra paperwork — it only slows us down.",
+  "ru": "Без лишней бумажной работы обойдёмся — она только тормозит.",
+  "opts": [
+   "do without",
+   "do with",
+   "could do with"
+  ],
+  "a": "do without",
+  "why": "Можно и без этого — can do without."
+ },
+ {
+  "id": "w6-paint",
+  "t": 6,
+  "q": "This room could do with ___.",
+  "ru": "Эту комнату не мешало бы покрасить.",
+  "opts": [
+   "a coat of paint",
+   "to paint",
+   "paint it"
+  ],
+  "a": "a coat of paint",
+  "why": "Could do with + существительное: a coat of paint, some help."
+ },
+ {
+  "id": "w6-help",
+  "t": 6,
+  "q": "— ___ some help with that? — Yes, please.",
+  "ru": "— Вам помочь? — Да, пожалуйста.",
+  "opts": [
+   "Could you do with",
+   "Could you do without",
+   "Can you do with"
+  ],
+  "a": "Could you do with",
+  "why": "Предложить помощь — Could you do with some help?"
+ },
+ {
+  "id": "w7-paper",
+  "t": 7,
+  "q": "In 2020 the hospital did ___ with paper records.",
+  "ru": "В 2020 году больница отказалась от бумажных карт.",
+  "opts": [
+   "away",
+   "without",
+   "out"
+  ],
+  "a": "away",
+  "why": "Отменить насовсем — do away with."
+ },
+ {
+  "id": "w7-formal",
+  "t": 7,
+  "q": "Let's ___ the formalities and start the meeting.",
+  "ru": "Давайте без формальностей — начинаем совещание.",
+  "opts": [
+   "dispense with",
+   "dispense of",
+   "do without of"
+  ],
+  "a": "dispense with",
+  "why": "Dispense with — обойтись без (книжно)."
+ },
+ {
+  "id": "w7-rule",
+  "t": 7,
+  "q": "Many staff want to ___ the old dress code.",
+  "ru": "Многие сотрудники хотят отменить старый дресс-код.",
+  "opts": [
+   "do away with",
+   "do without",
+   "make do with"
+  ],
+  "a": "do away with",
+  "why": "Отменить правило — do away with."
+ },
+ {
+  "id": "w7-rid",
+  "t": 7,
+  "q": "We need to get ___ of this broken equipment.",
+  "ru": "Надо избавиться от этого сломанного оборудования.",
+  "opts": [
+   "rid",
+   "away",
+   "out"
+  ],
+  "a": "rid",
+  "why": "Избавиться — get rid of."
+ },
+ {
+  "id": "w7-need",
+  "t": 7,
+  "q": "The new test may dispense with the need ___ a biopsy.",
+  "ru": "Новый тест, возможно, избавит от необходимости в биопсии.",
+  "opts": [
+   "for",
+   "of",
+   "with"
+  ],
+  "a": "for",
+  "why": "The need for — необходимость в: dispense with the need for."
+ },
+ {
+  "id": "w7-lift",
+  "t": 7,
+  "q": "We'll ___ the lift until the repairs are finished.",
+  "ru": "Пока идёт ремонт, обойдёмся без лифта.",
+  "opts": [
+   "do without",
+   "do away with",
+   "dispense"
+  ],
+  "a": "do without",
+  "why": "Временно обходиться — do without; do away with — убрать насовсем."
+ },
+ {
+  "id": "w8-bp",
+  "t": 8,
+  "q": "Your headaches probably have something to do ___ your blood pressure.",
+  "ru": "Головные боли, скорее всего, связаны с давлением.",
+  "opts": [
+   "with",
+   "without",
+   "about"
+  ],
+  "a": "with",
+  "why": "Быть связанным с — have something to do with."
+ },
+ {
+  "id": "w8-age",
+  "t": 8,
+  "q": "At forty, memory problems usually have ___ to do with age.",
+  "ru": "В сорок лет проблемы с памятью обычно с возрастом не связаны.",
+  "opts": [
+   "nothing",
+   "no",
+   "anything"
+  ],
+  "a": "nothing",
+  "why": "Не иметь отношения — have nothing to do with."
+ },
+ {
+  "id": "w8-me",
+  "t": 8,
+  "q": "What does that have to do ___ me?",
+  "ru": "А я тут при чём?",
+  "opts": [
+   "with",
+   "to",
+   "for"
+  ],
+  "a": "with",
+  "why": "What does that have to do with me?"
+ },
+ {
+  "id": "w8-lot",
+  "t": 8,
+  "q": "Recovery has a lot ___ with motivation.",
+  "ru": "Выздоровление во многом зависит от мотивации.",
+  "opts": [
+   "to do",
+   "do",
+   "doing"
+  ],
+  "a": "to do",
+  "why": "Have a lot to do with — во многом связано с."
+ },
+ {
+  "id": "w8-haveto",
+  "t": 8,
+  "q": "Sorry, I can't stay — I have to ___ the discharge papers.",
+  "ru": "Извините, не могу остаться — надо оформить выписку.",
+  "opts": [
+   "do",
+   "do with",
+   "do without"
+  ],
+  "a": "do",
+  "why": "Have to do — «надо сделать». Have to do with — «связано с»."
+ },
+ {
+  "id": "w8-rash",
+  "t": 8,
+  "q": "Does the rash have ___ to do with the new drug?",
+  "ru": "Сыпь не связана с новым препаратом?",
+  "opts": [
+   "anything",
+   "nothing",
+   "something of"
+  ],
+  "a": "anything",
+  "why": "В вопросе — anything: Does it have anything to do with…?"
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "without:state";
+const LS_SPEAK = "without:autospeak";
+const LS_TAB = "without:tab";
+const LS_OPEN = "without:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "do without"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

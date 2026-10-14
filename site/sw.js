@@ -3,7 +3,7 @@
 // Тренажёры адресуются с ?v=<хэш>: они не меняются, поэтому — сначала кэш; кэшируются заранее при установке.
 // Пакеты звука (packs/) сюда не заходят: их грузит и сохраняет сама оболочка (loadPack в shell.html),
 // чтобы звук не зависел от работы офлайн-кэша.
-const VERSION = "bce7a13e25a8";
+const VERSION = "a350755a9458";
 const CACHE = "eng-b2";
 const PRECACHE = [
  "manifest.webmanifest",
@@ -72,6 +72,7 @@ const PRECACHE = [
  "apps/num.html?v=88346ab5",
  "apps/incr.html?v=1c94a2d0",
  "apps/phrasal.html?v=7e323b36",
+ "apps/without.html?v=fd08ba5c",
  "apps/bbapp.html?v=463f38a4",
  "apps/idm.html?v=8885f190",
  "apps/encour.html?v=b61cfba8",
