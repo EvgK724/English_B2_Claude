@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-58 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+59 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается из этого репозитория (ветка `main`, папка `/`),
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     58 тренажёров, каждый — самостоятельная страница
+  apps/<ключ>.html     59 тренажёров, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -109,6 +109,16 @@ python3 -m http.server 8000
   проверка — `python3 indq/test.py`. Стоит сразу после «Вопросов» (q): там и в «Пересказе» (rep) — по теме на основу,
   здесь — вся конструкция: do/did исчезают, be и can после подлежащего, if и whether, вопрос к подлежащему, I wonder,
   пересказ, косвенный вопрос в научном тексте.
+- **«What is it for?» (whatfor)** — предлог в конце вопроса: What is it for? (для чего, от чего, зачем), Who are you waiting for?,
+  What are you afraid of?, Where are you from?, короткие Who with? What about?, пассив (What is he being treated for?),
+  официально — предлог впереди (To whom…? On which data…?, To what extent…?), косвенные вопросы и «который»
+  (the patient I told you about). Собирается так же, из `sources/whatfor/` (шаблон из `sounds/template.html`):
+  `python3 whatfor/mk_template.py`, `whatfor/clips.py`, `python3 whatfor/tts.py`, `whatfor/build.py`, затем `python3 tools/mk_shell.py`;
+  проверка — `python3 whatfor/test.py`. Стоит сразу после «Косвенных вопросов» (indq); в «Вопросах» (q) этому отведена одна тема,
+  здесь — вся конструкция. **Записей Ryan пока нет**: в сессии Claude 21 октября 2026 Microsoft отклонил синтез (403) для
+  edge-tts 7.2.8, а 7.3.x Claude не ставит. Поэтому `whatfor/build.py` принимает записи «все или ни одной»: без них пакет пустой
+  и фразы читает голос устройства. Озвучить на своём компьютере: из `sources/` — `python3 whatfor/tts.py`,
+  `python3 whatfor/build.py`, из корня — `python3 tools/mk_shell.py`, затем коммит и push.
 - **«For, during, within» (during)** — так же, из `sources/during/` (шаблон из `sounds/template.html`):
   `python3 during/mk_template.py`, `during/clips.py`, `during/tts.py`, `during/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 during/test.py`. «В течение»: for, during, over, throughout, within и рядом in (через), while,

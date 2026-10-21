@@ -64,3 +64,8 @@ sources/without/clips.json
 sources/without/index.html
 sources/without/preview.html
 sources/without/*.png
+sources/whatfor/audio/
+sources/whatfor/clips.json
+sources/whatfor/index.html
+sources/whatfor/preview.html
+sources/whatfor/*.png
