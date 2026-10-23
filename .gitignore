@@ -69,3 +69,8 @@ sources/whatfor/clips.json
 sources/whatfor/index.html
 sources/whatfor/preview.html
 sources/whatfor/*.png
+sources/clauses/audio/
+sources/clauses/clips.json
+sources/clauses/index.html
+sources/clauses/preview.html
+sources/clauses/*.png

@@ -1,0 +1,1770 @@
+<title>Types of clauses</title>
+<script>(function(){try{var B=window.parent&&window.parent.__eng;if(B&&B.attach)B.attach("clauses",window)}catch(e){}})();</script>
+<style>
+  :root{
+    --k:1;
+    color-scheme:dark;
+    --bg:#0e1113;
+    --surface:#171c1f;
+    --raise:#1f262a;
+    --line:#252c30;
+    --line-2:#343d42;
+    --text:#e8e8e8;
+    --soft:#c3cbcf;
+    --muted:#939ea3;
+    --accent:#d97757;
+    --on-accent:#14181a;
+    --blue:#7cc0dd;
+    --blue-soft:rgba(124,192,221,.13);
+    --no:#b4544a;
+    --no-text:#e9a7a0;
+    --no-soft:rgba(180,84,74,.10);
+    --yes:#4e8767;
+    --yes-text:#9ad0b4;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--text);overflow-x:hidden}
+  body{font-family:var(--sans);font-size:calc(17px*var(--k));line-height:1.5;display:flex;justify-content:center}
+  button{font:inherit;color:inherit}
+  .app{width:100%;max-width:calc(440px*var(--k));height:100%;display:flex;flex-direction:column;gap:calc(10px*var(--k));padding:calc(10px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .nw{white-space:nowrap}
+  .sr{position:absolute;width:calc(1px*var(--k));height:calc(1px*var(--k));overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  .top{display:flex;align-items:center;gap:calc(10px*var(--k))}
+  .tabs{flex:1;display:flex;gap:calc(4px*var(--k));padding:calc(4px*var(--k));border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k))}
+  .tab{flex:1;min-height:calc(44px*var(--k));border:0;border-radius:calc(10px*var(--k));background:transparent;color:var(--muted);font-size:calc(16px*var(--k));cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--raise);color:var(--text)}
+  .icon{width:calc(52px*var(--k));height:calc(52px*var(--k));flex:0 0 calc(52px*var(--k));display:grid;place-items:center;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(14px*var(--k));background:transparent;color:var(--muted);cursor:pointer}
+  .icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+  .icon svg{width:calc(22px*var(--k));height:calc(22px*var(--k))}
+  .icon .sl{display:none}
+  .icon[aria-pressed="false"] .sl{display:inline}
+  .icon[aria-pressed="false"] .wv{display:none}
+
+  .meta{font-size:calc(15px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+  .bar{height:calc(3px*var(--k));border-radius:calc(2px*var(--k));background:var(--line);overflow:hidden;margin-top:-4px}
+  .bar-fill{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease}
+
+  .st{color:var(--blue)}
+  .pr{color:var(--accent)}
+  .good{color:var(--yes-text)}
+
+  .view{flex:1;min-height:0;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .card{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(22px*var(--k)) calc(20px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(20px*var(--k));display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+  .kind{align-self:flex-start;font-size:calc(14px*var(--k));letter-spacing:.02em;color:var(--blue);padding:calc(5px*var(--k)) calc(11px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid currentColor;background:var(--blue-soft)}
+  .q{margin:0;font-family:var(--serif);font-size:calc(30px*var(--k));line-height:1.32;text-wrap:pretty}
+  .gap{display:inline-block;min-width:3em;height:.95em;border-bottom:calc(3px*var(--k)) solid var(--accent);margin:0 .08em;vertical-align:-.05em}
+  .hint{margin:0;font-size:calc(17px*var(--k));color:var(--muted)}
+  .back{display:flex;flex-direction:column;gap:calc(12px*var(--k));padding-top:calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .verdict{margin:0;font-size:calc(18px*var(--k));line-height:1.45}
+  .verdict.ok{color:var(--yes-text)}
+  .verdict.bad{color:var(--no-text)}
+  .verdict b{font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k))}
+  .why{margin:0;font-size:calc(18px*var(--k));line-height:1.5;color:var(--soft)}
+
+  .opts{display:grid;gap:calc(10px*var(--k))}
+  .opts.c1{grid-template-columns:1fr}
+  .opts.c2{grid-template-columns:1fr 1fr}
+  .opts.c3{grid-template-columns:repeat(3,1fr)}
+  .opt{min-height:calc(64px*var(--k));padding:calc(6px*var(--k)) calc(10px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:var(--surface);font-family:var(--serif);font-size:calc(25px*var(--k));line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(2px*var(--k))}
+  .opt.long{font-size:calc(22px*var(--k))}
+  .opt:active{background:var(--raise)}
+
+  .actions{display:flex;gap:calc(10px*var(--k))}
+  .big{flex:1;min-height:calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:transparent;font-size:calc(19px*var(--k));cursor:pointer}
+  .primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .big:active,.opt:active{transform:scale(.985)}
+  .say{width:calc(58px*var(--k));height:calc(58px*var(--k));flex:0 0 calc(58px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .say svg{width:calc(24px*var(--k));height:calc(24px*var(--k))}
+
+  /* ——— Правила */
+  .rule{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(4px*var(--k)) calc(2px*var(--k)) calc(12px*var(--k))}
+  .r-title{margin:calc(8px*var(--k)) 0 calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(40px*var(--k));line-height:1.1;text-wrap:balance}
+  .r-sub{margin:0 0 calc(14px*var(--k));font-size:calc(17px*var(--k));line-height:1.45;color:var(--soft);text-wrap:pretty}
+  .r-sub b{color:var(--text)}
+  .r-sub i{font-family:var(--serif);font-style:normal;color:var(--text)}
+  .algo{background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(18px*var(--k));padding:calc(16px*var(--k)) calc(16px*var(--k)) calc(14px*var(--k))}
+  .algo-h{margin:0 0 calc(4px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .steps{list-style:none;margin:0;padding:0}
+  .steps li{display:grid;grid-template-columns:calc(26px*var(--k)) minmax(0,1fr);gap:calc(8px*var(--k));padding:calc(10px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .steps li:first-child{border-top:0}
+  .sn{font-size:calc(15px*var(--k));line-height:1.45;color:var(--blue);font-variant-numeric:tabular-nums}
+  .s-t{margin:0;font-size:calc(17px*var(--k));line-height:1.4}
+  .s-f{margin:calc(3px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.3}
+  .s-f i{font-style:normal;color:var(--soft)}
+  .algo-m{margin:calc(4px*var(--k)) 0 0;padding-top:calc(12px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(18px*var(--k));color:var(--text)}
+  .algo-m b{font-family:var(--serif);font-weight:400;font-size:calc(26px*var(--k))}
+  .algo-note{margin:calc(8px*var(--k)) 0 0;font-size:calc(15px*var(--k));line-height:1.45;color:var(--muted)}
+  .algo-note i{font-family:var(--serif);font-style:normal;color:var(--soft)}
+  .go-wrap{display:flex;margin:calc(14px*var(--k)) 0 calc(4px*var(--k))}
+
+  .lbl{margin:calc(26px*var(--k)) 0 calc(8px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+  .mx-wrap{overflow-x:auto;border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k));background:var(--surface)}
+  .mx-note{margin:calc(10px*var(--k)) calc(2px*var(--k)) 0;font-size:calc(16px*var(--k));line-height:1.5;color:var(--soft)}
+  .mx-note i{font-family:var(--serif);font-style:normal;color:var(--text)}
+
+  .mm{margin-top:calc(10px*var(--k));padding:calc(12px*var(--k)) calc(14px*var(--k)) calc(12px*var(--k));background:var(--surface);border:calc(1px*var(--k)) solid var(--line);border-radius:calc(16px*var(--k))}
+  .mm:first-of-type{margin-top:0}
+  .mm-h{margin:0 0 calc(6px*var(--k));font-size:calc(13px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+  .mm-n{display:inline-block;min-width:1.6em;color:var(--accent)}
+  .mm-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(2px*var(--k)) calc(12px*var(--k))}
+  .mm-w{margin:0;padding:calc(5px*var(--k)) 0}
+  .mm-w span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-w small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) calc(44px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(6px*var(--k)) 0;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mm-pair:first-of-type{border-top:0}
+  .mm-pair p{margin:0}
+  .mm-pair span{display:block;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.2}
+  .mm-pair small{display:block;font-size:calc(13px*var(--k));line-height:1.3;color:var(--muted)}
+  .mm-play{width:calc(44px*var(--k));height:calc(44px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--line-2);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .mm-play svg{width:calc(18px*var(--k));height:calc(18px*var(--k))}
+  .mm-note{margin:calc(8px*var(--k)) 0 0;padding-top:calc(8px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));line-height:1.45;color:var(--soft)}
+  .legend{margin:0 calc(2px*var(--k)) calc(10px*var(--k));font-size:calc(15px*var(--k));line-height:1.45;color:var(--soft)}
+  .hl{color:var(--text);text-decoration:underline;text-decoration-thickness:calc(1.5px*var(--k));text-underline-offset:calc(3px*var(--k))}
+  .algo-m i{font-family:var(--serif);font-style:normal;font-size:calc(18px*var(--k))}
+  .md{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:center;padding:calc(8px*var(--k)) calc(10px*var(--k)) calc(8px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line)}
+  .md:first-child{border-top:0}
+  .s-f .sep{color:var(--muted)}
+  .pw{margin:0;line-height:1.35}
+  .pw + .pw{margin-top:calc(3px*var(--k))}
+  .pw-w{margin-right:calc(6px*var(--k));font-family:var(--serif);font-size:calc(22px*var(--k))}
+  .ipa{margin-right:calc(6px*var(--k));font-size:calc(14px*var(--k));color:var(--muted);white-space:nowrap}
+  .pw-ru{font-size:calc(15px*var(--k));color:var(--soft)}
+  .pw-tip{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.45;color:var(--muted)}
+  .snd-ex{margin:calc(4px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(18px*var(--k));line-height:1.35;color:var(--soft)}
+  .algo-m b.pr{color:var(--accent)}
+  .s-t b{margin-right:calc(4px*var(--k));font-family:var(--serif);font-weight:400;font-size:calc(21px*var(--k));color:var(--accent)}
+  .s-t .ipa{margin-right:calc(4px*var(--k))}
+  .algo-m b.st{color:var(--blue)}
+  .algo-m b.good{color:var(--yes-text)}
+  .mt{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .mt col.rh{width:calc(92px*var(--k))}
+  .mt thead th{padding:calc(2px*var(--k)) calc(6px*var(--k)) calc(8px*var(--k));font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .mt tbody th{padding:calc(12px*var(--k)) calc(6px*var(--k)) calc(12px*var(--k)) 0;text-align:left;vertical-align:top;font-family:var(--serif);font-weight:400;font-size:calc(24px*var(--k));line-height:1.15;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td{padding:calc(12px*var(--k)) calc(6px*var(--k));vertical-align:top;font-size:calc(15px*var(--k));line-height:1.4;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt td .f{display:block;margin-bottom:calc(2px*var(--k));font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.2}
+  .mt td b{color:var(--text);font-weight:600}
+  .mt td b.h{display:block;margin-bottom:calc(2px*var(--k))}
+  .mt thead td{border-top:0}
+  .cp-en + .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .algo-2{margin-top:calc(12px*var(--k))}
+  .ear{align-self:flex-start;display:inline-flex;align-items:center;gap:calc(10px*var(--k));min-height:calc(52px*var(--k));padding:0 calc(18px*var(--k));border-radius:calc(14px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(18px*var(--k));cursor:pointer}
+  .ear svg{width:calc(24px*var(--k));height:calc(24px*var(--k));flex:0 0 calc(24px*var(--k))}
+  .ear:active{background:var(--raise)}
+  .mt.vt col{width:50%}
+  .mt.vt tbody th{padding:calc(12px*var(--k)) 0 calc(2px*var(--k));font-size:calc(22px*var(--k));line-height:1.2;border-top:calc(1px*var(--k)) solid var(--line)}
+  .mt.vt tbody td{padding:calc(2px*var(--k)) calc(12px*var(--k)) calc(12px*var(--k)) 0;border-top:0}
+  .mt.vt tbody td + td{padding-right:0}
+  .mt.vt thead th{padding-left:0}
+  .mt.vt td .f{font-size:calc(18px*var(--k));overflow-wrap:anywhere}
+  .lvl{display:inline-block;margin-left:calc(6px*var(--k));padding:calc(1px*var(--k)) calc(7px*var(--k));border-radius:calc(999px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);font-size:calc(12px*var(--k));font-weight:600;letter-spacing:.04em;color:var(--muted);vertical-align:calc(2px*var(--k))}
+  .g4{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:calc(6px*var(--k))}
+  .g4 col.rh{width:calc(76px*var(--k))}
+  .g4 thead th{padding:calc(4px*var(--k)) calc(4px*var(--k)) calc(8px*var(--k));font-size:calc(14px*var(--k));font-weight:600;color:var(--soft);text-align:center;vertical-align:bottom}
+  .g4 thead th small{display:block;font-weight:400;font-size:calc(12px*var(--k));color:var(--muted)}
+  .g4 tbody th{padding:calc(12px*var(--k)) 0;text-align:left;vertical-align:middle;font-size:calc(13px*var(--k));font-weight:600;line-height:1.3;color:var(--soft);border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 td{padding:calc(12px*var(--k)) calc(4px*var(--k)) calc(10px*var(--k));text-align:center;vertical-align:top;border-top:calc(1px*var(--k)) solid var(--line)}
+  .g4 thead td{border-top:0}
+  .g4 svg{display:block;width:calc(40px*var(--k));height:calc(40px*var(--k));margin:0 auto calc(4px*var(--k))}
+  .g4 .w{display:block;font-family:var(--serif);font-size:calc(28px*var(--k));line-height:1.1}
+  .g4 .e{display:block;margin-top:calc(4px*var(--k));font-family:var(--serif);font-size:calc(15px*var(--k));line-height:1.3;color:var(--soft)}
+  .cp-en{margin:0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.3}
+  .cp-ru{margin:calc(1px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.35;color:var(--muted)}
+  .cp-ru + .cp-en{margin-top:calc(8px*var(--k))}
+  .md .ex-play{grid-row:1}
+  .t-group{margin:calc(22px*var(--k)) 0 0;padding:0 calc(2px*var(--k)) calc(7px*var(--k));border-bottom:calc(1px*var(--k)) solid var(--line);font-size:calc(14px*var(--k));font-weight:600;color:var(--soft)}
+  .t-group:first-child{margin-top:calc(4px*var(--k))}
+  .wb{display:grid;grid-template-columns:minmax(0,1fr) calc(48px*var(--k));column-gap:calc(10px*var(--k));align-items:start}
+  .wb-h{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:calc(4px*var(--k)) calc(12px*var(--k))}
+  .wb-w{font-family:var(--serif);font-size:calc(38px*var(--k));line-height:1.05}
+  .wb-s{font-size:calc(15px*var(--k));color:var(--soft)}
+  .wb-ex{margin:calc(6px*var(--k)) 0 0;font-family:var(--serif);font-size:calc(19px*var(--k));line-height:1.4}
+  .wb .ex-play{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .zero{font-family:var(--sans);font-size:.55em;line-height:1;color:var(--yes-text);border:calc(1px*var(--k)) solid rgba(78,135,103,.65);border-radius:calc(999px*var(--k));padding:.12em .45em;margin:0 .35em 0 .05em;vertical-align:.25em}
+  .opt small{font-family:var(--sans);font-size:calc(13px*var(--k));color:var(--muted)}
+  .errs{list-style:none;margin:0;padding:0}
+  .err{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:calc(10px*var(--k));padding:calc(11px*var(--k)) calc(14px*var(--k));border-top:calc(1px*var(--k)) solid var(--line);font-family:var(--serif);font-size:calc(17px*var(--k));line-height:1.35}
+  .err:first-child{border-top:0}
+  .err s{color:var(--no-text);text-decoration-thickness:calc(1.5px*var(--k))}
+  .err .arr{font-family:var(--sans);color:var(--muted)}
+  .err-note{grid-column:1 / -1;margin-top:-4px;font-family:var(--sans);font-size:calc(13px*var(--k));line-height:1.35;color:var(--muted)}
+
+  .topics{border-top:0}
+  .t-item{border-bottom:calc(1px*var(--k)) solid var(--line)}
+  .t-head{width:100%;min-height:calc(60px*var(--k));display:grid;grid-template-columns:calc(34px*var(--k)) minmax(0,1fr) auto calc(20px*var(--k));align-items:center;gap:calc(8px*var(--k));padding:calc(8px*var(--k)) calc(2px*var(--k));border:0;background:transparent;text-align:left;cursor:pointer}
+  .t-n{font-size:calc(15px*var(--k));color:var(--blue);font-variant-numeric:tabular-nums}
+  .t-txt{display:flex;flex-direction:column;min-width:0}
+  .t-title{font-size:calc(18px*var(--k));line-height:1.3}
+  .t-sub{font-size:calc(14px*var(--k));line-height:1.3;color:var(--muted)}
+  .t-count{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums}
+  .t-chev{color:var(--muted);transition:transform .2s ease}
+  .t-head[aria-expanded="true"] .t-chev{transform:rotate(90deg)}
+  .t-body{padding:calc(2px*var(--k)) calc(2px*var(--k)) calc(18px*var(--k)) calc(44px*var(--k));display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+  .t-rule{margin:0;font-size:calc(17px*var(--k));line-height:1.5;color:var(--soft)}
+  .ex{display:grid;grid-template-columns:1fr calc(48px*var(--k));gap:calc(4px*var(--k)) calc(10px*var(--k));align-items:start}
+  .ex-en{margin:0;grid-column:1;font-family:var(--serif);font-size:calc(20px*var(--k));line-height:1.4}
+  .ex-ru{margin:0;grid-column:1;font-size:calc(15px*var(--k));line-height:1.4;color:var(--muted)}
+  .ex-play{grid-column:2;grid-row:1 / span 2;width:calc(48px*var(--k));height:calc(48px*var(--k));border-radius:50%;border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);display:grid;place-items:center;cursor:pointer}
+  .ex-play svg{width:calc(20px*var(--k));height:calc(20px*var(--k))}
+  .t-train{min-height:calc(50px*var(--k));border-radius:calc(12px*var(--k));border:calc(1px*var(--k)) solid var(--accent);background:transparent;color:var(--accent);font-size:calc(17px*var(--k));cursor:pointer}
+
+  :focus-visible{outline:calc(2px*var(--k)) solid var(--accent);outline-offset:calc(2px*var(--k))}
+  @media (prefers-reduced-motion:reduce){.bar-fill,.t-chev{transition:none}.big:active,.opt:active{transform:none}}
+
+  /* ——— Планшет */
+  body.tab .app{max-width:calc(600px*var(--k))}
+  body.wide .app{max-width:none;padding-left:calc(28px*var(--k));padding-right:calc(28px*var(--k))}
+  body.wide #drill{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:calc(16px*var(--k))}
+  body.wide #drill .card{grid-column:1;grid-row:1 / span 2}
+  body.wide #drill .opts{grid-column:2;grid-row:1;align-content:end}
+  body.wide #drill .opts.c2,body.wide #drill .opts.c3{grid-template-columns:1fr}
+  body.wide #drill .opt{min-height:calc(76px*var(--k))}
+  body.wide #drill .actions{grid-column:2;grid-row:2}
+  body.wide #rule{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:calc(36px*var(--k));align-items:start}
+  body.wide .r-left{position:static}
+  body.wide .r-right .lbl:first-child{margin-top:calc(14px*var(--k))}
+</style>
+<script>
+// Масштаб под размер экрана: телефон — как есть, планшет — крупнее, альбомная ориентация — две колонки
+(function(){
+  function fit(){
+    var w = window.innerWidth || 390, h = window.innerHeight || 760;
+    var wide = w >= 900 && w / h > 1.15;
+    var tab = !wide && w >= 600;
+    var k = wide ? h / 600 : Math.min(w / 440, h / 780);
+    if (w < 600) k = 1;
+    k = Math.max(1, Math.min(k, 1.9));
+    document.documentElement.style.setProperty("--k", k.toFixed(3));
+    document.body.classList.toggle("wide", wide);
+    document.body.classList.toggle("tab", tab);
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", function(){ setTimeout(fit, 150); });
+})();
+</script>
+
+<div class="app" role="main">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Режим">
+      <button class="tab" id="tabDrill" role="tab" type="button" aria-selected="false" aria-controls="drill">Тренировка</button>
+      <button class="tab" id="tabRule" role="tab" type="button" aria-selected="true" aria-controls="rule">Правила</button>
+    </div>
+    <button class="icon" id="sound" type="button" aria-pressed="true" aria-label="Автоозвучка правильного ответа">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wv" d="M15.5 9a4 4 0 0 1 0 6"/><path class="wv" d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/><path class="sl" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+    </button>
+  </div>
+  <div class="meta" id="meta" hidden><span id="status">Карточка 1 из 10</span></div>
+  <div class="bar" id="barWrap" hidden><span class="bar-fill" id="barFill"></span></div>
+
+  <section class="view" id="drill" role="tabpanel" aria-labelledby="tabDrill" hidden>
+    <article class="card" id="card">
+      <span class="kind" id="kind">Тема 1</span>
+      <p class="q" id="q" lang="en"></p>
+      <p class="hint" id="hint">Выбери вариант</p>
+      <button class="ear" id="ear" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg><span>Послушать ещё раз</span></button>
+      <div class="back" id="back" aria-live="polite" hidden>
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+    </article>
+    <div class="opts c2" id="opts"></div>
+    <div class="actions" id="actNext" hidden>
+      <button class="say" id="say" type="button" aria-label="Прослушать предложение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.2 6.4a7.6 7.6 0 0 1 0 11.2"/></svg>
+      </button>
+      <button class="big primary" id="next" type="button">Дальше</button>
+    </div>
+    <div class="actions" id="actDone" hidden>
+      <button class="big primary" id="more" type="button">Ещё 10 новых</button>
+      <button class="big" id="toRule" type="button">Правила</button>
+    </div>
+  </section>
+
+  <section class="rule" id="rule" role="tabpanel" aria-labelledby="tabRule">
+    <div class="r-left">
+      <h1 class="r-title" lang="en">Types of&nbsp;clauses</h1>
+      <p class="r-sub">Придаточное отвечает на&nbsp;один из&nbsp;шести вопросов: когда? почему? что в&nbsp;итоге? зачем? вопреки чему? как? А&nbsp;связку выбирают по&nbsp;тому, что идёт после неё. В&nbsp;примерах <b class="pr">оранжевая</b>&nbsp;— дальше целое предложение (<i lang="en">because it's risky</i>), <b class="st">синяя</b>&nbsp;— существительное или -ing (<i lang="en">because of the risk</i>), <b class="good">зелёная</b>&nbsp;— глагол (<i lang="en">to stay safe</i>), <span class="hl">подчёркнутая</span>&nbsp;— отдельное слово между предложениями (<i lang="en">However,</i>).</p>
+      <div class="algo">
+        <p class="algo-h">Главная таблица</p>
+        <table class="mt vt">
+          <colgroup><col><col></colgroup>
+          <thead><tr><th scope="col">Правило</th><th scope="col">Примеры</th></tr></thead>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="pr">as&nbsp;soon&nbsp;as</span> I hear the news</th></tr><tr><td><b class="h">Когда?</b>when, as soon as, until, since, once; о&nbsp;будущем&nbsp;— Present, без will</td><td><span class="f" lang="en"><span class="pr">when</span>&nbsp;I&nbsp;get&nbsp;home <span class="sep">·</span> <span class="pr">since</span>&nbsp;he&nbsp;was&nbsp;20 <span class="sep">·</span> <span class="pr">by&nbsp;the&nbsp;time</span> we arrived</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="pr">because</span> it&#x27;s too risky</th></tr><tr><td><b class="h">Почему?</b>because, as, since + предложение; because of, due to + существительное</td><td><span class="f" lang="en"><span class="pr">as</span>&nbsp;I&nbsp;was&nbsp;scared <span class="sep">·</span> <span class="st">because&nbsp;of</span> the risk <span class="sep">·</span> <span class="st">due&nbsp;to</span> the weather</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="pr">so</span> we stayed at home</th></tr><tr><td><b class="h">Что в&nbsp;итоге?</b>so, therefore, as a result; so … that, such … that</td><td><span class="f" lang="en">and&nbsp;<span class="hl">therefore</span> <span class="sep">·</span> <span class="st">as&nbsp;a&nbsp;result&nbsp;of</span> the fall <span class="sep">·</span> <span class="pr">so</span> tired <span class="pr">that</span> I fell asleep</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="good">so&nbsp;as&nbsp;to</span> stay safe</th></tr><tr><td><b class="h">Зачем?</b>to, in order to, so as to + глагол; so that + предложение</td><td><span class="f" lang="en"><span class="good">to</span>&nbsp;save&nbsp;money <span class="sep">·</span> <span class="pr">so&nbsp;that</span> we can see <span class="sep">·</span> <span class="pr">in&nbsp;case</span>&nbsp;it&nbsp;rains</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="pr">although</span> we were tired</th></tr><tr><td><b class="h">Вопреки чему?</b>although + предложение; despite, in spite of + существительное или -ing</td><td><span class="f" lang="en"><span class="pr">even&nbsp;though</span> it rained <span class="sep">·</span> <span class="st">despite</span>&nbsp;the&nbsp;rain <span class="sep">·</span> <span class="st">in&nbsp;spite&nbsp;of</span> being tired</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="hl">However</span>, it&#x27;s worth it.</th></tr><tr><td><b class="h">Однако</b>however, nevertheless: после точки, за ними запятая</td><td><span class="f" lang="en"><span class="hl">Nevertheless</span>, <span class="sep">·</span> <span class="hl">on&nbsp;the&nbsp;other&nbsp;hand</span> <span class="sep">·</span> <span class="pr">whereas</span>&nbsp;I&nbsp;prefer</span></td></tr></tbody>
+          <tbody><tr><th colspan="2" scope="rowgroup" lang="en"><span class="pr">as&nbsp;though</span> it was painted yesterday</th></tr><tr><td><b class="h">Как?</b>as if, as though + предложение</td><td><span class="f" lang="en"><span class="pr">as&nbsp;if</span>&nbsp;he&nbsp;knew <span class="sep">·</span> feel <span class="pr">as&nbsp;if</span> I&#x27;ve known you</span></td></tr></tbody>
+        </table>
+      </div>
+      <div class="algo algo-2">
+        <p class="algo-h">Как выбрать</p>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><p class="s-t">Какой вопрос? Когда, почему, что в итоге, зачем, вопреки чему, как</p><p class="s-f" lang="en"><span class="pr">when</span> <span class="sep">·</span> <span class="pr">because</span> <span class="sep">·</span> <span class="pr">so</span> <span class="sep">·</span> <span class="good">to</span> <span class="sep">·</span> <span class="pr">although</span> <span class="sep">·</span> <span class="pr">as&nbsp;if</span></p></div></li>
+          <li><span class="sn">2</span><div><p class="s-t">Дальше целое предложение — подлежащее и глагол?</p><p class="s-f" lang="en"><span class="pr">because it's risky</span> <span class="sep">·</span> <span class="pr">although it rained</span></p></div></li>
+          <li><span class="sn">3</span><div><p class="s-t">Дальше существительное или -ing?</p><p class="s-f" lang="en"><span class="st">because of the risk</span> <span class="sep">·</span> <span class="st">despite&nbsp;the&nbsp;rain</span></p></div></li>
+          <li><span class="sn">4</span><div><p class="s-t">Дальше глагол — цель?</p><p class="s-f" lang="en"><span class="good">to&nbsp;stay&nbsp;safe</span> <span class="sep">·</span> <span class="good">so as not to fall</span></p></div></li>
+          <li><span class="sn">5</span><div><p class="s-t">О будущем после when, as soon as, until — без will; придаточное впереди — запятая</p><p class="s-f" lang="en"><span class="pr">As soon as I hear, I'll call.</span></p></div></li>
+        </ol>
+        <p class="algo-m"><b class="pr" lang="en">because</b> + предложение, <b class="st" lang="en">because of</b> + слово, <b class="good" lang="en">to</b> + глагол: <i lang="en">because it's risky · because of the risk · to stay safe</i></p>
+      </div>
+      <div class="go-wrap"><button class="big primary" id="go" type="button">Начать тренировку</button></div>
+    </div>
+    <div class="r-right">
+      <h2 class="lbl">Одна мысль&nbsp;— разные связки</h2>
+      <div class="mx-wrap">
+        <div class="md"><div><p class="cp-en" lang="en">We stayed in <span class="pr">because</span> it was raining.</p><p class="cp-ru">Мы остались дома, потому что шёл дождь.&nbsp;— дальше предложение</p><p class="cp-en" lang="en">We stayed in <span class="st">because of</span> the rain.</p><p class="cp-ru">Мы остались дома из-за дождя.&nbsp;— дальше существительное</p><p class="cp-en" lang="en">It was raining, <span class="pr">so</span> we stayed in.</p><p class="cp-ru">Шёл дождь, поэтому мы остались дома.&nbsp;— результат</p></div><button class="ex-play mm-play" type="button" data-key="cp-1" data-text="We stayed in because it was raining. We stayed in because of the rain. It was raining, so we stayed in." aria-label="Прослушать: We stayed in because it was raining. / We stayed in because of the rain. / It was raining, so we stayed in."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="pr">Although</span> she was tired, she finished the climb.</p><p class="cp-ru">Хотя она устала, она дошла до вершины.</p><p class="cp-en" lang="en"><span class="st">Despite</span> being tired, she finished the climb.</p><p class="cp-ru">Несмотря на усталость, она дошла до вершины.</p><p class="cp-en" lang="en">She was tired. <span class="hl">However</span>, she finished the climb.</p><p class="cp-ru">Она устала. Однако дошла до вершины.</p></div><button class="ex-play mm-play" type="button" data-key="cp-2" data-text="Although she was tired, she finished the climb. Despite being tired, she finished the climb. She was tired. However, she finished the climb." aria-label="Прослушать: Although she was tired, she finished the climb. / Despite being tired, she finished the climb. / She was tired. However, she finished the climb."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">He bought special trainers <span class="good">to</span> go free running.</p><p class="cp-ru">Он купил кроссовки, чтобы заниматься фриранном.&nbsp;— дальше глагол</p><p class="cp-en" lang="en">He bought special trainers <span class="pr">so that</span> he could go free running.</p><p class="cp-ru">…чтобы он мог заниматься фриранном.&nbsp;— дальше предложение</p><p class="cp-en" lang="en">He bought special trainers <span class="st">for</span> free running.</p><p class="cp-ru">…для фриранна.&nbsp;— дальше существительное</p></div><button class="ex-play mm-play" type="button" data-key="cp-3" data-text="He bought special trainers to go free running. He bought special trainers so that he could go free running. He bought special trainers for free running." aria-label="Прослушать: He bought special trainers to go free running. / He bought special trainers so that he could go free running. / He bought special trainers for free running."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en">I&#x27;ll email you <span class="pr">as soon as</span> I hear the news.</p><p class="cp-ru">Напишу, как только узнаю новости.&nbsp;— без will</p><p class="cp-en" lang="en">I&#x27;ll call you <span class="pr">when</span> I get home.</p><p class="cp-ru">Позвоню, когда приду домой.&nbsp;— без will</p><p class="cp-en" lang="en">When will you be home?</p><p class="cp-ru">Когда ты будешь дома?&nbsp;— в&nbsp;вопросе will нужен</p></div><button class="ex-play mm-play" type="button" data-key="cp-4" data-text="I&#x27;ll email you as soon as I hear the news. I&#x27;ll call you when I get home. When will you be home?" aria-label="Прослушать: I&#x27;ll email you as soon as I hear the news. / I&#x27;ll call you when I get home. / When will you be home?"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+        <div class="md"><div><p class="cp-en" lang="en"><span class="pr">As</span> many people are buying cars, the traffic is getting worse.</p><p class="cp-ru">Так как многие покупают машины, пробки растут.&nbsp;— придаточное впереди, запятая</p><p class="cp-en" lang="en">The traffic is getting worse <span class="pr">as</span> many people are buying cars.</p><p class="cp-ru">Пробки растут, так как многие покупают машины.&nbsp;— без запятой</p></div><button class="ex-play mm-play" type="button" data-key="cp-5" data-text="As many people are buying cars, the traffic is getting worse. The traffic is getting worse as many people are buying cars." aria-label="Прослушать: As many people are buying cars, the traffic is getting worse. / The traffic is getting worse as many people are buying cars."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg></button></div>
+      </div>
+      <h2 class="lbl">Частые ошибки</h2>
+      <div class="mx-wrap">
+        <ul class="errs">
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">I&#x27;ll email you as soon as I will hear the news.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">I&#x27;ll email you as soon as I hear the news.</span><span class="err-note">после as soon as, when, until&nbsp;— Present, не will</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">As many people are buying cars the traffic is getting worse.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">As many people are buying cars, the traffic is getting worse.</span><span class="err-note">придаточное впереди&nbsp;— запятая</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Although we were tired, but we enjoyed the trip.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Although we were tired, we enjoyed the trip.</span><span class="err-note">although и&nbsp;but вместе не ставят</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Despite of the rain, we went out.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Despite the rain, we went out.</span><span class="err-note">despite&nbsp;— без of; in spite of&nbsp;— с&nbsp;of</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Despite he was tired, he kept going.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Despite being tired, he kept going.</span><span class="err-note">после despite&nbsp;— существительное или -ing</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">We stayed in because of it was raining.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">We stayed in because it was raining.</span><span class="err-note">because of + существительное, because + предложение</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">He went to London for learning English.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">He went to London to learn English.</span><span class="err-note">цель&nbsp;— to do</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">Take an umbrella in case it will rain.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">Take an umbrella in case it rains.</span><span class="err-note">in case&nbsp;— без will</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">It was so cold day that we stayed in.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">It was such a cold day that we stayed in.</span><span class="err-note">such a + прилагательное + существительное</span></li>
+          <li class="err"><span class="sr">Неверно:</span> <s lang="en">The course is expensive, however it&#x27;s worth it.</s> <span class="arr" aria-hidden="true">→</span> <span class="sr">верно:</span> <span class="good" lang="en">The course is expensive. However, it&#x27;s worth it.</span><span class="err-note">however&nbsp;— после точки, за ним запятая</span></li>
+        </ul>
+      </div>
+      <h2 class="lbl">Темы</h2>
+      <div class="topics" id="topics"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+// ——— Темы по группам: правило и примеры. [слово|a] — существительное, [слово|b] — глагол, [слово|c] — прилагательное.
+// late — насколько позже тема вступает в общую тренировку: сначала B1, потом B1+, потом B2.
+const MIXED_TOPIC = 9;
+const GROUPS = {"b1": "B1 — когда, почему, что в итоге, зачем", "b1p": "B1+ — хотя и несмотря на, ошибки урока", "b2": "B2 — however, whereas, as if", "mix": "Итог"};
+const TOPICS = [
+ {
+  "n": 1,
+  "group": "b1",
+  "title": "Когда? as soon as, since",
+  "sub": "время: when, until, by the time",
+  "rule": "Придаточное времени отвечает на вопрос «когда?»: when, while, as, before, after, until (till), as soon as, once, the moment, whenever, by the time, the first/last/next time. Главное — о будущем после этих слов ставят Present, а will только в главной части: As soon as I learn how to swim, I'll go white-water rafting. Законченное к тому моменту — Present Perfect: Don't eat until the doctor has seen you. Since — «с тех пор как»: в главной части Present Perfect, после since — Past: He's been working as an instructor since he was 20. By the time — «к тому времени, как»: By the time we arrived, the bus had left. В примере урока — buy an insurance; правильно buy insurance: слово неисчисляемое.",
+  "ex": [
+   {
+    "en": "[As soon as|a] I learn how to swim, I'll go white-water rafting.",
+    "ru": "Как только научусь плавать, пойду на рафтинг."
+   },
+   {
+    "en": "He's been working as a skydiving instructor [since|a] he was 20.",
+    "ru": "Он работает инструктором по прыжкам с парашютом с 20 лет."
+   },
+   {
+    "en": "Always buy insurance [whenever|a] you plan to do high-risk activities.",
+    "ru": "Всегда покупайте страховку, когда собираетесь заняться чем-то рискованным."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "group": "b1",
+  "title": "Почему? because, because of",
+  "sub": "причина: as, since, due to",
+  "rule": "Причина — «почему?». Целое предложение (подлежащее и глагол) — после because, as, since, now that: Don't do this alone because it's too risky. I decided not to go skydiving as I was scared of heights. As и since в начале — «так как», после придаточного запятая. Существительное или -ing — после because of, due to, on account of: The flight was delayed because of the fog. The reason for + существительное, the reason why + предложение. Now that — «теперь, когда»: Now that you're here, we can start. For — «ибо», книжное, только после главной части и запятой: We turned back, for it was getting dark.",
+  "ex": [
+   {
+    "en": "Don't do this alone [because|a] it's too risky.",
+    "ru": "Не делай этого один: это слишком опасно."
+   },
+   {
+    "en": "I decided not to go skydiving [as|a] I was scared of heights.",
+    "ru": "Я решил не прыгать с парашютом, потому что боялся высоты."
+   },
+   {
+    "en": "The trip was cancelled [due to|b] bad weather.",
+    "ru": "Поездку отменили из-за плохой погоды."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "group": "b1",
+  "title": "Что в итоге? so, therefore",
+  "sub": "результат: as a result, so … that",
+  "rule": "Результат — «что в итоге?». So — «поэтому» между двумя предложениями, перед ним запятая: It was raining, so we stayed in. Therefore и consequently — то же, но строже: после точки или после and: …, and therefore strained your joints. As a result, — в начале нового предложения; as a result of + существительное или -ing: His shoulders hurt as a result of going rafting. «Настолько…, что»: so + прилагательное + that (so tired that), such (a) + прилагательное + существительное + that (such a long day that).",
+  "ex": [
+   {
+    "en": "It was raining, [so|a] we stayed at home.",
+    "ru": "Шёл дождь, поэтому мы остались дома."
+   },
+   {
+    "en": "His shoulders really hurt [as a result of|b] going white-water rafting.",
+    "ru": "У него сильно болели плечи после рафтинга."
+   },
+   {
+    "en": "The path was [so|a] steep [that|a] my knees hurt.",
+    "ru": "Тропа была такой крутой, что болели колени."
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "group": "b1",
+  "title": "Зачем? to, so that",
+  "sub": "цель: in order to, so as to, in case",
+  "rule": "Цель — «зачем?». Глагол — после to, in order to, so as to: He bought special trainers in order to go free running. Listen to your instructor so as to stay safe. Отрицание — in order not to, so as not to: so as not to fall. Целое предложение — после so that, обычно с can, could, will, would: Speak slowly so that he can understand. In order that — то же, официально. In case — «на случай, если», без will: Take a map in case you get lost. For — с существительным (for a walk) или о назначении вещи (a knife for cutting bread); «поехал для изучения английского» — went to learn English, не for learning.",
+  "ex": [
+   {
+    "en": "[In order to|c] go free running, he bought special trainers.",
+    "ru": "Чтобы заниматься фриранном, он купил специальные кроссовки."
+   },
+   {
+    "en": "Please listen to your instructor [so as to|c] stay safe.",
+    "ru": "Слушайте инструктора, чтобы не пострадать."
+   },
+   {
+    "en": "Take a map [in case|a] you get lost.",
+    "ru": "Возьмите карту на случай, если заблудитесь."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "group": "b1p",
+  "title": "Вопреки чему? although, despite",
+  "sub": "хотя и несмотря на",
+  "late": 0.2,
+  "rule": "Контраст — «вопреки чему?». Целое предложение — после although, though, even though (even though — сильнее, «хотя даже»): Although we were very tired and dirty, we really enjoyed our trip. Существительное или -ing — после despite и in spite of: despite the rain, in spite of being tired. Despite of — ошибка: of только в in spite of. Нужно предложение после despite — despite the fact that. «Хотя…, но…» по-английски без but: although и but вместе не ставят. Yet — «и всё же», как but между предложениями: It was hard, yet we loved it.",
+  "ex": [
+   {
+    "en": "[Although|a] we were very tired and dirty, we really enjoyed our trip.",
+    "ru": "Хотя мы очень устали и испачкались, поездка нам очень понравилась."
+   },
+   {
+    "en": "We went rafting [despite|b] the rain.",
+    "ru": "Мы пошли на рафтинг, несмотря на дождь."
+   },
+   {
+    "en": "[In spite of|b] being afraid of heights, she went bungee jumping.",
+    "ru": "Хотя она боится высоты, она прыгнула с тарзанки."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "group": "b1p",
+  "title": "Ошибки урока: will и запятая",
+  "sub": "as soon as I hear · As …, …",
+  "late": 0.25,
+  "rule": "Две ошибки из Grammar Focus. Первая: после when, as soon as, before, after, until, once, in case о будущем — Present, не will: I'll email you as soon as I hear the news. В вопросе «когда?» will нужен: When will the results be ready? — это не придаточное. Вторая: если придаточное стоит впереди, после него запятая: As many people are buying cars, the traffic is getting worse. Если главное впереди — запятая обычно не нужна: The traffic is getting worse as many people are buying cars. Лишнее so после придаточного (As …, so …) — калька с «так как…, то…».",
+  "ex": [
+   {
+    "en": "I'll email you [as soon as|a] I hear the news.",
+    "ru": "Напишу вам, как только узнаю новости."
+   },
+   {
+    "en": "[As|a] many people are buying cars, the traffic is getting worse.",
+    "ru": "Так как многие покупают машины, пробки растут."
+   },
+   {
+    "en": "The traffic is getting worse [as|a] many people are buying cars.",
+    "ru": "Пробки растут, так как многие покупают машины."
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "group": "b2",
+  "title": "However, whereas, nevertheless",
+  "sub": "контраст между предложениями",
+  "late": 0.45,
+  "rule": "However, nevertheless, on the other hand — отдельные слова, которые связывают два предложения: их ставят после точки (или точки с запятой), а за ними — запятая: The course is expensive. However, it's worth it. «…, however …» посреди фразы после запятой — частая ошибка. Nevertheless — «тем не менее», on the other hand — «с другой стороны»: I'd like to go bungee jumping next week, but on the other hand I should be trying to save money. Still — «всё же», перед глаголом: we still went out. While и whereas сравнивают двоих в одной фразе: My brother loves extreme sports, whereas I prefer a quiet walk.",
+  "ex": [
+   {
+    "en": "I'd like to go bungee jumping next week, but [on the other hand] I should be trying to save money for my vacation.",
+    "ru": "Хочу на следующей неделе прыгнуть с тарзанки, но, с другой стороны, надо копить на отпуск."
+   },
+   {
+    "en": "The course is expensive. [However], it's worth every penny.",
+    "ru": "Курс дорогой. Однако он стоит своих денег."
+   },
+   {
+    "en": "My brother loves extreme sports, [whereas|a] I prefer a quiet walk.",
+    "ru": "Брат обожает экстрим, а я предпочитаю спокойную прогулку."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "group": "b2",
+  "title": "Как? as if, as though",
+  "sub": "образ действия: будто",
+  "late": 0.5,
+  "rule": "«Как, будто» — as if и as though, разницы почти нет: The boat looks as though it was painted yesterday. He talks as if he knows everything — может, и знает; He talks as if he knew everything — на самом деле не знает: нереальное «будто» — прошедшее, официально were: as if she were the boss. Часто после look, sound, feel, seem: I feel as if I've known you for years. As без if — «так, как»: Do it as I showed you. В разговоре вместо as if говорят like — подробнее в тренажёре «Like и look like».",
+  "ex": [
+   {
+    "en": "The boat looks [as though|a] it was painted yesterday.",
+    "ru": "Лодка выглядит так, будто её покрасили вчера."
+   },
+   {
+    "en": "He talks [as if|a] he knew everything about climbing.",
+    "ru": "Он говорит так, будто знает о скалолазании всё."
+   },
+   {
+    "en": "I feel [as if|a] I've known you for years.",
+    "ru": "У меня такое чувство, будто я знаю вас много лет."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "group": "mix",
+  "title": "Итог — всё вместе",
+  "sub": "",
+  "rule": "15 случайных карточек из всех тем вперемешку.",
+  "ex": []
+ }
+];
+
+// ——— Карточки. opts — варианты, a — правильный, also — тоже верно (с пояснением), ru — перевод (подсказка),
+// say — что произносить вместо предложения с ответом (если нужно).
+const CARDS = [
+ {
+  "id": "c1-swim",
+  "t": 1,
+  "q": "As soon as I ___ how to swim, I'll go white-water rafting.",
+  "ru": "Как только научусь плавать, пойду на рафтинг.",
+  "opts": [
+   "learn",
+   "will learn",
+   "learned"
+  ],
+  "a": "learn",
+  "why": "О будущем после as soon as — Present: as soon as I learn. Will — только в главной части."
+ },
+ {
+  "id": "c1-moment",
+  "t": 1,
+  "q": "I knew something was wrong ___ I saw his face.",
+  "ru": "Я понял, что что-то не так, как только увидел его лицо.",
+  "opts": [
+   "the moment",
+   "by the time",
+   "until"
+  ],
+  "a": "the moment",
+  "why": "the moment — в ту же секунду, как. By the time — к тому времени, как; until — пока не."
+ },
+ {
+  "id": "c1-until",
+  "t": 1,
+  "q": "Please don't eat anything until the doctor ___ you.",
+  "ru": "Пожалуйста, ничего не ешьте, пока вас не осмотрит врач.",
+  "opts": [
+   "has seen",
+   "will see",
+   "is seeing"
+  ],
+  "a": "has seen",
+  "why": "until — «пока не», без will: until the doctor has seen you (или sees you)."
+ },
+ {
+  "id": "c1-since",
+  "t": 1,
+  "q": "He has worked as an instructor ___ he was twenty.",
+  "ru": "Он работает инструктором с двадцати лет.",
+  "opts": [
+   "since",
+   "for",
+   "from"
+  ],
+  "a": "since",
+  "why": "since + момент или событие: since he was twenty. For — срок: for ten years."
+ },
+ {
+  "id": "c1-bytime",
+  "t": 1,
+  "q": "By the time the ambulance arrived, the climber ___ consciousness.",
+  "ru": "К приезду скорой альпинист уже пришёл в себя.",
+  "opts": [
+   "had regained",
+   "regained",
+   "has regained"
+  ],
+  "a": "had regained",
+  "why": "By the time — «к тому времени, как»: что случилось раньше другого прошедшего — Past Perfect."
+ },
+ {
+  "id": "c1-whenever",
+  "t": 1,
+  "q": "Always buy insurance ___ you plan to do high-risk activities.",
+  "ru": "Всегда покупайте страховку, когда собираетесь заняться чем-то рискованным.",
+  "opts": [
+   "whenever",
+   "however",
+   "whatever"
+  ],
+  "a": "whenever",
+  "why": "whenever — всякий раз, когда. В уроке — buy an insurance; правильно buy insurance."
+ },
+ {
+  "id": "c2-because",
+  "t": 2,
+  "q": "Don't go climbing alone ___ it's too risky.",
+  "ru": "Не ходи в горы один: это слишком опасно.",
+  "opts": [
+   "because",
+   "because of",
+   "due to"
+  ],
+  "a": "because",
+  "why": "Дальше целое предложение (it's too risky) — because."
+ },
+ {
+  "id": "c2-of",
+  "t": 2,
+  "q": "The flight was delayed ___ the fog.",
+  "ru": "Рейс задержали из-за тумана.",
+  "opts": [
+   "because of",
+   "because",
+   "since"
+  ],
+  "a": "because of",
+  "why": "Дальше существительное (the fog) — because of."
+ },
+ {
+  "id": "c2-due",
+  "t": 2,
+  "q": "The match was cancelled ___ heavy rain.",
+  "ru": "Матч отменили из-за сильного дождя.",
+  "opts": [
+   "due to",
+   "as",
+   "because"
+  ],
+  "a": "due to",
+  "why": "due to + существительное: due to heavy rain. As и because — с целым предложением."
+ },
+ {
+  "id": "c2-as",
+  "t": 2,
+  "q": "___ I was scared of heights, I decided not to go skydiving.",
+  "ru": "Так как я боялся высоты, я решил не прыгать с парашютом.",
+  "opts": [
+   "As",
+   "Due to",
+   "Because of"
+  ],
+  "a": "As",
+  "why": "As + предложение — «так как». Придаточное впереди — запятая."
+ },
+ {
+  "id": "c2-nowthat",
+  "t": 2,
+  "q": "___ you've got your licence, you can drive to work.",
+  "ru": "Теперь, когда у тебя есть права, можешь ездить на работу на машине.",
+  "opts": [
+   "Now that",
+   "Since that",
+   "Because of"
+  ],
+  "a": "Now that",
+  "why": "Now that — «теперь, когда». Since that — так не говорят."
+ },
+ {
+  "id": "c2-reason",
+  "t": 2,
+  "q": "The reason ___ the delay was a technical problem.",
+  "ru": "Причиной задержки была техническая неполадка.",
+  "opts": [
+   "for",
+   "why",
+   "of"
+  ],
+  "a": "for",
+  "why": "the reason for + существительное; the reason why + предложение: the reason why we were late."
+ },
+ {
+  "id": "c3-so",
+  "t": 3,
+  "q": "It was raining, ___ we stayed at home.",
+  "ru": "Шёл дождь, поэтому мы остались дома.",
+  "opts": [
+   "so",
+   "because",
+   "as"
+  ],
+  "a": "so",
+  "why": "Результат — so. С because и as получилось бы, что дождь шёл из-за того, что мы остались дома."
+ },
+ {
+  "id": "c3-therefore",
+  "t": 3,
+  "q": "You've been walking down a steep path for three hours, and ___ strained your joints.",
+  "ru": "Вы три часа спускались по крутой тропе и поэтому потянули суставы.",
+  "opts": [
+   "therefore",
+   "because",
+   "although"
+  ],
+  "a": "therefore",
+  "why": "and therefore — «и поэтому», результат."
+ },
+ {
+  "id": "c3-of",
+  "t": 3,
+  "q": "His shoulders hurt as a result ___ going white-water rafting.",
+  "ru": "У него болят плечи после рафтинга.",
+  "opts": [
+   "of",
+   "to",
+   "from"
+  ],
+  "a": "of",
+  "why": "as a result of + существительное или -ing."
+ },
+ {
+  "id": "c3-such",
+  "t": 3,
+  "q": "It was ___ cold day that we stayed in.",
+  "ru": "Был такой холодный день, что мы не выходили из дома.",
+  "opts": [
+   "such a",
+   "so",
+   "so a"
+  ],
+  "a": "such a",
+  "why": "such a + прилагательное + существительное: such a cold day. So — без существительного: so cold that."
+ },
+ {
+  "id": "c3-sotired",
+  "t": 3,
+  "q": "I was ___ tired that I fell asleep on the bus.",
+  "ru": "Я так устал, что уснул в автобусе.",
+  "opts": [
+   "so",
+   "such",
+   "such a"
+  ],
+  "a": "so",
+  "why": "so + прилагательное: so tired that."
+ },
+ {
+  "id": "c3-asresult",
+  "t": 3,
+  "q": "The roads were icy. ___, there were several accidents.",
+  "ru": "Дороги обледенели. В результате случилось несколько аварий.",
+  "opts": [
+   "As a result",
+   "As a result of",
+   "Because"
+  ],
+  "a": "As a result",
+  "why": "As a result, — в начале нового предложения, с запятой. As a result of — только перед существительным."
+ },
+ {
+  "id": "c4-learn",
+  "t": 4,
+  "q": "She went to London ___ English.",
+  "ru": "Она поехала в Лондон учить английский.",
+  "opts": [
+   "to learn",
+   "for learning",
+   "for learn"
+  ],
+  "a": "to learn",
+  "why": "Цель человека — to do: to learn. For learning — калька «для изучения»."
+ },
+ {
+  "id": "c4-soasnot",
+  "t": 4,
+  "q": "Walk slowly ___ fall on the ice.",
+  "ru": "Иди медленно, чтобы не упасть на льду.",
+  "opts": [
+   "so as not to",
+   "so not as to",
+   "not so as to"
+  ],
+  "a": "so as not to",
+  "why": "Отрицание цели — so as not to, in order not to: not перед to."
+ },
+ {
+  "id": "c4-sothat",
+  "t": 4,
+  "q": "Speak slowly ___ everyone can understand you.",
+  "ru": "Говорите медленно, чтобы все вас поняли.",
+  "opts": [
+   "so that",
+   "in order to",
+   "so as to"
+  ],
+  "a": "so that",
+  "why": "Дальше целое предложение (everyone can understand) — so that."
+ },
+ {
+  "id": "c4-incase",
+  "t": 4,
+  "q": "Take a torch in case it ___ dark before we get back.",
+  "ru": "Возьми фонарик на случай, если стемнеет до нашего возвращения.",
+  "opts": [
+   "gets",
+   "will get",
+   "would get"
+  ],
+  "a": "gets",
+  "why": "in case — без will: in case it gets dark."
+ },
+ {
+  "id": "c4-for",
+  "t": 4,
+  "q": "We went out ___ a walk.",
+  "ru": "Мы вышли прогуляться.",
+  "opts": [
+   "for",
+   "to",
+   "so that"
+  ],
+  "a": "for",
+  "why": "for + существительное: for a walk, for a coffee. To — с глаголом: to have a walk."
+ },
+ {
+  "id": "c4-inorder",
+  "t": 4,
+  "q": "___ to reduce the risk, always wear a helmet.",
+  "ru": "Чтобы снизить риск, всегда надевайте шлем.",
+  "opts": [
+   "In order",
+   "So that",
+   "For"
+  ],
+  "a": "In order",
+  "why": "In order to + глагол — «чтобы». So that — с целым предложением."
+ },
+ {
+  "id": "c5-although",
+  "t": 5,
+  "q": "___ we were very tired, we really enjoyed our trip.",
+  "ru": "Хотя мы очень устали, поездка нам очень понравилась.",
+  "opts": [
+   "Although",
+   "Despite",
+   "In spite of"
+  ],
+  "a": "Although",
+  "why": "Дальше целое предложение (we were tired) — although."
+ },
+ {
+  "id": "c5-despite",
+  "t": 5,
+  "q": "___ the rain, we went white-water rafting.",
+  "ru": "Несмотря на дождь, мы пошли на рафтинг.",
+  "opts": [
+   "Despite",
+   "Although",
+   "Even though"
+  ],
+  "a": "Despite",
+  "why": "Дальше существительное (the rain) — despite."
+ },
+ {
+  "id": "c5-of",
+  "t": 5,
+  "q": "We went out in spite ___ the storm.",
+  "ru": "Мы вышли, несмотря на бурю.",
+  "opts": [
+   "of",
+   "from",
+   "to"
+  ],
+  "a": "of",
+  "why": "in spite of — с of; despite — без of."
+ },
+ {
+  "id": "c5-being",
+  "t": 5,
+  "q": "Despite ___ tired, she finished the climb.",
+  "ru": "Несмотря на усталость, она дошла до вершины.",
+  "opts": [
+   "being",
+   "she was",
+   "to be"
+  ],
+  "a": "being",
+  "why": "После despite — -ing: despite being tired. С предложением — although she was tired."
+ },
+ {
+  "id": "c5-but",
+  "t": 5,
+  "q": "___",
+  "ru": "Хотя было дорого, мы это купили.",
+  "opts": [
+   "Although it was expensive, we bought it.",
+   "Although it was expensive, but we bought it.",
+   "Despite it was expensive, we bought it."
+  ],
+  "a": "Although it was expensive, we bought it.",
+  "why": "«Хотя…, но…» по-английски без but. Despite + предложение — ошибка."
+ },
+ {
+  "id": "c5-yet",
+  "t": 5,
+  "q": "The trip was long and exhausting, ___ we loved every minute of it.",
+  "ru": "Поездка была долгой и утомительной, и всё же нам понравилась каждая минута.",
+  "opts": [
+   "yet",
+   "despite",
+   "in spite"
+  ],
+  "a": "yet",
+  "why": "yet — «и всё же», как but между предложениями."
+ },
+ {
+  "id": "c6-comma",
+  "t": 6,
+  "q": "___",
+  "ru": "Так как многие покупают машины, пробки растут.",
+  "opts": [
+   "As many people are buying cars, the traffic is getting worse.",
+   "As many people are buying cars the traffic is getting worse.",
+   "As many people are buying cars, so the traffic is getting worse."
+  ],
+  "a": "As many people are buying cars, the traffic is getting worse.",
+  "why": "Придаточное впереди — запятая. So после него — калька «так как…, то…»."
+ },
+ {
+  "id": "c6-nocomma",
+  "t": 6,
+  "q": "___",
+  "ru": "Пробки растут, так как многие покупают машины.",
+  "opts": [
+   "The traffic is getting worse as many people are buying cars.",
+   "The traffic is getting worse because of many people are buying cars."
+  ],
+  "a": "The traffic is getting worse as many people are buying cars.",
+  "why": "Главное впереди — без запятой. Because of + предложение — ошибка."
+ },
+ {
+  "id": "c6-before",
+  "t": 6,
+  "q": "Before you ___ climbing, check your harness.",
+  "ru": "Прежде чем начать подъём, проверьте страховочную систему.",
+  "opts": [
+   "start",
+   "will start",
+   "started"
+  ],
+  "a": "start",
+  "why": "before + Present о будущем: before you start."
+ },
+ {
+  "id": "c6-once",
+  "t": 6,
+  "q": "Once you ___ the course, you'll get a certificate.",
+  "ru": "Как только закончите курс, получите сертификат.",
+  "opts": [
+   "have completed",
+   "will complete",
+   "completed"
+  ],
+  "a": "have completed",
+  "why": "once — «как только»; законченное к тому моменту — Present Perfect, не will. Можно и once you complete."
+ },
+ {
+  "id": "c6-when",
+  "t": 6,
+  "q": "When ___ the results be ready?",
+  "ru": "Когда будут готовы результаты?",
+  "opts": [
+   "will",
+   "do",
+   "are"
+  ],
+  "a": "will",
+  "why": "В вопросе «когда?» will нужен. Без will — только в придаточном: I'll call you when they're ready."
+ },
+ {
+  "id": "c6-tell",
+  "t": 6,
+  "q": "I'll tell you as soon as the results ___ ready.",
+  "ru": "Скажу вам, как только будут готовы результаты.",
+  "opts": [
+   "are",
+   "will be",
+   "would be"
+  ],
+  "a": "are",
+  "why": "Придаточное после as soon as — Present: as soon as they are ready."
+ },
+ {
+  "id": "c7-however",
+  "t": 7,
+  "q": "___",
+  "ru": "Курс дорогой. Однако он того стоит.",
+  "opts": [
+   "The course is expensive. However, it's worth it.",
+   "The course is expensive, however it's worth it.",
+   "However the course is expensive, it's worth it."
+  ],
+  "a": "The course is expensive. However, it's worth it.",
+  "why": "However — после точки, за ним запятая. However в значении «хотя» — ошибка."
+ },
+ {
+  "id": "c7-nevertheless",
+  "t": 7,
+  "q": "The weather was terrible. ___, we reached the summit.",
+  "ru": "Погода была ужасной. Тем не менее мы дошли до вершины.",
+  "opts": [
+   "Nevertheless",
+   "Although",
+   "Despite"
+  ],
+  "a": "Nevertheless",
+  "why": "Nevertheless, — «тем не менее», начинает новое предложение. Although и despite связывают части одной фразы."
+ },
+ {
+  "id": "c7-hand",
+  "t": 7,
+  "q": "I'd like to go bungee jumping, but on the other ___ I should be saving money.",
+  "ru": "Хочу прыгнуть с тарзанки, но, с другой стороны, надо копить деньги.",
+  "opts": [
+   "hand",
+   "side",
+   "way"
+  ],
+  "a": "hand",
+  "why": "on the other hand — «с другой стороны»."
+ },
+ {
+  "id": "c7-whereas",
+  "t": 7,
+  "q": "I love extreme sports, ___ my wife prefers a quiet holiday by the sea.",
+  "ru": "Я обожаю экстрим, а жена предпочитает спокойный отдых у моря.",
+  "opts": [
+   "whereas",
+   "however",
+   "despite"
+  ],
+  "a": "whereas",
+  "why": "whereas, while — «а, тогда как»: сравнение двоих в одной фразе."
+ },
+ {
+  "id": "c7-still",
+  "t": 7,
+  "q": "It was pouring with rain, but we ___ went out.",
+  "ru": "Лил дождь, но мы всё же вышли.",
+  "opts": [
+   "still",
+   "yet still",
+   "however"
+  ],
+  "a": "still",
+  "why": "still — «всё же», перед смысловым глаголом: we still went out."
+ },
+ {
+  "id": "c7-while",
+  "t": 7,
+  "q": "___ some people love heights, others are terrified of them.",
+  "ru": "Одни обожают высоту, а другие её боятся.",
+  "opts": [
+   "While",
+   "However",
+   "Despite"
+  ],
+  "a": "While",
+  "why": "While — «в то время как»: While some people…, others…"
+ },
+ {
+  "id": "c8-boat",
+  "t": 8,
+  "q": "The boat looks ___ it was painted yesterday.",
+  "ru": "Лодка выглядит так, будто её покрасили вчера.",
+  "opts": [
+   "as though",
+   "as",
+   "like as"
+  ],
+  "a": "as though",
+  "why": "as though = as if — «будто»."
+ },
+ {
+  "id": "c8-knew",
+  "t": 8,
+  "q": "He talks as if he ___ everything, but he's never been climbing.",
+  "ru": "Он говорит так, будто всё знает, а сам ни разу не был в горах.",
+  "opts": [
+   "knew",
+   "will know",
+   "has known"
+  ],
+  "a": "knew",
+  "why": "Нереальное «будто» (на самом деле не знает) — прошедшее: as if he knew."
+ },
+ {
+  "id": "c8-were",
+  "t": 8,
+  "q": "She gives orders as if she ___ the boss.",
+  "ru": "Она командует, будто она начальница.",
+  "opts": [
+   "were",
+   "is being",
+   "will be"
+  ],
+  "a": "were",
+  "why": "Нереальное — прошедшее; официально were: as if she were the boss, в разговоре — was."
+ },
+ {
+  "id": "c8-feel",
+  "t": 8,
+  "q": "I feel ___ I've known you for years.",
+  "ru": "У меня такое чувство, будто я знаю вас много лет.",
+  "opts": [
+   "as if",
+   "as",
+   "so that"
+  ],
+  "a": "as if",
+  "why": "feel as if — «такое чувство, будто»."
+ },
+ {
+  "id": "c8-rain",
+  "t": 8,
+  "q": "Look at those clouds. It looks ___ it's going to rain.",
+  "ru": "Посмотри на тучи. Похоже, пойдёт дождь.",
+  "opts": [
+   "as if",
+   "so that",
+   "as a result"
+  ],
+  "a": "as if",
+  "why": "«Похоже, что» — looks as if; в разговоре — looks like."
+ },
+ {
+  "id": "c8-as",
+  "t": 8,
+  "q": "Do it ___ I showed you.",
+  "ru": "Сделай так, как я показал.",
+  "opts": [
+   "as",
+   "as if",
+   "like as"
+  ],
+  "a": "as",
+  "why": "as — «так, как»; as if — «будто»."
+ }
+];
+
+const NEW_PER_SESSION = 10;
+const MIXED_SIZE = 15;
+const INTERVALS = [1, 3, 7, 16];            // дни
+const DAY = 86400000;
+const LS_STATE = "clauses:state";
+const LS_SPEAK = "clauses:autospeak";
+const LS_TAB = "clauses:tab";
+const LS_OPEN = "clauses:open";
+const TOPIC_BY = {};
+TOPICS.forEach(t => { TOPIC_BY[t.n] = t; });
+
+let progress = {};
+let queue = [];
+let index = 0;
+let answered = false;
+let autoSpeak = true;
+let mode = "main";          // main | topic | mixed
+let topicN = null;
+let lapsed = {};
+let seen = new Set();
+let stats = { first: 0, correct: 0 };
+let shownOpts = [];
+let cloudDoc = null;
+let writing = false, dirty = false, retried = false, pushTimer = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+try{ document.documentElement.lang = "ru"; }catch(e){}
+
+// Мета-теги для установки на домашний экран
+(function addMobileMeta(){
+  const metas = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "black-translucent"],
+    ["apple-mobile-web-app-title", "clauses"],
+    ["theme-color", "#0e1113"]
+  ];
+  for (const [name, content] of metas){
+    if (document.querySelector('meta[name="' + name + '"]')) continue;
+    const m = document.createElement("meta");
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+  }
+  // Плитка для экрана «Домой» и значок вкладки
+  const links = [
+    ["apple-touch-icon", "180x180", ""],
+    ["icon", "192x192", ""]
+  ];
+  for (const [rel, sizes, href] of links){
+    if (document.querySelector('link[rel="' + rel + '"]')) continue;
+    const l = document.createElement("link");
+    l.setAttribute("rel", rel);
+    l.setAttribute("sizes", sizes);
+    l.setAttribute("type", "image/png");
+    l.setAttribute("href", href);
+    document.head.appendChild(l);
+  }
+})();
+
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+function loadLocal(){
+  try{
+    const raw = lsGet(LS_STATE);
+    const s = raw ? JSON.parse(raw) : null;
+    return (s && s.progress && typeof s.progress === "object") ? s.progress : {};
+  }catch(e){ return {}; }
+}
+function saveLocal(){ lsSet(LS_STATE, JSON.stringify({ progress: progress })); }
+function mergeProgress(a, b){
+  const out = {};
+  const keys = new Set(Object.keys(a || {}).concat(Object.keys(b || {})));
+  keys.forEach(k => {
+    const x = (a || {})[k], y = (b || {})[k];
+    if (!x){ if (y) out[k] = y; return; }
+    if (!y){ out[k] = x; return; }
+    out[k] = (y.ts || 0) > (x.ts || 0) ? y : x;
+  });
+  return out;
+}
+function dayStart(ts){ const d = new Date(ts); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function plural(n, one, few, many){
+  const a = n % 10, b = n % 100;
+  if (a === 1 && b !== 11) return one;
+  if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return few;
+  return many;
+}
+function unseenCount(){ return CARDS.filter(c => !progress[c.id]).length; }
+function topicLabel(n){ return n === MIXED_TOPIC ? "Всё вместе" : "Тема " + n + " · " + TOPIC_BY[n].title; }
+function label(a){ return a === "" ? "ничего" : a; }
+
+// ——— Предложение с пропуском
+function isStart(q, i){ const b = q.slice(0, i).trimEnd(); return b === "" || /[.!?]$/.test(b); }
+function cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function split(card, word){
+  const i = card.q.indexOf("___");
+  const start = isStart(card.q, i);
+  const pre = card.q.slice(0, i);
+  let post = card.q.slice(i + 3);
+  if (word) return { pre: pre, word: start ? cap(word) : word, post: post };
+  post = post.replace(/^\s+/, "");                  // ответ «ничего»: слово после пропуска встаёт на его место
+  return { pre: pre, word: "", post: start ? cap(post) : post };
+}
+function fullText(card){ if (card.say) return card.say; const p = split(card, card.a); return p.pre + p.word + p.post; }
+function exText(en){ return en.replace(/\[([^\]|]+)(?:\|[abc])?\]/g, "$1"); }
+function richText(s){
+  const f = document.createDocumentFragment();
+  String(s).replace(/ → /g, "\u00a0→\u00a0").split(/(-[a-z]+)/).forEach(part => { if (/^-[a-z]+$/.test(part)) f.append(el("span", "nw", part)); else if (part) f.append(part); });
+  return f;
+}
+// […] — разметка примеров: [слово|a] — оранжевый, [слово|b] — синий, [слово|c] — зелёный, [слово] — подчёркнуто
+function markCls(k){ return k === "a" ? "pr" : k === "b" ? "st" : k === "c" ? "good" : "hl"; }
+function marked(s){
+  const f = document.createDocumentFragment();
+  const re = /\[([^\]|]+)(?:\|([abc]))?\]/g;
+  let last = 0, m;
+  while ((m = re.exec(s))){
+    if (m.index > last) f.append(richText(s.slice(last, m.index)));
+    f.append(el("span", markCls(m[2]), m[1]));
+    last = re.lastIndex;
+  }
+  if (last < s.length) f.append(richText(s.slice(last)));
+  return f;
+}
+
+// ——— Синхронизация прогресса между устройствами (личная, у каждого зрителя своя)
+function schedulePush(){
+  if (!cloudDoc) return;
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(pushCloud, 700);
+}
+async function pushCloud(){
+  if (!cloudDoc) return;
+  if (writing){ dirty = true; return; }
+  writing = true; dirty = false;
+  try{
+    await cloudDoc.set({ progress: progress, v: 1 });
+    retried = false;
+  }catch(e){
+    const c = e && e.code;
+    if (c === "unavailable" && !retried){ retried = true; setTimeout(pushCloud, 1200 + Math.random() * 1200); }
+    else if (c !== "unavailable" && c !== "resource_exhausted") cloudDoc = null;
+  }
+  writing = false;
+  if (dirty) pushCloud();
+}
+async function connectCloud(){
+  try{
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if (!db || !user) return;
+    const uid = await user.id();
+    if (!uid) return;
+    let ref;
+    try{ ref = db.doc("data/users/" + uid + "/progress"); }catch(e){ return; }
+    const snap = await ref.get();
+    const body = snap.exists ? (snap.data() || {}) : {};
+    const remote = (body.progress && typeof body.progress === "object") ? body.progress : {};
+    const before = JSON.stringify(progress);
+    progress = mergeProgress(progress, remote);
+    saveLocal();
+    cloudDoc = ref;
+    if (JSON.stringify(progress) !== JSON.stringify(remote)) schedulePush();
+    if (JSON.stringify(progress) !== before){
+      renderTopics();
+      if (mode === "main" && stats.first === 0 && !answered){ buildMain(); render(); }
+    }
+  }catch(e){ /* офлайн-режим */ }
+}
+
+// ——— Озвучка: записи голосом Microsoft Ryan (en-GB) в папке audio/.
+// Если файла нет или он не загрузился — лучший британский голос устройства (голоса Siri исключены: в браузере они молчат).
+const TTS_LANG = "en-GB";
+const player = new Audio();
+player.preload = "auto";
+let playToken = 0, pending = null, ttsVoice = null;
+
+function stopAudio(){
+  playToken++;
+  pending = null;
+  try{ player.pause(); }catch(e){}
+  try{
+    if (window.speechSynthesis && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
+  }catch(e){}
+}
+function scoreVoice(v){
+  const lang = String(v.lang || "").toLowerCase().replace("_", "-");
+  const n = (String(v.name || "") + " " + String(v.voiceURI || "")).toLowerCase();
+  if (n.includes("siri")) return -1;
+  let s;
+  if (lang.startsWith("en-gb")) s = 100;
+  else if (lang.startsWith("en")) s = 10;
+  else return -1;
+  if (n.includes("ryan")) s += 60;
+  if (n.includes("natural") || n.includes("neural")) s += 40;
+  if (n.includes("premium")) s += 35;
+  if (n.includes("enhanced") || n.includes("improved")) s += 25;
+  if (n.includes("google")) s += 15;
+  if (/compact|eloquence|novelty|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|fred|junior|ralph|kathy|grandma|grandpa|rocko|shelley|sandy|flo|eddy|reed/.test(n)) s -= 80;
+  return s;
+}
+function pickVoice(){
+  try{
+    const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    let best = null, bestScore = -1;
+    for (const v of vs){ const s = scoreVoice(v); if (s > bestScore){ bestScore = s; best = v; } }
+    ttsVoice = best;
+  }catch(e){ ttsVoice = null; }
+}
+try{
+  if (window.speechSynthesis){
+    pickVoice();
+    if (typeof speechSynthesis.addEventListener === "function") speechSynthesis.addEventListener("voiceschanged", pickVoice);
+    else speechSynthesis.onvoiceschanged = pickVoice;
+  }
+}catch(e){}
+function speakTTS(text, rate){
+  try{
+    if (!window.speechSynthesis) return;
+    if (speechSynthesis.speaking || speechSynthesis.pending) speechSynthesis.cancel();
+    const make = withVoice => {
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = TTS_LANG;
+      if (withVoice && ttsVoice) u.voice = ttsVoice;
+      u.rate = rate || 0.9;
+      return u;
+    };
+    const u = make(true);
+    if (ttsVoice){
+      u.onerror = e => {
+        const err = e && e.error;
+        if (err === "interrupted" || err === "canceled") return;
+        try{ speechSynthesis.speak(make(false)); }catch(_){}
+      };
+    }
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function fallbackTTS(token){
+  if (!pending || pending.token !== token) return;
+  const p = pending; pending = null;
+  speakTTS(p.text, p.rate);
+}
+function playClip(key, text, rate){
+  stopAudio();
+  const token = playToken;
+  if (!key){ speakTTS(text, rate); return; }
+  pending = { token: token, text: text, rate: rate };
+  const src = "audio/" + key + ".mp3";
+  try{
+    if (player.getAttribute("src") !== src) player.setAttribute("src", src);
+    try{ player.currentTime = 0; }catch(e){}
+    const pr = player.play();
+    if (pr && typeof pr.then === "function"){
+      pr.then(() => { if (pending && pending.token === token) pending = null; })
+        .catch(err => {
+          const n = err && err.name;
+          if (n === "AbortError" || n === "NotAllowedError") return;
+          fallbackTTS(token);
+        });
+    }
+  }catch(e){ fallbackTTS(token); }
+}
+player.addEventListener("error", () => { if (pending) fallbackTTS(pending.token); });
+function preloadClip(key){
+  if (!player.paused) return;
+  const src = "audio/" + key + ".mp3";
+  if (player.getAttribute("src") === src) return;
+  player.setAttribute("src", src);
+  try{ player.load(); }catch(e){}
+}
+
+// ——— Ситуации: прослушать
+document.querySelectorAll(".mm-play").forEach(b => b.addEventListener("click", () => playClip(b.dataset.key, b.dataset.text, 0.85)));
+
+// ——— Очередь
+// Новые карточки идут вперемешку по темам: сначала B1, темы B1+ и B2 (поле late) вступают позже.
+const FRESH_ORDER = (function(){
+  const pools = {};
+  CARDS.forEach(c => { const k = "t" + c.t; (pools[k] = pools[k] || []).push(c); });
+  // темы «сверх основы» (late) вступают позже
+  const late = {};
+  TOPICS.forEach(t => { if (t.late) late["t" + t.n] = t.late; });
+  const keys = Object.keys(pools), list = keys.map(k => pools[k]), used = list.map(() => 0), out = [];
+  while (out.length < CARDS.length){
+    let best = -1, bestR = 9;
+    list.forEach((p, i) => {
+      if (used[i] >= p.length) return;
+      const r = (used[i] + 0.5) / p.length + (late[keys[i]] || 0);
+      if (r < bestR){ bestR = r; best = i; }
+    });
+    out.push(list[best][used[best]++]);
+  }
+  return out;
+})();
+function resetSession(){ lapsed = {}; seen = new Set(); stats = { first: 0, correct: 0 }; index = 0; }
+function buildMain(){
+  const now = Date.now();
+  const due = CARDS.filter(c => progress[c.id] && progress[c.id].due <= now);
+  const fresh = FRESH_ORDER.filter(c => !progress[c.id]).slice(0, NEW_PER_SESSION);
+  queue = shuffle(due).concat(shuffle(fresh));
+  mode = "main"; topicN = null;
+  resetSession();
+}
+function buildTopic(n){
+  if (n === MIXED_TOPIC){
+    queue = shuffle(CARDS.slice()).slice(0, MIXED_SIZE);
+    mode = "mixed";
+  } else {
+    queue = shuffle(CARDS.filter(c => c.t === n));
+    mode = "topic";
+  }
+  topicN = n;
+  resetSession();
+}
+
+function setBar(done, total){
+  $("barFill").style.width = (total ? Math.min(100, Math.round(done / total * 100)) : 100) + "%";
+}
+function show(id, on){ $(id).hidden = !on; }
+
+function renderOpts(card){
+  const box = $("opts");
+  box.textContent = "";
+  shownOpts = shuffle(card.opts.slice());
+  const longest = Math.max.apply(null, shownOpts.map(o => o.length));
+  const n = shownOpts.length;
+  const cols = longest > 9 ? 1 : (n === 3 ? 3 : 2);
+  box.className = "opts c" + cols;
+  shownOpts.forEach(o => {
+    const b = el("button", "opt" + (longest > 9 ? " long" : ""));
+    b.type = "button";
+    if (o === ""){
+      b.setAttribute("aria-label", "Ничего не нужно");
+      b.append(el("span", null, "—"), el("small", null, "ничего"));
+    } else {
+      b.lang = "en";
+      b.textContent = o;
+    }
+    b.addEventListener("click", () => choose(o));
+    box.append(b);
+  });
+}
+
+function render(){
+  stopAudio();
+  answered = false;
+  const card = queue[index];
+  $("card").scrollTop = 0;
+  if (!card){ renderDone(); return; }
+  show("kind", true);
+  $("kind").textContent = topicLabel(card.t);
+  const q = $("q");
+  q.textContent = "";
+  const i = card.q.indexOf("___");
+  // пропуск и знак препинания после него не разрываются переносом строки
+  const post = card.q.slice(i + 3), pm = post.match(/^[?.!,;:]+/);
+  const gapBox = el("span", "nw");
+  gapBox.append(el("span", "gap"));
+  if (pm) gapBox.append(pm[0]);
+  q.append(card.q.slice(0, i), gapBox, pm ? post.slice(pm[0].length) : post);
+  q.setAttribute("aria-label", card.q.replace("___", "пропуск"));
+  show("hint", true);
+  $("hint").textContent = card.ear ? "Послушайте: какое слово прозвучало?" : card.ru ? card.ru : "Выбери вариант";
+  if (card.ear) $("kind").textContent += " · на слух";
+  show("ear", !!card.ear);
+  show("back", false);
+  renderOpts(card);
+  show("opts", true);
+  show("actNext", false);
+  show("actDone", false);
+  const prefix = mode === "topic" ? "Тема " + topicN + " · " : mode === "mixed" ? "Всё вместе · " : "";
+  $("status").textContent = prefix + "Карточка " + (index + 1) + " из " + queue.length;
+  setBar(index, queue.length);
+  preloadClip(card.id);
+  // на слух: запись звучит сама — сразу после касания «Дальше» или «Начать», когда звук уже разрешён
+  if (card.ear && autoSpeak) setTimeout(() => { if (queue[index] === card && !answered) playClip(card.id, fullText(card)); }, 200);
+}
+
+function renderDone(){
+  show("kind", false);
+  show("ear", false);
+  const q = $("q");
+  q.removeAttribute("aria-label");
+  q.textContent = mode === "main" ? "На сегодня всё" : mode === "mixed" ? "Итог пройден" : "Тема " + topicN + " пройдена";
+  const left = unseenCount();
+  let text = stats.first ? "Верно с первого раза: " + stats.correct + " из " + stats.first + ". " : "";
+  if (mode === "main") text += left ? "Новых карточек в запасе: " + left + ". " : "Все карточки уже в работе. ";
+  text += "Повторы вернутся сами — завтра, через 3, 7 и 16 дней.";
+  $("hint").textContent = text;
+  show("hint", true);
+  show("back", false);
+  show("opts", false);
+  show("actNext", false);
+  const more = $("more");
+  if (mode === "main"){
+    more.hidden = !left;
+    const k = Math.min(NEW_PER_SESSION, left);
+    more.textContent = "Ещё " + k + " " + plural(k, "новая", "новых", "новых");
+  } else {
+    more.hidden = false;
+    more.textContent = "Обычная тренировка";
+  }
+  show("actDone", true);
+  $("status").textContent = "Готово";
+  setBar(1, 1);
+}
+
+function choose(opt){
+  if (answered) return;
+  const card = queue[index];
+  if (!card) return;
+  answered = true;
+  const exact = opt === card.a;
+  const alsoNote = !exact && card.also && Object.prototype.hasOwnProperty.call(card.also, opt) ? card.also[opt] : null;
+  const ok = exact || alsoNote !== null;
+
+  if (!seen.has(card.id)){
+    seen.add(card.id);
+    stats.first++;
+    if (ok) stats.correct++;
+  }
+  const prev = progress[card.id];
+  let step = prev ? prev.step : -1;
+  if (!ok){
+    step = 0;
+    lapsed[card.id] = true;
+    queue.splice(Math.min(queue.length, index + 4), 0, card);   // вернётся через несколько карточек
+  } else if (step < 0 || lapsed[card.id]){
+    step = 0;
+  } else {
+    step = Math.min(INTERVALS.length - 1, step + 1);
+  }
+  progress[card.id] = { step: step, due: dayStart(Date.now()) + INTERVALS[step] * DAY, ts: Date.now() };
+  saveLocal();
+  schedulePush();
+
+  const q = $("q");
+  q.textContent = "";
+  q.removeAttribute("aria-label");
+  const p = split(card, card.a);
+  if (p.word) q.append(p.pre, el("span", "good", p.word), p.post);
+  else q.append(p.pre, el("span", "zero", "∅"), p.post);
+
+  const v = $("verdict");
+  v.textContent = "";
+  if (exact){
+    v.className = "verdict ok";
+    v.append("Верно");
+  } else if (ok){
+    v.className = "verdict ok";
+    v.append("Тоже верно: ", el("b", null, opt), ". " + alsoNote.charAt(0).toUpperCase() + alsoNote.slice(1) + ".");
+  } else {
+    v.className = "verdict bad";
+    v.append("Нужно ", el("b", "good", label(card.a)), " · твой ответ: ", el("b", null, label(opt)));
+  }
+  const why = $("why"); why.textContent = ""; why.append(richText(card.why));
+  show("hint", false);
+  show("ear", false);
+  show("back", true);
+  show("opts", false);
+  show("actNext", true);
+  if (autoSpeak) playClip(card.id, fullText(card));
+}
+
+function next(){
+  if (!answered) return;
+  index++;
+  render();
+}
+
+// ——— Правила
+function learnedIn(n){
+  const cards = CARDS.filter(c => c.t === n);
+  const done = cards.filter(c => progress[c.id] && progress[c.id].step >= 1).length;
+  return done + "/" + cards.length;
+}
+const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>';
+let openTopic = null;
+function renderTopics(){
+  const box = $("topics");
+  box.textContent = "";
+  let group = null;
+  TOPICS.forEach(t => {
+    if (t.group !== group){
+      group = t.group;
+      box.append(el("p", "t-group", GROUPS[group]));
+    }
+    const item = el("div", "t-item");
+    const head = el("button", "t-head");
+    head.type = "button";
+    head.setAttribute("aria-expanded", String(openTopic === t.n));
+    const txt = el("span", "t-txt");
+    const title = el("span", "t-title", t.title);
+    if (/[a-z]/.test(t.title) && !/[а-я]/i.test(t.title)) title.lang = "en";
+    txt.append(title);
+    if (t.sub) txt.append(el("span", "t-sub", t.sub));
+    head.append(el("span", "t-n", String(t.n)), txt,
+                el("span", "t-count", t.n === MIXED_TOPIC ? "" : learnedIn(t.n)), el("span", "t-chev", "›"));
+    head.addEventListener("click", () => {
+      openTopic = openTopic === t.n ? null : t.n;
+      lsSet(LS_OPEN, openTopic ? String(openTopic) : "");
+      stopAudio();
+      renderTopics();
+    });
+    item.append(head);
+    if (openTopic === t.n){
+      const body = el("div", "t-body");
+      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.append(rule);
+      t.ex.forEach((ex, i) => {
+        const row = el("div", "ex");
+        const en = el("p", "ex-en"); en.lang = "en"; en.append(marked(ex.en));
+        const play = el("button", "ex-play");
+        play.type = "button";
+        play.setAttribute("aria-label", "Прослушать пример");
+        play.innerHTML = PLAY_SVG;
+        play.addEventListener("click", () => playClip("r" + t.n + "-" + (i + 1), exText(ex.en), 0.9));
+        row.append(en, play, el("p", "ex-ru", ex.ru));
+        body.append(row);
+      });
+      const train = el("button", "t-train", t.n === MIXED_TOPIC ? "Начать итоговую тренировку" : "Потренировать эту тему");
+      train.type = "button";
+      train.addEventListener("click", () => { buildTopic(t.n); setTab("drill"); render(); });
+      body.append(train);
+      item.append(body);
+    }
+    box.append(item);
+  });
+}
+
+function setTab(name){
+  const drill = name === "drill";
+  $("drill").hidden = !drill;
+  $("rule").hidden = drill;
+  $("meta").hidden = !drill;
+  $("barWrap").hidden = !drill;
+  $("tabDrill").setAttribute("aria-selected", String(drill));
+  $("tabRule").setAttribute("aria-selected", String(!drill));
+  if (!drill){ stopAudio(); renderTopics(); }
+  lsSet(LS_TAB, name);
+}
+
+// ——— События
+$("tabDrill").addEventListener("click", () => setTab("drill"));
+$("tabRule").addEventListener("click", () => setTab("rule"));
+$("go").addEventListener("click", () => {
+  if (mode !== "main" || !queue[index]){ buildMain(); render(); }
+  setTab("drill");
+});
+$("toRule").addEventListener("click", () => setTab("rule"));
+$("more").addEventListener("click", () => { buildMain(); render(); });
+$("next").addEventListener("click", next);
+$("ear").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("say").addEventListener("click", () => {
+  const c = queue[index];
+  if (c) playClip(c.id, fullText(c));
+});
+$("sound").addEventListener("click", () => {
+  autoSpeak = !autoSpeak;
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  lsSet(LS_SPEAK, autoSpeak ? "1" : "0");
+  if (!autoSpeak) stopAudio();
+});
+// Клавиатура на компьютере: 1, 2, 3 — варианты по порядку на экране; пробел или Enter — дальше
+document.addEventListener("keydown", e => {
+  if ($("drill").hidden || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target && e.target.closest && e.target.closest("button")) return;
+  if (!answered){
+    const i = parseInt(e.key, 10) - 1;
+    if (i >= 0 && i < shownOpts.length && queue[index]) choose(shownOpts[i]);
+  } else if (e.key === " " || e.key === "Enter"){
+    e.preventDefault(); next();
+  }
+});
+
+function boot(){
+  progress = loadLocal();
+  const s = lsGet(LS_SPEAK);
+  if (s !== null) autoSpeak = s === "1";
+  $("sound").setAttribute("aria-pressed", String(autoSpeak));
+  const o = parseInt(lsGet(LS_OPEN) || "", 10);
+  openTopic = TOPIC_BY[o] ? o : null;
+  buildMain();
+  render();
+  const saved = lsGet(LS_TAB);
+  setTab(saved === "drill" || saved === "rule" ? saved : (Object.keys(progress).length ? "drill" : "rule"));
+  renderTopics();
+  connectCloud();
+}
+boot();
+</script>

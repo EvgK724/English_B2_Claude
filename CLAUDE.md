@@ -1,6 +1,6 @@
 # Английский B2 — объединённое приложение
 
-59 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
+60 тренажёров английского уровня B1–B2 в одной оболочке: каталог по группам, «Сегодня к повторению», поиск, озвучка, прогресс.
 Интерфейс на русском, примеры и задания на английском. Две живые версии, обе ставятся плиткой на экран «Домой» iPhone и iPad:
 
 - GitHub Pages: https://evgk724.github.io/English_B2_Claude/site/ — собирается workflow `Ryan audio and Pages` из ветки `main`,
@@ -19,7 +19,7 @@ site/                  готовый сайт — именно то, что о�
   theme.css            оформление в духе want-you-to (test01): цвета, шрифты, свечение — для оболочки и всех тренажёров
   fonts/               Bricolage Grotesque, Golos Text, Gentium Book Plus (woff2, лицензия OFL — fonts/OFL.txt)
   apple-touch-icon.png, icon-*.png, favicon.png   иконки (tools/render_icons.mjs)
-  apps/<ключ>.html     59 тренажёров, каждый — самостоятельная страница
+  apps/<ключ>.html     60 тренажёров, каждый — самостоятельная страница
   packs/<ключ>.mp3     все записи тренажёра одним файлом
 tools/
   shell.html           шаблон оболочки (стили, каталог, плеер, облачный прогресс, перенос прогресса файлом)
@@ -123,6 +123,15 @@ python3 -m http.server 8000
   голосом, текстом и SHA-256; без них сборка останавливается до изменения опубликованных файлов.
   Для нового текста: из `sources/` — `python3 whatfor/clips.py`, `python3 whatfor/tts.py`,
   `python3 whatfor/build.py`, из корня — `python3 tools/mk_shell.py`, затем коммит и push.
+- **«Types of clauses» (clauses)** — по уроку 14 (Extremes) курса Awesome English B2: придаточные времени, причины, результата,
+  цели, контраста и образа действия и Grammar Focus урока (as soon as I hear — без will; As …, — запятая). Главная идея:
+  придаточное отвечает на один из шести вопросов, а связку выбирают по тому, что идёт после неё; цвет в примерах и в таблице:
+  оранжевый — целое предложение, синий — существительное или -ing, зелёный — глагол, подчёркнуто — отдельное слово (However,).
+  Ошибка урока «buy an insurance» исправлена (insurance неисчисляемое) и упомянута в правиле. Собирается так же,
+  из `sources/clauses/` (шаблон из `sounds/template.html`): `python3 clauses/mk_template.py`, `clauses/clips.py`,
+  `clauses/build.py`, затем `python3 tools/mk_shell.py`; проверка — `python3 clauses/test.py`. Стоит сразу после «Связок» (link):
+  там связки статей и протоколов, здесь — система урока. Озвучку Ryan создаёт workflow `Ryan audio and Pages` при публикации;
+  `clauses/build.py` без локальных записей пакет и индекс не трогает, чтобы не стереть созданные workflow записи.
 - **«For, during, within» (during)** — так же, из `sources/during/` (шаблон из `sounds/template.html`):
   `python3 during/mk_template.py`, `during/clips.py`, `during/tts.py`, `during/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 during/test.py`. «В течение»: for, during, over, throughout, within и рядом in (через), while,
