@@ -645,11 +645,86 @@ $("gapnote").addEventListener("click", () => { $("gapnote").dataset.closed = "1"
 window.addEventListener("resize", checkCropped);
 setTimeout(checkCropped, 300);
 
+// ——— Переносы только между словами (просьба пользователя 23 октября 2026). Внутри слова строку не рвёт theme.css,
+//     а слово через дефис (white-water, flu-like, -ing, кто-то) и число (50–69%, 2,5–3,5, 1–3–6–12, 10 000) целиком
+//     оборачиваем в <span class="nobr">. Неразрывные пробелы между английскими словами (not supposed to) заменяем
+//     обычными — пусть длинная фраза переносится по словам, а не вылезает из узкого столбца (кроме кнопок).
+//     Текст для ответов, озвучки и поиска берётся из данных тренажёров, а не со страницы, — он не меняется.
+const NOBR = /(^|[^\p{L}\p{N}‐‑-])(-\p{L}+)|([\p{L}\p{N}][\p{L}\p{N}.,'’]*(?:[-‐‑–][\p{L}\p{N}][\p{L}\p{N}.,'’]*)+)|(\p{N}{1,3}(?:[   ]\p{N}{3})+)(?!\p{N})/gu;
+const LATIN_NBSP = /([\p{Script=Latin}\p{N}'’).,?!…%+]) (?=[\p{Script=Latin}\p{N}'‘(…+-])/gu;
+const NOBR_SKIP = "script,style,textarea,head,svg,.nobr,[contenteditable]";
+function nobrText(n){
+  const p = n.parentNode;
+  if (!p || !p.closest || !n.data || n.data.length < 2 || p.closest(NOBR_SKIP)) return;
+  const s = p.closest("button") ? n.data : n.data.replace(LATIN_NBSP, "$1 ");
+  NOBR.lastIndex = 0;
+  if (!NOBR.test(s)){ if (s !== n.data) n.data = s; return; }
+  const doc = n.ownerDocument, frag = doc.createDocumentFragment();
+  let last = 0;
+  s.replace(NOBR, (m, pre, suf, word, num, off) => {
+    const tok = suf || word || num, start = off + (suf ? pre.length : 0);
+    if (start > last) frag.append(s.slice(last, start));
+    const sp = doc.createElement("span"); sp.className = "nobr"; sp.textContent = tok; frag.append(sp);
+    last = start + tok.length;
+    return m;
+  });
+  if (last < s.length) frag.append(s.slice(last));
+  // во flex и grid каждый кусок стал бы отдельным элементом и перестал переноситься — держим их одним
+  const d = doc.defaultView.getComputedStyle(p).display;
+  if (/flex|grid/.test(d)){ const w = doc.createElement("span"); w.className = "nobr-in"; w.append(frag); n.replaceWith(w); }
+  else n.replaceWith(frag);
+}
+function nobreak(node){
+  if (!node) return;
+  if (node.nodeType === 3) return nobrText(node);
+  if (node.nodeType !== 1 && node.nodeType !== 9 && node.nodeType !== 11) return;
+  const w = (node.ownerDocument || node).createTreeWalker(node, 4), list = [];
+  while (w.nextNode()) list.push(w.currentNode);
+  list.forEach(nobrText);
+}
+// варианты ответа и ячейки таблиц: если длинное слово не помещается, шрифт меньше, а не перенос по буквам
+function fitOpts(doc){
+  const W = doc.defaultView;
+  doc.querySelectorAll("#opts, .opts").forEach(box => {
+    const bs = [...box.querySelectorAll("button")];
+    if (!bs.length || !box.clientWidth) return;
+    bs.forEach(b => { b.style.fontSize = ""; });
+    const over = () => box.scrollWidth > box.clientWidth + 1 || bs.some(b => b.scrollWidth > b.clientWidth + 1);
+    let fs = parseFloat(W.getComputedStyle(bs[0]).fontSize);
+    while (over() && fs > 12){ fs -= 1; bs.forEach(b => { b.style.fontSize = fs + "px"; }); }
+  });
+  doc.querySelectorAll("td, th").forEach(c => {
+    if (!c.clientWidth) return;
+    const els = [c, ...c.querySelectorAll("*")];       // у вложенных свой размер — уменьшаем всё пропорционально
+    els.forEach(e => { e.style.fontSize = ""; });
+    if (c.scrollWidth <= c.clientWidth + 1) return;
+    const base = els.map(e => parseFloat(W.getComputedStyle(e).fontSize));
+    for (let f = 0.95; f > 0.59 && c.scrollWidth > c.clientWidth + 1; f -= 0.05) els.forEach((e, i) => { e.style.fontSize = (base[i] * f).toFixed(1) + "px"; });
+  });
+}
+function watchNobr(doc){
+  try{
+    const W = doc.defaultView;
+    let fit = 0;
+    const later = () => { if (!fit) fit = W.requestAnimationFrame(() => { fit = 0; fitOpts(doc); }); };
+    new W.MutationObserver(recs => {
+      recs.forEach(r => { if (r.type === "characterData") nobreak(r.target); else r.addedNodes.forEach(nobreak); });
+      later();
+    }).observe(doc.documentElement, { childList: true, subtree: true, characterData: true });
+    W.addEventListener("resize", later);
+    doc.addEventListener("click", later);      // вкладки и «Дальше» иногда только показывают уже готовое
+    const run = () => { nobreak(doc.body); later(); };
+    if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", run); else run();
+  }catch(e){}
+}
+watchNobr(document);
+
 // ——— Мост для тренажёров: вызывается из первой строки каждого тренажёра, до его скриптов
 window.__eng = {
   attach(key, win){
     if (!APPS[key]) return;
     applySab(win);
+    watchNobr(win.document);
     try{ win.claude = claudeFor(key); }catch(e){}
     try{ win.Audio = audioFor(key, win); }catch(e){}
     win.__EXTRA_CARDS = (EXTRAS[key] || []).map(c => Object.assign({}, c));

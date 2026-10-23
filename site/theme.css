@@ -112,3 +112,10 @@
 :root .app .chip.slang{border-color:rgba(var(--v-rgb),.5)}
 
 :root .app :focus-visible{outline-color:var(--o)}
+
+/* Переносы только между словами: внутри слова и числа строку не рвём (просьба пользователя 23 октября 2026).
+   Слова через дефис и числа через тире оболочка оборачивает в .nobr (watchNobr в tools/shell.html). */
+*{overflow-wrap:normal!important;word-break:normal!important;-webkit-hyphens:manual!important;hyphens:manual!important}
+.nobr{white-space:nowrap}
+.nobr-in{min-width:0}
+.snd-info{overflow-wrap:anywhere!important}
