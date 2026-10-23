@@ -115,9 +115,10 @@ python3 -m http.server 8000
   (the patient I told you about). Собирается так же, из `sources/whatfor/` (шаблон из `sounds/template.html`):
   `python3 whatfor/mk_template.py`, `whatfor/clips.py`, `python3 whatfor/tts.py`, `whatfor/build.py`, затем `python3 tools/mk_shell.py`;
   проверка — `python3 whatfor/test.py`. Стоит сразу после «Косвенных вопросов» (indq); в «Вопросах» (q) этому отведена одна тема,
-  здесь — вся конструкция. **Записей Ryan пока нет**: в сессии Claude 21 октября 2026 Microsoft отклонил синтез (403) для
-  edge-tts 7.2.8, а 7.3.x Claude не ставит. Поэтому `whatfor/build.py` принимает записи «все или ни одной»: без них пакет пустой
-  и фразы читает голос устройства. Озвучить на своём компьютере: из `sources/` — `python3 whatfor/tts.py`,
+  здесь — вся конструкция. **77 записей Microsoft Ryan созданы 23 октября 2026** с edge-tts 7.3.1:
+  48 карточек, 24 примера и 5 мини-диалогов. `whatfor/build.py` требует полный набор записей с подтверждённым
+  голосом, текстом и SHA-256; без них сборка останавливается до изменения опубликованных файлов.
+  Для нового текста: из `sources/` — `python3 whatfor/clips.py`, `python3 whatfor/tts.py`,
   `python3 whatfor/build.py`, из корня — `python3 tools/mk_shell.py`, затем коммит и push.
 - **«For, during, within» (during)** — так же, из `sources/during/` (шаблон из `sounds/template.html`):
   `python3 during/mk_template.py`, `during/clips.py`, `during/tts.py`, `during/build.py`, затем `python3 tools/mk_shell.py`;

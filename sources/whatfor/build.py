@@ -6,7 +6,7 @@
 #   python3 whatfor/build.py            # site/apps/whatfor.html, site/packs/whatfor.mp3, tools/packs.json, tools/catalog.json
 #   cd .. && python3 tools/mk_shell.py
 # whatfor/index.html и whatfor/preview.html — та же страница без моста, для локальной проверки (whatfor/test.py).
-# Записи Ryan — все или ни одной: пока их нет, пакет пустой и фразы читает голос устройства (сборка об этом пишет).
+# Публикуется только полный набор проверенных записей Ryan.
 import base64, importlib.util, json, html, pathlib, re, sys
 here = pathlib.Path("whatfor")
 sys.path.insert(0, str(here))
@@ -82,18 +82,14 @@ assert "__ICON" not in out and "/*__DATA__*/" not in out and "<!--__" not in out
 assert out.startswith("<title>") and out.count("new Audio(") == 1
 assert out.count('db.doc("data/users/" + uid + "/progress")') == 1
 
-# записи: у каждого ключа страницы есть строка в clips.json; записи Ryan — все или ни одной
+# У каждого ключа страницы должна быть проверенная запись Ryan.
 clips = json.loads((here / "clips.json").read_text())
 sys.path.insert(0, str(TOOLS.resolve()))
-from ryan_manifest import matches, require_clips
+from ryan_manifest import require_clips
 need = set(re.findall(r'data-key="([^"]+)"', out)) | {c["id"] for c in CARDS} | {f"r{t['n']}-{i + 1}" for t in TOPICS for i in range(len(t["ex"]))}
 assert need == {c["key"] for c in clips}, sorted(need ^ {c["key"] for c in clips})
-if any(matches(c, here / "audio") for c in clips):
-    require_clips(clips, here / "audio")    # часть есть — остальные тоже должны быть, иначе остановка
-    have = sorted(need)
-else:
-    have = []
-    print("Записей Ryan нет — фразы читает голос устройства. Озвучить: python3 tools/ryan_tts.py whatfor, затем снова whatfor/build.py")
+require_clips(clips, here / "audio")
+have = sorted(need)
 
 (here / "index.html").write_text(out)
 # preview — с тем же <head>, что оболочка даёт тренажёру (базовые стили и theme.css), чтобы выглядело как в приложении
@@ -127,7 +123,7 @@ entry = {"key": KEY, "title": "What is it for?", "group": "text",
          "en": "what for what is it for who are you waiting for what are you looking at what are you afraid of where are you from "
                "who with what about who for where to to whom on which preposition at the end of a question "
                "предлог в конце вопроса зачем для чего от чего с кем о чём откуда кого",
-         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Ryan" if have else "устройство", "size": len(app.encode())}
+         "kw": " · ".join(t["title"] for t in TOPICS), "voice": "Ryan", "size": len(app.encode())}
 apps = [a for a in cat["apps"] if a["key"] != KEY]
 pos = next(i for i, a in enumerate(apps) if a["key"] == "indq") + 1
 cat["apps"] = apps[:pos] + [entry] + apps[pos:]

@@ -1,0 +1,552 @@
+{
+  "date": "2026-10-23",
+  "voice": "en-GB-RyanNeural",
+  "client": "edge-tts 7.3.1",
+  "apps": {
+    "whatfor": {
+      "new_recordings": 77,
+      "pack_sha256": "e9bd3371f94364da427f03b1c7155a73fc35e7d6b5e72c200075391e8690494e",
+      "clips": {
+        "f1-inhaler": {
+          "text": "— What's this inhaler for? — It's for asthma.",
+          "rate": "-5%",
+          "source_sha256": "e1073d8daaf9b51c2bd68159e8de4b0cf0362f8cede285198ad5db4bb46ae1b9",
+          "packed_sha256": "90b37f62046de2994c2e10ce6a76770f7cf9e3d39e98ce13732870e18e97ec73",
+          "duration": 4.296
+        },
+        "f1-need": {
+          "text": "What do you need the car for?",
+          "rate": "-5%",
+          "source_sha256": "aef32fc861f7c34398a69f58c45cddf823d1023a8028d62cfe5b946d3c28df38",
+          "packed_sha256": "fd75279a0005f46c9a854f2176ee4bfa0cb0d5d21f970357dbb878555c64b0f1",
+          "duration": 2.496
+        },
+        "f1-order": {
+          "text": "What is this test for?",
+          "rate": "-5%",
+          "source_sha256": "c0031e53508113b7643210f9c6fc3f215419b85f79bb8ea08fd5e13b9b4c5746",
+          "packed_sha256": "51fc68e147d28e45dddaed0f6d6e34fbb1437662d2b7af9f91d4bdf412c4a648",
+          "duration": 2.352
+        },
+        "f1-tests": {
+          "text": "— What are these blood tests for? — To rule out an infection.",
+          "rate": "-5%",
+          "source_sha256": "481ea9b61bbbf1d2c8b6176aaeffe5711ddd9242f70ea50308148922c6a4eca8",
+          "packed_sha256": "bacb42b74518d3f646cc3ffd618ccdc49b2244526e07ebd269fa1a1ecd8b994c",
+          "duration": 5.088
+        },
+        "f1-did": {
+          "text": "What did you do that for? Now we have to start again.",
+          "rate": "-5%",
+          "source_sha256": "8252205a9a656257d49e5da7b1bccc5a3981a6cb5b1fff208221681054e5dc12",
+          "packed_sha256": "80501bd22abd0e7d46785e2dd9c0cd29fdd4247a16b6d5e20c8968c54d0a9785",
+          "duration": 4.8
+        },
+        "f1-answer": {
+          "text": "— What's this valve for? — It's for releasing pressure.",
+          "rate": "-5%",
+          "source_sha256": "ee0a09cb74c0d1b3f33b54251d8d851263b0815218cfb3b235cf87f587046906",
+          "packed_sha256": "774d5f76fd3f3460ebbc99e44b0d6c41ce8f94ae51371e79bf171fff5e211282",
+          "duration": 4.584
+        },
+        "f2-wait": {
+          "text": "Who are you waiting for?",
+          "rate": "-5%",
+          "source_sha256": "41a36c30f8876275ca2cb17ecbc8ed16c56d876cb9e808b03877e47ef2dde16e",
+          "packed_sha256": "3559fe43f6784126ef34774e053600d612ef40a43abf90827864ab4462de1da9",
+          "duration": 2.328
+        },
+        "f2-look": {
+          "text": "What are you looking at? Is there something on my face?",
+          "rate": "-5%",
+          "source_sha256": "de4c567feaf90334fbb73d3f1d92ebb86d9253cfe06812c69e748627df22f2fd",
+          "packed_sha256": "a5e257c6c2aca1a37323c75b2a1a6708febc680241ac393f3c0282cddf1bdae9",
+          "duration": 4.656
+        },
+        "f2-search": {
+          "text": "— What are you looking for? — My car keys. I can't find them anywhere.",
+          "rate": "-5%",
+          "source_sha256": "e497aa9da3b7ed768b77a50792f39e0b533ae4770928161e3876b2fce0400af4",
+          "packed_sha256": "35dcd919b10ae83fc327878b279c2ebcad482e21becefd9d668fd9df04b3e331",
+          "duration": 6.72
+        },
+        "f2-talk": {
+          "text": "Who were you talking to on the phone?",
+          "rate": "-5%",
+          "source_sha256": "19ddf24ea4f378d72d839e2ffde5e86dea2cd4f6d55dcbd9b173cae18140f2bd",
+          "packed_sha256": "c198f23d66ad0919c3c28ec8ee4d8a44b6efc74022217ce0a90c8a9dc5e47889",
+          "duration": 2.784
+        },
+        "f2-send": {
+          "text": "Who did you send the results to?",
+          "rate": "-5%",
+          "source_sha256": "bef151523704bf67c402ede1ddcd6cb88565bf6074c0de20d532871c05ee14fb",
+          "packed_sha256": "28916ae21389e9618f9ce12f6d901815e0302080e8e89e6ea5b7e6968665a32f",
+          "duration": 2.712
+        },
+        "f2-depend": {
+          "text": "What does the dose depend on?",
+          "rate": "-5%",
+          "source_sha256": "92361012e29f420a2a81ef369e9309abcbb0d5ab3772156e22c3d3b52bf470df",
+          "packed_sha256": "cc6478e5a9a5c8b8c75c5ffddcdb87230bd911482ca3b3dd2a462f1d18fe66c8",
+          "duration": 2.472
+        },
+        "f3-afraid": {
+          "text": "What are you afraid of?",
+          "rate": "-5%",
+          "source_sha256": "9bb2527e17df5b5ec9126fd94f5c2aa8300018d506b1fcbf12ba34a9db70548e",
+          "packed_sha256": "f51bbb49190a8cb6add6f428a077c7ecb498b2afef148b81063aaa6d6a14f1f9",
+          "duration": 2.304
+        },
+        "f3-interested": {
+          "text": "What kind of research are you interested in?",
+          "rate": "-5%",
+          "source_sha256": "bab2720acb21569e96c5359ece1477849dc5d5d73a9ace8174a4c890dc1bb317",
+          "packed_sha256": "977a62febbfaf74d7b3c094827ced267d07882c211b9d8667e6db140433a1bfa",
+          "duration": 3.216
+        },
+        "f3-married": {
+          "text": "— Who is she married to? — A surgeon from our hospital.",
+          "rate": "-5%",
+          "source_sha256": "812906e102c8c6cd11c9fab0aae1433770f2b8bc1eebdc4e4a0a77796ca5cf9b",
+          "packed_sha256": "d8d5eac543d87457ee59dfa580a8040e8131cd981d0235b078fd8e4c056dca27",
+          "duration": 4.92
+        },
+        "f3-good": {
+          "text": "What is your daughter good at at school?",
+          "rate": "-5%",
+          "source_sha256": "38ea3e45ba63367f8615f71ae43ab3df3291f27014f5c0f938b8143b293f3f3d",
+          "packed_sha256": "5110435eecb6ff94c76b71ea3ad02335a0ee560e519b54f4bee4fba2b01cc9f9",
+          "duration": 2.904
+        },
+        "f3-responsible": {
+          "text": "— What exactly is she responsible for? — Infection control.",
+          "rate": "-5%",
+          "source_sha256": "ef4569d70d17587a965a0aa28e4d19107ae2c4e7aacbeb3b10599a5d62f67eb1",
+          "packed_sha256": "21f2b641e169f47d6eb120e08512d3975479b1f5778ab1c1a4c29f8b37dccbbf",
+          "duration": 5.496
+        },
+        "f3-worried": {
+          "text": "You look tense. What are you so worried about?",
+          "rate": "-5%",
+          "source_sha256": "c8ddcf7574f564c052dec5f510453778cfcf3b31721e70a1bec07e30edd5599c",
+          "packed_sha256": "e6b7fee6d91ccb93e60a047342a25218c742447e16fc308b4d8a867101fdd012",
+          "duration": 4.56
+        },
+        "f4-from": {
+          "text": "Where does the bleeding come from?",
+          "rate": "-5%",
+          "source_sha256": "7ad47468333d446e6265311b1cab5d3d3dd90e256c329aad5711726bcf28d3df",
+          "packed_sha256": "da4478024bd7d556f7e229ef3f49be413f8633da0bc046a64c5e80f35b51e763",
+          "duration": 2.616
+        },
+        "f4-going": {
+          "text": "— Where are you going? — To the lab.",
+          "rate": "-5%",
+          "source_sha256": "5f701a39826658b7cd8b9f10bbe82d41fdf0a04e6f6e0fc409664becf0b7651e",
+          "packed_sha256": "ef06f442dde94e65c5f276723ce313e532c0d292d9403e8e72cedb1c7372df63",
+          "duration": 3.648
+        },
+        "f4-floor": {
+          "text": "What floor is the MRI unit on?",
+          "rate": "-5%",
+          "source_sha256": "7bcfd1e5c97512a18b416f7b9a44a2d7dce00cf11653451bce61fdd5aca09688",
+          "packed_sha256": "caeae6229db532665d7f3fc25cc47a4b60fdcc40b5c5efa786691611fbea69db",
+          "duration": 3.024
+        },
+        "f4-hospital": {
+          "text": "Which hospital does she work at?",
+          "rate": "-5%",
+          "source_sha256": "575bb6d9ef9ce9a7d3177113b0c6c50bdd879b68d921db57aa7e73325392f920",
+          "packed_sha256": "117f62be92fa5280031e9443c321a512e7fa3216e90b44a0e2a3601c88cadf9c",
+          "duration": 2.688
+        },
+        "f4-long": {
+          "text": "— How long are you staying for? — Just two nights.",
+          "rate": "-5%",
+          "source_sha256": "36ddfa2314dabe286ddc1e9eaaf1827d8c265860413952240acc30330a004609",
+          "packed_sha256": "10c426fef480251a8913b94d99ba63c20cf6069fd06ff219750cf929ed92c906",
+          "duration": 4.608
+        },
+        "f4-until": {
+          "text": "What time is the pharmacy open until?",
+          "rate": "-5%",
+          "source_sha256": "cb4394ecacb6751d974ab6219b7d73d96648f996be166845c5a8755f65051b34",
+          "packed_sha256": "e40383db520be2c538a9f28e9679196165ae08e4a1a7670e3c67a5130a1b698b",
+          "duration": 3.24
+        },
+        "f5-with": {
+          "text": "— I'm having dinner out tonight. — Oh? Who with?",
+          "rate": "-5%",
+          "source_sha256": "ef1661f0060a96911d692d1e17f5d35e4caf54973194ed188bdd6f4a4e4a1668",
+          "packed_sha256": "a884aecc6ccc3379aa5c24289a6604cdb2d417ac2a17ccc67524d55717d9cd29",
+          "duration": 5.304
+        },
+        "f5-about": {
+          "text": "— We need to talk. — What about?",
+          "rate": "-5%",
+          "source_sha256": "5ac8ffaf24b4cfd2c2d76ea6dafab2fdd11d218bd7c83dc0ec3a427b31dae924",
+          "packed_sha256": "11e75fb0f10b628bb0ce4a3d8f1eba9a67fd550c2af281af19993840096416e3",
+          "duration": 3.816
+        },
+        "f5-for": {
+          "text": "— I bought some chocolates. — Who for?",
+          "rate": "-5%",
+          "source_sha256": "55188758d02d2cf1a442959b9dfc3524c73bbc70c0b9076ceb5683a0eb9ae88d",
+          "packed_sha256": "53f4a31334547d1c61e1fd62e75c407fb9d0c0a3ac141fb4a4662d1a7d955f7d",
+          "duration": 3.984
+        },
+        "f5-to": {
+          "text": "— I've sent the report. — Who to?",
+          "rate": "-5%",
+          "source_sha256": "89d972d9f890003be5dcc201dd8bbb887bf14ab1c9514cc8994349be2454e91b",
+          "packed_sha256": "514597b95ec4ef708bfad1fdba06c316e4ea0766b34db8eb62043a4d11dcd535",
+          "duration": 3.744
+        },
+        "f5-where": {
+          "text": "— I'm moving next month. — Where to?",
+          "rate": "-5%",
+          "source_sha256": "75cf7a778bef6edae4e99a0fce56abee8f6e427d81c63b66c84e9687f4f655fb",
+          "packed_sha256": "de805ae2d6b986518bab79a7390aab9f332734504538f669e1f73168661087a4",
+          "duration": 3.936
+        },
+        "f5-whatfor": {
+          "text": "— I'm going to the pharmacy. — What for? — To get my prescription.",
+          "rate": "-5%",
+          "source_sha256": "95dab114705438f19adb29ee2fbfa2751339a3bdd9174745bd9efe8bf178da20",
+          "packed_sha256": "9c5d390028876868f3efc9b59b28c515cb2f6bc6888410c63413f6a06785114d",
+          "duration": 6.168
+        },
+        "f6-treated": {
+          "text": "What is he being treated for?",
+          "rate": "-5%",
+          "source_sha256": "e4016084bf296ee05ec6cdbcff385e124ab7171e75f957b55b606ab516a443d9",
+          "packed_sha256": "f510769dd0b67882a9b3b4b1d0ccbb2f3d1a17d84bddd26e63ca78ea61bb564d",
+          "duration": 2.688
+        },
+        "f6-used": {
+          "text": "What is this drug mainly used for?",
+          "rate": "-5%",
+          "source_sha256": "077ff83b7c3309fd193a41353472c3730d827555942c437a76e45cad361b987d",
+          "packed_sha256": "37da719d8db8995efcfba74e281ae27e91f878a845405f58d2c387ff753ce138",
+          "duration": 3.24
+        },
+        "f6-written": {
+          "text": "Who was the guideline written by?",
+          "rate": "-5%",
+          "source_sha256": "9694afca83002ec7f3582cc44e12b5e6445ebaadb63e6ceaa05c8cf3390bf415",
+          "packed_sha256": "288df1bad435e5a8590cb5714ed326d2c7ecf4c2cef5c68e7618481077291a35",
+          "duration": 2.976
+        },
+        "f6-referred": {
+          "text": "— Who was the patient referred to? — To a neurologist.",
+          "rate": "-5%",
+          "source_sha256": "31dbe008b93e44c558bfdbeda79b90458edeaa4f7a0cce4777fdf0669f6b2e69",
+          "packed_sha256": "a0dd7b687e4a0b8a3d4d7268855f0457aad3b2d198502f86bde6c6bbe89963b0",
+          "duration": 4.944
+        },
+        "f6-compared": {
+          "text": "What were the results compared with?",
+          "rate": "-5%",
+          "source_sha256": "333c9552949ed1ff7863cb1be866a56e546aaeae2552189b8c7a5fa7a74772a1",
+          "packed_sha256": "9e8412880f8bf009c85fd4c8fc706fc7dd0ce4fdebeb03df053b314929110982",
+          "duration": 2.832
+        },
+        "f6-caused": {
+          "text": "What was the outbreak caused by?",
+          "rate": "-5%",
+          "source_sha256": "c327f1dfaeefe625b24f81a9fbc01a5e80d0a908f9762629d8ca1599845718cb",
+          "packed_sha256": "8dbe648dbea1fada30ee727f9fbe721210027e719557892360a44397180b9fab",
+          "duration": 2.952
+        },
+        "f7-whom": {
+          "text": "To whom should the application be addressed?",
+          "rate": "-5%",
+          "source_sha256": "ae9db5556a952ddf29c7fd187bfcf9240aacd0e34c803bb5ce519dd94857122d",
+          "packed_sha256": "320aa125051c4514a810a5c6a2145d506e8d25c6408150663f5f2dcf49312d01",
+          "duration": 3.144
+        },
+        "f7-which": {
+          "text": "On which data was the analysis based?",
+          "rate": "-5%",
+          "source_sha256": "14206b1743bbf09dbd9456fde2b25d126855ae1ac6cbbc5a95024e8e82df8508",
+          "packed_sha256": "57ee1ae2e8b0d43f44533a1b984fbf99ebe15f63e79e457cad8b4a8f2d416ed3",
+          "duration": 3.312
+        },
+        "f7-email": {
+          "text": "Who should I send the form to?",
+          "rate": "-5%",
+          "source_sha256": "3f7e2dea9974c5e388441b6ebc1c443657881572fd90e589bb51261b3d6d9e94",
+          "packed_sha256": "b64b845c7fe6715887a9aeb98648f3d7934bbbc24026545a61f30662813ca3a4",
+          "duration": 2.592
+        },
+        "f7-letter": {
+          "text": "With whom may I discuss this matter?",
+          "rate": "-5%",
+          "source_sha256": "209259fed33788f8bef556eb0816b76313497bd5c9dc23d34bf6be03c8a9f49e",
+          "packed_sha256": "7c7f45edc2ebd08410906284bb4cbe48d55d729d87538e4a1e30b545384ed9f0",
+          "duration": 2.952
+        },
+        "f7-after": {
+          "text": "Which patient are you looking after?",
+          "rate": "-5%",
+          "source_sha256": "5e8003b0f7436872d039fdbc23b160d44a290d7353527250eabff315ad2839e3",
+          "packed_sha256": "ddbdb49e3937ed594fe8283db156240c813af7a3e095343f4a0c2d66a8b2e686",
+          "duration": 2.712
+        },
+        "f7-extent": {
+          "text": "To what extent do these findings apply to older patients?",
+          "rate": "-5%",
+          "source_sha256": "2777df82b60a9a32bd1931b872e73e5928a7a95109d24da42f7db355c2541247",
+          "packed_sha256": "9cd4cfab568846bd98e125a71d233207c2a54b5df28d922f83ac59c5792cef92",
+          "duration": 4.248
+        },
+        "f8-button": {
+          "text": "Could you tell me what this button is for?",
+          "rate": "-5%",
+          "source_sha256": "9314be5e5778a7c6abb42e9c627de664022eeca848f7b1158345b2e195782ab0",
+          "packed_sha256": "f75943d134067de8fdba2da13ccee9e78ab2d6b28904918ed8dcd1d744fa1d75",
+          "duration": 3.0
+        },
+        "f8-works": {
+          "text": "I'm not sure who she works for.",
+          "rate": "-5%",
+          "source_sha256": "0b1a9c20a12724cc7540a0f6e13320224155c17b244efb39048ab7d51eb4dbaf",
+          "packed_sha256": "027b368cae5838a529691a8681f1f31528ba35e62520da20cd70497f62fe2e27",
+          "duration": 2.832
+        },
+        "f8-about": {
+          "text": "This is the patient I told you about yesterday.",
+          "rate": "-5%",
+          "source_sha256": "c7f3ef7387b9a8d7db5c36f0bc5f07696add30b07bd0fa8d4ce5f83b92d2a2f1",
+          "packed_sha256": "fae8198b561c38a913731ee1680c4e5062d8774cc20c1f1775faa892dfb4c05c",
+          "duration": 3.408
+        },
+        "f8-rely": {
+          "text": "These are the guidelines on which we rely.",
+          "rate": "-5%",
+          "source_sha256": "afeaeedb1fb84d210c52f17e2a72f7490fa6244b661d6a801f2e03bd0f2e72eb",
+          "packed_sha256": "8963bd124e0ca8a6972bb257cb8259ba7bc1df6377a0463566c149d9de03737a",
+          "duration": 3.336
+        },
+        "f8-friends": {
+          "text": "— Thanks for helping me move. — No problem, that's what friends are for.",
+          "rate": "-5%",
+          "source_sha256": "7d44d24fab471fc660ad180a6fce509ed013917677f834b00595149806108f76",
+          "packed_sha256": "ae821cd22515ac81ef6fc2e21835f3e9d6717079fe78273316f64bda0aec1ca3",
+          "duration": 5.976
+        },
+        "f8-allergic": {
+          "text": "Do you know what the patient is allergic to?",
+          "rate": "-5%",
+          "source_sha256": "51bd81d2c2618c453acc95ad584ea242cb784f34df42a59d2e03cc1e5470ce1d",
+          "packed_sha256": "c42b28d0d40e011711081854639cf8ecc3fde1bc8fd9871bcba1a1684c9cce1a",
+          "duration": 3.12
+        },
+        "r1-1": {
+          "text": "— What's this tablet for? — It's for high blood pressure.",
+          "rate": "-5%",
+          "source_sha256": "a927d2b9644da058b82d44493ec643bbb4776e49277f3e45251f500a9fc54c60",
+          "packed_sha256": "fe86a2bb06e51598e1006cf3bf7cda39e4c57cecbb59fe27049acab4e24995f1",
+          "duration": 4.776
+        },
+        "r1-2": {
+          "text": "What do you need the scan for?",
+          "rate": "-5%",
+          "source_sha256": "dd3066d86bb3cb8e4250d1ef8c2dd47c20101cf5e54244f15212c8c94d0f1251",
+          "packed_sha256": "a48a9dc96b9d62aa477fc8d0bd9473dc426c59b63713a5b80df4786a8004f396",
+          "duration": 2.544
+        },
+        "r1-3": {
+          "text": "— What are these tests for? — To rule out an infection.",
+          "rate": "-5%",
+          "source_sha256": "81ab8e269b52b9ae3c0e9b079d08dd5d0b189490ced3ed66dce426809e48dadd",
+          "packed_sha256": "87d4ec2dce18877c1b5188a4f966f718eb7c3e4e7aec425c107ee79781a8584d",
+          "duration": 4.8
+        },
+        "r2-1": {
+          "text": "Who are you waiting for?",
+          "rate": "-5%",
+          "source_sha256": "8310bd56938e8a45f240adf3525a1c3864ab4e1609158eb9f58f2cabae57b314",
+          "packed_sha256": "ac92deac21efe8ad3762daac2b3e799734de073d8f11a72ae7c77fb768cee332",
+          "duration": 2.328
+        },
+        "r2-2": {
+          "text": "What are you looking at?",
+          "rate": "-5%",
+          "source_sha256": "382a09007933966daec19684887459790e6cf63df969fc2062aa068f0e4b68f8",
+          "packed_sha256": "683f3706f523d2f7a68edbc8a5fb02efa2403e84bad6a8712e898f2975c48664",
+          "duration": 2.112
+        },
+        "r2-3": {
+          "text": "What does the dose depend on?",
+          "rate": "-5%",
+          "source_sha256": "5c686fe4a5fcbaa9f445df0e94c839344d4c75f1e74f11737b8bdef6da05774d",
+          "packed_sha256": "522c84eb0c0c767b790d4fe480f1e82077e0c6e6df14f3198f4affb923e78454",
+          "duration": 2.472
+        },
+        "r3-1": {
+          "text": "What are you allergic to?",
+          "rate": "-5%",
+          "source_sha256": "94f883266da219a59f5e028da18d2a20495589d1161abc830bd32e5bd8ae8ce2",
+          "packed_sha256": "ed9b1d61f0ab32e97e8e439f3c227a557953b54f90afff63d21230c9ebad0181",
+          "duration": 2.376
+        },
+        "r3-2": {
+          "text": "What are you so worried about?",
+          "rate": "-5%",
+          "source_sha256": "dd57b15d3bd5735f13b17b34e79b6e0c8a6915fdb1b2926157e0b20ba1fae88c",
+          "packed_sha256": "587d4049bbc2d0f36930c8e2fc2015ddd304264535b9aae429730446f05b4bd1",
+          "duration": 2.592
+        },
+        "r3-3": {
+          "text": "Who is she married to?",
+          "rate": "-5%",
+          "source_sha256": "ddef2bec2cb8ed07b97d977f20a2fbf4933f14f16a931ca1ba1729d933ed2e8a",
+          "packed_sha256": "9b6090b5bbf2e244c0299c401df99f89c11b835419f0a5fdcb6669647153ed48",
+          "duration": 2.28
+        },
+        "r4-1": {
+          "text": "Where does the bleeding come from?",
+          "rate": "-5%",
+          "source_sha256": "1f6fbf21b65f23bb8da0102fdb59b913638eb41ec1ee02844f7f84588e5877e4",
+          "packed_sha256": "bf91e712e33c30222b9a3e56a51e0681be6f789b5b6862e27450969f09201ed1",
+          "duration": 2.616
+        },
+        "r4-2": {
+          "text": "What floor is the MRI unit on?",
+          "rate": "-5%",
+          "source_sha256": "a9140a235fb67d76756864e48e7349c6a46212fccaf85b034b9497c2ff47a6d7",
+          "packed_sha256": "259f0f5c0444961b9f692caae28e61b02983fe1566f8e9679bb15655f42f1833",
+          "duration": 3.024
+        },
+        "r4-3": {
+          "text": "How long are you staying for?",
+          "rate": "-5%",
+          "source_sha256": "9f2510a556024333ed61dbb89006fdadc049399e202bf53a86f749f385ae23cf",
+          "packed_sha256": "d7761fe3bea9cdf86dfa45baf6086ccb0fd8bf2ce044570bfd1858a276a522a8",
+          "duration": 2.568
+        },
+        "r5-1": {
+          "text": "— I'm meeting someone for lunch. — Who with?",
+          "rate": "-5%",
+          "source_sha256": "0a8358fb642914d7de142cf344fc13008e5f7d2540d3e37e6e8da231584f9f19",
+          "packed_sha256": "90060f1784c5c2a4531ff58903c4122c5f44fa59ad670fc328d7d5700b4c177e",
+          "duration": 4.104
+        },
+        "r5-2": {
+          "text": "— Can I talk to you? — Sure. What about?",
+          "rate": "-5%",
+          "source_sha256": "6e47bfad656108ed8ff4e19aa09a323dba6cc82c5bcb4dc2ec479b5b94af19e7",
+          "packed_sha256": "bb7c0a5ffb646d304411f2dd59f0f0417b734eb536cf70b7d7da91d717fa68b9",
+          "duration": 5.112
+        },
+        "r5-3": {
+          "text": "— I bought some flowers. — Who for?",
+          "rate": "-5%",
+          "source_sha256": "6d671cc47c619c822e1c0969b651cf77b29c47cd0be243ce2a9dbcc475dcc62f",
+          "packed_sha256": "0c6bde02173aeadb177420adabf3f53413412509d0e29148cadd3903c394c71d",
+          "duration": 3.912
+        },
+        "r6-1": {
+          "text": "What is he being treated for?",
+          "rate": "-5%",
+          "source_sha256": "a71da3c6aea926175a36fbb74bdebe72d50b7bc9053c8bd87913f1affb20d023",
+          "packed_sha256": "8bd3671d945619cd071e5f40891a86e36853e6aafbb30101c77b900925cd2987",
+          "duration": 2.688
+        },
+        "r6-2": {
+          "text": "What is this drug mainly used for?",
+          "rate": "-5%",
+          "source_sha256": "b11a1cfc76f15e4ee4ba80affb7d2b6bfbbb3d929de505343f8f90f910f9358d",
+          "packed_sha256": "0e4c8599756d9d773bd798d0f4e054dd458bb94a48a4aef7a428dcb2b3ccd978",
+          "duration": 3.24
+        },
+        "r6-3": {
+          "text": "Who was the patient referred to?",
+          "rate": "-5%",
+          "source_sha256": "2e36e99501fba8fa97c6fbf87d3ce61a7b0f9c69d2b2785b6826e0b68a733c17",
+          "packed_sha256": "43ff5eb03b0cfc9505a7c5c0dcf513f50bb8ea45ff86460be087364f4b86bdd0",
+          "duration": 2.856
+        },
+        "r7-1": {
+          "text": "To whom should the application be addressed?",
+          "rate": "-5%",
+          "source_sha256": "ae9db5556a952ddf29c7fd187bfcf9240aacd0e34c803bb5ce519dd94857122d",
+          "packed_sha256": "320aa125051c4514a810a5c6a2145d506e8d25c6408150663f5f2dcf49312d01",
+          "duration": 3.144
+        },
+        "r7-2": {
+          "text": "On which data was the analysis based?",
+          "rate": "-5%",
+          "source_sha256": "14206b1743bbf09dbd9456fde2b25d126855ae1ac6cbbc5a95024e8e82df8508",
+          "packed_sha256": "57ee1ae2e8b0d43f44533a1b984fbf99ebe15f63e79e457cad8b4a8f2d416ed3",
+          "duration": 3.312
+        },
+        "r7-3": {
+          "text": "To what extent do these findings apply to older patients?",
+          "rate": "-5%",
+          "source_sha256": "ab37afc5d201dcf86211441ba560481ef432a98d2f27e434fd40d9c5e569bf03",
+          "packed_sha256": "3bb3ecdb2bc9c6273a37da8415014371ecef36db1f07b208abe87ee5c8fc7b88",
+          "duration": 4.248
+        },
+        "r8-1": {
+          "text": "Could you tell me what this valve is for?",
+          "rate": "-5%",
+          "source_sha256": "3cac8f97c3737acebd69ca8c5c3444b0985ddad2fbcb049a486a5ad4c6b11546",
+          "packed_sha256": "aded2114d9314d3fbcd794d9f75a8bb6fb48e94fe9f286e1169287e84879112d",
+          "duration": 2.928
+        },
+        "r8-2": {
+          "text": "This is the patient I told you about.",
+          "rate": "-5%",
+          "source_sha256": "093b6fe4e73454c439b2e41a311b63b4c55522412f12ed0166c37cfa0cfd8e21",
+          "packed_sha256": "826dbf3c300a02357a73b98d9a68b0105557d87c43eb339ef36491a632dbd98e",
+          "duration": 2.952
+        },
+        "r8-3": {
+          "text": "These are the guidelines on which we rely.",
+          "rate": "-5%",
+          "source_sha256": "ddb05d83524db1939af7ee128c2f12f816b0e486c549501d6decf9e2219ff6cd",
+          "packed_sha256": "15008b54442f88b0ba3ddb7a92f2b81de2510f931acf64519eb631e198777bf9",
+          "duration": 3.336
+        },
+        "cp-1": {
+          "text": "— What's this tablet for? — It's for your blood pressure.",
+          "rate": "-10%",
+          "source_sha256": "3b9415bde7c73456eb93e412b97e437ba4601feb838719466d18bde483f7e005",
+          "packed_sha256": "13a3b5f492400df7b28c4069c6e16cf08f419145544af756ad1c6ef7f95b4769",
+          "duration": 4.944
+        },
+        "cp-2": {
+          "text": "— I'm going out tonight. — Oh? Who with?",
+          "rate": "-10%",
+          "source_sha256": "0ce4bd2a5898f4914d13a804baf307d848713fe38a66214e8b28a81f56a5d306",
+          "packed_sha256": "042958bf4c00115e27c581af6ce70a5cde620729ac7a34ba0291de83c467ea24",
+          "duration": 5.28
+        },
+        "cp-3": {
+          "text": "— Who are you waiting for? — Dr Patel. My appointment is at ten.",
+          "rate": "-10%",
+          "source_sha256": "4b62c0f32ccfc270b01c553331017b6ec5f833411f852b02c737ca3d78d2b196",
+          "packed_sha256": "9e73d5b4c20742bd319734aaab5363c997f25b1fab2d4cce68adb7b4e0cb26e7",
+          "duration": 7.104
+        },
+        "cp-4": {
+          "text": "— What are you allergic to? — Penicillin. I get a rash.",
+          "rate": "-10%",
+          "source_sha256": "a416a260b9442d515aa7e5988f5620e2bf5b7b4f4dc9e26a176d761b96a84360",
+          "packed_sha256": "50a1488d33e2bca1d2e47ff69ffe46d4086c456c152fa8d2f68e5c88e508303f",
+          "duration": 6.264
+        },
+        "cp-5": {
+          "text": "— What did you do that for? — Sorry, I thought it would help.",
+          "rate": "-10%",
+          "source_sha256": "2fca81d89256bc24347b2dc2e4655fd3ea8f2e198272cd9ddfce20e7dfab8b0f",
+          "packed_sha256": "3445cd199e27eb407428b885e83272ab66679345f3f48b90dc87bd735f16192f",
+          "duration": 5.424
+        }
+      }
+    }
+  }
+}
