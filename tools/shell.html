@@ -25,6 +25,9 @@
   button{font:inherit;color:inherit}
   /* Окно — во весь экран до самого низа; отступы под вырез и полоску «Домой» — только у содержимого */
   .shell{position:fixed;top:0;right:0;bottom:0;left:0;overflow:hidden}
+  /* Строка состояния прозрачная (black-translucent): текст при прокрутке уходит под часы до края экрана,
+     лёгкое затемнение под ними — чтобы часы и батарея читались поверх текста */
+  .sfade{position:fixed;top:0;left:0;right:0;z-index:3;height:env(safe-area-inset-top,0px);pointer-events:none;background:linear-gradient(rgba(11,13,18,.85),rgba(11,13,18,0))}
 
   /* ——— Каталог тем */
   .home{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
@@ -81,6 +84,7 @@
   .cnt{font-size:calc(14px*var(--k));color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
   .tag{font-size:calc(12px*var(--k));font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--o);white-space:nowrap}
   .empty{margin:0;padding:calc(18px*var(--k)) calc(4px*var(--k));font-size:calc(17px*var(--k));color:var(--soft)}
+  .gapnote{margin:0;padding:calc(14px*var(--k)) calc(16px*var(--k));border-radius:calc(18px*var(--k));border:calc(1px*var(--k)) solid rgba(var(--v-rgb),.45);background:#1c202b;font-size:calc(15px*var(--k));line-height:1.45;cursor:pointer}
   .foot{margin:calc(8px*var(--k)) 0 0;font-size:calc(14px*var(--k));line-height:1.5;color:var(--muted);text-wrap:pretty}
 
   /* ——— Перенос прогресса (вне claude.ai облака нет: прогресс живёт на устройстве) */
@@ -98,7 +102,7 @@
   /* ——— Подсказка внизу темы и «Проверка звука» */
   .cnote{position:absolute;left:max(calc(16px*var(--k)),env(safe-area-inset-left,0px));right:max(calc(16px*var(--k)),env(safe-area-inset-right,0px));bottom:calc(16px*var(--k) + env(safe-area-inset-bottom,0px));z-index:3;margin:0 auto;max-width:calc(520px*var(--k));padding:calc(14px*var(--k)) calc(16px*var(--k));border-radius:calc(18px*var(--k));border:calc(1px*var(--k)) solid rgba(var(--v-rgb),.45);background:#1c202b;box-shadow:var(--shadow);color:var(--text);font-size:calc(16px*var(--k));line-height:1.4;text-align:left;cursor:pointer}
   .linkb{align-self:flex-start;min-height:44px;padding:0 calc(2px*var(--k));border:0;background:none;color:var(--o);font-size:calc(16px*var(--k));text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-  .sheet{position:fixed;inset:0;z-index:5;display:flex;align-items:flex-end;justify-content:center;padding:calc(12px*var(--k)) max(calc(12px*var(--k)),env(safe-area-inset-right,0px)) calc(12px*var(--k) + env(safe-area-inset-bottom,0px)) max(calc(12px*var(--k)),env(safe-area-inset-left,0px));background:rgba(5,6,10,.62)}
+  .sheet{position:fixed;inset:0;z-index:5;display:flex;align-items:flex-end;justify-content:center;padding:calc(12px*var(--k) + env(safe-area-inset-top,0px)) max(calc(12px*var(--k)),env(safe-area-inset-right,0px)) calc(12px*var(--k) + env(safe-area-inset-bottom,0px)) max(calc(12px*var(--k)),env(safe-area-inset-left,0px));background:rgba(5,6,10,.62)}
   .sheet-box{width:100%;max-width:calc(560px*var(--k));max-height:100%;overflow-y:auto;display:flex;flex-direction:column;gap:calc(12px*var(--k));padding:calc(18px*var(--k));border-radius:calc(26px*var(--k));border:calc(1px*var(--k)) solid var(--line-2);background:linear-gradient(165deg,#262b3b,#13161e);box-shadow:var(--shadow)}
   .sheet-box .sbtn{flex:none}
   .snd-row{display:grid;grid-template-columns:minmax(0,1fr) calc(118px*var(--k));align-items:center;gap:calc(10px*var(--k))}
@@ -159,8 +163,10 @@
 </section>
 
 <div class="shell">
+  <div class="sfade" aria-hidden="true"></div>
   <main class="home" id="home">
     <div class="wrap">
+      <p class="gapnote" id="gapnote" role="status" hidden></p>
       <header class="hd">
         <p class="eyebrow" id="eyebrow">Английский · B1–B2</p>
         <h1>Английский <span class="b2">B2</span></h1>
@@ -616,6 +622,28 @@ function applySab(win){
   try{ (win || $("frame").contentWindow).document.documentElement.style.setProperty("--sab", (sabProbe.getBoundingClientRect().height || 0) + "px"); }catch(e){}
 }
 window.addEventListener("resize", () => applySab());
+
+// ——— Строка состояния прозрачная (текст уходит под часы). Если в Safari для сайта включено увеличение страницы,
+//     iOS делает окно приложения на экране «Домой» короче экрана, и внизу остаётся пустая полоса
+//     (замерено на iPhone 21 октября 2026: окно 326×660 при экране 375×812). Тогда подсказываем, как это убрать.
+const satProbe = document.createElement("div");
+satProbe.style.cssText = "position:fixed;left:0;top:0;width:0;height:env(safe-area-inset-top,0px);visibility:hidden;pointer-events:none";
+document.body.append(satProbe);
+function checkCropped(){
+  const standalone = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
+  const sw = Math.min(screen.width, screen.height), sh = Math.max(screen.width, screen.height);
+  if (!standalone || !satProbe.getBoundingClientRect().height || sw >= 500) return;   // только iPhone с плитки
+  const portrait = innerHeight >= innerWidth, zoom = (portrait ? sw : sh) / innerWidth;
+  const cropped = innerHeight * zoom < (portrait ? sh : sw) - 8, n = $("gapnote");
+  if (!cropped || n.dataset.closed) { n.hidden = true; return; }
+  n.textContent = zoom > 1.02
+    ? "Внизу пустая полоса? Её даёт увеличение страницы в Safari (" + Math.round(zoom * 100) + "%). Сохраните прогресс, откройте сайт в Safari, нажмите «аА» → 100%, удалите плитку и добавьте её заново, затем загрузите прогресс."
+    : "Внизу пустая полоса: iOS сделал окно приложения короче экрана. На этом устройстве прозрачная строка сверху не работает — её нужно вернуть тёмной.";
+  n.hidden = false;
+}
+$("gapnote").addEventListener("click", () => { $("gapnote").dataset.closed = "1"; $("gapnote").hidden = true; });
+window.addEventListener("resize", checkCropped);
+setTimeout(checkCropped, 300);
 
 // ——— Мост для тренажёров: вызывается из первой строки каждого тренажёра, до его скриптов
 window.__eng = {
