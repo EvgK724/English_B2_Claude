@@ -1,0 +1,111 @@
+name: Ryan audio and Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'tools/**'
+      - 'sources/**'
+      - 'index.html'
+      - '.nojekyll'
+      - '.github/workflows/ryan-pages.yml'
+  workflow_dispatch:
+    inputs:
+      verify_tts:
+        description: 'Test real Ryan for a new card and missing audio in an isolated copy'
+        type: boolean
+        default: false
+  # Retry automatically after a temporary speech-service failure.
+  schedule:
+    - cron: '23 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: english-b2-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: tools/requirements-audio.txt
+      - name: Install speech tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install -r tools/requirements-audio.txt
+      - name: Test extraction and safe audio updates
+        run: |
+          node --test tools/test_audio_clips.mjs
+          python -m unittest discover -s tools -p 'test_ensure_ryan_audio.py' -v
+      - name: Verify real Ryan synthesis
+        if: github.event_name == 'workflow_dispatch' && inputs.verify_tts
+        run: python tools/smoke_ryan_audio.py
+      - name: Generate missing and changed Ryan recordings
+        run: |
+          python tools/ensure_ryan_audio.py
+          python tools/ensure_ryan_audio.py --check
+      - name: Save verified audio and rebuilt app
+        id: save
+        run: |
+          git add tools/ryan-audio-state.json tools/packs.json tools/catalog.json site/apps site/packs site/index.html site/sw.js
+          if git diff --cached --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Keep new lesson audio in sync with Microsoft Ryan'
+            git push origin HEAD:main
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+          # Never overwrite a newer content update with a stale deployment.
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
+          # Also recover a failed deployment after the audio commit succeeded.
+          publish=true
+          if [ "$GITHUB_EVENT_NAME" = 'schedule' ]; then
+            if curl --fail --silent --show-error --retry 2 --max-time 40 \
+              "https://evgk724.github.io/English_B2_Claude/site/index.html?ryan-check=$GITHUB_RUN_ID" \
+              -o "$RUNNER_TEMP/published-index.html" && cmp -s site/index.html "$RUNNER_TEMP/published-index.html"; then
+              publish=false
+            fi
+          fi
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+      - name: Prepare the existing /site/ URL
+        if: steps.save.outputs.publish == 'true'
+        run: |
+          mkdir _site
+          cp index.html .nojekyll _site/
+          cp -R site _site/site
+      - uses: actions/configure-pages@v5
+        if: steps.save.outputs.publish == 'true'
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.save.outputs.publish == 'true'
+        with:
+          path: _site
+      - name: Publish only after Ryan coverage is complete
+        id: deployment
+        if: steps.save.outputs.publish == 'true'
+        uses: actions/deploy-pages@v4
+      - name: Report
+        run: |
+          echo 'All required lesson recordings are verified Microsoft Ryan. Breaking Bad is excluded.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'New audio is generated before publication; temporary failures retry hourly.' >> "$GITHUB_STEP_SUMMARY"
