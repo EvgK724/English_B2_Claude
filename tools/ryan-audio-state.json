@@ -44353,6 +44353,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "narrow-down-t": {
+          "duration": 1.176,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "fb5fa5c6ef3044b30f06c28f9e4c56d3155f308af563b5b0af361abb9f65bbdc",
+          "packed_sha256": "036f8210295e0464c7a7bb644b175a269e6af5313b71259902947b1070767159",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "e6419e7b80463067d3470c9832eef86d3d9a8d960e8ba6b735679a3c37bad057",
+          "signature": "c54cf49c31c1e51f4a070f3b99016981b4da9f8117eaf1a309c130308c9b16b4",
+          "source": "Microsoft-Edge-TTS",
+          "text": "narrow down",
+          "text_sha256": "fb5fa5c6ef3044b30f06c28f9e4c56d3155f308af563b5b0af361abb9f65bbdc",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "narrow-down-x": {
+          "duration": 6.96,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "8c4b44352c92002b61357ea8700662cc8b2999569628c50c1844b1713bf1b85d",
+          "packed_sha256": "b3e83f481287842f4d93b80ecae43d22cdeb72d380a297ef11254dc4060a6c9c",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "18fc79dbba1edc4ea024e18cc5273c89e929590f0a66f07afceda3efc8731464",
+          "signature": "bbf9f628d5a34bb129ad133b0a0d28e590e724d0c2e5de8ac154c38e0c004d03",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Once the MRI had excluded haemorrhage, the team was able to narrow down the differential to two plausible embolic sources.",
+          "text_sha256": "8c4b44352c92002b61357ea8700662cc8b2999569628c50c1844b1713bf1b85d",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "pass-out-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "5a0d9d76d96cc694c5af70e4b1cb7162aedadf0702d6b19c2652c1dba887d410",
