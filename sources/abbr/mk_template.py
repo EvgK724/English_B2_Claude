@@ -374,7 +374,7 @@ cut('      const rule = el("p", "t-rule"); rule.append(richText(t.rule)); body.a
       if (cards.length){
         const list = el("div", "abl");
         cards.forEach(c => {
-          const row = el("div", "abl-row" + (progress[c.id] && progress[c.id].step >= 1 ? " known" : ""));
+          const row = el("div", "abl-row" + (progress[c.id] ? " known" : ""));
           const txt = el("p", "abl-t");
           const a = el("span", "abl-a", c.ab); a.lang = "en";
           const f = el("span", "abl-f"); f.lang = "en"; f.append(marked(c.full));
