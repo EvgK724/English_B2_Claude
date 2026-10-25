@@ -44591,6 +44591,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "set-off-t": {
+          "duration": 0.936,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "75a5d7819c60445b46e6ddef239ffd42060a1dbe5b9b71052bb0bee9141d1cbe",
+          "packed_sha256": "4911723589e58e45e0b8c7f7ffc8b1b023820667fb44fbe4c6c2de6df4b919ce",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "b7954c315bb1c2ce605056a339e60d54bccc0e3a6548f579a8491f81335ec4de",
+          "signature": "d20ddedb2c8c55917ce75a3ff02381f6646f32e675fdbd1debd4cdbc2014e724",
+          "source": "Microsoft-Edge-TTS",
+          "text": "set off",
+          "text_sha256": "75a5d7819c60445b46e6ddef239ffd42060a1dbe5b9b71052bb0bee9141d1cbe",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "set-off-x": {
+          "duration": 9.288,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "942710053506903676fe5d0fabf53c06adb6af60c5e9b8b285782da09112c074",
+          "packed_sha256": "630d583c92b4ef47eaef2aca28d7b625b1138deb4fb4cc2fb80d608b2504f242",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "06e5b2e989560ad7411792f69c8fcd4bb02edb0be2b487c7ed072a313e456770",
+          "signature": "b1bd2fe11fbd4314d2ec1a795d4390c79542195385e7d4b52652d4c5c2aff2f1",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Although the patient had tolerated the contrast agent several times before, the second infusion set off an anaphylactic reaction that required adrenaline within minutes.",
+          "text_sha256": "942710053506903676fe5d0fabf53c06adb6af60c5e9b8b285782da09112c074",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "set-up-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "ec153694483b2b7d1ccc1bffbbffff8cc09e7568288edd6f18450557ed2dce31",
