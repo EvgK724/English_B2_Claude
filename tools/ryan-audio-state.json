@@ -44383,6 +44383,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "make-out-t": {
+          "duration": 0.96,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "fdcf6ae549cbc281158d622c226b5ce8b90c589e9d39353eb4f5b9559ce1f9f9",
+          "packed_sha256": "f0e0407013f6955e2608caa7ec727b0955e4550424eda876b0694f5b6a14d5f3",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "be48d2384c62e94a93b372fba546fca138006686e35db8eedc3d3bd8567658ef",
+          "signature": "d66e70e61bbf7a0a670ee76f942a17fbcaab8f7e25a6d0c114a757fac36eb75c",
+          "source": "Microsoft-Edge-TTS",
+          "text": "make out",
+          "text_sha256": "fdcf6ae549cbc281158d622c226b5ce8b90c589e9d39353eb4f5b9559ce1f9f9",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "make-out-x": {
+          "duration": 8.424,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "ac8e0f26ca6ba831eb475c2d7d9f1e4d81368b9cded74881dbd00703936c6f85",
+          "packed_sha256": "a23df05e3346d27471127b13f2d2302bd31e7b2b9f41c9cfc920ca73e5790f6e",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "3df9a223bae8ee179ad0a70a45e338c3122d257b5d39dcd88906683ab7e25541",
+          "signature": "3dfbf59be7994d322a410e23945f2e1bc752b464cbffb62cc37aca026d677c1c",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Although the early CT scan was reported as normal, the duty neurologist could just make out a hyperdense artery sign when he reviewed the thin slices.",
+          "text_sha256": "ac8e0f26ca6ba831eb475c2d7d9f1e4d81368b9cded74881dbd00703936c6f85",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "narrow-down-t": {
           "duration": 1.176,
           "edge_tts": "7.3.1",
