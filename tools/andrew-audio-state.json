@@ -351,22 +351,42 @@
       "volume": "+0%"
     },
     "could-have-saved-her-t": {
-      "pending": true,
+      "duration": 1.152,
+      "edge_tts": "7.3.1",
+      "key": "could-have-saved-her-t",
+      "location": [
+        2733840,
+        6912,
+        0.048
+      ],
+      "packed_sha256": "ea67204da45891a782b196e6fbcf36fb375f9b79acf875889af7d81733b26204",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "7087bc350dd9c0999b822603efb3bb0c0ca0c82a6351e6e13c7810458a726cbb",
       "signature": "2cf354329dcd37acf7515a0d2c83103a4cd535ad2abd2fc96024e1af642b4cb9",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "I could have saved her.",
+      "text_sha256": "bf608729cd20f1db0068f236d75fbc688910d9c64f01503381f40155cfd43fe6",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
     "could-have-saved-her-x": {
-      "pending": true,
+      "duration": 2.664,
+      "edge_tts": "7.3.1",
+      "key": "could-have-saved-her-x",
+      "location": [
+        2740752,
+        15984,
+        0.048
+      ],
+      "packed_sha256": "d87a8d35058ab45c3c35f0afbff05c2849de0f150d821f741e7f2ea5b3ad9ac3",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "abf23e942b1f721eb1791574f6c419ad6a6f94b62525bbfc83910517317e11b1",
       "signature": "de6650b70435650635c1656064bb20825cec446472862b0658e458765947144c",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "We could have caught it earlier if she had come in last week.",
+      "text_sha256": "56e496358f6883aac1a8f4740270a3e4519f620e8231fcbf008d37afff0141a3",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
@@ -2079,42 +2099,82 @@
       "volume": "+0%"
     },
     "smartest-guy-i-ever-met-t": {
-      "pending": true,
+      "duration": 1.896,
+      "edge_tts": "7.3.1",
+      "key": "smartest-guy-i-ever-met-t",
+      "location": [
+        2708496,
+        11376,
+        0.048
+      ],
+      "packed_sha256": "76bcd11da5aa592b6f91a568b43039b735342754a7597bfb1f263b034a59f6bd",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "00027235afb2caea151141feb6b2cb1a7b58e28d1713b5ec3f0185732c71dceb",
       "signature": "fbbb99e7f157b98646ecba51cefc21dccccad49bf33d3276893e5aeb664e6d8f",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "You're the smartest guy I ever met.",
+      "text_sha256": "6c37de571ecd3c6963c6f2f50105620ed9750a7447c50b2f1923a20a7e4730e7",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
     "smartest-guy-i-ever-met-x": {
-      "pending": true,
+      "duration": 2.328,
+      "edge_tts": "7.3.1",
+      "key": "smartest-guy-i-ever-met-x",
+      "location": [
+        2719872,
+        13968,
+        0.048
+      ],
+      "packed_sha256": "b78cd31815756682d7fe99345fd0c3524c0514e224ee9316f7471194ce1c467e",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "a177d5357ab33c050c82b0ab9cb6781c605854ca2540bfdd11dbc31ede263f77",
       "signature": "08883181e3cc6e8ab97f273ef3b5c69f9fe0e34df22d889c4f48aff2d9126872",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "This is the best scanner I have ever worked with.",
+      "text_sha256": "bd1070d411b22a4530646a521f03e344cac8163fbc9677da3a87cc3a75e086df",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
     "sorry-for-your-loss-t": {
-      "pending": true,
+      "duration": 1.248,
+      "edge_tts": "7.3.1",
+      "key": "sorry-for-your-loss-t",
+      "location": [
+        2679840,
+        7488,
+        0.048
+      ],
+      "packed_sha256": "59245efdbfab961a135fde12cccf3ca51233fedb114f265b0a6c742e73812f21",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "612da1bf9df14edff8c9786d969b5da998133b84fb44fb5ebbbedda83db4bffc",
       "signature": "1e25f0f5ac057b9a11d49b3ceccdfe622171e29595edb08c23b7f2930dc7a179",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "Sorry for your loss.",
+      "text_sha256": "3762c32ed1a6698449017deda803455b0605ad3c523985da81ed8c8989fe1f52",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
     "sorry-for-your-loss-x": {
-      "pending": true,
+      "duration": 3.528,
+      "edge_tts": "7.3.1",
+      "key": "sorry-for-your-loss-x",
+      "location": [
+        2687328,
+        21168,
+        0.048
+      ],
+      "packed_sha256": "2c57373e0ebab5858d2f53685038ffee90cc7f08a72d4edbec17e449fede0f76",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "5d98ccf9cfecd010a0c92dbaa440d1632a306599c039de46f003f018302caae7",
       "signature": "227eec20eba658dd8624fec40c7c07ec9e692a654dac0243eb8f86c41463b7d8",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "I am so sorry for your loss; take as much time as you need.",
+      "text_sha256": "dfd6f43b4b48f26fb06dd5fcc3111995dc602c3b139d9798ef1931924cbec0a0",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
@@ -2629,22 +2689,42 @@
       "volume": "+0%"
     },
     "what-the-hell-t": {
-      "pending": true,
+      "duration": 1.488,
+      "edge_tts": "7.3.1",
+      "key": "what-the-hell-t",
+      "location": [
+        2650320,
+        8928,
+        0.048
+      ],
+      "packed_sha256": "2fe29a703df238168385aee30fa68ecffe795a71ee80d3693d216bcfeb59b114",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "15bc2973d846147c5e1fb7011ef3c8864da2272a7cddcaf67e9231b2d4674648",
       "signature": "cea0bd1340286323e1f5718891632d535415f9f1c4f77e9ea1308360f20a5fff",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "What the hell are you talking about?",
+      "text_sha256": "c80c7bc88b5c9ce571a7801036557273f608a569652bd3c75850a2b5142f32cb",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
     "what-the-hell-x": {
-      "pending": true,
+      "duration": 3.432,
+      "edge_tts": "7.3.1",
+      "key": "what-the-hell-x",
+      "location": [
+        2659248,
+        20592,
+        0.048
+      ],
+      "packed_sha256": "0cfc7aab219b82e7979c47348a4f4997946d83d8165af3adc8c26958b6a29243",
       "pitch": "+0Hz",
       "rate": "-5%",
+      "raw_sha256": "c3031a93ab99abb8f6eeb3c1c1bc02533ddf807fb3aa8540fa178ec27b4d5e70",
       "signature": "4d76f7b6b6c8734591379a4d5a71c115cc74cd799c42a73c14c7d1d4f5dd220c",
-      "source": "approved-missing-recording",
+      "source": "Microsoft-Edge-TTS",
       "text": "What the hell are you talking about? I signed those papers yesterday.",
+      "text_sha256": "3761e92564296f26f4e0383b151c27e4e797942b66cf60dff77a74ab8e978741",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
