@@ -1,125 +1,188 @@
-# Daily decks with Codex
+# Daily decks: Codex content, GitHub Actions speech and publication
 
 Repository: `EvgK724/English_B2_Claude`, branch `main`.
-Published application: https://evgk724.github.io/English_B2_Claude/site/
+Application: https://evgk724.github.io/English_B2_Claude/site/
 
-The two Codex tasks update GitHub directly. The old Claude standalone artifacts
-and the former 11:52 artifact transfer are no longer prerequisites. This document
-does not install a schedule. The former tile footers specify approximately 08:00
-for Breaking Bad and 11:00 for phrasal verbs, in Asia/Yekaterinburg; the scheduler
-configuration must be managed separately, without duplicate tasks.
+The user explicitly authorized this execution path on 2 November 2026. Codex
+prepares verified teaching content without contacting the speech service. The
+existing `Ryan audio and Pages` workflow creates recordings and publishes only
+complete decks. The Claude artifacts and former 11:52 transfer are no longer
+prerequisites. Scheduling is managed separately in Codex; do not create or change
+timers. The existing GitHub hourly retry is not a generator of teaching content.
+The daily quota for 2 November was already completed before this migration.
 
-## Runtime
+## Codex runtime
 
-Python 3.11+, Node.js (the current Pages workflow uses 22), ffmpeg on PATH, and
-`edge-tts==7.3.1` from `tools/requirements-audio.txt`. Use a virtual environment.
-GitHub push access and network access to Microsoft's speech service must already
-be available. No API key, paid speech service, or new credential is required.
-If speech generation or authorization fails, stop without publishing a partial
-batch. Do not change voices, install unrelated software, or alter other tasks.
+Python 3.11+ and an already authorized way to read/write this repository are
+sufficient. Queue preparation uses the Python standard library only: no edge-tts,
+ffmpeg, Node, Microsoft speech domain or speech API key is required in Codex Cloud.
 
-For the migration's local checkout the prepared interpreter is
-`../audio-venv/bin/python`, with ffmpeg in `../audio-bin`. These local paths are
-not portable; a cloud runner uses its own provisioned interpreter and ffmpeg.
+Preserve the cloud network policy, inherited proxy configuration and TLS
+verification. A policy denial is not permission to retry through another endpoint,
+proxy, transport or credential. The user specifically authorized speech in GitHub
+Actions; this is the documented execution path, not an implicit response to a denial.
 
-## Each run
+Use the environment's existing GitHub integration or supported Git workflow.
+Public fetch and an up-to-date `git push --dry-run` do not prove actual write
+access. Actual write access from a fresh cloud task still needs confirmation.
+If publication is unavailable, preserve the validated request and report the
+exact blocker. Do not create a PAT, broaden grants, add paid services or use the
+`gh` path that was explicitly denied in the cloud diagnostic.
 
-1. Use a clean, current checkout of `main`. Read `AGENTS.md`, this file, and the
-   last cards in `site/apps/<key>.html`. Use an isolated checkout if another task
-   is working in the repository. Run `git pull --ff-only` before preparing data.
-2. Run `python tools/daily_deck.py status phrasal` or `status bbapp`. The script
-   computes today's date in Asia/Yekaterinburg. If today's quota is complete,
-   stop successfully. A partial quota or inconsistent ledger requires inspection;
-   never add another full batch to it. Do not backfill missed days.
-3. Choose exactly one new phrasal verb or two new Breaking Bad units, checking all
-   existing IDs and terms. Check their meaning and usage in a reputable dictionary.
-   For Breaking Bad, verify the actual phrase and speaker against a script and the
-   aired episode's transcript/subtitles. A draft script alone is insufficient
-   where the broadcast differs. Prefer short useful excerpts. Never invent a
-   series attribution or copy a long scene. Examples and explanations are original.
-4. Write the JSON batch described below outside the repository. `date` and every
-   card's `added` must equal the date returned by `status`.
-5. Run `python tools/daily_deck.py append <key> /absolute/path/batch.json`.
-   It synthesizes and decodes two clips per card before changing published files,
-   checks duplicates and daily quota, preserves old audio bytes/IDs, records source
-   URLs and audio fingerprints, updates the catalog/index, and rebuilds the shell.
-   No device-speech fallback is accepted. The append operation uses one repo lock
-   and staged replacements with rollback on caught write/build failures.
-6. Review the bounded diff and validate:
+## Each Codex run
+
+1. Use a clean, current, isolated checkout of `main`. Read `AGENTS.md`, this file
+   and recent cards in `site/apps/<key>.html`. Pull with `git pull --ff-only`.
+2. Run `python tools/daily_queue.py status phrasal` or `status bbapp`.
+   The date is calculated in `Asia/Yekaterinburg`.
+   - `complete`: do not add cards; a successful no-op. This describes repository
+     state, so verify deployment before claiming that the result is live.
+   - `queued`: do not prepare another batch. Report the existing request and
+     inspect its Actions result. An older outstanding request also blocks a new
+     request for that deck.
+   - `conflict`: stop and report the exact inconsistency.
+   - `pending`: continue with today's new content.
+3. Choose exactly one new phrasal verb or two short Breaking Bad units. Check all
+   existing terms/IDs and verify meaning/usage with reliable sources. For BB verify
+   exact wording and speaker against a script and the aired episode's transcript
+   or subtitles. A draft alone is insufficient where it differs from broadcast.
+   Do not invent quotations or copy long scenes. Examples/explanations are original.
+4. Write the batch JSON below outside the repository. `date` and each `added`
+   must equal the date from status. Do not backdate or fill missed dates in bulk.
+5. Run `python tools/daily_queue.py prepare <key> /absolute/path/batch.json`.
+   This validates the quota, duplicates, source metadata and current state, then
+   creates only `data/requests/YYYY-MM-DD-<key>.json`. It does not change the site
+   or generate audio. An identical retry is a no-op; a conflicting request stops.
+6. Review that single JSON, its sources and the diff. Run:
 
    ```sh
-   python -m unittest discover -s tools -p 'test_daily_deck.py' -v
-   node --test tools/test_audio_clips.mjs
-   python tools/ensure_ryan_audio.py --check
+   python tools/daily_queue.py verify
+   python -m unittest discover -s tools -p 'test_daily_queue.py' -v
    git diff --check
    ```
 
-   Check the new ledger's clip offsets/hashes against the pack and inspect the
-   actual new cards. The append command decodes both raw and packed clips and
-   saves their checksums. Existing historical card objects must be unchanged.
-7. Commit only `site/apps/<key>.html`, `site/packs/<key>.mp3`, `tools/packs.json`,
-   `tools/catalog.json`, `site/index.html`, `site/sw.js`, today's
-   `data/daily/<date>-<key>.json`, and (for phrasal only)
-   `tools/ryan-audio-state.json`. Commit and push to `main`; never force-push.
-   If the push is rejected, fetch the new head, inspect what changed, and start
-   from a clean current checkout. Re-check the daily quota before reapplying;
-   another runner may already have published it. Do not manually merge generated
-   pack offsets or overwrite newer content.
-8. Verify the existing `Ryan audio and Pages` workflow succeeds for the published
-   head and compare the live `/site/` HTML, relevant app, pack and hashes. Open the
-   tile, find the new cards, and play term and example audio. A successful push
-   alone is not proof of deployment. Report date, new terms, commit and deployment
-   result. Do not tell the user a failed/queued deployment is live.
+   Commit only the exact new request file, then normal push to `main`. Never
+   force-push, edit a committed request or mix unrelated changes. With a GitHub
+   connector, use its supported atomic commit/ref flow against the freshly read
+   parent SHA, or an exact-path create operation that rejects an existing file.
+   Do not overwrite an existing request. No new credentials or broader scope are
+   required by this design; whether the executor can actually write must be tested.
+7. If push/ref update is rejected, read fresh `main` in a clean checkout and run
+   status again. If the same request is already queued/complete, do not duplicate
+   it. Re-prepare only if still pending and still the same local day. Do not merge
+   MP3 files, offsets or generated journals manually. A date rollover before
+   submission requires fresh current-day preparation, not a backdated push.
+8. Observe the existing Actions workflow, its generated audio commit and Pages
+   deployment. Fetch resulting `main`, confirm request/ledger agreement and compare
+   the live app, audio pack and cache hashes. A submitted request or green unit
+   tests alone are not proof of publication. Report `queued`, `failed` or
+   `published` accurately, with date, terms and commit/run links. If the job
+   continues past the task, report queued; the existing hourly workflow owns retries.
 
-The shared append lock covers repository writes; it does not lock a later Git
-push. Isolated checkouts plus a normal fast-forward push and a fresh quota check
-on rejection prevent concurrent tasks from silently overwriting each other.
+`au: 1` in a request is the required final card shape, not a claim that audio
+already exists. Requests are outside the deployed site and cannot be displayed
+to learners before the publishing workflow finishes them.
 
-## Batch shape and style
+## Batch shape and teaching style
 
 ```json
 {
   "date": "YYYY-MM-DD",
-  "cards": [
-    {
-      "id": "stable-unique-slug",
-      "au": 1,
-      "added": "YYYY-MM-DD",
-      "term": "go over",
-      "ipa": "/ˌɡəʊ ˈəʊvə/ · went over · gone over",
-      "pos": "phrasal verb · переходный · неразделяемый",
-      "ru": "Короткий перевод — уточнение значения",
-      "note": "Русское пояснение: употребление, управление, частая ошибка, отличие от близкого выражения.",
-      "ex": "An original English example.",
-      "exru": "Перевод собственного примера.",
-      "sources": [{"url": "https://dictionary.example/entry", "title": "Checked reference"}]
-    }
-  ]
+  "cards": [{
+    "id": "stable-unique-slug",
+    "au": 1,
+    "added": "YYYY-MM-DD",
+    "term": "a new phrasal verb",
+    "ipa": "/British IPA/ · past form · past participle",
+    "pos": "phrasal verb · переходный · разделяемый",
+    "ru": "Короткий перевод — уточнение значения",
+    "note": "Употребление, управление, типичная ошибка, отличие от близкого выражения.",
+    "ex": "An original natural English example.",
+    "exru": "Перевод собственного примера.",
+    "sources": [{"url": "https://dictionary.example/entry", "title": "Verified reference"}]
+  }]
 }
 ```
 
-`bbapp` requires two objects and uses `who` and `reg` instead of `ipa` and `pos`.
-Add episode, speaker, locator/timecode and excerpt status in source metadata.
-Sources are saved in the repository ledger, not inserted into the existing card
-layout. `term` is the verified excerpt; `ex` is an original everyday/workplace
-example, never represented as dialogue from the show.
+Replace the example URL with the actual checked source. Each source requires
+`url` (HTTP(S), without credentials) and `title`; additional evidence metadata
+is retained. Optional source metadata must be valid finite JSON.
 
-Phrasal cards retain a useful short translation, British IPA and verb forms,
-transitivity/separability, Russian usage guidance and a natural B1–B2 example.
-Use medical/workplace contexts only as clearly fictional language examples unless
-any clinical claims have been independently verified. Existing SRS intervals
-`[1,3,7,16,35,90]`, IDs, `flashcards:state` and `bbphrases:state` stay unchanged.
+`bbapp` requires two cards, using `who` and `reg` instead of `ipa` and `pos`.
+Include episode, speaker, locator/timecode and short-excerpt status in source
+metadata. Its `term` is a verified excerpt; `ex` is an original everyday/workplace
+example, never represented as dialogue from the show. Phrasal cards retain British
+IPA, verb forms, transitivity/separability, Russian usage guidance and natural
+B1–B2 examples. Medical examples are fictional and must not introduce unchecked
+treatment claims.
 
-## Speech identity
+Preserve IDs, layouts, localStorage keys `flashcards:state`/`bbphrases:state`
+and intervals `[1,3,7,16,35,90]`. Existing content and correct audio stay unchanged.
 
-The existing corpus and `CLAUDE.md` identify phrasal as Ryan, en-GB, and Breaking
-Bad as Andrew, en-US. Older BB files do not retain the precise original synthesis
-request. New BB recordings explicitly use the standard `en-US-AndrewNeural`
-voice (not the separate multilingual voice); all old recordings remain byte-for-byte
-unchanged. New clips use rate `-5%`, pitch `+0Hz`, volume `+0%`; each ledger records
-the exact voice, text, parameters and SHA-256 values. This is synthetic Microsoft
-speech, not the actors' recordings.
+## Queue and retry contract
 
-The existing hourly `ryan-pages.yml` job retries audio/publication failures; it
-does not create daily teaching content. Breaking Bad is intentionally excluded
-from its Ryan generation. Keep that behavior and existing retry schedule.
+Requests are immutable receipts and remain at
+`data/requests/YYYY-MM-DD-<key>.json` after completion. The envelope contains
+`schema`, `deck`, `submitted_at` (UTC), `batch` and `batch_sha256`. Let
+`prepare` generate it; do not construct or alter its timestamp/hash manually.
+The matching `data/daily/YYYY-MM-DD-<key>.json` records reviewed sources and
+verified audio text, voice, parameters, offsets and hashes.
+
+New preparation accepts today only. An already-submitted request may finish after
+midnight: its UTC submission timestamp must fall on its original Yekaterinburg
+date. At most one outstanding request per deck is allowed. This permits retrying
+an approved batch without inventing a backlog of missed days. `verify` permits a
+valid outstanding queue; the publishing gate `check` requires it to be complete.
+
+`process` validates all pending requests before synthesis, runs each through
+`daily_deck.append_batch` in an isolated staged copy, and installs the bounded
+output bundle only after all batches succeed. A failed second deck cannot leave
+the first deck partially installed. Existing files are restored on caught write
+failures. A repository lock protects local operations; normal Git push/ref
+comparison prevents one checkout from silently overwriting a newer remote head.
+
+## Publishing workflow
+
+The existing `.github/workflows/ryan-pages.yml` retains its permissions, single
+`english-b2-pages` concurrency group and `23 * * * *` hourly retry. GitHub runs
+Python 3.11, Node 22, ffmpeg and pinned `edge-tts==7.3.1`. No new secret is used.
+
+1. Run extraction, queue and safe-publication regression tests.
+2. Verify fresh Ryan and Andrew in an isolated queue roundtrip when the tracked
+   pipeline code changes, or on `workflow_dispatch` with `verify_tts: true`.
+   Six synthetic test recordings and their cards stay in a temporary copy and
+   never enter the published site. `tools/speech-smoke-state.json` records the
+   source hash, GitHub run and audio evidence; unchanged code reuses that evidence.
+3. Run `python tools/daily_queue.py process`.
+4. Run Ryan ensure/check, then separate Andrew ensure/check, queue `check` and
+   speech-evidence `--check`. No incomplete request may pass publication.
+5. Commit generated audio, HTML, indexes, state and daily journals together; push
+   without force and reject a stale head. Publish one verified Pages artifact.
+   A scheduled run skips redeployment when the published shell already matches.
+
+If synthesis, validation or push fails before deployment, the prior complete
+Pages deployment remains. Every retry starts from current `main`; it never merges
+generated MP3/index conflicts. Push-triggered and hourly jobs use the same workflow
+and concurrency group. If a newer request arrives during generation, a rejected
+generated commit is left unpublished and a later run processes fresh main.
+The head is checked again immediately before deployment; no partial audio bundle
+is published. A deployment failure is reported as such, even if its audio commit
+was saved; the hourly workflow can retry the deployment.
+
+## Voices and the approved historical repair
+
+Phrasal: `en-GB-RyanNeural`; BB: standard `en-US-AndrewNeural`. New clips use
+rate `-5%`, pitch `+0Hz`, volume `+0%`. These are synthetic Microsoft voices,
+not actors' recordings. Never substitute another voice or device TTS for publication.
+
+Ryan's global extractor continues to exclude BB. Andrew has its own state/checks;
+new daily clips are adopted only from matching verified ledgers. Historical bytes
+are fingerprinted with `baseline_parameters_verified: false`, without claiming
+that old synthesis parameters were recovered. Four explicitly approved old cards
+receive their missing term/example recordings: `what-the-hell`,
+`sorry-for-your-loss`, `smartest-guy-i-ever-met`, `could-have-saved-her`.
+Their content/IDs stay unchanged; only `au: 1` is added after verification.
+Other missing/replaced/changed old Andrew recordings stop for inspection rather
+than being silently overwritten.
+
+The two complete task prompts are in [CODEX_DAILY_PROMPTS.md](CODEX_DAILY_PROMPTS.md).

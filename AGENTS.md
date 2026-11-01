@@ -12,8 +12,17 @@ old Claude artifact transfer procedure only for `phrasal` and `bbapp`.
   voice or device speech for publication.
 - Verify Breaking Bad excerpts and speakers from sources; retain provenance in
   the daily ledger. Write original teaching examples; do not invent quotations.
-- Use `tools/daily_deck.py` to append, validate audio, update indexes and rebuild
-  cache hashes together. Do not run the historical `sources/*/build.py` files.
+- Codex prepares content only with `tools/daily_queue.py status/prepare`. Commit
+  only the resulting `data/requests/YYYY-MM-DD-<deck>.json`. Do not run speech
+  synthesis in Codex Cloud or weaken its network policy.
+- The existing GitHub Actions workflow processes the queue with `daily_deck.py`,
+  validates separate Ryan/Andrew coverage and ledgers, then publishes complete
+  packs. This execution path was explicitly authorized on 2 November 2026.
+  Do not run the historical `sources/*/build.py` files.
+- A queued request is immutable. Do not prepare another request for that deck
+  while one awaits audio. Retry that approved request after a failure; do not
+  invent backdated cards. Only Actions may finish a request submitted on its day
+  after midnight. Follow `tools/DAILY_DECKS.md` for pending/conflict handling.
 - Scheduled work may publish only its reviewed daily update to this repository's
   existing `main` branch. Never force-push; inspect a rejected push and reassess
   today's status against the new head. Keep unrelated applications untouched.

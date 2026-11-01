@@ -7,13 +7,15 @@ on:
       - 'site/**'
       - 'tools/**'
       - 'sources/**'
+      - 'data/requests/**'
+      - 'data/daily/**'
       - 'index.html'
       - '.nojekyll'
       - '.github/workflows/ryan-pages.yml'
   workflow_dispatch:
     inputs:
       verify_tts:
-        description: 'Test real Ryan for a new card and missing audio in an isolated copy'
+        description: 'Force fresh Ryan and Andrew queue verification in an isolated copy'
         type: boolean
         default: false
   # Retry automatically after a temporary speech-service failure.
@@ -58,25 +60,38 @@ jobs:
       - name: Test extraction and safe audio updates
         run: |
           node --test tools/test_audio_clips.mjs
-          python -m unittest discover -s tools -p 'test_ensure_ryan_audio.py' -v
-          python -m unittest discover -s tools -p 'test_daily_deck.py' -v
-      - name: Verify real Ryan synthesis
-        if: github.event_name == 'workflow_dispatch' && inputs.verify_tts
-        run: python tools/smoke_ryan_audio.py
+          python -m unittest discover -s tools -p 'test_*.py' -v
+      - name: Verify fresh speech for this pipeline revision
+        env:
+          FORCE_SPEECH_TEST: ${{ github.event_name == 'workflow_dispatch' && inputs.verify_tts }}
+        run: |
+          if [ "$FORCE_SPEECH_TEST" = 'true' ]; then
+            python tools/smoke_daily_audio.py --force
+          else
+            python tools/smoke_daily_audio.py
+          fi
+      - name: Complete reviewed daily requests with their approved voices
+        run: python tools/daily_queue.py process
       - name: Generate missing and changed Ryan recordings
         run: |
           python tools/ensure_ryan_audio.py
           python tools/ensure_ryan_audio.py --check
+      - name: Complete and check separate Andrew coverage
+        run: |
+          python tools/ensure_andrew_audio.py
+          python tools/ensure_andrew_audio.py --check
+          python tools/daily_queue.py check
+          python tools/smoke_daily_audio.py --check
       - name: Save verified audio and rebuilt app
         id: save
         run: |
-          git add tools/ryan-audio-state.json tools/packs.json tools/catalog.json site/apps site/packs site/index.html site/sw.js
+          git add tools/ryan-audio-state.json tools/andrew-audio-state.json tools/speech-smoke-state.json tools/packs.json tools/catalog.json data/daily site/apps site/packs site/index.html site/sw.js
           if git diff --cached --quiet; then
             echo 'changed=false' >> "$GITHUB_OUTPUT"
           else
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m 'Keep new lesson audio in sync with Microsoft Ryan'
+            git commit -m 'Publish verified daily decks and Ryan/Andrew recordings'
             git push origin HEAD:main
             echo 'changed=true' >> "$GITHUB_OUTPUT"
           fi
@@ -104,11 +119,14 @@ jobs:
         if: steps.save.outputs.publish == 'true'
         with:
           path: _site
-      - name: Publish only after Ryan coverage is complete
+      - name: Recheck main before deploying the verified artifact
+        if: steps.save.outputs.publish == 'true'
+        run: test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
+      - name: Publish only after both voices and daily ledgers are complete
         id: deployment
         if: steps.save.outputs.publish == 'true'
         uses: actions/deploy-pages@v4
       - name: Report
         run: |
-          echo 'All required lesson recordings are verified Microsoft Ryan. Breaking Bad is excluded.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'New audio is generated before publication; temporary failures retry hourly.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Ryan coverage and separate Andrew coverage are complete; daily requests and ledgers agree.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Only complete audio is published. Existing queued requests retry hourly; no missed-date cards are invented.' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,2961 @@
+{
+  "baseline_note": "Existing Andrew bytes are preserved. Historical synthesis parameters and exact voice variant were not independently recovered.",
+  "baseline_source_commit": "6c3d14c2b26938e11168c014799ce26086f054b4",
+  "clips": {
+    "a-good-thing-going-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1339776,
+        16128,
+        0.048
+      ],
+      "packed_sha256": "9e78d6fae13409bf9a249b6cb190ca1fd4cb2ac1ee4bdba1d3dd1ac5fa236e6f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "11a53bec80676a3c645c2d951cd41cedb0a9f4a02e66dec3a0831068844b26f3",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "We had a good thing, you stupid son of a bitch.",
+      "text_sha256": "718781a55f36f315fd484d390693494bd84f35410b78240c41314930140171bb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "a-good-thing-going-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1355904,
+        22608,
+        0.048
+      ],
+      "packed_sha256": "4bd551f4c1aeb73031445ea88ebb7ee5012eb6f4fdffd3dd137d0825afd6cb65",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "96501b8375cbb08b68df9db17bd1fc200e316ec5636902e42db9c0d442aad748",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "We had a good thing going with that supplier until someone changed the terms.",
+      "text_sha256": "0436fa4e46c7194dd6e45e3e79dabb22b67c897629722d3b7b1b2e4daab8e0a6",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "a-man-provides-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        0,
+        10800,
+        0.024
+      ],
+      "packed_sha256": "ba8316bda7eee188e7c68c68a5acf790e071cf67c79864f04210028da22e9e16",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "80703f4073f45171947fbd9cda6384a5a967ec1482a47bbe0f36026859c8747f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "A man provides for his family.",
+      "text_sha256": "c785ac54a8392971abb42a0c30ce37955a390a6869876eee7f76838964c3a568",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "a-man-provides-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        10800,
+        24768,
+        0.048
+      ],
+      "packed_sha256": "7fb4272b9a8662280f701443b25afd186f2b566e42ef3dad49a2ec206e40c5ee",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6a1edfcc57bd13c76bc3ea0ec96c00942b55ce68080787e378333a2a04c6e98a",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "A good doctor explains the risks before the patient thinks to ask about them.",
+      "text_sha256": "94babd2cfb3e04f954005feeca9ebae2087e1581af99b2bd190f05dbcf9677d0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "all-along-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1574208,
+        8928,
+        0.048
+      ],
+      "packed_sha256": "5bc0d2fc9f2ad63141a64f32d83b6d026cc6e5715dbccb47d21e9ca632d54650",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c4c198cd2f4157ac43c813eb8fb0ffa3f675e657555856dd08a557303f958e22",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "All along, it was you.",
+      "text_sha256": "0aa01ccfdb4c4df53686c8fcfc01ef23f8169834dc137449993136a6a56ee45f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "all-along-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1583136,
+        16848,
+        0.048
+      ],
+      "packed_sha256": "05ab8c1c21cc4e130ea64672f58b4785c3bb72c42bc2d654f71683fc72b2e409",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6550adc1d3a530bcde0e59c9bed24cb99ec8ae71e3685e8ef8982a7b6ee7633c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "He had the results all along and never told us.",
+      "text_sha256": "8b03930b947144b3ac519caf6df7bc343cff8c02437231302076c3e229d7a636",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "apply-yourself-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1440720,
+        5904,
+        0.048
+      ],
+      "packed_sha256": "0141def3e389a7d2a8afd2e6d166ace6e8db713266fd7f86dd5c89958c1c0174",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "93573f52e1d192ec839bbc00177af587400a0d1d28abf81b28fc3232faf80bfd",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Apply yourself.",
+      "text_sha256": "b2c2be7edbfcd4d24fd750e3a7b85a46f9b1c9d6a8801b4f46838c223d063623",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "apply-yourself-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1446624,
+        23040,
+        0.048
+      ],
+      "packed_sha256": "ca965061795d6749af8a8c693107b8f6b0975bb2c3ae66418bca0bbd97efae12",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "852d45d43c2226523761cb00ac7a2e22188f2b15cb03d2e9db76bb404a8f5c03",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "If you apply yourself for two weeks, you'll pass the exam easily.",
+      "text_sha256": "4c8efc10c70d478369fc99f22d5541bf8fbc65106fa8132cb34dd87fb300a834",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "at-this-rate-t": {
+      "duration": 3.552,
+      "edge_tts": "7.3.1",
+      "key": "at-this-rate-t",
+      "ledger": "data/daily/2026-11-02-bbapp.json",
+      "location": [
+        2611296,
+        21312,
+        0.048
+      ],
+      "packed_sha256": "bc96fae647d9bef746e58f0a8308d49b994b2305b93556a75c418de122b0c402",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "bc707f1c2248d9f046ce91581942f9edf66c77c73afb96fc0a73ea6c3bc809ff",
+      "signature": "20aa03d3ef96680c934d9ab48caf0d7c42f3a86e9ba994ae9d336f3c2cb141c7",
+      "source": "Microsoft-Edge-TTS",
+      "text": "At this rate, in fifty or sixty years you'll be rich.",
+      "text_sha256": "8d150e0eb4d7585fb502a8a6e39c0a44387ed83dc75806c47473c9410559d0cf",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "at-this-rate-x": {
+      "duration": 2.952,
+      "edge_tts": "7.3.1",
+      "key": "at-this-rate-x",
+      "ledger": "data/daily/2026-11-02-bbapp.json",
+      "location": [
+        2632608,
+        17712,
+        0.048
+      ],
+      "packed_sha256": "61ef43686054f1cb26acefb259c27442e4b474da1bb8541b6222e8674de50be3",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "366fb812d4dd7153b73ef71470652978882be885ff17fba126afe9713ab51c46",
+      "signature": "8dc2b51232be587f7259568e3c786d9bfc42c85995a4ff689f9f12be72a87ca5",
+      "source": "Microsoft-Edge-TTS",
+      "text": "At this rate, we'll finish the report before lunch.",
+      "text_sha256": "0aa391658b058716c882b27ed5dbf5ca0d6c7b584bcc685198c8f4a5e5b2efd5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "better-call-saul-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        35568,
+        5904,
+        0.048
+      ],
+      "packed_sha256": "19b1f9ecab73495c8da5d05437415c056531590a8415b0a43f347a4febc35bcf",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "053bd41493e0657283b760e9ea5fe2852ad8081b8f2d51d2ec53219132d293d5",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Better call Saul.",
+      "text_sha256": "f026b237b6981d9dd3d2b988a90942feee5eb61b866b57d41658e0b893424e01",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "better-call-saul-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        41472,
+        17136,
+        0.048
+      ],
+      "packed_sha256": "72d962b64ff91d87b43002d592f9fe917c0b9c7f07cc2c42258ad551de3a6ca0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fed9df49d01a52ab24c8c61e05073f351e86873aafd1ad48a92f372f7c649b9f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You'd better call him back before he changes his mind.",
+      "text_sha256": "f547e6292a6020321bd8e26449f7b7766a4028db0ab8c1ec2d5e4f7b06d551b0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "cant-afford-to-do-this-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1978704,
+        8640,
+        0.048
+      ],
+      "packed_sha256": "16932c3e20cf3ad57535b5619fbfd77117c7c477afdb0cbdd8acaf861ac9d7f3",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4fd6e59ba63ef100f94119880004a44d43551b10fe6ae23f5fe3b1c86c253cb7",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You can't afford to do this.",
+      "text_sha256": "9588044cd43ed2473341ea7b9037752838b69e2299c9ce8ba2439ec7ff1e357b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "cant-afford-to-do-this-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1987344,
+        15264,
+        0.048
+      ],
+      "packed_sha256": "fb6ad533ba62f3ebccf8c23f7e61b25b1c8dad21cba75b0fb6dd51ec75fc195e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "d9869578fab5825c2655c851f188ba6ff0dbb92768b029b517c9cfa0f7e55f48",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "We can't afford to lose another nurse this month.",
+      "text_sha256": "a81738b0e579f951165036b792ca18e8268755d595492f411b6d16a395663fae",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "capable-of-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        58608,
+        10800,
+        0.024
+      ],
+      "packed_sha256": "1f38e57d9b4121c07f0d4048a10ede798f399dd52dcae1fcb4f26c3d7aee9ce0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "2f2258df8d89c34976692ef877ee96703c07affee079b8c92d7bfc9c6889dfe0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You're not capable of being the guy.",
+      "text_sha256": "75b02b33b615f2e2f2bbf74e4cdda80a8b4d792574cbfa50a583510a314cdf29",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "capable-of-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        69408,
+        16992,
+        0.048
+      ],
+      "packed_sha256": "abe23c78cdde62aa291607fe68204e428495fd0590c3be40faef91dcafbf3e84",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "57fd7aa0bcd8616e0da1fa73ef5b79609561a3e8e0624d03925f38436380dc68",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm not sure he's capable of handling this on his own.",
+      "text_sha256": "be7e5edffdc439baa1005dacea42950b0dc29ef541852e82dacd9ced2fcd769c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "come-to-an-end-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2554560,
+        11232,
+        0.048
+      ],
+      "packed_sha256": "1c32a800520a98edbc7197a554d51098f7df3fb5a65b74ad34f972f71a6310cd",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "3fdfb1f75b803d039e1278de64870019769608e7eb2defa31311e9a49cbe2135",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "All bad things must come to an end.",
+      "text_sha256": "9d70ee5e2845bc883c7953df9b658e2e83c87b170c6cfab665590233b7293c1d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "come-to-an-end-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2565792,
+        22752,
+        0.048
+      ],
+      "packed_sha256": "802656cf77df3f198f762069aa4634fcbc3cb167cf4ad7973a6c2129f0ddd991",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ac766b895958bb27590d8b5edb69126eeb4c204a27000ac99571f86e167141cc",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Even the busiest week must come to an end, so hang in there.",
+      "text_sha256": "b69a8df683183513e6f04026b6920b5d9e7c938ba1da67e98801260464cba5ca",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "committed-enough-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        86400,
+        18576,
+        0.048
+      ],
+      "packed_sha256": "40f60ca20a66171f1fc4f98ef974cb4005979d6daf12b45838a1ed840846743b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "05c8fdc41d29dcdf6c2096e32be79f0b7c6f6db334dab9c5ba19627fe2be192b",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "If you're committed enough, you can make any story work.",
+      "text_sha256": "f97586873bb9c8fb29fbe4459f49b42d1238d0bcf9e691f3076c75e5a4640973",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "committed-enough-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        104976,
+        27072,
+        0.048
+      ],
+      "packed_sha256": "9401db974087fb7178f2bf7eeb54b7ed2708d9086c6c21e7a1a54b73b052ec44",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "461e2a9386cfecf6230b84b86551e16c22c6eced95d2732911360217bbcf40f8",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "The new schedule is tight, but if we're organized enough, we can make it work.",
+      "text_sha256": "1e10b7c667f9859029c469ed24fb472dac62ae8528a423745c0b31a74176b480",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "could-have-saved-her-t": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "2cf354329dcd37acf7515a0d2c83103a4cd535ad2abd2fc96024e1af642b4cb9",
+      "source": "approved-missing-recording",
+      "text": "I could have saved her.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "could-have-saved-her-x": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "de6650b70435650635c1656064bb20825cec446472862b0658e458765947144c",
+      "source": "approved-missing-recording",
+      "text": "We could have caught it earlier if she had come in last week.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "did-it-for-me-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        132048,
+        5040,
+        0.048
+      ],
+      "packed_sha256": "eca9db5a7ce654925f19330b0029ca01d909c8b177aec1a90794483768e5f41a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "31da0139996aca25f1029bc820ec62b6606a0b806203363599d11b6dc8c27cad",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I did it for me.",
+      "text_sha256": "413f8c4e2c439c6acf25a763039a70eab7a3f580562dff6eb8e589e96d26e56d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "did-it-for-me-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        137088,
+        17280,
+        0.048
+      ],
+      "packed_sha256": "d29df3656c372cd9d0673e6dffe5d4eab46e1979a657d06da24bfea7bf59418d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c3bcb2c899003599b069132ae47e2a0cc39f02a29857d5a56b6d2e220c4f514a",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I took the evening course for me, not for my boss.",
+      "text_sha256": "f369a6151d70f9ced46b68968fbdda25e6dc40326bf00ab239c268cadfe20d8d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "did-you-just-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1214496,
+        12384,
+        0.048
+      ],
+      "packed_sha256": "9836f2e6c6c3d23ff582ecd5abd1afe0225d31b3c7e46608da22c06f4e779f24",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4a96b9d3e46b444726893a3be300432ae2b112e4715e60fca28c3b2c129e39ae",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Did you just bring a bomb into a hospital?",
+      "text_sha256": "c5c92bdb26d9de3b00a351ec0542b4bbd0d6e6ca81653268fa61db9d7531010a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "did-you-just-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1226880,
+        15696,
+        0.048
+      ],
+      "packed_sha256": "9b3387531a918aa20c3bc79d6abc4511e9064353852fe55667e468c736c48a83",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9a4f9ce92ce5d3c3329417de76d370b4f6ec6a9d72c871081f609d2b1c3b830e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Did you just send that email to the whole department?",
+      "text_sha256": "506f2ab4e230ff8a8b5bef02b7da8015602adce7f6a2771c9e225fd386093166",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "done-explaining-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1160208,
+        9216,
+        0.048
+      ],
+      "packed_sha256": "67087c99c6017448e72988136c8bea441d14d41a0f3adc510c7f1938a167d530",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cdb2fd707508a8678b9b8c1c01018eea28e17099340dad83193bd6c144712c29",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm done explaining myself.",
+      "text_sha256": "f78bf48a13079e6379b4ae2100862e2c230b88671696424f4a847a80591029ab",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "done-explaining-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1169424,
+        22464,
+        0.048
+      ],
+      "packed_sha256": "a0141a784a29d9951c7e872ed650a7e1f15f9a920041fe8c73eec9c1d47d00c9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "74331861ff679733fa162914f3cb5644866217111a45840d41c384fee11df3cc",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm done arguing about the schedule, let's just ask the head nurse.",
+      "text_sha256": "cc4571951a39896af729ffbe4af05924d600b1060b1c5a3150c057750b7ee0cb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "dont-have-to-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1694016,
+        7344,
+        0.048
+      ],
+      "packed_sha256": "f19431eddfff8c693b2a276d5abd501d9211b48a16c9b6d0341aaf764cfe1118",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ed95fdc6402ce59649baf8642204c12f9ea70a0c8fe9a1e25e73b826389c7286",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You don't have to do this.",
+      "text_sha256": "31fd57427a6adfa6aafb8f2641e93fb8e55c9cddd7ddf623eda8771912bbcd00",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "dont-have-to-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1701360,
+        21024,
+        0.048
+      ],
+      "packed_sha256": "f808fdcae71efb916b16aa7b6cd995ebf113ac4046930ea17ec0131967e4d742",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "949ab42a5bf98cdda3dd13e3c7217733421697b0cb8b74728f432e9b8395716f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You don't have to come in tomorrow — the results will be in the system.",
+      "text_sha256": "466ff1d5acdc1fcf201dfc5a72dc3649d36b4b94175e394b72f6c406e3cee9f2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "either-or-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        154368,
+        15696,
+        0.048
+      ],
+      "packed_sha256": "bec0e4f2b8dc076a7ae1587bff14eafd3ccf1cda3e2b9582933d060b7f1ffd44",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9e27b00a2743f3855a26eb0230c3a38aa210e2aad381b433ee752d98918300ed",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You either run from things or you face them.",
+      "text_sha256": "a18ce3e4fc7613d8bd4e17b1c25167e219673f63b9e9602052e8c4f71db7d752",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "either-or-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        170064,
+        22320,
+        0.048
+      ],
+      "packed_sha256": "91386dea9179b9a6b0fddaf6e44191abfcdf358347ddede04211b51e53a38c00",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "8af71030eeef213ffc8ffe105916d0d553ba54f7ac883138cff07bd0e147bda6",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You either book the appointment today or you wait another three weeks.",
+      "text_sha256": "d2fee4fd76f958e2267f0707dd6e38b209701971b48e1c0a6ea27aa8b2449af2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "even-if-i-told-you-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2264976,
+        14688,
+        0.048
+      ],
+      "packed_sha256": "a27ca480fb7b3209f4c6bc37a8f6a97bb486630ac8bd2f654b79a181802dea4a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e25bacb5368756be5f0c813f79a8131421a6d7ffe27afed256defe99281c102d",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Even if I told you, you wouldn't believe it.",
+      "text_sha256": "37ee806c737c9d9f1ec1411e0d0f185d5c70a5599998dac46ddb7b738ea56435",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "even-if-i-told-you-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2279664,
+        24192,
+        0.048
+      ],
+      "packed_sha256": "29ec6e6dc2828a63ffd9f644bbc55e5e540b4e49d309b90f53daa78bf83d0d95",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "58ff5dc49dbe3a03bc381872cd84c2aa616fdf9cc0853802ffaabb2739d8f8dd",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Even if we started treatment today, she wouldn't improve before Monday.",
+      "text_sha256": "929069d5fc80e1cb7afc22da020519eaa2000635bfc5fe038fca1f7c0c067623",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "everyone-sounds-like-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2168208,
+        16848,
+        0.048
+      ],
+      "packed_sha256": "04c1a75ac67e0721e165f247a34ea045890099714af629fc82de82e308d7506c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "5f35364b1f88a8ab987c5dad2ca0a1eadbe911d91cca304f0f7ef0391ae692ce",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Everyone sounds like Meryl Streep with a gun to their head.",
+      "text_sha256": "5a114aa9d7c9ad666953454e968e67b7fbc253a2ea44b3b5a0b63dc1b0165943",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "everyone-sounds-like-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2185056,
+        20448,
+        0.048
+      ],
+      "packed_sha256": "9206d81c3887e12eb8bcfd935ebeb5d95f10f6844347eaa61bb3ca2ae60c7038",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "59a799d52a1538b30eeb35b323bf3d4c601f848f2dd11fc955513e0efba27bb7",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Everyone sounds like a pro until their first real emergency.",
+      "text_sha256": "2ef124b6e2d76880fa73a4aaa36ce6ac951bac78c9bbc9a36c01053122c4f6e2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "everything-i-did-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2095776,
+        15264,
+        0.048
+      ],
+      "packed_sha256": "8abfdf578253cf59f531df6591f7456c762345ff2b9060bca4ae2f7dca0535e4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "157fa081d43d9d63929b233266f2dc66c75a1edb449633e50a10320b4b14fb38",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Everything I did, I did for this family.",
+      "text_sha256": "335c5f50a184d6546a3da00cb99f2d1e895959904cc6b08f13be448c8e6591df",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "everything-i-did-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2111040,
+        21168,
+        0.048
+      ],
+      "packed_sha256": "8be5d5412c5674cc63c72ea65f0f65348a8c0d8265c81e6882545952b6818795",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e9b0ac374a96fcb23cfd187de5865e5ff25a84ef3fea7fdba3298119bb79328e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Everything I learned about teamwork, I learned in my first job.",
+      "text_sha256": "dd7da293636d45cfbdc5fb2f8585443847e0ab8e51bd62c63c466e2c77648692",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "fear-not-a-motivator-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1270800,
+        15840,
+        0.048
+      ],
+      "packed_sha256": "0233de531b5351b30f26ceada14c5ac00a6732f833290795d783c7a6f65f23ec",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6803fcb12fac882f74aa2f5a0e9ef318a29530705a916a8d604a574a881f9fec",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I don't believe fear to be an effective motivator.",
+      "text_sha256": "585e803b18ff899ca98cbff62fd616b3b6af2bac487d1526709f9a97a4d4f6b7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "fear-not-a-motivator-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1286640,
+        25344,
+        0.048
+      ],
+      "packed_sha256": "eae180c23fab2b4a983bb010acbadad20f36e3136eca6713371db0350d24705f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "a8c348b411ddf8905390cfd8638507738d890fdf98c71f57979a07611ae6d4ae",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "The committee believes the new protocol to be safer for elderly patients.",
+      "text_sha256": "ca555ecc3e701dc48682807c76f551deca7d4c627fdc818d743bb7cac825871d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "get-away-with-it-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        192384,
+        10080,
+        0.048
+      ],
+      "packed_sha256": "9c3a4dc4e1a74e2080c51df81ecfc41c25dd39c9a4c02a67ad0c5fa7dfc6ed5a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "a15f90e21f0e5886d8a806a9757a4d2ea26e82afc210d07d885e04adb2e2b0a9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "He can't keep getting away with it.",
+      "text_sha256": "5725b0734c8febae694a0e559c92021c54fa772fa749f52ce0c66ef0d25f4c81",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "get-away-with-it-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        202464,
+        25200,
+        0.072
+      ],
+      "packed_sha256": "6299444ec781b64f5d374d64daa30db9980ad1c350d83ca6b12fe8441b660499",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "3f99fba88fdc8e4edbc58b459bd2b4d622eeada51f10f8f87ec254a09604db93",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "He keeps showing up late and getting away with it because nobody says anything.",
+      "text_sha256": "0b4e97d72b45f52d052c733c8544dd8385e3fb8c568da723ce2042f1a096e057",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "get-back-to-work-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1549728,
+        5904,
+        0.048
+      ],
+      "packed_sha256": "3c5f7b87c17a9f97768a4e2334b0e884ed75d6add7a534c089345f1c858af829",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "5fc17bae2e91968ce854e6c35c57fd711d9cfec05d3da98e20690af67a0bf8d4",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Get back to work.",
+      "text_sha256": "669c517da1f4d729fda18666c78006b61124b91da379135a196ec8b860acd583",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "get-back-to-work-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1555632,
+        18576,
+        0.048
+      ],
+      "packed_sha256": "a90e7309837d144a415bf13fce890bfbb609fa027485a28bea6ed3808bdb3432",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4bdc383162b5cb36bd61afefbbe5acef7e866f1f766aeb4dc71b3e445672eee9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I’ll get back to you as soon as the lab sends the results.",
+      "text_sha256": "3c820c7633c51c01b6d761cab1e782512cdd9318dda0244e08c1b780e2db0cb7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "get-to-make-it-right-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1001952,
+        10080,
+        0.048
+      ],
+      "packed_sha256": "5a6647d8df27e59d0c46170796b1754d9819b7c76f615d126b894dc9542f6cef",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6f902274f13563ff0ed30bb56a83304e297019eca5384ef8a81d1b63a7c4417c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "This is where you get to make it right.",
+      "text_sha256": "dfdd4ad7f28de822798028b4abcd6ff6578acfa2ccef5544f396107dd49d8d8e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "get-to-make-it-right-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1012032,
+        16272,
+        0.072
+      ],
+      "packed_sha256": "2e524f251e49607bf18f2422a25ff4a68097f2f2db0ddbe9b4f40ed9c6655ca7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "db10a4c50ff8082703c32aff7a28ea2d049cab15b0de93b21b3ad888e2c2ac69",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "This week I finally got to do the procedure myself.",
+      "text_sha256": "c185e2e94882b7f2ef36a322f4ff7254d508c0f1fee434817944d79bbbab5923",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "gets-expensive-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2524464,
+        12384,
+        0.048
+      ],
+      "packed_sha256": "e26ae5272eaceddd92e7d3da073b612bbd3e557e4ca1d571990904c3b165515f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "15e0d5c40fedf56f757714905601e94e0eda5a0f1d1db66fc522c4f47a3ff2f3",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Conscience gets expensive, doesn't it?",
+      "text_sha256": "f525cbfec04c637d4ce225eb92dab67ae462d3b3cf6c4af7dbb17d2c66a04343",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "gets-expensive-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2536848,
+        17712,
+        0.048
+      ],
+      "packed_sha256": "1a15bed0dc8dd4ab5de454ca70fd1ad08d328258239627ffcd261b9e1881f8ed",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "2c563a09404c3e209141f0314452fea5b087ba574a382786105777cea1b810f1",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Night shifts get easier after a while, don't they?",
+      "text_sha256": "1387f0c32c96e422f2b5393e7453886dd17fc00503ca66295a2ff05369937bcb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "good-at-it-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        227664,
+        5328,
+        0.048
+      ],
+      "packed_sha256": "47975612bf4ee0a588820508fe592a2aba7d74e43b8031d5426a666f42c4b128",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fdc2d2523d922d6939fdc6102d023603ed735901e3168fb76460504e20f751fc",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I was good at it.",
+      "text_sha256": "8b6f1b74c52ad8ecb520988f94eb30bb67d35aceebd3c2b000942d376217901f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "good-at-it-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        232992,
+        20448,
+        0.048
+      ],
+      "packed_sha256": "899aaffda892d0b75e5a1d2812712ab66650ecb65557861072e4acc34a3c1256",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c6bd4212cd778528ca9b94c80a5a7739be7840b064bc84a5efbbb7c12d949673",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "She is really good at calming patients down before a procedure.",
+      "text_sha256": "d863c8fbdeb56e5015c4300c8afc25eacabb89d6d06eb7f59d7e99483cc55459",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "gotta-be-kidding-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        253440,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "cc39721add43c0111c987c17280a704ec6d1f80bcb6cabea566ad588793cae25",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "f95aa55b78cc8f620c1e760ebb9e7d023c042bea4fef56219d5f30dd983d73c4",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You've got to be kidding me.",
+      "text_sha256": "fd6f52aad269c7188c44415185759929b65f80afc387a98a7fe568f9c9b5dbde",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "gotta-be-kidding-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        260208,
+        18576,
+        0.048
+      ],
+      "packed_sha256": "6ab825818e273afbcdbe6cb6e46a92980577736818e28cc355cce2ed6ea27e95",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "991310242df3159ab32fe09ebf33df2db402b581a7de5400a98a66ecae6a1322",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You've got to be kidding me — the lab lost the samples again?",
+      "text_sha256": "2f2fe32439be3bafcfc3b54a7af9da708197a69ce132c3e793496f55af72c9c7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "has-to-be-dirty-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2065680,
+        11232,
+        0.048
+      ],
+      "packed_sha256": "9be574e4f856fa3b07209de3dd685c71d1421de712d224a8a166d0bc112afadb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ea463358ae6dc790376b429b7caf9ed7be779ce540fb0370da003d355c5d713d",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "A guy that clean has to be dirty.",
+      "text_sha256": "67bde610067869b9b498d7efb7adddff436df9f86eea03a7b3100102135c583c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "has-to-be-dirty-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2076912,
+        18864,
+        0.072
+      ],
+      "packed_sha256": "7c431ebc7362e67dcc8e6fe50fc5b815df93d04b16a0269a034bfb4931dab65b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e6dc590a63facfc1e7e036c6049f7c7214a3784ea20bdbda86fee48754db5383",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "He knows every street here, so he has to be a local.",
+      "text_sha256": "35e8e50e4d9d538dbdd22dad375b6aa3babdce7df494ba23e92cc11fbb4ab4c7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "heres-what-were-gonna-do-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1098576,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "bd3168749286e4537a96784a852663086c421da7a75924b85421dfbdf33310e6",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "bd765fee67a1826b4bbfc4dc75cc6deed861442067110b6777227d4b92768d2e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Here’s what we’re gonna do.",
+      "text_sha256": "47acb916c0b766aa5b0023971b9a3ea0d026f0d677e343d9fcb332a677a3e2d5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "heres-what-were-gonna-do-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1105344,
+        22752,
+        0.048
+      ],
+      "packed_sha256": "3c031115d60fbc3614d0778be71a43ae911b0de287b29e3afa6cf9c7a5b20a4d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4d968e4fd1b42444964590239b2c22dae35eaba3a4197308b1b6cafb38163976",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Here’s what we’re gonna do: I call the lab, you talk to the family.",
+      "text_sha256": "6b0bedfa1f015084331537d51c687576ef929db7068e15d6493046296a370ffe",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-come-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2471184,
+        17568,
+        0.048
+      ],
+      "packed_sha256": "2c2de392f006031728f3e671450c63c6140907c43a1b40d080f2e18f196fd7c1",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "371e041eea5027099fcba604c5fa7465bed8a7f1f23e6c0ff2e621a805017f00",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "How come you guys always give away the air freshener, huh?",
+      "text_sha256": "d96bab37094058dc3f8926b12c03dfb2238dc1f535a748ced7ed5cda1dc5e4a2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-come-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2488752,
+        16416,
+        0.072
+      ],
+      "packed_sha256": "a6320da11f5027c740828e476452ecdba21aff7c9acdaf2faec7cc532addbd97",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "986386f4fff8605b5be1efaa8469ae4dc0be9134166e8fd2648b62eb456a5fdb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "How come nobody told me the shift had been changed?",
+      "text_sha256": "ac52a7d191bdce6a4b1c8d031f395e2de7c869de43f0fa9bf4d684ecbeed6e3f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-you-holding-up-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2505168,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "652bccbdf41b33aa5d1408b47756e647dd49ec9becc5fde46a94b640cdbfffd2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c788bc722e27e0b29edf4717808747e7ab205e0ea6af8905379386c6287c8337",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "How you holding up?",
+      "text_sha256": "00cb4212c5fb17958fc6957e65952d580361322bdff209ab4407bece535dac79",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-you-holding-up-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2511216,
+        13248,
+        0.048
+      ],
+      "packed_sha256": "c87e9a99e361096b2517a74e780ddd43a42d3bd17acd68c8ea55b54c86218b7d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e61effd59b686e64b0c51a15ede4dad5e1e0eee701b309d8f5c409345e2991bf",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "How are you holding up after that night shift?",
+      "text_sha256": "429e380be2d137d83552197dd60d3870b8a32a5315c7aab3027f984ce8bb5c7f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "i-thought-you-were-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2384784,
+        7920,
+        0.048
+      ],
+      "packed_sha256": "2838884f08c39708f79d7ac28cf408976f406cf83cd747fee07228d3e2b7b5c4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "0152ecd9b399dd38d07041b01b31dce3d4ade1d188ac4e57c95f231a73d64ae0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I thought you were the danger.",
+      "text_sha256": "4581797c88f2cf61e0630ee36151422af56bc52caad9410daa43afef203654cc",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "i-thought-you-were-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2392704,
+        16992,
+        0.048
+      ],
+      "packed_sha256": "139f1c5f05b079234834ebcd1055623380d4bbf0cfc6527f1ab33a56ed1463b5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7e6e7edb3e0054c5fdc7ec5d161da05260c2fc26a1c8192914be990f9f2f3986",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I thought you were on call tonight, so I did not text you.",
+      "text_sha256": "913a5064784c4841a92484ebca78e31757bb1fa27ab0764becf9cc64f3f4da8f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "if-you-do-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        278784,
+        16560,
+        0.048
+      ],
+      "packed_sha256": "e1ca088b07757d5098327596a5dbfd63fd389afbe102287298da73deda0c29d4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7beade00ae3c0ae242878df4f8df57177a9e5127f18f0e38a0759e8684eb9562",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Don't drink and drive, but if you do, call me.",
+      "text_sha256": "767a54eb703486e218b290d0c5b9e5e8b2689c35bea6cbffd06de49f57c6852a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "if-you-do-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        295344,
+        25056,
+        0.048
+      ],
+      "packed_sha256": "91eefd452778119427ed83ac76d4519a54c4a9ebd334212f2a8a18d1fe1fc483",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "1fe11cbe1684b91b14fe1ee96ff9f818c1953675047dd01dba93c0bd416e7055",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Try not to skip breakfast, but if you do, at least drink some water.",
+      "text_sha256": "02064bee13956310f65b7ef41282401d7777daa1f9a27a4efafb5fde42de36c7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "im-out-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1634112,
+        3744,
+        0.048
+      ],
+      "packed_sha256": "eb00453ee290cd9f2fb0fefe64ec196917862eb90819fefba6b80b6a742ecee9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "004cac6eb511ca0ee3e84b01a28a92a5a46934cf68c01da32baaba483f93270f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I’m out.",
+      "text_sha256": "2b2219a01c45275559b41ea8447496c583355c9dafe16547ecc0022595a4435d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "im-out-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1637856,
+        22320,
+        0.048
+      ],
+      "packed_sha256": "ea51204a34af259cb52d740fb42b3c92dd34f64139c8d493ae4132625045cfb2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "41e824ae5d274f63913dc7e7ec413c01680b80d0ef3190f05c628282864c90da",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "If the new schedule means night shifts every weekend, I’m out.",
+      "text_sha256": "81897a9b6eba73f5b9662baaaa80e73e785b8f3dcf174f577cfdbd1ed72eb5ec",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "immune-to-good-advice-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2035296,
+        12096,
+        0.048
+      ],
+      "packed_sha256": "77bc9023b2aedeca7871eb22ed62d2d2419afc518623352d14e1ff11afaf92ce",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "953ec1dcf6b9ac94b88fdad23cd89345e2badcd45805856daf1f17c564ee978c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Some people are immune to good advice.",
+      "text_sha256": "1169f66226f35c5b1364f64bb4e597ffaa582dd1659e3482a2665bca41ecd83f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "immune-to-good-advice-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2047392,
+        18288,
+        0.048
+      ],
+      "packed_sha256": "f89a901735c9b4e684c470f527b33b70afc5169e6e1ba256e21d9bb6dd9bbfaa",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e7cf307bdd7ee2caec6c0377470dad3ae21e1e831b27eff8a55c8eddbaa94652",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Our new manager is completely immune to criticism.",
+      "text_sha256": "e95fff4e14a1580dd6a6f338c4e583fc52e1ae362ded2151a18c8bc3664a2635",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "in-danger-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        320400,
+        10080,
+        0.048
+      ],
+      "packed_sha256": "9a1a3079af9f2bb360e40296fcbfb4be6b873f73240122d2dcc946b9161342a8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9568c65273b002062750b67fa84fadb3aae20e16ab466f65b06af207917b5d2b",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm not in danger, Skyler.",
+      "text_sha256": "232092e03881bd5967ff8e88140c81bfbf7670146f921760635399cb0721c8a3",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "in-danger-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        330480,
+        26064,
+        0.048
+      ],
+      "packed_sha256": "7e9c3c2235ffa8d34942ee301536f05fce7492edc0b548a105b7a5aef18a4682",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "2fb2a3de085f7da276bc8b10c83e0e103dfa3282e0de2386d52e0047db79d8f9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "She's not in danger, but she's in a lot of pain, so let's start with that.",
+      "text_sha256": "3a6519a7253fe1c704d519e1a5e2f0285c818c2aeb2ed8384bc3602e92700f8e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "in-the-business-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        356544,
+        9216,
+        0.048
+      ],
+      "packed_sha256": "6a4e79363f4d24f2b26d7b956608f0d332a207c944ffd3964bdf61cdb309875b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6b032777fdb705980e462860e1f74fef7b7914496d25c16df86f07edbf17fc17",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm in the empire business.",
+      "text_sha256": "8c6674a2e152e61d107a77ff44b611d0d23a5d003c57ccdf5a525dd416485dc7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "in-the-business-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        365760,
+        23616,
+        0.048
+      ],
+      "packed_sha256": "ef270adc3861b30112ff7d425c87be21e3259a498292a1e2bc44a7eafb5af3f4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "5c30fb959ce32eeb844b284c8f48b63ad501bf7825116749de1b6eee968fdcf0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "We're not in the guessing business, so let's wait for the scan before we decide.",
+      "text_sha256": "54c8b9348342c40a5fecda2941fc2d7b3eaa5c4305b7f9aac85a7b414057e08f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "its-all-good-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        389376,
+        6624,
+        0.048
+      ],
+      "packed_sha256": "165f57c78dc888ab7ad1996021d7d45744bd443ca16d82ab293316d3761806c0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7c7a315e8f87e343fffa4d5970873b472607359b36d833b818b94f86b30b7d98",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "It's all good, man.",
+      "text_sha256": "5ca775d30764c7256a6063f1d20f17d4bbb3eb27f08cca5781d973b37b32fd95",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "its-all-good-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        396000,
+        18432,
+        0.048
+      ],
+      "packed_sha256": "dfe5632a9d2c4f7a4329dd8277680edecfcca125f5368284a7c4b1d3f09ccfa2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c076b6f2d860ff724d948ec4600d2ebbfc6e8b2085d1eeae8d7d448be0a2f6e2",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You don't have to apologize for the delay — it's all good.",
+      "text_sha256": "a2530bfde342ac08eaee3467cd0f83e1e9a6f808ce55100d9241dfffa56fad44",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-because-doesnt-mean-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        414432,
+        22752,
+        0.048
+      ],
+      "packed_sha256": "d154cc7a25c06dbe1ae62f48c3b1581b519999fd12c718b9f09669d85a52d06b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "d1d9798f9b7c2e6a718902ff41162a93a1c6b1d7f18535c93c70e0e9c81c7bd7",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Just because you shot Jesse James doesn't make you Jesse James.",
+      "text_sha256": "710b57c7efd5dec712e69d44a2af589491bb70123c43a8a665c5b5775b4ef4d4",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-because-doesnt-mean-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        437184,
+        26784,
+        0.048
+      ],
+      "packed_sha256": "b21f135364b17dec19f40fc9906df0ddc4d68438d31e92f3236135ed42c22212",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7ea5d2befef1f6219195e065380b9556484eac42f70561ba191910150f3dd9b0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Just because a test is expensive doesn't mean it's the right one for this patient.",
+      "text_sha256": "6a041f253e5056463ac21b941a12b2034baa21e03c0f43ec3d86655a6577b071",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-say-the-word-t": {
+      "duration": 0.936,
+      "edge_tts": "7.3.1",
+      "key": "just-say-the-word-t",
+      "ledger": "data/daily/2026-11-02-bbapp.json",
+      "location": [
+        2588544,
+        5616,
+        0.048
+      ],
+      "packed_sha256": "34da739e9243f94d30ada754bfa68769d36c154ddd6e618dea9af0a49de912f0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e67a9364dd1a225e99d76ba9cc92ebad77b35823c56f13b27a5f56af18cd664b",
+      "signature": "f53ddd59ce4f3cd03264c1c29b2f174134c3d17accfeec486e9999d9009b17cf",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Just say the word.",
+      "text_sha256": "a8b2ea73ce2fa60e0d1ff5de70a1adb6d7f84ba26c3b2f2cac77e5f7127a56c1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-say-the-word-x": {
+      "duration": 2.856,
+      "edge_tts": "7.3.1",
+      "key": "just-say-the-word-x",
+      "ledger": "data/daily/2026-11-02-bbapp.json",
+      "location": [
+        2594160,
+        17136,
+        0.048
+      ],
+      "packed_sha256": "0f6e3d3f48b68644347bff7837f64891cffda257fc75b6b36f7354a205317214",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e55acc88f8e1befad24d97e6cf7db1046a0a5cde4da818a6c92a8c3c290a0628",
+      "signature": "80241585513a91f3acb112e1c01de4f0c77b88480d1ee258d1716f8d36b6e0c7",
+      "source": "Microsoft-Edge-TTS",
+      "text": "If you need a hand with the report, just say the word.",
+      "text_sha256": "e5ec98e0f160e3c89559fb3fd986d11078e97abb60b6619fa20087e54c356148",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "keep-your-mouth-shut-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1722384,
+        6624,
+        0.048
+      ],
+      "packed_sha256": "e547afcb77178d7873cabfbf2c4755105e52bc151869d51266d5ab4956704703",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "1fc4c2eff1ec7f0c47fad2ccb9ad25d7edb125bcf2bd27d2713ffb4a555ea3f0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Keep your mouth shut.",
+      "text_sha256": "0b668774797cea0832734095cc05e5d666a7cace06d475833a9e18d27d722dff",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "keep-your-mouth-shut-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1729008,
+        18864,
+        0.048
+      ],
+      "packed_sha256": "e361e46ee8d069ba397688dbe1a6b9a420126ccee86cc1ba47868d2b2f649e86",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "89b76d3430ff5e5a388744543880914385fe0c0b07bc84f2faac443a62afdbeb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I’m keeping my mouth shut until the test results come back.",
+      "text_sha256": "8bfd17753eaf4c082b8aea70f126b6b7fb9804465ade36a6f908a8f0267ae425",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "know-a-guy-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        463968,
+        15120,
+        0.048
+      ],
+      "packed_sha256": "72c8492bd4c3f977a643c98e91f61a69e3f268b97fbbb4323a3eb37e1fc03782",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cd9b8ee2f06203baead60b4eafec1885ac8fae00fd551bb60436e018610c4bcb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I know a guy who knows a guy who knows another guy.",
+      "text_sha256": "52588be0e84dbf58826f0fdc84fe5c9298f0bcff7789948956f03221d4b01762",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "know-a-guy-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        479088,
+        28368,
+        0.048
+      ],
+      "packed_sha256": "023aabbd0c08be1285677f9e8dc7a06404e1a98663c08080def2a4b75eb88a82",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e536dccc518d59fae89161344b26e438707e4ae10ddb0cb5167cb1b1d2938a78",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "If you need a good plumber, I know a guy who works fast and doesn’t overcharge.",
+      "text_sha256": "85d6833ffde58a9b71b22cc6e333ab75a5bf13cb95766cb1a26ad43645c98b23",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "know-who-youre-talking-to-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        507456,
+        12240,
+        0.048
+      ],
+      "packed_sha256": "d0102501f94a85aa59490282332ebf963680197fa4b414d1206cf4cb48a6f080",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c35a4fd6c458c240f4942e3d49c2e5d5fd42bccefb35028a77347a7099ca6703",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You clearly don't know who you're talking to.",
+      "text_sha256": "83ead41be125b578d84bc20903709d9864a142c69a03d3d968c03315b606a4d9",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "know-who-youre-talking-to-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        519696,
+        16848,
+        0.048
+      ],
+      "packed_sha256": "367f7daa2a2ca4e982189f52df716a3ab4042b83f8fb313599776bfe38718dfe",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7b6215a5c8659f48b8b09eb6dbf9a277e048572fee2a9de0de12b5a7001a394c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I still don't know who I'm supposed to send this report to.",
+      "text_sha256": "0760edba6512945daedfe97edd5d0808f07cc4dad07d9bdb65d2ab74f14c5a5c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "let-me-do-it-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        536544,
+        14688,
+        0.048
+      ],
+      "packed_sha256": "ce813a8f5aa4fd428114cda8796d2aae58bae5f5902aae5a78a6d67a52127a1b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4df347dd1e91744a7330a85d7f6ad47440024de18e94c072765dc1b62127b0e9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Shut the hell up and let me die in peace.",
+      "text_sha256": "e1f1416d4138b4a1de249235d44cda61c91fbb1914b4d600b4255fa1c6ef727f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "let-me-do-it-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        551232,
+        19872,
+        0.048
+      ],
+      "packed_sha256": "76b4cb7f95284929b055fbce2f24b0eea0d60f7a590072c6336104861c13d67e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "63e76946d60cfca402e2102f8deaac3bea774473509bbb58abd03de226636185",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Let me finish this call and then we'll go through the list together.",
+      "text_sha256": "fd680dbe5c813c0516ddac3608d88b747abed5d7075d7c52135fd0162137bf18",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "make-a-year-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2235456,
+        8640,
+        0.048
+      ],
+      "packed_sha256": "f335a6c13ab3855a30279efdd2c3bdf38206ed5e1f84d85c1cdf653d9572cda9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "bf958b579bfab6cea771b021b437b9ed34ba309ee34cf512451066763d3a3065",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Do you know how much I make a year?",
+      "text_sha256": "015e64bee6dc019e05a15617a93c7ac51c8a677791a4b3c833a4ad63345356b2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "make-a-year-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2244096,
+        20880,
+        0.048
+      ],
+      "packed_sha256": "9c3b0b8a2a3026c296d8c47e0c55824bdb0a3ac65945e21247aa4b8723d1229b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "8c66f4f55306468ed30b10c9d896d11e66bdfb4150543b56a356ff9109da5733",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "She makes decent money, but she works six shifts a week.",
+      "text_sha256": "c1ff13f95a8791f27ba0ec467106c5de8f4d6a93be625985d8e3bf27d361f15e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "matter-of-time-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1747872,
+        9072,
+        0.048
+      ],
+      "packed_sha256": "acd5bbc21ef95c2c3ac2d794d2e1de181f922eaf4e499464618b4f32e564af84",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "8f512d0f7cdd211de847bcf44d6ab93fa725b81834d29429d3e10c90147398cf",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "It’s only a matter of time.",
+      "text_sha256": "b31cf42bfa82bc2f857484f24439195c8521488909325bf860581e523c2ec967",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "matter-of-time-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1756944,
+        23328,
+        0.048
+      ],
+      "packed_sha256": "899236feaee5f1cd9164641f977693393e2a09de6890c11544abc9a072b237e4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "0e25280d1692ca1e74ba5505401255125be62a8284667866e1ac4bc264791a2c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "It’s only a matter of time before someone notices the schedule is wrong.",
+      "text_sha256": "56b7419abe4b0a919d267091c26ba732a6f90a3b2406597ebbc8db3ce475b9d0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "might-wanna-hold-off-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1242576,
+        7344,
+        0.048
+      ],
+      "packed_sha256": "86d1a3081e36f774bb00e812e5a8acea29e5a654f3d1191b90a3934efcd7bc3e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "8238422f55a294900df2ebeb2f70907c440b0a2f5d1a167eba9f2058eb14a2cb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You might wanna hold off.",
+      "text_sha256": "258234b42ec0f94dc2d3683a91560fc0806fade0ec33e236f1402f4ab04d532a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "might-wanna-hold-off-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1249920,
+        20880,
+        0.048
+      ],
+      "packed_sha256": "6693a1b9c0999463289a2538f065cd7bd6faf62f3d3ed51bf1c8c09a4073fb6c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "1c548f19c6a5b91ab7680961ec3e862c1de385b5a7c9c029708376242b9386fa",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You might wanna hold off on buying the tickets until the dates are confirmed.",
+      "text_sha256": "716f48c7df6e7d57bcd0e423094733e23dcc81600d2f734dc5cc4190a48bd54e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "much-simpler-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1780272,
+        21456,
+        0.048
+      ],
+      "packed_sha256": "e83e0768feca631d6a3d8a957f66fadeb2083240fc0249a995fb9675b00c32fb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "67d32c4be82809da27b09e2a9408ed4eeaa7faf4a2b4459e00ffe1c78a70aef4",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "If you try to interfere, this becomes a much simpler matter.",
+      "text_sha256": "568e0491aeafa6556444612ce1c2d064bb60aedc8ff6c4c62035800bf66ab08a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "much-simpler-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1801728,
+        23472,
+        0.048
+      ],
+      "packed_sha256": "9ede6c1b950e1b75e1fd51c746d7528942617ff9e97e453c594702a5c94d14b2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "2a39769b8bf1acbffea9f88ed178639a22a26de8e56ae6fe9463699c25832222",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "If you bring your old scans, the diagnosis becomes much easier.",
+      "text_sha256": "4d2a273e8be5dbed15e38b90282bbc4b48db0a664e6d5be743c55c5f6a66ce88",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "need-you-to-listen-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1949616,
+        7200,
+        0.048
+      ],
+      "packed_sha256": "6989cb647ed600c6be4bcfa92d5ce7a632a34b81f8a25890748d5de4261125a5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "301a29a94f452f895737a6811775ad4e67450471209b96c4728b77e7dcff6987",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I need you to listen to me.",
+      "text_sha256": "11ed51284f0657dbba3dcb9be2b412f1e6f49525a6a99eb3d4785ce78adf3577",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "need-you-to-listen-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1956816,
+        21888,
+        0.048
+      ],
+      "packed_sha256": "2d458cc0277aaa01b032251eff9201c1d6bac0f4af0713161a1c3cf971cc3402",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ce7df4ebe3bcf540b527bf8c7de9012f4a34a8b7b6e20789368a094b0a4ef2b6",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I need you to call the lab before five and ask for the results.",
+      "text_sha256": "2ff867f4fe4003c41bbfd10034a73baa47a3154cea897171ca83a9d6c6acf753",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "never-make-that-mistake-again-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1518336,
+        10080,
+        0.048
+      ],
+      "packed_sha256": "0f47cc70f66c874020395acdfc6d52e4db3e6540c170dd2ec93bf3c7dd641339",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9d3c2bd462a13be3bed3831f92a63ef8d09c40e99c29baf215839603470e6ab5",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'll never make that mistake again.",
+      "text_sha256": "f5792883531f105de673e3d4da1e1f4aa023a8e3a298a9d13a5b7567cc05c6b5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "never-make-that-mistake-again-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1528416,
+        21312,
+        0.048
+      ],
+      "packed_sha256": "d57cb1ff08827c4309a3d0d388c8ffe5b4736abcdfc90f00dc7b7eb4eba55945",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "897006434cd328bbb5f3a58e5e4cbce78bd14388f16092219befd7e2b807b567",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'll never make that mistake again - now I check the dose twice.",
+      "text_sha256": "57865a01dbc4bf6b5a168a27ad51252fbd7caa054bea5074b55b96930ada41bb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-intention-of-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1378512,
+        14976,
+        0.048
+      ],
+      "packed_sha256": "75b0dae68c0b24ee39c17500c1b5675ed0b1dc7a7e5817bb89e75a0dca9aa453",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "34989754d8e92dabc70ff0e1844d1342207f2162ee08eabb798731c3383077c9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I have no intention of being around for the boom.",
+      "text_sha256": "cda4c6f83816ddcd390a7f77c39410b53551fbc070278e11621bc8353e77b967",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-intention-of-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1393488,
+        22176,
+        0.048
+      ],
+      "packed_sha256": "cc026b9cfa7e69ef5f431a2f9a08a4cce336de9b81ef2dd6621a30d029346dbb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "63ffdf10879235b3262e32b02142f50eb857f78b1edfb97bfa9196209526533f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I have no intention of changing the dose without a new blood test.",
+      "text_sha256": "c873416b3086647e7a9aa71ce0124334a94c1ad46f25d13ab1905ab822deaa28",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-more-half-measures-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        571104,
+        7920,
+        0.048
+      ],
+      "packed_sha256": "544bdb5c938524b98d5db86ef60488d03eeac3f19c90488cb0f74b62b80f6ddb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ddbc67db0af0b88097b5e3ea77c56a79d4842b852b564b290317ab22dbfaeb0a",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "No more half measures.",
+      "text_sha256": "8d1d4c3c1a67b78d432644b5031e22a38cfd135592014a4e803793932ba50cc6",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-more-half-measures-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        579024,
+        30528,
+        0.048
+      ],
+      "packed_sha256": "0bf1ffb22ee43c3f7d67fe99b44842fa278dce85ff59d9b6b8bf5206976d524d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "a7c4711094b68ab85ab21ca295fc636d2ef35a1823ae97df85e769667065fe1e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "No more excuses — either you send me the results today or I call the lab myself.",
+      "text_sha256": "eb74157fb32f6bdff8d274e1681790eb0d243b2c4c7ab9caf4f2b2bc40729cb8",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-way-man-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2342016,
+        5184,
+        0.048
+      ],
+      "packed_sha256": "ddc61d52fe4be28ec1eb133906d0fa6f19f859703f398857f805ba170ff06d86",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "8d1e2bc92ffa0785228033951c39e970bbb4ad50eebb7b2d26d70b3217a5e2f6",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "No way, man!",
+      "text_sha256": "e1cd16067d7cbdbe05e70cc8791f2b58d5a3b7d2e99172403533526c33eb6781",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-way-man-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2347200,
+        14400,
+        0.048
+      ],
+      "packed_sha256": "0d4cfa5916c88774430359c9b6346ea191357c702cb60371ca95f08ba861ddc2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "5093a404f6eab9e68fa249003d1e39574211867adc530143e476368329dc7d0b",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "No way I'm taking another night shift this week.",
+      "text_sha256": "39fa3314f0073cf8ce180dc70abd96ce737234870189fff5e6d3932b9af48ed7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-going-anywhere-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1856160,
+        7200,
+        0.048
+      ],
+      "packed_sha256": "b651aeb5e1053312a706e016229ea989d9a6592a0649a88042757aaaba094c8d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "bb401833284c631c296d2bd76768891e02d154bf1ed649b355b68f6a483b62c0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm not going anywhere.",
+      "text_sha256": "dce3c79210b6d1c2bc89c7c8d0650ed049d18a247ab29ab3d19694ef5ff99276",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-going-anywhere-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1863360,
+        26064,
+        0.048
+      ],
+      "packed_sha256": "07406b32155adc18cd23dbef6257a56517b53f75995d0097ea1e6c4fc0ae7403",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4902e2233720cae6202c23aef0bb97e06cfd20529ec6547a3f9b83ddfa6db2fe",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Don't worry about the deadline, I'm not going anywhere until the report is finished.",
+      "text_sha256": "c5e3fa2c508fadd54680c13192d0ecf3bbacbf7a193ede88dc333a2d928f4575",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "nothing-but-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2205504,
+        11952,
+        0.048
+      ],
+      "packed_sha256": "885053530bedca576aea0b98ee2c91cdd92116050983ae33efc6b5db09df8d7a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fd54b6702b080a13b6657558fa970eaa4c1d35d04d24f03ff3b929e586814fa0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You're nothing to me but customers.",
+      "text_sha256": "930670c023e28cb94963297bd33eebd7c5f2cc43f205c0b822a7a7201c61f06b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "nothing-but-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2217456,
+        18000,
+        0.048
+      ],
+      "packed_sha256": "3c61a1ce080bc4f4d7e41619c285f8cf8fdf0794ef8f125741c38e78cbde4df8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "3ecb11e097067773952b83dbb426e59c974fd9f00be015808f634a3af3dd0d9a",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "After a night shift I want nothing but a hot shower.",
+      "text_sha256": "075b55c59982ee32d6fbbb665d90af3d1b1d5a81674976cfde3d73079f38208d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "nothing-stops-this-train-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1068480,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "0af06f894a6c4c8e5a11570731053d2d1b2d75a214beef35a5d6489f1054a8bb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7cd4363fcdc0dca134f7716a119c820ab693bf484d2da9806ce0bd11c5dccc31",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Nothing stops this train.",
+      "text_sha256": "1d7b860d4b8cbac0254b12a50ff2b89181bf80942678f06dbc86469c99dbb811",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "nothing-stops-this-train-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1076688,
+        21888,
+        0.048
+      ],
+      "packed_sha256": "1e11d79cdecb5d8aa22c773fa90ffc71e1cd160d9775697fc44e6267e4ed94f6",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "356b75a30a988e129adf0419230ef6e6d0a43da98310a5283057d1bb650f1551",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Nothing surprises me after twenty years in the emergency room.",
+      "text_sha256": "37e2fb0f144b2e4c7a2e5f4a9aa505ef62607ff307271d94f18b01c8c8e5ad87",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "on-your-own-terms-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        609552,
+        9792,
+        0.048
+      ],
+      "packed_sha256": "e1cf2cc496ba78adb1e59e4eb8f9205ad755dafbc08f6550cbf12a044b92721f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9a55e205c788f37ad9f19f6affd8fb6a71f24b4f991e97385cbe3308a389c01f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Live life on your own terms.",
+      "text_sha256": "bea47b4b5b0ee2e34a04f3925b3cb37a3031dc568a3cb20a30d90b2a87a94e46",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "on-your-own-terms-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        619344,
+        23760,
+        0.048
+      ],
+      "packed_sha256": "e5722c0cca5d8bb3b3367179f7954048d5e4c53f4b0e0bb13fa5ecb8d1bf87b5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "0ab27b6945c8724bdac89e5eddb5c4d8af5d3b35d23a5b7432cbae2439475af5",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "She turned down the offer because she wanted to come back on her own terms.",
+      "text_sha256": "e644bc8f92942ec337413da8a41a68391fc6ca9ebffaea847ab2f4a8baf86c96",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "prefer-to-see-it-as-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2132208,
+        15408,
+        0.048
+      ],
+      "packed_sha256": "d7d34b9a9d74a6679ae84eed2e8c60603e5cbf9fbd2297bddcce1534e39e5647",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "214ef02f066fe3cfed91a81d6cb74fc51246ba890a3c327998d1eabde42f473b",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I prefer to see it as the study of change.",
+      "text_sha256": "70d8c2c098cf6e58205a7d750b59fab8f83bb49b540418c85cb171674bb08710",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "prefer-to-see-it-as-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2147616,
+        20592,
+        0.048
+      ],
+      "packed_sha256": "604815d238276e29c48340340b8f6fcb24a05c0e7e41f148cdfb1eb795b60dbd",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "3302d346264c28989244685492ba835ca3632e48a723e98d231f2f60b4c415ab",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I prefer to see this delay as a chance to prepare properly.",
+      "text_sha256": "4cef06349bf441630f559b21a33163c78741f1a5e21dc32446d4b77fc1fa9dd5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "same-as-you-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        643104,
+        13680,
+        0.048
+      ],
+      "packed_sha256": "243d7f07c7c1f3aa9d992c2e9688fe7af2488281420d90ccf203f7575d762734",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "062366b0bebb4f4e989a2a9f204b9009df6c1cf20efd3470324455bf3ed54827",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I hide in plain sight, same as you.",
+      "text_sha256": "d0985a50f20ad0e37fbf3a6d71b688be79bb8268a819fb90ca377b2b8a189a5f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "same-as-you-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        656784,
+        17568,
+        0.048
+      ],
+      "packed_sha256": "1ba6640fd876726c9624106f06031e2f09c22115dc8f3da9d71c6d7edfb336f3",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "1403d64941733a8076d6e8a388ae4e57bb8ee3446f7f89ab76b4801eedd23762",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'll have the soup and a coffee, same as last time.",
+      "text_sha256": "1076f8933aa1daa8004880bf9be48aba623f7e7a10a700fd68b4d2f39747e4a0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "say-my-name-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        674352,
+        4896,
+        0.048
+      ],
+      "packed_sha256": "3c2648f638f2d8b23787948d232697c7351fffa46ed4f190b4475c48589073e1",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "945fb2ce21fd1d5eb535f6d6bed2db308cb69e3c3653c57f3e52571a21d8446d",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Say my name.",
+      "text_sha256": "7cc200c2a9e5721d37ac783aa390daa8978cf0a1a33fe7f516df791fc86d4fa4",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "say-my-name-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        679248,
+        16992,
+        0.048
+      ],
+      "packed_sha256": "2a30f946a8955a8b1d9820f578c8a14ecd426e7672c210d11abf99fe88ababc6",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "89d85ac422b8d44bdc674c7d2a288a9118c7cd308a96fac03b6d3b7f6d1c0fe4",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Don’t just say yes — tell me what you really think.",
+      "text_sha256": "616450e91bb355edd0100db9ac542c9e181cb2a33bf15afedd83e5bed5c8ffef",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "second-hand-subaru-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2303856,
+        22752,
+        0.048
+      ],
+      "packed_sha256": "fb503727b64cda42001326e382dc5cf51ca15646e7069a04f02ebdbbccaa9e18",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4cfcd93e98652234e68788f8492b846b5025d5d4faf54ea67464dcd71bf1d74e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Congratulations, you've just left your family a second-hand Subaru.",
+      "text_sha256": "f3f8ac23311920135e1cd9e9b2934f7897417b8685c14bda8cb2c945bb167d18",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "second-hand-subaru-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2326608,
+        15408,
+        0.048
+      ],
+      "packed_sha256": "9326d0d0981279e0e45904e0825f37820e475851ea80fe01fcf0791f196d39a9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "525dac0b19abb6991d72286407f95dae3c3aeb6a587c8a32a002a288e15aa084",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I've just left my daughter a note on the kitchen table.",
+      "text_sha256": "c16caf2df9c197d3dd148832b94b7be854659d61c6bf84f8ff5ebced11d9ea37",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "see-you-coming-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2409696,
+        10656,
+        0.048
+      ],
+      "packed_sha256": "528e7446079429f31adcecdd073b84de2dd3f1ddc473e4b4d6221669ea4e8221",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c913a3faae7388cc71d271d91ff49ecd76c98514e00c22154a7a3a69c9cec5d7",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I can see you coming a mile away.",
+      "text_sha256": "4cdb23ca1cd484828f909ace02e403c64dc83ab02426eaf3312ce0768236cb8d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "see-you-coming-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2420352,
+        21024,
+        0.048
+      ],
+      "packed_sha256": "e0e3a34a01306dc41ccfd43e9036d04d7974363070c6fa62e0a2812de44126ed",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6ce4ae48087e8d671d0765657b1ef7fb95c27406c7649d1c2c920ad44fd5b545",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I could see that argument coming a mile away, but I said nothing.",
+      "text_sha256": "db7d34b3d8399b137cfa012540c7f6703702d9f958ca48c08abe9ffee63dbb9e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "smartest-guy-i-ever-met-t": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fbbb99e7f157b98646ecba51cefc21dccccad49bf33d3276893e5aeb664e6d8f",
+      "source": "approved-missing-recording",
+      "text": "You're the smartest guy I ever met.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "smartest-guy-i-ever-met-x": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "08883181e3cc6e8ab97f273ef3b5c69f9fe0e34df22d889c4f48aff2d9126872",
+      "source": "approved-missing-recording",
+      "text": "This is the best scanner I have ever worked with.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "sorry-for-your-loss-t": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "1e25f0f5ac057b9a11d49b3ceccdfe622171e29595edb08c23b7f2930dc7a179",
+      "source": "approved-missing-recording",
+      "text": "Sorry for your loss.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "sorry-for-your-loss-x": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "227eec20eba658dd8624fec40c7c07ec9e692a654dac0243eb8f86c41463b7d8",
+      "source": "approved-missing-recording",
+      "text": "I am so sorry for your loss; take as much time as you need.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "spent-my-whole-life-scared-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1489392,
+        10368,
+        0.048
+      ],
+      "packed_sha256": "e04c524b35051694cb9fb49738c023c032c38ce05a23819b2c9accfc66eb2994",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ebe3e8c8775238f8cc7e5d9c44af4861bc4703fe5599a7f5515bdb39cd8e76b0",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I have spent my whole life scared.",
+      "text_sha256": "dfc0fda20e18af67d0f0c5ff979557b881e74f360d0c61f06c32fc0f83d409ae",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "spent-my-whole-life-scared-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1499760,
+        18576,
+        0.048
+      ],
+      "packed_sha256": "590455e877fdfac8b32fdb92022b8eea681f21441f841f08af5cb5438c7c22c5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "50f4829d1e539bd621369706ee0b6b757c2052c48c5de8a2af01d7d194971b86",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I have spent the whole week waiting for his biopsy results.",
+      "text_sha256": "c33941f06751dbbc3a919643f9746b27ab58f4afe488d5248046c0a767186e70",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "stay-out-of-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        696240,
+        8064,
+        0.048
+      ],
+      "packed_sha256": "c52aae27db4a7613b552238406339627097811e7e300474eb5e9619407d97fb4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "b7eb76abc6104de6f9c7a0eecfe957d819774fce8e14be9e775197bf1db6b61e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Stay out of my territory.",
+      "text_sha256": "2a92233ee37bbdec847e2cc6b484fa92b78822f4f7a43e079445af92d438e02b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "stay-out-of-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        704304,
+        20304,
+        0.048
+      ],
+      "packed_sha256": "5bb0dbd61fed21bcfb32dffab7125fef211dbd287ec12dbb04ce54cd29d67951",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "42a56bcda6991ee0f88de699b43f829c82ef25414bcc39e7d09ae264a9fd5859",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Try to stay out of the sun for a couple of weeks after the procedure.",
+      "text_sha256": "315f65a7708bf1f084414594d78b91d3bd1c4b251cd7d01af5f723c835356b89",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "stoked-for-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2441376,
+        13680,
+        0.048
+      ],
+      "packed_sha256": "5892223e3169fc16d9dd4a126c28eec3410fb4bd3d75ec1353a0228a0093e0cf",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "350aa75987ebe3e1ed7ead2e36c935eae8be00856b2895146c86c3395a42cb77",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Hell yeah, I'm stoked for this lasagna!",
+      "text_sha256": "9e07576ed9eade4b938220a8b2d084e98a57b3a0d23d8a49da76c16351cd7d30",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "stoked-for-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2455056,
+        16128,
+        0.048
+      ],
+      "packed_sha256": "20a31fdb32b4ef1d27a9d6848c255fcb8212572b7573d8940ef7b96b772ce0ce",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "28bd09238451b62249907559f4cd8a89d1569cd4c7e80807252092ee8d32db4b",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm stoked about the new job, I start on Monday.",
+      "text_sha256": "ac3099c983ef9c5dc844fa5700cda27708e9de2c902ee72ee59e565c75817e79",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "stop-focusing-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        724608,
+        16416,
+        0.048
+      ],
+      "packed_sha256": "0003bf2dcf3e22ccd27c8fdeb13d1e5a87556ebca6b436f6847100880a3af492",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4bf2c1656b6417513ef97f1637f95cf8e53676d2cd828a646fc5a35bfe3989d6",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You need to stop focusing on the darkness behind you.",
+      "text_sha256": "474d118250902f9d7e56d9db842959f1224482bab40c9add5aff8c0ebef35036",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "stop-focusing-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        741024,
+        27072,
+        0.048
+      ],
+      "packed_sha256": "f85414185b9ff3fa569c7da6f8d6b5d539ba5fe8049ba6ea683a509b18383bca",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "09d225b3ba7594eb629b1ff503aa9fe8e148c0041614162966b839d3a89d667e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You need to stop checking your email every ten minutes if you want to finish this report.",
+      "text_sha256": "7519704f7a59d9b0db231bb89752c1d6587fb59e28fe0f31f3b0155f78732770",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "suck-at-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1660176,
+        9792,
+        0.048
+      ],
+      "packed_sha256": "d183995d10d23c7f217e62e2c9df172b8ae44dee5e11264fcaf6f861556d2c14",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "38f74f6f5970b8a55d71280baaa2c52334ceefe9d2bdb020867d17248ca66864",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You two suck at peddling meth.",
+      "text_sha256": "73847904d1f788ab999b44886778e69a4cb9b3322a26eecbe1a6282f4603749d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "suck-at-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1669968,
+        24048,
+        0.048
+      ],
+      "packed_sha256": "6df81a7bed615153946ba7191ea75403066525363c82aff1def62165627d4108",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9be03012c4b6777d6ca1f5bd3170d320fc3ddff7b74bb5deee5b71a03984e5bb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I suck at remembering names, so I write them down right after the appointment.",
+      "text_sha256": "1dfd39b8e40c3f30343f4a25bd4bd5e04696d0f28c4787ff8790f10e112d3678",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "supposed-to-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        768096,
+        7632,
+        0.048
+      ],
+      "packed_sha256": "fb7a7d475dfdba3641c8581b144febd5bafe20fc74c6b7c154d28c5ce55e4720",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fe8466cd32b5b291ed0de4532d548c1ff279f0507202ae7488389678d2b92b81",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "What am I supposed to do?",
+      "text_sha256": "ee2fd5931d834c90a4f3851cd31a3ad2daccc1da74ea9b69481bb6ff816c37d5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "supposed-to-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        775728,
+        23760,
+        0.048
+      ],
+      "packed_sha256": "4797de24dac271fb1096ba62fdc92e312908b0bad350763226f019b30fe12516",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "d8efefc814b319619a553a04553802890b594601c65c291c125960c8eb8cc50c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "The results were supposed to be ready this morning, but nobody has called me.",
+      "text_sha256": "59851da759d7a06caa7e096b06c1be00b9827fffd4cdee0be33d41dc1f27e06b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "take-care-of-it-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1415664,
+        6336,
+        0.024
+      ],
+      "packed_sha256": "3bd237897add772d253fd3b57c124793177569eeeaa4b6eda1c15a4e2435a734",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "835d0ecf26c4e6b8e0d217401f5d8202bb835cbcf1ef5eefb5baf8155d5a31a9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'll take care of it.",
+      "text_sha256": "04990c9dc0d28f22662e3e3ef548af7d4f8f8db68569feb2f640f7747d0a98c1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "take-care-of-it-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1422000,
+        18720,
+        0.048
+      ],
+      "packed_sha256": "07e5a9ca6ad8ccc279afaa42f8070cf4af065871bad2e3ea25642d14e3c5cc1b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "d6bc7e58973874c3e39c6a87ee6e70f460947a1faabecd57b8ce5264fca22092",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Don't call the lab yourself — I'll take care of it in the morning.",
+      "text_sha256": "057b6e5f8e8d054ff121cd0113c1d5d7035fce9a5050586ecbdc7d3f94f5ab91",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "take-yes-for-an-answer-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1128096,
+        9648,
+        0.048
+      ],
+      "packed_sha256": "06f5f8053cc2cfc7f695c3c1599cb7d36bbae01b70a02676a6ccf01019c83eb6",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "43e772e0fe9d012578a0aecd624fd1cef40a6c8bd8e36d52460d668f8f424136",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Learn to take yes for an answer.",
+      "text_sha256": "410afb0eb5d81d782cbdefd6368a816f09b3e9ffa7b72f18b98b43983899bc4f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "take-yes-for-an-answer-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1137744,
+        22464,
+        0.048
+      ],
+      "packed_sha256": "82e6cf28a5d263f7e3bd138b90458721426b8d57f6264213daa03c98f4fd290b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "616fba500873e70b76ee268bb9371e9ece7a59dac2b92199586becd20184c832",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "She won't take no for an answer, so bring the referral letter with you.",
+      "text_sha256": "1e397a0112dbb4d7b7354fb7792e8a7f57b6aba3b16d15883e7ecf8275c89b85",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "tastes-good-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1825200,
+        10800,
+        0.072
+      ],
+      "packed_sha256": "21bb85a8f29b679aee41a8e49761211a999662f4c1835716f6339d8ee4b746a4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "62060cbd5824e9cbe4eb25227b82634d8519332cd27c1f39c9138ca6f2929d47",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Free food always tastes good.",
+      "text_sha256": "7785171e0149647c6ce286b4cad8b73848f7fc95bd896b0164759b02046afb14",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "tastes-good-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1836000,
+        20160,
+        0.048
+      ],
+      "packed_sha256": "9d1eb658f98c1f1273bb4bb04eca986beeebd05570869be3fa6249987d33e956",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e7268800c409453329b79c5bccd22d93edd859bd4a4c62bd290c623ef93fddac",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Your plan sounds good, but this coffee tastes terrible.",
+      "text_sha256": "06f3e0f201ce7af80c7577e87782b07eab770fb5df24c2b975e9815c3db914ec",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "the-one-who-knocks-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        799488,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "f5549181e73fb14979a94939e3765f9b074c879691faeedf903df8a655205701",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cfa6d628deadc729b21c50d2bf004abd265c4ca0b11f2a74d8fb5dbb0122cc70",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I am the one who knocks.",
+      "text_sha256": "b99342793e1fb29698848aefbfad1886615275dd8d5bd22791bfe2b272baa0b5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "the-one-who-knocks-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        807696,
+        22176,
+        0.048
+      ],
+      "packed_sha256": "9286b6aeae1932b517e1c700301694e7a419a8fc00c1fe8d83998bc484c14235",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "c4f41716be6e2ccedd51a2818d5c57c413520ec4de0ad80fbaee094053c07227",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm the one who signs these forms, so bring them straight to me.",
+      "text_sha256": "d5c1b1bdb7bd4a7a75f6cea6589613884874bb1fb1cc449c972d25966c854b61",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "tread-lightly-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        829872,
+        5328,
+        0.048
+      ],
+      "packed_sha256": "ab6e07acf5ab8ed619852114e694c521254a7c8254c589b474d43920f99d2a03",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "27af60df55c5c6997a37e6109705705db1d4c49e697f5a79b10e19c6880a21fa",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Tread lightly.",
+      "text_sha256": "51b50f731b610d3409d458f381e459c0589bac22e56fdfee227598f35d61f91f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "tread-lightly-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        835200,
+        30240,
+        0.048
+      ],
+      "packed_sha256": "615f7ccb0eea53761d7015ddb79579cfbf342cf7aea27cb8c8175c705d610ad0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "22c342769811414870ea4669208455cc7e6db4c06fe97ac8fb1a3350c6c32985",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'd tread lightly with the new supervisor until you see how she reacts to bad news.",
+      "text_sha256": "ce11971d7cd85a96e4a0b4c1118113d00b98864f91adcdb816bfd3c0dd71e331",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "turning-down-you-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        865440,
+        16848,
+        0.048
+      ],
+      "packed_sha256": "90190f43a15e6d277665e0300396f6f9a0bd90efa9f973f40ca81917f5dd2b36",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "62c5e6e18cf47fbdcce23076d86c6432b1d03ca987ea8b18fd31f8d7b0699877",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I'm not turning down the money, I'm turning down you.",
+      "text_sha256": "23f3e617e89e89ee2d8f99a4ef34e351ae5a9e90e4834a5e22e90ebaedf0a2a8",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "turning-down-you-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        882288,
+        19440,
+        0.048
+      ],
+      "packed_sha256": "f1568f0d05741c2278078a9f744f4c8448503e6f7ff4e15ee67739a785a2c6b7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "0eae8f15d4779927467e753e41f4a171995ffed9a6e0c50e9060f02371d39ca6",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "My colleague offered me a ride home, but I turned it down.",
+      "text_sha256": "a22d6bcf87f30914b67935648216605995253a978ea3a541680266bec0023842",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "up-to-you-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1889424,
+        4608,
+        0.048
+      ],
+      "packed_sha256": "b41a598c79d2981e9db36024494f25056a1ba29c4444be6b46c1480607bfd6c5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "da156bae75c9b386531619c1f89106bbd5c460542f8f71bc8ad1a2f6fc65c906",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "It's up to you.",
+      "text_sha256": "c18436bb9acbf3ccd96d481fb0806ee73bd29b6d013cf97bac661d8714b45e3e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "up-to-you-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1894032,
+        22608,
+        0.048
+      ],
+      "packed_sha256": "f15f375ef0b95da84a6bb8782310defb8dac590adc016ea8ccd8814057cd09e4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cb30522f9d887d4e77bbde17f2e37166403e70d05af23a817db4777f13e92828",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I can give you the numbers, but whether we sign today is up to you.",
+      "text_sha256": "506f10b4cd97a55821ed0234430407d7c4819d0b7c320fb9bec668216f581a6c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "used-to-be-a-beat-cop-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2002608,
+        15264,
+        0.048
+      ],
+      "packed_sha256": "7b9999669c01e5ba3608f70413e8528ba3ac0d336dc5344c28210495466bea09",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cbadaa034cfb6dd0ca9ced915a07ebb7eed0eb4afba327abf89666175a85ac95",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I used to be a beat cop, long time ago.",
+      "text_sha256": "b8ce0d566f93d81ccc82af5f3995eb3cdbf585a0bd10419399e03509d9b75259",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "used-to-be-a-beat-cop-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2017872,
+        17424,
+        0.048
+      ],
+      "packed_sha256": "6515028ce06f0aa1ba372d20c9cf7cd0484ba6dfc055c32225950380aeaecc29",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cf6e5d68b0a9b160e2507558d9bdd3ff75a1908bfb0dd104544d1370a523ea1e",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I used to work night shifts before I moved to the clinic.",
+      "text_sha256": "2c01dbfd6e5d28415a2214d39ffa7649c2d9d60d13502af1b5435750d3478725",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "watched-jane-die-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1191888,
+        7200,
+        0.048
+      ],
+      "packed_sha256": "735a20f5503ce6635bd0c9504d5ccaf990c822169be54c0bf867969c194d1219",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "76a7c75c873ae96af753e5bf8a9b66c80378c248e3f1cd7b37f69e58fd80c668",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I watched Jane die.",
+      "text_sha256": "e25a7b7cdc1bfb46196bb390401e320d5245c55baee4c2b019488a8855d21d52",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "watched-jane-die-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1199088,
+        15408,
+        0.048
+      ],
+      "packed_sha256": "8c16f0e8c85e4b2f3094c09cab08d353392450bb54ac2b3ba3466725c2513899",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "f3baf776dbd1f13012d5b4da023cfbe5518c058503e14dad4735eb84d4ff303a",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I heard my neighbour slam the door at two in the morning.",
+      "text_sha256": "15a139a5a1196ac3e2a0f95c7cfff747b338bd6b2eb3d6de433e06bd5e72eee3",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "what-the-hell-t": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "cea0bd1340286323e1f5718891632d535415f9f1c4f77e9ea1308360f20a5fff",
+      "source": "approved-missing-recording",
+      "text": "What the hell are you talking about?",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "what-the-hell-x": {
+      "pending": true,
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4d76f7b6b6c8734591379a4d5a71c115cc74cd799c42a73c14c7d1d4f5dd220c",
+      "source": "approved-missing-recording",
+      "text": "What the hell are you talking about? I signed those papers yesterday.",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "whats-the-point-of-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        901728,
+        20880,
+        0.048
+      ],
+      "packed_sha256": "8779f59f1a1800b2b43777bb98934343ba8cb8bf61723a3f15fd2c1ca0ddd16a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "34434576f40ab8e691b451359c4aef6ebc0ad1e5d0f37adca4d36773a538d450",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "What's the point of being an outlaw when you got responsibilities?",
+      "text_sha256": "37116f0d4883685b866d7adc7bc294fb3f3234cc9b9263f276ca54e09654257f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "whats-the-point-of-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        922608,
+        22320,
+        0.048
+      ],
+      "packed_sha256": "d90ac4f1afeb49ae4e096b5a9474e15191194ba28d557e9cccfc6741b8f7e194",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "6a0f22b441edb21125cdbeefb29c52f8c4efaf63ba7972445de8f92a9e96c06c",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "What's the point of buying a gym membership if you never find the time to go?",
+      "text_sha256": "87cf98295708d127018fc6f0df0c66b4d1997fa7654189dd3f1cd097f21e0fad",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "whats-wrong-with-me-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1916640,
+        12816,
+        0.048
+      ],
+      "packed_sha256": "2314ca8444f49183abdb1d4574f6830e2add2c853f7704d0867bc4668ea2f52b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "4621948b751eebe643f79494611d4d0d35d1692f399e77bafa91d9095f1dd546",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I don't know what's wrong with me, Mr. White.",
+      "text_sha256": "d003bf489ec95078a2bcd3fa677fa290a9a3cdccfdfa83c54376ee8c4db865a2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "whats-wrong-with-me-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1929456,
+        20160,
+        0.048
+      ],
+      "packed_sha256": "12f2cedb26d7db5babb2c2657aa9f544d49ff678928aa18a3e613a30328df2e7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "f33568a25e78c5d94432784ab7352588136678f71684b7cc37c1d22f069b1ebb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I don't know what's wrong with this scanner, but it keeps shutting down.",
+      "text_sha256": "9c1e3f4980c915cbd8ab3cc04f9db5a65bf99b1152f6b6892cfe405f8e34dc1c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "when-i-say-so-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        944928,
+        9648,
+        0.048
+      ],
+      "packed_sha256": "5fe360d63b740e6c0d2a39c01e9f7c0a0d6c375baa8c3b3c385796da30998844",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "476a36a080fecb9c2bf8f1fe91991c2cd4c1040ae2d6e314dc118063cc5b70bd",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "We’re done when I say we’re done.",
+      "text_sha256": "0372e70afa31bdc51e35126aee56b5ad5d9a5ebd36e66a66071ce09c2069029b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "when-i-say-so-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        954576,
+        17280,
+        0.048
+      ],
+      "packed_sha256": "89f2815e66ff0e05ff82a564bf66a2050400fb359d1b60e385c756381fe5ed39",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "ab396e418d0f4377813d866cc22ff0d8006b9d68e582c27542cc897edcc5edb5",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I’ll tell you the results when I get them, not before.",
+      "text_sha256": "9dcea5fc0a5aa4aab3cebbbe1da0d10f0795c5fc0a5a34ca318da1a5a6e0366d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "why-dont-you-already-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1469664,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "bc58a4169381061c0fc2558673481ee444cdfbc3a3b400af1c51a6308e0ed4e7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9fc05ccc15e518cf3fab2a0f2e88403251e072fdbf165da82c2101458d1671fb",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Why don't you just die already?",
+      "text_sha256": "759ba7d771b1f1165c56e0c83bc67f7dd9f909200ad2c5a61453c383fb340605",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "why-dont-you-already-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1477872,
+        11520,
+        0.048
+      ],
+      "packed_sha256": "a0bc3f92902eb9c0e427700b9a358015c93e55b800493e7554a160316c0dccc7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e4ea6d9939b8cc298f61f7481e245b1bad119dffb96634bc859308302151d068",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "Why don't you just tell her the truth already?",
+      "text_sha256": "7f0a272a5aaf27946d0c38a0f7ce10b43c1fe8b851cf1c183d182b9299b29fc7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "will-not-be-harassed-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1028304,
+        22032,
+        0.048
+      ],
+      "packed_sha256": "abeca01e167f75882c2aa0be7c5a3d7690d7d444206088bca6e5ef5444300878",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "a59ed1c89d04c097fdac6a914e42497091c005962daf4b1052339b68fc52a0a8",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "This is my own private domicile and I will not be harassed.",
+      "text_sha256": "e6ac583d2a09e1b48fd334a85bacd2aaae2d6a997e391cc11371dee425e27a54",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "will-not-be-harassed-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1050336,
+        18144,
+        0.048
+      ],
+      "packed_sha256": "e0c55284b180321d2fb05b0a49a43fa08545d95fa8a393828eb29da39298c793",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "9142c2bcdb4fb54e9ae0668064f1b744bac0dc9096afe6a7d8d8f980646df47f",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I will not be rushed into a decision I will regret.",
+      "text_sha256": "9a9a884da6ea5d8ab5ac7bfce7c65623a2ca2258a653c5ca13f826abc0abcf22",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-do-have-a-plan-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1311984,
+        7344,
+        0.048
+      ],
+      "packed_sha256": "18dc8be3855349723ca9b1539328a80e9a362fe79bdea2b0b494de25181baa3c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "21772c916199844e8eaa7e133285f3466115b1c804a0b44c67276ae77fc6372d",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "So you do have a plan!",
+      "text_sha256": "0f27996a67cdf21eab62d3b0835716fc776b86fc6567583b7e3f33a85baebf4b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-do-have-a-plan-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1319328,
+        20448,
+        0.048
+      ],
+      "packed_sha256": "1ed7e75239787262195e59b3fbf6f02bf83bebf7cf35b14c6b93090b8ef95526",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "e975baa9d9dbce4d5e0679c44e3e692fff1840c2378c02dfc3897121a36e8d40",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "I did send you the results yesterday — check your spam folder.",
+      "text_sha256": "8e5c039d2bf3bd8f25c259c4ef5de8e813186aab54ab089dc05b6c9394de4a40",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-got-me-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2361600,
+        4176,
+        0.048
+      ],
+      "packed_sha256": "f4fc7339bdba1153f626470ccc919f335b101121feb80bdbe2f7823bd5e78ef8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fe92f64944ceb04ef85d151e415f091fe4255f17491a5e6b44d4dc8d88f4ce58",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You got me.",
+      "text_sha256": "53d71737e7115b9cb7d85c006b9b27a73da81db0fbe57d875e890eed44a75103",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-got-me-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        2365776,
+        19008,
+        0.048
+      ],
+      "packed_sha256": "33a7d3b7015e2ddb41563664364deec01f312c7ad63dac09e0f7a5bfebcfe011",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "f281ce31985337d2f47236cfcf5bdd2b83729ff437699bd2cce700b232daf4d9",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You got me — I really did finish the last of the coffee.",
+      "text_sha256": "056da9ea82b855ba5fc5b4277cc11be870da635e4fc3e592cc435d6932f8cf5f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-know-how-they-say-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1599984,
+        10224,
+        0.048
+      ],
+      "packed_sha256": "59152eeeb30c5992ce07bf94bf7a135936fbacf44541f91c2aecc584370afd88",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "3aab2ca7b1f9a32f2e5eaf256d087ce5d613a40307b0465372065bcc01ff9b37",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You know how they say it's been a pleasure?",
+      "text_sha256": "6606048c7a931dc5739a89970f583c768780de29bd7a5f090ae74399d7623735",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-know-how-they-say-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        1610208,
+        23904,
+        0.048
+      ],
+      "packed_sha256": "96914430a717c6272c6952815d6f5e423a27495e9494333dd3b371e9e37c5714",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "7f0235db75dff5574b89794329b128869c065adc27e6783e7a8231434f0dd170",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You know how they say the night shift gets easier — well, it doesn’t.",
+      "text_sha256": "9e3ecd67eb9c25ad15c1787d2bddbb1be572d5d5c6be04391a943935e5b711e4",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "youre-damn-right-t": {
+      "baseline_parameters_verified": false,
+      "location": [
+        971856,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "f6bd2e5cb025c93cd698c2bffb5a9a49f494f580e60ed84d2135a5db5ecdc562",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "bd1fc457077c3c7c06d5f04c4d9db68e5018921881ee5587d5e5630094e0cf05",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You're goddamn right.",
+      "text_sha256": "29074c91b22cd76f81e5d0f32461d79f7e4b449c26089a454c27fe189c70bff2",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "youre-damn-right-x": {
+      "baseline_parameters_verified": false,
+      "location": [
+        977904,
+        24048,
+        0.048
+      ],
+      "packed_sha256": "c637155ff1ec529751c4e394a6834bf71ee9b02b188873821310804ffc7c41cd",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "signature": "fcb4a79aaab285b42d1f0ae497de3ff31ae31949e73f2f41c8b6b4d71cb48788",
+      "source": "reviewed-existing-Andrew-baseline",
+      "text": "You think we should have ordered the MRI sooner? You're damn right we should have.",
+      "text_sha256": "c3b3e534cb3959b7de46f50743daaef8fee269e06cf1484e16b09113abb8af42",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "deck": "bbapp",
+  "schema": 1,
+  "voice": "en-US-AndrewNeural"
+}
