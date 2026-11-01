@@ -59,6 +59,7 @@ jobs:
         run: |
           node --test tools/test_audio_clips.mjs
           python -m unittest discover -s tools -p 'test_ensure_ryan_audio.py' -v
+          python -m unittest discover -s tools -p 'test_daily_deck.py' -v
       - name: Verify real Ryan synthesis
         if: github.event_name == 'workflow_dispatch' && inputs.verify_tts
         run: python tools/smoke_ryan_audio.py

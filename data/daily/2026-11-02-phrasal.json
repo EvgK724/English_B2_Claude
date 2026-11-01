@@ -1,0 +1,68 @@
+{
+  "batch_sha256": "d0e24db159fe8c4c7b385ffc0e15f6bd6217aa16cfe84e348f44d707c8a51dc1",
+  "cards": [
+    {
+      "added": "2026-11-02",
+      "au": 1,
+      "ex": "Before the meeting, we went over the handover notes together and wrote down two questions that we wanted to ask the night team.",
+      "exru": "Перед совещанием мы вместе просмотрели записи о передаче дежурства и записали два вопроса, которые хотели задать ночной бригаде.",
+      "id": "go-over",
+      "ipa": "/ˌɡəʊ ˈəʊvə/ · went over · gone over",
+      "note": "Смысл — внимательно пройтись по тому, что уже есть: go over the notes, the results, the details, a checklist. Это может быть самостоятельная проверка или повторное объяснение: Could we go over that again? — «Можно ещё раз это разобрать?» В учебном разговоре об отделении естественно go over the handover notes; при чтении статьи — go over the methods. Дополнение остаётся после over, в том числе местоимение: go over it, никогда «go it over» в этом значении. Человек, с которым разбирают материал, вводится через with: go over the plan with the team. Типичная ошибка — буквальный перевод «идти над» и лишнее about: go over the results, без about. Не путайте с look over: оно часто означает более беглый просмотр; go over подчёркивает внимание к деталям. А go through может означать не только просмотр по порядку, но и переживание трудного периода. Формальный вариант для письма или статьи — review. Пример ниже — вымышленная рабочая ситуация, а не медицинская рекомендация.",
+      "pos": "phrasal verb · переходный · неразделяемый",
+      "ru": "просмотреть, разобрать, повторить — внимательно пройтись по материалу или объяснить его ещё раз",
+      "sources": [
+        {
+          "checked": "2026-11-02",
+          "note": "Meaning and verb forms checked; all instructional wording and the example are original.",
+          "title": "Cambridge Dictionary — go over something (examine; study)",
+          "url": "https://dictionary.cambridge.org/dictionary/english/go-over"
+        }
+      ],
+      "term": "go over"
+    }
+  ],
+  "clips": {
+    "go-over-t": {
+      "duration": 0.936,
+      "key": "go-over-t",
+      "location": [
+        2977776,
+        5616,
+        0.048
+      ],
+      "packed_sha256": "e1ca481e3df23679a94f973f3db980e2564acb3d60da0cc2cb060dc558e27f14",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "77d2b8e9408b529455f9fedf353bfa26c76104eef564764d739201e275c29a9f",
+      "text": "go over",
+      "text_sha256": "2d9eb78780d8ec543422e164a1b3eb6ad6109273e26a94d53f661dddd14dfe9f",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "go-over-x": {
+      "duration": 6.528,
+      "key": "go-over-x",
+      "location": [
+        2983392,
+        39168,
+        0.048
+      ],
+      "packed_sha256": "aea7e63aa6eb2568c5ecaa57e1dbdd46e1cd4a31fd23afb006049cc8275a3136",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "9fc35b1d49fd4327ba5732ae5870bb916df681475433aff7edcec9aad79ba266",
+      "text": "Before the meeting, we went over the handover notes together and wrote down two questions that we wanted to ask the night team.",
+      "text_sha256": "55ceea358fefa59036036d49eb1009b6b4f173d8d67948099dfe0abe8331308e",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-02",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

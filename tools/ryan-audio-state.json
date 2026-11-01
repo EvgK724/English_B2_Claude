@@ -44253,6 +44253,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "go-over-t": {
+          "duration": 0.936,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "2d9eb78780d8ec543422e164a1b3eb6ad6109273e26a94d53f661dddd14dfe9f",
+          "packed_sha256": "e1ca481e3df23679a94f973f3db980e2564acb3d60da0cc2cb060dc558e27f14",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "77d2b8e9408b529455f9fedf353bfa26c76104eef564764d739201e275c29a9f",
+          "signature": "41e964128a31b92903fe288fec76bdb5a4d0ab1f940111a3b8caee6922892e3d",
+          "source": "Microsoft-Edge-TTS",
+          "text": "go over",
+          "text_sha256": "2d9eb78780d8ec543422e164a1b3eb6ad6109273e26a94d53f661dddd14dfe9f",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "go-over-x": {
+          "duration": 6.528,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "55ceea358fefa59036036d49eb1009b6b4f173d8d67948099dfe0abe8331308e",
+          "packed_sha256": "aea7e63aa6eb2568c5ecaa57e1dbdd46e1cd4a31fd23afb006049cc8275a3136",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "9fc35b1d49fd4327ba5732ae5870bb916df681475433aff7edcec9aad79ba266",
+          "signature": "197422f6c62e793061365b5af6827ccc51e2579a03b2d9e69f13b6e9444ad412",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Before the meeting, we went over the handover notes together and wrote down two questions that we wanted to ask the night team.",
+          "text_sha256": "55ceea358fefa59036036d49eb1009b6b4f173d8d67948099dfe0abe8331308e",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "go-through-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "9c39b1a2e1d6417a88619eb9f19fc026b9edad49a39960631517801c325be3f5",

@@ -1,0 +1,138 @@
+{
+  "batch_sha256": "c3665bb7c0652c82313195712b7ce9923467e31f787385844d092f85502781e2",
+  "cards": [
+    {
+      "added": "2026-11-02",
+      "au": 1,
+      "ex": "If you need a hand with the report, just say the word.",
+      "exru": "Если нужна помощь с отчётом, только скажи.",
+      "id": "just-say-the-word",
+      "note": "Короткий фрагмент реплики Хэнка в первой серии: он предлагает Уолтеру поехать с ним на работу. Say the word здесь означает «дай знак, скажи, что согласен или что тебе нужна помощь»; человек уже готов действовать и ждёт твоего решения. Это удобный способ предложить помощь без давления. Запоминай целиком: say the word, с the и единственным числом word. Буквальное «произнеси слово» обычно не передаёт смысла, а tell the word — неверная замена: tell требует адресата или другого дополнения. Just смягчает предложение и подчёркивает, что достаточно лишь попросить. Фраза подходит для дружеского разговора и общения с коллегами; официальный вариант — let me know if you need any help.",
+      "reg": "разговорное",
+      "ru": "Только скажи. Или: дай знать — и я помогу.",
+      "sources": [
+        {
+          "checked": "2026-11-02",
+          "episode": "S01E01 — Pilot",
+          "excerpt": true,
+          "locator": "PDF page 15 / screenplay page 13, ride-along offer",
+          "speaker": "Hank Schrader",
+          "title": "Vince Gilligan — Breaking Bad pilot screenplay",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-101-pilot-2008.pdf"
+        },
+        {
+          "locator": "Subtitle 169, 00:13:20.550–00:13:22.885",
+          "title": "Aired pilot subtitles",
+          "url": "https://breakingbad.fandom.com/wiki/Pilot_subtitles"
+        }
+      ],
+      "term": "Just say the word.",
+      "who": "Хэнк Шрейдер"
+    },
+    {
+      "added": "2026-11-02",
+      "au": 1,
+      "ex": "At this rate, we'll finish the report before lunch.",
+      "exru": "Такими темпами мы закончим отчёт до обеда.",
+      "id": "at-this-rate",
+      "note": "Мари подшучивает над небольшим заработком Скайлер на продаже вещей. At this rate — «такими темпами», «если так пойдёт дальше»: по нынешней ситуации мы предполагаем будущий результат. Оборот подходит и для хорошего прогноза, и для тревоги или иронии; насмешку создают контекст и интонация, а не сама конструкция. Предлог здесь at, не in и не with. Вторая полезная деталь — in плюс промежуток времени в значении «через»: in an hour, in two weeks. For two weeks означает длительность «в течение двух недель», а не момент в будущем. You’ll be — обычный прогноз с will; после начального оборота удобно сделать небольшую паузу.",
+      "reg": "разговорное, с иронией",
+      "ru": "Такими темпами лет через пятьдесят-шестьдесят ты разбогатеешь.",
+      "sources": [
+        {
+          "checked": "2026-11-02",
+          "episode": "S01E01 — Pilot",
+          "excerpt": false,
+          "locator": "PDF page 33 / screenplay page 31, packing an item for sale",
+          "speaker": "Marie Schrader",
+          "title": "Vince Gilligan — Breaking Bad pilot screenplay",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-101-pilot-2008.pdf"
+        },
+        {
+          "locator": "Marie and Skyler conversation after Walt proposes working with Jesse",
+          "title": "Aired pilot transcript",
+          "url": "https://breakingbad.fandom.com/wiki/Transcript%3A_Pilot"
+        }
+      ],
+      "term": "At this rate, in fifty or sixty years you'll be rich.",
+      "who": "Мари Шрейдер"
+    }
+  ],
+  "clips": {
+    "at-this-rate-t": {
+      "duration": 3.552,
+      "key": "at-this-rate-t",
+      "location": [
+        2611296,
+        21312,
+        0.048
+      ],
+      "packed_sha256": "bc96fae647d9bef746e58f0a8308d49b994b2305b93556a75c418de122b0c402",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "bc707f1c2248d9f046ce91581942f9edf66c77c73afb96fc0a73ea6c3bc809ff",
+      "text": "At this rate, in fifty or sixty years you'll be rich.",
+      "text_sha256": "8d150e0eb4d7585fb502a8a6e39c0a44387ed83dc75806c47473c9410559d0cf",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "at-this-rate-x": {
+      "duration": 2.952,
+      "key": "at-this-rate-x",
+      "location": [
+        2632608,
+        17712,
+        0.048
+      ],
+      "packed_sha256": "61ef43686054f1cb26acefb259c27442e4b474da1bb8541b6222e8674de50be3",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "366fb812d4dd7153b73ef71470652978882be885ff17fba126afe9713ab51c46",
+      "text": "At this rate, we'll finish the report before lunch.",
+      "text_sha256": "0aa391658b058716c882b27ed5dbf5ca0d6c7b584bcc685198c8f4a5e5b2efd5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-say-the-word-t": {
+      "duration": 0.936,
+      "key": "just-say-the-word-t",
+      "location": [
+        2588544,
+        5616,
+        0.048
+      ],
+      "packed_sha256": "34da739e9243f94d30ada754bfa68769d36c154ddd6e618dea9af0a49de912f0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e67a9364dd1a225e99d76ba9cc92ebad77b35823c56f13b27a5f56af18cd664b",
+      "text": "Just say the word.",
+      "text_sha256": "a8b2ea73ce2fa60e0d1ff5de70a1adb6d7f84ba26c3b2f2cac77e5f7127a56c1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-say-the-word-x": {
+      "duration": 2.856,
+      "key": "just-say-the-word-x",
+      "location": [
+        2594160,
+        17136,
+        0.048
+      ],
+      "packed_sha256": "0f6e3d3f48b68644347bff7837f64891cffda257fc75b6b36f7354a205317214",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e55acc88f8e1befad24d97e6cf7db1046a0a5cde4da818a6c92a8c3c290a0628",
+      "text": "If you need a hand with the report, just say the word.",
+      "text_sha256": "e5ec98e0f160e3c89559fb3fd986d11078e97abb60b6619fa20087e54c356148",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-02",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
