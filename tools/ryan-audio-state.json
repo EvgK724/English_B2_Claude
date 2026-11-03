@@ -44845,6 +44845,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "turn-down-t": {
+          "duration": 1.008,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "75d1c6b8dc8bfc56e54bcc65e95bc2f76fd93e3c1cda040675899a63968a4043",
+          "packed_sha256": "2bc1ec15d22facbd75377cfa8a373cefba9358c5afa35bb4887aa8bdb0872ef5",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "5466eab025817aa790440a6be2f002150a7260b3759620ffb3a132a580bbd6b4",
+          "signature": "7bbdab1831f085c1fe8f29f8b01b1ed6d1151efe9f73a638a0c98c1be0a38232",
+          "source": "Microsoft-Edge-TTS",
+          "text": "turn down",
+          "text_sha256": "75d1c6b8dc8bfc56e54bcc65e95bc2f76fd93e3c1cda040675899a63968a4043",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "turn-down-x": {
+          "duration": 4.608,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "d9f200a1dde6d413bf2b90ac22ec38c64b36ce1f2f82823fd018e4f132779dc3",
+          "packed_sha256": "7421699a0fe3509bae55157fb45ea9dc5357b27235509924a249855cab6fec3a",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "81992d0f32fed8a0d1a81ad51dee076c75c603c7a9284042e018f5b48b45fa23",
+          "signature": "ed9aec5fc5129bb73ddaf168591f1320cf10c798bbc7b76513c21b1fb8772ed4",
+          "source": "Microsoft-Edge-TTS",
+          "text": "I turned down the extra shift because I had already promised to help my sister move.",
+          "text_sha256": "d9f200a1dde6d413bf2b90ac22ec38c64b36ce1f2f82823fd018e4f132779dc3",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "turn-out-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "5bbc705de9883b2ddf72d7bd1c5051964f6b5e716c625346b9a24da13dc81a75",

@@ -1,0 +1,78 @@
+{
+  "batch_sha256": "1ee59b3be3e79506adc1ba3a4db49168a7464bc07bb72e2339d54b2c3c745575",
+  "cards": [
+    {
+      "added": "2026-11-03",
+      "au": 1,
+      "ex": "I turned down the extra shift because I had already promised to help my sister move.",
+      "exru": "Я отказался от дополнительной смены, потому что уже пообещал помочь сестре с переездом.",
+      "id": "turn-down",
+      "ipa": "/ˌtɜːn ˈdaʊn/ · turned down · turned down",
+      "note": "Так говорят об отказе: turn down an offer, an invitation, a request. С существительным возможны оба порядка: turn down the offer / turn the offer down; местоимение ставится только между частями: turn it down, не «turn down it». Можно отказать человеку: turn somebody down. Не путайте с put off: turn down an invitation — отказаться от приглашения, а put off a meeting — перенести встречу на более поздний срок. Ещё одно значение turn down — убавить громкость или нагрев: turn the volume down; здесь разбираем отказ.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "отклонить, отказаться — не принять предложение или просьбу",
+      "sources": [
+        {
+          "title": "Oxford Advanced Learner’s Dictionary — turn down",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/turn-down"
+        },
+        {
+          "title": "Oxford Advanced Learner’s Dictionary — turn: British pronunciation and verb forms",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/turn_1"
+        },
+        {
+          "title": "Oxford Advanced Learner’s Dictionary — down: pronunciation",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/down_1"
+        },
+        {
+          "title": "Oxford Advanced Learner’s Dictionary — put off: postpone an event",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/put-off"
+        }
+      ],
+      "term": "turn down"
+    }
+  ],
+  "clips": {
+    "turn-down-t": {
+      "duration": 1.008,
+      "key": "turn-down-t",
+      "location": [
+        3022560,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "2bc1ec15d22facbd75377cfa8a373cefba9358c5afa35bb4887aa8bdb0872ef5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "5466eab025817aa790440a6be2f002150a7260b3759620ffb3a132a580bbd6b4",
+      "text": "turn down",
+      "text_sha256": "75d1c6b8dc8bfc56e54bcc65e95bc2f76fd93e3c1cda040675899a63968a4043",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "turn-down-x": {
+      "duration": 4.608,
+      "key": "turn-down-x",
+      "location": [
+        3028608,
+        27648,
+        0.048
+      ],
+      "packed_sha256": "7421699a0fe3509bae55157fb45ea9dc5357b27235509924a249855cab6fec3a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "81992d0f32fed8a0d1a81ad51dee076c75c603c7a9284042e018f5b48b45fa23",
+      "text": "I turned down the extra shift because I had already promised to help my sister move.",
+      "text_sha256": "d9f200a1dde6d413bf2b90ac22ec38c64b36ce1f2f82823fd018e4f132779dc3",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-03",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
