@@ -1,0 +1,41 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-03",
+        "au": 1,
+        "ex": "I turned down the extra shift because I had already promised to help my sister move.",
+        "exru": "Я отказался от дополнительной смены, потому что уже пообещал помочь сестре с переездом.",
+        "id": "turn-down",
+        "ipa": "/ˌtɜːn ˈdaʊn/ · turned down · turned down",
+        "note": "Так говорят об отказе: turn down an offer, an invitation, a request. С существительным возможны оба порядка: turn down the offer / turn the offer down; местоимение ставится только между частями: turn it down, не «turn down it». Можно отказать человеку: turn somebody down. Не путайте с put off: turn down an invitation — отказаться от приглашения, а put off a meeting — перенести встречу на более поздний срок. Ещё одно значение turn down — убавить громкость или нагрев: turn the volume down; здесь разбираем отказ.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "отклонить, отказаться — не принять предложение или просьбу",
+        "sources": [
+          {
+            "title": "Oxford Advanced Learner’s Dictionary — turn down",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/turn-down"
+          },
+          {
+            "title": "Oxford Advanced Learner’s Dictionary — turn: British pronunciation and verb forms",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/turn_1"
+          },
+          {
+            "title": "Oxford Advanced Learner’s Dictionary — down: pronunciation",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/down_1"
+          },
+          {
+            "title": "Oxford Advanced Learner’s Dictionary — put off: postpone an event",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/put-off"
+          }
+        ],
+        "term": "turn down"
+      }
+    ],
+    "date": "2026-11-03"
+  },
+  "batch_sha256": "1ee59b3be3e79506adc1ba3a4db49168a7464bc07bb72e2339d54b2c3c745575",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-03T06:24:12.634926Z"
+}
