@@ -55,4 +55,6 @@ python3 -m http.server 8000
 
 и открыть http://localhost:8000/site/.
 
-Как устроен проект и как вносить изменения — в `CLAUDE.md` (его автоматически читает Claude Code).
+Как устроен проект и как вносить изменения в ChatGPT/Codex — в [AGENTS.md](AGENTS.md).
+Подробности отдельных тренажёров и старых генераторов — в [справочнике](docs/generator-reference.md).
+Учебный профиль и правила уроков сохранены в [english-b2-lesson.SKILL.md](english-b2-lesson.SKILL.md).
