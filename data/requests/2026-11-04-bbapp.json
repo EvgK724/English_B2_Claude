@@ -1,0 +1,93 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-04",
+        "au": 1,
+        "ex": "I wasn't sure about the new office at first, but it's growing on me.",
+        "exru": "Сначала я сомневался, понравится ли мне новый офис, но теперь он нравится мне всё больше.",
+        "id": "growing-on-me",
+        "note": "В S05E14 «Ozymandias» Уолтер постепенно привыкает к предложенному имени дочери и замечает, что оно нравится ему всё больше. Grow on someone описывает именно растущую симпатию: сначала вещь, место или идея могли не понравиться, а затем отношение меняется. Конструкция: something grows on someone; предмет симпатии стоит подлежащим, человек — после on. В It's growing on me сокращение it's означает it is, а Present Continuous подчёркивает изменение сейчас. Не переставляй me перед on и не заменяй предлог на to. Get used to означает «привыкнуть» и само по себе не обещает, что вещь понравилась. Фраза подходит для обсуждения музыки, нового места, дизайна или идеи; без контекста it's должно отсылать к уже названной вещи.",
+        "reg": "разговорное, нейтральное",
+        "ru": "Мне это нравится всё больше.",
+        "sources": [
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Scene 3, printed page 6, telephone conversation about the baby's name",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad: Ozymandias (#514), FINAL 04/01/2013 — production script hosted under the mislabeled page title Breaking Bad Felina Script",
+            "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script",
+            "verification": "Internal title and every page header identify Ozymandias; the quoted sentence matches the aired subtitles."
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Subtitle cue 95, 00:04:38,701–00:04:42,054",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad - 05x14 - Ozymandias — aired-episode subtitles",
+            "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias",
+            "verification": "Exact sentence confirmed; speaker identified from the matching production-script scene."
+          },
+          {
+            "locator": "Sense 2",
+            "title": "Merriam-Webster: grow on",
+            "url": "https://www.merriam-webster.com/dictionary/grow%20on",
+            "verification": "Checked the meaning of gradually becoming more attractive or acceptable and the grow on someone construction."
+          }
+        ],
+        "term": "It's growing on me.",
+        "who": "Уолтер Уайт"
+      },
+      {
+        "added": "2026-11-04",
+        "au": 1,
+        "ex": "This isn't the best time to discuss the budget; can we talk after lunch?",
+        "exru": "Сейчас не самый подходящий момент для обсуждения бюджета; можем поговорить после обеда?",
+        "id": "not-the-best-time",
+        "note": "В S05E14 «Ozymandias» Скайлер говорит это Мари, которая неожиданно пришла поговорить на автомойку. Time здесь — подходящий момент для действия, а не длительность. Фраза позволяет отложить разговор или дело, не объясняя сразу все причины; спокойная интонация делает её мягче, резкая может звучать как отказ. Можно уточнить действие: the best time to discuss something, либо назвать событие через for: the best time for a meeting. Перед best в этой конструкции нужен the; неверно this isn't best time. После to ставь начальную форму глагола, а не -ing. I don't have time означает, что не хватает времени; здесь же обстоятельства могут быть неподходящими даже при свободном графике.",
+        "reg": "нейтральное разговорное, сдержанное",
+        "ru": "Сейчас не самый подходящий момент.",
+        "sources": [
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Scene 23, printed page 28, Marie's arrival at the car wash",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad: Ozymandias (#514), FINAL 04/01/2013 — production script hosted under the mislabeled page title Breaking Bad Felina Script",
+            "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script",
+            "verification": "Internal title and page headers identify Ozymandias; the quoted sentence matches the aired subtitles."
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Subtitle cue 302, 00:24:12,135–00:24:14,720",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad - 05x14 - Ozymandias — aired-episode subtitles",
+            "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias",
+            "verification": "Exact sentence confirmed; speaker identified from the matching production-script scene."
+          },
+          {
+            "locator": "Sense 4",
+            "title": "Oxford Advanced Learner's Dictionary: time, noun",
+            "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/time_1",
+            "verification": "Checked time as an appropriate occasion, time to do something and time for something."
+          },
+          {
+            "locator": "Noun, sense 3b",
+            "title": "Merriam-Webster: time",
+            "url": "https://www.merriam-webster.com/dictionary/time",
+            "verification": "Checked time as a suitable moment."
+          }
+        ],
+        "term": "This isn't the best time.",
+        "who": "Скайлер Уайт"
+      }
+    ],
+    "date": "2026-11-04"
+  },
+  "batch_sha256": "5070928fa0a1c7614b1f4cee1ff50973f1e4b332b187856c42ff3750e68b89b7",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-04T06:56:04.100535Z"
+}
