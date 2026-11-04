@@ -44413,6 +44413,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "look-up-t": {
+          "duration": 0.816,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "a973a2796d13e1dbe3b099764ca8774094004df70d0285ed380409161637181a",
+          "packed_sha256": "e761825a61711c9df5a2f883c3375589c59f82c0b76db40dfcb36f6f7b5a67db",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "16b179365d0b3a27080154fffe86371af859018b5348554cbd74cf53b37c8d06",
+          "signature": "a34f5055b26a7c21d7dc02a69a3eb6e54bbdd0b25c8c47aa9aea33cfc2b33501",
+          "source": "Microsoft-Edge-TTS",
+          "text": "look up",
+          "text_sha256": "a973a2796d13e1dbe3b099764ca8774094004df70d0285ed380409161637181a",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "look-up-x": {
+          "duration": 5.52,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "355abad4caf8ab44a2d33d42be208cee4634744ba3f7494a04085d3bf25fcaa9",
+          "packed_sha256": "eff8ac56c3c11a96d630046b2cf0f5f56122b6af80246127b3b5d7c58344373a",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "1784a361c779d782c6645e27851b9c35b9f6e6da2935119364d52e40859a900e",
+          "signature": "fbbd84fb46f50636aea770334d1eacd59e0e556c9bc818e162e7e933ff5778fe",
+          "source": "Microsoft-Edge-TTS",
+          "text": "I looked up the unfamiliar abbreviation in an online dictionary before replying to my colleague's email.",
+          "text_sha256": "355abad4caf8ab44a2d33d42be208cee4634744ba3f7494a04085d3bf25fcaa9",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "make-out-t": {
           "duration": 0.96,
           "edge_tts": "7.3.1",
