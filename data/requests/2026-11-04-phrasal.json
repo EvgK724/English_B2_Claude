@@ -1,0 +1,55 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-04",
+        "au": 1,
+        "ex": "I looked up the unfamiliar abbreviation in an online dictionary before replying to my colleague's email.",
+        "exru": "Я посмотрел значение незнакомого сокращения в онлайн-словаре, прежде чем ответить на письмо коллеги.",
+        "id": "look-up",
+        "ipa": "/ˌlʊk ˈʌp/ · looked up · looked up",
+        "note": "Так говорят, когда обращаются к словарю, справочнику или интернету за конкретной информацией: look up a word, an abbreviation, an address. С существительным возможны оба порядка: look up the word / look the word up; местоимение ставится только между частями: look it up, не «look up it». Источник можно указать через in или on: in a dictionary, on a website. Не добавляйте for после look up: look up a word, без for. Look for означает искать что-либо, а look up — искать сведения в источнике; find out шире и означает узнать информацию любым способом. Здесь разбираем поиск сведений: без дополнения look up может также означать «поднять глаза» или «улучшаться» — это другие значения.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "посмотреть, найти в справочнике — узнать значение слова или нужные сведения",
+        "sources": [
+          {
+            "checked": "2026-11-04",
+            "locator": "look something up; meaning and examples of noun/pronoun placement; also distinct intransitive senses",
+            "title": "Oxford Advanced Learner’s Dictionary — look up",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/look-up"
+          },
+          {
+            "checked": "2026-11-04",
+            "locator": "British pronunciation /lʊk/; Verb Forms: looked /lʊkt/, looked /lʊkt/; search sense: look for somebody/something",
+            "title": "Oxford Advanced Learner’s Dictionary — look (verb)",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/look_1"
+          },
+          {
+            "checked": "2026-11-04",
+            "locator": "British pronunciation /ʌp/",
+            "title": "Oxford Advanced Learner’s Dictionary — up (adverb)",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/up_1"
+          },
+          {
+            "checked": "2026-11-04",
+            "locator": "Grammar explanation → Separable: personal pronouns must separate verb and particle",
+            "title": "British Council LearnEnglish — Phrasal verbs",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs"
+          },
+          {
+            "checked": "2026-11-04",
+            "locator": "find out (about something/somebody): information obtained by asking, reading, etc.; supports contrast with looking information up",
+            "title": "Oxford Advanced Learner’s Dictionary — find out",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/find-out"
+          }
+        ],
+        "term": "look up"
+      }
+    ],
+    "date": "2026-11-04"
+  },
+  "batch_sha256": "d5d732f25fe74cba3ca192da91005a031d42718d4b2fcadcf3ee60bae33cba36",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-04T06:55:01.313902Z"
+}
