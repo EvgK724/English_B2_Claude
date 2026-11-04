@@ -900,6 +900,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "growing-on-me-t": {
+      "duration": 1.056,
+      "edge_tts": "7.3.1",
+      "key": "growing-on-me-t",
+      "ledger": "data/daily/2026-11-04-bbapp.json",
+      "location": [
+        2756736,
+        6336,
+        0.048
+      ],
+      "packed_sha256": "f6394ebbd5c8eaf00044d604d4b0d7404e40b60df4b6d2d012d0662d0980d9c2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "61d3ad94db748904d91f7b52803e8facf7ae007c52045905884172ca8fae6474",
+      "signature": "32c0fe436fc6347a51cd2b967a8ed1b3fe8dd443249bf4fc2c7016c56ac81d90",
+      "source": "Microsoft-Edge-TTS",
+      "text": "It's growing on me.",
+      "text_sha256": "1c64eed888dc4d0faf508633b61c8ada2dfee3f0240a2ff7f232bf9814ddf368",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "growing-on-me-x": {
+      "duration": 3.744,
+      "edge_tts": "7.3.1",
+      "key": "growing-on-me-x",
+      "ledger": "data/daily/2026-11-04-bbapp.json",
+      "location": [
+        2763072,
+        22464,
+        0.048
+      ],
+      "packed_sha256": "13a3b27fb1114df5b4b48351cd681314e010c439b791d16c55cfea3e47c94b92",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e7c34611e75a5f118dc65c1d50554e9c2eb337bceac6bfe72d260b948b4e8b4b",
+      "signature": "b14ad774ecee4ecdbcd45a53936afdb5964dbbca32b78aa46d7d3605e255b708",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I wasn't sure about the new office at first, but it's growing on me.",
+      "text_sha256": "9c11bcf6b8730d4eef638f253ad9a8e246f187974720348ced89c0042dbe06b7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "has-to-be-dirty-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1823,6 +1865,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "Don't worry about the deadline, I'm not going anywhere until the report is finished.",
       "text_sha256": "c5e3fa2c508fadd54680c13192d0ecf3bbacbf7a193ede88dc333a2d928f4575",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-the-best-time-t": {
+      "duration": 1.392,
+      "edge_tts": "7.3.1",
+      "key": "not-the-best-time-t",
+      "ledger": "data/daily/2026-11-04-bbapp.json",
+      "location": [
+        2785536,
+        8352,
+        0.072
+      ],
+      "packed_sha256": "0b02447ccbb65133369d56f73e21647156555a6897c3e8b3625aad08d5bfde75",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f53f92c0df569be3678070a92ff589fc88ba60bac97226b76998a75774dca159",
+      "signature": "443702132cfc9c98b260d5926176f0b90df86b594e370c45615beb6373726d26",
+      "source": "Microsoft-Edge-TTS",
+      "text": "This isn't the best time.",
+      "text_sha256": "768acfbd4da2bfc746497b37570dc1b05914d43f3026aefd56cad8105b6f98ef",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-the-best-time-x": {
+      "duration": 3.984,
+      "edge_tts": "7.3.1",
+      "key": "not-the-best-time-x",
+      "ledger": "data/daily/2026-11-04-bbapp.json",
+      "location": [
+        2793888,
+        23904,
+        0.048
+      ],
+      "packed_sha256": "d2dac59cdb0c4feb550040ae80968ab2ab7eadb856de6aab023d8984e55586c5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6e035a6b145a8520ae548f34afa61fc3f67ada279550d0a5555266cbb2fa5a57",
+      "signature": "34f38cded2b23986eab5ae26f59bd4ff48a64fc4db7ea2758766a14726fad7f5",
+      "source": "Microsoft-Edge-TTS",
+      "text": "This isn't the best time to discuss the budget; can we talk after lunch?",
+      "text_sha256": "30abe5d12b03d7879fe53abf12aca1600076c1869c39e0f504d05388d1952778",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
