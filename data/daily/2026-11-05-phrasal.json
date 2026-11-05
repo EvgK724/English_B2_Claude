@@ -1,0 +1,93 @@
+{
+  "batch_sha256": "bf49557034e5e491fac63a2374df9c5371ebb4840331af8d860476335ee8580c",
+  "cards": [
+    {
+      "added": "2026-11-05",
+      "au": 1,
+      "ex": "When I returned from the conference, I spent the morning catching up on my emails.",
+      "exru": "Вернувшись с конференции, я провёл утро за разбором накопившихся писем.",
+      "id": "catch-up-on",
+      "ipa": "/ˌkætʃ ˈʌp ɒn/ · caught up on · caught up on",
+      "note": "Так говорят, когда делают то, на что раньше не хватило времени: catch up on emails, paperwork, reading. Дополнение ставится после on, даже местоимение: catch up on it, не «catch it up on». Не пропускайте on: catch up on my emails, не «catch up my emails». Здесь речь о накопившихся делах; catch up with a colleague может означать догнать коллегу или пообщаться и обменяться новостями. С работой возможен и вариант catch up with, поэтому значение зависит от контекста.",
+      "pos": "phrasal verb · непереходный; on + дополнение · неразделяемый",
+      "ru": "наверстать упущенное, разобраться с накопившимися делами",
+      "sources": [
+        {
+          "checked": "2026-11-05",
+          "locator": "catch up on something: do something that there was not time to do earlier; complement follows on",
+          "title": "Oxford Advanced Learner’s Dictionary — catch up on",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/catch-up-on"
+        },
+        {
+          "checked": "2026-11-05",
+          "locator": "Outstanding tasks sense: intransitive, usually followed by on or with; also reaching someone and exchanging news",
+          "teaching_note": "The example and Russian explanation are original. With + work is also possible and is not labelled an error.",
+          "title": "Collins English Dictionary — catch up",
+          "url": "https://www.collinsdictionary.com/dictionary/english/catch-up"
+        },
+        {
+          "checked": "2026-11-05",
+          "locator": "British pronunciation /kætʃ/; past tense and past participle caught",
+          "title": "Collins English Dictionary — catch",
+          "url": "https://www.collinsdictionary.com/dictionary/english/catch"
+        },
+        {
+          "checked": "2026-11-05",
+          "locator": "British pronunciation /ɒn/",
+          "title": "Collins English Dictionary — on",
+          "url": "https://www.collinsdictionary.com/dictionary/english/on"
+        },
+        {
+          "checked": "2026-11-05",
+          "locator": "British pronunciation /ʌp/ confirmed in indexed Collins entry; phrase IPA assembled from verified British component pronunciations",
+          "title": "Collins English Dictionary — up",
+          "url": "https://www.collinsdictionary.com/us/dictionary/english/up"
+        }
+      ],
+      "term": "catch up on"
+    }
+  ],
+  "clips": {
+    "catch-up-on-t": {
+      "duration": 0.984,
+      "key": "catch-up-on-t",
+      "location": [
+        3094272,
+        5904,
+        0.048
+      ],
+      "packed_sha256": "96d7590e1012003d11a3aac33be172acfb33d63961d60c79dee306a417732848",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f1264c5f13a4ca0c0992676a707227238c76f3aa247148436c794a1e25c66a9e",
+      "text": "catch up on",
+      "text_sha256": "cc2ce07684681b20d66ece0836137cc7eaf07608996049f7522abdb9b14cf1b8",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "catch-up-on-x": {
+      "duration": 4.488,
+      "key": "catch-up-on-x",
+      "location": [
+        3100176,
+        26928,
+        0.048
+      ],
+      "packed_sha256": "cc740d4804dc58f56352d0d24ad00cf7090e52a79c142f41bbffb2caa29c5a36",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "436abcbfd3d380356ecf736bec54d9dae3cdcc4f05f4cd04d694456b293c0521",
+      "text": "When I returned from the conference, I spent the morning catching up on my emails.",
+      "text_sha256": "26d511e0f0f5638e900bdf649f706930878100ed188bd94f40909ec16f375dfa",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-05",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
