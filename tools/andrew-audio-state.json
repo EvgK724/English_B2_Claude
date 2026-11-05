@@ -214,6 +214,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "can-you-do-me-a-favor-t": {
+      "duration": 1.152,
+      "edge_tts": "7.3.1",
+      "key": "can-you-do-me-a-favor-t",
+      "ledger": "data/daily/2026-11-05-bbapp.json",
+      "location": [
+        2846592,
+        6912,
+        0.024
+      ],
+      "packed_sha256": "f4841a1b98bfbfb777cd9505d7d42c9342727c7f97dd7da18fb8b5b25e69bd94",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "75fb0718cad08b4974bc5518832b70e420e81cfc595c19eab8ca058dfb62e806",
+      "signature": "0471a2003f4ee700bffe9890c61c43b37f3924e47111d20105d795ef226c2865",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Can you do me a favor?",
+      "text_sha256": "2aa61ad51dd1fb48d5b1c168743da20ef531da3c6a943fd8fbe5890e35a29757",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "can-you-do-me-a-favor-x": {
+      "duration": 3.168,
+      "edge_tts": "7.3.1",
+      "key": "can-you-do-me-a-favor-x",
+      "ledger": "data/daily/2026-11-05-bbapp.json",
+      "location": [
+        2853504,
+        19008,
+        0.048
+      ],
+      "packed_sha256": "30d29a11499858370715b272c346a8ca03d1010bacee2e0e7971178862e0cc03",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "348b0c2233e9eff532bc9a97513c53bb6322888d8611e4e9a6e3c5c006373b1b",
+      "signature": "6e7449453baba2252a5318d5f8957b9b320156b64bc69a1d9a320ee79f2af9f3",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Can you do me a favor and check the address before we leave?",
+      "text_sha256": "7c07d6982b3a8c5c02ae10a80a8253b47345bdf74c22d248a19c4db1347809ff",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "cant-afford-to-do-this-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1525,6 +1567,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "Let me finish this call and then we'll go through the list together.",
       "text_sha256": "fd680dbe5c813c0516ddac3608d88b747abed5d7075d7c52135fd0162137bf18",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "let-me-look-into-that-t": {
+      "duration": 1.08,
+      "edge_tts": "7.3.1",
+      "key": "let-me-look-into-that-t",
+      "ledger": "data/daily/2026-11-05-bbapp.json",
+      "location": [
+        2817792,
+        6480,
+        0.048
+      ],
+      "packed_sha256": "174868319227b047d48c2eab64325a018677acca2a9ccfe400fb047252145b58",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "2af21467c759c697dc1b8a812918fec8186e47b2b372f54bb6d79182772e1e23",
+      "signature": "8fb37c739907293b86c70c7a5cf4fc5c4401490531ee0845be5c7edcdc6c2011",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Let me look into that.",
+      "text_sha256": "7062b16b4d20307508e70039125caa48f96f78ef1547c3badda46a52159ec31a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "let-me-look-into-that-x": {
+      "duration": 3.72,
+      "edge_tts": "7.3.1",
+      "key": "let-me-look-into-that-x",
+      "ledger": "data/daily/2026-11-05-bbapp.json",
+      "location": [
+        2824272,
+        22320,
+        0.048
+      ],
+      "packed_sha256": "504ee237200a2c1833a51944760251d7688bff6cdd9f1f4bb13445444776d732",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1f4c0437ed4b853b6090ae9872cd07eb34365d4161d8becbaf0fc4dd8dca6dfd",
+      "signature": "e19828c4fded683f58243013467e5d126454f891fe24c8c8fd50cfb66696fc30",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Let me look into the booking problem, and I'll call you back this afternoon.",
+      "text_sha256": "044d75986e50f605dcfe7916cd48e09bda88eb488895ce501ece42f69f1365ff",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
