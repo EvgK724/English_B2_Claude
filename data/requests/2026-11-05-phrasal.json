@@ -1,0 +1,56 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-05",
+        "au": 1,
+        "ex": "When I returned from the conference, I spent the morning catching up on my emails.",
+        "exru": "Вернувшись с конференции, я провёл утро за разбором накопившихся писем.",
+        "id": "catch-up-on",
+        "ipa": "/ˌkætʃ ˈʌp ɒn/ · caught up on · caught up on",
+        "note": "Так говорят, когда делают то, на что раньше не хватило времени: catch up on emails, paperwork, reading. Дополнение ставится после on, даже местоимение: catch up on it, не «catch it up on». Не пропускайте on: catch up on my emails, не «catch up my emails». Здесь речь о накопившихся делах; catch up with a colleague может означать догнать коллегу или пообщаться и обменяться новостями. С работой возможен и вариант catch up with, поэтому значение зависит от контекста.",
+        "pos": "phrasal verb · непереходный; on + дополнение · неразделяемый",
+        "ru": "наверстать упущенное, разобраться с накопившимися делами",
+        "sources": [
+          {
+            "checked": "2026-11-05",
+            "locator": "catch up on something: do something that there was not time to do earlier; complement follows on",
+            "title": "Oxford Advanced Learner’s Dictionary — catch up on",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/catch-up-on"
+          },
+          {
+            "checked": "2026-11-05",
+            "locator": "Outstanding tasks sense: intransitive, usually followed by on or with; also reaching someone and exchanging news",
+            "teaching_note": "The example and Russian explanation are original. With + work is also possible and is not labelled an error.",
+            "title": "Collins English Dictionary — catch up",
+            "url": "https://www.collinsdictionary.com/dictionary/english/catch-up"
+          },
+          {
+            "checked": "2026-11-05",
+            "locator": "British pronunciation /kætʃ/; past tense and past participle caught",
+            "title": "Collins English Dictionary — catch",
+            "url": "https://www.collinsdictionary.com/dictionary/english/catch"
+          },
+          {
+            "checked": "2026-11-05",
+            "locator": "British pronunciation /ɒn/",
+            "title": "Collins English Dictionary — on",
+            "url": "https://www.collinsdictionary.com/dictionary/english/on"
+          },
+          {
+            "checked": "2026-11-05",
+            "locator": "British pronunciation /ʌp/ confirmed in indexed Collins entry; phrase IPA assembled from verified British component pronunciations",
+            "title": "Collins English Dictionary — up",
+            "url": "https://www.collinsdictionary.com/us/dictionary/english/up"
+          }
+        ],
+        "term": "catch up on"
+      }
+    ],
+    "date": "2026-11-05"
+  },
+  "batch_sha256": "bf49557034e5e491fac63a2374df9c5371ebb4840331af8d860476335ee8580c",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-05T07:00:05.929292Z"
+}
