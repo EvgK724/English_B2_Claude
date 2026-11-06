@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-06",
+        "au": 1,
+        "ex": "If you want to use my desk while I'm away, be my guest.",
+        "exru": "Если хочешь пользоваться моим столом, пока меня нет, пожалуйста.",
+        "id": "be-my-guest",
+        "note": "В S03E06 «Sunset» Джесси произносит эту реплику в разговоре с Бэджером у себя дома. Be my guest — устойчивый ответ, которым разрешают что-то сделать или чем-то воспользоваться: «пожалуйста», «можешь, я не против». Это не обязательно приглашение в гости. Be здесь — повелительная форма; перед my артикль не нужен, поэтому be a my guest неверно. Обычно действие уже понятно из просьбы или ситуации. В дружелюбном разговоре фраза звучит приветливо, но при холодной интонации может означать отстранённое «как хочешь». Для официального разрешения лучше прямо назвать, что человеку разрешено.",
+        "reg": "разговорное, разрешение или приглашение действовать",
+        "ru": "Пожалуйста, не стесняйся.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed page 11; PDF page 14; JESSE, living-room scene with Badger and Skinny Pete",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad #306 Sunset — Script as Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact three-word standalone line checked against the aired-episode English subtitles; character identified by the script speaker label."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Jesse's living-room scene; response immediately after Skinny Pete's Jolly Rancher comparison",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+            "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+            "verification": "Exact short line in the released-episode subtitle transcript matches the broadcast script."
+          },
+          {
+            "locator": "Idiom definition: permission to do or use something",
+            "title": "Cambridge Dictionary: be my guest!",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/be-my-guest",
+            "verification": "Permission meaning confirmed in the indexed Cambridge dictionary entry; direct page retrieval returned HTTP 403."
+          }
+        ],
+        "term": "Be my guest.",
+        "who": "Джесси Пинкман"
+      },
+      {
+        "added": "2026-11-06",
+        "au": 1,
+        "ex": "I'm just checking in to see how your first week is going.",
+        "exru": "Я просто хочу узнать, как проходит твоя первая неделя.",
+        "id": "just-checking-in",
+        "note": "В S03E06 «Sunset» Мари звонит Хэнку, чтобы уточнить планы на ужин. Здесь check in означает ненадолго связаться и узнать, что происходит, а не зарегистрироваться в гостинице. Если называешь собеседника, используй check in with someone: I'll check in with you tomorrow. В этой конструкции нельзя заменять with на to или ставить человека между check и in. I'm checking in — Present Continuous: говорящий объясняет цель нынешнего звонка или сообщения. Just смягчает начало: «просто хочу узнать». Фраза подходит для дружеского разговора и обычного общения с коллегами; после неё удобно добавить to see how... или to see if... и пояснить, что именно хочешь узнать.",
+        "reg": "разговорное, мягкое начало короткого звонка или сообщения",
+        "ru": "Просто хочу узнать, как у тебя дела.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed page 49; PDF page 52; MARIE (O.S.), phone call answered by Hank at the hospital",
+            "short_excerpt": true,
+            "speaker": "Marie Schrader",
+            "title": "Breaking Bad #306 Sunset — Script as Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact four-word sentence matches the aired subtitles; only the typographic apostrophe is normalized to ASCII."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Marie's phone call near the episode's end; her opening sentence before asking whether to cook dinner",
+            "short_excerpt": true,
+            "speaker": "Marie Schrader",
+            "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+            "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+            "verification": "Exact short sentence independently confirmed in released-episode subtitles; speaker and scene agree with the broadcast script."
+          },
+          {
+            "locator": "Phrase definition; US, informal; reporting or finding out new information",
+            "title": "Merriam-Webster: check in with — Definition & Meaning",
+            "url": "https://www.merriam-webster.com/dictionary/check%20in%20with",
+            "verification": "Full entry checked for the contact meaning and the check in with someone construction."
+          }
+        ],
+        "term": "I'm just checking in.",
+        "who": "Мари Шрейдер"
+      }
+    ],
+    "date": "2026-11-06"
+  },
+  "batch_sha256": "8bfc4741e5764187e5840069377e4c4ce7d05b09dfdc0147837e67ddda89bef6",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-06T03:26:59.489477Z"
+}
