@@ -180,6 +180,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "be-my-guest-t": {
+      "duration": 0.936,
+      "edge_tts": "7.3.1",
+      "key": "be-my-guest-t",
+      "ledger": "data/daily/2026-11-06-bbapp.json",
+      "location": [
+        2872512,
+        5616,
+        0.048
+      ],
+      "packed_sha256": "70247734bc53ebad7415aa1a15a56b43783be0cc276528d91c4256f45b7c8c7d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "106e0336fa5725d3991399ad43ba5259ff6d189876eb0b8d7ce89d157268e5e3",
+      "signature": "5fce231ff272b0f9dd306d179b0d1ae86ec9b34a21a9992cb5eba8573f5dde1b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Be my guest.",
+      "text_sha256": "b2252d05916aaca98bb7a715268b39078eed4fadee9f9ce0eb94075089c131e1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "be-my-guest-x": {
+      "duration": 3.12,
+      "edge_tts": "7.3.1",
+      "key": "be-my-guest-x",
+      "ledger": "data/daily/2026-11-06-bbapp.json",
+      "location": [
+        2878128,
+        18720,
+        0.048
+      ],
+      "packed_sha256": "24fb265d32721d8bfe48295de2e2cddd06da6ef99cf48eed5d7e055ce7d944fd",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ca68bd410f27165a958b36e06dab07ed4e10344e86e01910f6e846e1b5720e8c",
+      "signature": "d6181effc99eb10616cf496df445a6251e5d78ca5e38d6cc5918f7f0fc4a6926",
+      "source": "Microsoft-Edge-TTS",
+      "text": "If you want to use my desk while I'm away, be my guest.",
+      "text_sha256": "f40e043e147b05691ee121ca7b647af2b1c13bafd476b138151839fc2f673176",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "better-call-saul-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1389,6 +1431,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "Just because a test is expensive doesn't mean it's the right one for this patient.",
       "text_sha256": "6a041f253e5056463ac21b941a12b2034baa21e03c0f43ec3d86655a6577b071",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-checking-in-t": {
+      "duration": 1.032,
+      "edge_tts": "7.3.1",
+      "key": "just-checking-in-t",
+      "ledger": "data/daily/2026-11-06-bbapp.json",
+      "location": [
+        2896848,
+        6192,
+        0.048
+      ],
+      "packed_sha256": "e6c68269b139c4c31ab77deae507948f53db64cc0ae27a652bfc697596e18f19",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "06c95103e3b31bf30bf51999a5052247979be173a795e1008c92f945a7a39ad2",
+      "signature": "d289ab82a5bd5a77811ee7aeb6e4a74b1b242602dc3729fd2fb994ee1b8c1cff",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I'm just checking in.",
+      "text_sha256": "a70629b28c13bc5a60fe7951c554c165011c9a5a63e928a93f50c8cec752442c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-checking-in-x": {
+      "duration": 2.52,
+      "edge_tts": "7.3.1",
+      "key": "just-checking-in-x",
+      "ledger": "data/daily/2026-11-06-bbapp.json",
+      "location": [
+        2903040,
+        15120,
+        0.048
+      ],
+      "packed_sha256": "94cbb59a5da0b6af6870867409104d0d3e873035695018f5c9e09c3e1a7670cb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "2c56af935a7477a1da626454ea6debc49989cf6c77a8b03b745b83ee435f0b17",
+      "signature": "e56a40850b3c2c639669df9ae5be821e52378b526c36ee51c596fe951b8499a5",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I'm just checking in to see how your first week is going.",
+      "text_sha256": "809edea9800f6f5a8d0afe79691700e957843effebd5f9dac9238bf66e81cb6e",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

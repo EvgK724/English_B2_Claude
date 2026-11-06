@@ -1,0 +1,92 @@
+{
+  "batch_sha256": "7baa1926a96eb6ba9cb77cca070aeef16cc18a15ad21622afd36a4c9f97beec9",
+  "cards": [
+    {
+      "added": "2026-11-06",
+      "au": 1,
+      "ex": "I filled in the registration form online, but I forgot to include my phone number.",
+      "exru": "Я заполнил регистрационную форму онлайн, но забыл указать свой номер телефона.",
+      "id": "fill-in",
+      "ipa": "/ˌfɪl ˈɪn/ · filled in · filled in",
+      "note": "Так говорят о заполнении бумажной или электронной формы: fill in a form, a questionnaire. С существительным возможны оба порядка: fill in the form / fill the form in; местоимение ставится только между частями: fill it in, не «fill in it». Fill out a form означает то же самое и особенно распространено в американском английском. Не путайте с fill someone in on something: это «рассказать человеку подробности, ввести его в курс дела», а не заполнить документ.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "заполнить — внести сведения в форму или анкету",
+      "sources": [
+        {
+          "checked": "2026-11-06",
+          "locator": "fill something in, sense 1: completing a form; especially British English; fill out is also correct. Separate fill somebody in (on something) sense.",
+          "title": "Oxford Advanced Learner’s Dictionary — fill in",
+          "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/fill-in_1"
+        },
+        {
+          "checked": "2026-11-06",
+          "locator": "Indexed dictionary entry: document or online-form completion, fill in a form / fill a form in; US usually fill out a form.",
+          "title": "Cambridge Dictionary — fill in a form",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/fill-in-a-form"
+        },
+        {
+          "checked": "2026-11-06",
+          "locator": "B1 lesson: fill in a form is separable; object pronouns go between the verb and particle.",
+          "title": "British Council LearnEnglish — Phrasal verbs",
+          "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs"
+        },
+        {
+          "checked": "2026-11-06",
+          "locator": "British pronunciation /fɪl/; past tense and past participle filled.",
+          "title": "Collins English Dictionary — fill",
+          "url": "https://www.collinsdictionary.com/dictionary/english/fill"
+        },
+        {
+          "checked": "2026-11-06",
+          "locator": "Pronunciation /ɪn/, including the adverb used in phrasal verbs. Phrase IPA assembled from checked component pronunciations; example and Russian explanation are original.",
+          "title": "Collins English Dictionary — in",
+          "url": "https://www.collinsdictionary.com/dictionary/english/in"
+        }
+      ],
+      "term": "fill in"
+    }
+  ],
+  "clips": {
+    "fill-in-t": {
+      "duration": 0.72,
+      "key": "fill-in-t",
+      "location": [
+        3127104,
+        4320,
+        0.048
+      ],
+      "packed_sha256": "e0274a585b76eb0f78c1b97d85be06eba2d0430ca16a362794e220e854e6fad0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f5b5e0b7b7f0f2defd6397930ad85658adbedd8427dc3b7c4287c87ceaefd1b6",
+      "text": "fill in",
+      "text_sha256": "599dea6aec373d409e102ad3abc99568f69914fa364e8a3495886e6644ad27dd",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "fill-in-x": {
+      "duration": 4.56,
+      "key": "fill-in-x",
+      "location": [
+        3131424,
+        27360,
+        0.048
+      ],
+      "packed_sha256": "77c07f7338a9ee45016b8dcacb7768c69e8fb6601c07c5436f55676bb731bf26",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "aec3a7f08d7a4cf8c7e228b221bfa2e89ee36aaf948bc786915b895d606b0c17",
+      "text": "I filled in the registration form online, but I forgot to include my phone number.",
+      "text_sha256": "43e319e9c221e42e7afbe7afd73eb72dcd29f3919479257d5c1bf859066feae6",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-06",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

@@ -1,0 +1,158 @@
+{
+  "batch_sha256": "8bfc4741e5764187e5840069377e4c4ce7d05b09dfdc0147837e67ddda89bef6",
+  "cards": [
+    {
+      "added": "2026-11-06",
+      "au": 1,
+      "ex": "If you want to use my desk while I'm away, be my guest.",
+      "exru": "Если хочешь пользоваться моим столом, пока меня нет, пожалуйста.",
+      "id": "be-my-guest",
+      "note": "В S03E06 «Sunset» Джесси произносит эту реплику в разговоре с Бэджером у себя дома. Be my guest — устойчивый ответ, которым разрешают что-то сделать или чем-то воспользоваться: «пожалуйста», «можешь, я не против». Это не обязательно приглашение в гости. Be здесь — повелительная форма; перед my артикль не нужен, поэтому be a my guest неверно. Обычно действие уже понятно из просьбы или ситуации. В дружелюбном разговоре фраза звучит приветливо, но при холодной интонации может означать отстранённое «как хочешь». Для официального разрешения лучше прямо назвать, что человеку разрешено.",
+      "reg": "разговорное, разрешение или приглашение действовать",
+      "ru": "Пожалуйста, не стесняйся.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed page 11; PDF page 14; JESSE, living-room scene with Badger and Skinny Pete",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad #306 Sunset — Script as Broadcast, John Shiban, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+          "verification": "Exact three-word standalone line checked against the aired-episode English subtitles; character identified by the script speaker label."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Jesse's living-room scene; response immediately after Skinny Pete's Jolly Rancher comparison",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+          "verification": "Exact short line in the released-episode subtitle transcript matches the broadcast script."
+        },
+        {
+          "locator": "Idiom definition: permission to do or use something",
+          "title": "Cambridge Dictionary: be my guest!",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/be-my-guest",
+          "verification": "Permission meaning confirmed in the indexed Cambridge dictionary entry; direct page retrieval returned HTTP 403."
+        }
+      ],
+      "term": "Be my guest.",
+      "who": "Джесси Пинкман"
+    },
+    {
+      "added": "2026-11-06",
+      "au": 1,
+      "ex": "I'm just checking in to see how your first week is going.",
+      "exru": "Я просто хочу узнать, как проходит твоя первая неделя.",
+      "id": "just-checking-in",
+      "note": "В S03E06 «Sunset» Мари звонит Хэнку, чтобы уточнить планы на ужин. Здесь check in означает ненадолго связаться и узнать, что происходит, а не зарегистрироваться в гостинице. Если называешь собеседника, используй check in with someone: I'll check in with you tomorrow. В этой конструкции нельзя заменять with на to или ставить человека между check и in. I'm checking in — Present Continuous: говорящий объясняет цель нынешнего звонка или сообщения. Just смягчает начало: «просто хочу узнать». Фраза подходит для дружеского разговора и обычного общения с коллегами; после неё удобно добавить to see how... или to see if... и пояснить, что именно хочешь узнать.",
+      "reg": "разговорное, мягкое начало короткого звонка или сообщения",
+      "ru": "Просто хочу узнать, как у тебя дела.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed page 49; PDF page 52; MARIE (O.S.), phone call answered by Hank at the hospital",
+          "short_excerpt": true,
+          "speaker": "Marie Schrader",
+          "title": "Breaking Bad #306 Sunset — Script as Broadcast, John Shiban, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+          "verification": "Exact four-word sentence matches the aired subtitles; only the typographic apostrophe is normalized to ASCII."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Marie's phone call near the episode's end; her opening sentence before asking whether to cook dinner",
+          "short_excerpt": true,
+          "speaker": "Marie Schrader",
+          "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+          "verification": "Exact short sentence independently confirmed in released-episode subtitles; speaker and scene agree with the broadcast script."
+        },
+        {
+          "locator": "Phrase definition; US, informal; reporting or finding out new information",
+          "title": "Merriam-Webster: check in with — Definition & Meaning",
+          "url": "https://www.merriam-webster.com/dictionary/check%20in%20with",
+          "verification": "Full entry checked for the contact meaning and the check in with someone construction."
+        }
+      ],
+      "term": "I'm just checking in.",
+      "who": "Мари Шрейдер"
+    }
+  ],
+  "clips": {
+    "be-my-guest-t": {
+      "duration": 0.936,
+      "key": "be-my-guest-t",
+      "location": [
+        2872512,
+        5616,
+        0.048
+      ],
+      "packed_sha256": "70247734bc53ebad7415aa1a15a56b43783be0cc276528d91c4256f45b7c8c7d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "106e0336fa5725d3991399ad43ba5259ff6d189876eb0b8d7ce89d157268e5e3",
+      "text": "Be my guest.",
+      "text_sha256": "b2252d05916aaca98bb7a715268b39078eed4fadee9f9ce0eb94075089c131e1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "be-my-guest-x": {
+      "duration": 3.12,
+      "key": "be-my-guest-x",
+      "location": [
+        2878128,
+        18720,
+        0.048
+      ],
+      "packed_sha256": "24fb265d32721d8bfe48295de2e2cddd06da6ef99cf48eed5d7e055ce7d944fd",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ca68bd410f27165a958b36e06dab07ed4e10344e86e01910f6e846e1b5720e8c",
+      "text": "If you want to use my desk while I'm away, be my guest.",
+      "text_sha256": "f40e043e147b05691ee121ca7b647af2b1c13bafd476b138151839fc2f673176",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-checking-in-t": {
+      "duration": 1.032,
+      "key": "just-checking-in-t",
+      "location": [
+        2896848,
+        6192,
+        0.048
+      ],
+      "packed_sha256": "e6c68269b139c4c31ab77deae507948f53db64cc0ae27a652bfc697596e18f19",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "06c95103e3b31bf30bf51999a5052247979be173a795e1008c92f945a7a39ad2",
+      "text": "I'm just checking in.",
+      "text_sha256": "a70629b28c13bc5a60fe7951c554c165011c9a5a63e928a93f50c8cec752442c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "just-checking-in-x": {
+      "duration": 2.52,
+      "key": "just-checking-in-x",
+      "location": [
+        2903040,
+        15120,
+        0.048
+      ],
+      "packed_sha256": "94cbb59a5da0b6af6870867409104d0d3e873035695018f5c9e09c3e1a7670cb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "2c56af935a7477a1da626454ea6debc49989cf6c77a8b03b745b83ee435f0b17",
+      "text": "I'm just checking in to see how your first week is going.",
+      "text_sha256": "809edea9800f6f5a8d0afe79691700e957843effebd5f9dac9238bf66e81cb6e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-06",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
