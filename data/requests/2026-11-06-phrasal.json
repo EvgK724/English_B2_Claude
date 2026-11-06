@@ -1,0 +1,55 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-06",
+        "au": 1,
+        "ex": "I filled in the registration form online, but I forgot to include my phone number.",
+        "exru": "Я заполнил регистрационную форму онлайн, но забыл указать свой номер телефона.",
+        "id": "fill-in",
+        "ipa": "/ˌfɪl ˈɪn/ · filled in · filled in",
+        "note": "Так говорят о заполнении бумажной или электронной формы: fill in a form, a questionnaire. С существительным возможны оба порядка: fill in the form / fill the form in; местоимение ставится только между частями: fill it in, не «fill in it». Fill out a form означает то же самое и особенно распространено в американском английском. Не путайте с fill someone in on something: это «рассказать человеку подробности, ввести его в курс дела», а не заполнить документ.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "заполнить — внести сведения в форму или анкету",
+        "sources": [
+          {
+            "checked": "2026-11-06",
+            "locator": "fill something in, sense 1: completing a form; especially British English; fill out is also correct. Separate fill somebody in (on something) sense.",
+            "title": "Oxford Advanced Learner’s Dictionary — fill in",
+            "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/fill-in_1"
+          },
+          {
+            "checked": "2026-11-06",
+            "locator": "Indexed dictionary entry: document or online-form completion, fill in a form / fill a form in; US usually fill out a form.",
+            "title": "Cambridge Dictionary — fill in a form",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/fill-in-a-form"
+          },
+          {
+            "checked": "2026-11-06",
+            "locator": "B1 lesson: fill in a form is separable; object pronouns go between the verb and particle.",
+            "title": "British Council LearnEnglish — Phrasal verbs",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs"
+          },
+          {
+            "checked": "2026-11-06",
+            "locator": "British pronunciation /fɪl/; past tense and past participle filled.",
+            "title": "Collins English Dictionary — fill",
+            "url": "https://www.collinsdictionary.com/dictionary/english/fill"
+          },
+          {
+            "checked": "2026-11-06",
+            "locator": "Pronunciation /ɪn/, including the adverb used in phrasal verbs. Phrase IPA assembled from checked component pronunciations; example and Russian explanation are original.",
+            "title": "Collins English Dictionary — in",
+            "url": "https://www.collinsdictionary.com/dictionary/english/in"
+          }
+        ],
+        "term": "fill in"
+      }
+    ],
+    "date": "2026-11-06"
+  },
+  "batch_sha256": "7baa1926a96eb6ba9cb77cca070aeef16cc18a15ad21622afd36a4c9f97beec9",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-06T06:54:25.923048Z"
+}
