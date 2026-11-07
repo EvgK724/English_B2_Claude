@@ -1,0 +1,164 @@
+{
+  "batch_sha256": "d037aa71947eb5318c5d2168b4051aa30017d3a55b81a926ee326a5ce80dcadd",
+  "cards": [
+    {
+      "added": "2026-11-07",
+      "au": 1,
+      "ex": "Let's ask for a later deadline; it's worth a shot.",
+      "exru": "Давай попросим продлить срок; попробовать стоит.",
+      "id": "worth-a-shot",
+      "note": "В S03E06 «Sunset» Мари предлагает Хэнку обратиться к человеку, который может что-то знать. Shot здесь означает «попытка», а не «выстрел»: успех не гарантирован, но попробовать имеет смысл. Конструкция: be worth + существительное или -ing; можно сказать worth a shot или worth trying, но не worth to try. Перед shot нужен артикль a, поскольку речь об одной попытке. It's раскрывается как it is; не пропускай is. Фраза подходит для дружеского разговора и неформального обсуждения идей с коллегами. Она выражает осторожное одобрение попытки, а не обещание результата.",
+      "reg": "разговорное, мягкое предложение попробовать",
+      "ru": "Стоит попробовать.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed page 28; PDF page 31; MARIE, phone conversation with Hank, suggesting someone who may know about the RV",
+          "short_excerpt": true,
+          "speaker": "Marie Schrader",
+          "title": "Breaking Bad #306 Sunset — Script as Broadcast, John Shiban, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+          "verification": "Exact short sentence in the broadcast script matches the aired-episode English subtitles; typographic apostrophe normalized to ASCII."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Original subtitles; Marie and Hank's phone conversation about finding the RV; after Marie suggests a possible source of information, before Hank asks who; web text line 836",
+          "short_excerpt": true,
+          "speaker": "Marie Schrader",
+          "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+          "verification": "Exact sentence checked in released-episode subtitle text; speaker and scene confirmed by the broadcast script."
+        },
+        {
+          "locator": "shot noun, ATTEMPT sense",
+          "title": "Cambridge Dictionary: shot",
+          "url": "https://dictionary.cambridge.org/dictionary/english/shot",
+          "verification": "Attempt meaning confirmed in the indexed Cambridge dictionary entry."
+        },
+        {
+          "locator": "Worth used after be; be worth doing something",
+          "title": "Cambridge English Grammar Today: Worth or worthwhile?",
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/worth-or-worthwhile",
+          "verification": "Grammar explanation checked for be worth and the -ing construction."
+        }
+      ],
+      "term": "It's worth a shot.",
+      "who": "Мари Шрейдер"
+    },
+    {
+      "added": "2026-11-07",
+      "au": 1,
+      "ex": "You need the final version by noon? You got it.",
+      "exru": "Тебе нужна окончательная версия к полудню? Будет сделано.",
+      "id": "you-got-it",
+      "note": "В S03E06 «Sunset» Джо отвечает так на просьбу Уолтера вызвать такси. Это короткое уверенное согласие выполнить просьбу: «конечно», «сделаю». Запоминай выражение целиком: you + got + it; несмотря на форму got, здесь не рассказывают о получении вещи в прошлом. Не заменяй got на get: You get it обычно означает «ты понимаешь». Не путай и с I got it — «я понял»; в этой сцене Джо именно берётся помочь. Фраза уместна с друзьями и коллегами в обычном разговоре; для официального ответа лучше прямо назвать действие и срок. Произноси её как утверждение: вопросительная интонация может превратить её в проверку понимания.",
+      "reg": "американское разговорное, согласие выполнить просьбу",
+      "ru": "Будет сделано.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed page 39; PDF page 42; OLD JOE, RV at the crusher yard, answering Walt's request to call a cab",
+          "short_excerpt": true,
+          "speaker": "Old Joe",
+          "title": "Breaking Bad #306 Sunset — Script as Broadcast, John Shiban, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+          "verification": "Exact three-word sentence matches the aired subtitles; character identified by the broadcast script speaker label."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Original subtitles; RV at the crusher yard, response immediately after Walt asks for a cab; web text line 1032",
+          "short_excerpt": true,
+          "speaker": "Old Joe",
+          "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+          "verification": "Exact short sentence checked in released-episode subtitle text; speaker and scene agree with the broadcast script."
+        },
+        {
+          "locator": "Idiom; US informal; agreeing to do what someone has requested",
+          "title": "Cambridge Dictionary: you got it",
+          "url": "https://dictionary.cambridge.org/dictionary/english/you-got-it",
+          "verification": "Meaning and register confirmed in the indexed Cambridge dictionary entry."
+        }
+      ],
+      "term": "You got it.",
+      "who": "Джо, владелец свалки"
+    }
+  ],
+  "clips": {
+    "worth-a-shot-t": {
+      "duration": 0.96,
+      "key": "worth-a-shot-t",
+      "location": [
+        2918160,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "73f50978f539edf6a740b5b08dc88af71eed4ee17f98b05e3a0ae4f1b860d72b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1f6782e8f792b83ef613f5a133f59620491bb06b9ad6fe5b03bd5f4293aad658",
+      "text": "It's worth a shot.",
+      "text_sha256": "9b4227b79b98789ee7dc24e4a10712d67c19a59f001d5139110078be1cbb96ae",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "worth-a-shot-x": {
+      "duration": 2.904,
+      "key": "worth-a-shot-x",
+      "location": [
+        2923920,
+        17424,
+        0.048
+      ],
+      "packed_sha256": "7ef046d76f47ffa02711f596f9fe172ef48c5c727086b1ee4785581174a5be61",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "25532d89643489c8c5e999a50b5683a5e708059c354ce7adb582fb195e3281ce",
+      "text": "Let's ask for a later deadline; it's worth a shot.",
+      "text_sha256": "b9d82091f19cf8b42fb91536c3f9eb5010cef6c9d55b4c3a675ea7f97cc03566",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-got-it-t": {
+      "duration": 0.6,
+      "key": "you-got-it-t",
+      "location": [
+        2941344,
+        3600,
+        0.048
+      ],
+      "packed_sha256": "0aea25ac48cbd08a9fe5aeae9173977d43f1bfd0ec6abec403cbd867913e0ed9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "a306bfba7e677b06bf281a517da38c0e565192ace1e45fe737f104e12fc6768a",
+      "text": "You got it.",
+      "text_sha256": "afca25be74330b1369718fce3051aa1befeaea4927328ec4f370676f8dff5603",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-got-it-x": {
+      "duration": 2.52,
+      "key": "you-got-it-x",
+      "location": [
+        2944944,
+        15120,
+        0.048
+      ],
+      "packed_sha256": "5549895bdb816f5b5e1aa8a3a17bead1bca7de444d80c09fefc6a422afb57c0f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "951cfbce77d0c8545e2a781ca1c4942e755478c23df0d705a7a25f842566ac79",
+      "text": "You need the final version by noon? You got it.",
+      "text_sha256": "2c93c9f0b81153c8a59094347e279c01623442c9b85804c1bc07f7592f0911a0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-07",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}

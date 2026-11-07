@@ -3150,6 +3150,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "worth-a-shot-t": {
+      "duration": 0.96,
+      "edge_tts": "7.3.1",
+      "key": "worth-a-shot-t",
+      "ledger": "data/daily/2026-11-07-bbapp.json",
+      "location": [
+        2918160,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "73f50978f539edf6a740b5b08dc88af71eed4ee17f98b05e3a0ae4f1b860d72b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1f6782e8f792b83ef613f5a133f59620491bb06b9ad6fe5b03bd5f4293aad658",
+      "signature": "c7f35e45416b69993727b1b88f5e7289c4b57b97d3543d3322dc6b954864855e",
+      "source": "Microsoft-Edge-TTS",
+      "text": "It's worth a shot.",
+      "text_sha256": "9b4227b79b98789ee7dc24e4a10712d67c19a59f001d5139110078be1cbb96ae",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "worth-a-shot-x": {
+      "duration": 2.904,
+      "edge_tts": "7.3.1",
+      "key": "worth-a-shot-x",
+      "ledger": "data/daily/2026-11-07-bbapp.json",
+      "location": [
+        2923920,
+        17424,
+        0.048
+      ],
+      "packed_sha256": "7ef046d76f47ffa02711f596f9fe172ef48c5c727086b1ee4785581174a5be61",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "25532d89643489c8c5e999a50b5683a5e708059c354ce7adb582fb195e3281ce",
+      "signature": "77005eab13d73cbfdb2c87acc8bb72b13481ce0608a1298ec526290f044eeb3e",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Let's ask for a later deadline; it's worth a shot.",
+      "text_sha256": "b9d82091f19cf8b42fb91536c3f9eb5010cef6c9d55b4c3a675ea7f97cc03566",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "you-do-have-a-plan-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3181,6 +3223,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "I did send you the results yesterday — check your spam folder.",
       "text_sha256": "8e5c039d2bf3bd8f25c259c4ef5de8e813186aab54ab089dc05b6c9394de4a40",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-got-it-t": {
+      "duration": 0.6,
+      "edge_tts": "7.3.1",
+      "key": "you-got-it-t",
+      "ledger": "data/daily/2026-11-07-bbapp.json",
+      "location": [
+        2941344,
+        3600,
+        0.048
+      ],
+      "packed_sha256": "0aea25ac48cbd08a9fe5aeae9173977d43f1bfd0ec6abec403cbd867913e0ed9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "a306bfba7e677b06bf281a517da38c0e565192ace1e45fe737f104e12fc6768a",
+      "signature": "95a8b6ac02d0ce5db9062b5e77eb296a3bc10256508426affb289adcee3f6995",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You got it.",
+      "text_sha256": "afca25be74330b1369718fce3051aa1befeaea4927328ec4f370676f8dff5603",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-got-it-x": {
+      "duration": 2.52,
+      "edge_tts": "7.3.1",
+      "key": "you-got-it-x",
+      "ledger": "data/daily/2026-11-07-bbapp.json",
+      "location": [
+        2944944,
+        15120,
+        0.048
+      ],
+      "packed_sha256": "5549895bdb816f5b5e1aa8a3a17bead1bca7de444d80c09fefc6a422afb57c0f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "951cfbce77d0c8545e2a781ca1c4942e755478c23df0d705a7a25f842566ac79",
+      "signature": "462091210b9bfc1eaa266157127442c845c3caa507d089d8a2433c846174c308",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You need the final version by noon? You got it.",
+      "text_sha256": "2c93c9f0b81153c8a59094347e279c01623442c9b85804c1bc07f7592f0911a0",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
