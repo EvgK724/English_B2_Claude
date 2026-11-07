@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-07",
+        "au": 1,
+        "ex": "When I checked the draft, I realised that I had left an important detail out of the report.",
+        "exru": "Когда я проверял черновик, я понял, что не включил в отчёт важную деталь.",
+        "id": "leave-out",
+        "ipa": "/ˌliːv ˈaʊt/ · left out · left out",
+        "note": "Так говорят, когда что-либо не включают намеренно или по ошибке: leave out a detail, a name, a paragraph. С существительным возможны оба порядка: leave out the detail / leave the detail out; местоимение ставится только между частями: leave it out, не «leave out it». Чтобы уточнить, куда что-либо не включили, используйте of: leave a detail out of the report. Формы глагола: leave — left — left, не «leaved». В британском английском miss something out тоже означает «пропустить что-либо», но miss out on an opportunity — «упустить возможность», а не исключить часть текста.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "пропустить, не включить — оставить что-либо за пределами текста, списка или обсуждения",
+        "sources": [
+          {
+            "checked": "2026-11-07",
+            "evidence": "B2; omission or exclusion; British leave /liːv/; past tense and past participle left; leave something out of something.",
+            "title": "Cambridge Dictionary — leave someone/something out",
+            "url": "https://dictionary.cambridge.org/dictionary/english/leave-out"
+          },
+          {
+            "checked": "2026-11-07",
+            "evidence": "B2; transitive phrasal verb; VERB PARTICLE noun and VERB noun PARTICLE + of; British pronunciation /liːv aʊt/.",
+            "title": "Collins English Dictionary — leave out",
+            "url": "https://www.collinsdictionary.com/dictionary/english/leave-out"
+          },
+          {
+            "checked": "2026-11-07",
+            "evidence": "British miss something out means fail to include; miss out on something means lose an opportunity to experience or benefit from it.",
+            "title": "Cambridge Dictionary — miss someone/something out; miss out",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/miss-out?topic=opportunity"
+          }
+        ],
+        "term": "leave out"
+      }
+    ],
+    "date": "2026-11-07"
+  },
+  "batch_sha256": "fe159c5d2ddbdb4c4acc323259312303e42d0507e7f14eff3072c8d7f5592c7d",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-07T06:55:23.670751Z"
+}
