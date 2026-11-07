@@ -44421,6 +44421,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "leave-out-t": {
+          "duration": 0.96,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "fc718e8e876207c6c2ddb949f76748a2120740f3fe654c4789d7f38b1de01a39",
+          "packed_sha256": "b64fcbf61bad41cf9a7a96118c03e423333581e70918d586d40a74f085d18e10",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "1839760497a744c71ca1eda8abdf33a92b162225ad4c5c4125be12ca5e5432f2",
+          "signature": "6f6905635884061c4797dd0c9fbeac60c9aea951eb449a45820f877db917ef59",
+          "source": "Microsoft-Edge-TTS",
+          "text": "leave out",
+          "text_sha256": "fc718e8e876207c6c2ddb949f76748a2120740f3fe654c4789d7f38b1de01a39",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "leave-out-x": {
+          "duration": 5.064,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "50c9c9449f3e845a9f86de4ebde6059c9d8d6263fdbc841728bd151e7483b281",
+          "packed_sha256": "22a1a7e45301224de34c3e689f2d3f532397012cab9e8048c7322f48d8cb5110",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "01b5cac3adfa311b7e30faa0796b8093ac76975fddbbac968216a18946cc3aa9",
+          "signature": "f1ed9e2122cec6e7e42eecb923e76ce4cddb0752df758ff462870e7f1e905671",
+          "source": "Microsoft-Edge-TTS",
+          "text": "When I checked the draft, I realised that I had left an important detail out of the report.",
+          "text_sha256": "50c9c9449f3e845a9f86de4ebde6059c9d8d6263fdbc841728bd151e7483b281",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "look-after-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "2f68f7a0fa3b500c79210db4f147b8a5333c7c3656067af46087b6c44a6b627b",
