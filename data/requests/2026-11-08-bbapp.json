@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-08",
+        "au": 1,
+        "ex": "You think you can finish this puzzle before I do? You're on.",
+        "exru": "Думаешь, справишься с этой головоломкой раньше меня? Принимаю вызов.",
+        "id": "youre-on",
+        "note": "В S01E01 «Pilot» Гомес принимает пари, предложенное Хэнком перед рейдом. You’re on — короткий ответ на пари или вызов: «идёт», «принимаю». Запоминай выражение целиком: you’re означает you are; написание your on неверно. On здесь не переводится как «на», и после него не нужно добавлять предмет. Фраза подходит для дружеского соревнования, когда условия уже понятны. Для обычного согласия выполнить рабочую просьбу лучше прямо сказать, что ты сделаешь: без контекста вызова You’re on может звучать неуместно.",
+        "reg": "неформальное разговорное, принятие пари или вызова",
+        "ru": "Идёт! Принимаю вызов.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Printed page 25; PDF page 26; GOMEZ, accepting Hank's twenty-dollar bet during the ride-along before the raid",
+            "short_excerpt": true,
+            "speaker": "Steven Gomez",
+            "title": "Breaking Bad — pilot screenplay by Vince Gilligan, 27 May 2005",
+            "url": "https://kinodramaturg.ru/wp-content/uploads/2014/09/Breaking-Bad-pilot-script.pdf",
+            "verification": "The two-word standalone line and GOMEZ speaker label were checked in the screenplay; exact wording matches the aired-episode transcript. Early-draft differences elsewhere are not used."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Aired-dialogue transcript, web text line 242; reply to Hank's twenty-dollar bet, immediately before the school bus clears the raid area",
+            "short_excerpt": true,
+            "speaker": "Steven Gomez",
+            "title": "Springfield! Springfield!: Breaking Bad s01e01 Episode Script — Pilot",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact two-word line confirmed in aired-dialogue transcript; speaker identified by the matching screenplay scene."
+          },
+          {
+            "locator": "Idioms: you’re on; informal acceptance of a bet",
+            "title": "Oxford Advanced Learner’s Dictionary: on, adverb — you’re on",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/on_2",
+            "verification": "Meaning and informal register checked in the indexed Oxford dictionary entry."
+          }
+        ],
+        "term": "You're on.",
+        "who": "Стивен Гомес"
+      },
+      {
+        "added": "2026-11-08",
+        "au": 1,
+        "ex": "I didn't wake you with my message, did I? I forgot about the time difference.",
+        "exru": "Я не разбудил тебя своим сообщением? Я забыл о разнице во времени.",
+        "id": "didnt-wake-you",
+        "note": "В S01E01 «Pilot» Уолтер звонит Хэнку и проверяет, не разбудил ли его. Отрицательная основа I didn’t wake you сочетается с утвердительным хвостиком did I: говорящий надеется, что не помешал, и просит подтвердить это. После didn’t нужна начальная форма wake, а не woke. В хвостике сохраняется подлежащее I; you в основной части — тот, кого могли разбудить, поэтому did you здесь неверно. Чтобы ответить без двусмысленности, используй No, you didn’t — «нет, не разбудил» или Yes, you did — «да, разбудил». С восходящей интонацией хвостик звучит как реальный вопрос. Конструкция полезна и для других осторожных уточнений о том, что ты сделал.",
+        "reg": "разговорное, вежливое уточнение в начале звонка",
+        "ru": "Я тебя не разбудил?",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Printed page 24; PDF page 25; WALT, telephone call to Hank about joining a ride-along",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad — pilot screenplay by Vince Gilligan, 27 May 2005",
+            "url": "https://kinodramaturg.ru/wp-content/uploads/2014/09/Breaking-Bad-pilot-script.pdf",
+            "verification": "The seven-word question and WALT speaker label were checked in the screenplay; selected excerpt matches the aired transcript, excluding introductory greetings. Early-draft differences elsewhere are not used."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Aired-dialogue transcript, web text line 221; Walter's phone call to Hank immediately after the car-wash confrontation, before the ride-along scene",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Springfield! Springfield!: Breaking Bad s01e01 Episode Script — Pilot",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact seven-word question confirmed in the aired transcript; greetings and ensuing response excluded. Speaker and scene agree with screenplay."
+          },
+          {
+            "locator": "Question tags, Type 1; Tags: form",
+            "title": "Cambridge English Grammar Today: Tags",
+            "url": "https://dictionary.cambridge.org/grammar/british-grammar/question-tags",
+            "verification": "Negative main clause uses affirmative tag; auxiliary and pronoun match the main clause. Rule confirmed from indexed full grammar entry."
+          }
+        ],
+        "term": "I didn't wake you, did I?",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-08"
+  },
+  "batch_sha256": "b2b2c0e72afd07161716242962db5cf99e66680c64eefbbf99e0233ee7997c6b",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-08T03:26:48.220235Z"
+}
