@@ -542,6 +542,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "didnt-wake-you-t": {
+      "duration": 1.32,
+      "edge_tts": "7.3.1",
+      "key": "didnt-wake-you-t",
+      "ledger": "data/daily/2026-11-08-bbapp.json",
+      "location": [
+        2982960,
+        7920,
+        0.048
+      ],
+      "packed_sha256": "4031ca82956dbc8ddd12f50e1d1e7de59608a87ab8238daa50dff0396e90a2ae",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "00c93953f315b60d92707e2fc46f9a10f1918783e044f2bdb162f1720db1ad51",
+      "signature": "db9d0f2756416d03fd4e876ede2e17a7610bb7265ef5627d8f6a8671accf065b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I didn't wake you, did I?",
+      "text_sha256": "ebb6d223e9960f0bdfc3daee3f63d8296f83998e1c4266085d73bad89251d1a1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "didnt-wake-you-x": {
+      "duration": 4.008,
+      "edge_tts": "7.3.1",
+      "key": "didnt-wake-you-x",
+      "ledger": "data/daily/2026-11-08-bbapp.json",
+      "location": [
+        2990880,
+        24048,
+        0.048
+      ],
+      "packed_sha256": "579d44a3f1ef61a04c7423c401d1f3a23dc0f4090e0b4b004f381c4caa00b433",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b45b1e07de3c98a27e0ba4555b3a8609ab1ee519b3d58758f5b60e3f69266e77",
+      "signature": "770ec329bb2ebb40b919efb743bea90d233dfec071916add0c9f97addb1b6c0f",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I didn't wake you with my message, did I? I forgot about the time difference.",
+      "text_sha256": "9beecc43ca7db9aef391982f6d0afa6b16234e5bbf6812cad76ee92f18117e7a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "done-explaining-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3367,6 +3409,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "You think we should have ordered the MRI sooner? You're damn right we should have.",
       "text_sha256": "c3b3e534cb3959b7de46f50743daaef8fee269e06cf1484e16b09113abb8af42",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "youre-on-t": {
+      "duration": 0.6,
+      "edge_tts": "7.3.1",
+      "key": "youre-on-t",
+      "ledger": "data/daily/2026-11-08-bbapp.json",
+      "location": [
+        2960064,
+        3600,
+        0.048
+      ],
+      "packed_sha256": "27cad5948c7d4810065691da7386b44f4186a79d988c1ffd6a98fba8fb3b3b01",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e8452c0050bbc674de9bcfb02f551aee675b5a357558df6ace3ceab75fffb7f1",
+      "signature": "4eebac378fbb7b275a45b9ff7751b6abab65e650d99694e37df0a649c88470d7",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You're on.",
+      "text_sha256": "cfb0fdab3ff067f4cf120e83b925f34b7e1341e8ce9fa4d5f61021aa2f8c391c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "youre-on-x": {
+      "duration": 3.216,
+      "edge_tts": "7.3.1",
+      "key": "youre-on-x",
+      "ledger": "data/daily/2026-11-08-bbapp.json",
+      "location": [
+        2963664,
+        19296,
+        0.048
+      ],
+      "packed_sha256": "8a4d2c803500820fb4f184d4709cc15e3b68933c940e55ecd8ea11a0a93881ea",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6135ee08b0c7d491130eaae887ea644d367eadd259ccff4649b156124faf6d73",
+      "signature": "39563a838c2142ec9c4795259ebd2a0f5fe11c21ea8af8241bf60113c172759c",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You think you can finish this puzzle before I do? You're on.",
+      "text_sha256": "a77ef44852c82434175ae944fa80189c23c59e1261ca14ac5a539ca6c7453f04",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     }
