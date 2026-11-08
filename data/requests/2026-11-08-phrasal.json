@@ -1,0 +1,49 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-08",
+        "au": 1,
+        "ex": "Before we send the report, we need more data to back up our conclusions.",
+        "exru": "Прежде чем отправить отчёт, нам нужно больше данных, чтобы подкрепить наши выводы.",
+        "id": "back-up",
+        "ipa": "/bæk ʌp/ · backed up · backed up",
+        "note": "Так говорят, когда факты или данные подкрепляют утверждение, вывод или объяснение: back up a claim with evidence. С существительным возможны оба порядка: back up the claim / back the claim up; местоимение ставится только между частями: back it up, не «back up it». Чтобы указать, чем подкрепляют утверждение, используйте with: back it up with data. В отличие от prove, back up может означать поддержку данными, а не окончательное доказательство. Здесь речь о подтверждении слов; back up files означает создать резервные копии файлов, это другое значение.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "подкрепить утверждение фактами или доказательствами",
+        "sources": [
+          {
+            "checked_on": "2026-11-08",
+            "evidence": "Sense 1: evidence supports the truth of a statement; listed as B2. Both noun-object positions and British pronunciation checked on the dictionary page.",
+            "title": "Collins English Dictionary: BACK UP definition and meaning",
+            "url": "https://www.collinsdictionary.com/dictionary/english/back-up"
+          },
+          {
+            "checked_on": "2026-11-08",
+            "evidence": "Dictionary search result confirms backed as both past tense and past participle.",
+            "title": "Oxford Advanced Learner's Dictionary: back verb",
+            "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/back_4"
+          },
+          {
+            "checked_on": "2026-11-08",
+            "evidence": "Separable phrasal verbs place a pronoun object between the verb and particle.",
+            "title": "British Council LearnEnglish: Phrasal verbs",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs"
+          },
+          {
+            "checked_on": "2026-11-08",
+            "evidence": "Dictionary search result defines prove in terms of establishing truth with facts or evidence; used to check the contrast with supporting a claim.",
+            "title": "Oxford Advanced Learner's Dictionary: prove verb",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/prove"
+          }
+        ],
+        "term": "back up"
+      }
+    ],
+    "date": "2026-11-08"
+  },
+  "batch_sha256": "d32c672504145fd65fe0cf94dbaa3edb904a17d2c8fdc6d06b3d8a95423d70ca",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-08T06:31:51.468370Z"
+}
