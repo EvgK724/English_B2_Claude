@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-09",
+        "au": 1,
+        "ex": "Will do. I'll check the figures and send you the report before lunch.",
+        "exru": "Сделаю. Я проверю цифры и пришлю тебе отчёт до обеда.",
+        "id": "will-do",
+        "note": "В S03E06 «Sunset» офицер Ки отвечает так диспетчеру на просьбу проверить, всё ли в порядке у пожилой женщины. Will do — короткое согласие выполнить уже названное действие; подразумевается I will do that. Подлежащее I и дополнение опускают, потому что они понятны из разговора. После will нужна начальная форма do без to: will to do неверно. Фраза обещает действие, а не сообщает, что оно уже выполнено. Она подходит для неформального разговора и короткого рабочего сообщения; при необходимости добавь срок. Не путай с That will do — «этого хватит»: там говорящий оценивает достаточность, а не берётся выполнить просьбу.",
+        "reg": "разговорное, короткое согласие выполнить просьбу",
+        "ru": "Хорошо, сделаю.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed script page 1; PDF page 4; opening radio exchange in tribal police cruiser; OFFICER KEE response after the dispatcher requests a welfare check",
+            "short_excerpt": true,
+            "speaker": "Officer Kee (Bobby)",
+            "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact two-word sentence and speaker checked in the script as broadcast; wording matches the released-episode English subtitles."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Original subtitles; opening radio exchange; web text line 303, following the dispatcher explaining that Mrs. Peyketewa's daughter is worried",
+            "short_excerpt": true,
+            "speaker": "Officer Kee (Bobby)",
+            "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+            "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+            "verification": "Exact short sentence checked in the released-episode subtitle text; speaker and scene agree with the broadcast script."
+          },
+          {
+            "locator": "Informal idiom entry",
+            "title": "Cambridge Dictionary: will do",
+            "url": "https://dictionary.cambridge.org/dictionary/english/will-do",
+            "verification": "Meaning and register checked in the indexed entry: agreement to carry out something requested by another person."
+          }
+        ],
+        "term": "Will do.",
+        "who": "Офицер Бобби Ки"
+      },
+      {
+        "added": "2026-11-09",
+        "au": 1,
+        "ex": "If you want to apply for the team leader role, go for it; you have the right experience.",
+        "exru": "Если хочешь подать заявку на должность руководителя команды, действуй: у тебя подходящий опыт.",
+        "id": "go-for-it",
+        "note": "В S03E06 «Sunset» Тощий Пит произносит эту реплику, обращаясь к Бэджеру в доме Джесси. Go for it — короткое ободрение: начинай задуманное, не колеблись. It отсылает к действию или возможности, о которых уже говорили. Запоминай порядок go + for + it; местоимение стоит после for, поэтому go it for неверно. Здесь go не означает буквальное перемещение куда-то. Фраза подходит, когда друг или коллега сомневается, стоит ли попробовать; она выражает поддержку, а не обещает успех. Для официального разрешения лучше прямо назвать разрешённое действие.",
+        "reg": "неформальное разговорное, подбадривание или разрешение действовать",
+        "ru": "Давай, попробуй! Действуй!",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed script page 12; PDF page 15; Jesse's house, living room; SKINNY PETE addresses Badger after Jesse says he can watch",
+            "short_excerpt": true,
+            "speaker": "Skinny Pete",
+            "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact three-word opening sentence and speaker checked in the script as broadcast; wording matches the released-episode English subtitles. The rest of the character's speech is not quoted."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Original subtitles; Jesse's living room; web text line 465, second speaker in the paired subtitle, following Jesse's statement that he can cook and watch",
+            "short_excerpt": true,
+            "speaker": "Skinny Pete",
+            "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+            "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+            "verification": "Exact short sentence checked in the released-episode subtitle text; speaker and scene agree with the broadcast script."
+          },
+          {
+            "locator": "Informal idiom; American Dictionary subsection",
+            "title": "Cambridge Dictionary: go for it",
+            "url": "https://dictionary.cambridge.org/dictionary/english/go-for-it?q=go-for-it_1",
+            "verification": "Meaning and register checked in the indexed entry: encouragement to take action without further hesitation."
+          }
+        ],
+        "term": "Go for it.",
+        "who": "Тощий Пит"
+      }
+    ],
+    "date": "2026-11-09"
+  },
+  "batch_sha256": "5104dca695b3e42fc3767dd7075e698451c041048aa568f89007e45b1db5d3b0",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-09T03:46:19.177330Z"
+}
