@@ -958,6 +958,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "go-for-it-t": {
+      "duration": 0.72,
+      "edge_tts": "7.3.1",
+      "key": "go-for-it-t",
+      "ledger": "data/daily/2026-11-09-bbapp.json",
+      "location": [
+        3043008,
+        4320,
+        0.048
+      ],
+      "packed_sha256": "9f91e72a8241dd40adb4e034486fa12478a4b2146247c59032f22928f9b7e091",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "be462732705e14da417154183524c4bebd90c63a8cf247d85dcba20b4b87d907",
+      "signature": "dcf0b919dd809cc47a31f76a472dfd71819f05358aa21f9573c1776066d2e2c3",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Go for it.",
+      "text_sha256": "f014f8c6c36c06188cd836d8bcd7eb17c7efe3f5a63fed1afaa56d089daf34af",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "go-for-it-x": {
+      "duration": 4.92,
+      "edge_tts": "7.3.1",
+      "key": "go-for-it-x",
+      "ledger": "data/daily/2026-11-09-bbapp.json",
+      "location": [
+        3047328,
+        29520,
+        0.048
+      ],
+      "packed_sha256": "4392e76c714709c94972e2e0d36cdd9db4b53ed0768571a2c34e89887e0c4a56",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7c7247a0dbefe5c7f3b7d71f65711076cdd5e71bc7193093ba040e8aa83626bd",
+      "signature": "98698168bc05f9792ad42ef32fdcc8e65a3680496b46e82f5fca289323b136f1",
+      "source": "Microsoft-Edge-TTS",
+      "text": "If you want to apply for the team leader role, go for it; you have the right experience.",
+      "text_sha256": "8f8c695839cde5d33bce22df792a5d251baf70b816614d496df7f64331c2435e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "good-at-it-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3155,6 +3197,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "Why don't you just tell her the truth already?",
       "text_sha256": "7f0a272a5aaf27946d0c38a0f7ce10b43c1fe8b851cf1c183d182b9299b29fc7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "will-do-t": {
+      "duration": 0.6,
+      "edge_tts": "7.3.1",
+      "key": "will-do-t",
+      "ledger": "data/daily/2026-11-09-bbapp.json",
+      "location": [
+        3014928,
+        3600,
+        0.048
+      ],
+      "packed_sha256": "7469ea78c748cb6a257c692b9730673d1f0e3a6465ee65c4ffc55ef8dd3c7984",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "3f71dd9de4ba28fcb7acadddb79fc56ac857b084991af1f914b0e94d70537f62",
+      "signature": "3b0b2ea2c8fa7b435cc95c8b7127adcec2e9b3be7989a1761bf25b014266661b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Will do.",
+      "text_sha256": "1cd85230ab2933d0ef76f6663ee7e6c3103420c6be64d8010a90d9fc7fdcd284",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "will-do-x": {
+      "duration": 4.08,
+      "edge_tts": "7.3.1",
+      "key": "will-do-x",
+      "ledger": "data/daily/2026-11-09-bbapp.json",
+      "location": [
+        3018528,
+        24480,
+        0.048
+      ],
+      "packed_sha256": "60e32649e6c944e5e192673aaf01865d355dbce6d63e0ddfe5db84d935e89410",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1780bbba52da244b1d6f5d068d976ba7cc97f0060487e7d887f0a812b6c9c79f",
+      "signature": "97a4b82e83c30dc1cdaf5797d1c654dc180f1d64544d69ef11fbe76e55aae21a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Will do. I'll check the figures and send you the report before lunch.",
+      "text_sha256": "0fce365a22ac7b9570d000172dd097b137ca9d3a9337c09f0eb2d11063b908d3",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
