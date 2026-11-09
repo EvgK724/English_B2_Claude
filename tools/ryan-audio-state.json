@@ -44701,6 +44701,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "put-forward-t": {
+          "duration": 0.984,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "b0551e2fc2c5acfdb5cdf2e9221ff9a2bde2fd7bae1f7985ad8ee5fb7b2ec47b",
+          "packed_sha256": "e3506b59abe4bd29ed0b83ca7b6ed5cd0be090248330f2a8567c836beb6f809b",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "910b3657166f47159e88eb7022001cccad8948c5e340a671d4299f1077a3d637",
+          "signature": "12d3d525527df8d10b15bc18c3d7a827c1d150b09bd7d3ae1813b51ca8c0ca39",
+          "source": "Microsoft-Edge-TTS",
+          "text": "put forward",
+          "text_sha256": "b0551e2fc2c5acfdb5cdf2e9221ff9a2bde2fd7bae1f7985ad8ee5fb7b2ec47b",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "put-forward-x": {
+          "duration": 4.2,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "ec627549ae1139511318c0107536d03af67e1e71dc578fba1e4cf48373bdfaeb",
+          "packed_sha256": "7638c2ccf53edfd08976b5c07d5e5e52920a8d500c2c165c98d0e4d795b9f82a",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "05b4bfe212f5470878389470ff15598395e999042d3150d260b7b42863f09d9a",
+          "signature": "e76405654b0d6836a1231db54db7053dc572818dc005175b9fe22173741453f4",
+          "source": "Microsoft-Edge-TTS",
+          "text": "At our meeting, I put forward a plan to share the workload more fairly.",
+          "text_sha256": "ec627549ae1139511318c0107536d03af67e1e71dc578fba1e4cf48373bdfaeb",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "put-off-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "23b3884eafad6033ca884b2963a161999298450a9f0a0d0aa4e43ca0e212c170",
