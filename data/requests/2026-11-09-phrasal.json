@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-09",
+        "au": 1,
+        "ex": "At our meeting, I put forward a plan to share the workload more fairly.",
+        "exru": "На нашем совещании я предложил план, как более справедливо распределить рабочую нагрузку.",
+        "id": "put-forward",
+        "ipa": "/ˌpʊt ˈfɔːwəd/ · put forward · put forward",
+        "note": "Так говорят, когда представляют идею, план или аргумент для обсуждения: put forward an idea, a plan, an argument. С существительным возможны оба порядка: put forward the plan / put the plan forward; местоимение ставится только между частями: put it forward, не «put forward it». Формы глагола: put — put — put, без -ed. Come up with часто подчёркивает, что идею придумали, а put forward — что её представили другим для рассмотрения. Предложение ещё не означает, что план приняли.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "предложить, выдвинуть — идею или план для рассмотрения",
+        "sources": [
+          {
+            "checked_on": "2026-11-09",
+            "evidence": "Indexed dictionary entry checked: proposing an idea, plan or argument for consideration; put is both past tense and past participle; UK put /pʊt/.",
+            "title": "Cambridge Dictionary: put something/someone forward",
+            "url": "https://dictionary.cambridge.org/dictionary/english/put-forward"
+          },
+          {
+            "checked_on": "2026-11-09",
+            "evidence": "Indexed dictionary pronunciation checked: British /ˈfɔː.wəd/; combined with UK put for the card's British IPA.",
+            "title": "Cambridge Dictionary: forward",
+            "url": "https://dictionary.cambridge.org/dictionary/english/forward"
+          },
+          {
+            "checked_on": "2026-11-09",
+            "evidence": "Grammar page checked: noun objects can occur before or after a separable particle; pronoun objects must occur between verb and particle. The page also explains come up with as thinking of an idea or plan.",
+            "title": "British Council LearnEnglish: Phrasal verbs",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs"
+          }
+        ],
+        "term": "put forward"
+      }
+    ],
+    "date": "2026-11-09"
+  },
+  "batch_sha256": "f83ca112f416a97630dbc065247a615791e477d53e63cec026307a942e5cbe8c",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-09T06:23:27.292121Z"
+}
