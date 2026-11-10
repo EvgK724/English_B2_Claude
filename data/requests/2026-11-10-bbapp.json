@@ -1,0 +1,117 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-10",
+        "au": 1,
+        "ex": "Come again? Did you say the meeting starts at nine or at half past nine?",
+        "exru": "Прости, повтори. Ты сказал, что встреча начинается в девять или в половине десятого?",
+        "id": "come-again",
+        "note": "В S03E06 «Sunset» диспетчер Джанет переспрашивает офицера Ки по рации. Come again? — устойчивый способ попросить повторить то, что ты не расслышал или не понял; здесь это не приглашение прийти ещё раз. Запоминай короткую форму целиком: не добавляй do или did. Произноси с вопросительной интонацией; резкий тон может передать недоверие или раздражение. Фраза подходит для неформального разговора, а в официальной ситуации нейтральнее Could you repeat that, please? Идиома отмечена Cambridge как C1 — небольшое расширение сверх основного уровня.",
+        "reg": "неформальное разговорное, просьба повторить сказанное",
+        "ru": "Что, прости? Повтори, пожалуйста.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed script page 4; PDF page 7; opening police-radio exchange; DISPATCHER response to Officer Kee reporting a homicide",
+            "short_excerpt": true,
+            "speaker": "Dispatcher Janet",
+            "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact two-word question checked in the script as broadcast. Officer Kee addresses the dispatcher as Janet immediately before it. The released-episode subtitles match."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Original subtitles, web text line 312; first speaker in the paired subtitle following Officer Kee's radio report",
+            "short_excerpt": true,
+            "speaker": "Dispatcher Janet",
+            "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+            "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+            "verification": "Exact question checked in the released-episode subtitle text; speaker determined from the matching broadcast script and radio exchange."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Subtitle cue 11, 00:03:18.323–00:03:20.242; cue also contains Officer Kee’s reply",
+            "short_excerpt": true,
+            "speaker": "Dispatcher Janet",
+            "title": "Subtitle Cat: breaking bad s03e06 720p brrip sujaidr — English subtitles with timestamps",
+            "url": "https://www.subtitlecat.com/subs/87/breaking%20bad%20s03e06%20720p%20brrip%20sujaidr.html",
+            "verification": "Exact selected words confirmed in released-episode subtitles and matched to the speaker and scene in the broadcast script; surrounding dialogue omitted."
+          },
+          {
+            "locator": "Informal idiom entry; C1",
+            "title": "Cambridge Dictionary: come again?",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/come-again",
+            "verification": "Meaning and register checked in indexed Cambridge entries: request to repeat something not heard or understood."
+          }
+        ],
+        "term": "Come again?",
+        "who": "Диспетчер Джанет"
+      },
+      {
+        "added": "2026-11-10",
+        "au": 1,
+        "ex": "I hate to bother you, but could you send me the updated schedule before lunch?",
+        "exru": "Не хотел бы тебя беспокоить, но не мог бы ты прислать мне обновлённое расписание до обеда?",
+        "id": "hate-to-bother-you",
+        "note": "В S03E06 «Sunset» Хэнк начинает так вопрос к Уолтеру по телефону. Приведён короткий фрагмент после вводного Listen. Здесь hate выражает нежелание причинять неудобство: говорящий вежливо признаёт, что отвлекает собеседника. Конструкция: I hate + to + глагол; не пропускай to. Bother принимает прямое дополнение: bother you, а не bother to you. После этой вводной фразы часто добавляют but и конкретную просьбу. Она уместна и с знакомым, и с коллегой; это не буквальное признание в ненависти и не сообщение о прошлом. Формула I hate bothering people скорее описывает общее отношение к таким ситуациям.",
+        "reg": "вежливое разговорное, смягчение просьбы или вопроса",
+        "ru": "Не хотел бы тебя беспокоить.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed script page 29; PDF page 32; Hank calls Walt from his Jeep while watching Jesse's house; HANK line after the greeting",
+            "short_excerpt": true,
+            "speaker": "Hank Schrader",
+            "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact five-word sentence after introductory Listen checked in the script as broadcast and matched to the released-episode subtitles; introductory word omitted, remaining wording unchanged."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Original subtitles, web text line 848; Hank's telephone call to Walt, immediately after their greeting and before the quick-question exchange",
+            "short_excerpt": true,
+            "speaker": "Hank Schrader",
+            "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+            "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+            "verification": "Exact sentence after Listen checked in the released-episode subtitles; speaker and scene agree with the broadcast script."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Subtitle cue 288, 00:25:32.741–00:25:34.660; telephone call to Walter; introductory Listen omitted",
+            "short_excerpt": true,
+            "speaker": "Hank Schrader",
+            "title": "Subtitle Cat: breaking bad s03e06 720p brrip sujaidr — English subtitles with timestamps",
+            "url": "https://www.subtitlecat.com/subs/87/breaking%20bad%20s03e06%20720p%20brrip%20sujaidr.html",
+            "verification": "Exact selected words confirmed in released-episode subtitles and matched to the speaker and scene in the broadcast script; surrounding dialogue omitted."
+          },
+          {
+            "locator": "Hate, SORRY sense",
+            "title": "Cambridge Learner's Dictionary: hate",
+            "url": "https://dictionary.cambridge.org/dictionary/learner-english/hate",
+            "verification": "Indexed entry checked for the apologetic use of hate + to-infinitive when the speaker must interrupt or do something unwelcome."
+          },
+          {
+            "locator": "I hate to bother / trouble etc. you",
+            "title": "Cambridge English–French Dictionary: hate",
+            "url": "https://dictionary.cambridge.org/dictionary/english-french/hate",
+            "verification": "Indexed dictionary entry includes the exact polite formula and its use when interrupting or asking for something."
+          },
+          {
+            "locator": "Phrase entry",
+            "title": "Cambridge Dictionary: sorry to bother you",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/sorry-to-bother-you",
+            "verification": "Indexed entry checked for bother you as a polite acknowledgment of interrupting someone or asking for information."
+          }
+        ],
+        "term": "I hate to bother you.",
+        "who": "Хэнк Шрейдер"
+      }
+    ],
+    "date": "2026-11-10"
+  },
+  "batch_sha256": "862a3eaa5dd5b1d0ca7f3f6c2f297ea2d1d230576eb2b2f25815f7c50ed7207e",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-10T17:31:00.223536Z"
+}
