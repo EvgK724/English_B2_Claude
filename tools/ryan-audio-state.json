@@ -44131,6 +44131,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "draw-up-t": {
+          "duration": 0.912,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "4b2d2e23a5b211b2da6029959311b9c796207537bc46bcf57c7c60dea7c4983f",
+          "packed_sha256": "ca807fa93c1ce7b6c04933c41e447b2a7b75892f9afc682f68fff1d83d920c85",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "9297a2953b566e9bb1890695ac53748c33179088a81d72c8edf84207c65eeddf",
+          "signature": "cc95658e80c04ef6c8f8d9b8f7ace056993bdb007cd390bf08ae481adb5f3487",
+          "source": "Microsoft-Edge-TTS",
+          "text": "draw up",
+          "text_sha256": "4b2d2e23a5b211b2da6029959311b9c796207537bc46bcf57c7c60dea7c4983f",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "draw-up-x": {
+          "duration": 4.992,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "1f1e96425f769a56cd6bf003180ed37034eb73cadc06cbd5499a971eb213beda",
+          "packed_sha256": "328f2b1ee160998cd1c175c812f18b705db649c4f89f75ada81d0b9f1e2d77e0",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "1840e3a42f66787a4ff76e25db4f2e5efa10ea6666d677f3b70ca2df82645313",
+          "signature": "0793fd2e8d1249468d82aa5c750ec8e8844dfdfe898a53f5d1725040389d92ad",
+          "source": "Microsoft-Edge-TTS",
+          "text": "We drew up a detailed plan so that everyone knew what to do before the project started.",
+          "text_sha256": "1f1e96425f769a56cd6bf003180ed37034eb73cadc06cbd5499a971eb213beda",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "end-up-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "b9cbb04514df9f7e85bdf2247af677f44ecca9f5fc28a9d4da41d38ab9d1b409",

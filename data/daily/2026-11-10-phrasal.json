@@ -1,0 +1,74 @@
+{
+  "batch_sha256": "d5961feffb190ebd2bc271fce6cca4c13c2723cbc41efb30d5b30dd2995ed636",
+  "cards": [
+    {
+      "added": "2026-11-10",
+      "au": 1,
+      "ex": "We drew up a detailed plan so that everyone knew what to do before the project started.",
+      "exru": "Мы составили подробный план, чтобы ещё до начала проекта каждый знал, что нужно делать.",
+      "id": "draw-up",
+      "ipa": "/ˌdrɔː ˈʌp/ · drew up · drawn up",
+      "note": "Так говорят о письменной подготовке документа, который требует продумывания: draw up a plan, a list, a contract. С существительным возможны оба порядка: draw up the plan / draw the plan up; местоимение ставится только между частями: draw it up, не «draw up it». Формы: draw — drew — drawn, не «drawed». В отличие от write down («записать» уже известные слова или сведения), draw up подчёркивает составление документа. Здесь речь о документах; draw up без дополнения также может означать «подъехать и остановиться». Деловая лексика сверх уровня B2: Cambridge отмечает это значение как C1.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "составить, подготовить — план, список или официальный документ",
+      "sources": [
+        {
+          "checked_on": "2026-11-10",
+          "title": "Cambridge Dictionary — draw something up",
+          "url": "https://dictionary.cambridge.org/dictionary/english/draw-up",
+          "verified": "PREPARE sense: written preparation, often official; UK draw /drɔː/, drew/drawn; plan, list and contract collocations; C1."
+        },
+        {
+          "checked_on": "2026-11-10",
+          "title": "Oxford Advanced Learner's Dictionary — draw up",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/draw-up",
+          "verified": "draw something up: make or write something requiring thought or planning; contract/list; separate intransitive vehicle sense."
+        }
+      ],
+      "term": "draw up"
+    }
+  ],
+  "clips": {
+    "draw-up-t": {
+      "duration": 0.912,
+      "key": "draw-up-t",
+      "location": [
+        3257712,
+        5472,
+        0.048
+      ],
+      "packed_sha256": "ca807fa93c1ce7b6c04933c41e447b2a7b75892f9afc682f68fff1d83d920c85",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "9297a2953b566e9bb1890695ac53748c33179088a81d72c8edf84207c65eeddf",
+      "text": "draw up",
+      "text_sha256": "4b2d2e23a5b211b2da6029959311b9c796207537bc46bcf57c7c60dea7c4983f",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "draw-up-x": {
+      "duration": 4.992,
+      "key": "draw-up-x",
+      "location": [
+        3263184,
+        29952,
+        0.048
+      ],
+      "packed_sha256": "328f2b1ee160998cd1c175c812f18b705db649c4f89f75ada81d0b9f1e2d77e0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1840e3a42f66787a4ff76e25db4f2e5efa10ea6666d677f3b70ca2df82645313",
+      "text": "We drew up a detailed plan so that everyone knew what to do before the project started.",
+      "text_sha256": "1f1e96425f769a56cd6bf003180ed37034eb73cadc06cbd5499a971eb213beda",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-10",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
