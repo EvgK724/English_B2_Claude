@@ -1,0 +1,37 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-10",
+        "au": 1,
+        "ex": "We drew up a detailed plan so that everyone knew what to do before the project started.",
+        "exru": "Мы составили подробный план, чтобы ещё до начала проекта каждый знал, что нужно делать.",
+        "id": "draw-up",
+        "ipa": "/ˌdrɔː ˈʌp/ · drew up · drawn up",
+        "note": "Так говорят о письменной подготовке документа, который требует продумывания: draw up a plan, a list, a contract. С существительным возможны оба порядка: draw up the plan / draw the plan up; местоимение ставится только между частями: draw it up, не «draw up it». Формы: draw — drew — drawn, не «drawed». В отличие от write down («записать» уже известные слова или сведения), draw up подчёркивает составление документа. Здесь речь о документах; draw up без дополнения также может означать «подъехать и остановиться». Деловая лексика сверх уровня B2: Cambridge отмечает это значение как C1.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "составить, подготовить — план, список или официальный документ",
+        "sources": [
+          {
+            "checked_on": "2026-11-10",
+            "title": "Cambridge Dictionary — draw something up",
+            "url": "https://dictionary.cambridge.org/dictionary/english/draw-up",
+            "verified": "PREPARE sense: written preparation, often official; UK draw /drɔː/, drew/drawn; plan, list and contract collocations; C1."
+          },
+          {
+            "checked_on": "2026-11-10",
+            "title": "Oxford Advanced Learner's Dictionary — draw up",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/draw-up",
+            "verified": "draw something up: make or write something requiring thought or planning; contract/list; separate intransitive vehicle sense."
+          }
+        ],
+        "term": "draw up"
+      }
+    ],
+    "date": "2026-11-10"
+  },
+  "batch_sha256": "d5961feffb190ebd2bc271fce6cca4c13c2723cbc41efb30d5b30dd2995ed636",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-10T06:22:50.199492Z"
+}
