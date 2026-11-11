@@ -166,6 +166,23 @@ class DailyQueueTest(unittest.TestCase):
         self.assertEqual(before, self.snapshot())
         self.assertFalse(list(self.root.glob(".queue-stage-*")))
 
+    def test_persistent_no_audio_keeps_original_requests_and_both_decks_unpublished(self):
+        for key in daily.CONFIG:
+            self.prepare(key)
+        before = self.snapshot()
+        # Queue order is bbapp then phrasal: finish Andrew, fail Ryan's first clip.
+        outcomes = [fixtures.mp3(f"andrew-{i}") for i in range(4)]
+        outcomes += [fixtures.NoAudioReceived("service returned no audio")] * 3
+        with fixtures.fake_speech(outcomes) as speech:
+            with self.assertRaisesRegex(RuntimeError, "voice=en-GB-RyanNeural.*attempt=3/3.*batch not published"):
+                self.process(append_options={"synthesizer": daily.synthesize})
+        self.assertEqual(speech.factory.call_count, 7)
+        self.assertEqual(speech.sleep.await_count, 2)
+        self.assertEqual(self.snapshot(), before)
+        self.assertEqual(queue.verify_queue(self.root, now=NOW)["pending"], 2)
+        self.assertFalse(list(self.root.glob(".queue-stage-*")))
+        self.assertTrue(all(not path.exists() for path in speech.paths))
+
     def test_install_failure_rolls_back_the_complete_output_bundle(self):
         import ensure_ryan_audio
         self.prepare()

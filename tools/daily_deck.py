@@ -21,6 +21,7 @@ import pathlib
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unicodedata
 from urllib.parse import urlsplit
@@ -34,6 +35,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 TIMEZONE = "Asia/Yekaterinburg"
 VERSION = "7.3.1"
 RATE = "-5%"
+# Three attempts in total, only for the service returning no audio.
+TTS_RETRY_DELAYS = (2, 4)
 CONFIG = {
     "phrasal": {"count": 1, "voice": "en-GB-RyanNeural", "label": "Ryan",
                 "fields": ("id", "au", "added", "term", "ipa", "pos", "ru", "note", "ex", "exru")},
@@ -180,10 +183,33 @@ def synthesize(clips, voice, directory):
     async def generate():
         generated = {}
         for clip in clips:
-            path = directory / (clip["key"] + ".mp3")
-            await edge_tts.Communicate(clip["text"], voice, rate=clip["rate"],
-                                       pitch="+0Hz", volume="+0%").save(str(path))
-            generated[clip["key"]] = path.read_bytes()
+            path = directory / (clip["key"] + ".part.mp3")
+            attempts = len(TTS_RETRY_DELAYS) + 1
+            try:
+                for attempt in range(1, attempts + 1):
+                    # Never let a partial result from one attempt enter the next.
+                    path.unlink(missing_ok=True)
+                    try:
+                        # Communicate instances cannot be reused after streaming.
+                        await edge_tts.Communicate(clip["text"], voice, rate=clip["rate"],
+                                                   pitch="+0Hz", volume="+0%").save(str(path))
+                        if not path.is_file() or not path.stat().st_size:
+                            raise edge_tts.exceptions.NoAudioReceived("No audio file was produced")
+                        generated[clip["key"]] = path.read_bytes()
+                        break
+                    except edge_tts.exceptions.NoAudioReceived as error:
+                        path.unlink(missing_ok=True)
+                        context = (f"clip={clip['key']} voice={voice} rate={clip['rate']} "
+                                   f"attempt={attempt}/{attempts} edge-tts={VERSION}")
+                        if attempt == attempts:
+                            raise RuntimeError(f"Daily speech: {context}: NoAudioReceived; "
+                                               "retry limit reached, batch not published") from error
+                        delay = TTS_RETRY_DELAYS[attempt - 1]
+                        print(f"Daily speech: {context}: NoAudioReceived; retrying in {delay}s",
+                              file=sys.stderr, flush=True)
+                        await asyncio.sleep(delay)
+            finally:
+                path.unlink(missing_ok=True)
         return generated
 
     return asyncio.run(generate())

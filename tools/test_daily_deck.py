@@ -1,11 +1,15 @@
 """Daily publication regressions: idempotence, preservation and failure safety."""
 import copy
+import contextlib
 import datetime as dt
+import io
 import json
 import pathlib
+import sys
 import tempfile
+import types
 import unittest
-from unittest.mock import patch
+from unittest.mock import AsyncMock, Mock, call, patch
 
 import daily_deck as daily
 
@@ -32,6 +36,39 @@ def batch(key):
         value["sources"] = [{"url": "https://example.org/source", "title": "Verified example",
                               "episode": "S01E01", "checked_quote": value["term"]}]
     return {"date": TODAY, "cards": cards}
+
+
+class NoAudioReceived(Exception):
+    """Offline equivalent of edge_tts.exceptions.NoAudioReceived."""
+
+
+@contextlib.contextmanager
+def fake_speech(outcomes):
+    """Exercise the real retry loop without networking, ffmpeg or real waits."""
+    outcomes = iter(outcomes)
+    paths = []
+
+    class Communicate:
+        async def save(self, filename):
+            path = pathlib.Path(filename)
+            paths.append(path)
+            if path.exists():
+                raise AssertionError("Partial audio survived into the next attempt")
+            outcome = next(outcomes)
+            if isinstance(outcome, BaseException):
+                path.write_bytes(b"partial audio that must not be published")
+                raise outcome
+            if outcome is not None:
+                path.write_bytes(outcome)
+
+    factory = Mock(side_effect=lambda *args, **kwargs: Communicate())
+    module = types.SimpleNamespace(__version__=daily.VERSION, Communicate=factory,
+                                   exceptions=types.SimpleNamespace(NoAudioReceived=NoAudioReceived))
+    with patch.dict(sys.modules, {"edge_tts": module}), \
+            patch.object(daily.shutil, "which", return_value="/fake/ffmpeg"), \
+            patch.object(daily.asyncio, "sleep", new_callable=AsyncMock) as sleep, \
+            contextlib.redirect_stderr(io.StringIO()) as stderr:
+        yield types.SimpleNamespace(factory=factory, sleep=sleep, stderr=stderr, paths=paths)
 
 
 class DailyDeckTest(unittest.TestCase):
@@ -223,6 +260,108 @@ class DailyDeckTest(unittest.TestCase):
         report = daily.status(self.root, "phrasal", today=TODAY)
         self.assertEqual(report["state"], "conflict")
         self.assertIn("missing audio", report["problem"])
+
+    def test_no_audio_retries_then_preserves_voices_history_and_completed_clips(self):
+        for key in daily.CONFIG:
+            with self.subTest(key=key):
+                before = self.snapshot()
+                recordings = [mp3(f"clip-{i}") for i in range(daily.CONFIG[key]["count"] * 2)]
+                # The first clip succeeds once; the second succeeds on its last attempt.
+                outcomes = [recordings[0], NoAudioReceived("temporary"),
+                            NoAudioReceived("temporary"), *recordings[1:]]
+                with fake_speech(outcomes) as speech:
+                    result = self.append(key, synthesizer=daily.synthesize)
+                self.assertEqual(result["status"], "appended")
+                self.assertEqual(speech.sleep.await_args_list, [call(2), call(4)])
+                self.assertEqual(speech.factory.call_count, len(recordings) + 2)
+                clips = [(c[field], daily.CONFIG[key]["voice"])
+                         for c in batch(key)["cards"] for field in ("term", "ex")]
+                expected = [clips[0], clips[1], clips[1], *clips[1:]]
+                self.assertEqual(speech.factory.call_args_list,
+                                 [call(*args, rate="-5%", pitch="+0Hz", volume="+0%")
+                                  for args in expected])
+                after = self.snapshot()
+                pack_path = f"site/packs/{key}.mp3"
+                self.assertEqual(after[pack_path], before[pack_path] + b"".join(recordings))
+                other = "phrasal" if key == "bbapp" else "bbapp"
+                for rel in (f"site/apps/{other}.html", f"site/packs/{other}.mp3"):
+                    self.assertEqual(after[rel], before[rel])
+                html = after[f"site/apps/{key}.html"].decode()
+                self.assertEqual(daily.parse_cards(html)[0], self.old[key])
+                self.assertIn('const LS_STATE = "preserve-this";', html)
+                self.assertFalse(list(self.root.glob(".daily-stage-*")))
+                self.assertTrue(all(not path.exists() for path in speech.paths))
+                self.assertIn("clip=new-0-x", speech.stderr.getvalue())
+                self.assertIn("attempt=2/3", speech.stderr.getvalue())
+                self.assertNotIn(clips[1][0], speech.stderr.getvalue())
+                # An idempotent append neither synthesizes again nor changes a byte.
+                with fake_speech([]) as retry:
+                    self.assertEqual(self.append(key, synthesizer=daily.synthesize)["status"], "already-complete")
+                retry.factory.assert_not_called()
+                self.assertEqual(self.snapshot(), after)
+
+    def test_persistent_no_audio_fails_closed_after_three_attempts(self):
+        before = self.snapshot()
+        with fake_speech([mp3("first"), *[NoAudioReceived("no audio")] * 3]) as speech:
+            with self.assertRaisesRegex(RuntimeError, "clip=new-0-x voice=en-US-AndrewNeural.*attempt=3/3.*batch not published"):
+                self.append("bbapp", synthesizer=daily.synthesize)
+        self.assertEqual(speech.factory.call_count, 4)
+        self.assertEqual(speech.sleep.await_args_list, [call(2), call(4)])
+        self.assertEqual(self.snapshot(), before)
+        self.assertFalse(list(self.root.glob(".daily-stage-*")))
+        self.assertTrue(all(not path.exists() for path in speech.paths))
+
+    def test_missing_and_empty_audio_retry_and_success_has_no_staging_files(self):
+        directory = self.root / "generated"
+        clip = {"key": "short-term", "text": "Come again?", "rate": "-5%"}
+        with fake_speech([None, b"", mp3("valid")]) as speech:
+            result = daily.synthesize([clip], "en-US-AndrewNeural", directory)
+        self.assertEqual(result, {clip["key"]: mp3("valid")})
+        self.assertEqual(speech.sleep.await_args_list, [call(2), call(4)])
+        self.assertEqual(list(directory.iterdir()), [])
+
+    def test_success_needs_no_retry_or_wait_for_either_voice(self):
+        for voice in (config["voice"] for config in daily.CONFIG.values()):
+            directory = self.root / voice
+            with fake_speech([mp3("valid")]) as speech:
+                self.assertEqual(daily.synthesize([{"key": "one", "text": "Hello.", "rate": "-5%"}],
+                                                 voice, directory), {"one": mp3("valid")})
+            speech.factory.assert_called_once_with("Hello.", voice, rate="-5%", pitch="+0Hz", volume="+0%")
+            speech.sleep.assert_not_awaited()
+            self.assertEqual(speech.stderr.getvalue(), "")
+            self.assertEqual(list(directory.iterdir()), [])
+
+    def test_persistent_empty_output_is_bounded_and_cancellation_during_wait_stops(self):
+        clip = {"key": "one", "text": "Hello.", "rate": "-5%"}
+        for number, outcomes in enumerate(([None] * 3, [b""] * 3)):
+            directory = self.root / f"empty-{number}"
+            with fake_speech(outcomes) as speech:
+                with self.assertRaisesRegex(RuntimeError, "attempt=3/3.*retry limit reached"):
+                    daily.synthesize([clip], "en-US-AndrewNeural", directory)
+            self.assertEqual(speech.factory.call_count, 3)
+            self.assertEqual(speech.sleep.await_args_list, [call(2), call(4)])
+            self.assertEqual(list(directory.iterdir()), [])
+        directory = self.root / "cancelled-wait"
+        with fake_speech([NoAudioReceived("temporary")]) as speech:
+            speech.sleep.side_effect = daily.asyncio.CancelledError()
+            with self.assertRaises(daily.asyncio.CancelledError):
+                daily.synthesize([clip], "en-US-AndrewNeural", directory)
+        self.assertEqual(speech.factory.call_count, 1)
+        self.assertEqual(speech.sleep.await_args_list, [call(2)])
+        self.assertEqual(list(directory.iterdir()), [])
+
+    def test_other_failures_and_cancellation_are_not_retried_and_remove_partial_audio(self):
+        for number, error in enumerate((RuntimeError("service denied"), ValueError("invalid voice"),
+                                        PermissionError("disk denied"), daily.asyncio.CancelledError())):
+            with self.subTest(error=type(error).__name__):
+                directory = self.root / f"failure-{number}"
+                with fake_speech([error]) as speech:
+                    with self.assertRaises(type(error)):
+                        daily.synthesize([{"key": "one", "text": "Hello.", "rate": "-5%"}],
+                                         "en-US-AndrewNeural", directory)
+                self.assertEqual(speech.factory.call_count, 1)
+                speech.sleep.assert_not_awaited()
+                self.assertEqual(list(directory.iterdir()), [])
 
 
 if __name__ == "__main__":
