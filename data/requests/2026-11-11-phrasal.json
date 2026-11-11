@@ -1,0 +1,49 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-11",
+        "au": 1,
+        "ex": "Could you check the report over before I send it to the rest of the team?",
+        "exru": "Не могли бы вы проверить отчёт, прежде чем я отправлю его остальным членам команды?",
+        "id": "check-over",
+        "ipa": "/ˌtʃek ˈəʊvə/ · checked over · checked over",
+        "note": "Так говорят, когда внимательно проверяют документ, расчёты или оборудование, чтобы найти ошибки или неполадки: check over a report, the figures, the equipment. С существительным возможны оба порядка: check over the report / check the report over; местоимение ставится только между частями: check it over, не «check over it». Чтобы уточнить, что ищут, используйте for: check the report over for errors. Формы: check — checked — checked. Look over часто означает быстро просмотреть; check over подчёркивает внимательную проверку на ошибки. Сам глагол не означает, что найденные ошибки уже исправили.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "тщательно проверить — на ошибки или неполадки",
+        "sources": [
+          {
+            "checked_on": "2026-11-11",
+            "title": "CHECK OVER Definition & Meaning - Merriam-Webster",
+            "url": "https://www.merriam-webster.com/dictionary/check%20over",
+            "verified": "Словарная статья подтверждает внимательную проверку на ошибки и неполадки, регулярные формы, оба положения существительного, местоимение перед over и конструкцию for + искомая проблема. Проверены редакционные определение и примеры, а не автоматически собранные примеры из интернета."
+          },
+          {
+            "checked_on": "2026-11-11",
+            "title": "CHECK | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/check",
+            "verified": "Британская транскрипция check: /tʃek/; проверена в индексированном содержимом словарной статьи."
+          },
+          {
+            "checked_on": "2026-11-11",
+            "title": "OVER | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/over",
+            "verified": "Британская транскрипция over: /ˈəʊ.və(r)/; проверена в индексированном содержимом. В карточке дана неротическая британская форма; ударения всего сочетания — учебная запись, а не цитата отдельной словарной транскрипции check over."
+          },
+          {
+            "checked_on": "2026-11-11",
+            "title": "LOOK OVER SOMETHING | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/look-over?topic=analysing-and-evaluating",
+            "verified": "Индексированное содержание Cambridge определяет look over как быстрый просмотр; это основание для осторожного сравнения с внимательной проверкой check over, без утверждения о полной невзаимозаменяемости."
+          }
+        ],
+        "term": "check over"
+      }
+    ],
+    "date": "2026-11-11"
+  },
+  "batch_sha256": "c9083b7f3ae740f407be431f8b165f12d849dfd76cd8d44224481baac205c1a3",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-11T06:48:12.269801Z"
+}
