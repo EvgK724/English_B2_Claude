@@ -1,0 +1,86 @@
+{
+  "batch_sha256": "c9083b7f3ae740f407be431f8b165f12d849dfd76cd8d44224481baac205c1a3",
+  "cards": [
+    {
+      "added": "2026-11-11",
+      "au": 1,
+      "ex": "Could you check the report over before I send it to the rest of the team?",
+      "exru": "Не могли бы вы проверить отчёт, прежде чем я отправлю его остальным членам команды?",
+      "id": "check-over",
+      "ipa": "/ˌtʃek ˈəʊvə/ · checked over · checked over",
+      "note": "Так говорят, когда внимательно проверяют документ, расчёты или оборудование, чтобы найти ошибки или неполадки: check over a report, the figures, the equipment. С существительным возможны оба порядка: check over the report / check the report over; местоимение ставится только между частями: check it over, не «check over it». Чтобы уточнить, что ищут, используйте for: check the report over for errors. Формы: check — checked — checked. Look over часто означает быстро просмотреть; check over подчёркивает внимательную проверку на ошибки. Сам глагол не означает, что найденные ошибки уже исправили.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "тщательно проверить — на ошибки или неполадки",
+      "sources": [
+        {
+          "checked_on": "2026-11-11",
+          "title": "CHECK OVER Definition & Meaning - Merriam-Webster",
+          "url": "https://www.merriam-webster.com/dictionary/check%20over",
+          "verified": "Словарная статья подтверждает внимательную проверку на ошибки и неполадки, регулярные формы, оба положения существительного, местоимение перед over и конструкцию for + искомая проблема. Проверены редакционные определение и примеры, а не автоматически собранные примеры из интернета."
+        },
+        {
+          "checked_on": "2026-11-11",
+          "title": "CHECK | English meaning - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/check",
+          "verified": "Британская транскрипция check: /tʃek/; проверена в индексированном содержимом словарной статьи."
+        },
+        {
+          "checked_on": "2026-11-11",
+          "title": "OVER | English meaning - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/over",
+          "verified": "Британская транскрипция over: /ˈəʊ.və(r)/; проверена в индексированном содержимом. В карточке дана неротическая британская форма; ударения всего сочетания — учебная запись, а не цитата отдельной словарной транскрипции check over."
+        },
+        {
+          "checked_on": "2026-11-11",
+          "title": "LOOK OVER SOMETHING | English meaning - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/look-over?topic=analysing-and-evaluating",
+          "verified": "Индексированное содержание Cambridge определяет look over как быстрый просмотр; это основание для осторожного сравнения с внимательной проверкой check over, без утверждения о полной невзаимозаменяемости."
+        }
+      ],
+      "term": "check over"
+    }
+  ],
+  "clips": {
+    "check-over-t": {
+      "duration": 0.912,
+      "key": "check-over-t",
+      "location": [
+        3293136,
+        5472,
+        0.048
+      ],
+      "packed_sha256": "977e82ccceb968997aa3f7de49ec92586bd29ebc2ecba213c0ab8a5b4b508d9a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "0831faa553e16e88b076489dafb28fc996f84ec505743321f5943feb6b15839a",
+      "text": "check over",
+      "text_sha256": "a51c94270b415d646c3ce255084994b6ea0450e8e62692b4a280124502822cd6",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "check-over-x": {
+      "duration": 3.48,
+      "key": "check-over-x",
+      "location": [
+        3298608,
+        20880,
+        0.048
+      ],
+      "packed_sha256": "a8196926460bf5f60098333c15bf2fbbae5097088d79762e6eff299608e00b17",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ed7b17ac7f94307998d8ec1fff5aa003a41ac62f437eedb04af27643f352a50d",
+      "text": "Could you check the report over before I send it to the rest of the team?",
+      "text_sha256": "7523ccc51dcfd97973e7e8bf72599d3c7d0e18555a9eb3f8ce24b309adfce5b1",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-11",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

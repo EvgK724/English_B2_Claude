@@ -43975,6 +43975,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "check-over-t": {
+          "duration": 0.912,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "a51c94270b415d646c3ce255084994b6ea0450e8e62692b4a280124502822cd6",
+          "packed_sha256": "977e82ccceb968997aa3f7de49ec92586bd29ebc2ecba213c0ab8a5b4b508d9a",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "0831faa553e16e88b076489dafb28fc996f84ec505743321f5943feb6b15839a",
+          "signature": "ca5811799dd2698872bc117c9c07677735fd3febafbc993c99e019c43d9c686e",
+          "source": "Microsoft-Edge-TTS",
+          "text": "check over",
+          "text_sha256": "a51c94270b415d646c3ce255084994b6ea0450e8e62692b4a280124502822cd6",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "check-over-x": {
+          "duration": 3.48,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "7523ccc51dcfd97973e7e8bf72599d3c7d0e18555a9eb3f8ce24b309adfce5b1",
+          "packed_sha256": "a8196926460bf5f60098333c15bf2fbbae5097088d79762e6eff299608e00b17",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "ed7b17ac7f94307998d8ec1fff5aa003a41ac62f437eedb04af27643f352a50d",
+          "signature": "35584ce7df2a3f6168fc7325a2c456c8cd0b3863347ac4e756ae6e375fd26399",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Could you check the report over before I send it to the rest of the team?",
+          "text_sha256": "7523ccc51dcfd97973e7e8bf72599d3c7d0e18555a9eb3f8ce24b309adfce5b1",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "come-down-with-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "3d91c174690e9ae0b0acba460269c477620c3ebe5ae339d9ff04247c92bbc96a",
