@@ -1,0 +1,188 @@
+{
+  "batch_sha256": "862a3eaa5dd5b1d0ca7f3f6c2f297ea2d1d230576eb2b2f25815f7c50ed7207e",
+  "cards": [
+    {
+      "added": "2026-11-10",
+      "au": 1,
+      "ex": "Come again? Did you say the meeting starts at nine or at half past nine?",
+      "exru": "Прости, повтори. Ты сказал, что встреча начинается в девять или в половине десятого?",
+      "id": "come-again",
+      "note": "В S03E06 «Sunset» диспетчер Джанет переспрашивает офицера Ки по рации. Come again? — устойчивый способ попросить повторить то, что ты не расслышал или не понял; здесь это не приглашение прийти ещё раз. Запоминай короткую форму целиком: не добавляй do или did. Произноси с вопросительной интонацией; резкий тон может передать недоверие или раздражение. Фраза подходит для неформального разговора, а в официальной ситуации нейтральнее Could you repeat that, please? Идиома отмечена Cambridge как C1 — небольшое расширение сверх основного уровня.",
+      "reg": "неформальное разговорное, просьба повторить сказанное",
+      "ru": "Что, прости? Повтори, пожалуйста.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed script page 4; PDF page 7; opening police-radio exchange; DISPATCHER response to Officer Kee reporting a homicide",
+          "short_excerpt": true,
+          "speaker": "Dispatcher Janet",
+          "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+          "verification": "Exact two-word question checked in the script as broadcast. Officer Kee addresses the dispatcher as Janet immediately before it. The released-episode subtitles match."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Original subtitles, web text line 312; first speaker in the paired subtitle following Officer Kee's radio report",
+          "short_excerpt": true,
+          "speaker": "Dispatcher Janet",
+          "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+          "verification": "Exact question checked in the released-episode subtitle text; speaker determined from the matching broadcast script and radio exchange."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Subtitle cue 11, 00:03:18.323–00:03:20.242; cue also contains Officer Kee’s reply",
+          "short_excerpt": true,
+          "speaker": "Dispatcher Janet",
+          "title": "Subtitle Cat: breaking bad s03e06 720p brrip sujaidr — English subtitles with timestamps",
+          "url": "https://www.subtitlecat.com/subs/87/breaking%20bad%20s03e06%20720p%20brrip%20sujaidr.html",
+          "verification": "Exact selected words confirmed in released-episode subtitles and matched to the speaker and scene in the broadcast script; surrounding dialogue omitted."
+        },
+        {
+          "locator": "Informal idiom entry; C1",
+          "title": "Cambridge Dictionary: come again?",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/come-again",
+          "verification": "Meaning and register checked in indexed Cambridge entries: request to repeat something not heard or understood."
+        }
+      ],
+      "term": "Come again?",
+      "who": "Диспетчер Джанет"
+    },
+    {
+      "added": "2026-11-10",
+      "au": 1,
+      "ex": "I hate to bother you, but could you send me the updated schedule before lunch?",
+      "exru": "Не хотел бы тебя беспокоить, но не мог бы ты прислать мне обновлённое расписание до обеда?",
+      "id": "hate-to-bother-you",
+      "note": "В S03E06 «Sunset» Хэнк начинает так вопрос к Уолтеру по телефону. Приведён короткий фрагмент после вводного Listen. Здесь hate выражает нежелание причинять неудобство: говорящий вежливо признаёт, что отвлекает собеседника. Конструкция: I hate + to + глагол; не пропускай to. Bother принимает прямое дополнение: bother you, а не bother to you. После этой вводной фразы часто добавляют but и конкретную просьбу. Она уместна и с знакомым, и с коллегой; это не буквальное признание в ненависти и не сообщение о прошлом. Формула I hate bothering people скорее описывает общее отношение к таким ситуациям.",
+      "reg": "вежливое разговорное, смягчение просьбы или вопроса",
+      "ru": "Не хотел бы тебя беспокоить.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed script page 29; PDF page 32; Hank calls Walt from his Jeep while watching Jesse's house; HANK line after the greeting",
+          "short_excerpt": true,
+          "speaker": "Hank Schrader",
+          "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+          "verification": "Exact five-word sentence after introductory Listen checked in the script as broadcast and matched to the released-episode subtitles; introductory word omitted, remaining wording unchanged."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Original subtitles, web text line 848; Hank's telephone call to Walt, immediately after their greeting and before the quick-question exchange",
+          "short_excerpt": true,
+          "speaker": "Hank Schrader",
+          "title": "Subtitle Cat: Breaking.Bad.S03E06.720p.BluRay.X264-REWARD — English subtitles",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E06.720p.BluRay.X264-REWARD.html",
+          "verification": "Exact sentence after Listen checked in the released-episode subtitles; speaker and scene agree with the broadcast script."
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Subtitle cue 288, 00:25:32.741–00:25:34.660; telephone call to Walter; introductory Listen omitted",
+          "short_excerpt": true,
+          "speaker": "Hank Schrader",
+          "title": "Subtitle Cat: breaking bad s03e06 720p brrip sujaidr — English subtitles with timestamps",
+          "url": "https://www.subtitlecat.com/subs/87/breaking%20bad%20s03e06%20720p%20brrip%20sujaidr.html",
+          "verification": "Exact selected words confirmed in released-episode subtitles and matched to the speaker and scene in the broadcast script; surrounding dialogue omitted."
+        },
+        {
+          "locator": "Hate, SORRY sense",
+          "title": "Cambridge Learner's Dictionary: hate",
+          "url": "https://dictionary.cambridge.org/dictionary/learner-english/hate",
+          "verification": "Indexed entry checked for the apologetic use of hate + to-infinitive when the speaker must interrupt or do something unwelcome."
+        },
+        {
+          "locator": "I hate to bother / trouble etc. you",
+          "title": "Cambridge English–French Dictionary: hate",
+          "url": "https://dictionary.cambridge.org/dictionary/english-french/hate",
+          "verification": "Indexed dictionary entry includes the exact polite formula and its use when interrupting or asking for something."
+        },
+        {
+          "locator": "Phrase entry",
+          "title": "Cambridge Dictionary: sorry to bother you",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/sorry-to-bother-you",
+          "verification": "Indexed entry checked for bother you as a polite acknowledgment of interrupting someone or asking for information."
+        }
+      ],
+      "term": "I hate to bother you.",
+      "who": "Хэнк Шрейдер"
+    }
+  ],
+  "clips": {
+    "come-again-t": {
+      "duration": 0.672,
+      "key": "come-again-t",
+      "location": [
+        3076848,
+        4032,
+        0.048
+      ],
+      "packed_sha256": "0845aad585c7a87ded99c0d494540e18e309cb6406ee240722c1485e86ab332e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7b44871347ade480b39295e46fc7a67d5c1a50d86b8af5770d24ceab3c43eb35",
+      "text": "Come again?",
+      "text_sha256": "9bce182d162f817c3606d18e9beaf4f3f5f49d1325ea56ab339905fea1d3cc33",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "come-again-x": {
+      "duration": 4.08,
+      "key": "come-again-x",
+      "location": [
+        3080880,
+        24480,
+        0.048
+      ],
+      "packed_sha256": "c63d18a326940ba2e0ae460def5542b9fff2860c97c2c8e0be03ea8b5cafc15f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e3dbb935e1f6ea2e9f2f66f7514d89540e8faa1382645b4219bf305fcca146cd",
+      "text": "Come again? Did you say the meeting starts at nine or at half past nine?",
+      "text_sha256": "3cb1260b32d7f940b18b3e8114ae45d8a3ba89336379bf83a684dedddfee2607",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hate-to-bother-you-t": {
+      "duration": 1.128,
+      "key": "hate-to-bother-you-t",
+      "location": [
+        3105360,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "04ba50aec550b286cac80bc5d2bb8b56f8c27d7f05cd99e61aa8f135ea644bee",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "fde2c5aafdc3867dc51d15ac0c2fc1245500928346cd47f18caf93a7a1280359",
+      "text": "I hate to bother you.",
+      "text_sha256": "ed46c7ea9ecba7aec00b1f1311ae27aed544c9f2b199848927de1a202d2956c1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hate-to-bother-you-x": {
+      "duration": 4.056,
+      "key": "hate-to-bother-you-x",
+      "location": [
+        3112128,
+        24336,
+        0.048
+      ],
+      "packed_sha256": "04f6b5d1b3613c7c7c795b22b1976d198f4d064eac0a2132d29db80743273ab5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "945933a6ed8de692f84e0be90898d9f2c4171bc2c590615610cbe1f29592dab6",
+      "text": "I hate to bother you, but could you send me the updated schedule before lunch?",
+      "text_sha256": "66221e5518ceb31f7ddc6fdbc5ecdc951455a2dc4321694a595b0d437b4829ed",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-10",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}

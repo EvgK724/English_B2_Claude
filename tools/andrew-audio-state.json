@@ -366,6 +366,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "come-again-t": {
+      "duration": 0.672,
+      "edge_tts": "7.3.1",
+      "key": "come-again-t",
+      "ledger": "data/daily/2026-11-10-bbapp.json",
+      "location": [
+        3076848,
+        4032,
+        0.048
+      ],
+      "packed_sha256": "0845aad585c7a87ded99c0d494540e18e309cb6406ee240722c1485e86ab332e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7b44871347ade480b39295e46fc7a67d5c1a50d86b8af5770d24ceab3c43eb35",
+      "signature": "752538a850103bf7bb076b49d2a1e8f9439e7e5650c4dfb3238f33f648459e2a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Come again?",
+      "text_sha256": "9bce182d162f817c3606d18e9beaf4f3f5f49d1325ea56ab339905fea1d3cc33",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "come-again-x": {
+      "duration": 4.08,
+      "edge_tts": "7.3.1",
+      "key": "come-again-x",
+      "ledger": "data/daily/2026-11-10-bbapp.json",
+      "location": [
+        3080880,
+        24480,
+        0.048
+      ],
+      "packed_sha256": "c63d18a326940ba2e0ae460def5542b9fff2860c97c2c8e0be03ea8b5cafc15f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e3dbb935e1f6ea2e9f2f66f7514d89540e8faa1382645b4219bf305fcca146cd",
+      "signature": "6a7cf97bc9d99cacaada29493a27c7b04e4544dae5efd96c7fc4426bf1d5c668",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Come again? Did you say the meeting starts at nine or at half past nine?",
+      "text_sha256": "3cb1260b32d7f940b18b3e8114ae45d8a3ba89336379bf83a684dedddfee2607",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "come-to-an-end-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1141,6 +1183,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "He knows every street here, so he has to be a local.",
       "text_sha256": "35e8e50e4d9d538dbdd22dad375b6aa3babdce7df494ba23e92cc11fbb4ab4c7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hate-to-bother-you-t": {
+      "duration": 1.128,
+      "edge_tts": "7.3.1",
+      "key": "hate-to-bother-you-t",
+      "ledger": "data/daily/2026-11-10-bbapp.json",
+      "location": [
+        3105360,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "04ba50aec550b286cac80bc5d2bb8b56f8c27d7f05cd99e61aa8f135ea644bee",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "fde2c5aafdc3867dc51d15ac0c2fc1245500928346cd47f18caf93a7a1280359",
+      "signature": "0d257bce8f2e4c1f0f61edd7f230b60938c26574b0e5381e61098df49e3efc3b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I hate to bother you.",
+      "text_sha256": "ed46c7ea9ecba7aec00b1f1311ae27aed544c9f2b199848927de1a202d2956c1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hate-to-bother-you-x": {
+      "duration": 4.056,
+      "edge_tts": "7.3.1",
+      "key": "hate-to-bother-you-x",
+      "ledger": "data/daily/2026-11-10-bbapp.json",
+      "location": [
+        3112128,
+        24336,
+        0.048
+      ],
+      "packed_sha256": "04f6b5d1b3613c7c7c795b22b1976d198f4d064eac0a2132d29db80743273ab5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "945933a6ed8de692f84e0be90898d9f2c4171bc2c590615610cbe1f29592dab6",
+      "signature": "7b02dd84ce3cda2e0674451d9e198318df27325a1126015d62a867c590942398",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I hate to bother you, but could you send me the updated schedule before lunch?",
+      "text_sha256": "66221e5518ceb31f7ddc6fdbc5ecdc951455a2dc4321694a595b0d437b4829ed",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
