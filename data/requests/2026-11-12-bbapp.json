@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-12",
+        "au": 1,
+        "ex": "This desk fits in my office, and the price is reasonable. I'll take it.",
+        "exru": "Этот стол помещается в моём кабинете, и цена разумная. Беру.",
+        "id": "ill-take-it",
+        "note": "В S03E06 «Sunset» Уолтер выбирает меблированную квартиру, которую ему показывает риелтор. I'll take it — короткое решение принять предложенный вариант: товар, место или предложение. Здесь take не означает просто «взять в руки». I'll = I will; после will нужна начальная форма take без to. It заменяет один уже названный предмет или вариант; если выбираешь несколько предметов, скажи I'll take them. Фраза уместна при покупке или выборе и показывает, что решение принято. Не путай с I'll think about it — там человек ещё не решил.",
+        "reg": "нейтральное разговорное, решение выбрать или купить предложенное",
+        "ru": "Беру. Меня устраивает этот вариант.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed script page 9; PDF page 12; WALT, after the realtor offers to show other units; furnished model-condo scene",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "Exact three-word sentence verified in the script as broadcast. Walter chooses the condo shown by the realtor; the aired subtitles match. Straight apostrophe is typographic normalization."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Original subtitles; web text line 416; immediately after Walter says this one is fine and before the realtor explains it is the model unit",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "breaking bad s03e06 720p brrip sujaidr subtitles – 100+ languages (SRT) | Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/87/breaking%20bad%20s03e06%20720p%20brrip%20sujaidr.html",
+            "verification": "Exact short sentence verified in the released-episode English subtitles. Speaker and context match the broadcast script."
+          },
+          {
+            "locator": "Verb sense: get, receive, buy, rent",
+            "title": "TAKE | translation English to German - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english-german/take",
+            "verification": "Indexed Cambridge entry obtained before direct-fetch denial verifies take for choosing/buying/renting something; dictionary example illustrates a purchasing decision. Full page was not fetched."
+          }
+        ],
+        "term": "I'll take it.",
+        "who": "Уолтер Уайт"
+      },
+      {
+        "added": "2026-11-12",
+        "au": 1,
+        "ex": "We only have ten minutes, so let's cut to the chase: what do you need from our team?",
+        "exru": "У нас всего десять минут, поэтому давай сразу к делу: что тебе нужно от нашей команды?",
+        "id": "cut-to-the-chase",
+        "note": "В S03E06 «Sunset» Уолтер по телефону предлагает Хэнку перейти к сути вопроса. Здесь приведён короткий фрагмент реплики; вводные слова опущены, первое слово написано с прописной буквы. Cut to the chase значит пропустить предисловие и сразу сказать главное; буквальной погони здесь нет. Запоминай конструкцию целиком: cut + to + the chase, с предлогом to и артиклем the. В просьбе Cut to the chase форма cut — повелительная, подлежащее you не нужно. С друзьями и коллегами выражение помогает вернуть разговор к делу, но прямой приказ может прозвучать нетерпеливо. Let's cut to the chase включает говорящего в предложение и обычно звучит мягче.",
+        "reg": "разговорное, прямой призыв перейти к сути",
+        "ru": "Переходи к делу. Давай сразу к сути.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed script page 30; PDF page 33; WALT speaks to Hank on the phone; final four words of the line after Hank hesitates before his question",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad — Sunset, Episode #306 — Script As Broadcast, John Shiban, Sony Pictures Television, 2010",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670",
+            "verification": "The four words cut to the chase are an exact continuous excerpt from Walter’s line. Lead-in and vocative omitted; initial letter capitalized for card display. Script has an ellipsis before the excerpt; aired subtitles retain the same words without that pause punctuation."
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Original subtitles; web text line 856; Walter’s reply to Hank’s assurance that he would not put Walter on the spot",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "breaking bad s03e06 720p brrip sujaidr subtitles – 100+ languages (SRT) | Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/87/breaking%20bad%20s03e06%20720p%20brrip%20sujaidr.html",
+            "verification": "Exact four-word excerpt verified within Walter’s released-episode line; attribution established by the matching broadcast script. This is an excerpt, not a claim that Walter spoke it as a separate sentence."
+          },
+          {
+            "locator": "Idiom entry; indexed definition",
+            "title": "Meaning of cut to the chase in English - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/cut-to-the-chase",
+            "verification": "Indexed Cambridge result obtained before direct-fetch denial confirms focusing directly on the important point without wasting time on unimportant details. Direct full-page retrieval returned HTTP 403 and was not retried."
+          }
+        ],
+        "term": "Cut to the chase.",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-12"
+  },
+  "batch_sha256": "42da0e95b1f893da8c730089261af4025d5e8f6bf2273eddc4791e6f39157b1c",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-12T03:19:52.093868Z"
+}
