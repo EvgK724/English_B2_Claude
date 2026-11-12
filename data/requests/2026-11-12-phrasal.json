@@ -1,0 +1,61 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-12",
+        "au": 1,
+        "ex": "I can put up with a bit of noise, but I can't work while people are shouting.",
+        "exru": "Я могу мириться с небольшим шумом, но не могу работать, когда люди кричат.",
+        "id": "put-up-with",
+        "ipa": "/ˌpʊt ˈʌp wɪð/ · put up with · put up with",
+        "note": "Разговорное выражение: терпеть то, что раздражает или доставляет неудобства, — put up with noise, delays, rude behaviour. Дополнение всегда после with: put up with it, не «put it up with» и не «put up it». Формы: put — put — put, без -ed. В отличие от deal with a problem («заниматься проблемой, принимать меры»), put up with подчёркивает терпение; само выражение не означает, что проблему решили.",
+        "pos": "phrasal verb · переходный · неразделяемый",
+        "ru": "терпеть, мириться с — неприятной ситуацией или поведением",
+        "sources": [
+          {
+            "checked_on": "2026-11-12",
+            "title": "PUT UP WITH definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/put-up-with",
+            "verified": "Проверено редакционное определение в разделе British English: терпеть, мириться; разговорный регистр. Авторский пример не является словарной цитатой."
+          },
+          {
+            "checked_on": "2026-11-12",
+            "title": "Phrasal verbs | LearnEnglish",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+            "verified": "Раздел With two particles подтверждает неразделяемость и порядок put up with it, а также значение терпеть трудное или раздражающее. Материал отмечен B1–B2."
+          },
+          {
+            "checked_on": "2026-11-12",
+            "title": "PUT | definition in the Cambridge English Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/put",
+            "verified": "Индексированная словарная статья: британское /pʊt/ и формы put — put — put. IPA сочетания в карточке составлена для обучения на основе произношения компонентов; это не цитата готовой словарной транскрипции фразы."
+          },
+          {
+            "checked_on": "2026-11-12",
+            "title": "UP | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/up",
+            "verified": "В индексированном содержимом проверено британское произношение /ʌp/."
+          },
+          {
+            "checked_on": "2026-11-12",
+            "title": "with preposition - Definition, pictures, pronunciation and usage notes | Oxford Advanced Learner's Dictionary at OxfordLearnersDictionaries.com",
+            "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/with",
+            "verified": "По индексированному содержимому проверен британский вариант /wɪð/."
+          },
+          {
+            "checked_on": "2026-11-12",
+            "title": "DEAL WITH SOMEONE definition - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/deal-with",
+            "verified": "В индексированной статье подтверждено отдельное значение deal with something (TAKE ACTION). Сравнение в карточке ограничено deal with a problem в этом значении; не заявляется, что все значения deal with противоположны терпению."
+          }
+        ],
+        "term": "put up with"
+      }
+    ],
+    "date": "2026-11-12"
+  },
+  "batch_sha256": "859a7013ccdbeea8a85196571e123d98470e80982713c3ece57fbf022b291640",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-12T06:21:35.421025Z"
+}
