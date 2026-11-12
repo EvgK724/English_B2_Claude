@@ -1,0 +1,98 @@
+{
+  "batch_sha256": "859a7013ccdbeea8a85196571e123d98470e80982713c3ece57fbf022b291640",
+  "cards": [
+    {
+      "added": "2026-11-12",
+      "au": 1,
+      "ex": "I can put up with a bit of noise, but I can't work while people are shouting.",
+      "exru": "Я могу мириться с небольшим шумом, но не могу работать, когда люди кричат.",
+      "id": "put-up-with",
+      "ipa": "/ˌpʊt ˈʌp wɪð/ · put up with · put up with",
+      "note": "Разговорное выражение: терпеть то, что раздражает или доставляет неудобства, — put up with noise, delays, rude behaviour. Дополнение всегда после with: put up with it, не «put it up with» и не «put up it». Формы: put — put — put, без -ed. В отличие от deal with a problem («заниматься проблемой, принимать меры»), put up with подчёркивает терпение; само выражение не означает, что проблему решили.",
+      "pos": "phrasal verb · переходный · неразделяемый",
+      "ru": "терпеть, мириться с — неприятной ситуацией или поведением",
+      "sources": [
+        {
+          "checked_on": "2026-11-12",
+          "title": "PUT UP WITH definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/put-up-with",
+          "verified": "Проверено редакционное определение в разделе British English: терпеть, мириться; разговорный регистр. Авторский пример не является словарной цитатой."
+        },
+        {
+          "checked_on": "2026-11-12",
+          "title": "Phrasal verbs | LearnEnglish",
+          "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+          "verified": "Раздел With two particles подтверждает неразделяемость и порядок put up with it, а также значение терпеть трудное или раздражающее. Материал отмечен B1–B2."
+        },
+        {
+          "checked_on": "2026-11-12",
+          "title": "PUT | definition in the Cambridge English Dictionary",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/put",
+          "verified": "Индексированная словарная статья: британское /pʊt/ и формы put — put — put. IPA сочетания в карточке составлена для обучения на основе произношения компонентов; это не цитата готовой словарной транскрипции фразы."
+        },
+        {
+          "checked_on": "2026-11-12",
+          "title": "UP | English meaning - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/up",
+          "verified": "В индексированном содержимом проверено британское произношение /ʌp/."
+        },
+        {
+          "checked_on": "2026-11-12",
+          "title": "with preposition - Definition, pictures, pronunciation and usage notes | Oxford Advanced Learner's Dictionary at OxfordLearnersDictionaries.com",
+          "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/with",
+          "verified": "По индексированному содержимому проверен британский вариант /wɪð/."
+        },
+        {
+          "checked_on": "2026-11-12",
+          "title": "DEAL WITH SOMEONE definition - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/deal-with",
+          "verified": "В индексированной статье подтверждено отдельное значение deal with something (TAKE ACTION). Сравнение в карточке ограничено deal with a problem в этом значении; не заявляется, что все значения deal with противоположны терпению."
+        }
+      ],
+      "term": "put up with"
+    }
+  ],
+  "clips": {
+    "put-up-with-t": {
+      "duration": 0.84,
+      "key": "put-up-with-t",
+      "location": [
+        3319488,
+        5040,
+        0.048
+      ],
+      "packed_sha256": "b090a150827610db6a7ca7c46d60db41f56e82b9a8d1398b8bcfbcc9c6d0a265",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "add2b150cd304971a5cc45fbd4af67bd02e709875302b627f432ec28140b6b6f",
+      "text": "put up with",
+      "text_sha256": "5ce1bc77efe0ddd21a9cbb1fd4d41b40b1e581b1fca2e2e273a1cb6c9b07bcf7",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "put-up-with-x": {
+      "duration": 4.128,
+      "key": "put-up-with-x",
+      "location": [
+        3324528,
+        24768,
+        0.048
+      ],
+      "packed_sha256": "7bdba741f7ec1bf266a9b184d3a48b6de219b7adfbcdbb7f87ddfc8c865df062",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "40abbb67abea1def4dc579792fbbb5046fe541866fb19305eba47cbea0f60a0f",
+      "text": "I can put up with a bit of noise, but I can't work while people are shouting.",
+      "text_sha256": "43cece51d68ea4352b02ee08bb041f45639798084ffc3d92eeb69e59d47383eb",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-12",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
