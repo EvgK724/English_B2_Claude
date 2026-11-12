@@ -516,6 +516,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "cut-to-the-chase-t": {
+      "duration": 1.08,
+      "edge_tts": "7.3.1",
+      "key": "cut-to-the-chase-t",
+      "ledger": "data/daily/2026-11-12-bbapp.json",
+      "location": [
+        3166704,
+        6480,
+        0.048
+      ],
+      "packed_sha256": "de56b190059593483dbccfec3c4e1f140fff6cce27e1023bb0fde9ea04b0b9ce",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d507582042d5436cbf462c09100d12ed4187d20bbdcdf22a992e656dbf39d50c",
+      "signature": "5183eab0e1b676d645b8c1b8f14d7ecb374ad56b21cba68cfae80345ca8dc233",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Cut to the chase.",
+      "text_sha256": "9400b1e741bd0e045f0e603871156fd1a2c84714577100cb5d7dbea7696fc2c4",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "cut-to-the-chase-x": {
+      "duration": 4.752,
+      "edge_tts": "7.3.1",
+      "key": "cut-to-the-chase-x",
+      "ledger": "data/daily/2026-11-12-bbapp.json",
+      "location": [
+        3173184,
+        28512,
+        0.048
+      ],
+      "packed_sha256": "a4cf6dc4a226f4fa580ecf5d44624bb8e090698c16dd8b0d6b2590177a254939",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "02a45199dfc807678720314478d13ec0452aa79f74873ed908c1e1047c58167b",
+      "signature": "ef9f4b76be1485595b9c6210c2c36ecf79a824aad2eb71e1b0e35a295b2e286c",
+      "source": "Microsoft-Edge-TTS",
+      "text": "We only have ten minutes, so let's cut to the chase: what do you need from our team?",
+      "text_sha256": "de658698688becaaf293618f2f9e18e923ef9897d20b3903b9e058f05ab4d887",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "did-it-for-me-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1395,6 +1437,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "Try not to skip breakfast, but if you do, at least drink some water.",
       "text_sha256": "02064bee13956310f65b7ef41282401d7777daa1f9a27a4efafb5fde42de36c7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "ill-take-it-t": {
+      "duration": 0.672,
+      "edge_tts": "7.3.1",
+      "key": "ill-take-it-t",
+      "ledger": "data/daily/2026-11-12-bbapp.json",
+      "location": [
+        3136464,
+        4032,
+        0.048
+      ],
+      "packed_sha256": "078561850ecb553cf838ab1a1f8f7714c25d51f7ba2fe72df3e158b83c346a85",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "47aa30adbb26b4f6ce05d4ddf3494abd991168216e47415eac45b32f6e562a46",
+      "signature": "394feb32417dda90edbc567f69494e36d15ff305996ce8af32173862d5e5a157",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I'll take it.",
+      "text_sha256": "15051c9769aec10111e8dbee51b3f11972babbadbde1c6f859994a445f021956",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "ill-take-it-x": {
+      "duration": 4.368,
+      "edge_tts": "7.3.1",
+      "key": "ill-take-it-x",
+      "ledger": "data/daily/2026-11-12-bbapp.json",
+      "location": [
+        3140496,
+        26208,
+        0.048
+      ],
+      "packed_sha256": "7d54737bdc52631bd2f09240536f5f99b2f22d58561c8a8a931f1781ae98db47",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "3d61d38b46fd5e92ce0b4d6d422686860c4a939db4d3d7e5518bafb5ed7bceff",
+      "signature": "95bacd19ced36c5f762f2371c5542f0b4151aab35902f409285dc03d5779b09b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "This desk fits in my office, and the price is reasonable. I'll take it.",
+      "text_sha256": "8912149a6332d9c8af5390649eb8b235ebd1181ea50f349cfabfbad9c3f887ad",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
