@@ -872,6 +872,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "fair-enough-t": {
+      "duration": 0.696,
+      "edge_tts": "7.3.1",
+      "key": "fair-enough-t",
+      "ledger": "data/daily/2026-11-13-bbapp.json",
+      "location": [
+        3201696,
+        4176,
+        0.072
+      ],
+      "packed_sha256": "6b8aba15d786bcb93dd34bd5a22f281db04a00fa6e574179a6a204949545158f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1de7f65a7d7fb96ef9d178849d5f7d26911537967b0f35ace374590c47cb3e52",
+      "signature": "218235ab99ad19ec30491c4fd81f9a681477cc4f92cb84b2173d4922eaebd257",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Fair enough.",
+      "text_sha256": "d580918bf5ac89a716ee4fbcfafb14a3f45fbe724dc6fef1c437cc4d206e49db",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "fair-enough-x": {
+      "duration": 4.032,
+      "edge_tts": "7.3.1",
+      "key": "fair-enough-x",
+      "ledger": "data/daily/2026-11-13-bbapp.json",
+      "location": [
+        3205872,
+        24192,
+        0.072
+      ],
+      "packed_sha256": "e53ba2f576078f111f8b91bfe57250bc282647ec3a0758f7980e40e641f5efc8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "de58ff82ec0cb794fae366ff091a27439d9aa300fe35a152d4164adfbc530bc0",
+      "signature": "6139e271187d52314243f856c2880f5cea675f4beebab8ee23df2a13da1e2aa8",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Fair enough. If you need another day, we can move the meeting to Friday.",
+      "text_sha256": "a07e930b9074a6a2f13ba391a23e1cccb4d0619da895dce25564db97f65ccedc",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "fear-not-a-motivator-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1479,6 +1521,48 @@
       "source": "Microsoft-Edge-TTS",
       "text": "This desk fits in my office, and the price is reasonable. I'll take it.",
       "text_sha256": "8912149a6332d9c8af5390649eb8b235ebd1181ea50f349cfabfbad9c3f887ad",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "im-all-ears-t": {
+      "duration": 0.96,
+      "edge_tts": "7.3.1",
+      "key": "im-all-ears-t",
+      "ledger": "data/daily/2026-11-13-bbapp.json",
+      "location": [
+        3230064,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "977c7871da6f64167be42a9133aad38b86af3402e18305e3c31fbca19d22f715",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b30dc0af32aae8c9d8804b0db708cb976257be585cb0aff40c273b22d65ffdf6",
+      "signature": "dee6fc6fd07356bcabbec2b299d5a2117e933264562c7fc7757ea00bc42e420e",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I'm all ears.",
+      "text_sha256": "ba3bfc9d711211348bcebe8d5d0c01297428caf75f732e066b748b83c501596d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "im-all-ears-x": {
+      "duration": 3.624,
+      "edge_tts": "7.3.1",
+      "key": "im-all-ears-x",
+      "ledger": "data/daily/2026-11-13-bbapp.json",
+      "location": [
+        3235824,
+        21744,
+        0.048
+      ],
+      "packed_sha256": "2225e936ac2e2fc736907818ddbdba4538495b8ecae1aec749f30e8d415af8fc",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "87ba49c37be310552d25a071f407665e867e876695c81e2765717eb7058f9e47",
+      "signature": "e32c6c1ecef43b0ff90c2ff967c1d59bee445934718ed201160d5acf465da483",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You said you had an idea for our next project. I'm all ears.",
+      "text_sha256": "dd4740724d4a72620d6909ca3189bdcb1abc28c79c1e67a3a14c9a2ca0026b4b",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

@@ -44567,6 +44567,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "look-forward-to-t": {
+          "duration": 1.128,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "1761f2dffb987352d70e1d17cbb6b1f02b62904f92830fb8109b16205c841f60",
+          "packed_sha256": "05bc92e4de791397593af8f9bff5183e24b3380a4f1611d8a10cacbba4bb3a8d",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "d0f9471682392826af8d0f524de1140e76ed2bb85c1f69398c4ebdd1a4d04908",
+          "signature": "ddfceb4db665a8d95e0056a757c0c27f21724c2e04399936ca94482b943f6acc",
+          "source": "Microsoft-Edge-TTS",
+          "text": "look forward to",
+          "text_sha256": "1761f2dffb987352d70e1d17cbb6b1f02b62904f92830fb8109b16205c841f60",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "look-forward-to-x": {
+          "duration": 4.968,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "494d22524b216c1d6f290278a21348ae36a2802d6029dc3cabcef94116e7e6fe",
+          "packed_sha256": "d10cc7843f89213ab3d0e457b4d99f4d8656a6152509914752bc53e94c60e665",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "101134f0a45adcfd79ecea189ca711165e5bd74e3d79597492b9de1e9358da14",
+          "signature": "debbd198ca9627f10d060c7dbc0278b12e10446153449183f98395ef7a645fe5",
+          "source": "Microsoft-Edge-TTS",
+          "text": "I'm looking forward to working with the new team, although I know the first few weeks will be busy.",
+          "text_sha256": "494d22524b216c1d6f290278a21348ae36a2802d6029dc3cabcef94116e7e6fe",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "look-into-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "82d23114ca3a5fe771924e925236b7d714ac9c31fca40296a0f7c06a7806ed81",

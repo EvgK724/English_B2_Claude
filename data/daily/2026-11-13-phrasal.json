@@ -1,0 +1,92 @@
+{
+  "batch_sha256": "37c48857fb05f730e30c6af5d20af9d7cb22bd0f0f4426f387017f424eb65d05",
+  "cards": [
+    {
+      "added": "2026-11-13",
+      "au": 1,
+      "ex": "I'm looking forward to working with the new team, although I know the first few weeks will be busy.",
+      "exru": "Я с нетерпением жду начала работы с новой командой, хотя знаю, что первые несколько недель будут напряжёнными.",
+      "id": "look-forward-to",
+      "ipa": "/ˌlʊk ˈfɔːwəd tə/ · looked forward to · looked forward to",
+      "note": "Так говорят о приятном событии, которого ждут: look forward to the weekend, to a meeting, to working together. Дополнение всегда после to: look forward to it, не «look it forward to». Здесь to — предлог, поэтому перед действием нужна форма -ing: look forward to meeting you, не «look forward to meet you». Формы: look — looked — looked. Hope for передаёт надежду на желаемый исход; look forward to — радостное ожидание события. В деловом письме I look forward to hearing from you — вежливая формула ожидания ответа.",
+      "pos": "phrasal verb · переходный · неразделяемый",
+      "ru": "с нетерпением ждать, предвкушать — приятное событие",
+      "sources": [
+        {
+          "checked_on": "2026-11-13",
+          "title": "Cambridge English Grammar Today — Look forward to",
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/look-forward-to",
+          "verification": "Search-indexed source text verified: positive anticipation, noun or -ing after prepositional to, common infinitive error and formal correspondence. Direct page access returned HTTP 403."
+        },
+        {
+          "checked_on": "2026-11-13",
+          "title": "Cambridge Dictionary — look forward to something",
+          "url": "https://dictionary.cambridge.org/dictionary/english/look-forward-to",
+          "verification": "Search-indexed dictionary definition verified for the everyday and formal senses; direct page access returned HTTP 403."
+        },
+        {
+          "checked_on": "2026-11-13",
+          "title": "Oxford Advanced Learner's Dictionary — look verb",
+          "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/look_1",
+          "verification": "Search-indexed entry verified look /lʊk/ and past simple/past participle looked /lʊkt/. Phrase IPA uses standard British component pronunciation."
+        },
+        {
+          "checked_on": "2026-11-13",
+          "title": "British Council LearnEnglish — Phrasal verbs",
+          "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+          "verification": "Verified B1–B2 explanation of three-part non-separable verbs, positive anticipation and the object after look forward to."
+        },
+        {
+          "checked_on": "2026-11-13",
+          "title": "Cambridge Dictionary — hope for something",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/hope-for",
+          "verification": "Search-indexed dictionary definition verified for the contrast with hoping for a desired outcome."
+        }
+      ],
+      "term": "look forward to"
+    }
+  ],
+  "clips": {
+    "look-forward-to-t": {
+      "duration": 1.128,
+      "key": "look-forward-to-t",
+      "location": [
+        3349296,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "05bc92e4de791397593af8f9bff5183e24b3380a4f1611d8a10cacbba4bb3a8d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d0f9471682392826af8d0f524de1140e76ed2bb85c1f69398c4ebdd1a4d04908",
+      "text": "look forward to",
+      "text_sha256": "1761f2dffb987352d70e1d17cbb6b1f02b62904f92830fb8109b16205c841f60",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "look-forward-to-x": {
+      "duration": 4.968,
+      "key": "look-forward-to-x",
+      "location": [
+        3356064,
+        29808,
+        0.048
+      ],
+      "packed_sha256": "d10cc7843f89213ab3d0e457b4d99f4d8656a6152509914752bc53e94c60e665",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "101134f0a45adcfd79ecea189ca711165e5bd74e3d79597492b9de1e9358da14",
+      "text": "I'm looking forward to working with the new team, although I know the first few weeks will be busy.",
+      "text_sha256": "494d22524b216c1d6f290278a21348ae36a2802d6029dc3cabcef94116e7e6fe",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-13",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

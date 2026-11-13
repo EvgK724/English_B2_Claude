@@ -1,0 +1,164 @@
+{
+  "batch_sha256": "f3ae57d8f04ef0b1801c917e8a08c31870e88cc7af631fa0438f613348f1afe1",
+  "cards": [
+    {
+      "added": "2026-11-13",
+      "au": 1,
+      "ex": "Fair enough. If you need another day, we can move the meeting to Friday.",
+      "exru": "Ладно, понимаю. Если тебе нужен ещё день, мы можем перенести встречу на пятницу.",
+      "id": "fair-enough",
+      "note": "В S03E11 «Abiquiu» Сол принимает требование Скайлер действовать осторожно. Fair enough — короткий ответ на разумное объяснение, условие или решение собеседника: ты признаёшь его довод, даже если не полностью разделяешь его мнение. Это может быть спокойная уступка, а не восторженное согласие. Запоминай порядок: fair + enough; enough после прилагательного, не enough fair. В коротком ответе подлежащее и глагол опущены; полная форма — That's fair enough. Фраза подходит для разговора с друзьями и коллегами, но сухая интонация может прозвучать холодно.",
+      "reg": "разговорное, спокойное принятие довода или условия",
+      "ru": "Ладно, понимаю. Справедливо.",
+      "sources": [
+        {
+          "episode": "S03E11 Abiquiu",
+          "locator": "Printed script page 19; PDF page 22; SAUL responds to Skyler in his office; first sentence before he offers to explain the process",
+          "short_excerpt": true,
+          "speaker": "Saul Goodman",
+          "title": "Breaking Bad — Abiquiu, Episode #311 — As Broadcast, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-311-abiquiu-2010.pdf?v=1745342670",
+          "verification": "Exact two-word sentence and SAUL attribution verified in the script as broadcast (PDF metadata title BB311AsBroadcast.fdx) and independently in the aired-episode transcript."
+        },
+        {
+          "episode": "S03E11 Abiquiu",
+          "locator": "Scene: Saul’s Office; web text line 136; Saul’s first sentence after Skyler requests a safe and cautious approach",
+          "short_excerpt": true,
+          "speaker": "Saul Goodman",
+          "title": "3x11 - Abiquiu - Transcripts - Forever Dreaming",
+          "url": "https://transcripts.foreverdreaming.org/viewtopic.php?t=10075",
+          "verification": "Exact sentence and explicitly named Saul speaker match the broadcast script. Full transcript page retrieved."
+        },
+        {
+          "locator": "Phrase entry; informal; acceptance of something as reasonable or fair",
+          "title": "FAIR ENOUGH Definition & Meaning - Merriam-Webster",
+          "url": "https://www.merriam-webster.com/dictionary/fair%20enough",
+          "verification": "Full dictionary entry retrieved; meaning and informal register checked. Teaching explanation and example are original."
+        }
+      ],
+      "term": "Fair enough.",
+      "who": "Сол Гудман"
+    },
+    {
+      "added": "2026-11-13",
+      "au": 1,
+      "ex": "You said you had an idea for our next project. I'm all ears.",
+      "exru": "Ты говорил, что у тебя есть идея для нашего следующего проекта. Я весь внимание.",
+      "id": "im-all-ears",
+      "note": "В S03E13 «Full Measure» Уолтер отвечает Джесси, который предлагает найти другой выход; здесь приведено первое короткое предложение его реплики. I'm all ears означает, что ты готов внимательно выслушать рассказ или предложение. В дружеской беседе это приглашение продолжить, но в споре, как в этой сцене, может звучать как вызов: «Предлагай, я слушаю». Конструкция — be + all ears: I'm all ears, we're all ears. Нужны глагол be и множественное ears без артикля; не I all ears и не I'm all ear. Не переводи выражение буквально и не используй его как утверждение о хорошем слухе.",
+      "reg": "разговорная идиома, готовность внимательно выслушать",
+      "ru": "Я весь внимание. Готов тебя выслушать.",
+      "sources": [
+        {
+          "episode": "S03E13 Full Measure",
+          "locator": "Printed script page 39; PDF page 42; WALT, first sentence after Jesse says there must be another way; laser-tag conversation",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad — Full Measure, Episode #313 — As Broadcast, Vince Gilligan, Sony Pictures Television, 2010",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-313-full-measure-2010.pdf?v=1745342669",
+          "verification": "Exact three-word sentence and WALT attribution verified in the script as broadcast. Curly apostrophe normalized to a straight apostrophe; no words changed."
+        },
+        {
+          "episode": "S03E13 Full Measure",
+          "locator": "Original English subtitles; web text line 999; after Jesse repeats that there must be another way, before Walter contrasts their survival with Gale’s",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad - 3x13 - Full Measure DVDRip aAF en subtitles – 100+ languages (SRT) | Subtitle Cat",
+          "url": "https://www.subtitlecat.com/subs/188/Breaking%20Bad%20-%203x13%20-%20Full%20Measure.DVDRip.aAF.en.html",
+          "verification": "Exact short sentence verified in the released-episode English subtitles. Speaker established by the matching broadcast-script dialogue and surrounding lines. Full subtitle page retrieved."
+        },
+        {
+          "locator": "Phrase entry; eager listening",
+          "title": "ALL EARS Definition & Meaning - Merriam-Webster",
+          "url": "https://www.merriam-webster.com/dictionary/all%20ears",
+          "verification": "Full dictionary entry retrieved; attentive/eager listening meaning checked. Teaching explanation and example are original."
+        },
+        {
+          "locator": "Collins COBUILD Advanced Learner’s Dictionary; phrase, informal",
+          "title": "ALL EARS definition in American English | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/us/dictionary/english/all-ears",
+          "verification": "Indexed dictionary entry confirms readiness and eagerness to listen and labels the phrase informal."
+        }
+      ],
+      "term": "I'm all ears.",
+      "who": "Уолтер Уайт"
+    }
+  ],
+  "clips": {
+    "fair-enough-t": {
+      "duration": 0.696,
+      "key": "fair-enough-t",
+      "location": [
+        3201696,
+        4176,
+        0.072
+      ],
+      "packed_sha256": "6b8aba15d786bcb93dd34bd5a22f281db04a00fa6e574179a6a204949545158f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1de7f65a7d7fb96ef9d178849d5f7d26911537967b0f35ace374590c47cb3e52",
+      "text": "Fair enough.",
+      "text_sha256": "d580918bf5ac89a716ee4fbcfafb14a3f45fbe724dc6fef1c437cc4d206e49db",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "fair-enough-x": {
+      "duration": 4.032,
+      "key": "fair-enough-x",
+      "location": [
+        3205872,
+        24192,
+        0.072
+      ],
+      "packed_sha256": "e53ba2f576078f111f8b91bfe57250bc282647ec3a0758f7980e40e641f5efc8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "de58ff82ec0cb794fae366ff091a27439d9aa300fe35a152d4164adfbc530bc0",
+      "text": "Fair enough. If you need another day, we can move the meeting to Friday.",
+      "text_sha256": "a07e930b9074a6a2f13ba391a23e1cccb4d0619da895dce25564db97f65ccedc",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "im-all-ears-t": {
+      "duration": 0.96,
+      "key": "im-all-ears-t",
+      "location": [
+        3230064,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "977c7871da6f64167be42a9133aad38b86af3402e18305e3c31fbca19d22f715",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b30dc0af32aae8c9d8804b0db708cb976257be585cb0aff40c273b22d65ffdf6",
+      "text": "I'm all ears.",
+      "text_sha256": "ba3bfc9d711211348bcebe8d5d0c01297428caf75f732e066b748b83c501596d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "im-all-ears-x": {
+      "duration": 3.624,
+      "key": "im-all-ears-x",
+      "location": [
+        3235824,
+        21744,
+        0.048
+      ],
+      "packed_sha256": "2225e936ac2e2fc736907818ddbdba4538495b8ecae1aec749f30e8d415af8fc",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "87ba49c37be310552d25a071f407665e867e876695c81e2765717eb7058f9e47",
+      "text": "You said you had an idea for our next project. I'm all ears.",
+      "text_sha256": "dd4740724d4a72620d6909ca3189bdcb1abc28c79c1e67a3a14c9a2ca0026b4b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-13",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
