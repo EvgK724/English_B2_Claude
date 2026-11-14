@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-14",
+        "au": 1,
+        "ex": "We called off the meeting because everyone had already agreed on the plan by email.",
+        "exru": "Мы отменили встречу, потому что все уже согласовали план по электронной почте.",
+        "id": "call-off",
+        "ipa": "/ˌkɔːl ˈɒf/ · called off · called off",
+        "note": "Так говорят, когда решают, что запланированное событие не состоится: call off a meeting, a trip, a match. С существительным возможны оба порядка: call off the meeting / call the meeting off; местоимение ставится только между частями: call it off, не «call off it». Формы: call — called — called. В отличие от put off («отложить на более позднее время»), call off означает отмену события. Это не запрещает организовать его заново, но само выражение не обещает переноса.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "отменить — запланированную встречу, поездку или другое событие",
+        "sources": [
+          {
+            "checked_on": "2026-11-14",
+            "evidence": "British pronunciation; B2 cancellation sense; transitive separable patterns, including pronoun position.",
+            "title": "Collins English Dictionary — call off",
+            "url": "https://www.collinsdictionary.com/dictionary/english/call-off"
+          },
+          {
+            "checked_on": "2026-11-14",
+            "evidence": "Regular verb forms: called, called.",
+            "title": "Collins English Dictionary — call",
+            "url": "https://www.collinsdictionary.com/dictionary/english/call"
+          },
+          {
+            "checked_on": "2026-11-14",
+            "evidence": "Postponement to a later time, contrasted with cancellation.",
+            "title": "Collins English Dictionary — put off",
+            "url": "https://www.collinsdictionary.com/dictionary/english/put-off"
+          }
+        ],
+        "term": "call off"
+      }
+    ],
+    "date": "2026-11-14"
+  },
+  "batch_sha256": "94e3db0303864fe8d21904603aa16c768f26d436ad264bbf3c2abe768f939649",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-14T06:17:26.345800Z"
+}
