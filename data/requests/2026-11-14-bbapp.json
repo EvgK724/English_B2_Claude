@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-14",
+        "au": 1,
+        "ex": "Believe it or not, we finished the report a day early without working late.",
+        "exru": "Веришь или нет, мы закончили отчёт на день раньше, не задерживаясь на работе.",
+        "id": "believe-it-or-not",
+        "note": "В S01E01 «Pilot» Скайлер произносит эту фразу за завтраком, говоря об овощном беконе. Believe it or not вводит удивительный, но правдивый факт; говорящий не просит собеседника выбрать, верить ему или нет. Формулу можно поставить перед сообщением или после него, отделив запятой. Запоминай believe + it + or not: местоимение it отсылает к сообщаемому факту, его не нужно опускать. Здесь believe it значит «поверить этому»; believe in относится к вере в существование или способности кого-либо и в этой формуле не подходит. Фраза уместна в непринуждённом разговоре или письме знакомому; интонация может передавать удивление или иронию.",
+        "reg": "разговорное, вводная фраза перед неожиданным фактом",
+        "ru": "Веришь или нет. Как ни удивительно.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Scene 10, INT. WHITE HOUSE - KITCHEN - MORNING; SKYLER at breakfast; public OCR text line 59",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "Exact four-word fragment and named SKYLER attribution checked in the 2007 production draft. The fragment was independently checked against the aired episode transcript; the longer surrounding draft sentence is not used. Initial capital standardized for the standalone learning item."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Web text line 27; opening breakfast scene, after the veggie-bacon statement and before the cholesterol statement",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Aired-episode transcript has the exact standalone sentence. Speaker established by matching the breakfast exchange to the named screenplay dialogue."
+          },
+          {
+            "locator": "B1 phrase entry and American Dictionary idiom entry",
+            "title": "BELIEVE IT OR NOT | English meaning — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/believe-it-or-not",
+            "verification": "Indexed dictionary text checked: introduces a surprising but true fact. Explanation and example are original."
+          }
+        ],
+        "term": "Believe it or not.",
+        "who": "Скайлер Уайт"
+      },
+      {
+        "added": "2026-11-14",
+        "au": 1,
+        "ex": "Not a clue. The meeting isn't in my calendar, so I'll ask the organizer.",
+        "exru": "Понятия не имею. В моём календаре этой встречи нет, поэтому я спрошу организатора.",
+        "id": "not-a-clue",
+        "note": "В S01E01 «Pilot» Джесси отвечает так Уолтеру во время вечернего разговора у своей машины: он делает вид, что не понимает, о чём речь. Not a clue — короткая форма I don't have a clue: «совсем не знаю». Это сильнее, чем I'm not sure, где человек лишь сомневается. В этой конструкции clue употребляется в единственном числе с артиклем a; не Not clue. Можно уточнить предмет незнания: I don't have a clue where it is — в косвенном вопросе порядок where + подлежащее + глагол, не where is it. Фраза подходит для неформального ответа, но может прозвучать резко; в рабочем разговоре полезно добавить, как ты выяснишь ответ.",
+        "reg": "неформальное разговорное, подчёркнутое отсутствие сведений",
+        "ru": "Понятия не имею.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Printed page 29, scene 39, EXT. MEDITERRANEAN - BACKYARD - NIGHT; JESSE replies to Walt; public OCR text line 128",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "Exact three-word sentence and named JESSE attribution checked in the 2007 production draft, then independently matched to the aired episode transcript."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Web text line 282; evening conversation by Jesse's car, immediately after Walt's short follow-up question about Jesse's denial",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact short sentence verified in the aired-episode transcript. The alternating speakers and named screenplay dialogue establish Jesse as the speaker."
+          },
+          {
+            "locator": "Cambridge Academic Content Dictionary idiom entry",
+            "title": "NOT HAVE A CLUE | English meaning — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/not-have-a-clue",
+            "verification": "Indexed dictionary text checked: no knowledge about something or inability to remember it. Explanation and example are original."
+          }
+        ],
+        "term": "Not a clue.",
+        "who": "Джесси Пинкман"
+      }
+    ],
+    "date": "2026-11-14"
+  },
+  "batch_sha256": "c8e215fb58c537513e36c110fdea2af6e40b9848eb77c50b912e0d72a7f9947e",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-14T03:14:25.860499Z"
+}
