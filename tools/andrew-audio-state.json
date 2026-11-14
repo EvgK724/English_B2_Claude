@@ -222,6 +222,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "believe-it-or-not-t": {
+      "duration": 1.008,
+      "edge_tts": "7.3.1",
+      "key": "believe-it-or-not-t",
+      "ledger": "data/daily/2026-11-14-bbapp.json",
+      "location": [
+        3257568,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "e9d7d274418bebbddd01573713c4f8e3b8dadce143b65eb6977ce7b35fa07f6d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "9773eec6544d147c960468cfb8dfb2ad042519672ebeb0990ed613f91b1be1bd",
+      "signature": "779a785adda12e46d806b9cd982ee5d258a0cccb681757270d5ed1d66cc6babf",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Believe it or not.",
+      "text_sha256": "e45d00b29ecfd7399de323cc1f8b58eb7ea46dc4ec7da1a3de1178e153ff6c55",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "believe-it-or-not-x": {
+      "duration": 4.32,
+      "edge_tts": "7.3.1",
+      "key": "believe-it-or-not-x",
+      "ledger": "data/daily/2026-11-14-bbapp.json",
+      "location": [
+        3263616,
+        25920,
+        0.048
+      ],
+      "packed_sha256": "fabdaa7f26f9c0ca669fd8958295c3d2a7d7c464aef1d70d947838b4453770a9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b191972b08d4962ffed0b63c75ebdac9f977855ce1a922550d60dba35ca72049",
+      "signature": "26861a1930d089fc2d2fd30cdfcbd70aff2110d6ac2e731f89c2eeb27332d040",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Believe it or not, we finished the report a day early without working late.",
+      "text_sha256": "39aba72dc9a282b9f343c1d882c4544df5d9315b64d80010a7dfb49c39dce1b5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "better-call-saul-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -2335,6 +2377,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "No way I'm taking another night shift this week.",
       "text_sha256": "39fa3314f0073cf8ce180dc70abd96ce737234870189fff5e6d3932b9af48ed7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-a-clue-t": {
+      "duration": 0.744,
+      "edge_tts": "7.3.1",
+      "key": "not-a-clue-t",
+      "ledger": "data/daily/2026-11-14-bbapp.json",
+      "location": [
+        3289536,
+        4464,
+        0.048
+      ],
+      "packed_sha256": "ca5207c0a2f7f8b7bd486ef5c554da21b7e87dc035e479f539b686a06cc6c846",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d800b2986b2f65cc2317530fd46a3478547200428df16236b0a209a5d542d851",
+      "signature": "abe1371c4bc92b8721dd61e0e829b240dd0bd4c1f498999c6225e2a0d6ae501e",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Not a clue.",
+      "text_sha256": "6c843582c9f2db762320a9e34bb3c832ffed24848ab857ccaec801ce4c059027",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-a-clue-x": {
+      "duration": 4.368,
+      "edge_tts": "7.3.1",
+      "key": "not-a-clue-x",
+      "ledger": "data/daily/2026-11-14-bbapp.json",
+      "location": [
+        3294000,
+        26208,
+        0.048
+      ],
+      "packed_sha256": "44bbb19225b797ba88663d6fe0a8ee66d7f8ca55a84644136f88c3b325986244",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1d086d1605e089a0d28239ed784d825950e63ab0c2753bb1dfcf967ab2429aa2",
+      "signature": "885cb4d9c4434deafd257281a9d0db01e6608936d4b4ebcece1578d5c56ec151",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Not a clue. The meeting isn't in my calendar, so I'll ask the organizer.",
+      "text_sha256": "db167e6233990862474b24ce46836a2c05fecfdc283ec32b4b2963798fdf4fdb",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

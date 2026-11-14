@@ -1,0 +1,158 @@
+{
+  "batch_sha256": "c8e215fb58c537513e36c110fdea2af6e40b9848eb77c50b912e0d72a7f9947e",
+  "cards": [
+    {
+      "added": "2026-11-14",
+      "au": 1,
+      "ex": "Believe it or not, we finished the report a day early without working late.",
+      "exru": "Веришь или нет, мы закончили отчёт на день раньше, не задерживаясь на работе.",
+      "id": "believe-it-or-not",
+      "note": "В S01E01 «Pilot» Скайлер произносит эту фразу за завтраком, говоря об овощном беконе. Believe it or not вводит удивительный, но правдивый факт; говорящий не просит собеседника выбрать, верить ему или нет. Формулу можно поставить перед сообщением или после него, отделив запятой. Запоминай believe + it + or not: местоимение it отсылает к сообщаемому факту, его не нужно опускать. Здесь believe it значит «поверить этому»; believe in относится к вере в существование или способности кого-либо и в этой формуле не подходит. Фраза уместна в непринуждённом разговоре или письме знакомому; интонация может передавать удивление или иронию.",
+      "reg": "разговорное, вводная фраза перед неожиданным фактом",
+      "ru": "Веришь или нет. Как ни удивительно.",
+      "sources": [
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Scene 10, INT. WHITE HOUSE - KITCHEN - MORNING; SKYLER at breakfast; public OCR text line 59",
+          "short_excerpt": true,
+          "speaker": "Skyler White",
+          "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+          "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+          "verification": "Exact four-word fragment and named SKYLER attribution checked in the 2007 production draft. The fragment was independently checked against the aired episode transcript; the longer surrounding draft sentence is not used. Initial capital standardized for the standalone learning item."
+        },
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Web text line 27; opening breakfast scene, after the veggie-bacon statement and before the cholesterol statement",
+          "short_excerpt": true,
+          "speaker": "Skyler White",
+          "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+          "verification": "Aired-episode transcript has the exact standalone sentence. Speaker established by matching the breakfast exchange to the named screenplay dialogue."
+        },
+        {
+          "locator": "B1 phrase entry and American Dictionary idiom entry",
+          "title": "BELIEVE IT OR NOT | English meaning — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/believe-it-or-not",
+          "verification": "Indexed dictionary text checked: introduces a surprising but true fact. Explanation and example are original."
+        }
+      ],
+      "term": "Believe it or not.",
+      "who": "Скайлер Уайт"
+    },
+    {
+      "added": "2026-11-14",
+      "au": 1,
+      "ex": "Not a clue. The meeting isn't in my calendar, so I'll ask the organizer.",
+      "exru": "Понятия не имею. В моём календаре этой встречи нет, поэтому я спрошу организатора.",
+      "id": "not-a-clue",
+      "note": "В S01E01 «Pilot» Джесси отвечает так Уолтеру во время вечернего разговора у своей машины: он делает вид, что не понимает, о чём речь. Not a clue — короткая форма I don't have a clue: «совсем не знаю». Это сильнее, чем I'm not sure, где человек лишь сомневается. В этой конструкции clue употребляется в единственном числе с артиклем a; не Not clue. Можно уточнить предмет незнания: I don't have a clue where it is — в косвенном вопросе порядок where + подлежащее + глагол, не where is it. Фраза подходит для неформального ответа, но может прозвучать резко; в рабочем разговоре полезно добавить, как ты выяснишь ответ.",
+      "reg": "неформальное разговорное, подчёркнутое отсутствие сведений",
+      "ru": "Понятия не имею.",
+      "sources": [
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Printed page 29, scene 39, EXT. MEDITERRANEAN - BACKYARD - NIGHT; JESSE replies to Walt; public OCR text line 128",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+          "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+          "verification": "Exact three-word sentence and named JESSE attribution checked in the 2007 production draft, then independently matched to the aired episode transcript."
+        },
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Web text line 282; evening conversation by Jesse's car, immediately after Walt's short follow-up question about Jesse's denial",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+          "verification": "Exact short sentence verified in the aired-episode transcript. The alternating speakers and named screenplay dialogue establish Jesse as the speaker."
+        },
+        {
+          "locator": "Cambridge Academic Content Dictionary idiom entry",
+          "title": "NOT HAVE A CLUE | English meaning — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/not-have-a-clue",
+          "verification": "Indexed dictionary text checked: no knowledge about something or inability to remember it. Explanation and example are original."
+        }
+      ],
+      "term": "Not a clue.",
+      "who": "Джесси Пинкман"
+    }
+  ],
+  "clips": {
+    "believe-it-or-not-t": {
+      "duration": 1.008,
+      "key": "believe-it-or-not-t",
+      "location": [
+        3257568,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "e9d7d274418bebbddd01573713c4f8e3b8dadce143b65eb6977ce7b35fa07f6d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "9773eec6544d147c960468cfb8dfb2ad042519672ebeb0990ed613f91b1be1bd",
+      "text": "Believe it or not.",
+      "text_sha256": "e45d00b29ecfd7399de323cc1f8b58eb7ea46dc4ec7da1a3de1178e153ff6c55",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "believe-it-or-not-x": {
+      "duration": 4.32,
+      "key": "believe-it-or-not-x",
+      "location": [
+        3263616,
+        25920,
+        0.048
+      ],
+      "packed_sha256": "fabdaa7f26f9c0ca669fd8958295c3d2a7d7c464aef1d70d947838b4453770a9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b191972b08d4962ffed0b63c75ebdac9f977855ce1a922550d60dba35ca72049",
+      "text": "Believe it or not, we finished the report a day early without working late.",
+      "text_sha256": "39aba72dc9a282b9f343c1d882c4544df5d9315b64d80010a7dfb49c39dce1b5",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-a-clue-t": {
+      "duration": 0.744,
+      "key": "not-a-clue-t",
+      "location": [
+        3289536,
+        4464,
+        0.048
+      ],
+      "packed_sha256": "ca5207c0a2f7f8b7bd486ef5c554da21b7e87dc035e479f539b686a06cc6c846",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d800b2986b2f65cc2317530fd46a3478547200428df16236b0a209a5d542d851",
+      "text": "Not a clue.",
+      "text_sha256": "6c843582c9f2db762320a9e34bb3c832ffed24848ab857ccaec801ce4c059027",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-a-clue-x": {
+      "duration": 4.368,
+      "key": "not-a-clue-x",
+      "location": [
+        3294000,
+        26208,
+        0.048
+      ],
+      "packed_sha256": "44bbb19225b797ba88663d6fe0a8ee66d7f8ca55a84644136f88c3b325986244",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1d086d1605e089a0d28239ed784d825950e63ab0c2753bb1dfcf967ab2429aa2",
+      "text": "Not a clue. The meeting isn't in my calendar, so I'll ask the organizer.",
+      "text_sha256": "db167e6233990862474b24ce46836a2c05fecfdc283ec32b4b2963798fdf4fdb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-14",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
