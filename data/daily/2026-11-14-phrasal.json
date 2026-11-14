@@ -1,0 +1,80 @@
+{
+  "batch_sha256": "94e3db0303864fe8d21904603aa16c768f26d436ad264bbf3c2abe768f939649",
+  "cards": [
+    {
+      "added": "2026-11-14",
+      "au": 1,
+      "ex": "We called off the meeting because everyone had already agreed on the plan by email.",
+      "exru": "Мы отменили встречу, потому что все уже согласовали план по электронной почте.",
+      "id": "call-off",
+      "ipa": "/ˌkɔːl ˈɒf/ · called off · called off",
+      "note": "Так говорят, когда решают, что запланированное событие не состоится: call off a meeting, a trip, a match. С существительным возможны оба порядка: call off the meeting / call the meeting off; местоимение ставится только между частями: call it off, не «call off it». Формы: call — called — called. В отличие от put off («отложить на более позднее время»), call off означает отмену события. Это не запрещает организовать его заново, но само выражение не обещает переноса.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "отменить — запланированную встречу, поездку или другое событие",
+      "sources": [
+        {
+          "checked_on": "2026-11-14",
+          "evidence": "British pronunciation; B2 cancellation sense; transitive separable patterns, including pronoun position.",
+          "title": "Collins English Dictionary — call off",
+          "url": "https://www.collinsdictionary.com/dictionary/english/call-off"
+        },
+        {
+          "checked_on": "2026-11-14",
+          "evidence": "Regular verb forms: called, called.",
+          "title": "Collins English Dictionary — call",
+          "url": "https://www.collinsdictionary.com/dictionary/english/call"
+        },
+        {
+          "checked_on": "2026-11-14",
+          "evidence": "Postponement to a later time, contrasted with cancellation.",
+          "title": "Collins English Dictionary — put off",
+          "url": "https://www.collinsdictionary.com/dictionary/english/put-off"
+        }
+      ],
+      "term": "call off"
+    }
+  ],
+  "clips": {
+    "call-off-t": {
+      "duration": 0.84,
+      "key": "call-off-t",
+      "location": [
+        3385872,
+        5040,
+        0.048
+      ],
+      "packed_sha256": "2011f7b6b88600d8998f3491d4db2bd0e908db8b27554ef5f920ccbe0b3d1820",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "2c44e090500c5d6df7eb91fa1459330d93171cb65f44d3bf73abac44a07fd9d5",
+      "text": "call off",
+      "text_sha256": "3703dff773bb5aa8fa283dea5656937eacb9560ac0dc4f47b601d68512e8b564",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "call-off-x": {
+      "duration": 4.392,
+      "key": "call-off-x",
+      "location": [
+        3390912,
+        26352,
+        0.048
+      ],
+      "packed_sha256": "08bd493bb3872e5b663d818a94bcc8d4a5716f411a99d026e68c0faf4d37f0bb",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "9a263dd898ffb1a3219bb6034cc8861069dca9484dde7df0248fe763d56ccdd7",
+      "text": "We called off the meeting because everyone had already agreed on the plan by email.",
+      "text_sha256": "fe2428430ffe74d4c520cd37d0fb7f58ffe9cdf9363fb79fe016a0a4be486c58",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-14",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

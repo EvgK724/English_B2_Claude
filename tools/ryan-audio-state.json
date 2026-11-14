@@ -43893,6 +43893,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "call-off-t": {
+          "duration": 0.84,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "3703dff773bb5aa8fa283dea5656937eacb9560ac0dc4f47b601d68512e8b564",
+          "packed_sha256": "2011f7b6b88600d8998f3491d4db2bd0e908db8b27554ef5f920ccbe0b3d1820",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "2c44e090500c5d6df7eb91fa1459330d93171cb65f44d3bf73abac44a07fd9d5",
+          "signature": "a3d4566ffe4c0d45814b744d25584b5c0a981cbeb55c9f84f4080872abe06735",
+          "source": "Microsoft-Edge-TTS",
+          "text": "call off",
+          "text_sha256": "3703dff773bb5aa8fa283dea5656937eacb9560ac0dc4f47b601d68512e8b564",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "call-off-x": {
+          "duration": 4.392,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "fe2428430ffe74d4c520cd37d0fb7f58ffe9cdf9363fb79fe016a0a4be486c58",
+          "packed_sha256": "08bd493bb3872e5b663d818a94bcc8d4a5716f411a99d026e68c0faf4d37f0bb",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "9a263dd898ffb1a3219bb6034cc8861069dca9484dde7df0248fe763d56ccdd7",
+          "signature": "37d26c1d4a264aa2897196265183ff3ee5612b7e2d1058796a848d640dc490b5",
+          "source": "Microsoft-Edge-TTS",
+          "text": "We called off the meeting because everyone had already agreed on the plan by email.",
+          "text_sha256": "fe2428430ffe74d4c520cd37d0fb7f58ffe9cdf9363fb79fe016a0a4be486c58",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "carry-on-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "26c2808fe724c6d0f7cab1b7fab747cdc523f69f6cf13c9117d8e2a09082649e",
