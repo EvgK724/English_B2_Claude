@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-15",
+        "au": 1,
+        "ex": "You all set? I've printed the tickets, and the taxi will be here in ten minutes.",
+        "exru": "Ты готов? Я распечатал билеты, и такси будет здесь через десять минут.",
+        "id": "you-all-set",
+        "note": "В S01E01 «Pilot» Уолтер обращается к сыну на школьной парковке, проверяя, справится ли тот дальше сам. All set значит «готов, всё необходимое есть»; в таком контексте вопрос также позволяет предложить помощь. You all set? — разговорный вопрос с опущенным Are; полная форма — Are you all set? Здесь set — прилагательное, поэтому не нужно добавлять do: не Do you all set? All усиливает готовность и не означает «вы все», когда обращаются к одному человеку. Можно уточнить: all set for the meeting — готов к встрече, all set to leave — готов уходить. Фраза подходит для непринуждённой беседы; в официальной переписке лучше использовать полный вопрос.",
+        "reg": "неформальное разговорное, проверка готовности",
+        "ru": "Ты готов? Всё в порядке?",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "EXT. HIGH SCHOOL - MORNING, school parking scene before the chemistry classroom; public OCR text line 63, WALT dialogue",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "The draft identifies WALT and gives the shorter question All set? The aired transcript adds You; the card follows the aired wording, not an assertion that the draft wording is identical."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Web text line 53, school parking exchange after breakfast and before the farewell and chemistry lesson",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact aired question checked. Speaker established by matching the school parking exchange to the screenplay's named WALT dialogue."
+          },
+          {
+            "locator": "set adjective (READY), including all set",
+            "title": "SET | English meaning — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/set",
+            "verification": "Meaning and all set for construction checked in indexed dictionary text. Direct page access returned 403; no alternative transport used. Teaching explanation and example are original."
+          }
+        ],
+        "term": "You all set?",
+        "who": "Уолтер Уайт"
+      },
+      {
+        "added": "2026-11-15",
+        "au": 1,
+        "ex": "I know your heart's in the right place, but please ask before you change my plans.",
+        "exru": "Я знаю, что ты хочешь как лучше, но, пожалуйста, спрашивай, прежде чем менять мои планы.",
+        "id": "heart-in-the-right-place",
+        "note": "В S01E01 «Pilot» Хэнк говорит это в тосте на дне рождения Уолтера; выбрано отдельное короткое предложение из эфирной реплики. Your heart's in the right place означает, что намерения у человека добрые, даже если он ошибается или помогает неудачно. Heart's здесь сокращение heart is; your — «твой», не you're. Запоминай выражение с in и артиклем the: in the right place, не on the right place. Это оценка намерений, а не успешного результата; фраза не описывает здоровье сердца. Ею можно смягчить критику, но в ответ на чью-то помощь она иногда звучит снисходительно.",
+        "reg": "разговорная идиома, признание добрых намерений",
+        "ru": "Ты хочешь как лучше. У тебя добрые намерения.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Birthday party toast, HANK dialogue before the television news scene; public OCR text line 80",
+            "short_excerpt": true,
+            "speaker": "Hank Schrader",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "The draft assigns the short phrase to HANK within a longer toast. The aired transcript independently confirms the same words as a standalone repeated sentence."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Web text line 119, standalone repetition during Hank's birthday toast to Walt",
+            "short_excerpt": true,
+            "speaker": "Hank Schrader",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact standalone sentence checked in the aired transcript. Hank attribution corroborated by the named screenplay dialogue; no longer scene copied."
+          },
+          {
+            "locator": "Idiom entry: good intentions",
+            "title": "HER/HIS HEART IS IN THE RIGHT PLACE | English meaning — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/heart-is-in-the-right-place",
+            "verification": "Meaning checked in indexed dictionary text. Direct page access returned 403; no alternative transport used. Teaching explanation and example are original."
+          }
+        ],
+        "term": "Your heart's in the right place.",
+        "who": "Хэнк Шрейдер"
+      }
+    ],
+    "date": "2026-11-15"
+  },
+  "batch_sha256": "df08511102333d5f0a3136150ead631004b56f1f3577b0fcdf55b683d2da276b",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-15T03:32:09.196816Z"
+}
