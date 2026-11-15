@@ -44035,6 +44035,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "come-across-t": {
+          "duration": 1.032,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "0e9fb6ef3146150aafa408d95b4cc794c5dc924cc08d11a9511e549f551a3531",
+          "packed_sha256": "80cd537d33c7151191d4c814f6d3506aa269c904e52186656857cebfc4532580",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "979a1659bdf225fefe9ef2ffd9a47fa0ad31688403b9b0ed2e53c31de6ab1bbf",
+          "signature": "44e0345056a252df5ee091696abc05a992c520416bf45e9a48402e349fd6a9f4",
+          "source": "Microsoft-Edge-TTS",
+          "text": "come across",
+          "text_sha256": "0e9fb6ef3146150aafa408d95b4cc794c5dc924cc08d11a9511e549f551a3531",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "come-across-x": {
+          "duration": 4.896,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "9ca19b8ca8401b170f1b2666cdcc74a77ca7aacf656a629c190b5f532f6956b9",
+          "packed_sha256": "3a55bb0991cd4330769fae560c438cbad722c138e4f81d0ce514d2c54c8a7857",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "50c6c6b29c38f96a19fb2fb7c6621806e778d5e6689c17b52b6c44eb88bb9437",
+          "signature": "f16642257b9df55e7716b3d987d4c4d7e658f8e221538d657a52e9f09ba6e4d3",
+          "source": "Microsoft-Edge-TTS",
+          "text": "While I was checking the references, I came across a study that addressed the same question.",
+          "text_sha256": "9ca19b8ca8401b170f1b2666cdcc74a77ca7aacf656a629c190b5f532f6956b9",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "come-down-with-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "3d91c174690e9ae0b0acba460269c477620c3ebe5ae339d9ff04247c92bbc96a",

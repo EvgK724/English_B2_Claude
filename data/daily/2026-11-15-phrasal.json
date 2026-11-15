@@ -1,0 +1,80 @@
+{
+  "batch_sha256": "3cdc7bb024a4e86d9938eb33057cca32ba25e41a2b46cb1a0d23d384d5de854b",
+  "cards": [
+    {
+      "added": "2026-11-15",
+      "au": 1,
+      "ex": "While I was checking the references, I came across a study that addressed the same question.",
+      "exru": "Проверяя список литературы, я случайно наткнулся на исследование, в котором рассматривался тот же вопрос.",
+      "id": "come-across",
+      "ipa": "/ˌkʌm əˈkrɒs/ · came across · come across",
+      "note": "Так говорят о неожиданной находке или встрече: come across an article, an old photo, an interesting person. Дополнение всегда после across: come across it, не «come it across». Формы: come — came — come, не «comed». Find нейтрально означает «найти»; come across подчёркивает случайность. В этом значении пассив не употребляется. Не путайте с come across as + характеристика: это «производить впечатление».",
+      "pos": "phrasal verb · переходный · неразделяемый",
+      "ru": "случайно найти или встретить",
+      "sources": [
+        {
+          "checked_on": "2026-11-15",
+          "title": "Cambridge Dictionary — come across",
+          "url": "https://dictionary.cambridge.org/dictionary/english/come-across?q=came-across",
+          "verification": "Dictionary search extract: B2 find-by-chance sense; UK come /kʌm/; forms came and come; separate come across as construction. Direct page retrieval returned HTTP 403 and was not retried."
+        },
+        {
+          "checked_on": "2026-11-15",
+          "title": "Oxford Advanced Learner's Dictionary — come across",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/come-across",
+          "verification": "Dictionary search extract: come across somebody/something means meet or find by chance; no passive; object follows across. Direct page retrieval returned HTTP 403 and was not retried."
+        },
+        {
+          "checked_on": "2026-11-15",
+          "title": "Oxford Advanced Learner's Dictionary — across",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/across_1",
+          "verification": "Dictionary search extract: British pronunciation /əˈkrɒs/; combined with the checked pronunciation of come for the card's IPA."
+        }
+      ],
+      "term": "come across"
+    }
+  ],
+  "clips": {
+    "come-across-t": {
+      "duration": 1.032,
+      "key": "come-across-t",
+      "location": [
+        3417264,
+        6192,
+        0.048
+      ],
+      "packed_sha256": "80cd537d33c7151191d4c814f6d3506aa269c904e52186656857cebfc4532580",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "979a1659bdf225fefe9ef2ffd9a47fa0ad31688403b9b0ed2e53c31de6ab1bbf",
+      "text": "come across",
+      "text_sha256": "0e9fb6ef3146150aafa408d95b4cc794c5dc924cc08d11a9511e549f551a3531",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "come-across-x": {
+      "duration": 4.896,
+      "key": "come-across-x",
+      "location": [
+        3423456,
+        29376,
+        0.048
+      ],
+      "packed_sha256": "3a55bb0991cd4330769fae560c438cbad722c138e4f81d0ce514d2c54c8a7857",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "50c6c6b29c38f96a19fb2fb7c6621806e778d5e6689c17b52b6c44eb88bb9437",
+      "text": "While I was checking the references, I came across a study that addressed the same question.",
+      "text_sha256": "9ca19b8ca8401b170f1b2666cdcc74a77ca7aacf656a629c190b5f532f6956b9",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-15",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
