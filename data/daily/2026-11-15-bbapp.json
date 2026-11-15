@@ -1,0 +1,158 @@
+{
+  "batch_sha256": "df08511102333d5f0a3136150ead631004b56f1f3577b0fcdf55b683d2da276b",
+  "cards": [
+    {
+      "added": "2026-11-15",
+      "au": 1,
+      "ex": "You all set? I've printed the tickets, and the taxi will be here in ten minutes.",
+      "exru": "Ты готов? Я распечатал билеты, и такси будет здесь через десять минут.",
+      "id": "you-all-set",
+      "note": "В S01E01 «Pilot» Уолтер обращается к сыну на школьной парковке, проверяя, справится ли тот дальше сам. All set значит «готов, всё необходимое есть»; в таком контексте вопрос также позволяет предложить помощь. You all set? — разговорный вопрос с опущенным Are; полная форма — Are you all set? Здесь set — прилагательное, поэтому не нужно добавлять do: не Do you all set? All усиливает готовность и не означает «вы все», когда обращаются к одному человеку. Можно уточнить: all set for the meeting — готов к встрече, all set to leave — готов уходить. Фраза подходит для непринуждённой беседы; в официальной переписке лучше использовать полный вопрос.",
+      "reg": "неформальное разговорное, проверка готовности",
+      "ru": "Ты готов? Всё в порядке?",
+      "sources": [
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "EXT. HIGH SCHOOL - MORNING, school parking scene before the chemistry classroom; public OCR text line 63, WALT dialogue",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+          "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+          "verification": "The draft identifies WALT and gives the shorter question All set? The aired transcript adds You; the card follows the aired wording, not an assertion that the draft wording is identical."
+        },
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Web text line 53, school parking exchange after breakfast and before the farewell and chemistry lesson",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+          "verification": "Exact aired question checked. Speaker established by matching the school parking exchange to the screenplay's named WALT dialogue."
+        },
+        {
+          "locator": "set adjective (READY), including all set",
+          "title": "SET | English meaning — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/set",
+          "verification": "Meaning and all set for construction checked in indexed dictionary text. Direct page access returned 403; no alternative transport used. Teaching explanation and example are original."
+        }
+      ],
+      "term": "You all set?",
+      "who": "Уолтер Уайт"
+    },
+    {
+      "added": "2026-11-15",
+      "au": 1,
+      "ex": "I know your heart's in the right place, but please ask before you change my plans.",
+      "exru": "Я знаю, что ты хочешь как лучше, но, пожалуйста, спрашивай, прежде чем менять мои планы.",
+      "id": "heart-in-the-right-place",
+      "note": "В S01E01 «Pilot» Хэнк говорит это в тосте на дне рождения Уолтера; выбрано отдельное короткое предложение из эфирной реплики. Your heart's in the right place означает, что намерения у человека добрые, даже если он ошибается или помогает неудачно. Heart's здесь сокращение heart is; your — «твой», не you're. Запоминай выражение с in и артиклем the: in the right place, не on the right place. Это оценка намерений, а не успешного результата; фраза не описывает здоровье сердца. Ею можно смягчить критику, но в ответ на чью-то помощь она иногда звучит снисходительно.",
+      "reg": "разговорная идиома, признание добрых намерений",
+      "ru": "Ты хочешь как лучше. У тебя добрые намерения.",
+      "sources": [
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Birthday party toast, HANK dialogue before the television news scene; public OCR text line 80",
+          "short_excerpt": true,
+          "speaker": "Hank Schrader",
+          "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+          "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+          "verification": "The draft assigns the short phrase to HANK within a longer toast. The aired transcript independently confirms the same words as a standalone repeated sentence."
+        },
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Web text line 119, standalone repetition during Hank's birthday toast to Walt",
+          "short_excerpt": true,
+          "speaker": "Hank Schrader",
+          "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+          "verification": "Exact standalone sentence checked in the aired transcript. Hank attribution corroborated by the named screenplay dialogue; no longer scene copied."
+        },
+        {
+          "locator": "Idiom entry: good intentions",
+          "title": "HER/HIS HEART IS IN THE RIGHT PLACE | English meaning — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/heart-is-in-the-right-place",
+          "verification": "Meaning checked in indexed dictionary text. Direct page access returned 403; no alternative transport used. Teaching explanation and example are original."
+        }
+      ],
+      "term": "Your heart's in the right place.",
+      "who": "Хэнк Шрейдер"
+    }
+  ],
+  "clips": {
+    "heart-in-the-right-place-t": {
+      "duration": 1.56,
+      "key": "heart-in-the-right-place-t",
+      "location": [
+        3353616,
+        9360,
+        0.048
+      ],
+      "packed_sha256": "fc92827c634248c0d7c2b623a4b63bbe6cc23945a346e13a3deb4b638fd1a0d2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6b745ed9e088b09033ce625adcaec5b8bd66669657c84cbdee2bdcd62224d387",
+      "text": "Your heart's in the right place.",
+      "text_sha256": "1a5a480da03bc3ae6f0b736933196b42b0787fca8f98f01c684f21544bbe3f4a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "heart-in-the-right-place-x": {
+      "duration": 4.464,
+      "key": "heart-in-the-right-place-x",
+      "location": [
+        3362976,
+        26784,
+        0.048
+      ],
+      "packed_sha256": "bc3e73e1ae7f26a5af57ff53535a4a777771bcbd131db4df8cf95262bb7a01af",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c99d5b78012ef33ff9e27d5c1bc47a99aec3488df282a2ac8bef61efb39b6763",
+      "text": "I know your heart's in the right place, but please ask before you change my plans.",
+      "text_sha256": "d9f605871e7491758f85d3d44fe4bc30ea08f1470a2a91538e9c4a302548f933",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-all-set-t": {
+      "duration": 0.792,
+      "key": "you-all-set-t",
+      "location": [
+        3320208,
+        4752,
+        0.048
+      ],
+      "packed_sha256": "468ba3fd6533b4cd4f1937acc4edc95169aac032857953e5b58f19c620cda5ae",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "54a75e372925e3a4d1ad019b84849485d37c18318c73284752f3171005538f3c",
+      "text": "You all set?",
+      "text_sha256": "f3a4c3f1b4127ab011fb1c784272a27cbd385e732347490f604be62ee6a32b92",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-all-set-x": {
+      "duration": 4.776,
+      "key": "you-all-set-x",
+      "location": [
+        3324960,
+        28656,
+        0.048
+      ],
+      "packed_sha256": "8bf4e80dc8df328fc81d36de2e5605bbcd1d68856b92bbf8d25d735ca17d45ec",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7afa77c872d3159e820e388aec530e6b2bfc5fca99cd4115a9117c2191b5132f",
+      "text": "You all set? I've printed the tickets, and the taxi will be here in ten minutes.",
+      "text_sha256": "150f51c966abf334aa59538c01cf99f52bc12db072ade7035dd0db2f9fd51d2b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-15",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}

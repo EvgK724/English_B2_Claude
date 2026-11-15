@@ -1354,6 +1354,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "heart-in-the-right-place-t": {
+      "duration": 1.56,
+      "edge_tts": "7.3.1",
+      "key": "heart-in-the-right-place-t",
+      "ledger": "data/daily/2026-11-15-bbapp.json",
+      "location": [
+        3353616,
+        9360,
+        0.048
+      ],
+      "packed_sha256": "fc92827c634248c0d7c2b623a4b63bbe6cc23945a346e13a3deb4b638fd1a0d2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6b745ed9e088b09033ce625adcaec5b8bd66669657c84cbdee2bdcd62224d387",
+      "signature": "bcd1517de95ef1b0f47b6085188cb0c4405c6ae6323059db094796d3a627cc8c",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Your heart's in the right place.",
+      "text_sha256": "1a5a480da03bc3ae6f0b736933196b42b0787fca8f98f01c684f21544bbe3f4a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "heart-in-the-right-place-x": {
+      "duration": 4.464,
+      "edge_tts": "7.3.1",
+      "key": "heart-in-the-right-place-x",
+      "ledger": "data/daily/2026-11-15-bbapp.json",
+      "location": [
+        3362976,
+        26784,
+        0.048
+      ],
+      "packed_sha256": "bc3e73e1ae7f26a5af57ff53535a4a777771bcbd131db4df8cf95262bb7a01af",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c99d5b78012ef33ff9e27d5c1bc47a99aec3488df282a2ac8bef61efb39b6763",
+      "signature": "ecfa01208df4f33508ed5c499b3ffbecf9c24f1f26f87e536b9df1213452dc23",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I know your heart's in the right place, but please ask before you change my plans.",
+      "text_sha256": "d9f605871e7491758f85d3d44fe4bc30ea08f1470a2a91538e9c4a302548f933",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "heres-what-were-gonna-do-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3651,6 +3693,48 @@
       "source": "Microsoft-Edge-TTS",
       "text": "Let's ask for a later deadline; it's worth a shot.",
       "text_sha256": "b9d82091f19cf8b42fb91536c3f9eb5010cef6c9d55b4c3a675ea7f97cc03566",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-all-set-t": {
+      "duration": 0.792,
+      "edge_tts": "7.3.1",
+      "key": "you-all-set-t",
+      "ledger": "data/daily/2026-11-15-bbapp.json",
+      "location": [
+        3320208,
+        4752,
+        0.048
+      ],
+      "packed_sha256": "468ba3fd6533b4cd4f1937acc4edc95169aac032857953e5b58f19c620cda5ae",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "54a75e372925e3a4d1ad019b84849485d37c18318c73284752f3171005538f3c",
+      "signature": "2d74e7722085620e56b2930f3353ffaba5312446181a8577ac9f1eed528a02f1",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You all set?",
+      "text_sha256": "f3a4c3f1b4127ab011fb1c784272a27cbd385e732347490f604be62ee6a32b92",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-all-set-x": {
+      "duration": 4.776,
+      "edge_tts": "7.3.1",
+      "key": "you-all-set-x",
+      "ledger": "data/daily/2026-11-15-bbapp.json",
+      "location": [
+        3324960,
+        28656,
+        0.048
+      ],
+      "packed_sha256": "8bf4e80dc8df328fc81d36de2e5605bbcd1d68856b92bbf8d25d735ca17d45ec",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7afa77c872d3159e820e388aec530e6b2bfc5fca99cd4115a9117c2191b5132f",
+      "signature": "7fe3c553cd22712b87ff549ce84ee64b6ca895ef76c094584c826d35bc9f6aad",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You all set? I've printed the tickets, and the taxi will be here in ten minutes.",
+      "text_sha256": "150f51c966abf334aa59538c01cf99f52bc12db072ade7035dd0db2f9fd51d2b",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
