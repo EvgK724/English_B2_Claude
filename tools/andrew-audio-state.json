@@ -1786,6 +1786,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "it-doesnt-compute-t": {
+      "duration": 1.128,
+      "edge_tts": "7.3.1",
+      "key": "it-doesnt-compute-t",
+      "ledger": "data/daily/2026-11-16-bbapp.json",
+      "location": [
+        3423888,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "e1f8a9900951c8a3c01afc584bf486f2f274cbc70211705836cb129fae58929e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "706cf033c2c8a495f51e9e8ea58deef911ff626095de267fe587fee6f7ed1e00",
+      "signature": "1fb21e025bfca336f99455204b6a8d7d591e1a9d7469190c2c7d1d83984afd65",
+      "source": "Microsoft-Edge-TTS",
+      "text": "It doesn't compute.",
+      "text_sha256": "3856cadd9d828c3e2205dd988b374eed738ffc9201cae57088801f98ad9385b1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "it-doesnt-compute-x": {
+      "duration": 6.048,
+      "edge_tts": "7.3.1",
+      "key": "it-doesnt-compute-x",
+      "ledger": "data/daily/2026-11-16-bbapp.json",
+      "location": [
+        3430656,
+        36288,
+        0.048
+      ],
+      "packed_sha256": "e07af322c009e25723b6eb85ee16dbf06357140d167c6312c83c259df3268246",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6b7b18580b8e4a72f20ad4efc88dd84cf2104e9d768164c2de9357453c273d6e",
+      "signature": "2049f3de95ed52dc57d3a7f54e09bcc00db2e15e6b41df589ce9f266261701c2",
+      "source": "Microsoft-Edge-TTS",
+      "text": "He asked us to finish the report today, then cancelled our access to the files. It doesn't compute.",
+      "text_sha256": "0e3fbdbe20359f4e1583b5d9add1accfcc655191b91f399044d557f420d08ebf",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "its-all-good-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3399,6 +3441,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "I heard my neighbour slam the door at two in the morning.",
       "text_sha256": "15a139a5a1196ac3e2a0f95c7cfff747b338bd6b2eb3d6de433e06bd5e72eee3",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "well-see-about-that-t": {
+      "duration": 1.008,
+      "edge_tts": "7.3.1",
+      "key": "well-see-about-that-t",
+      "ledger": "data/daily/2026-11-16-bbapp.json",
+      "location": [
+        3389760,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "05890e6c56f0fac2e1657d3b94e1c8cec348ad261c7059e497f6ca07af061b08",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "dba0b5d50fa613be44fdd529b31be72cd0f278367f020aa3d98deff415f1080c",
+      "signature": "6758d936c876887c7097d0e07b745803ee815f24d469bb5316230b1ff5e9cf19",
+      "source": "Microsoft-Edge-TTS",
+      "text": "We'll see about that.",
+      "text_sha256": "97be38156d88c39aad0e9a53d0245324a614757051271efd755342781edf073f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "well-see-about-that-x": {
+      "duration": 4.68,
+      "edge_tts": "7.3.1",
+      "key": "well-see-about-that-x",
+      "ledger": "data/daily/2026-11-16-bbapp.json",
+      "location": [
+        3395808,
+        28080,
+        0.048
+      ],
+      "packed_sha256": "3a894751c6a8b4643ec77d9fd6f4560b867767cbab1a25c8b711fe76dec96ce8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ee04d5eeed03062303e2ce268468376fbb5688fec2794f1411f1b749e60e3fca",
+      "signature": "ef15643b887309adbefc67660da14ad17f90da7e86cdeeb05e4689fa9e1f7316",
+      "source": "Microsoft-Edge-TTS",
+      "text": "They say we can't use the meeting room, even though we booked it. We'll see about that.",
+      "text_sha256": "cbb89b00f2ab79d38e1fdf31497ded83ae507c9c30ec9567187a439b8e133c79",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

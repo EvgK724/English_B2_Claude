@@ -1,0 +1,158 @@
+{
+  "batch_sha256": "9e30ec905bea599f09c40e1f4750ff856db47cbeef3b668b9c74286bd973b262",
+  "cards": [
+    {
+      "added": "2026-11-16",
+      "au": 1,
+      "ex": "They say we can't use the meeting room, even though we booked it. We'll see about that.",
+      "exru": "Они говорят, что нам нельзя пользоваться переговорной, хотя мы её забронировали. Это мы ещё посмотрим.",
+      "id": "well-see-about-that",
+      "note": "В S01E01 «Pilot» Джесси возражает Уолтеру, который отвергает его привычный способ работы. Выбран короткий фрагмент реплики без вводных Yeah, well. We'll see about that выражает несогласие и готовность оспорить чужое решение: человек не намерен просто принять сказанное. We'll — сокращение we will; после will нужен see без to. Запоминай about that, не on that. Нейтральное We'll see — «посмотрим, пока не знаю»; добавление about that часто превращает ответ в вызов. С друзьями фраза может быть шутливой, но в рабочем споре звучит резко. Этот оттенок идиомы — сверх B2.",
+      "reg": "разговорное, с вызовом; иногда шутливое",
+      "ru": "Это мы ещё посмотрим.",
+      "sources": [
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Script p. 34; EXT. MEDITERRANEAN - BACKYARD - AFTERNOON; JESSE reply after Walt rejects chili powder; public OCR text line 139",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+          "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+          "verification": "Named JESSE dialogue contains the exact four-word clause. Only that clause is retained; the introductory Yeah, well is omitted. The aired transcript independently confirms the same wording."
+        },
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Web text line 359; equipment discussion at Jesse's house, after Walt's rejection of Jesse's signature ingredient",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+          "verification": "Exact clause checked in the aired episode transcript; speaker matched to the production draft's named JESSE dialogue. Capitalization normalized at the excerpt boundary."
+        },
+        {
+          "locator": "Idiom entry: objection and intention to prevent something; advanced idiomatic register",
+          "title": "WE'LL (SOON) SEE ABOUT THAT — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/we-ll-soon-see-about-that",
+          "verification": "Meaning checked in indexed Cambridge entry text. Direct page access returned 403. Teaching explanation and workplace example are original."
+        }
+      ],
+      "term": "We'll see about that.",
+      "who": "Джесси Пинкман"
+    },
+    {
+      "added": "2026-11-16",
+      "au": 1,
+      "ex": "He asked us to finish the report today, then cancelled our access to the files. It doesn't compute.",
+      "exru": "Он попросил нас закончить отчёт сегодня, а потом закрыл нам доступ к файлам. У меня это в голове не укладывается.",
+      "id": "it-doesnt-compute",
+      "note": "В S01E01 «Pilot» Джесси пытается понять, почему его бывший учитель внезапно решил заняться преступным делом. Compute буквально значит «вычислять», а здесь — «иметь смысл, укладываться в голове». Фраза подходит, когда факты или чужое поведение не согласуются с тем, что ты знаешь; речь не об ошибке компьютера. После doesn't нужна начальная форма compute: не doesn't computes. В прошедшем времени — It didn't compute. Более нейтральный вариант — It doesn't make sense. Образная фраза уместна в непринуждённом разговоре; в деловом письме лучше прямо указать, что именно непонятно.",
+      "reg": "разговорное, образное; недоумение",
+      "ru": "У меня это в голове не укладывается.",
+      "sources": [
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Script p. 37; EXT. CREDIT UNION PARKING LOT - AFTERNOON; JESSE dialogue questioning Walt's motives after receiving money for the RV; public OCR text line 147",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+          "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+          "verification": "Exact short sentence appears in named JESSE dialogue. Checked against the aired transcript rather than relying on the draft alone."
+        },
+        {
+          "episode": "S01E01 Pilot",
+          "locator": "Web text line 400; parking-lot conversation after the RV money changes hands and before Walt says he is awake",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+          "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+          "verification": "Exact sentence checked in the aired episode transcript. Jesse attribution corroborated by the production draft's named dialogue."
+        },
+        {
+          "locator": "compute verb (MAKE SENSE), something does not compute",
+          "title": "COMPUTE — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/compute?topic=difficult-to-understand",
+          "verification": "Figurative sense checked in indexed dictionary entry text. Teaching explanation and workplace example are original."
+        }
+      ],
+      "term": "It doesn't compute.",
+      "who": "Джесси Пинкман"
+    }
+  ],
+  "clips": {
+    "it-doesnt-compute-t": {
+      "duration": 1.128,
+      "key": "it-doesnt-compute-t",
+      "location": [
+        3423888,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "e1f8a9900951c8a3c01afc584bf486f2f274cbc70211705836cb129fae58929e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "706cf033c2c8a495f51e9e8ea58deef911ff626095de267fe587fee6f7ed1e00",
+      "text": "It doesn't compute.",
+      "text_sha256": "3856cadd9d828c3e2205dd988b374eed738ffc9201cae57088801f98ad9385b1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "it-doesnt-compute-x": {
+      "duration": 6.048,
+      "key": "it-doesnt-compute-x",
+      "location": [
+        3430656,
+        36288,
+        0.048
+      ],
+      "packed_sha256": "e07af322c009e25723b6eb85ee16dbf06357140d167c6312c83c259df3268246",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6b7b18580b8e4a72f20ad4efc88dd84cf2104e9d768164c2de9357453c273d6e",
+      "text": "He asked us to finish the report today, then cancelled our access to the files. It doesn't compute.",
+      "text_sha256": "0e3fbdbe20359f4e1583b5d9add1accfcc655191b91f399044d557f420d08ebf",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "well-see-about-that-t": {
+      "duration": 1.008,
+      "key": "well-see-about-that-t",
+      "location": [
+        3389760,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "05890e6c56f0fac2e1657d3b94e1c8cec348ad261c7059e497f6ca07af061b08",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "dba0b5d50fa613be44fdd529b31be72cd0f278367f020aa3d98deff415f1080c",
+      "text": "We'll see about that.",
+      "text_sha256": "97be38156d88c39aad0e9a53d0245324a614757051271efd755342781edf073f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "well-see-about-that-x": {
+      "duration": 4.68,
+      "key": "well-see-about-that-x",
+      "location": [
+        3395808,
+        28080,
+        0.048
+      ],
+      "packed_sha256": "3a894751c6a8b4643ec77d9fd6f4560b867767cbab1a25c8b711fe76dec96ce8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ee04d5eeed03062303e2ce268468376fbb5688fec2794f1411f1b749e60e3fca",
+      "text": "They say we can't use the meeting room, even though we booked it. We'll see about that.",
+      "text_sha256": "cbb89b00f2ab79d38e1fdf31497ded83ae507c9c30ec9567187a439b8e133c79",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-16",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}

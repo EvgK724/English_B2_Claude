@@ -44571,6 +44571,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "iron-out-t": {
+          "duration": 0.96,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "f1d62aab6c1098aba988569ae58cfdfaef7d798dc6bcff80e0c25ec409f32ba0",
+          "packed_sha256": "e86a01f03c0f1ed06df7dd6533622da3f2b82eec8936a9c7006526cc39bbd777",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "6e109b7717b7f19bc36618f55cd3eb05cb70bf000aa2f4ff4e212ef53488af9f",
+          "signature": "d71a1aa28149e83cfea1ec72b0a418e4cf546270f99fa72ad1708546e705dd51",
+          "source": "Microsoft-Edge-TTS",
+          "text": "iron out",
+          "text_sha256": "f1d62aab6c1098aba988569ae58cfdfaef7d798dc6bcff80e0c25ec409f32ba0",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "iron-out-x": {
+          "duration": 4.608,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "b5f7729a033dc3b0e0e743686450438b13a40f97703bad4a0f849593ffa618e4",
+          "packed_sha256": "4691d29f1a1a4634047b010a8db8576198c2029fd95fc94e217f7f0ccb94938a",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "f51228287d0d5c66b138deff7e0f6d283020533056315576e2c785af62d3d5c7",
+          "signature": "130fd30930a2573ffe97530b47b360c54d2267637e10a306f41e5ad9cd4f0f1e",
+          "source": "Microsoft-Edge-TTS",
+          "text": "We need to iron out a few problems with the new schedule before we share it with the team.",
+          "text_sha256": "b5f7729a033dc3b0e0e743686450438b13a40f97703bad4a0f849593ffa618e4",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "leave-out-t": {
           "duration": 0.96,
           "edge_tts": "7.3.1",
