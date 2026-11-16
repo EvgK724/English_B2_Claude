@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-16",
+        "au": 1,
+        "ex": "We need to iron out a few problems with the new schedule before we share it with the team.",
+        "exru": "Нам нужно устранить несколько проблем с новым расписанием, прежде чем мы передадим его команде.",
+        "id": "iron-out",
+        "ipa": "/ˌaɪən ˈaʊt/ · ironed out · ironed out",
+        "note": "Сверх уровня (C1). Так говорят, когда устраняют проблемы или согласовывают спорные детали: iron out problems, differences, details. С существительным возможны оба порядка: iron out the problems / iron the problems out; местоимение ставится между частями: iron them out, не «iron out them». Формы: iron — ironed — ironed. Sort out шире: разобраться с делом или привести что-то в порядок; iron out часто подчёркивает устранение оставшихся трудностей, мешающих плану или совместной работе.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "устранить трудности, уладить разногласия",
+        "sources": [
+          {
+            "checked_on": "2026-11-16",
+            "title": "Cambridge Dictionary — iron something out",
+            "url": "https://dictionary.cambridge.org/dictionary/english/iron-out",
+            "verification": "Dictionary text retrieved through web search: problem-solving meaning, object pattern, British pronunciation of iron, and collocations with problems, differences and details. Teaching example is original."
+          },
+          {
+            "checked_on": "2026-11-16",
+            "title": "Oxford Advanced Learner's Dictionary — iron out",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/iron-out",
+            "verification": "Dictionary text retrieved through web search: figurative sense 2, removing problems or difficulties; separable iron something out pattern and usage with details."
+          },
+          {
+            "checked_on": "2026-11-16",
+            "title": "Cambridge Dictionary — iron something out, English–Mandarin Chinese",
+            "url": "https://dictionary.cambridge.org/dictionary/english-chinese-simplified/iron-out",
+            "verification": "Indexed dictionary entry labels the problem-solving sense C1; the learning note explicitly marks it above B2."
+          }
+        ],
+        "term": "iron out"
+      }
+    ],
+    "date": "2026-11-16"
+  },
+  "batch_sha256": "c1bd07643271276ccf8448f6964069813f60f42ebc9832357263062eff8211e5",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-16T06:40:06.967262Z"
+}
