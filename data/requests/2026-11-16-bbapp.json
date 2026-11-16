@@ -1,0 +1,87 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-16",
+        "au": 1,
+        "ex": "They say we can't use the meeting room, even though we booked it. We'll see about that.",
+        "exru": "Они говорят, что нам нельзя пользоваться переговорной, хотя мы её забронировали. Это мы ещё посмотрим.",
+        "id": "well-see-about-that",
+        "note": "В S01E01 «Pilot» Джесси возражает Уолтеру, который отвергает его привычный способ работы. Выбран короткий фрагмент реплики без вводных Yeah, well. We'll see about that выражает несогласие и готовность оспорить чужое решение: человек не намерен просто принять сказанное. We'll — сокращение we will; после will нужен see без to. Запоминай about that, не on that. Нейтральное We'll see — «посмотрим, пока не знаю»; добавление about that часто превращает ответ в вызов. С друзьями фраза может быть шутливой, но в рабочем споре звучит резко. Этот оттенок идиомы — сверх B2.",
+        "reg": "разговорное, с вызовом; иногда шутливое",
+        "ru": "Это мы ещё посмотрим.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Script p. 34; EXT. MEDITERRANEAN - BACKYARD - AFTERNOON; JESSE reply after Walt rejects chili powder; public OCR text line 139",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "Named JESSE dialogue contains the exact four-word clause. Only that clause is retained; the introductory Yeah, well is omitted. The aired transcript independently confirms the same wording."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Web text line 359; equipment discussion at Jesse's house, after Walt's rejection of Jesse's signature ingredient",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact clause checked in the aired episode transcript; speaker matched to the production draft's named JESSE dialogue. Capitalization normalized at the excerpt boundary."
+          },
+          {
+            "locator": "Idiom entry: objection and intention to prevent something; advanced idiomatic register",
+            "title": "WE'LL (SOON) SEE ABOUT THAT — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/we-ll-soon-see-about-that",
+            "verification": "Meaning checked in indexed Cambridge entry text. Direct page access returned 403. Teaching explanation and workplace example are original."
+          }
+        ],
+        "term": "We'll see about that.",
+        "who": "Джесси Пинкман"
+      },
+      {
+        "added": "2026-11-16",
+        "au": 1,
+        "ex": "He asked us to finish the report today, then cancelled our access to the files. It doesn't compute.",
+        "exru": "Он попросил нас закончить отчёт сегодня, а потом закрыл нам доступ к файлам. У меня это в голове не укладывается.",
+        "id": "it-doesnt-compute",
+        "note": "В S01E01 «Pilot» Джесси пытается понять, почему его бывший учитель внезапно решил заняться преступным делом. Compute буквально значит «вычислять», а здесь — «иметь смысл, укладываться в голове». Фраза подходит, когда факты или чужое поведение не согласуются с тем, что ты знаешь; речь не об ошибке компьютера. После doesn't нужна начальная форма compute: не doesn't computes. В прошедшем времени — It didn't compute. Более нейтральный вариант — It doesn't make sense. Образная фраза уместна в непринуждённом разговоре; в деловом письме лучше прямо указать, что именно непонятно.",
+        "reg": "разговорное, образное; недоумение",
+        "ru": "У меня это в голове не укладывается.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Script p. 37; EXT. CREDIT UNION PARKING LOT - AFTERNOON; JESSE dialogue questioning Walt's motives after receiving money for the RV; public OCR text line 147",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "Exact short sentence appears in named JESSE dialogue. Checked against the aired transcript rather than relying on the draft alone."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Web text line 400; parking-lot conversation after the RV money changes hands and before Walt says he is awake",
+            "short_excerpt": true,
+            "speaker": "Jesse Pinkman",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact sentence checked in the aired episode transcript. Jesse attribution corroborated by the production draft's named dialogue."
+          },
+          {
+            "locator": "compute verb (MAKE SENSE), something does not compute",
+            "title": "COMPUTE — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/compute?topic=difficult-to-understand",
+            "verification": "Figurative sense checked in indexed dictionary entry text. Teaching explanation and workplace example are original."
+          }
+        ],
+        "term": "It doesn't compute.",
+        "who": "Джесси Пинкман"
+      }
+    ],
+    "date": "2026-11-16"
+  },
+  "batch_sha256": "9e30ec905bea599f09c40e1f4750ff856db47cbeef3b668b9c74286bd973b262",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-16T03:39:59.665584Z"
+}
