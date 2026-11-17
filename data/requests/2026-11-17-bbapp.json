@@ -1,0 +1,105 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-17",
+        "au": 1,
+        "ex": "I'm shorthanded today, so could you help me set up the meeting room?",
+        "exru": "Сегодня мне не хватает людей, поэтому не мог бы ты помочь мне подготовить переговорную?",
+        "id": "im-shorthanded",
+        "note": "В S01E01 «Pilot» Богдан объясняет Уолтеру, почему тому придётся помогать с машинами: один из работников не вышел. Взят короткий фрагмент без обращения Walter. Shorthanded означает, что для работы не хватает сотрудников или помощников; это не описание рук. Конструкция — be shorthanded: I'm shorthanded, we're shorthanded; не I have shorthanded. Оба написания, shorthanded и short-handed, допустимы. Руководитель может сказать I'm shorthanded о своём участке работы; говоря от лица команды, обычно выбирают We're shorthanded. Близкое understaffed тоже означает нехватку персонала; busy говорит лишь о занятости и не объясняет её причину. Фраза уместна в рабочем разговоре, особенно перед просьбой помочь.",
+        "reg": "разговорное, рабочая ситуация",
+        "ru": "Мне не хватает людей.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Scene 15, INT. CAR WASH - OFFICE - AFTERNOON; BOGDAN dialogue after the employee quits; public OCR line 67",
+            "short_excerpt": true,
+            "speaker": "Bogdan",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "The named BOGDAN dialogue confirms the clause and speaker. The vocative Walter is omitted. Draft short-handed and aired subtitle shorthanded differ only in spelling."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Aired transcript line 86; car-wash conversation after Walt objects; the same clause also occurs at line 211",
+            "short_excerpt": true,
+            "speaker": "Bogdan",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact clause checked in the aired transcript; attribution matched to the production draft's named BOGDAN dialogue."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Subtitle 95, 00:09:30.881–00:09:32.409 in this subtitle release",
+            "short_excerpt": true,
+            "speaker": "Bogdan",
+            "title": "Breaking Bad S01E01 Pilot DSR-0TV English subtitles — Scribd",
+            "url": "https://www.scribd.com/document/369379080/Breaking-Bad-S01E01-Pilot-DSR-0TV-Eng",
+            "verification": "Aired subtitle confirms the wording before the vocative Walter. Timing belongs to this release and is not claimed to be universal."
+          },
+          {
+            "locator": "Adjective entry; staffing sense; also shorthanded",
+            "title": "SHORT-HANDED — Collins COBUILD Advanced Learner's Dictionary",
+            "url": "https://www.collinsdictionary.com/pt/dictionary/english/short-handed",
+            "verification": "Checked the staffing meaning, adjective construction and both spellings in indexed Collins entry text. Russian teaching text and workplace example are original."
+          }
+        ],
+        "term": "I'm shorthanded.",
+        "who": "Богдан"
+      },
+      {
+        "added": "2026-11-17",
+        "au": 1,
+        "ex": "I used to answer work emails at weekends, but I don't do that anymore.",
+        "exru": "Раньше я отвечал на рабочие письма по выходным, но больше этого не делаю.",
+        "id": "not-anymore",
+        "note": "В S01E01 «Pilot» Уолтер отвечает Джесси, что тот больше не будет использовать свою привычную добавку. В эфире звучит короткое Not anymore; в сценарии ответ длиннее. Фраза означает: раньше это было верно, теперь — нет. Ею можно ответить на вопрос о привычке или состоянии; сказанное собеседником позволяет не повторять всё предложение. В полной фразе anymore обычно стоит в конце отрицания: I don't work there anymore. Не путай с Not yet — «ещё нет», когда действие пока не произошло. Anymore одним словом обычно пишут в американском английском; британский вариант — any more. Количество перед существительным передают двумя словами: any more questions. Короткий ответ может звучать спокойно или резко — это зависит от интонации.",
+        "reg": "разговорное; в сцене — категоричный ответ",
+        "ru": "Больше нет. Уже нет.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Script p. 34, EXT. MEDITERRANEAN - BACKYARD - AFTERNOON; WALT reply to Jesse's signature ingredient; public OCR line 139",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "The named WALT dialogue begins with the selected two words, but the draft adds a short tag. The final card follows the shorter aired reply, independently confirmed in transcript and subtitles."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Aired transcript line 358; reply after Jesse calls his ingredient a signature",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact complete two-word aired reply checked; speaker matched to the production draft's WALT dialogue."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Subtitle 443, 00:33:18.769–00:33:20.032 in this subtitle release",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad S01E01 Pilot DSR-0TV English subtitles — Scribd",
+            "url": "https://www.scribd.com/document/369379080/Breaking-Bad-S01E01-Pilot-DSR-0TV-Eng",
+            "verification": "Aired subtitle confirms the standalone reply, without the draft's additional tag. Timing belongs to this release and is not claimed to be universal."
+          },
+          {
+            "locator": "Adverb entry and grammar sections: Any more as a determiner; Any more as an adverb",
+            "title": "ANYMORE — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/anymore",
+            "verification": "Checked the cessation meaning, usual American spelling, sentence-final position and distinction from quantity in indexed Cambridge entry text. Russian explanation and workplace example are original."
+          }
+        ],
+        "term": "Not anymore.",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-17"
+  },
+  "batch_sha256": "e6a55522a64e6a4d6d15b2195bf3e1e823bfcdb602ec38de7e0db37f867605f1",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-17T03:10:13.251101Z"
+}
