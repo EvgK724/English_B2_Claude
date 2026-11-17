@@ -45235,6 +45235,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "think-through-t": {
+          "duration": 0.984,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "ad351f46bb406f65f014b47a4908e8c9e6b7213980ee9d8855bf2be2a2c350e1",
+          "packed_sha256": "5bc2c53e6c183ed4975a5d596554af7be1f55a65d6a89395cd96845d1958475d",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "e3a16c9bbff8330ffa2bc095b2079e849476a1985ce4569bb98293b6b3555844",
+          "signature": "b6e455fd942c615c5a03a0685b53a49801d499d4db9f326613bc4c5a1c4bb183",
+          "source": "Microsoft-Edge-TTS",
+          "text": "think through",
+          "text_sha256": "ad351f46bb406f65f014b47a4908e8c9e6b7213980ee9d8855bf2be2a2c350e1",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "think-through-x": {
+          "duration": 3.816,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "389f81ababf64519a78c02bfd8454f114ab9d22b71ca459bb6e44003977309f0",
+          "packed_sha256": "a210eb854e6c4d29a24f031f1077b75b7c6e2930d8d8aa14d382a097e7f4c022",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "b76c2c89bc77a8b38041e1651ee9f350dd1f0863a9fa3fee7843ccd8103cf1db",
+          "signature": "d1f59afadb705f6d8f509db608309f438a4a86f0012dc3050287aab230619b1f",
+          "source": "Microsoft-Edge-TTS",
+          "text": "I need to think the offer through before I decide whether to accept the job.",
+          "text_sha256": "389f81ababf64519a78c02bfd8454f114ab9d22b71ca459bb6e44003977309f0",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "turn-down-t": {
           "duration": 1.008,
           "edge_tts": "7.3.1",

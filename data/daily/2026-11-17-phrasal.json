@@ -1,0 +1,86 @@
+{
+  "batch_sha256": "df6687695422d54c59bb1a6ddbd7d71f36b4c4409198240dcd59d2e5b9ef52cc",
+  "cards": [
+    {
+      "added": "2026-11-17",
+      "au": 1,
+      "ex": "I need to think the offer through before I decide whether to accept the job.",
+      "exru": "Мне нужно тщательно обдумать предложение, прежде чем решить, соглашаться ли на эту работу.",
+      "id": "think-through",
+      "ipa": "/ˌθɪŋk ˈθruː/ · thought through · thought through",
+      "note": "Так говорят, когда подробно обдумывают решение, план или предложение и его возможные последствия: think through a plan, a decision, the consequences. С существительным возможны оба порядка: think through the offer / think the offer through; местоимение ставится между частями: think it through, не «think through it». Формы: think — thought — thought, не «thinked». Think about означает «думать о, обдумывать»; think through подчёркивает тщательный разбор деталей и последствий перед решением.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "тщательно продумать — с учётом возможных последствий",
+      "sources": [
+        {
+          "checked_on": "2026-11-17",
+          "title": "Collins COBUILD Advanced Learner’s Dictionary — think through",
+          "url": "https://www.collinsdictionary.com/dictionary/english/think-through",
+          "verification": "Verified phrasal-verb entry, B2 label, thorough consideration of a situation and its consequences, and both VERB PARTICLE noun and VERB noun PARTICLE patterns. The teaching example and Russian explanation are original."
+        },
+        {
+          "checked_on": "2026-11-17",
+          "title": "Collins English Dictionary — think",
+          "url": "https://www.collinsdictionary.com/dictionary/english/think",
+          "verification": "Verified pronunciation /θɪŋk/, past tense and past participle thought, and sense 4 for the broader think about comparison. Phrase stress in the learning IPA is pedagogical notation."
+        },
+        {
+          "checked_on": "2026-11-17",
+          "title": "Collins English Dictionary — through",
+          "url": "https://www.collinsdictionary.com/dictionary/english/through",
+          "verification": "Verified pronunciation /θruː/ and explicit use of through in the phrasal verb think through."
+        },
+        {
+          "checked_on": "2026-11-17",
+          "title": "British Council LearnEnglish — Phrasal verbs",
+          "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+          "verification": "Verified separable-verb word order and required personal-pronoun position between the verb and particle; supports the error correction in the note."
+        }
+      ],
+      "term": "think through"
+    }
+  ],
+  "clips": {
+    "think-through-t": {
+      "duration": 0.984,
+      "key": "think-through-t",
+      "location": [
+        3486240,
+        5904,
+        0.048
+      ],
+      "packed_sha256": "5bc2c53e6c183ed4975a5d596554af7be1f55a65d6a89395cd96845d1958475d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "e3a16c9bbff8330ffa2bc095b2079e849476a1985ce4569bb98293b6b3555844",
+      "text": "think through",
+      "text_sha256": "ad351f46bb406f65f014b47a4908e8c9e6b7213980ee9d8855bf2be2a2c350e1",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "think-through-x": {
+      "duration": 3.816,
+      "key": "think-through-x",
+      "location": [
+        3492144,
+        22896,
+        0.048
+      ],
+      "packed_sha256": "a210eb854e6c4d29a24f031f1077b75b7c6e2930d8d8aa14d382a097e7f4c022",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b76c2c89bc77a8b38041e1651ee9f350dd1f0863a9fa3fee7843ccd8103cf1db",
+      "text": "I need to think the offer through before I decide whether to accept the job.",
+      "text_sha256": "389f81ababf64519a78c02bfd8454f114ab9d22b71ca459bb6e44003977309f0",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-17",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
