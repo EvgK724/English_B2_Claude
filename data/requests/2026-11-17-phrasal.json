@@ -1,0 +1,49 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-17",
+        "au": 1,
+        "ex": "I need to think the offer through before I decide whether to accept the job.",
+        "exru": "Мне нужно тщательно обдумать предложение, прежде чем решить, соглашаться ли на эту работу.",
+        "id": "think-through",
+        "ipa": "/ˌθɪŋk ˈθruː/ · thought through · thought through",
+        "note": "Так говорят, когда подробно обдумывают решение, план или предложение и его возможные последствия: think through a plan, a decision, the consequences. С существительным возможны оба порядка: think through the offer / think the offer through; местоимение ставится между частями: think it through, не «think through it». Формы: think — thought — thought, не «thinked». Think about означает «думать о, обдумывать»; think through подчёркивает тщательный разбор деталей и последствий перед решением.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "тщательно продумать — с учётом возможных последствий",
+        "sources": [
+          {
+            "checked_on": "2026-11-17",
+            "title": "Collins COBUILD Advanced Learner’s Dictionary — think through",
+            "url": "https://www.collinsdictionary.com/dictionary/english/think-through",
+            "verification": "Verified phrasal-verb entry, B2 label, thorough consideration of a situation and its consequences, and both VERB PARTICLE noun and VERB noun PARTICLE patterns. The teaching example and Russian explanation are original."
+          },
+          {
+            "checked_on": "2026-11-17",
+            "title": "Collins English Dictionary — think",
+            "url": "https://www.collinsdictionary.com/dictionary/english/think",
+            "verification": "Verified pronunciation /θɪŋk/, past tense and past participle thought, and sense 4 for the broader think about comparison. Phrase stress in the learning IPA is pedagogical notation."
+          },
+          {
+            "checked_on": "2026-11-17",
+            "title": "Collins English Dictionary — through",
+            "url": "https://www.collinsdictionary.com/dictionary/english/through",
+            "verification": "Verified pronunciation /θruː/ and explicit use of through in the phrasal verb think through."
+          },
+          {
+            "checked_on": "2026-11-17",
+            "title": "British Council LearnEnglish — Phrasal verbs",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+            "verification": "Verified separable-verb word order and required personal-pronoun position between the verb and particle; supports the error correction in the note."
+          }
+        ],
+        "term": "think through"
+      }
+    ],
+    "date": "2026-11-17"
+  },
+  "batch_sha256": "df6687695422d54c59bb1a6ddbd7d71f36b4c4409198240dcd59d2e5b9ef52cc",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-17T06:37:37.963116Z"
+}
