@@ -45153,6 +45153,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "stick-to-t": {
+          "duration": 0.912,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "814c7d36ebb59e31ef9fe4ebe2b4eb418546b116824ee8fc63da232f93f5c594",
+          "packed_sha256": "54d92c982ced585cf40dc3921929afefa5ee6b91f2a272b099bea5fa6106db9f",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "ad3050c236ecf8683c2c2647330d1b47f8f7eb69253d28930acc7529c0625076",
+          "signature": "4f78fae3b959175959d6deaed9faab0ab48e89054d1f1a6f911d04fbe76f7940",
+          "source": "Microsoft-Edge-TTS",
+          "text": "stick to",
+          "text_sha256": "814c7d36ebb59e31ef9fe4ebe2b4eb418546b116824ee8fc63da232f93f5c594",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "stick-to-x": {
+          "duration": 3.864,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "b75e2062c09b7055dbc91754f83c2431af8b42707112c656a1454b27915ef85e",
+          "packed_sha256": "1df46bea6e9366762f5a6f43fcc77226199055d28bc4f02b311b3a5c6761fc5b",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "ef717dfde8ac369cb2fd808ed37bc42167bb0b235db5af733665da0f357a2526",
+          "signature": "38dea6cb98fd97d788d73f75804da1f571fc7000155591a38dc37c086fd6016f",
+          "source": "Microsoft-Edge-TTS",
+          "text": "We need to stick to the agreed agenda so that everyone has time to speak.",
+          "text_sha256": "b75e2062c09b7055dbc91754f83c2431af8b42707112c656a1454b27915ef85e",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "take-over-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "a38f91217547d213b0ff8c8d337847ec59d4b4e55369302f8f4e6f331f11ad76",

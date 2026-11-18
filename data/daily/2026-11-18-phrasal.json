@@ -1,0 +1,88 @@
+{
+  "batch_sha256": "265073c1df1ec399da15db6a98cfa3d22d4a436fc027819e5af7e4e1036688b5",
+  "cards": [
+    {
+      "added": "2026-11-18",
+      "au": 1,
+      "ex": "We need to stick to the agreed agenda so that everyone has time to speak.",
+      "exru": "Нам нужно придерживаться согласованной повестки, чтобы у каждого было время высказаться.",
+      "id": "stick-to",
+      "ipa": "/ˈstɪk tə/ · stuck to · stuck to",
+      "note": "Так говорят, когда следуют выбранному плану или соблюдают договорённость: stick to the plan, the rules, an agreement. Дополнение остаётся после to, включая местоимение: stick to it, не «stick it to» в этом значении. To здесь предлог: перед действием нужна форма -ing — stick to using the same method, не «stick to use». Формы: stick — stuck — stuck, не «sticked». В связной речи to обычно произносится /tə/. Carry on означает продолжать действие; stick to подчёркивает, что мы придерживаемся выбранного способа или плана и не отступаем от него.",
+      "pos": "phrasal verb · непереходный, с дополнением после to · неразделяемый",
+      "ru": "придерживаться, соблюдать — план, правила или договорённость",
+      "sources": [
+        {
+          "evidence": "Senses 2, 3 and 5: continue a chosen activity or topic; keep an agreement or rules. The entry includes an -ing complement and describes the British construction as prepositional.",
+          "title": "STICK TO definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/stick-to",
+          "verified_on": "2026-11-18"
+        },
+        {
+          "access": "Official dictionary entry text in web search results; direct page open returned HTTP 403 and was not bypassed.",
+          "evidence": "B2 meaning, UK /stɪk/, past tense and past participle stuck; object follows to.",
+          "title": "STICK TO SOMETHING | English meaning - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/stick-to",
+          "verified_on": "2026-11-18"
+        },
+        {
+          "access": "Official dictionary entry text in web search results.",
+          "evidence": "Weak form /tə/ and strong form /tuː/; the card gives the connected-speech form.",
+          "title": "to preposition - Oxford Advanced Learner’s Dictionary",
+          "url": "https://www.oxfordlearnersdictionaries.co.uk/us/definition/english/to_1",
+          "verified_on": "2026-11-18"
+        },
+        {
+          "evidence": "Sense 1: continuing an activity; supports the contrast in the original teaching note.",
+          "title": "CARRY ON definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/carry-on",
+          "verified_on": "2026-11-18"
+        }
+      ],
+      "term": "stick to"
+    }
+  ],
+  "clips": {
+    "stick-to-t": {
+      "duration": 0.912,
+      "key": "stick-to-t",
+      "location": [
+        3515040,
+        5472,
+        0.048
+      ],
+      "packed_sha256": "54d92c982ced585cf40dc3921929afefa5ee6b91f2a272b099bea5fa6106db9f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ad3050c236ecf8683c2c2647330d1b47f8f7eb69253d28930acc7529c0625076",
+      "text": "stick to",
+      "text_sha256": "814c7d36ebb59e31ef9fe4ebe2b4eb418546b116824ee8fc63da232f93f5c594",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "stick-to-x": {
+      "duration": 3.864,
+      "key": "stick-to-x",
+      "location": [
+        3520512,
+        23184,
+        0.048
+      ],
+      "packed_sha256": "1df46bea6e9366762f5a6f43fcc77226199055d28bc4f02b311b3a5c6761fc5b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "ef717dfde8ac369cb2fd808ed37bc42167bb0b235db5af733665da0f357a2526",
+      "text": "We need to stick to the agreed agenda so that everyone has time to speak.",
+      "text_sha256": "b75e2062c09b7055dbc91754f83c2431af8b42707112c656a1454b27915ef85e",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-18",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
