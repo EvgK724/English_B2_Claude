@@ -1,0 +1,51 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-18",
+        "au": 1,
+        "ex": "We need to stick to the agreed agenda so that everyone has time to speak.",
+        "exru": "Нам нужно придерживаться согласованной повестки, чтобы у каждого было время высказаться.",
+        "id": "stick-to",
+        "ipa": "/ˈstɪk tə/ · stuck to · stuck to",
+        "note": "Так говорят, когда следуют выбранному плану или соблюдают договорённость: stick to the plan, the rules, an agreement. Дополнение остаётся после to, включая местоимение: stick to it, не «stick it to» в этом значении. To здесь предлог: перед действием нужна форма -ing — stick to using the same method, не «stick to use». Формы: stick — stuck — stuck, не «sticked». В связной речи to обычно произносится /tə/. Carry on означает продолжать действие; stick to подчёркивает, что мы придерживаемся выбранного способа или плана и не отступаем от него.",
+        "pos": "phrasal verb · непереходный, с дополнением после to · неразделяемый",
+        "ru": "придерживаться, соблюдать — план, правила или договорённость",
+        "sources": [
+          {
+            "evidence": "Senses 2, 3 and 5: continue a chosen activity or topic; keep an agreement or rules. The entry includes an -ing complement and describes the British construction as prepositional.",
+            "title": "STICK TO definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/stick-to",
+            "verified_on": "2026-11-18"
+          },
+          {
+            "access": "Official dictionary entry text in web search results; direct page open returned HTTP 403 and was not bypassed.",
+            "evidence": "B2 meaning, UK /stɪk/, past tense and past participle stuck; object follows to.",
+            "title": "STICK TO SOMETHING | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/stick-to",
+            "verified_on": "2026-11-18"
+          },
+          {
+            "access": "Official dictionary entry text in web search results.",
+            "evidence": "Weak form /tə/ and strong form /tuː/; the card gives the connected-speech form.",
+            "title": "to preposition - Oxford Advanced Learner’s Dictionary",
+            "url": "https://www.oxfordlearnersdictionaries.co.uk/us/definition/english/to_1",
+            "verified_on": "2026-11-18"
+          },
+          {
+            "evidence": "Sense 1: continuing an activity; supports the contrast in the original teaching note.",
+            "title": "CARRY ON definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/carry-on",
+            "verified_on": "2026-11-18"
+          }
+        ],
+        "term": "stick to"
+      }
+    ],
+    "date": "2026-11-18"
+  },
+  "batch_sha256": "265073c1df1ec399da15db6a98cfa3d22d4a436fc027819e5af7e4e1036688b5",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-18T06:57:48.890934Z"
+}
