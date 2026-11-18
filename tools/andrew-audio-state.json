@@ -1464,6 +1464,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "how-do-we-proceed-t": {
+      "duration": 1.08,
+      "edge_tts": "7.3.1",
+      "key": "how-do-we-proceed-t",
+      "ledger": "data/daily/2026-11-18-bbapp.json",
+      "location": [
+        3551040,
+        6480,
+        0.048
+      ],
+      "packed_sha256": "c12af518026781ea74c49ee2a557359fcfa9eb8ac4de2e9039dbdf30e597d31f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "871de6ba2f4a504f77b9674dbaa358e5a6f358307fb60d05defcecc965f522a3",
+      "signature": "380dcc38c21b001d2ca7c7dc849cd3f42e9ea253c9490f113812253078a9dd2a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "How do we proceed?",
+      "text_sha256": "500f117ae57c5a0999ab1d1b00cc1821b14dc98be16e971f5fdd0e71aef52f4a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-do-we-proceed-x": {
+      "duration": 3.84,
+      "edge_tts": "7.3.1",
+      "key": "how-do-we-proceed-x",
+      "ledger": "data/daily/2026-11-18-bbapp.json",
+      "location": [
+        3557520,
+        23040,
+        0.048
+      ],
+      "packed_sha256": "a9d4e27973e309c8d8c069844c2dc86363fedf28e72e8f534f1ccb92c88fe2f4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b1c61ac41b9ed9841d18be871c92055b04d51d2d18ca55fedb2b808debd3d720",
+      "signature": "bd1d72f3ac74e4439bb911b191db36fc71f38416bdea9304c6415a8aef47a234",
+      "source": "Microsoft-Edge-TTS",
+      "text": "The client has rejected our first proposal. How do we proceed?",
+      "text_sha256": "c41ec13caeb1ec03497fb4ec8a9b70372b1b30201ca8c3ec46f66a077bed52de",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "how-you-holding-up-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3355,6 +3397,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "I'm the one who signs these forms, so bring them straight to me.",
       "text_sha256": "d5c1b1bdb7bd4a7a75f6cea6589613884874bb1fb1cc449c972d25966c854b61",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "too-bad-t": {
+      "duration": 0.72,
+      "edge_tts": "7.3.1",
+      "key": "too-bad-t",
+      "ledger": "data/daily/2026-11-18-bbapp.json",
+      "location": [
+        3520944,
+        4320,
+        0.048
+      ],
+      "packed_sha256": "a8ca172d74ec7c86bbe048d3f2b5f07ce8d906971cae306812ca0e4b2535c58e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d7d572a9bd60ffa510fa1cc25cbe1aee4d80e1358b9b94adf4ed52f44d769f89",
+      "signature": "84eb48c3203fd08f9dd6d0fb0d7ef6c892b2777ffff48dc4291b641bccf916ba",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Too bad.",
+      "text_sha256": "b384674c75c80cada65bccba4a7d3c49fb3f00e05cbf8e2f2de6ab55069c1301",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "too-bad-x": {
+      "duration": 4.296,
+      "edge_tts": "7.3.1",
+      "key": "too-bad-x",
+      "ledger": "data/daily/2026-11-18-bbapp.json",
+      "location": [
+        3525264,
+        25776,
+        0.048
+      ],
+      "packed_sha256": "8212534337c3dbf549cf845345f896c1d0a0ff146716a331975b8702a46eab9b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7bb2d6ed3bf720b89bfd98b035614aff678cf9de0b1f9e50a952ebf2ccb935f6",
+      "signature": "d445a27eb45e17c743ad85596027f5c575bdaa1545ada9a8dcede2d045d550b1",
+      "source": "Microsoft-Edge-TTS",
+      "text": "It's too bad you can't join the meeting, but I'll send you a summary afterwards.",
+      "text_sha256": "fceb6c90b34808b891fc85f61aa69b4d861dbbfc022d36403cf30f97bb5083f4",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
