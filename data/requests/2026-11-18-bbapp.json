@@ -1,0 +1,105 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-18",
+        "au": 1,
+        "ex": "It's too bad you can't join the meeting, but I'll send you a summary afterwards.",
+        "exru": "Жаль, что ты не сможешь участвовать во встрече, но после неё я пришлю тебе краткое изложение.",
+        "id": "too-bad",
+        "note": "В S01E01 «Pilot» Скайлер отвечает сыну, который отказывается от растительного бекона. Взята отдельная короткая реплика перед её требованием есть. Too bad может выражать сожаление («жаль») или безразличие к чужому недовольству («что ж, придётся смириться»); здесь — второй смысл. Короткий ответ без тёплой интонации легко звучит резко, поэтому для поддержки собеседника лучше выбрать I'm sorry to hear that. Более развёрнутое It's too bad that... часто выражает обычное сожаление; именно такое употребление показано в собственном примере. После that идёт предложение, а само that можно опустить. Не путай too bad с not too bad: второе означает «неплохо». Too пишется с двумя o; to bad — ошибка.",
+        "reg": "разговорное; в сцене — без сочувствия, категорично",
+        "ru": "Ничего не поделаешь. Придётся смириться.",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Scene 10, INT. WHITE HOUSE - KITCHEN - MORNING, script p. 6A; public OCR line 62, named SKYLER dialogue",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "Exact two-word sentence and named speaker checked in the breakfast scene. The following imperative is not included."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Aired transcript line 47; breakfast exchange after Walter Jr rejects the veggie bacon",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact standalone aired sentence checked; speaker corroborated by the production draft's named SKYLER dialogue."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Subtitle 47, 00:06:23.430–00:06:24.430 in this release",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad S01E01 Pilot DSR-0TV English subtitles — Scribd (display title: Breaking Bad S01E01: The Bondsman)",
+            "url": "https://www.scribd.com/document/369379080/Breaking-Bad-S01E01-Pilot-DSR-0TV-Eng",
+            "verification": "Aired subtitle independently confirms the complete two-word sentence. The host's AI-enhanced display title is inaccurate; episode identity is established by the subtitle document and dialogue. Timing is release-specific."
+          },
+          {
+            "locator": "Phrase and convention entries: regret versus a dismissive response; informal British usage",
+            "title": "TOO BAD definition and meaning — Collins COBUILD Advanced Learner's Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/too-bad",
+            "verification": "Checked both regret and lack-of-sympathy senses. Russian explanation and the meeting example are original; the example illustrates the more sympathetic expanded construction."
+          }
+        ],
+        "term": "Too bad.",
+        "who": "Скайлер Уайт"
+      },
+      {
+        "added": "2026-11-18",
+        "au": 1,
+        "ex": "The client has rejected our first proposal. How do we proceed?",
+        "exru": "Клиент отклонил наше первое предложение. Как нам действовать дальше?",
+        "id": "how-do-we-proceed",
+        "note": "В S01E01 «Pilot» Уолтер спрашивает Джесси о следующем шаге после их первой совместной работы в фургоне. В эфире это отдельный вопрос; вводное So из сценария в карточку не включено. Proceed здесь значит «действовать дальше, продолжать процесс», а не просто идти куда-то. Вопрос звучит собранно и немного официально: он подходит для обсуждения проекта или порядка действий. Более разговорный вариант — What do we do next? Порядок слов в прямом вопросе: How + do + we + proceed; не How we proceed? Глагол здесь непереходный: proceed with the plan — продолжить действовать по плану, не proceed the plan. Proceed to the next stage означает «перейти к следующему этапу».",
+        "reg": "нейтрально-деловое, несколько официальное",
+        "ru": "Как нам действовать дальше?",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "INT. WINNEBAGO - EVENING, script p. 44; public OCR line 167, named WALT dialogue before Jesse proposes the next day's work",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad 1x01 Pilot Script 2007 Draft Dig M — Vince Gilligan, production draft",
+            "url": "https://pt.scribd.com/document/251431674/Breaking-Bad-1x01-Pilot-Script-2007-Draft-Dig-m",
+            "verification": "Named WALT dialogue confirms the question and speaker. The draft has an introductory So; final wording follows the independent aired question."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Aired transcript line 473; second question before Jesse's reply about tomorrow",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad s01e01 Episode Script — Pilot — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad",
+            "verification": "Exact four-word question checked in the aired transcript; speaker matched to the production draft's named WALT dialogue."
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Subtitle 583, 00:42:58.071–00:42:59.722 in this release",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad S01E01 Pilot DSR-0TV English subtitles — Scribd (display title: Breaking Bad S01E01: The Bondsman)",
+            "url": "https://www.scribd.com/document/369379080/Breaking-Bad-S01E01-Pilot-DSR-0TV-Eng",
+            "verification": "Aired subtitle confirms a complete separate question without the draft's introductory So. The host's AI-enhanced display title is inaccurate; document dialogue identifies Pilot. Timing is release-specific."
+          },
+          {
+            "locator": "Intransitive verb, senses 2 and 3; dictionary examples of proceed with and proceed to",
+            "title": "PROCEED Definition & Meaning — Merriam-Webster",
+            "url": "https://www.merriam-webster.com/dictionary/proceed",
+            "verification": "Checked the continue/carry-on meaning, intransitive construction and prepositional usage. Russian teaching text and workplace example are original."
+          }
+        ],
+        "term": "How do we proceed?",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-18"
+  },
+  "batch_sha256": "a6c682aef6de5efd73d0e63a347d6d9ab44d5e238863085579e8ecb3e823e28f",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-18T03:12:45.476232Z"
+}
