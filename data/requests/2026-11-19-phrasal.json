@@ -1,0 +1,49 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-19",
+        "au": 1,
+        "ex": "Once the maps were dry, we folded them and put them away in the top drawer.",
+        "exru": "Когда карты высохли, мы сложили их и убрали в верхний ящик.",
+        "id": "put-away",
+        "ipa": "/pʊt əˈweɪ/ · put away · put away",
+        "note": "С существительным возможны оба порядка слов: put the maps away или put away the maps. Местоимение ставят между put и away: put them away. Форма «put away them» ошибочна. Put back означает вернуть вещь туда, где она была. Если карта лежала на столе, put it back on the table — положить её обратно на стол, а put it away — убрать туда, где её хранят.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "убрать на место — туда, где вещь обычно хранится",
+        "sources": [
+          {
+            "evidence": "British IPA for the whole phrase; the storage sense takes an object. Both positions for a noun object are illustrated.",
+            "title": "PUT AWAY definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/put-away",
+            "verified_on": "2026-11-19"
+          },
+          {
+            "evidence": "The STORE sense is marked B1. The entry gives the past tense and past participle as put.",
+            "title": "PUT SOMETHING AWAY | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/put-away",
+            "verified_on": "2026-11-19"
+          },
+          {
+            "evidence": "A personal pronoun goes between the verb and particle in a separable phrasal verb.",
+            "title": "Phrasal verbs | LearnEnglish",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+            "verified_on": "2026-11-19"
+          },
+          {
+            "evidence": "The REPLACE sense refers to an object's previous position; this explains the comparison with put away.",
+            "title": "PUT SOMETHING BACK | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/put-back",
+            "verified_on": "2026-11-19"
+          }
+        ],
+        "term": "put away"
+      }
+    ],
+    "date": "2026-11-19"
+  },
+  "batch_sha256": "351a4c77ad8317dd12460ab81a7873eaad3d3556ffea9b3788790c5a4625c3bc",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-19T06:27:11.265323Z"
+}
