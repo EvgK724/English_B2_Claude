@@ -1,0 +1,103 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-19",
+        "au": 1,
+        "ex": "Thursday works for me if we can meet after lunch.",
+        "exru": "Четверг мне подходит, если мы сможем встретиться после обеда.",
+        "id": "works-for-me",
+        "note": "В S05E14 «Ozymandias» Джек принимает предложение Тодда. Так же можно согласиться на время или место встречи. В полной фразе That works for me слово that указывает на предложенный вариант. В коротком ответе подлежащее опускают, а окончание -s у works сохраняется. Чтобы спросить, удобно ли собеседнику, скажи Does that work for you? После does нужен глагол work без -s.",
+        "reg": "разговорное, спокойное согласие",
+        "ru": "Меня устраивает.",
+        "sources": [
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Scene 14, printed p. 21. Jack responds to Todd's proposal and turns to Walt.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — final production draft, April 1, 2013",
+            "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script",
+            "verification": "JACK is the named speaker. The card uses the first complete sentence of his turn. The host labels the upload “Felina”. The title page and running headers identify it as “Ozymandias”, episode 514."
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Cue 271, 00:17:31.116–00:17:33.117 in this subtitle release. Jack responds to Todd's proposal and turns to Walt.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Breaking Bad – 05x14 – Ozymandias, English subtitles",
+            "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias",
+            "verification": "The cue contains a statement followed by a separate question. The card contains the statement."
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Aired transcript, line 215. Jack responds to Todd's proposal and turns to Walt.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Breaking Bad s05e14 Episode Script — Ozymandias, Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s05e14&tv-show=breaking-bad",
+            "verification": "Complete sentence matches the aired subtitles."
+          },
+          {
+            "locator": "Spoken phrase under work, indicating that something suits someone.",
+            "title": "(it) works for me/you etc — Longman Dictionary of Contemporary English",
+            "url": "https://www.ldoceonline.com/dictionary/it-works-for-me-you-etc"
+          }
+        ],
+        "term": "Works for me.",
+        "who": "Джек Уэлкер"
+      },
+      {
+        "added": "2026-11-19",
+        "au": 1,
+        "ex": "I sat down for a minute to let the news sink in.",
+        "exru": "Я присел на минуту, чтобы осмыслить новость.",
+        "id": "you-let-that-sink-in",
+        "note": "В S05E14 «Ozymandias» Уолтер говорит это Скайлер по телефону. Sink in описывает момент, когда до человека наконец доходит смысл услышанного. В этой реплике that отсылает к предыдущим словам Уолтера, а начальное you делает повеление настойчивее. В спокойном разговоре let that sink in предлагает ненадолго остановиться и осмыслить новость. После let и слова, которое называет новость, глагол sink ставится без to.",
+        "reg": "разговорное, в сцене звучит как жёсткое предупреждение",
+        "ru": "Ты вдумайся в то, что я сказал.",
+        "sources": [
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Scene 43, printed p. 51. Walt's phone call to Skyler near the end of the episode.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — final production draft, April 1, 2013",
+            "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script",
+            "verification": "Under WALT, the same five words follow a comma. The aired subtitles give them their own sentence. The host labels the upload “Felina”. The title page and running headers identify it as “Ozymandias”, episode 514."
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Cue 649, 00:44:23.822–00:44:26.287 in this subtitle release. Walt's phone call to Skyler near the end of the episode.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad – 05x14 – Ozymandias, English subtitles",
+            "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias",
+            "verification": "The five words form a complete sentence in this cue, following a separate cue for the preceding phrase."
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Aired transcript, line 495. Walt's phone call to Skyler near the end of the episode.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad s05e14 Episode Script — Ozymandias, Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s05e14&tv-show=breaking-bad",
+            "verification": "Complete sentence matches the aired subtitles."
+          },
+          {
+            "locator": "Phrasal verb, sense 1, of words or an event becoming fully understood.",
+            "title": "sink in — Oxford Advanced Learner’s Dictionary",
+            "url": "https://www.oxfordlearnersdictionaries.com/us/definition/english/sink-in"
+          }
+        ],
+        "term": "You let that sink in.",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-19"
+  },
+  "batch_sha256": "c37b18cdf3a171e26b67f30c2d91f45e63b932f9a96b4634ae8f3ba1868a82a8",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-19T03:57:12.317484Z"
+}
