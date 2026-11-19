@@ -3906,6 +3906,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "works-for-me-t": {
+      "duration": 0.72,
+      "edge_tts": "7.3.1",
+      "key": "works-for-me-t",
+      "ledger": "data/daily/2026-11-19-bbapp.json",
+      "location": [
+        3580560,
+        4320,
+        0.048
+      ],
+      "packed_sha256": "9e8daa003661f5f26d319e4984bbee4abfc09aa14234787264f6d7898698f734",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "01f69a3769e0a582b611ff8a0261b54518c77050388ecb2909d800278751cfd3",
+      "signature": "7e12ff5d080234b9d5f66e2a1dbe91d32bc4ba112ecf914c69319ddd47011558",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Works for me.",
+      "text_sha256": "9fbfa61fedecfd1ac7d08e7ede8fc558dc2ed7922961be3d340129723e40e920",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "works-for-me-x": {
+      "duration": 2.712,
+      "edge_tts": "7.3.1",
+      "key": "works-for-me-x",
+      "ledger": "data/daily/2026-11-19-bbapp.json",
+      "location": [
+        3584880,
+        16272,
+        0.048
+      ],
+      "packed_sha256": "9d1ee589f655e242f03ee0cacd585c7f5cd2bdd217833a139fa4337677791714",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c70881ddf93e9124a58801eec251868023fba8827e188b3c1c23b3a2f29dc007",
+      "signature": "8c96d610763ae371bcbc17527b0121f8d3380e772962b82a8032d97e010ac718",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Thursday works for me if we can meet after lunch.",
+      "text_sha256": "f6997ba4762f76a80413ac685e8fecf2db1166900eee5f386a180817af01a9fb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "worth-a-shot-t": {
       "duration": 0.96,
       "edge_tts": "7.3.1",
@@ -4131,6 +4173,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "You know how they say the night shift gets easier — well, it doesn’t.",
       "text_sha256": "9e3ecd67eb9c25ad15c1787d2bddbb1be572d5d5c6be04391a943935e5b711e4",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-let-that-sink-in-t": {
+      "duration": 1.128,
+      "edge_tts": "7.3.1",
+      "key": "you-let-that-sink-in-t",
+      "ledger": "data/daily/2026-11-19-bbapp.json",
+      "location": [
+        3601152,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "45a3b30131c333be1e46b5f00d8adaf647c949b584b1775e7a8027f66775e837",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "a809135d74ad1e4db6992eeec8888c276145b620efe18f200c41d7a362f2a580",
+      "signature": "b97850cbc266bc0b7e82807ef6f8ad81fb546f54ec0491c427e23b35bab540a8",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You let that sink in.",
+      "text_sha256": "348682e5c1618cc5f1ceecf507286cc4789c4a758dcd4d1e269816f517058c7f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "you-let-that-sink-in-x": {
+      "duration": 2.568,
+      "edge_tts": "7.3.1",
+      "key": "you-let-that-sink-in-x",
+      "ledger": "data/daily/2026-11-19-bbapp.json",
+      "location": [
+        3607920,
+        15408,
+        0.048
+      ],
+      "packed_sha256": "2d8b5e8fe40a877eb1f08be1d510586b390c35787b1726571c29cf999e33ae7e",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "fcf2e3af086573433d17e16bea47aeedac38bee983c38815b34ea7534f14fe41",
+      "signature": "76e7ad9a8c343e54facd849dbb397d0b1b18e32f3661afc02ca14da2ac11f280",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I sat down for a minute to let the news sink in.",
+      "text_sha256": "7c088190e3cf2426c8f32558784309711f2d723aca4242aaad7a3842fa07adc1",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
