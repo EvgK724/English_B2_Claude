@@ -44881,6 +44881,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "put-away-t": {
+          "duration": 0.936,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "9fc4c11423cf512ef193da7e561a7318ebd6ccb5128b113bd33aaf42e196fce7",
+          "packed_sha256": "a00e2efac594631744015523d2d0e99584a1e2364d4e4c3af0bbafa41d43792c",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "b2371b78351783911134bf3f652ee8e47b8f1e0a12f09626748227d5546f396b",
+          "signature": "37d5e41d0415ff50e7ce92aff82426d2f39de3d7531149e602e01a22e24b76e2",
+          "source": "Microsoft-Edge-TTS",
+          "text": "put away",
+          "text_sha256": "9fc4c11423cf512ef193da7e561a7318ebd6ccb5128b113bd33aaf42e196fce7",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "put-away-x": {
+          "duration": 4.272,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "f57677fbf65f26439f9043b51d0a8ab6dda12f5d2ac62643f2cadcef5555dd10",
+          "packed_sha256": "7f01a5be5886d6a89ab23466cb762de3663e915de07e1057d421075d511bb6f3",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "d562652133f0cf010c17239cedbdd62be877aa97b49bfe4ae4969ada6b3fe391",
+          "signature": "ced949e93f8e232930405bc45ffbed29dbd8b7b05b513a5e41b1cdc80dc9a4ce",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Once the maps were dry, we folded them and put them away in the top drawer.",
+          "text_sha256": "f57677fbf65f26439f9043b51d0a8ab6dda12f5d2ac62643f2cadcef5555dd10",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "put-forward-t": {
           "duration": 0.984,
           "edge_tts": "7.3.1",
