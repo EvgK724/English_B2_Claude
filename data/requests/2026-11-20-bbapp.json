@@ -1,0 +1,94 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-20",
+        "au": 1,
+        "ex": "Do you have a minute to look over my email before I send it?",
+        "exru": "У тебя есть минутка просмотреть моё письмо перед отправкой?",
+        "id": "do-you-have-a-minute",
+        "note": "В S03E07 «One Minute» Скайлер задаёт этот вопрос, когда Уолтер открывает ей дверь. Так можно узнать, удобно ли человеку сейчас поговорить. Слова a minute обозначают короткое время. Если хочешь сразу назвать дело, используй конструкцию a minute to talk или подставь другой глагол после to. Перед minute в этом вопросе нужен артикль a.",
+        "reg": "нейтральное, вежливое начало разговора",
+        "ru": "У тебя есть минутка?",
+        "sources": [
+          {
+            "episode": "S03E07 One Minute",
+            "locator": "Printed p. 17 (PDF p. 20). Skyler at the door of Walt's condo, immediately after Walt's greeting.",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Thomas Schnauz, Breaking Bad #307 “One Minute” — As Broadcast, Sony Pictures Television",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-307-one-minute-2010.pdf?v=1745342672",
+            "verification": "The as-broadcast script attributes the complete question to SKYLER."
+          },
+          {
+            "episode": "S03E07 One Minute",
+            "locator": "English subtitle cue 192, 00:17:39.000–00:17:40.877 in this release. Walt answers in cue 193.",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "One Minute subtitles — Breaking Bad Wiki",
+            "url": "https://breakingbad.fandom.com/wiki/One_Minute_subtitles",
+            "verification": "The subtitle matches the question in the as-broadcast script word for word."
+          },
+          {
+            "episode": "S03E07 One Minute",
+            "locator": "At the door of Walt's condo, after the doorbell and before Skyler comments on the apartment.",
+            "short_excerpt": true,
+            "speaker": "Skyler White",
+            "title": "Breaking Bad s03e07 Episode Script — One Minute, Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s03e07&tv-show=breaking-bad",
+            "verification": "The aired transcript gives the same complete question."
+          },
+          {
+            "locator": "Spoken use when asking whether someone has time for a question or a short conversation.",
+            "title": "have a minute — Cambridge Advanced Learner's Dictionary & Thesaurus",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/have-a-minute?topic=announcing-informing-and-stating"
+          }
+        ],
+        "term": "Do you have a minute?",
+        "who": "Скайлер Уайт"
+      },
+      {
+        "added": "2026-11-20",
+        "au": 1,
+        "ex": "Maya earned that promotion, no doubt about it.",
+        "exru": "Майя заслужила это повышение, без всяких сомнений.",
+        "id": "no-doubt-about-it",
+        "note": "В S05E16 «Felina» Мари по телефону уверяет Скайлер, что Уолтера поймают. Слово it отсылает к тому, что Мари только что сказала. Полная форма — There’s no doubt about it. В разговоре её часто сокращают и ставят в конце фразы, чтобы подчеркнуть уверенность. В слове doubt буква b не произносится.",
+        "reg": "разговорное, уверенное утверждение",
+        "ru": "В этом нет сомнений.",
+        "sources": [
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Scene 26, printed p. 30. Marie calls Skyler and says the police will catch Walt.",
+            "short_excerpt": true,
+            "speaker": "Marie Schrader",
+            "title": "Vince Gilligan, Breaking Bad #516 “Felina” — final script, April 3, 2013",
+            "url": "https://www.scribd.com/document/406938335/Breaking-Bad-Finale",
+            "verification": "The sentence appears in full under MARIE."
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "English subtitle cue 428, 00:28:43.686–00:28:44.936 in this release, during Marie's call to Skyler.",
+            "short_excerpt": true,
+            "speaker": "Marie Schrader",
+            "title": "S05-E16 Felina — English subtitles, Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/89/S05-E16%20Felina.html",
+            "verification": "The four-word cue matches the complete sentence in the final script."
+          },
+          {
+            "locator": "Phrase entry on expressing certainty.",
+            "title": "no doubt about it — Merriam-Webster.com Dictionary",
+            "url": "https://www.merriam-webster.com/dictionary/no%20doubt%20about%20it"
+          }
+        ],
+        "term": "No doubt about it.",
+        "who": "Мари Шрейдер"
+      }
+    ],
+    "date": "2026-11-20"
+  },
+  "batch_sha256": "11645691141248f8b52bf6fd677667e9121e26fa8ce9a50f583711c38d3953ed",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-20T03:54:36.064164Z"
+}
