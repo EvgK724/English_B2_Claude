@@ -710,6 +710,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "do-you-have-a-minute-t": {
+      "duration": 0.912,
+      "edge_tts": "7.3.1",
+      "key": "do-you-have-a-minute-t",
+      "ledger": "data/daily/2026-11-20-bbapp.json",
+      "location": [
+        3623328,
+        5472,
+        0.048
+      ],
+      "packed_sha256": "f18e3c001a4a18decb12d87844f1e5e2ee30e91d58a5c15bd94838bb3890aa6c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "0b3f1762b8e6c19aeb7014e7de4862fc65d6309741a8103ac6ca8030b79b1da0",
+      "signature": "4ac5e160269130e2b2f7a94ab520ecdd1d91f650602e112556eb063429787c00",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Do you have a minute?",
+      "text_sha256": "17dd9dc668a2f0a3ea37adf01f4bfde84db78f453ab18768e87879a4e7311c83",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "do-you-have-a-minute-x": {
+      "duration": 2.712,
+      "edge_tts": "7.3.1",
+      "key": "do-you-have-a-minute-x",
+      "ledger": "data/daily/2026-11-20-bbapp.json",
+      "location": [
+        3628800,
+        16272,
+        0.048
+      ],
+      "packed_sha256": "701ac56487ca8af067e7f84b511a60fbd1a459a47386769601729b0c60ade79f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c37c85a5cd7dd85a9bcdef1e28b36d12439dce00f12694613d2fea141a308197",
+      "signature": "4aec0d5a613d009ed9c93e9ce2c61d785b4bcc135fee3f0a61346a8b22650577",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Do you have a minute to look over my email before I send it?",
+      "text_sha256": "0a4722c723ebce1a444d0044632beabb3a364e46842b24a82c94d9008d5135fb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "done-explaining-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -2443,6 +2485,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "I'll never make that mistake again - now I check the dose twice.",
       "text_sha256": "57865a01dbc4bf6b5a168a27ad51252fbd7caa054bea5074b55b96930ada41bb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-doubt-about-it-t": {
+      "duration": 0.936,
+      "edge_tts": "7.3.1",
+      "key": "no-doubt-about-it-t",
+      "ledger": "data/daily/2026-11-20-bbapp.json",
+      "location": [
+        3645072,
+        5616,
+        0.048
+      ],
+      "packed_sha256": "d3c90667d1e19aa963dd2bc711160b1fd71b3c7551d40a8c969fb5abb0a85db2",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "3a546e67f09b9a037bb704190769e73ae4636b29d8d0564e3498c54f3d586014",
+      "signature": "f5ba2d1b2a8385ecf56f4c7b0b712f2e131e90fcdca4baa94a0b4f802759666e",
+      "source": "Microsoft-Edge-TTS",
+      "text": "No doubt about it.",
+      "text_sha256": "92f2b2324e3811275f1645e29207f9aef550e5e6b009d2a0c7c318180d6df774",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-doubt-about-it-x": {
+      "duration": 2.664,
+      "edge_tts": "7.3.1",
+      "key": "no-doubt-about-it-x",
+      "ledger": "data/daily/2026-11-20-bbapp.json",
+      "location": [
+        3650688,
+        15984,
+        0.048
+      ],
+      "packed_sha256": "0bfda4d4edc91220530372a59aa636246273b45881e81a0e0792d15c11b6023c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "cb98e5d5e19474c7d490915688ae3055b6fb154c8f8d9feda317069b552db86e",
+      "signature": "249f60ec9c4da84e8ec6ed310661e0a4ed1346b02e58d1ca7d5f094115233a6b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Maya earned that promotion, no doubt about it.",
+      "text_sha256": "73165bc159a5bcb9cad07a7a35d3db8c9b5671f0b37bb7732cedccd9f884a9d7",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
