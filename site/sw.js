@@ -98,7 +98,6 @@ self.addEventListener("install", (e) => {
 
 self.addEventListener("activate", (e) => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== CACHE) await caches.delete(k);
     const c = await caches.open(CACHE);
     // старые версии тренажёров; пакеты звука чистятся при загрузке новой версии (см. putVersioned)
     for (const r of await c.keys()) {
