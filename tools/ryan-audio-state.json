@@ -43811,6 +43811,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "bring-forward-t": {
+          "duration": 1.128,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "a7bf4272b583debef0a54b4685f20d5824bde37eae9c4cfcc08a04ba613892c5",
+          "packed_sha256": "45aeab70c8d2d48483ce1152adb8740045b5ebb3d7b91828242d28d0a53d058b",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "3dd07e7b99d26132dc39265731717189c7f6e9bfe8db6045c6ee2a8a40bfadcd",
+          "signature": "94c03e682620abc56b62ebbfa0a7891908c670ec8e3419acc2d84cd99564133e",
+          "source": "Microsoft-Edge-TTS",
+          "text": "bring forward",
+          "text_sha256": "a7bf4272b583debef0a54b4685f20d5824bde37eae9c4cfcc08a04ba613892c5",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "bring-forward-x": {
+          "duration": 5.184,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "e121b6d9e7d8d68ee20c9c07488170ca10f01bddd03082a9720c9742312a7a2a",
+          "packed_sha256": "ea3d875625b865479ed5e9224aceaf66052f302abf2fab09e4e72ea346770011",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "1b8ac8ed1fa61dabd0913152e3962c523d983eb23ebc6bebea2e57b02228ebea",
+          "signature": "76822a28a4378446dd1365bbfc06648ebfc27f3f8df36dcf5fe640c7988f7d04",
+          "source": "Microsoft-Edge-TTS",
+          "text": "The rehearsal was set for Friday, but we brought it forward to Wednesday so Mia could join us.",
+          "text_sha256": "e121b6d9e7d8d68ee20c9c07488170ca10f01bddd03082a9720c9742312a7a2a",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "bring-on-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "0db9c61660c7196a20e57cd005ffa6d6e6b5190994cc52f89f08565b6c340b93",

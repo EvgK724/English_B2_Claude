@@ -1,0 +1,92 @@
+{
+  "batch_sha256": "60097e97618913ede0b4ccd76f770a4023b100b7b84dbd0eceb06aeddb08c0de",
+  "cards": [
+    {
+      "added": "2026-11-20",
+      "au": 1,
+      "ex": "The rehearsal was set for Friday, but we brought it forward to Wednesday so Mia could join us.",
+      "exru": "Репетицию назначили на пятницу, но мы перенесли её на среду, чтобы Мия смогла к нам присоединиться.",
+      "id": "bring-forward",
+      "ipa": "/ˌbrɪŋ ˈfɔːwəd/ · brought forward · brought forward",
+      "note": "В британском английском можно сказать bring the rehearsal forward или bring forward the rehearsal. С местоимением верно bring it forward. Ставить it после forward — ошибка. Новую дату указывают с to (to Wednesday), а на сколько сдвинули — с by (by two days). Put off означает отложить событие на потом.",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "перенести встречу или другое событие на более ранний срок",
+      "sources": [
+        {
+          "evidence": "The scheduling sense is mainly British. The entry gives both past forms and illustrates to with a new date and by with an interval.",
+          "title": "BRING SOMETHING FORWARD - Cambridge English Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/bring-forward",
+          "verified_on": "2026-11-20"
+        },
+        {
+          "evidence": "The scheduling sense is transitive. Both positions of a noun object are documented.",
+          "title": "BRING FORWARD definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/bring-forward",
+          "verified_on": "2026-11-20"
+        },
+        {
+          "evidence": "An object pronoun goes between the verb and the particle of a separable phrasal verb.",
+          "title": "Phrasal verbs | LearnEnglish",
+          "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+          "verified_on": "2026-11-20"
+        },
+        {
+          "evidence": "The British pronunciation of forward has a long first vowel and an unstressed second syllable.",
+          "title": "FORWARD | Pronunciation in English",
+          "url": "https://dictionary.cambridge.org/pronunciation/english/forward",
+          "verified_on": "2026-11-20"
+        },
+        {
+          "evidence": "The scheduling sense of put off means postponing an event.",
+          "title": "PUT OFF definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/put-off",
+          "verified_on": "2026-11-20"
+        }
+      ],
+      "term": "bring forward"
+    }
+  ],
+  "clips": {
+    "bring-forward-t": {
+      "duration": 1.128,
+      "key": "bring-forward-t",
+      "location": [
+        3574944,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "45aeab70c8d2d48483ce1152adb8740045b5ebb3d7b91828242d28d0a53d058b",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "3dd07e7b99d26132dc39265731717189c7f6e9bfe8db6045c6ee2a8a40bfadcd",
+      "text": "bring forward",
+      "text_sha256": "a7bf4272b583debef0a54b4685f20d5824bde37eae9c4cfcc08a04ba613892c5",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "bring-forward-x": {
+      "duration": 5.184,
+      "key": "bring-forward-x",
+      "location": [
+        3581712,
+        31104,
+        0.048
+      ],
+      "packed_sha256": "ea3d875625b865479ed5e9224aceaf66052f302abf2fab09e4e72ea346770011",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1b8ac8ed1fa61dabd0913152e3962c523d983eb23ebc6bebea2e57b02228ebea",
+      "text": "The rehearsal was set for Friday, but we brought it forward to Wednesday so Mia could join us.",
+      "text_sha256": "e121b6d9e7d8d68ee20c9c07488170ca10f01bddd03082a9720c9742312a7a2a",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-20",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
