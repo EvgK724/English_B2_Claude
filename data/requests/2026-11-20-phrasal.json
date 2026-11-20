@@ -1,0 +1,55 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-20",
+        "au": 1,
+        "ex": "The rehearsal was set for Friday, but we brought it forward to Wednesday so Mia could join us.",
+        "exru": "Репетицию назначили на пятницу, но мы перенесли её на среду, чтобы Мия смогла к нам присоединиться.",
+        "id": "bring-forward",
+        "ipa": "/ˌbrɪŋ ˈfɔːwəd/ · brought forward · brought forward",
+        "note": "В британском английском можно сказать bring the rehearsal forward или bring forward the rehearsal. С местоимением верно bring it forward. Ставить it после forward — ошибка. Новую дату указывают с to (to Wednesday), а на сколько сдвинули — с by (by two days). Put off означает отложить событие на потом.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "перенести встречу или другое событие на более ранний срок",
+        "sources": [
+          {
+            "evidence": "The scheduling sense is mainly British. The entry gives both past forms and illustrates to with a new date and by with an interval.",
+            "title": "BRING SOMETHING FORWARD - Cambridge English Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/bring-forward",
+            "verified_on": "2026-11-20"
+          },
+          {
+            "evidence": "The scheduling sense is transitive. Both positions of a noun object are documented.",
+            "title": "BRING FORWARD definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/bring-forward",
+            "verified_on": "2026-11-20"
+          },
+          {
+            "evidence": "An object pronoun goes between the verb and the particle of a separable phrasal verb.",
+            "title": "Phrasal verbs | LearnEnglish",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+            "verified_on": "2026-11-20"
+          },
+          {
+            "evidence": "The British pronunciation of forward has a long first vowel and an unstressed second syllable.",
+            "title": "FORWARD | Pronunciation in English",
+            "url": "https://dictionary.cambridge.org/pronunciation/english/forward",
+            "verified_on": "2026-11-20"
+          },
+          {
+            "evidence": "The scheduling sense of put off means postponing an event.",
+            "title": "PUT OFF definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/put-off",
+            "verified_on": "2026-11-20"
+          }
+        ],
+        "term": "bring forward"
+      }
+    ],
+    "date": "2026-11-20"
+  },
+  "batch_sha256": "60097e97618913ede0b4ccd76f770a4023b100b7b84dbd0eceb06aeddb08c0de",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-20T06:20:55.293303Z"
+}
