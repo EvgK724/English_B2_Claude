@@ -1,0 +1,37 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-21",
+        "au": 1,
+        "ex": "The printer wouldn't connect, so Mia talked me through the setup over the phone.",
+        "exru": "Принтер не подключался, поэтому Мия по телефону шаг за шагом объяснила мне, как его настроить.",
+        "id": "talk-through",
+        "ipa": "/ˌtɔːk ˈθruː/ · talked through · talked through",
+        "note": "Так можно попросить о помощи с незнакомой задачей. Человек всегда стоит между talk и through, а задача — после through. С местоимениями получается talk me through it. Добавлять to перед me — ошибка. Если сказать talk it through with me, смысл меняется на «обсуди это со мной подробно».",
+        "pos": "phrasal verb · переходный · talk + человек + through + задача",
+        "ru": "шаг за шагом объяснить кому-либо, как что-либо сделать",
+        "sources": [
+          {
+            "evidence": "The entry lists the transitive step-by-step explanation sense and places the person before through and the process after it.",
+            "title": "TALK THROUGH definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/talk-through",
+            "verified_on": "2026-11-21"
+          },
+          {
+            "evidence": "The entry distinguishes guiding a person through a task from discussing something in detail with another person.",
+            "title": "talk through phrasal verb — Oxford Advanced Learner’s Dictionary",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/talk-through",
+            "verified_on": "2026-11-21"
+          }
+        ],
+        "term": "talk through"
+      }
+    ],
+    "date": "2026-11-21"
+  },
+  "batch_sha256": "cdf72460da4f6e3502ab488bd8ba5cfc8d936f71bbff5a74305da794670531eb",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-21T06:47:27.054408Z"
+}
