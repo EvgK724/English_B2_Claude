@@ -1,0 +1,161 @@
+{
+  "batch_sha256": "91d44d44acb115fedc87336058a76be16ec423c3a2eadd2900ee3f4ebc6e6257",
+  "cards": [
+    {
+      "added": "2026-11-21",
+      "au": 1,
+      "ex": "I'd go with the green sweater. That's a nice color on you.",
+      "exru": "Я бы выбрал зелёный свитер. Тебе идёт этот цвет.",
+      "id": "thats-a-nice-color-on-you",
+      "note": "В S05E16 «Felina» Тодд хвалит цвет блузки Лидии. Слова on you объясняют, кому идёт этот оттенок. Если начинаешь с названия цвета, скажи Blue looks good on you. Если начинаешь с человека, скажи You look good in blue. Обе фразы означают «Тебе идёт синий».",
+      "reg": "разговорное, дружеский комплимент",
+      "ru": "Тебе идёт этот цвет.",
+      "sources": [
+        {
+          "episode": "S05E16 Felina",
+          "locator": "Scene 23, printed p. 22, at the Grove restaurant. Todd compliments the color of Lydia's blouse.",
+          "short_excerpt": true,
+          "speaker": "Todd Alquist",
+          "title": "Vince Gilligan, Breaking Bad #516 “Felina” — Sony Pictures Television, final script, April 3, 2013",
+          "url": "https://www.scribd.com/document/406938335/Breaking-Bad-Finale",
+          "verification": "The complete sentence is attributed to TODD."
+        },
+        {
+          "episode": "S05E16 Felina",
+          "locator": "The Grove restaurant, after Lydia identifies her blouse and before Todd tries to name its shade. The compliment occupies one full subtitle.",
+          "short_excerpt": true,
+          "speaker": "Todd Alquist",
+          "title": "S05-E16 Felina — English subtitles, Subtitle Cat",
+          "url": "https://www.subtitlecat.com/subs/89/S05-E16%20Felina.html",
+          "verification": "The English subtitle matches the scripted sentence word for word."
+        },
+        {
+          "locator": "Verb, appearance sense. The clothing example illustrates the pattern look nice on someone.",
+          "title": "look — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/look"
+        },
+        {
+          "locator": "The example about lighter colours illustrates look better in a colour.",
+          "title": "Fit or suit? — Cambridge English Grammar Today",
+          "url": "https://dictionary.cambridge.org/grammar/british-grammar/fit-or-suit"
+        }
+      ],
+      "term": "That's a nice color on you.",
+      "who": "Тодд Алквист"
+    },
+    {
+      "added": "2026-11-21",
+      "au": 1,
+      "ex": "Can you tell me what happened after I left the meeting?",
+      "exru": "Можешь рассказать, что случилось после того, как я ушёл с совещания?",
+      "id": "tell-me-what-happened",
+      "note": "В S05E14 «Ozymandias» Скайлер просит Уолта по телефону рассказать, что случилось с Хэнком. В сочетаниях tell me и tell us адресат стоит сразу после глагола. Предлог to здесь лишний. Форма Tell me звучит прямо. Чтобы попросить мягче, начни с Can you tell me…?",
+      "reg": "разговорное, прямая просьба",
+      "ru": "Расскажи, что случилось.",
+      "sources": [
+        {
+          "episode": "S05E14 Ozymandias",
+          "locator": "Scene 43, printed p. 50, Skyler speaking to Walt on the phone just before she asks about Hank.",
+          "short_excerpt": true,
+          "speaker": "Skyler White",
+          "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — Sony Pictures Television, final script, April 1, 2013",
+          "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script",
+          "verification": "The document's title page identifies episode 514 despite the hosting page's label. The sentence is attributed to SKYLER."
+        },
+        {
+          "episode": "S05E14 Ozymandias",
+          "locator": "Subtitle 641, 00:43:48.036–00:43:51.588 in this release, during the telephone call.",
+          "short_excerpt": true,
+          "speaker": "Skyler White",
+          "title": "Breaking Bad 05x14 Ozymandias — English subtitles",
+          "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias",
+          "verification": "Cue 641 contains the complete sentence. Cue 642 continues with Skyler's question about Hank."
+        },
+        {
+          "locator": "Verb, speak sense. The two-object example shows tell me followed by a question word.",
+          "title": "tell — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/tell"
+        }
+      ],
+      "term": "Tell me what happened.",
+      "who": "Скайлер Уайт"
+    }
+  ],
+  "clips": {
+    "tell-me-what-happened-t": {
+      "duration": 0.96,
+      "key": "tell-me-what-happened-t",
+      "location": [
+        3693600,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "5dc893b052ba104c7f2961bb4d602bcc7bc76637fd410e7156301b3bcfd43fb5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "da0f70169c4cb410e6abdf8258ce1f0fb9af2088ee04e0702b0003e8bcafc931",
+      "text": "Tell me what happened.",
+      "text_sha256": "868df35680e0712eed51beec1b5b2818f9acc79cd430c9d13df5655fce20cf86",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "tell-me-what-happened-x": {
+      "duration": 2.352,
+      "key": "tell-me-what-happened-x",
+      "location": [
+        3699360,
+        14112,
+        0.048
+      ],
+      "packed_sha256": "98354fa02757e58992d630f81e087504012fe19cdd8fcb50ba406d04527bb0cc",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "36aa0ff3bf87760868b3fc39cb8cfcbc19d097a9cbc5deff2218066101e0a6ad",
+      "text": "Can you tell me what happened after I left the meeting?",
+      "text_sha256": "a1e8e1b729f93a9cd44bdd8d94b5a6370670d2ddab73da46d05a4606b2e98ce6",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "thats-a-nice-color-on-you-t": {
+      "duration": 1.368,
+      "key": "thats-a-nice-color-on-you-t",
+      "location": [
+        3666672,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "86ab439e1b715c994c7c79efb417bb4302d2f292bfdfd16261b8663f8b4f50ac",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "96bbbbceff9c61ab754e7654d9a3fa40d72ead04419bf47abf08ef3717216531",
+      "text": "That's a nice color on you.",
+      "text_sha256": "26328a6a2682b9ace118e915e175d4470ba53015ad4e1d01a4feaaf0c20b73be",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "thats-a-nice-color-on-you-x": {
+      "duration": 3.12,
+      "key": "thats-a-nice-color-on-you-x",
+      "location": [
+        3674880,
+        18720,
+        0.048
+      ],
+      "packed_sha256": "6e55361784421cae8c15b78077f2c0918ac07e2cf2772d80470e86316bba6012",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "13086296a7003012a0febddb9f3d0093e98753f92f08836cf1c8e555694f2325",
+      "text": "I'd go with the green sweater. That's a nice color on you.",
+      "text_sha256": "cc4270e07694b99b391febb3e5d85928a4dce6dfa5bfdb3f5ad0d3b04e1f20d0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-21",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}

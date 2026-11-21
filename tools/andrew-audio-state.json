@@ -3450,6 +3450,90 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "tell-me-what-happened-t": {
+      "duration": 0.96,
+      "edge_tts": "7.3.1",
+      "key": "tell-me-what-happened-t",
+      "ledger": "data/daily/2026-11-21-bbapp.json",
+      "location": [
+        3693600,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "5dc893b052ba104c7f2961bb4d602bcc7bc76637fd410e7156301b3bcfd43fb5",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "da0f70169c4cb410e6abdf8258ce1f0fb9af2088ee04e0702b0003e8bcafc931",
+      "signature": "7c821706e6e1fc212b6ce93c1651a1ea3ad85def6a7c9d116565cb07c4d9773a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Tell me what happened.",
+      "text_sha256": "868df35680e0712eed51beec1b5b2818f9acc79cd430c9d13df5655fce20cf86",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "tell-me-what-happened-x": {
+      "duration": 2.352,
+      "edge_tts": "7.3.1",
+      "key": "tell-me-what-happened-x",
+      "ledger": "data/daily/2026-11-21-bbapp.json",
+      "location": [
+        3699360,
+        14112,
+        0.048
+      ],
+      "packed_sha256": "98354fa02757e58992d630f81e087504012fe19cdd8fcb50ba406d04527bb0cc",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "36aa0ff3bf87760868b3fc39cb8cfcbc19d097a9cbc5deff2218066101e0a6ad",
+      "signature": "f9e9b89f299383e929828ad28cc331baf11a53cefdb28754a6c46941e34dcb1a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Can you tell me what happened after I left the meeting?",
+      "text_sha256": "a1e8e1b729f93a9cd44bdd8d94b5a6370670d2ddab73da46d05a4606b2e98ce6",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "thats-a-nice-color-on-you-t": {
+      "duration": 1.368,
+      "edge_tts": "7.3.1",
+      "key": "thats-a-nice-color-on-you-t",
+      "ledger": "data/daily/2026-11-21-bbapp.json",
+      "location": [
+        3666672,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "86ab439e1b715c994c7c79efb417bb4302d2f292bfdfd16261b8663f8b4f50ac",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "96bbbbceff9c61ab754e7654d9a3fa40d72ead04419bf47abf08ef3717216531",
+      "signature": "463ea00003e05e886e6c18af6522d789ff03380bff5039123b2fa13046f0662f",
+      "source": "Microsoft-Edge-TTS",
+      "text": "That's a nice color on you.",
+      "text_sha256": "26328a6a2682b9ace118e915e175d4470ba53015ad4e1d01a4feaaf0c20b73be",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "thats-a-nice-color-on-you-x": {
+      "duration": 3.12,
+      "edge_tts": "7.3.1",
+      "key": "thats-a-nice-color-on-you-x",
+      "ledger": "data/daily/2026-11-21-bbapp.json",
+      "location": [
+        3674880,
+        18720,
+        0.048
+      ],
+      "packed_sha256": "6e55361784421cae8c15b78077f2c0918ac07e2cf2772d80470e86316bba6012",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "13086296a7003012a0febddb9f3d0093e98753f92f08836cf1c8e555694f2325",
+      "signature": "c355bcb1d372429d4618471073f902bb9c7299eed14048211e235bf4ca76c1f3",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I'd go with the green sweater. That's a nice color on you.",
+      "text_sha256": "cc4270e07694b99b391febb3e5d85928a4dce6dfa5bfdb3f5ad0d3b04e1f20d0",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "the-one-who-knocks-t": {
       "baseline_parameters_verified": false,
       "location": [
