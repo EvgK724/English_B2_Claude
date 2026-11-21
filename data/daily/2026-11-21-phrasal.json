@@ -1,0 +1,74 @@
+{
+  "batch_sha256": "cdf72460da4f6e3502ab488bd8ba5cfc8d936f71bbff5a74305da794670531eb",
+  "cards": [
+    {
+      "added": "2026-11-21",
+      "au": 1,
+      "ex": "The printer wouldn't connect, so Mia talked me through the setup over the phone.",
+      "exru": "Принтер не подключался, поэтому Мия по телефону шаг за шагом объяснила мне, как его настроить.",
+      "id": "talk-through",
+      "ipa": "/ˌtɔːk ˈθruː/ · talked through · talked through",
+      "note": "Так можно попросить о помощи с незнакомой задачей. Человек всегда стоит между talk и through, а задача — после through. С местоимениями получается talk me through it. Добавлять to перед me — ошибка. Если сказать talk it through with me, смысл меняется на «обсуди это со мной подробно».",
+      "pos": "phrasal verb · переходный · talk + человек + through + задача",
+      "ru": "шаг за шагом объяснить кому-либо, как что-либо сделать",
+      "sources": [
+        {
+          "evidence": "The entry lists the transitive step-by-step explanation sense and places the person before through and the process after it.",
+          "title": "TALK THROUGH definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/talk-through",
+          "verified_on": "2026-11-21"
+        },
+        {
+          "evidence": "The entry distinguishes guiding a person through a task from discussing something in detail with another person.",
+          "title": "talk through phrasal verb — Oxford Advanced Learner’s Dictionary",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/talk-through",
+          "verified_on": "2026-11-21"
+        }
+      ],
+      "term": "talk through"
+    }
+  ],
+  "clips": {
+    "talk-through-t": {
+      "duration": 0.96,
+      "key": "talk-through-t",
+      "location": [
+        3612816,
+        5760,
+        0.048
+      ],
+      "packed_sha256": "9db7d9311401e4c721c99c28a1a3f0c1c1ba357ad84c336733c9e804ea0555da",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "33158d1f0a9bb923f8d47a3f8ac770ae03bd46989f23c44bfb50f031c69f7c1e",
+      "text": "talk through",
+      "text_sha256": "fb1dc20e26879d17b48b7ab531a712a928ab87a973686ecadd6c443571f58080",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "talk-through-x": {
+      "duration": 4.176,
+      "key": "talk-through-x",
+      "location": [
+        3618576,
+        25056,
+        0.048
+      ],
+      "packed_sha256": "a32e10037f0d3010ebce71835d181f5f8181147c7ffb6d16db1acc3946834089",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "965e3cf047e63d1d7fe8de577acccce4efe32514efcfa71376cca018af532ca1",
+      "text": "The printer wouldn't connect, so Mia talked me through the setup over the phone.",
+      "text_sha256": "f39dbdf6c998f44095ab8309555d63fd6ff366c50db8747cbee26d566a437804",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-21",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

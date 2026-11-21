@@ -45295,6 +45295,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "talk-through-t": {
+          "duration": 0.96,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "fb1dc20e26879d17b48b7ab531a712a928ab87a973686ecadd6c443571f58080",
+          "packed_sha256": "9db7d9311401e4c721c99c28a1a3f0c1c1ba357ad84c336733c9e804ea0555da",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "33158d1f0a9bb923f8d47a3f8ac770ae03bd46989f23c44bfb50f031c69f7c1e",
+          "signature": "23018021b77c75bf545e398fb0c0390ccd62182d98ee367e8ebdf03163f84774",
+          "source": "Microsoft-Edge-TTS",
+          "text": "talk through",
+          "text_sha256": "fb1dc20e26879d17b48b7ab531a712a928ab87a973686ecadd6c443571f58080",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "talk-through-x": {
+          "duration": 4.176,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "f39dbdf6c998f44095ab8309555d63fd6ff366c50db8747cbee26d566a437804",
+          "packed_sha256": "a32e10037f0d3010ebce71835d181f5f8181147c7ffb6d16db1acc3946834089",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "965e3cf047e63d1d7fe8de577acccce4efe32514efcfa71376cca018af532ca1",
+          "signature": "98d1af49da32f2291223dadd9bcfeab471f5108c7049e1145d4e318371b7af39",
+          "source": "Microsoft-Edge-TTS",
+          "text": "The printer wouldn't connect, so Mia talked me through the setup over the phone.",
+          "text_sha256": "f39dbdf6c998f44095ab8309555d63fd6ff366c50db8747cbee26d566a437804",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "taper-off-t": {
           "duration": 1.056,
           "edge_tts": "7.3.1",
