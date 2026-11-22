@@ -1,0 +1,102 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-22",
+        "au": 1,
+        "ex": "I did the math, and a monthly pass would save me twenty dollars.",
+        "exru": "Я подсчитал, что с месячным проездным сэкономил бы двадцать долларов.",
+        "id": "i-can-do-the-math",
+        "note": "В S05E16 «Felina» Уолт прикидывает, сколько у Лидии и Тодда осталось сырья. Фраза do the math годится и для точного расчёта, и для вывода, который легко сделать по цифрам. Здесь Уолт даёт понять, что ответ ему уже ясен. В этом выражении нужен артикль the. В американском английском говорят math, в британском — maths.",
+        "reg": "разговорное, уверенное",
+        "ru": "Я и сам могу прикинуть.",
+        "sources": [
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Scene 23, printed p. 23, the Grove restaurant. WALT addresses Lydia and Todd about their remaining supplies.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Vince Gilligan, Breaking Bad #516 “Felina” — Sony Pictures Television, final script, April 3, 2013",
+            "url": "https://www.scribd.com/document/406938335/Breaking-Bad-Finale"
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Cue 304, 00:22:57.210–00:22:59.712 in this subtitle release.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Felina subtitles — Breaking Bad Wiki, English timecoded subtitles",
+            "url": "https://breakingbad.fandom.com/wiki/Felina_subtitles"
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "The Grove restaurant, between Walt's question about their supplies and his estimate of how long they have been working.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "S05-E16 Felina — English subtitles, Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/89/S05-E16%20Felina.html"
+          },
+          {
+            "locator": "Idiom entry for drawing a conclusion from the facts and figures.",
+            "title": "(you) do the math — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/you-do-the-math"
+          },
+          {
+            "locator": "Headword labels for the US and UK forms.",
+            "title": "math — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/math"
+          }
+        ],
+        "term": "I can do the math.",
+        "who": "Уолтер Уайт"
+      },
+      {
+        "added": "2026-11-22",
+        "au": 1,
+        "ex": "We've used the same pancake recipe for years. It ain't broke, so why fix it?",
+        "exru": "Мы уже много лет печём блины по одному и тому же рецепту. Раз всё получается, зачем что-то менять?",
+        "id": "it-aint-broke-so-why-fix-it",
+        "note": "В S05E16 «Felina» Джек объясняет Уолту, почему его устраивает прежняя схема поставок. Так говорят и о привычках или правилах, которые хорошо работают. Здесь ain't broke означает isn't broken. Форма ain't уместна в дружеском разговоре. В деловой переписке ту же мысль можно выразить словами The system works well as it is. После why в таком коротком вопросе глагол fix стоит без to.",
+        "reg": "разговорная поговорка, возражение",
+        "ru": "Раз всё работает, зачем что-то менять?",
+        "sources": [
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Scene 32, printed p. 39, Jack's clubhouse. JACK answers Walt's question about the existing supply arrangement.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Vince Gilligan, Breaking Bad #516 “Felina” — Sony Pictures Television, final script, April 3, 2013",
+            "url": "https://www.scribd.com/document/406938335/Breaking-Bad-Finale"
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Cue 531, 00:40:55.850–00:40:57.601 in this subtitle release.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Felina subtitles — Breaking Bad Wiki, English timecoded subtitles",
+            "url": "https://breakingbad.fandom.com/wiki/Felina_subtitles"
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Clubhouse conversation, after Jack describes their current supplier and before Walt turns to Todd.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "S05-E16 Felina — English subtitles, Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/89/S05-E16%20Felina.html"
+          },
+          {
+            "locator": "Informal saying about leaving something as it is when it works well.",
+            "title": "if it ain't broke, don't fix it — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/if-it-ain-t-broke-don-t-fix-it"
+          }
+        ],
+        "term": "It ain't broke, so why fix it?",
+        "who": "Джек Уэлкер"
+      }
+    ],
+    "date": "2026-11-22"
+  },
+  "batch_sha256": "7db38f6975894a3eb887f4274ed7199de0e0722398806226b074b93152d87d94",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-22T03:20:53.407734Z"
+}
