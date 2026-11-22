@@ -44281,6 +44281,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "drop-off-t": {
+          "duration": 0.888,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "807bc5f173ad0413d4a3a55a5bd6aa4ab2d09ce50b3312a0b770326a31073e53",
+          "packed_sha256": "b43dbe6cd458b358c1a9b672d33cea6834cb9a35d6467c710850ef2cbd63bdbd",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "7000905c20cef6b8b213671a7294fc0e91c981cd85babd39f84b5af21cfa27b4",
+          "signature": "4dc74ec94a18c14947ec81e1b74d57cdcf32f656696b02e59b5dd6f38a0044ee",
+          "source": "Microsoft-Edge-TTS",
+          "text": "drop off",
+          "text_sha256": "807bc5f173ad0413d4a3a55a5bd6aa4ab2d09ce50b3312a0b770326a31073e53",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "drop-off-x": {
+          "duration": 3.624,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "9ad1bf09403ba591223ef21af2416fbca0c54cc732e117f107a68fe9406777ed",
+          "packed_sha256": "dc7533f1581872b6397f2177f01642df26389acbb032cd34fa6ab1e2ae8e4569",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "a528a5619ec8ea78588060bb610ed0a239523c39b5695319fb1cdea968759a65",
+          "signature": "10f45ede08142048321fa6d571e2786b57dd163382a47881593986d6a6d5106e",
+          "source": "Microsoft-Edge-TTS",
+          "text": "On her way to work, Nina dropped me off at the swimming pool.",
+          "text_sha256": "9ad1bf09403ba591223ef21af2416fbca0c54cc732e117f107a68fe9406777ed",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "end-up-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "b9cbb04514df9f7e85bdf2247af677f44ecca9f5fc28a9d4da41d38ab9d1b409",
