@@ -1,0 +1,37 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-22",
+        "au": 1,
+        "ex": "On her way to work, Nina dropped me off at the swimming pool.",
+        "exru": "По дороге на работу Нина высадила меня у бассейна.",
+        "id": "drop-off",
+        "ipa": "/ˌdrɒp ˈɒf/ · dropped off · dropped off",
+        "note": "Так говорят, когда водитель оставляет пассажира в нужном месте. С именем возможны и drop Nina off, и drop off Nina. Местоимение ставится только в середину. Правильно drop her off, а в сочетании drop off her порядок слов ошибочен. Если нужно забрать пассажира, скажите pick her up.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "подвезти и высадить кого-либо",
+        "sources": [
+          {
+            "evidence": "The British English entry marks the passenger sense as transitive and describes a driver letting someone out of a vehicle.",
+            "title": "DROP OFF definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/drop-off",
+            "verified_on": "2026-11-22"
+          },
+          {
+            "evidence": "The grammar guide explains pronoun placement with separable verbs and uses pick up for collecting a passenger.",
+            "title": "Phrasal verbs | LearnEnglish",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/phrasal-verbs",
+            "verified_on": "2026-11-22"
+          }
+        ],
+        "term": "drop off"
+      }
+    ],
+    "date": "2026-11-22"
+  },
+  "batch_sha256": "72dca2b3282d4190badeea2fbd212aefdb95c39c56a2ac94b8f4c2d9775b4c81",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-22T06:45:57.097776Z"
+}
