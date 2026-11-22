@@ -1582,6 +1582,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "i-can-do-the-math-t": {
+      "duration": 1.008,
+      "edge_tts": "7.3.1",
+      "key": "i-can-do-the-math-t",
+      "ledger": "data/daily/2026-11-22-bbapp.json",
+      "location": [
+        3713472,
+        6048,
+        0.048
+      ],
+      "packed_sha256": "0ea23288ab2ad70192c3c63a68034fc5dbca776e0bec1028bb199c354ff54284",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b494f9c0b413bf4d3f0eba8fe2de0155ab612cb7b74478bf141e884bb988f953",
+      "signature": "d86cf9d48efc9625587c968211d85a139ac3c69817d481b537313081e8cc4ae2",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I can do the math.",
+      "text_sha256": "46e62073e787ec2dbe2401248a33f292f581fc4ce5dbf1c8745f3fa780e7067e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "i-can-do-the-math-x": {
+      "duration": 3.696,
+      "edge_tts": "7.3.1",
+      "key": "i-can-do-the-math-x",
+      "ledger": "data/daily/2026-11-22-bbapp.json",
+      "location": [
+        3719520,
+        22176,
+        0.048
+      ],
+      "packed_sha256": "78fdc464c71018e240a95840a86baaa25c5c893b471604baca43f31186c36b01",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "2ce66280569d76fc99225859296b5e101524502db66806e6d1fa6648033e07f1",
+      "signature": "41558a073e24169ae5f10ae2c9643c0a0d6427221f903662b30a16311aa6e462",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I did the math, and a monthly pass would save me twenty dollars.",
+      "text_sha256": "8f8cb4463f18601164da433db837caab5057ebfe79963259b3191776d686f37d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "i-thought-you-were-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1909,6 +1951,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "We're not in the guessing business, so let's wait for the scan before we decide.",
       "text_sha256": "54c8b9348342c40a5fecda2941fc2d7b3eaa5c4305b7f9aac85a7b414057e08f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "it-aint-broke-so-why-fix-it-t": {
+      "duration": 1.848,
+      "edge_tts": "7.3.1",
+      "key": "it-aint-broke-so-why-fix-it-t",
+      "ledger": "data/daily/2026-11-22-bbapp.json",
+      "location": [
+        3741696,
+        11088,
+        0.048
+      ],
+      "packed_sha256": "770a7edb4c0893b1f688cf4f39c8a445e966b9ac1f06710b08f086c0656415cd",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f85f6306b35b3e7e1c22da813ea454c250d2fc6f98a7c13e8d16776db939c5b9",
+      "signature": "ca78cf5edcc42caaaea902991ed384cbec711578afefc24507bb9059144de241",
+      "source": "Microsoft-Edge-TTS",
+      "text": "It ain't broke, so why fix it?",
+      "text_sha256": "b77ce4470073539614827187140896bf5dd15902f61aded94b32ffb4b4ffb72f",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "it-aint-broke-so-why-fix-it-x": {
+      "duration": 4.752,
+      "edge_tts": "7.3.1",
+      "key": "it-aint-broke-so-why-fix-it-x",
+      "ledger": "data/daily/2026-11-22-bbapp.json",
+      "location": [
+        3752784,
+        28512,
+        0.048
+      ],
+      "packed_sha256": "bf035477e8556b3204d90322a0f61e42a7619ac4712514b69837ad4c4174e507",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "4b245b149d2d5a664178ad3aaca5cd7d992cc560f94825bd4989db8d49f204e0",
+      "signature": "2185f29c5824e042c693ddc4d751405ff27c24cca213e17963a29d50c2b77ebc",
+      "source": "Microsoft-Edge-TTS",
+      "text": "We've used the same pancake recipe for years. It ain't broke, so why fix it?",
+      "text_sha256": "7a686b3983df10d28ff4d5b2ccd86cfaf00e2a124a4475e124585e1bb381866c",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
