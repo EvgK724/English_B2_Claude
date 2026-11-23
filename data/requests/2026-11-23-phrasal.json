@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-23",
+        "au": 1,
+        "ex": "Ben wanted to stay at home, but his sister talked him into going for a walk.",
+        "exru": "Бен хотел остаться дома, но сестра уговорила его пойти погулять.",
+        "id": "talk-into",
+        "ipa": "/ˌtɔːk ˈɪn.tuː/ · talked into · talked into",
+        "note": "Так говорят, когда собеседник сперва сомневался, но его удалось убедить. Имя или местоимение ставят перед into, а действие после into выражают формой на -ing. Фраза talk her into stay ошибочна. Скажите talk her into staying («уговорить её остаться»). У talk her out of staying обратный смысл — «отговорить её оставаться».",
+        "pos": "phrasal verb · переходный · talk и into разделяются обязательным дополнением",
+        "ru": "уговорить кого-то что-то сделать",
+        "sources": [
+          {
+            "evidence": "The British entry marks this sense as transitive. The learner entry places the person before into and gives an -ing clause or noun after it.",
+            "title": "TALK INTO definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/talk-into",
+            "verified_on": "2026-11-23"
+          },
+          {
+            "evidence": "The entry lists the inflected forms and illustrates persuasion with a person followed by into and an -ing form.",
+            "title": "TALK INTO Definition & Meaning - Merriam-Webster",
+            "url": "https://www.merriam-webster.com/dictionary/talk%20into",
+            "verified_on": "2026-11-23"
+          },
+          {
+            "evidence": "The British entry confirms the opposite sense of persuading someone to give up an intended action.",
+            "title": "TALK OUT OF definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/talk-out-of",
+            "verified_on": "2026-11-23"
+          }
+        ],
+        "term": "talk into"
+      }
+    ],
+    "date": "2026-11-23"
+  },
+  "batch_sha256": "c14ee8324ef6b4a51d50b33475cd20ffc8f5bb9e5b5760609bafee726e000c31",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-23T06:07:45.813857Z"
+}
