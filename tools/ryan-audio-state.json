@@ -45325,6 +45325,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "talk-into-t": {
+          "duration": 1.08,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "b20ba6cd3fa6bc5552e5dcd2aa57f923e7667620057ea2f4d51142030e94390a",
+          "packed_sha256": "53b58224ef6b271f495e0d5fa2528fb2ac226bb00f8759434910dde6b86108fa",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "03b8af812b9c290ed2b052fef59a2a6ecaf3539be276e555b71078dbe3094813",
+          "signature": "eac01d290ccf0646a103334f4f6c8aee5246492f7505c337406e95da8dc789f9",
+          "source": "Microsoft-Edge-TTS",
+          "text": "talk into",
+          "text_sha256": "b20ba6cd3fa6bc5552e5dcd2aa57f923e7667620057ea2f4d51142030e94390a",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "talk-into-x": {
+          "duration": 4.368,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "f05328777319d39a5854b07fc4d68cecd8a6f1c27f641c1ce9e043e9357aefac",
+          "packed_sha256": "00e2e4bf81af274da9f142e33446d2cdbde5409bdfacd4573d582eb2ba3fcc4b",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "9e64a3a5fd531d7ecf37a621ee3c9771cfcbbd1db582d0032f177bb32116e395",
+          "signature": "d788969c742a47a977ffb31a1772e30231fa87c59639da424d82e912f9401cfe",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Ben wanted to stay at home, but his sister talked him into going for a walk.",
+          "text_sha256": "f05328777319d39a5854b07fc4d68cecd8a6f1c27f641c1ce9e043e9357aefac",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "talk-through-t": {
           "duration": 0.96,
           "edge_tts": "7.3.1",
