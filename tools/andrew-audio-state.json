@@ -104,6 +104,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "any-chance-we-could-grab-a-quick-bite-t": {
+      "duration": 1.848,
+      "edge_tts": "7.3.1",
+      "key": "any-chance-we-could-grab-a-quick-bite-t",
+      "ledger": "data/daily/2026-11-23-bbapp.json",
+      "location": [
+        3781296,
+        11088,
+        0.048
+      ],
+      "packed_sha256": "52568c49aaeb766baee7fd79a874886e4d0a1a7442a730cefac8a798c928ff5a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "093875dd82ca52d31810c3aa091dd3a521c8e2e5d3146876a15044707636b21e",
+      "signature": "ff7129da4c81fab940b8f32fe467b8038faea997ff98fe2c5e80e6d2a5961e0a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Any chance we could grab a quick bite?",
+      "text_sha256": "a2ad8187d5d0e7b9d61979be2b431079aa2802ec2e6a134ed93eca46abd36d2d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "any-chance-we-could-grab-a-quick-bite-x": {
+      "duration": 3.048,
+      "edge_tts": "7.3.1",
+      "key": "any-chance-we-could-grab-a-quick-bite-x",
+      "ledger": "data/daily/2026-11-23-bbapp.json",
+      "location": [
+        3792384,
+        18288,
+        0.048
+      ],
+      "packed_sha256": "37e5aaa93776b0a958eeb93a66b35fa1c3a49c1f7d72519970ee556dbcc7d690",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "967621ee7ca728e56e086fa5e16fa6ec4bd93fe0bead4f2918312948a715e2b5",
+      "signature": "2dde78fb1ad1da711a8a3cb2ca14c8fa832293d9dd1cfe4178985624f225afbb",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Any chance we could grab a sandwich before our train leaves?",
+      "text_sha256": "d231fe9e553fdb485b178678ce48b6c11734bb11e4095bf178337a1675b1f007",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "apply-yourself-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -3145,6 +3187,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "I could see that argument coming a mile away, but I said nothing.",
       "text_sha256": "db7d34b3d8399b137cfa012540c7f6703702d9f958ca48c08abe9ffee63dbb9e",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "shows-what-i-know-about-art-t": {
+      "duration": 1.368,
+      "edge_tts": "7.3.1",
+      "key": "shows-what-i-know-about-art-t",
+      "ledger": "data/daily/2026-11-23-bbapp.json",
+      "location": [
+        3810672,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "ad3f11673c368ea0b9bc95efe26478d72fe8a7b1b5918867a4f01df5385abff7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1d3001b8b96a960e3faa4a7b92942a79994a1abbb566f02cd84745ea54fe7bf7",
+      "signature": "c00b1683686929b7559991bbc84a0bc6049bfae81a864df3c468264ddcbb37d5",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Shows what I know about art.",
+      "text_sha256": "b270372b022a285563d261d3a1d88b8d44db3bb03cfd85b3c1a9bedaf849dc33",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "shows-what-i-know-about-art-x": {
+      "duration": 3.864,
+      "edge_tts": "7.3.1",
+      "key": "shows-what-i-know-about-art-x",
+      "ledger": "data/daily/2026-11-23-bbapp.json",
+      "location": [
+        3818880,
+        23184,
+        0.048
+      ],
+      "packed_sha256": "9c509a017b2724d1dc3ff8d200cb0206042669b508732eea4268d8bfd9aec115",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "df2f49919213570e9722dbc6197ce41228a6b79bcfd022caf5b6514f939c0880",
+      "signature": "fd154baa14ccabd3b02a33033372395269b043bca5bfc95efe0872ab203c3809",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I thought a violin had six strings. Shows what I know about music.",
+      "text_sha256": "3c567c1cff870d797f33b21085a3f7cea720ac610f20b57ea1c29e168ac991f4",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

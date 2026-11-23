@@ -1,0 +1,152 @@
+{
+  "batch_sha256": "b005dbaeba65578f910d3d24f63ec0dcf004305d23c03f343b42987c700b282a",
+  "cards": [
+    {
+      "added": "2026-11-23",
+      "au": 1,
+      "ex": "Any chance we could grab a sandwich before our train leaves?",
+      "exru": "Может, успеем съесть по сэндвичу до отправления нашего поезда?",
+      "id": "any-chance-we-could-grab-a-quick-bite",
+      "note": "В S03E05 «Más» Тед предлагает Скайлер перекусить в тайском кафе за углом. С вопроса Any chance we could…? можно начать приглашение, если у собеседника могут быть другие планы. После could глагол ставят без to. В выражении grab a bite («перекусить») перед bite нужен артикль a.",
+      "reg": "разговорное, ненавязчивое приглашение",
+      "ru": "Может, перекусим вместе?",
+      "sources": [
+        {
+          "episode": "S03E05 Más",
+          "locator": "Act Three, printed p. 30. At Ted’s house, TED (O.S.) invites Skyler to eat.",
+          "short_excerpt": true,
+          "speaker": "Ted Beneke",
+          "title": "Moira Walley-Beckett, Breaking Bad #305 “Mas” — Sony Pictures Television, script as broadcast",
+          "url": "https://www.scribd.com/document/181023736/mas-pdf"
+        },
+        {
+          "episode": "S03E05 Más",
+          "locator": "Cue 360, 00:27:34.057–00:27:37.593 in the FEVER release, before Ted mentions the nearby Thai restaurant.",
+          "short_excerpt": true,
+          "speaker": "Ted Beneke",
+          "title": "Breaking Bad – 03x05 – Mas, FEVER English subtitles (Addic7ed, via Subtitle Cat)",
+          "url": "https://www.subtitlecat.com/subs/519/Breaking%20Bad%20-%2003x05%20-%20Mas.FEVER.English.C.orig.Addic7ed.com.html"
+        },
+        {
+          "locator": "Verb, TAKE OPPORTUNITY sense (B2, informal), with the expression grab a quick bite.",
+          "title": "grab — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/grab"
+        }
+      ],
+      "term": "Any chance we could grab a quick bite?",
+      "who": "Тед Бенеке"
+    },
+    {
+      "added": "2026-11-23",
+      "au": 1,
+      "ex": "I thought a violin had six strings. Shows what I know about music.",
+      "exru": "Я думал, что у скрипки шесть струн. Ну и знаток же я музыки!",
+      "id": "shows-what-i-know-about-art",
+      "note": "В S05E14 «Ozymandias» Скайлер рассказывает, что продала фигурку клоуна дороже, чем купила. Уолт смеётся над собственным вкусом. Так можно пошутить, когда понимаешь, что ошибся. В начале подразумевается That shows. После what сохраняется обычный порядок слов I know, а после about можно назвать другую тему.",
+      "reg": "разговорное, с самоиронией",
+      "ru": "Ну и знаток же я искусства!",
+      "sources": [
+        {
+          "episode": "S05E14 Ozymandias",
+          "locator": "Teaser, scene 3, printed p. 5. WALT answers Skyler on the phone after she sells the clown figurine. The document title page identifies episode #514 despite the host’s link label.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — Sony Pictures Television, final script, April 1, 2013",
+          "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script"
+        },
+        {
+          "episode": "S05E14 Ozymandias",
+          "locator": "Cue 72, 00:03:42.946–00:03:45.347 in this release, between the sale of the figurine and the question about a baby name.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad 05x14 Ozymandias — English timecoded subtitles",
+          "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias"
+        },
+        {
+          "locator": "Sense of being familiar with a subject, for the wording know about art.",
+          "title": "know about someone/something — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/know-about"
+        }
+      ],
+      "term": "Shows what I know about art.",
+      "who": "Уолтер Уайт"
+    }
+  ],
+  "clips": {
+    "any-chance-we-could-grab-a-quick-bite-t": {
+      "duration": 1.848,
+      "key": "any-chance-we-could-grab-a-quick-bite-t",
+      "location": [
+        3781296,
+        11088,
+        0.048
+      ],
+      "packed_sha256": "52568c49aaeb766baee7fd79a874886e4d0a1a7442a730cefac8a798c928ff5a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "093875dd82ca52d31810c3aa091dd3a521c8e2e5d3146876a15044707636b21e",
+      "text": "Any chance we could grab a quick bite?",
+      "text_sha256": "a2ad8187d5d0e7b9d61979be2b431079aa2802ec2e6a134ed93eca46abd36d2d",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "any-chance-we-could-grab-a-quick-bite-x": {
+      "duration": 3.048,
+      "key": "any-chance-we-could-grab-a-quick-bite-x",
+      "location": [
+        3792384,
+        18288,
+        0.048
+      ],
+      "packed_sha256": "37e5aaa93776b0a958eeb93a66b35fa1c3a49c1f7d72519970ee556dbcc7d690",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "967621ee7ca728e56e086fa5e16fa6ec4bd93fe0bead4f2918312948a715e2b5",
+      "text": "Any chance we could grab a sandwich before our train leaves?",
+      "text_sha256": "d231fe9e553fdb485b178678ce48b6c11734bb11e4095bf178337a1675b1f007",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "shows-what-i-know-about-art-t": {
+      "duration": 1.368,
+      "key": "shows-what-i-know-about-art-t",
+      "location": [
+        3810672,
+        8208,
+        0.048
+      ],
+      "packed_sha256": "ad3f11673c368ea0b9bc95efe26478d72fe8a7b1b5918867a4f01df5385abff7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1d3001b8b96a960e3faa4a7b92942a79994a1abbb566f02cd84745ea54fe7bf7",
+      "text": "Shows what I know about art.",
+      "text_sha256": "b270372b022a285563d261d3a1d88b8d44db3bb03cfd85b3c1a9bedaf849dc33",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "shows-what-i-know-about-art-x": {
+      "duration": 3.864,
+      "key": "shows-what-i-know-about-art-x",
+      "location": [
+        3818880,
+        23184,
+        0.048
+      ],
+      "packed_sha256": "9c509a017b2724d1dc3ff8d200cb0206042669b508732eea4268d8bfd9aec115",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "df2f49919213570e9722dbc6197ce41228a6b79bcfd022caf5b6514f939c0880",
+      "text": "I thought a violin had six strings. Shows what I know about music.",
+      "text_sha256": "3c567c1cff870d797f33b21085a3f7cea720ac610f20b57ea1c29e168ac991f4",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-23",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
