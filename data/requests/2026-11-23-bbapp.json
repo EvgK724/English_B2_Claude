@@ -1,0 +1,81 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-23",
+        "au": 1,
+        "ex": "Any chance we could grab a sandwich before our train leaves?",
+        "exru": "Может, успеем съесть по сэндвичу до отправления нашего поезда?",
+        "id": "any-chance-we-could-grab-a-quick-bite",
+        "note": "В S03E05 «Más» Тед предлагает Скайлер перекусить в тайском кафе за углом. С вопроса Any chance we could…? можно начать приглашение, если у собеседника могут быть другие планы. После could глагол ставят без to. В выражении grab a bite («перекусить») перед bite нужен артикль a.",
+        "reg": "разговорное, ненавязчивое приглашение",
+        "ru": "Может, перекусим вместе?",
+        "sources": [
+          {
+            "episode": "S03E05 Más",
+            "locator": "Act Three, printed p. 30. At Ted’s house, TED (O.S.) invites Skyler to eat.",
+            "short_excerpt": true,
+            "speaker": "Ted Beneke",
+            "title": "Moira Walley-Beckett, Breaking Bad #305 “Mas” — Sony Pictures Television, script as broadcast",
+            "url": "https://www.scribd.com/document/181023736/mas-pdf"
+          },
+          {
+            "episode": "S03E05 Más",
+            "locator": "Cue 360, 00:27:34.057–00:27:37.593 in the FEVER release, before Ted mentions the nearby Thai restaurant.",
+            "short_excerpt": true,
+            "speaker": "Ted Beneke",
+            "title": "Breaking Bad – 03x05 – Mas, FEVER English subtitles (Addic7ed, via Subtitle Cat)",
+            "url": "https://www.subtitlecat.com/subs/519/Breaking%20Bad%20-%2003x05%20-%20Mas.FEVER.English.C.orig.Addic7ed.com.html"
+          },
+          {
+            "locator": "Verb, TAKE OPPORTUNITY sense (B2, informal), with the expression grab a quick bite.",
+            "title": "grab — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/grab"
+          }
+        ],
+        "term": "Any chance we could grab a quick bite?",
+        "who": "Тед Бенеке"
+      },
+      {
+        "added": "2026-11-23",
+        "au": 1,
+        "ex": "I thought a violin had six strings. Shows what I know about music.",
+        "exru": "Я думал, что у скрипки шесть струн. Ну и знаток же я музыки!",
+        "id": "shows-what-i-know-about-art",
+        "note": "В S05E14 «Ozymandias» Скайлер рассказывает, что продала фигурку клоуна дороже, чем купила. Уолт смеётся над собственным вкусом. Так можно пошутить, когда понимаешь, что ошибся. В начале подразумевается That shows. После what сохраняется обычный порядок слов I know, а после about можно назвать другую тему.",
+        "reg": "разговорное, с самоиронией",
+        "ru": "Ну и знаток же я искусства!",
+        "sources": [
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Teaser, scene 3, printed p. 5. WALT answers Skyler on the phone after she sells the clown figurine. The document title page identifies episode #514 despite the host’s link label.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — Sony Pictures Television, final script, April 1, 2013",
+            "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script"
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Cue 72, 00:03:42.946–00:03:45.347 in this release, between the sale of the figurine and the question about a baby name.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad 05x14 Ozymandias — English timecoded subtitles",
+            "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias"
+          },
+          {
+            "locator": "Sense of being familiar with a subject, for the wording know about art.",
+            "title": "know about someone/something — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/know-about"
+          }
+        ],
+        "term": "Shows what I know about art.",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-23"
+  },
+  "batch_sha256": "b005dbaeba65578f910d3d24f63ec0dcf004305d23c03f343b42987c700b282a",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-23T03:54:08.680040Z"
+}
