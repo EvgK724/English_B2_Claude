@@ -1,0 +1,81 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-24",
+        "au": 1,
+        "ex": "Listen to both recordings and judge for yourself which one sounds clearer.",
+        "exru": "Послушай обе записи и сам реши, какая звучит чётче.",
+        "id": "judge-for-yourself",
+        "note": "В S03E06 «Sunset» Гейл протягивает Уолту чашку кофе и предлагает самому оценить вкус. Так говорят, когда собеседник может что-то попробовать, увидеть или услышать и сделать вывод. Предлог for здесь важен. Если сказать judge yourself, получится «оцени самого себя».",
+        "reg": "нейтральное, приглашение составить своё мнение",
+        "ru": "Суди сам.",
+        "sources": [
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Printed p. 22 (PDF p. 25), GALE, just before he pours Walt a cup of coffee.",
+            "short_excerpt": true,
+            "speaker": "Gale Boetticher",
+            "title": "John Shiban, Breaking Bad #306 “Sunset” — Sony Pictures Television, Script As Broadcast",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670"
+          },
+          {
+            "episode": "S03E06 Sunset",
+            "locator": "Cue 192, 00:17:57.327–00:18:00.080, immediately before Walt tastes the coffee.",
+            "short_excerpt": true,
+            "speaker": "Gale Boetticher",
+            "title": "Sunset subtitles — Breaking Bad Wiki, timecoded English subtitles",
+            "url": "https://breakingbad.fandom.com/wiki/Sunset_subtitles"
+          },
+          {
+            "locator": "Explanation, Vocabulary.com section, on forming one's own opinion with judge for yourself.",
+            "title": "judge — Dictionary.com",
+            "url": "https://www.dictionary.com/browse/judge"
+          }
+        ],
+        "term": "Judge for yourself.",
+        "who": "Гейл Боттикер"
+      },
+      {
+        "added": "2026-11-24",
+        "au": 1,
+        "ex": "No hard feelings. I know you could only invite a few people.",
+        "exru": "Без обид. Я понимаю, что ты мог пригласить всего несколько человек.",
+        "id": "no-hard-feelings",
+        "note": "В S05E14 «Ozymandias» Джек говорит это Уолту перед рукопожатием. В этой сцене фраза звучит как требование забыть о случившемся. В обычном разговоре ею можно ответить на извинение и дать понять, что обиды не осталось. В устойчивом выражении feelings стоит во множественном числе.",
+        "reg": "разговорное, обычно примирительное",
+        "ru": "Без обид.",
+        "sources": [
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Scene 13, printed p. 19, JACK to Walt, before their handshake. The script's page headers identify episode #514 despite the host's link label.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — Sony Pictures Television, final script, April 1, 2013",
+            "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script"
+          },
+          {
+            "episode": "S05E14 Ozymandias",
+            "locator": "Cue 244, 00:15:17.199–00:15:20.234, in Jack's exchange with Walt before their handshake.",
+            "short_excerpt": true,
+            "speaker": "Jack Welker",
+            "title": "Breaking Bad 05x14 Ozymandias — English timecoded subtitles",
+            "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias"
+          },
+          {
+            "locator": "Idiom entry and conversational example following an apology.",
+            "title": "no hard feelings — Cambridge Academic Content Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/no-hard-feelings"
+          }
+        ],
+        "term": "No hard feelings.",
+        "who": "Джек Уэлкер"
+      }
+    ],
+    "date": "2026-11-24"
+  },
+  "batch_sha256": "1009b083dabe247ef8681c4af1caa84c57f482191a2433d94d05449d87775c51",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-24T07:54:37.171998Z"
+}
