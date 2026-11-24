@@ -1,0 +1,80 @@
+{
+  "batch_sha256": "9ef6662fec039d58254895be427dbac36be2b41c7786f6e15a4a325df157750b",
+  "cards": [
+    {
+      "added": "2026-11-24",
+      "au": 1,
+      "ex": "Maya ran into her cousin Tom on the train home, so they sat together.",
+      "exru": "По дороге домой Майя случайно встретила в поезде своего двоюродного брата Тома, и они сели вместе.",
+      "id": "run-into",
+      "ipa": "/ˌrʌn ˈɪn.tuː/ · ran into · run into",
+      "note": "В разговоре run into someone описывает неожиданную встречу. Имя или местоимение ставят после into. Можно сказать I ran into her. Форма I ran her into для этого значения ошибочна. Если о встрече договорились заранее, подойдёт meet up with someone.",
+      "pos": "phrasal verb · переходный · неразделяемый",
+      "ru": "случайно встретить кого-то из знакомых",
+      "sources": [
+        {
+          "evidence": "The COBUILD entry puts the person after into and illustrates a chance encounter with the past-tense form ran.",
+          "title": "RUN INTO definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/run-into",
+          "verified_on": "2026-11-24"
+        },
+        {
+          "evidence": "The B2 entry for run into someone describes unexpectedly seeing someone you know and lists ran and run as the past forms.",
+          "title": "RUN (SOMETHING) INTO SOMETHING/SOMEONE - Cambridge English Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/run-into",
+          "verified_on": "2026-11-24"
+        },
+        {
+          "evidence": "The British entry gives the contrasting sense of a meeting that people have arranged in advance.",
+          "title": "MEET UP definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/meet-up",
+          "verified_on": "2026-11-24"
+        }
+      ],
+      "term": "run into"
+    }
+  ],
+  "clips": {
+    "run-into-t": {
+      "duration": 1.056,
+      "key": "run-into-t",
+      "location": [
+        3703392,
+        6336,
+        0.048
+      ],
+      "packed_sha256": "dc63a6a1a3c7efd2364318c08b05ab1ebcef6017230921143266ed57504d3617",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f5d2b290aad02f3124a79b7c6384279a509e1add224f569f360b9308f4aa054c",
+      "text": "run into",
+      "text_sha256": "1d58c5fe20f01f8708b6aca8d146a798c1a99edd8b312dbd1630fb082278bbda",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "run-into-x": {
+      "duration": 4.152,
+      "key": "run-into-x",
+      "location": [
+        3709728,
+        24912,
+        0.048
+      ],
+      "packed_sha256": "1216c3f1b6257873f8a4a700a46ce8f6f30dfdb08fbf18cc1a68c4868d7ca3b9",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "6ccb979e71f898093c06a781e3c388a939d8ca31e7651b8b1c0f0d7c2d8d6a87",
+      "text": "Maya ran into her cousin Tom on the train home, so they sat together.",
+      "text_sha256": "2f919be553b1c6108d6fd5a53f46fb7c4f4a56b55eb6e7158cf7137cf3713421",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-24",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}

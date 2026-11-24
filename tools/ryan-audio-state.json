@@ -45109,6 +45109,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "run-into-t": {
+          "duration": 1.056,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "1d58c5fe20f01f8708b6aca8d146a798c1a99edd8b312dbd1630fb082278bbda",
+          "packed_sha256": "dc63a6a1a3c7efd2364318c08b05ab1ebcef6017230921143266ed57504d3617",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "f5d2b290aad02f3124a79b7c6384279a509e1add224f569f360b9308f4aa054c",
+          "signature": "7a449be7b21cde40c69e6059c224beceb5c9aa8f36e6728d731e46e5db15a947",
+          "source": "Microsoft-Edge-TTS",
+          "text": "run into",
+          "text_sha256": "1d58c5fe20f01f8708b6aca8d146a798c1a99edd8b312dbd1630fb082278bbda",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "run-into-x": {
+          "duration": 4.152,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "2f919be553b1c6108d6fd5a53f46fb7c4f4a56b55eb6e7158cf7137cf3713421",
+          "packed_sha256": "1216c3f1b6257873f8a4a700a46ce8f6f30dfdb08fbf18cc1a68c4868d7ca3b9",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "6ccb979e71f898093c06a781e3c388a939d8ca31e7651b8b1c0f0d7c2d8d6a87",
+          "signature": "c61fa09ed800fcd6b04d67bda9a512c5ab4f11243bd9e295c9dcd674395db557",
+          "source": "Microsoft-Edge-TTS",
+          "text": "Maya ran into her cousin Tom on the train home, so they sat together.",
+          "text_sha256": "2f919be553b1c6108d6fd5a53f46fb7c4f4a56b55eb6e7158cf7137cf3713421",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "run-out-of-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "301d740a92f97c5b27c412c21d079165c247178c385626cefa3e8c2985224549",
