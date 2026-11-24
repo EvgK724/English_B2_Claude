@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-24",
+        "au": 1,
+        "ex": "Maya ran into her cousin Tom on the train home, so they sat together.",
+        "exru": "По дороге домой Майя случайно встретила в поезде своего двоюродного брата Тома, и они сели вместе.",
+        "id": "run-into",
+        "ipa": "/ˌrʌn ˈɪn.tuː/ · ran into · run into",
+        "note": "В разговоре run into someone описывает неожиданную встречу. Имя или местоимение ставят после into. Можно сказать I ran into her. Форма I ran her into для этого значения ошибочна. Если о встрече договорились заранее, подойдёт meet up with someone.",
+        "pos": "phrasal verb · переходный · неразделяемый",
+        "ru": "случайно встретить кого-то из знакомых",
+        "sources": [
+          {
+            "evidence": "The COBUILD entry puts the person after into and illustrates a chance encounter with the past-tense form ran.",
+            "title": "RUN INTO definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/run-into",
+            "verified_on": "2026-11-24"
+          },
+          {
+            "evidence": "The B2 entry for run into someone describes unexpectedly seeing someone you know and lists ran and run as the past forms.",
+            "title": "RUN (SOMETHING) INTO SOMETHING/SOMEONE - Cambridge English Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/run-into",
+            "verified_on": "2026-11-24"
+          },
+          {
+            "evidence": "The British entry gives the contrasting sense of a meeting that people have arranged in advance.",
+            "title": "MEET UP definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/meet-up",
+            "verified_on": "2026-11-24"
+          }
+        ],
+        "term": "run into"
+      }
+    ],
+    "date": "2026-11-24"
+  },
+  "batch_sha256": "9ef6662fec039d58254895be427dbac36be2b41c7786f6e15a4a325df157750b",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-24T07:51:25.678357Z"
+}
