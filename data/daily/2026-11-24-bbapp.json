@@ -1,0 +1,152 @@
+{
+  "batch_sha256": "1009b083dabe247ef8681c4af1caa84c57f482191a2433d94d05449d87775c51",
+  "cards": [
+    {
+      "added": "2026-11-24",
+      "au": 1,
+      "ex": "Listen to both recordings and judge for yourself which one sounds clearer.",
+      "exru": "Послушай обе записи и сам реши, какая звучит чётче.",
+      "id": "judge-for-yourself",
+      "note": "В S03E06 «Sunset» Гейл протягивает Уолту чашку кофе и предлагает самому оценить вкус. Так говорят, когда собеседник может что-то попробовать, увидеть или услышать и сделать вывод. Предлог for здесь важен. Если сказать judge yourself, получится «оцени самого себя».",
+      "reg": "нейтральное, приглашение составить своё мнение",
+      "ru": "Суди сам.",
+      "sources": [
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Printed p. 22 (PDF p. 25), GALE, just before he pours Walt a cup of coffee.",
+          "short_excerpt": true,
+          "speaker": "Gale Boetticher",
+          "title": "John Shiban, Breaking Bad #306 “Sunset” — Sony Pictures Television, Script As Broadcast",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-306-sunset-2010.pdf?v=1745342670"
+        },
+        {
+          "episode": "S03E06 Sunset",
+          "locator": "Cue 192, 00:17:57.327–00:18:00.080, immediately before Walt tastes the coffee.",
+          "short_excerpt": true,
+          "speaker": "Gale Boetticher",
+          "title": "Sunset subtitles — Breaking Bad Wiki, timecoded English subtitles",
+          "url": "https://breakingbad.fandom.com/wiki/Sunset_subtitles"
+        },
+        {
+          "locator": "Explanation, Vocabulary.com section, on forming one's own opinion with judge for yourself.",
+          "title": "judge — Dictionary.com",
+          "url": "https://www.dictionary.com/browse/judge"
+        }
+      ],
+      "term": "Judge for yourself.",
+      "who": "Гейл Боттикер"
+    },
+    {
+      "added": "2026-11-24",
+      "au": 1,
+      "ex": "No hard feelings. I know you could only invite a few people.",
+      "exru": "Без обид. Я понимаю, что ты мог пригласить всего несколько человек.",
+      "id": "no-hard-feelings",
+      "note": "В S05E14 «Ozymandias» Джек говорит это Уолту перед рукопожатием. В этой сцене фраза звучит как требование забыть о случившемся. В обычном разговоре ею можно ответить на извинение и дать понять, что обиды не осталось. В устойчивом выражении feelings стоит во множественном числе.",
+      "reg": "разговорное, обычно примирительное",
+      "ru": "Без обид.",
+      "sources": [
+        {
+          "episode": "S05E14 Ozymandias",
+          "locator": "Scene 13, printed p. 19, JACK to Walt, before their handshake. The script's page headers identify episode #514 despite the host's link label.",
+          "short_excerpt": true,
+          "speaker": "Jack Welker",
+          "title": "Moira Walley-Beckett, Breaking Bad #514 “Ozymandias” — Sony Pictures Television, final script, April 1, 2013",
+          "url": "https://www.scribd.com/document/424312049/Breaking-Bad-Felina-Script"
+        },
+        {
+          "episode": "S05E14 Ozymandias",
+          "locator": "Cue 244, 00:15:17.199–00:15:20.234, in Jack's exchange with Walt before their handshake.",
+          "short_excerpt": true,
+          "speaker": "Jack Welker",
+          "title": "Breaking Bad 05x14 Ozymandias — English timecoded subtitles",
+          "url": "https://www.scribd.com/document/168538730/Breaking-Bad-05x14-Ozymandias"
+        },
+        {
+          "locator": "Idiom entry and conversational example following an apology.",
+          "title": "no hard feelings — Cambridge Academic Content Dictionary",
+          "url": "https://dictionary.cambridge.org/us/dictionary/english/no-hard-feelings"
+        }
+      ],
+      "term": "No hard feelings.",
+      "who": "Джек Уэлкер"
+    }
+  ],
+  "clips": {
+    "judge-for-yourself-t": {
+      "duration": 1.248,
+      "key": "judge-for-yourself-t",
+      "location": [
+        3842064,
+        7488,
+        0.048
+      ],
+      "packed_sha256": "798174fa0448b7df5d84d8cf68d980d6222d95d976861c919013b52791385f97",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "eabd187f265a02e23751d1b8ae9ec9f5533c9459c7d136f932ce241fc525a4ed",
+      "text": "Judge for yourself.",
+      "text_sha256": "43657d79fa703b52f3912b34eddbabad09f02dae44739bc5d5262a6ed7ffa6e6",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "judge-for-yourself-x": {
+      "duration": 3.792,
+      "key": "judge-for-yourself-x",
+      "location": [
+        3849552,
+        22752,
+        0.048
+      ],
+      "packed_sha256": "75e07829e302d18826fcc65d88573158e8f4cfc62b1cf98314fbb1fc1184832d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c4e2ba51af9dc7336731f982e34af012a7d7cf85b71319bac29390438eb54301",
+      "text": "Listen to both recordings and judge for yourself which one sounds clearer.",
+      "text_sha256": "e3a77aae7d1bfa6d81fdd2ffbce14732568091d2f8a665e53f79078926723d94",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-hard-feelings-t": {
+      "duration": 1.392,
+      "key": "no-hard-feelings-t",
+      "location": [
+        3872304,
+        8352,
+        0.048
+      ],
+      "packed_sha256": "f793832992b28229fdaa9395702a9867b0c2a81fbc697354d7aaf49660787a75",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "edafb9aa91d3e31f3d2de1e014eb324a4875ac6f9e952601b0d11478ea6ef61d",
+      "text": "No hard feelings.",
+      "text_sha256": "02f992d64e5b8735ba78b30b2e044e61f79edc2c4df8a102e88a21fec4023dd8",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-hard-feelings-x": {
+      "duration": 3.84,
+      "key": "no-hard-feelings-x",
+      "location": [
+        3880656,
+        23040,
+        0.048
+      ],
+      "packed_sha256": "6e8fde1cf0078318e90276a393a67cae43ff7ae8cc03d1125da4cd94c5c6f9d4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "16b42126dc337075c6b63c30cf8ae13c7b35f8cd93a823690f9c3fac64ff21b5",
+      "text": "No hard feelings. I know you could only invite a few people.",
+      "text_sha256": "35ad9a39ac713285dce0dd528f9152b2239026180e62159c19e4ab17a36e075a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-24",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}

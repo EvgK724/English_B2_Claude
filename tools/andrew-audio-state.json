@@ -2114,6 +2114,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "judge-for-yourself-t": {
+      "duration": 1.248,
+      "edge_tts": "7.3.1",
+      "key": "judge-for-yourself-t",
+      "ledger": "data/daily/2026-11-24-bbapp.json",
+      "location": [
+        3842064,
+        7488,
+        0.048
+      ],
+      "packed_sha256": "798174fa0448b7df5d84d8cf68d980d6222d95d976861c919013b52791385f97",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "eabd187f265a02e23751d1b8ae9ec9f5533c9459c7d136f932ce241fc525a4ed",
+      "signature": "1f5db943c5070d239499cd6a5cc3923329196ef8084a4961f5ef269de1e8511d",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Judge for yourself.",
+      "text_sha256": "43657d79fa703b52f3912b34eddbabad09f02dae44739bc5d5262a6ed7ffa6e6",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "judge-for-yourself-x": {
+      "duration": 3.792,
+      "edge_tts": "7.3.1",
+      "key": "judge-for-yourself-x",
+      "ledger": "data/daily/2026-11-24-bbapp.json",
+      "location": [
+        3849552,
+        22752,
+        0.048
+      ],
+      "packed_sha256": "75e07829e302d18826fcc65d88573158e8f4cfc62b1cf98314fbb1fc1184832d",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c4e2ba51af9dc7336731f982e34af012a7d7cf85b71319bac29390438eb54301",
+      "signature": "83276bbfd45f7fe6d2f999c07b18adc5ee21c95419c794dee138003f1ee23167",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Listen to both recordings and judge for yourself which one sounds clearer.",
+      "text_sha256": "e3a77aae7d1bfa6d81fdd2ffbce14732568091d2f8a665e53f79078926723d94",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "just-because-doesnt-mean-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -2653,6 +2695,48 @@
       "source": "Microsoft-Edge-TTS",
       "text": "Maya earned that promotion, no doubt about it.",
       "text_sha256": "73165bc159a5bcb9cad07a7a35d3db8c9b5671f0b37bb7732cedccd9f884a9d7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-hard-feelings-t": {
+      "duration": 1.392,
+      "edge_tts": "7.3.1",
+      "key": "no-hard-feelings-t",
+      "ledger": "data/daily/2026-11-24-bbapp.json",
+      "location": [
+        3872304,
+        8352,
+        0.048
+      ],
+      "packed_sha256": "f793832992b28229fdaa9395702a9867b0c2a81fbc697354d7aaf49660787a75",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "edafb9aa91d3e31f3d2de1e014eb324a4875ac6f9e952601b0d11478ea6ef61d",
+      "signature": "b3d5f39ba9182a23a5308d67bb4d390eee0d2d4626f0737606b7c95aa2d124f2",
+      "source": "Microsoft-Edge-TTS",
+      "text": "No hard feelings.",
+      "text_sha256": "02f992d64e5b8735ba78b30b2e044e61f79edc2c4df8a102e88a21fec4023dd8",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "no-hard-feelings-x": {
+      "duration": 3.84,
+      "edge_tts": "7.3.1",
+      "key": "no-hard-feelings-x",
+      "ledger": "data/daily/2026-11-24-bbapp.json",
+      "location": [
+        3880656,
+        23040,
+        0.048
+      ],
+      "packed_sha256": "6e8fde1cf0078318e90276a393a67cae43ff7ae8cc03d1125da4cd94c5c6f9d4",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "16b42126dc337075c6b63c30cf8ae13c7b35f8cd93a823690f9c3fac64ff21b5",
+      "signature": "e451e433d4c466e3b3a208dcd5bbeb3eeed43a1eb11657211587e29c34701d1b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "No hard feelings. I know you could only invite a few people.",
+      "text_sha256": "35ad9a39ac713285dce0dd528f9152b2239026180e62159c19e4ab17a36e075a",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
