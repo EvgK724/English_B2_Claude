@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-25",
+        "au": 1,
+        "ex": "When the printer broke down, we fell behind schedule and sent the invitations a day late.",
+        "exru": "Когда сломался принтер, мы отстали от графика и отправили приглашения на день позже, чем планировали.",
+        "id": "fall-behind",
+        "ipa": "/ˌfɔːl bɪˈhaɪnd/ · fell behind · fallen behind",
+        "note": "О сроках говорят fall behind schedule, о работе — fall behind with your work. Fall behind означает, что вы начали отставать, а be behind — что вы уже отстаёте. После have нужна форма fallen. Правильно we’ve fallen behind. Форма we’ve fell behind ошибочна.",
+        "pos": "phrasal verb · без дополнения · неразделяемый",
+        "ru": "отстать от графика, перестать успевать в срок",
+        "sources": [
+          {
+            "evidence": "Collins labels the British verb intransitive and shows both fall behind schedule and fall behind with something.",
+            "title": "FALL BEHIND definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/fall-behind",
+            "verified_on": "2026-11-25"
+          },
+          {
+            "evidence": "The entry gives the British vowel in fall and distinguishes the past tense fell from the past participle fallen.",
+            "title": "FALL definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/fall",
+            "verified_on": "2026-11-25"
+          },
+          {
+            "evidence": "The British pronunciation has stress on the second syllable. The entry shows be behind schedule for work that is already running late.",
+            "title": "BEHIND definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/behind",
+            "verified_on": "2026-11-25"
+          }
+        ],
+        "term": "fall behind"
+      }
+    ],
+    "date": "2026-11-25"
+  },
+  "batch_sha256": "3e64218d0f3b1e9db53103e5470b11111d1a29a6cafce6bb6d6c4e0edf5c84de",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-25T06:55:48.820428Z"
+}
