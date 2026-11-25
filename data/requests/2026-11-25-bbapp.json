@@ -1,0 +1,81 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-25",
+        "au": 1,
+        "ex": "You said your sister opened a bakery. How's it doing?",
+        "exru": "Ты говорил, что твоя сестра открыла пекарню. Как там идут дела?",
+        "id": "hows-it-doing",
+        "note": "В S01E01 «Pilot» Скайлер продаёт вазу на аукционе. Уолтер хочет узнать, как идут торги. Так же можно спросить о магазине или проекте, который собеседник уже упомянул. Слово how означает «как», а it отсылает к предмету разговора. Когда раскрываешь сокращение how’s, ставь is перед it.",
+        "reg": "разговорное, короткий вопрос о том, как идут дела",
+        "ru": "Ну как там дела?",
+        "sources": [
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Printed p. 14 (PDF p. 16), WALT asks about the vase Skyler is selling.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Vince Gilligan, Breaking Bad — pilot screenplay, May 27, 2005",
+            "url": "https://r2.laper.ai/screenplays/breaking-bad-101-pilot-2008.pdf#page=16"
+          },
+          {
+            "episode": "S01E01 Pilot",
+            "locator": "Bedroom auction scene, just after Skyler identifies the faux-Lalique vase and before she reports the reserve has been met.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad s01e01 Episode Script — Springfield! Springfield!",
+            "url": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e01&tv-show=breaking-bad"
+          },
+          {
+            "locator": "Intransitive verb, the sense of faring or getting along.",
+            "title": "do — Merriam-Webster",
+            "url": "https://www.merriam-webster.com/dictionary/do"
+          }
+        ],
+        "term": "How's it doing?",
+        "who": "Уолтер Уайт"
+      },
+      {
+        "added": "2026-11-25",
+        "au": 1,
+        "ex": "The sooner we start packing, the less we'll have to do on moving day.",
+        "exru": "Чем раньше мы начнём собирать вещи, тем меньше дел останется на день переезда.",
+        "id": "the-sooner-we-do-it-the-sooner-were-done",
+        "note": "В S03E10 «Fly» Уолтер слышит таймер и торопит Джесси. Первое the sooner здесь значит «чем раньше», второе — «тем раньше». Во второй части можно назвать и другой результат, например the less («тем меньше»). Перед сравнительным словом в каждой части нужно the.",
+        "reg": "разговорное, побуждение взяться за дело",
+        "ru": "Чем раньше возьмёмся, тем раньше закончим.",
+        "sources": [
+          {
+            "episode": "S03E10 Fly",
+            "locator": "Printed p. 19 (PDF p. 22), WALT to Jesse immediately after turning off the timer.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Sam Catlin and Moira Walley-Beckett, Breaking Bad #310 “Fly” — Sony Pictures Television, As Broadcast",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-310-fly-2010.pdf?v=1745342670#page=22"
+          },
+          {
+            "episode": "S03E10 Fly",
+            "locator": "Cue 172, 00:15:38.131–00:15:40.632, after Walt suggests getting started.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad – 3x10.en — English subtitles, Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/45/Breaking%20Bad%20-%203x10.en.html"
+          },
+          {
+            "locator": "Comparative adjectives, paired comparatives describing how one thing depends on another.",
+            "title": "Comparative and superlative adjectives — British Council LearnEnglish",
+            "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/comparative-superlative-adjectives"
+          }
+        ],
+        "term": "The sooner we do it, the sooner we're done.",
+        "who": "Уолтер Уайт"
+      }
+    ],
+    "date": "2026-11-25"
+  },
+  "batch_sha256": "9c91115f94b7688a956cf3c31f6b7215e41054e0e9aa8b85b3836c08ab93e572",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-25T03:51:33.941237Z"
+}
