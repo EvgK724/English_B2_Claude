@@ -1,0 +1,80 @@
+{
+  "batch_sha256": "3e64218d0f3b1e9db53103e5470b11111d1a29a6cafce6bb6d6c4e0edf5c84de",
+  "cards": [
+    {
+      "added": "2026-11-25",
+      "au": 1,
+      "ex": "When the printer broke down, we fell behind schedule and sent the invitations a day late.",
+      "exru": "Когда сломался принтер, мы отстали от графика и отправили приглашения на день позже, чем планировали.",
+      "id": "fall-behind",
+      "ipa": "/ˌfɔːl bɪˈhaɪnd/ · fell behind · fallen behind",
+      "note": "О сроках говорят fall behind schedule, о работе — fall behind with your work. Fall behind означает, что вы начали отставать, а be behind — что вы уже отстаёте. После have нужна форма fallen. Правильно we’ve fallen behind. Форма we’ve fell behind ошибочна.",
+      "pos": "phrasal verb · без дополнения · неразделяемый",
+      "ru": "отстать от графика, перестать успевать в срок",
+      "sources": [
+        {
+          "evidence": "Collins labels the British verb intransitive and shows both fall behind schedule and fall behind with something.",
+          "title": "FALL BEHIND definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/fall-behind",
+          "verified_on": "2026-11-25"
+        },
+        {
+          "evidence": "The entry gives the British vowel in fall and distinguishes the past tense fell from the past participle fallen.",
+          "title": "FALL definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/fall",
+          "verified_on": "2026-11-25"
+        },
+        {
+          "evidence": "The British pronunciation has stress on the second syllable. The entry shows be behind schedule for work that is already running late.",
+          "title": "BEHIND definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/behind",
+          "verified_on": "2026-11-25"
+        }
+      ],
+      "term": "fall behind"
+    }
+  ],
+  "clips": {
+    "fall-behind-t": {
+      "duration": 1.248,
+      "key": "fall-behind-t",
+      "location": [
+        3734640,
+        7488,
+        0.048
+      ],
+      "packed_sha256": "1e9854d3fd8601ae6ec8c15d567de980631680d408d8216eaefcbc48403d5e52",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "de43146810bb6874356d4c3a6918af4d0ff9cee55c64d07a62e91ca55a9b603d",
+      "text": "fall behind",
+      "text_sha256": "5eae066257660a457ecb8ff49d32f182c9cde4a7d6049a937719930a888ea997",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "fall-behind-x": {
+      "duration": 4.92,
+      "key": "fall-behind-x",
+      "location": [
+        3742128,
+        29520,
+        0.048
+      ],
+      "packed_sha256": "132cf53a6b9d890cae6e53c4e05ad6d575c4f14fabf0185b4219a38bb9c4a190",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "53e3a006b6d17826531174e28060fd7f26eebb5d2fb694d5d2ad0034083bc70c",
+      "text": "When the printer broke down, we fell behind schedule and sent the invitations a day late.",
+      "text_sha256": "b57487733a21e82e68101938d7a3b00d8d03a9845733f5e3e4b6cc09e8e27487",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-25",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
