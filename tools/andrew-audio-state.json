@@ -1624,6 +1624,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "hows-it-doing-t": {
+      "duration": 0.84,
+      "edge_tts": "7.3.1",
+      "key": "hows-it-doing-t",
+      "ledger": "data/daily/2026-11-25-bbapp.json",
+      "location": [
+        3903696,
+        5040,
+        0.048
+      ],
+      "packed_sha256": "c12a3464bfa5c38e91e4ef9771b8d20868cf6df7b61b8ce1ed303d7aabe34917",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "aa0e25ba0652dfaa91d7c822982e41d7637d7a97fad4b993a1ba07e13fda3375",
+      "signature": "09666c4208a73b6496e560251c0edd00c4f3eebd3feaa4a401f470025977a759",
+      "source": "Microsoft-Edge-TTS",
+      "text": "How's it doing?",
+      "text_sha256": "b282faaeef233c418f374793416aa55e135276a55464393ebeff61bffbcde1eb",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hows-it-doing-x": {
+      "duration": 3.072,
+      "edge_tts": "7.3.1",
+      "key": "hows-it-doing-x",
+      "ledger": "data/daily/2026-11-25-bbapp.json",
+      "location": [
+        3908736,
+        18432,
+        0.048
+      ],
+      "packed_sha256": "9fd40f78bbc851841ff53449b6c2ec4995ef51d696e52f3cd244df92699d061a",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "edb6b889dfbcaf8ae0adc7422089d7fc88146caa51f5f68362f281446dd1c63b",
+      "signature": "30c85d8b4ae1728c8f16fe8c34a07233ad85d754d12be072d9d8640e63a4aaed",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You said your sister opened a bakery. How's it doing?",
+      "text_sha256": "e14a9fb32f8c4c5e07275a8596e98d4671581201c0077784d153881b1e47e11a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "i-can-do-the-math-t": {
       "duration": 1.008,
       "edge_tts": "7.3.1",
@@ -3817,6 +3859,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "I'm the one who signs these forms, so bring them straight to me.",
       "text_sha256": "d5c1b1bdb7bd4a7a75f6cea6589613884874bb1fb1cc449c972d25966c854b61",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "the-sooner-we-do-it-the-sooner-were-done-t": {
+      "duration": 2.568,
+      "edge_tts": "7.3.1",
+      "key": "the-sooner-we-do-it-the-sooner-were-done-t",
+      "ledger": "data/daily/2026-11-25-bbapp.json",
+      "location": [
+        3927168,
+        15408,
+        0.048
+      ],
+      "packed_sha256": "50c0e6e4a16cd708f4fb725408d9810b0e68af47743c4c6a83d81c5571aeee01",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "5fd8c1f141c9cb3e0e34767da7a17be16fc7fe4533bb633c94ccc92be9918aea",
+      "signature": "007d1a4fe5ec56d7ccebff67efe200e83f270ebc26ef86b875c8df92d1fa0fd8",
+      "source": "Microsoft-Edge-TTS",
+      "text": "The sooner we do it, the sooner we're done.",
+      "text_sha256": "0f0df241941d47e2f4f3019189ce3fb943ca55e00e3e9d874a692a3428c2d3d3",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "the-sooner-we-do-it-the-sooner-were-done-x": {
+      "duration": 3.768,
+      "edge_tts": "7.3.1",
+      "key": "the-sooner-we-do-it-the-sooner-were-done-x",
+      "ledger": "data/daily/2026-11-25-bbapp.json",
+      "location": [
+        3942576,
+        22608,
+        0.048
+      ],
+      "packed_sha256": "6ca493018154528701ae83467eea3a84faa838ef421213fe114be8a4349e1542",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "1693334ad9b6424c1ece07b3b4ad3af0cfee6dd397c3d451a8fc54799f0b0982",
+      "signature": "6e25a4374a7a75260ef147fc032d9693ef03e4a027343647ea23125f6fedff8a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "The sooner we start packing, the less we'll have to do on moving day.",
+      "text_sha256": "c50249719e2c68af9784b9db53429b1316079f5f2fef9f5ff95505f582820c87",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
