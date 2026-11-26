@@ -2350,6 +2350,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "knock-yourself-out-t": {
+      "duration": 1.128,
+      "edge_tts": "7.3.1",
+      "key": "knock-yourself-out-t",
+      "ledger": "data/daily/2026-11-26-bbapp.json",
+      "location": [
+        3965184,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "b481230821b3ffe7fada955ca19600df2b66d38e90269866f7bb6c17a26393fe",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "72b0aac495475ffdc90e2ed530c34a482729d91f7be7f7fc8a4ec3ea14d00f82",
+      "signature": "fbd15c520ba112dbc8da2e5d72143e6fcbaefebdc6c93202e1696cfe11696799",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Knock yourself out.",
+      "text_sha256": "485287da69023aa40708d521454f69791728d06c163d9e707cc2f10fba7d3f6b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "knock-yourself-out-x": {
+      "duration": 2.712,
+      "edge_tts": "7.3.1",
+      "key": "knock-yourself-out-x",
+      "ledger": "data/daily/2026-11-26-bbapp.json",
+      "location": [
+        3971952,
+        16272,
+        0.048
+      ],
+      "packed_sha256": "e04ad51155a4ec74a474435180b042df48a18aa319a23d37fcfb9d2c883b4ce0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b96e05b2b6c0ab036aebf6940e51823f0c213e1121f648d8c0ac37e3f521c54b",
+      "signature": "50531c62072d9b0df29703874f2303f97c1054ba0a5c8e0a17ca9e1e47072c1a",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Want to try my new camera? Knock yourself out.",
+      "text_sha256": "d641dccb15c7811e34ecc41899aba61bf5bd2d2eef377c80d4d46020e95dd7d8",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "know-a-guy-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -2999,6 +3041,48 @@
       "source": "reviewed-existing-Andrew-baseline",
       "text": "Don't worry about the deadline, I'm not going anywhere until the report is finished.",
       "text_sha256": "c5e3fa2c508fadd54680c13192d0ecf3bbacbf7a193ede88dc333a2d928f4575",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-that-i-can-recall-no-t": {
+      "duration": 1.872,
+      "edge_tts": "7.3.1",
+      "key": "not-that-i-can-recall-no-t",
+      "ledger": "data/daily/2026-11-26-bbapp.json",
+      "location": [
+        3988224,
+        11232,
+        0.048
+      ],
+      "packed_sha256": "45cff5b1ba4b2d17bf4a0d1f4d32e65e2ddaf73895a293860e78e80afd530360",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c75f6c7e105d90ef93aee1f1ea552a44689ba89d0be95ad715bb2c249ffa1dfe",
+      "signature": "901e5d86d7cd6c68399ab23611cef6b19c253f9ba576e66b789271a3766543a6",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Not that I can recall, no.",
+      "text_sha256": "9705dc98eff24e50efa6a42032b52c097639506ed2c3c4df621b4df69a764d1c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-that-i-can-recall-no-x": {
+      "duration": 3.888,
+      "edge_tts": "7.3.1",
+      "key": "not-that-i-can-recall-no-x",
+      "ledger": "data/daily/2026-11-26-bbapp.json",
+      "location": [
+        3999456,
+        23328,
+        0.048
+      ],
+      "packed_sha256": "4ba7ead21584f959c0440aa903cc071157f464e6e0f9ac147f676a4ece875627",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "677048c0a1a0dba700ececdd7da2e203ade80288c1d560d895ad4db950621875",
+      "signature": "0b999166e33bcee1ee3b25707646933c0b219e90ca750b7339be6d48a4a57c0b",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Has the river ever flooded this street? Not that I can recall, no.",
+      "text_sha256": "f7a28c4d08dbf4a5023bee20affc71a4a1f0cce361086225061364b71940e839",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

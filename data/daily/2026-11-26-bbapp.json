@@ -1,0 +1,152 @@
+{
+  "batch_sha256": "369729b226eef65a9856ae633e735946f553649178d3c570c97bba3d9d1c9756",
+  "cards": [
+    {
+      "added": "2026-11-26",
+      "au": 1,
+      "ex": "Want to try my new camera? Knock yourself out.",
+      "exru": "Хочешь попробовать мою новую камеру? Валяй.",
+      "id": "knock-yourself-out",
+      "note": "В S03E10 «Fly» Джесси ставит перед Уолтером пакеты со средствами от мух и предлагает брать что угодно. Так можно ответить приятелю, который просит разрешения. С улыбкой это звучит дружелюбно, а сухим тоном может прозвучать как «да делай что хочешь». В этой фразе ставь yourself между knock и out. Если обращаешься к нескольким людям, скажи yourselves.",
+      "reg": "разговорное, фамильярное разрешение",
+      "ru": "Валяй.",
+      "sources": [
+        {
+          "episode": "S03E10 Fly",
+          "locator": "Printed p. 29, opening of Act Three. Jesse puts down three shopping bags for Walt.",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Sam Catlin and Moira Walley-Beckett, Breaking Bad #310 “Fly” — Sony Pictures Television, As Broadcast",
+          "url": "https://www.scribd.com/document/639151978/Untitled"
+        },
+        {
+          "episode": "S03E10 Fly",
+          "locator": "Cue 252, 00:24:03.902–00:24:05.863, just before Jesse comments on the flyswatter.",
+          "short_excerpt": true,
+          "speaker": "Jesse Pinkman",
+          "title": "Breaking.Bad.S03E10.720p.BluRay.X264-REWARD — English subtitles, Subtitle Cat",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E10.720p.BluRay.X264-REWARD.html"
+        },
+        {
+          "locator": "Meaning and usage note on giving informal permission.",
+          "title": "knock yourself out — EnglishClub, Conversational Phrases",
+          "url": "https://www.englishclub.com/ref/esl/Conversational_Phrases/K/knock_yourself_out_4265.php"
+        }
+      ],
+      "term": "Knock yourself out.",
+      "who": "Джесси Пинкман"
+    },
+    {
+      "added": "2026-11-26",
+      "au": 1,
+      "ex": "Has the river ever flooded this street? Not that I can recall, no.",
+      "exru": "Река когда-нибудь затапливала эту улицу? Насколько я помню, нет.",
+      "id": "not-that-i-can-recall-no",
+      "note": "В S03E10 «Fly» Джесси спрашивает Уолтера, бывало ли, что дикое животное забиралось к нему в дом и не могло выбраться. Уолтер такого не припомнит. Оборот not that I can recall оставляет место для ошибки, а короткое no в конце подтверждает ответ. После can ставь recall без to.",
+      "reg": "нейтральное, осторожный ответ по памяти",
+      "ru": "Насколько я помню, нет.",
+      "sources": [
+        {
+          "episode": "S03E10 Fly",
+          "locator": "Printed p. 32, Act Three. While Walt drinks coffee, Jesse asks about a wild animal getting trapped in his house.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Sam Catlin and Moira Walley-Beckett, Breaking Bad #310 “Fly” — Sony Pictures Television, As Broadcast",
+          "url": "https://www.scribd.com/document/639151978/Untitled"
+        },
+        {
+          "episode": "S03E10 Fly",
+          "locator": "Cue 278, 00:26:03.230–00:26:06.316, between Jesse's question and his story about his aunt's house.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking.Bad.S03E10.720p.BluRay.X264-REWARD — English subtitles, Subtitle Cat",
+          "url": "https://www.subtitlecat.com/subs/3/Breaking.Bad.S03E10.720p.BluRay.X264-REWARD.html"
+        },
+        {
+          "locator": "Transitive verb, sense 2b, remembering something.",
+          "title": "recall — Merriam-Webster",
+          "url": "https://www.merriam-webster.com/dictionary/recall"
+        }
+      ],
+      "term": "Not that I can recall, no.",
+      "who": "Уолтер Уайт"
+    }
+  ],
+  "clips": {
+    "knock-yourself-out-t": {
+      "duration": 1.128,
+      "key": "knock-yourself-out-t",
+      "location": [
+        3965184,
+        6768,
+        0.048
+      ],
+      "packed_sha256": "b481230821b3ffe7fada955ca19600df2b66d38e90269866f7bb6c17a26393fe",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "72b0aac495475ffdc90e2ed530c34a482729d91f7be7f7fc8a4ec3ea14d00f82",
+      "text": "Knock yourself out.",
+      "text_sha256": "485287da69023aa40708d521454f69791728d06c163d9e707cc2f10fba7d3f6b",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "knock-yourself-out-x": {
+      "duration": 2.712,
+      "key": "knock-yourself-out-x",
+      "location": [
+        3971952,
+        16272,
+        0.048
+      ],
+      "packed_sha256": "e04ad51155a4ec74a474435180b042df48a18aa319a23d37fcfb9d2c883b4ce0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "b96e05b2b6c0ab036aebf6940e51823f0c213e1121f648d8c0ac37e3f521c54b",
+      "text": "Want to try my new camera? Knock yourself out.",
+      "text_sha256": "d641dccb15c7811e34ecc41899aba61bf5bd2d2eef377c80d4d46020e95dd7d8",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-that-i-can-recall-no-t": {
+      "duration": 1.872,
+      "key": "not-that-i-can-recall-no-t",
+      "location": [
+        3988224,
+        11232,
+        0.048
+      ],
+      "packed_sha256": "45cff5b1ba4b2d17bf4a0d1f4d32e65e2ddaf73895a293860e78e80afd530360",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "c75f6c7e105d90ef93aee1f1ea552a44689ba89d0be95ad715bb2c249ffa1dfe",
+      "text": "Not that I can recall, no.",
+      "text_sha256": "9705dc98eff24e50efa6a42032b52c097639506ed2c3c4df621b4df69a764d1c",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "not-that-i-can-recall-no-x": {
+      "duration": 3.888,
+      "key": "not-that-i-can-recall-no-x",
+      "location": [
+        3999456,
+        23328,
+        0.048
+      ],
+      "packed_sha256": "4ba7ead21584f959c0440aa903cc071157f464e6e0f9ac147f676a4ece875627",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "677048c0a1a0dba700ececdd7da2e203ade80288c1d560d895ad4db950621875",
+      "text": "Has the river ever flooded this street? Not that I can recall, no.",
+      "text_sha256": "f7a28c4d08dbf4a5023bee20affc71a4a1f0cce361086225061364b71940e839",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-26",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
