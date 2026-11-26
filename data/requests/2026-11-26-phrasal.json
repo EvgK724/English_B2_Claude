@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-26",
+        "au": 1,
+        "ex": "We've set aside Friday morning to try out the new booking system.",
+        "exru": "Мы выделили утро пятницы, чтобы опробовать новую систему бронирования.",
+        "id": "set-aside",
+        "ipa": "/ˌset əˈsaɪd/ · set aside · set aside",
+        "note": "Set aside time for a meeting — выделить время на встречу. Put off a meeting — перенести саму встречу на потом. Можно сказать set money aside или set aside money. С местоимением говорят set it aside. Частая ошибка — set aside it.",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "выделить время, отложить деньги на определённую цель",
+        "sources": [
+          {
+            "evidence": "The entry gives the purpose sense, the past forms and examples with a noun or pronoun as the object.",
+            "title": "SET SOMETHING ASIDE | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/set-aside",
+            "verified_on": "2026-11-26"
+          },
+          {
+            "evidence": "The UK pronunciation places the stress on the second syllable of aside.",
+            "title": "ASIDE | Pronunciation in English",
+            "url": "https://dictionary.cambridge.org/pronunciation/english/aside",
+            "verified_on": "2026-11-26"
+          },
+          {
+            "evidence": "The delay sense describes moving an event or activity to a later time.",
+            "title": "PUT SOMETHING OFF definition | Cambridge English Dictionary",
+            "url": "https://dictionary.cambridge.org/us/dictionary/english/put-off",
+            "verified_on": "2026-11-26"
+          }
+        ],
+        "term": "set aside"
+      }
+    ],
+    "date": "2026-11-26"
+  },
+  "batch_sha256": "3c6a0ff1ccd0bf4bc5b3e174f3a1881c369e788c7b81d555d5958233c9bab364",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-26T06:50:00.738929Z"
+}
