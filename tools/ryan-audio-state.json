@@ -45195,6 +45195,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "set-aside-t": {
+          "duration": 1.152,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "5a0457ca6a052c85d5357e77a688ae4f937685c3377c4257cae64d0b37e8d280",
+          "packed_sha256": "0c551a4a60d828fe894ed1bc3b3177eedd3850391a295da8ac9b94000d339e7c",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "ebaa1ac359e27e48fd2a3b71b7756d0809fe46ccfc56881681757f19a6fb8ade",
+          "signature": "4edd11af1a0a6188b1a567bfe6fb627e599f1b2842ba3a03b900fa17939ea911",
+          "source": "Microsoft-Edge-TTS",
+          "text": "set aside",
+          "text_sha256": "5a0457ca6a052c85d5357e77a688ae4f937685c3377c4257cae64d0b37e8d280",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "set-aside-x": {
+          "duration": 3.624,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "a03d5084654f032a512d94bcd31c9d3404d5658c98373b51adfeb81de8089eca",
+          "packed_sha256": "0771d2e526c1530f03c17dc80f2493733fb4fbbd53502b1495dd6669a5ca122c",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "c55b9c2abf9bc0b46245e66915b4643094dd261a1259ae8b9954c9851c3e7e2c",
+          "signature": "7be3de3074f10d1689a3d9d8a26b3e9557799d9b0fb01ffa3a15623b45abd23d",
+          "source": "Microsoft-Edge-TTS",
+          "text": "We've set aside Friday morning to try out the new booking system.",
+          "text_sha256": "a03d5084654f032a512d94bcd31c9d3404d5658c98373b51adfeb81de8089eca",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "set-in-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "8a3408554120ca3712705e68afcbc22a4adbf18bd41dbd397e421ed3e80efd89",
