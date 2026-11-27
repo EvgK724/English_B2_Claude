@@ -1742,6 +1742,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "i-took-you-at-your-word-t": {
+      "duration": 1.272,
+      "edge_tts": "7.3.1",
+      "key": "i-took-you-at-your-word-t",
+      "ledger": "data/daily/2026-11-27-bbapp.json",
+      "location": [
+        4022784,
+        7632,
+        0.048
+      ],
+      "packed_sha256": "174d3b61a8d192da85a325742e3fd4da1640f4cef5ba3b7eeab0f377650b4b27",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "7b3bcbdbbc4bb178ccc8d4befb0848ad876be78d4e86e3981d09d6e90b13cf48",
+      "signature": "a59839fd6635ee1ba1888be9291fd3ea7bcf0ff8d4616f8ec07240401b1c6bbf",
+      "source": "Microsoft-Edge-TTS",
+      "text": "I took you at your word.",
+      "text_sha256": "c9c12196b8d62a231db70a2beed93f28605387b89496c03205876680d872be1a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "i-took-you-at-your-word-x": {
+      "duration": 3.744,
+      "edge_tts": "7.3.1",
+      "key": "i-took-you-at-your-word-x",
+      "ledger": "data/daily/2026-11-27-bbapp.json",
+      "location": [
+        4030416,
+        22464,
+        0.048
+      ],
+      "packed_sha256": "76c3c496214445f4d732871c84e284f5b33779d99a4a6b7f7e62e264146861a0",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "40fb24eae94a39dc4362f33293e2ce6376e929efacdd18252bda2be723833804",
+      "signature": "a2419a2dbd2932b63c0eb510637655507c4b53ceabf99e7e8f0b7f8bfd5a7d06",
+      "source": "Microsoft-Edge-TTS",
+      "text": "You said the room was quiet, so I took you at your word and booked it.",
+      "text_sha256": "a3ebf0020cfe1b4c2e1d36828907374ec3060a22205d33802e4f79be19052ae7",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "if-you-do-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -4803,6 +4845,48 @@
       "source": "Microsoft-Edge-TTS",
       "text": "I sat down for a minute to let the news sink in.",
       "text_sha256": "7c088190e3cf2426c8f32558784309711f2d723aca4242aaad7a3842fa07adc1",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "your-hunch-was-right-t": {
+      "duration": 1.224,
+      "edge_tts": "7.3.1",
+      "key": "your-hunch-was-right-t",
+      "ledger": "data/daily/2026-11-27-bbapp.json",
+      "location": [
+        4052880,
+        7344,
+        0.048
+      ],
+      "packed_sha256": "fd8bc56cec703fc5701bd26d3506f66b898e4871ab3d017e2eaf244c21460378",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "84d0ce48f3a12d7a01e3bb511fc9ca4629342dd0af9f04ebf177782bb459a306",
+      "signature": "93125721b5da1637e503fc58544f113358240b23a5c096d9bea6eb3637a96b92",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Your hunch was right.",
+      "text_sha256": "aa32c30d8dc87346a50947fe0c03f07d2625a596644e12f7007569a2ffa4ee2a",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "your-hunch-was-right-x": {
+      "duration": 3.912,
+      "edge_tts": "7.3.1",
+      "key": "your-hunch-was-right-x",
+      "ledger": "data/daily/2026-11-27-bbapp.json",
+      "location": [
+        4060224,
+        23472,
+        0.048
+      ],
+      "packed_sha256": "e2d56004e3d033099c1877990463c13ea285a3413291ad479f9784b9cbc3bf3c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "5e58a5887adda1ebf508c400c12d117f820e0e9f30830a103f17e8d2dc19516d",
+      "signature": "13cbd039cc5a39362befc0a6c70825c5955cd3f19d92b57e7d3240f1ee1f016e",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Your hunch was right. I found my keys in the pocket of my raincoat.",
+      "text_sha256": "792b8372f9c085e3cc5b638eefc29b161fbfb41df8d6845f131957bdb74fa6a0",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
