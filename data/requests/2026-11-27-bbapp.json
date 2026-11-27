@@ -1,0 +1,97 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-27",
+        "au": 1,
+        "ex": "You said the room was quiet, so I took you at your word and booked it.",
+        "exru": "Ты сказал, что в номере тихо, так что я поверил тебе на слово и забронировал его.",
+        "id": "i-took-you-at-your-word",
+        "note": "В S03E05 «Más» Гус напоминает Уолту, что тот сам поручился за Джесси. Так говорят, когда доверились чьим-то словам и поступили соответственно. В обороте take someone at their word оба местоимения указывают на одного человека. Если речь о подруге, получится I took her at her word. Слово word здесь всегда в единственном числе.",
+        "reg": "нейтральное, в этой сцене — сдержанный упрёк",
+        "ru": "Я поверил вам на слово.",
+        "sources": [
+          {
+            "episode": "S03E05 Más",
+            "locator": "Printed p. 21, PDF p. 24. In his office at Los Pollos Hermanos, Gus reminds Walt that he vouched for Jesse.",
+            "short_excerpt": true,
+            "speaker": "Gus Fring",
+            "title": "Moira Walley-Beckett, Breaking Bad #305 “Mas” — Sony Pictures Television, Script as Broadcast",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-305-mas-2010.pdf#page=24"
+          },
+          {
+            "episode": "S03E05 Más",
+            "locator": "Office conversation between Gus and Walt, immediately after Gus mentions Walt vouching for Jesse.",
+            "short_excerpt": true,
+            "speaker": "Gus Fring",
+            "title": "Breaking Bad – 3x05.en, English subtitles — Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/45/Breaking%20Bad%20-%203x05.en.html"
+          },
+          {
+            "episode": "S03E05 Más",
+            "locator": "Cue 181, 00:15:50.240–00:15:53.232, second sentence.",
+            "short_excerpt": true,
+            "speaker": "Gus Fring",
+            "title": "Más subtitles — Breaking Bad Wiki",
+            "url": "https://breakingbad.fandom.com/wiki/M%C3%A1s_subtitles"
+          },
+          {
+            "locator": "Definition of the idiom.",
+            "title": "take someone at their word — Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/take-someone-at-their-word"
+          }
+        ],
+        "term": "I took you at your word.",
+        "who": "Гус Фринг"
+      },
+      {
+        "added": "2026-11-27",
+        "au": 1,
+        "ex": "Your hunch was right. I found my keys in the pocket of my raincoat.",
+        "exru": "Чутьё тебя не подвело. Я нашла ключи в кармане плаща.",
+        "id": "your-hunch-was-right",
+        "note": "В S03E05 «Más» Дженис сообщает Хэнку, что в документах нашёлся ещё один автодом. Hunch — догадка, которая возникла до того, как появились доказательства. Фразой Your hunch was right можно подтвердить догадку собеседника, когда факты уже известны. О своей догадке скажи I have a hunch. Здесь нужен артикль a, а после your артикль лишний.",
+        "reg": "разговорное, подтверждение догадки",
+        "ru": "Чутьё тебя не подвело.",
+        "sources": [
+          {
+            "episode": "S03E05 Más",
+            "locator": "Printed p. 36, PDF p. 39. At the DEA office, Janice brings Hank a paper about one more RV.",
+            "short_excerpt": true,
+            "speaker": "Janice",
+            "title": "Moira Walley-Beckett, Breaking Bad #305 “Mas” — Sony Pictures Television, Script as Broadcast",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-305-mas-2010.pdf#page=39"
+          },
+          {
+            "episode": "S03E05 Más",
+            "locator": "Janice reporting back to Hank, immediately before she mentions one more RV and its registration.",
+            "short_excerpt": true,
+            "speaker": "Janice",
+            "title": "Breaking Bad – 3x05.en, English subtitles — Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/45/Breaking%20Bad%20-%203x05.en.html"
+          },
+          {
+            "episode": "S03E05 Más",
+            "locator": "Cue 320, 00:31:08.440–00:31:12.228, first sentence.",
+            "short_excerpt": true,
+            "speaker": "Janice",
+            "title": "Más subtitles — Breaking Bad Wiki",
+            "url": "https://breakingbad.fandom.com/wiki/M%C3%A1s_subtitles"
+          },
+          {
+            "locator": "Noun, the feeling or idea sense.",
+            "title": "hunch — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/hunch"
+          }
+        ],
+        "term": "Your hunch was right.",
+        "who": "Дженис"
+      }
+    ],
+    "date": "2026-11-27"
+  },
+  "batch_sha256": "3a1501aa2a9819de855020a848c9bf557032d455fc39d153e3c872b4f830f545",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-27T03:29:54.775391Z"
+}
