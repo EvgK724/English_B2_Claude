@@ -45333,6 +45333,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "step-in-t": {
+          "duration": 0.888,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "45b2f2260de45cd42e0265c29729533e800c8f125f79c7028f50bf3b972a838e",
+          "packed_sha256": "79876f5ced59e60eefc9e87d8e2a05852d4b7f184681069e8fe89df055395115",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "4b7784db1048485b43ebf55778b2a2298dc0cd92a0a7595439a48079ee0c3535",
+          "signature": "19e58b0b3f762367a87b463096e9408ca6f63c867b7181add53d8452c61f130c",
+          "source": "Microsoft-Edge-TTS",
+          "text": "step in",
+          "text_sha256": "45b2f2260de45cd42e0265c29729533e800c8f125f79c7028f50bf3b972a838e",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "step-in-x": {
+          "duration": 4.824,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "1e7151a927e6f647c507f19360557864fea6a241294b863a4d088e031cb184c8",
+          "packed_sha256": "d98c8ae6bb715126b5b3f24c6c6fb35d66f61883bba1e37b5cc03c26e587daa8",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "163042d29d9d4fc9d5e45642ce9d3d93f7b90a3fd7ae36ad2209db33e5ad4025",
+          "signature": "1f215d050e54c6e3a6efc4c7150609a1808e0ede4df771eac53f0d6f62247c31",
+          "source": "Microsoft-Edge-TTS",
+          "text": "When two customers started shouting at each other, the manager stepped in to calm them down.",
+          "text_sha256": "1e7151a927e6f647c507f19360557864fea6a241294b863a4d088e031cb184c8",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "stick-to-t": {
           "duration": 0.912,
           "edge_tts": "7.3.1",

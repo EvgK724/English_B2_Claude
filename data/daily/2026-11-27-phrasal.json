@@ -1,0 +1,80 @@
+{
+  "batch_sha256": "0ba403e00cd93b48495ae1e8e8833b7156d59ccfe1658cd18e2c7c2e5b197c72",
+  "cards": [
+    {
+      "added": "2026-11-27",
+      "au": 1,
+      "ex": "When two customers started shouting at each other, the manager stepped in to calm them down.",
+      "exru": "Когда двое покупателей начали кричать друг на друга, управляющий вмешался, чтобы их успокоить.",
+      "id": "step-in",
+      "ipa": "/ˌstep ˈɪn/ · stepped in · stepped in",
+      "note": "Можно сказать просто she stepped in. Чтобы объяснить зачем, добавьте to и глагол. В выражении she stepped in help пропущено to. Правильно — she stepped in to help. Stand in for someone значит «временно подменять кого-то».",
+      "pos": "phrasal verb · непереходный · неразделяемый",
+      "ru": "вмешаться, чтобы помочь или уладить спор",
+      "sources": [
+        {
+          "evidence": "The intransitive verb describes intervening to help in a difficult situation. It can stand alone or take a to-infinitive of purpose.",
+          "title": "STEP IN | English meaning - Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/step-in",
+          "verified_on": "2026-11-27"
+        },
+        {
+          "evidence": "The entry lists stepped as the past tense and past participle and stepping as the present participle.",
+          "title": "STEP IN | meaning - Cambridge Learner's Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/learner-english/step-in",
+          "verified_on": "2026-11-27"
+        },
+        {
+          "evidence": "The pattern stand in for someone means to act as a substitute while that person is absent.",
+          "title": "STAND IN definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/stand-in",
+          "verified_on": "2026-11-27"
+        }
+      ],
+      "term": "step in"
+    }
+  ],
+  "clips": {
+    "step-in-t": {
+      "duration": 0.888,
+      "key": "step-in-t",
+      "location": [
+        3800304,
+        5328,
+        0.048
+      ],
+      "packed_sha256": "79876f5ced59e60eefc9e87d8e2a05852d4b7f184681069e8fe89df055395115",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "4b7784db1048485b43ebf55778b2a2298dc0cd92a0a7595439a48079ee0c3535",
+      "text": "step in",
+      "text_sha256": "45b2f2260de45cd42e0265c29729533e800c8f125f79c7028f50bf3b972a838e",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "step-in-x": {
+      "duration": 4.824,
+      "key": "step-in-x",
+      "location": [
+        3805632,
+        28944,
+        0.048
+      ],
+      "packed_sha256": "d98c8ae6bb715126b5b3f24c6c6fb35d66f61883bba1e37b5cc03c26e587daa8",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "163042d29d9d4fc9d5e45642ce9d3d93f7b90a3fd7ae36ad2209db33e5ad4025",
+      "text": "When two customers started shouting at each other, the manager stepped in to calm them down.",
+      "text_sha256": "1e7151a927e6f647c507f19360557864fea6a241294b863a4d088e031cb184c8",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-27",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
