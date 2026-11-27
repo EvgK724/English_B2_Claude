@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-27",
+        "au": 1,
+        "ex": "When two customers started shouting at each other, the manager stepped in to calm them down.",
+        "exru": "Когда двое покупателей начали кричать друг на друга, управляющий вмешался, чтобы их успокоить.",
+        "id": "step-in",
+        "ipa": "/ˌstep ˈɪn/ · stepped in · stepped in",
+        "note": "Можно сказать просто she stepped in. Чтобы объяснить зачем, добавьте to и глагол. В выражении she stepped in help пропущено to. Правильно — she stepped in to help. Stand in for someone значит «временно подменять кого-то».",
+        "pos": "phrasal verb · непереходный · неразделяемый",
+        "ru": "вмешаться, чтобы помочь или уладить спор",
+        "sources": [
+          {
+            "evidence": "The intransitive verb describes intervening to help in a difficult situation. It can stand alone or take a to-infinitive of purpose.",
+            "title": "STEP IN | English meaning - Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/step-in",
+            "verified_on": "2026-11-27"
+          },
+          {
+            "evidence": "The entry lists stepped as the past tense and past participle and stepping as the present participle.",
+            "title": "STEP IN | meaning - Cambridge Learner's Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/learner-english/step-in",
+            "verified_on": "2026-11-27"
+          },
+          {
+            "evidence": "The pattern stand in for someone means to act as a substitute while that person is absent.",
+            "title": "STAND IN definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/stand-in",
+            "verified_on": "2026-11-27"
+          }
+        ],
+        "term": "step in"
+      }
+    ],
+    "date": "2026-11-27"
+  },
+  "batch_sha256": "0ba403e00cd93b48495ae1e8e8833b7156d59ccfe1658cd18e2c7c2e5b197c72",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-27T06:59:07.945384Z"
+}
