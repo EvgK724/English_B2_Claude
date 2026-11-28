@@ -1480,6 +1480,48 @@
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },
+    "hell-come-around-t": {
+      "duration": 1.032,
+      "edge_tts": "7.3.1",
+      "key": "hell-come-around-t",
+      "ledger": "data/daily/2026-11-28-bbapp.json",
+      "location": [
+        4083696,
+        6192,
+        0.048
+      ],
+      "packed_sha256": "c8a30f19b9d5324785f7f77b9286a0c0bf19b84dfb6f8511bb07356315611ca7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d520daad302d0d150ddf359f2f63b00e0a2f95602fc465ceea5fb02061b71f6f",
+      "signature": "6c2d5a5d87e080e7b5a929a835ccf4e4a490b48ee54895062d116816c0e69586",
+      "source": "Microsoft-Edge-TTS",
+      "text": "He'll come around.",
+      "text_sha256": "4fcc0dbe025dc99e2f1fed556744980ac3255f235d27bb4273a09f6f46ed4107",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hell-come-around-x": {
+      "duration": 4.152,
+      "edge_tts": "7.3.1",
+      "key": "hell-come-around-x",
+      "ledger": "data/daily/2026-11-28-bbapp.json",
+      "location": [
+        4089888,
+        24912,
+        0.048
+      ],
+      "packed_sha256": "99b108a91a455f832f216eee5a8f5981e028d650f95a4d2e8a07d52e4650389c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f73d07d7a9bfae8db3958ef49b2d1d225738d5200bdb7e27b0d25e0b7cac84be",
+      "signature": "f2596c5cdc069360d1080311514ab54f82a180fcc88abb130cfc3133dd019eae",
+      "source": "Microsoft-Edge-TTS",
+      "text": "Ben doesn't want a dog, but I think he'll come around once he meets the puppy.",
+      "text_sha256": "1f78bce0e23c4f6d13e09f1264e015440bc30a6e8f91d99b1d1e6fe3d9c9cffa",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
     "heres-what-were-gonna-do-t": {
       "baseline_parameters_verified": false,
       "location": [
@@ -1587,6 +1629,48 @@
       "source": "Microsoft-Edge-TTS",
       "text": "The client has rejected our first proposal. How do we proceed?",
       "text_sha256": "c41ec13caeb1ec03497fb4ec8a9b70372b1b30201ca8c3ec46f66a077bed52de",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-much-would-it-cost-us-t": {
+      "duration": 1.44,
+      "edge_tts": "7.3.1",
+      "key": "how-much-would-it-cost-us-t",
+      "ledger": "data/daily/2026-11-28-bbapp.json",
+      "location": [
+        4114800,
+        8640,
+        0.048
+      ],
+      "packed_sha256": "dbd71aaf8c370afc34bd1d9600aab82a460cbfbb63d4c76765ca9bd4eeac9076",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "3418f5c7e556863e91af142b27454cab61934c2b3f505d81acc21f997f6f51df",
+      "signature": "d9d6921571cc568ff81d3d316a06709c437880461dbab0df1a0b0d9095ca82be",
+      "source": "Microsoft-Edge-TTS",
+      "text": "How much would it cost us?",
+      "text_sha256": "b2b6c5f2f2e5e54feae4440453ade8e80feb95f4c0b15a493e47fb4eeb730fc9",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-much-would-it-cost-us-x": {
+      "duration": 2.928,
+      "edge_tts": "7.3.1",
+      "key": "how-much-would-it-cost-us-x",
+      "ledger": "data/daily/2026-11-28-bbapp.json",
+      "location": [
+        4123440,
+        17568,
+        0.048
+      ],
+      "packed_sha256": "0a00bf3fecbabf0795ae18227117173ce59e1c640d5f59a1ae8e6a6ea4902592",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "a67c7c709c7cad5f0e6b99f0304792b14f4aadc132dd2ad928f3c21c33a5716b",
+      "signature": "ecbb9cf13489d0c937a8bfadff17552297ed6a8c69f886345cec5e5250587554",
+      "source": "Microsoft-Edge-TTS",
+      "text": "How much would it cost us to rent the hall for one more hour?",
+      "text_sha256": "0d2442d93a80181f7e982f548b86dfd9ddb860ac4afbb1f3fe6480f5556c8604",
       "voice": "en-US-AndrewNeural",
       "volume": "+0%"
     },

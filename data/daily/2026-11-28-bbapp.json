@@ -1,0 +1,168 @@
+{
+  "batch_sha256": "af65cba6f66c0b1fa8a1c37b10f4ca959b744d562a13ca1ab0c5b90c67d46f11",
+  "cards": [
+    {
+      "added": "2026-11-28",
+      "au": 1,
+      "ex": "Ben doesn't want a dog, but I think he'll come around once he meets the puppy.",
+      "exru": "Бен не хочет собаку, но, думаю, он передумает, когда познакомится со щенком.",
+      "id": "hell-come-around",
+      "note": "В S03E07 «One Minute» Уолт пытается убедить Сола, что Джесси передумает. Come around здесь значит «со временем изменить мнение». Если понятно, о чём речь, дополнение можно опустить. Если называешь идею, с которой человек в итоге согласился, нужен предлог to, как в come around to the idea.",
+      "reg": "разговорное, попытка успокоить собеседника",
+      "ru": "Он ещё передумает.",
+      "sources": [
+        {
+          "episode": "S03E07 One Minute",
+          "locator": "Printed p. 12, PDF p. 15, end of Act One. Walt speaks to Saul in the hospital hallway. The complete sentence follows a false start.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Thomas Schnauz, Breaking Bad #307 “One Minute” — Sony Pictures Television, As Broadcast",
+          "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-307-one-minute-2010.pdf?v=1745342672#page=15"
+        },
+        {
+          "episode": "S03E07 One Minute",
+          "locator": "S03E07, 00:12:46.933–00:12:48.977. Walt finishes his reply after restarting the sentence.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad, Season 3 — 8FLiX dialogue transcripts, Breaking Bad Script Dataset",
+          "url": "https://raw.githubusercontent.com/acheamponge/Breaking-Bad-Script-Dataset/master/Season%203/Breaking-Bad-Season-3.txt"
+        },
+        {
+          "episode": "S03E07 One Minute",
+          "locator": "Hospital hallway. Walt finishes his reply about Jesse just before Saul suggests discussing their options.",
+          "short_excerpt": true,
+          "speaker": "Walter White",
+          "title": "Breaking Bad – 3x07.en, English subtitles — Subtitle Cat",
+          "url": "https://www.subtitlecat.com/subs/45/Breaking%20Bad%20-%203x07.en.html"
+        },
+        {
+          "locator": "American Dictionary, CHANGE YOUR MIND sense.",
+          "title": "come around — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/come-around"
+        }
+      ],
+      "term": "He'll come around.",
+      "who": "Уолтер Уайт"
+    },
+    {
+      "added": "2026-11-28",
+      "au": 1,
+      "ex": "How much would it cost us to rent the hall for one more hour?",
+      "exru": "Во сколько бы нам обошлась аренда зала ещё на час?",
+      "id": "how-much-would-it-cost-us",
+      "note": "В S05E16 «Felina» Лидия в кафе спрашивает Уолта о цене его предложения. Would показывает, что сделку пока только обсуждают. После cost можно сразу назвать того, кто платит, например us или me. После would нужна начальная форма cost, без окончания -s.",
+      "reg": "нейтральное, вопрос о цене",
+      "ru": "Во сколько бы нам это обошлось?",
+      "sources": [
+        {
+          "episode": "S05E16 Felina",
+          "locator": "Printed p. 24, scene 23. At the café, Lydia asks Walt for his price.",
+          "short_excerpt": true,
+          "speaker": "Lydia Rodarte-Quayle",
+          "title": "Vince Gilligan, Breaking Bad #516 “Felina” — final script, April 3, 2013",
+          "url": "https://www.scribd.com/document/406938335/Breaking-Bad-Finale"
+        },
+        {
+          "episode": "S05E16 Felina",
+          "locator": "English subtitles, cue 323, 00:24:02.192–00:24:06.829. Lydia asks her question immediately before Walt names his price.",
+          "short_excerpt": true,
+          "speaker": "Lydia Rodarte-Quayle",
+          "title": "Felina subtitles — Breaking Bad Wiki",
+          "url": "https://breakingbad.fandom.com/wiki/Felina_subtitles"
+        },
+        {
+          "episode": "S05E16 Felina",
+          "locator": "Café conversation with Walt and Todd. Lydia's question follows Walt's request for money and precedes his price.",
+          "short_excerpt": true,
+          "speaker": "Lydia Rodarte-Quayle",
+          "title": "Breaking Bad – 5x16 – Felina.HDTV.IMMERSE.en, English subtitles — Subtitle Cat",
+          "url": "https://www.subtitlecat.com/subs/31/Breaking%20Bad%20-%205x16%20-%20Felina.HDTV.IMMERSE.en.html"
+        },
+        {
+          "locator": "Verb, MONEY sense and examples with the person paying as an object.",
+          "title": "cost — Cambridge Dictionary",
+          "url": "https://dictionary.cambridge.org/dictionary/english/cost"
+        }
+      ],
+      "term": "How much would it cost us?",
+      "who": "Лидия Родарт-Куэйл"
+    }
+  ],
+  "clips": {
+    "hell-come-around-t": {
+      "duration": 1.032,
+      "key": "hell-come-around-t",
+      "location": [
+        4083696,
+        6192,
+        0.048
+      ],
+      "packed_sha256": "c8a30f19b9d5324785f7f77b9286a0c0bf19b84dfb6f8511bb07356315611ca7",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "d520daad302d0d150ddf359f2f63b00e0a2f95602fc465ceea5fb02061b71f6f",
+      "text": "He'll come around.",
+      "text_sha256": "4fcc0dbe025dc99e2f1fed556744980ac3255f235d27bb4273a09f6f46ed4107",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "hell-come-around-x": {
+      "duration": 4.152,
+      "key": "hell-come-around-x",
+      "location": [
+        4089888,
+        24912,
+        0.048
+      ],
+      "packed_sha256": "99b108a91a455f832f216eee5a8f5981e028d650f95a4d2e8a07d52e4650389c",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f73d07d7a9bfae8db3958ef49b2d1d225738d5200bdb7e27b0d25e0b7cac84be",
+      "text": "Ben doesn't want a dog, but I think he'll come around once he meets the puppy.",
+      "text_sha256": "1f78bce0e23c4f6d13e09f1264e015440bc30a6e8f91d99b1d1e6fe3d9c9cffa",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-much-would-it-cost-us-t": {
+      "duration": 1.44,
+      "key": "how-much-would-it-cost-us-t",
+      "location": [
+        4114800,
+        8640,
+        0.048
+      ],
+      "packed_sha256": "dbd71aaf8c370afc34bd1d9600aab82a460cbfbb63d4c76765ca9bd4eeac9076",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "3418f5c7e556863e91af142b27454cab61934c2b3f505d81acc21f997f6f51df",
+      "text": "How much would it cost us?",
+      "text_sha256": "b2b6c5f2f2e5e54feae4440453ade8e80feb95f4c0b15a493e47fb4eeb730fc9",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    },
+    "how-much-would-it-cost-us-x": {
+      "duration": 2.928,
+      "key": "how-much-would-it-cost-us-x",
+      "location": [
+        4123440,
+        17568,
+        0.048
+      ],
+      "packed_sha256": "0a00bf3fecbabf0795ae18227117173ce59e1c640d5f59a1ae8e6a6ea4902592",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "a67c7c709c7cad5f0e6b99f0304792b14f4aadc132dd2ad928f3c21c33a5716b",
+      "text": "How much would it cost us to rent the hall for one more hour?",
+      "text_sha256": "0d2442d93a80181f7e982f548b86dfd9ddb860ac4afbb1f3fe6480f5556c8604",
+      "voice": "en-US-AndrewNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-28",
+  "deck": "bbapp",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-US-AndrewNeural"
+}
