@@ -1,0 +1,43 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-28",
+        "au": 1,
+        "ex": "I handed in my application two days before the deadline.",
+        "exru": "Я подал заявление за два дня до окончания срока подачи.",
+        "id": "hand-in",
+        "ipa": "/ˌhænd ˈɪn/ · handed in · handed in",
+        "note": "Hand in a form и hand a form in означают «сдать бланк». С местоимением говорят hand it in. Частая ошибка — hand in it. Преподаватель раздаёт бланки (hands them out), а студенты сдают их (hand them in).",
+        "pos": "phrasal verb · переходный · разделяемый",
+        "ru": "сдать работу, подать заявление",
+        "sources": [
+          {
+            "evidence": "The B1 entry gives the submission sense, shows both object positions and places a pronoun before in.",
+            "title": "HAND IN definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/hand-in",
+            "verified_on": "2026-11-28"
+          },
+          {
+            "evidence": "The verb table gives /hænd/ and lists handed as both the past simple and the past participle.",
+            "title": "hand verb - Definition, pictures, pronunciation and usage notes | Oxford Advanced Learner's Dictionary at OxfordLearnersDictionaries.com",
+            "url": "https://www.oxfordlearnersdictionaries.com/definition/english/hand_2",
+            "verified_on": "2026-11-28"
+          },
+          {
+            "evidence": "The distribution sense describes giving items to individual members of a group.",
+            "title": "HAND OUT definition and meaning | Collins English Dictionary",
+            "url": "https://www.collinsdictionary.com/dictionary/english/hand-out",
+            "verified_on": "2026-11-28"
+          }
+        ],
+        "term": "hand in"
+      }
+    ],
+    "date": "2026-11-28"
+  },
+  "batch_sha256": "b912c2fd459d3112d00765d9eb482b497e2c8b90aa672b7f7561868c351933ee",
+  "deck": "phrasal",
+  "schema": 1,
+  "submitted_at": "2026-11-28T06:28:13.067701Z"
+}
