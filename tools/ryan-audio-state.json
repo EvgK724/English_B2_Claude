@@ -44609,6 +44609,36 @@
           "voice": "en-GB-RyanNeural",
           "volume": "+0%"
         },
+        "hand-in-t": {
+          "duration": 0.792,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "b56076adbfb824087e0e73e590fe027e03c85ce50b6b1fe45a87cba46c922617",
+          "packed_sha256": "c80dbce00d86f46e4cdca90e1446f8309eba7f3692d60c00775c5d69cb06b514",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "f19f0866c51c32d6dfeb21901df7cdbf7e453bee5dedcd55da515a4ca0aa9645",
+          "signature": "6c5b222aa7482bdc79934a649a475134aa51b4c548631238884a2089d3e307f0",
+          "source": "Microsoft-Edge-TTS",
+          "text": "hand in",
+          "text_sha256": "b56076adbfb824087e0e73e590fe027e03c85ce50b6b1fe45a87cba46c922617",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
+        "hand-in-x": {
+          "duration": 3.36,
+          "edge_tts": "7.3.1",
+          "normalized_text_sha256": "fd4801e948660e67a55279404f916ea101b39354492b9d8ded99fa707ef44f61",
+          "packed_sha256": "bb88be81a788aae48a5f00c923df303cebebf6b01ec2df74b40c3b7deacfe36f",
+          "pitch": "+0Hz",
+          "rate": "-5%",
+          "raw_sha256": "acc23017f1ff0febfb962bb6bc7ec120c7d704a28f7b83fd0f76e6f0205637ef",
+          "signature": "dc098cf1fc55d0295934cc8f958227c7af4520075f1cafcf2963531ce61c56cb",
+          "source": "Microsoft-Edge-TTS",
+          "text": "I handed in my application two days before the deadline.",
+          "text_sha256": "fd4801e948660e67a55279404f916ea101b39354492b9d8ded99fa707ef44f61",
+          "voice": "en-GB-RyanNeural",
+          "volume": "+0%"
+        },
         "hand-over-t": {
           "baseline_parameters_verified": false,
           "normalized_text_sha256": "8bdcdc24aa7b9bafb60401c32e4929ddaa04c6d821328f3d4eefa328908d8335",

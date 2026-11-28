@@ -1,0 +1,80 @@
+{
+  "batch_sha256": "b912c2fd459d3112d00765d9eb482b497e2c8b90aa672b7f7561868c351933ee",
+  "cards": [
+    {
+      "added": "2026-11-28",
+      "au": 1,
+      "ex": "I handed in my application two days before the deadline.",
+      "exru": "Я подал заявление за два дня до окончания срока подачи.",
+      "id": "hand-in",
+      "ipa": "/ˌhænd ˈɪn/ · handed in · handed in",
+      "note": "Hand in a form и hand a form in означают «сдать бланк». С местоимением говорят hand it in. Частая ошибка — hand in it. Преподаватель раздаёт бланки (hands them out), а студенты сдают их (hand them in).",
+      "pos": "phrasal verb · переходный · разделяемый",
+      "ru": "сдать работу, подать заявление",
+      "sources": [
+        {
+          "evidence": "The B1 entry gives the submission sense, shows both object positions and places a pronoun before in.",
+          "title": "HAND IN definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/hand-in",
+          "verified_on": "2026-11-28"
+        },
+        {
+          "evidence": "The verb table gives /hænd/ and lists handed as both the past simple and the past participle.",
+          "title": "hand verb - Definition, pictures, pronunciation and usage notes | Oxford Advanced Learner's Dictionary at OxfordLearnersDictionaries.com",
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/hand_2",
+          "verified_on": "2026-11-28"
+        },
+        {
+          "evidence": "The distribution sense describes giving items to individual members of a group.",
+          "title": "HAND OUT definition and meaning | Collins English Dictionary",
+          "url": "https://www.collinsdictionary.com/dictionary/english/hand-out",
+          "verified_on": "2026-11-28"
+        }
+      ],
+      "term": "hand in"
+    }
+  ],
+  "clips": {
+    "hand-in-t": {
+      "duration": 0.792,
+      "key": "hand-in-t",
+      "location": [
+        3834576,
+        4752,
+        0.048
+      ],
+      "packed_sha256": "c80dbce00d86f46e4cdca90e1446f8309eba7f3692d60c00775c5d69cb06b514",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "f19f0866c51c32d6dfeb21901df7cdbf7e453bee5dedcd55da515a4ca0aa9645",
+      "text": "hand in",
+      "text_sha256": "b56076adbfb824087e0e73e590fe027e03c85ce50b6b1fe45a87cba46c922617",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    },
+    "hand-in-x": {
+      "duration": 3.36,
+      "key": "hand-in-x",
+      "location": [
+        3839328,
+        20160,
+        0.048
+      ],
+      "packed_sha256": "bb88be81a788aae48a5f00c923df303cebebf6b01ec2df74b40c3b7deacfe36f",
+      "pitch": "+0Hz",
+      "rate": "-5%",
+      "raw_sha256": "acc23017f1ff0febfb962bb6bc7ec120c7d704a28f7b83fd0f76e6f0205637ef",
+      "text": "I handed in my application two days before the deadline.",
+      "text_sha256": "fd4801e948660e67a55279404f916ea101b39354492b9d8ded99fa707ef44f61",
+      "voice": "en-GB-RyanNeural",
+      "volume": "+0%"
+    }
+  },
+  "date": "2026-11-28",
+  "deck": "phrasal",
+  "edge_tts": "7.3.1",
+  "rate": "-5%",
+  "schema": 1,
+  "timezone": "Asia/Yekaterinburg",
+  "voice": "en-GB-RyanNeural"
+}
