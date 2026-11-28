@@ -1,0 +1,97 @@
+{
+  "batch": {
+    "cards": [
+      {
+        "added": "2026-11-28",
+        "au": 1,
+        "ex": "Ben doesn't want a dog, but I think he'll come around once he meets the puppy.",
+        "exru": "Бен не хочет собаку, но, думаю, он передумает, когда познакомится со щенком.",
+        "id": "hell-come-around",
+        "note": "В S03E07 «One Minute» Уолт пытается убедить Сола, что Джесси передумает. Come around здесь значит «со временем изменить мнение». Если понятно, о чём речь, дополнение можно опустить. Если называешь идею, с которой человек в итоге согласился, нужен предлог to, как в come around to the idea.",
+        "reg": "разговорное, попытка успокоить собеседника",
+        "ru": "Он ещё передумает.",
+        "sources": [
+          {
+            "episode": "S03E07 One Minute",
+            "locator": "Printed p. 12, PDF p. 15, end of Act One. Walt speaks to Saul in the hospital hallway. The complete sentence follows a false start.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Thomas Schnauz, Breaking Bad #307 “One Minute” — Sony Pictures Television, As Broadcast",
+            "url": "https://assets.scriptslug.com/live/pdf/scripts/breaking-bad-307-one-minute-2010.pdf?v=1745342672#page=15"
+          },
+          {
+            "episode": "S03E07 One Minute",
+            "locator": "S03E07, 00:12:46.933–00:12:48.977. Walt finishes his reply after restarting the sentence.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad, Season 3 — 8FLiX dialogue transcripts, Breaking Bad Script Dataset",
+            "url": "https://raw.githubusercontent.com/acheamponge/Breaking-Bad-Script-Dataset/master/Season%203/Breaking-Bad-Season-3.txt"
+          },
+          {
+            "episode": "S03E07 One Minute",
+            "locator": "Hospital hallway. Walt finishes his reply about Jesse just before Saul suggests discussing their options.",
+            "short_excerpt": true,
+            "speaker": "Walter White",
+            "title": "Breaking Bad – 3x07.en, English subtitles — Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/45/Breaking%20Bad%20-%203x07.en.html"
+          },
+          {
+            "locator": "American Dictionary, CHANGE YOUR MIND sense.",
+            "title": "come around — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/come-around"
+          }
+        ],
+        "term": "He'll come around.",
+        "who": "Уолтер Уайт"
+      },
+      {
+        "added": "2026-11-28",
+        "au": 1,
+        "ex": "How much would it cost us to rent the hall for one more hour?",
+        "exru": "Во сколько бы нам обошлась аренда зала ещё на час?",
+        "id": "how-much-would-it-cost-us",
+        "note": "В S05E16 «Felina» Лидия в кафе спрашивает Уолта о цене его предложения. Would показывает, что сделку пока только обсуждают. После cost можно сразу назвать того, кто платит, например us или me. После would нужна начальная форма cost, без окончания -s.",
+        "reg": "нейтральное, вопрос о цене",
+        "ru": "Во сколько бы нам это обошлось?",
+        "sources": [
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Printed p. 24, scene 23. At the café, Lydia asks Walt for his price.",
+            "short_excerpt": true,
+            "speaker": "Lydia Rodarte-Quayle",
+            "title": "Vince Gilligan, Breaking Bad #516 “Felina” — final script, April 3, 2013",
+            "url": "https://www.scribd.com/document/406938335/Breaking-Bad-Finale"
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "English subtitles, cue 323, 00:24:02.192–00:24:06.829. Lydia asks her question immediately before Walt names his price.",
+            "short_excerpt": true,
+            "speaker": "Lydia Rodarte-Quayle",
+            "title": "Felina subtitles — Breaking Bad Wiki",
+            "url": "https://breakingbad.fandom.com/wiki/Felina_subtitles"
+          },
+          {
+            "episode": "S05E16 Felina",
+            "locator": "Café conversation with Walt and Todd. Lydia's question follows Walt's request for money and precedes his price.",
+            "short_excerpt": true,
+            "speaker": "Lydia Rodarte-Quayle",
+            "title": "Breaking Bad – 5x16 – Felina.HDTV.IMMERSE.en, English subtitles — Subtitle Cat",
+            "url": "https://www.subtitlecat.com/subs/31/Breaking%20Bad%20-%205x16%20-%20Felina.HDTV.IMMERSE.en.html"
+          },
+          {
+            "locator": "Verb, MONEY sense and examples with the person paying as an object.",
+            "title": "cost — Cambridge Dictionary",
+            "url": "https://dictionary.cambridge.org/dictionary/english/cost"
+          }
+        ],
+        "term": "How much would it cost us?",
+        "who": "Лидия Родарт-Куэйл"
+      }
+    ],
+    "date": "2026-11-28"
+  },
+  "batch_sha256": "af65cba6f66c0b1fa8a1c37b10f4ca959b744d562a13ca1ab0c5b90c67d46f11",
+  "deck": "bbapp",
+  "schema": 1,
+  "submitted_at": "2026-11-28T03:41:36.402174Z"
+}
